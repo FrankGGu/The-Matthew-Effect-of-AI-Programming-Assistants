@@ -1,0 +1,28 @@
+(define (longest-path-with-different-adjacent-characters parents s)
+  (define (dfs node parent)
+    (define max1 0)
+    (define max2 0)
+    (for ([i (in-range (vector-length (hash-ref children node)))])
+      (define child (vector-ref (hash-ref children node) i))
+      (when (not (= child parent))
+        (define length (dfs child node))
+        (when (not (= (string-ref s child) (string-ref s node)))
+          (cond
+            [(> length max1) (set! max2 max1) (set! max1 length)]
+            [(> length max2) (set! max2 length)]))))
+    (set! longest (max longest (+ 1 max1 max2)))
+    (+ 1 max1))
+
+  (define longest 0)
+  (define children (make-hash))
+  (for ([i (in-range (vector-length parents))])
+    (define p (vector-ref parents i))
+    (when (not (= p -1))
+      (if (hash-has-key? children p)
+          (hash-set! children p (vector-append (hash-ref children p) (vector i)))
+          (hash-set! children p (vector i)))))
+  (dfs 0 -1)
+  longest)
+
+(define (longestPath parents s)
+  (longest-path-with-different-adjacent-characters parents s))

@@ -1,0 +1,20 @@
+#lang racket
+
+(define (count-palindromic-subsequences s)
+  (define n (string-length s))
+  (define dp (make-vector n (lambda () (make-vector n 0))))
+  (define (is-palindrome? s i j)
+    (and (= (string-ref s i) (string-ref s j))
+         (or (<= (- j i) 1)
+             (is-palindrome? s (+ i 1) (- j 1)))))
+  (for ([i (in-range n)])
+    (vector-set! dp i i 1))
+  (for ([length (in-range 2 n)]
+        [i (in-range 0 (- n length +1))])
+    (define j (+ i length -1))
+    (if (is-palindrome? s i j)
+        (vector-set! dp i j (+ 2 (vector-ref dp (+ i 1) (- j 1))))
+        (vector-set! dp i j (vector-ref dp i (+ j -1))
+                     (vector-ref dp (+ i 1) j)
+                     (vector-ref dp (+ i 1) (- j 1))))))
+  (vector-ref dp 0 (- n 1)))

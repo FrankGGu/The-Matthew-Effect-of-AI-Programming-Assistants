@@ -1,0 +1,13 @@
+(define (letter-case-permutation s)
+  (define (helper chars index result)
+    (if (= index (length chars))
+        (list result)
+        (let ((c (string-ref s index)))
+          (if (char-numeric? c)
+              (helper chars (+ index 1) (string-append result (string c)))
+              (append
+               (helper chars (+ index 1) (string-append result (string-downcase (string c))))
+               (helper chars (+ index 1) (string-append result (string-upcase (string c)))))))))
+  (if (equal? s "")
+      (list "")
+      (apply append (helper (string->list s) 0 ""))))

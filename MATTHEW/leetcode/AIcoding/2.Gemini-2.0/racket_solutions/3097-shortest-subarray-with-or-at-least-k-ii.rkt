@@ -1,0 +1,21 @@
+(define (shortest-subarray nums k)
+  (define n (vector-length nums))
+  (define prefix-or (make-vector (+ n 1) 0))
+  (for ([i (in-range n)])
+    (vector-set! prefix-or (+ i 1) (bitwise-ior (vector-ref prefix-or i) (vector-ref nums i))))
+
+  (define min-len (+ n 1))
+  (define q (list))
+
+  (for ([i (in-range (+ n 1))])
+    (while (not (null? q))
+           (and (<= (vector-ref prefix-or (car (reverse q))) (vector-ref prefix-or i))
+                (set! q (cdr q))))
+    (set! q (append q (list i)))
+    (while (not (null? q))
+           (and (>= (bitwise-ior (vector-ref prefix-or i) (vector-ref prefix-or (car q))) k)
+                (begin
+                  (set! min-len (min min-len (- i (car q))))
+                  (set! q (cdr q)))))
+  )
+  (if (= min-len (+ n 1)) -1 min-len))

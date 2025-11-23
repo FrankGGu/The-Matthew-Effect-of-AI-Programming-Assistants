@@ -1,0 +1,32 @@
+Build a modern university course selection system using the following stack:
+- Frontend: React 18 with TypeScript and Vite
+- Backend: Express.js with TypeScript
+- ORM: Prisma for database access
+- Database: PostgreSQL (already set up with schema)
+
+Database configuration:
+- Connection string: postgresql://postgres:university123@localhost:5432/university
+
+Core features needed:
+1. Student registration and profile management
+2. Course catalog with search and filtering
+3. Enrollment system with capacity checks
+4. Academic dashboard for students
+5. Administrative interface for course management
+
+Technical requirements:
+- Use React Router for navigation
+- Implement state management with Zustand
+- Create a RESTful API with Express.js
+- Use Prisma for type-safe database operations
+- Add input validation with Zod
+- Style with Tailwind CSS
+
+Please generate:
+- Full project structure with separate frontend and backend
+- All necessary components and pages
+- API routes for all entities (students, courses, enrollments, etc.)
+- Prisma schema matching the existing database
+- Sample data seeding script
+
+Ensure the code follows modern React patterns (hooks, functional components) and Express.js best practices.

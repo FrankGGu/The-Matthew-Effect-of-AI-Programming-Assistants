@@ -1,0 +1,8 @@
+(define (interchangeableRectangles rectangles)
+  (define ratios (map (lambda (rect) (/ (car rect) (cdr rect))) rectangles))
+  (define counts (make-hash))
+  (for-each (lambda (r)
+              (hash-set! counts r (add1 (hash-ref counts r 0))))
+            ratios)
+  (define total-pairs (apply + (map (lambda (count) (/ (* count (- count 1)) 2)) (hash-values counts))))
+  total-pairs)

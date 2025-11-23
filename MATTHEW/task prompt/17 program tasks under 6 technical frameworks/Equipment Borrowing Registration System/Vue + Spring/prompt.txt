@@ -1,0 +1,25 @@
+Create a complete Equipment Borrowing Registration System using Vue 3 for the frontend and Spring Boot with Hibernate for the backend. Use PostgreSQL as the database with the following connection: postgresql://postgres:equipment_pass@localhost:5432/equipment_db
+
+Database schema:
+- equipment (id, name, model, serial_number, status, purchase_date, created_at, updated_at)
+- borrowers (id, name, email, department, created_at)
+- borrowing_records (id, equipment_id, borrower_id, borrow_date, expected_return_date, actual_return_date, status, notes, created_at)
+
+Frontend requirements (Vue 3 with Composition API):
+1. Equipment management page: List all equipment with filter by status, add/edit equipment form
+2. Borrower management page: List all borrowers, add/edit borrower form
+3. Borrowing records page: Show current and historical borrowing records with filter options
+4. Dashboard: Show statistics (total equipment, borrowed items, overdue items)
+
+Backend requirements (Spring Boot):
+1. RESTful API endpoints for all CRUD operations on equipment, borrowers, and borrowing records
+2. Use Hibernate for ORM with proper entity mappings
+3. Implement proper validation and error handling
+4. Add automated status updates for overdue items
+
+Include:
+- Proper error handling on both frontend and backend
+- Responsive design with Tailwind CSS
+- API documentation with Swagger/OpenAPI
+- Unit tests for critical backend functionality
+- Instructions on how to run the application

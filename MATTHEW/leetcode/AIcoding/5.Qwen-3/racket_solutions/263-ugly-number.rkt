@@ -1,0 +1,10 @@
+(define (ugly-number n)
+  (define (helper n factors)
+    (if (= n 1)
+        #t
+        (let loop ((factors factors))
+          (cond ((null? factors) #f)
+                ((= (remainder n (car factors)) 0)
+                 (helper (/ n (car factors)) factors))
+                (else (loop (cdr factors)))))))
+  (helper n '(2 3 5)))

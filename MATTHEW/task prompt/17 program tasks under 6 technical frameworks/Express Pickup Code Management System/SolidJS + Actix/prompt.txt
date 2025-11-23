@@ -1,0 +1,36 @@
+Create an emerging technology stack quick pickup code management system using SolidJS frontend, Actix Web backend, and SeaORM with PostgreSQL. Use the following database schema:
+
+Database schema:
+- pickup_locations (id, name, address, is_active, created_at)
+- pickup_items (id, name, description, price, is_available, created_at)
+- pickup_orders (id, customer_name, customer_phone, pickup_code, location_id, status, created_at, updated_at, expected_ready_time, actual_pickup_time)
+- order_items (id, order_id, item_id, quantity, special_instructions)
+- pickup_audit_log (id, order_id, action, performed_at, performed_by)
+
+Required features:
+1. SolidJS frontend for high-performance reactive UI
+2. Actix Web backend in Rust for high concurrency
+3. SeaORM for database operations
+4. JWT authentication
+5. Memory-safe pickup code generation (6-character alphanumeric)
+6. Order status management with fine-grained reactivity
+7. High-concurrency API endpoints
+8. Minimal resource usage with maximum performance
+9. Type-safe throughout the stack
+
+Implementation requirements:
+- Focus on memory safety and performance
+- Implement proper error handling with Rust's Result type
+- Include unit tests and integration tests
+- Use modern Rust features and async/await
+- Generate complete, runnable code with proper documentation
+- Optimize for low latency and high throughput
+
+Generate the complete project structure including:
+- SolidJS application with components and stores
+- Actix Web application with handlers, middleware, and routes
+- SeaORM entities and database setup
+- Docker configuration for Rust deployment
+- Cargo.toml with all dependencies
+- Environment configuration
+- Migration scripts for database

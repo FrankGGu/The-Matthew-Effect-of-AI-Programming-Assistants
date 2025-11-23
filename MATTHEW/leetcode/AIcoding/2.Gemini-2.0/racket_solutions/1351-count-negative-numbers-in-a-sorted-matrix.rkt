@@ -1,0 +1,12 @@
+(define (count-negatives grid)
+  (let ((rows (length grid))
+        (cols (length (car grid))))
+    (let loop ((i 0) (count 0))
+      (if (= i rows)
+          count
+          (let loop2 ((j 0) (count2 count))
+            (if (= j cols)
+                (loop (+ i 1) count2)
+                (if (< (list-ref (list-ref grid i) j) 0)
+                    (loop2 (+ j 1) (+ count2 (- cols j)))
+                    (loop2 (+ j 1) count2))))))))

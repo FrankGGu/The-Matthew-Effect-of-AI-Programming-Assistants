@@ -1,0 +1,39 @@
+{
+  "id": "1913",
+  "title": "Maximum Product Difference Between Two Pairs",
+  "titleSlug": "maximum-product-difference-between-two-pairs",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Sorting"
+  ],
+  "content": "<p>The <strong>product difference</strong> between two pairs <code>(a, b)</code> and <code>(c, d)</code> is defined as <code>(a * b) - (c * d)</code>.</p>\r\n\r\n<ul>\r\n\t<li>For example, the product difference between <code>(5, 6)</code> and <code>(2, 7)</code> is <code>(5 * 6) - (2 * 7) = 16</code>.</li>\r\n</ul>\r\n\r\n<p>Given an integer array <code>nums</code>, choose four <strong>distinct</strong> indices <code>w</code>, <code>x</code>, <code>y</code>, and <code>z</code> such that the <strong>product difference</strong> between pairs <code>(nums[w], nums[x])</code> and <code>(nums[y], nums[z])</code> is <strong>maximized</strong>.</p>\r\n\r\n<p>Return <em>the <strong>maximum</strong> such product difference</em>.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong class=\"example\">Example 1:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [5,6,2,7,4]\r\n<strong>Output:</strong> 34\r\n<strong>Explanation:</strong> We can choose indices 1 and 3 for the first pair (6, 7) and indices 2 and 4 for the second pair (2, 4).\r\nThe product difference is (6 * 7) - (2 * 4) = 34.\r\n</pre>\r\n\r\n<p><strong class=\"example\">Example 2:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> nums = [4,2,5,9,7,4,8]\r\n<strong>Output:</strong> 64\r\n<strong>Explanation:</strong> We can choose indices 3 and 6 for the first pair (9, 8) and indices 1 and 5 for the second pair (2, 4).\r\nThe product difference is (9 * 8) - (2 * 4) = 64.\r\n</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li><code>4 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\r\n\t<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\r\n</ul>",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxProductDifference(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxProductDifference(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxProductDifference(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxProductDifference(self, nums: List[int]) -> int:\n        ",
+    "c": "int maxProductDifference(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxProductDifference(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar maxProductDifference = function(nums) {\n    \n};",
+    "typescript": "function maxProductDifference(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function maxProductDifference($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxProductDifference(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxProductDifference(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxProductDifference(List<int> nums) {\n    \n  }\n}",
+    "golang": "func maxProductDifference(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef max_product_difference(nums)\n    \nend",
+    "scala": "object Solution {\n    def maxProductDifference(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_product_difference(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-product-difference nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec max_product_difference(Nums :: [integer()]) -> integer().\nmax_product_difference(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_product_difference(nums :: [integer]) :: integer\n  def max_product_difference(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxProductDifference(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[5,6,2,7,4]\n[4,2,5,9,7,4,8]",
+  "hints": [
+    "If you only had to find the maximum product of 2 numbers in an array, which 2 numbers should you choose?",
+    "We only need to worry about 4 numbers in the array."
+  ]
+}

@@ -1,0 +1,10 @@
+(define (wordBreak s wordDict)
+  (define dict (set wordDict))
+  (define (canBreak start)
+    (if (>= start (string-length s))
+        #t
+        (for/or ([i (in-range start (+ start 20))])
+          (and (<= i (string-length s))
+               (set-member? dict (substring s start i))
+               (canBreak i)))))
+  (canBreak 0))

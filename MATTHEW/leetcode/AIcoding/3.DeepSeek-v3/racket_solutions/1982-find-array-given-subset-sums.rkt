@@ -1,0 +1,18 @@
+(define/contract (recover-array n sums)
+  (-> exact-integer? (listof exact-integer?) (listof exact-integer?))
+  (let loop ([sums (sort sums <)]
+             [res '()])
+    (if (null? (cdr sums))
+        (reverse res)
+        (let* ([diff (- (cadr sums) (car sums))]
+               [new-sums (if (zero? diff)
+                             (cdr sums)
+                             (let ([s (make-hash)])
+                               (for ([x sums])
+                                 (hash-set! s x #t))
+                               (let ([new '()])
+                                 (for ([x sums] #:when (hash-ref s (+ x diff) #f))
+                                   (set! new (cons x new))
+                                   (hash-remove! s (+ x diff)))
+                                 (reverse new)))))])
+          (loop new-sums (cons diff res))))))

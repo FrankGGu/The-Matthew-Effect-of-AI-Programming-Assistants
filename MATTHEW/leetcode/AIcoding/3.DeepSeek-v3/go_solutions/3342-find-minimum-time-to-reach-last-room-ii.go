@@ -1,0 +1,3 @@
+Unfortunately, there is no LeetCode problem titled "Find Minimum Time to Reach Last Room II" in their official problem set. Could you please verify the problem name or provide more details about the problem statement? This will help me provide an accurate solution in Go. 
+
+If you're referring to a different problem or have a specific problem statement in mind, please share it, and I'll be happy to provide the corresponding Go solution.

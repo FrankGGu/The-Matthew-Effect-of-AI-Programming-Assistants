@@ -1,0 +1,7 @@
+(define (contains-duplicate nums)
+  (define seen (make-hash))
+  (for ([num nums])
+    (if (hash-has-key? seen num)
+        (return #t)
+        (hash-set! seen num #t)))
+  #f)

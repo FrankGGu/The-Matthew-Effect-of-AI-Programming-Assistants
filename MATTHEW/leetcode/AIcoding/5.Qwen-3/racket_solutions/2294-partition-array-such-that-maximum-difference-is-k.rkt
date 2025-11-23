@@ -1,0 +1,12 @@
+(define (max-diff-arr lst k)
+  (define (helper lst res)
+    (if (null? lst)
+        res
+        (let* ((current (car lst))
+               (last-group (last res))
+               (last-val (if (null? last-group) -inf.0 (last last-group)))
+               (diff (- current last-val)))
+          (if (<= diff k)
+              (helper (cdr lst) (append res (list (append last-group (list current)))))
+              (helper (cdr lst) (append res (list (list current))))))))
+  (helper lst '()))

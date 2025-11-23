@@ -1,0 +1,20 @@
+impl Solution {
+    pub fn minimum_abs_difference(arr: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut arr = arr;
+        arr.sort_unstable();
+        let mut min_diff = i32::MAX;
+        for i in 1..arr.len() {
+            let diff = arr[i] - arr[i - 1];
+            if diff < min_diff {
+                min_diff = diff;
+            }
+        }
+        let mut result = Vec::new();
+        for i in 1..arr.len() {
+            if arr[i] - arr[i - 1] == min_diff {
+                result.push(vec![arr[i - 1], arr[i]]);
+            }
+        }
+        result
+    }
+}

@@ -1,0 +1,28 @@
+(define (num-odd-sum subarray)
+  (define odd-sum (lambda (arr)
+                    (if (null? arr)
+                        0
+                        (let ((current (car arr))
+                              (rest (cdr arr)))
+                          (+ (if (odd? current) 1 0) (odd-sum rest))))))
+  (define count-odd-sums (lambda (arr)
+                           (let loop ((i 0) (sum 0) (count 0))
+                             (if (< i (length arr))
+                                 (loop (+ i 1) 
+                                       (+ sum (list-ref arr i)) 
+                                       (if (odd? (+ sum (list-ref arr i)))
+                                           (+ count 1) count))
+                                 count))))
+  (count-odd-sums subarray))
+
+(define (num-odd-sum subarray)
+  (let loop ((arr subarray) (count 0) (odd-count 0))
+    (if (null? arr)
+        count
+        (let ((current (car arr)))
+          (if (odd? current)
+              (loop (cdr arr) (+ count odd-count) (+ odd-count 1))
+              (loop (cdr arr) count odd-count))))))
+
+(define (numSubarraysWithOddSum nums)
+  (num-odd-sum nums))

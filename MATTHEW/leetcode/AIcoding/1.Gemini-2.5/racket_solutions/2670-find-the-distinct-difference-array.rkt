@@ -1,0 +1,10 @@
+(require racket/set)
+
+(define (distinct-difference-array nums)
+  (define n (length nums))
+  (for/list ([i (in-range n)])
+    (define prefix-list (take nums (+ i 1)))
+    (define suffix-list (drop nums (+ i 1)))
+    (define prefix-distinct-count (set-count (list->set prefix-list)))
+    (define suffix-distinct-count (set-count (list->set suffix-list)))
+    (- prefix-distinct-count suffix-distinct-count)))

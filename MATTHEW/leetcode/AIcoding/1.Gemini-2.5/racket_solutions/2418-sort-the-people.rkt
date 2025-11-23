@@ -1,0 +1,5 @@
+(define (sort-people names heights)
+  (let* ((paired (map (lambda (name height) (cons height name)) names heights))
+         (sorted (sort paired (lambda (a b) (> (car a) (car b)))))
+         (result (map cdr sorted)))
+    result))

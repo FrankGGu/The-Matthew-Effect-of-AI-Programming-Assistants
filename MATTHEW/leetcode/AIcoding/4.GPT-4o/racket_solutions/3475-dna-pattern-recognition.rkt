@@ -1,0 +1,16 @@
+(define (count-dna-patterns dna)
+  (define (count-pattern pattern)
+    (define (helper index count)
+      (if (>= index (sub1 (string-length dna))) count
+          (if (string-prefix? pattern (substring dna index (+ index (string-length pattern))))
+              (helper (+ index 1) (+ count 1))
+              (helper (+ index 1) count))))
+    (helper 0 0))
+  (count-pattern "A") 
+  (count-pattern "C")
+  (count-pattern "G")
+  (count-pattern "T"))
+
+(define (main)
+  (display (count-dna-patterns "ACGTACGTACGT")))
+(main)

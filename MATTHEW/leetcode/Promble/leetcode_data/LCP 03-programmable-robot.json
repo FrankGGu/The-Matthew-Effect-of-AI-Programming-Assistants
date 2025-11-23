@@ -1,0 +1,25 @@
+{
+  "id": "LCP 03",
+  "title": "Programmable Robot",
+  "titleSlug": "programmable-robot",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Simulation"
+  ],
+  "content": "<p>English description is not available. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool robot(string command, vector<vector<int>>& obstacles, int x, int y) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean robot(String command, int[][] obstacles, int x, int y) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def robot(self, command, obstacles, x, y):\n        \"\"\"\n        :type command: str\n        :type obstacles: List[List[int]]\n        :type x: int\n        :type y: int\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def robot(self, command: str, obstacles: List[List[int]], x: int, y: int) -> bool:",
+    "c": "\n\nbool robot(char * command, int** obstacles, int obstaclesSize, int* obstaclesColSize, int x, int y){\n\n}\n",
+    "javascript": "/**\n * @param {string} command\n * @param {number[][]} obstacles\n * @param {number} x\n * @param {number} y\n * @return {boolean}\n */\nvar robot = function(command, obstacles, x, y) {\n\n};",
+    "typescript": "function robot(command: string, obstacles: number[][], x: number, y: number): boolean {\n\n};",
+    "golang": "func robot(command string, obstacles [][]int, x int, y int) bool {\n\n}"
+  },
+  "exampleTestcases": "\"URR\"\n[]\n3\n2\n\"URR\"\n[[2, 2]]\n3\n2\n\"URR\"\n[[4, 2]]\n3\n2",
+  "hints": []
+}

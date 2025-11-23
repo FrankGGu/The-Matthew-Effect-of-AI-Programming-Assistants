@@ -1,0 +1,16 @@
+(define (min-sum-of-values nums)
+  (let* ([n (length nums)]
+         [dp (make-vector (expt 2 n) +inf.0)]
+         (vector-set! dp 0 0))
+    (for ([mask (in-range 1 (expt 2 n))])
+      (let loop ([i 0])
+        (when (< i n)
+          (when (bitwise-bit-set? mask i)
+            (let ([prev-mask (bitwise-xor mask (expt 2 i))])
+              (let loop2 ([j 0])
+                (when (< j n)
+                  (when (and (!= i j) (bitwise-bit-set? prev-mask j))
+                    (vector-set! dp mask (min (vector-ref dp mask) (+ (vector-ref dp prev-mask) (min (list (list-ref nums i) (list-ref nums j)))))))
+                  (loop2 (+ j 1))))))
+          (loop (+ i 1)))))
+    (real->integer (vector-ref dp (bitwise-xor (expt 2 n) 1)))))

@@ -1,0 +1,16 @@
+(define (min-max-difference num)
+  (define s (number->string num))
+  (define (replace s c1 c2)
+    (list->string (map (lambda (c) (if (char=? c c1) c2 c)) (string->list s))))
+  (define (to-number s) (string->number s))
+  (define max-val (for/first ([c (in-string s)] #:when (not (char=? c #\9)))
+                    (to-number (replace s c #\9))))
+  (define min-val (for/first ([c (in-string s)] #:when (not (char=? c #\0)))
+                    (to-number (replace s c #\0))))
+  (if (and max-val min-val)
+      (- max-val min-val)
+      (if max-val
+          (- max-val (to-number (replace s (string-ref s 0) #\0)))
+          (if min-val
+              (- (to-number (replace s (string-ref s 0) #\9)) min-val)
+              0)))))

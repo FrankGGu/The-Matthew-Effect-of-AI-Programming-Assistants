@@ -1,0 +1,10 @@
+(define (find-champion grid)
+  (let* ((n (vector-length grid)))
+    (for/first ((i (in-range n)))
+      (let ((is-champion #t))
+        (for ((j (in-range n)))
+          (when (and (not (= i j))
+                     (= (vector-ref (vector-ref grid i) j) 0))
+            (set! is-champion #f)))
+        (when is-champion
+          i)))))

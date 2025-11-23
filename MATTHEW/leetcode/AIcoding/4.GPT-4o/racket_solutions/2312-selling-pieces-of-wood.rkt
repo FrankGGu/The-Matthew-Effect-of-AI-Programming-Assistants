@@ -1,0 +1,11 @@
+(define (maxProfit price n)
+  (define dp (make-vector (+ n 1) 0))
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 1 (add1 i))])
+      (set! (vector-ref dp i) 
+            (max (vector-ref dp i) 
+                 (+ (vector-ref dp (- i j)) (vector-ref price j))))))
+  (vector-ref dp n))
+
+(define (sellingPiecesOfWood price n)
+  (maxProfit price n))

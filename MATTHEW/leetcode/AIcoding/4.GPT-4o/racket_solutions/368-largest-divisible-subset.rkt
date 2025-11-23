@@ -1,0 +1,28 @@
+(define (largestDivisibleSubset nums)
+  (define n (length nums))
+  (define (sort-nums lst) (sort lst <))
+  (define sorted-nums (sort-nums nums))
+  (define dp (make-vector n 1))
+  (define prev (make-vector n -1))
+  (define max-size 0)
+  (define max-index 0)
+
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (and (= (remainder (vector-ref sorted-nums i) (vector-ref sorted-nums j)) 0)
+                 (> (+ 1 (vector-ref dp j)) (vector-ref dp i)))
+        (vector-set! dp i (+ 1 (vector-ref dp j)))
+        (vector-set! prev i j))))
+
+  (for ([i (in-range n)])
+    (when (> (vector-ref dp i) max-size)
+      (set! max-size (vector-ref dp i))
+      (set! max-index i)))
+
+  (define result '())
+  (let loop ([index max-index])
+    (when (not (= index -1))
+      (set! result (cons (vector-ref sorted-nums index) result))
+      (loop (vector-ref prev index))))
+
+  result)

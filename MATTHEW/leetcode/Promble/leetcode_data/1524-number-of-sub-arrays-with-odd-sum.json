@@ -1,0 +1,41 @@
+{
+  "id": "1524",
+  "title": "Number of Sub-arrays With Odd Sum",
+  "titleSlug": "number-of-sub-arrays-with-odd-sum",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "content": "<p>Given an array of integers <code>arr</code>, return <em>the number of subarrays with an <strong>odd</strong> sum</em>.</p>\n\n<p>Since the answer can be very large, return it modulo <code>10<sup>9</sup> + 7</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [1,3,5]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> All subarrays are [[1],[1,3],[1,3,5],[3],[3,5],[5]]\nAll sub-arrays sum are [1,4,9,3,8,5].\nOdd sums are [1,9,3,5] so the answer is 4.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [2,4,6]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> All subarrays are [[2],[2,4],[2,4,6],[4],[4,6],[6]]\nAll sub-arrays sum are [2,6,12,4,10,6].\nAll sub-arrays have even sum and the answer is 0.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [1,2,3,4,5,6,7]\n<strong>Output:</strong> 16\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= arr.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= arr[i] &lt;= 100</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int numOfSubarrays(vector<int>& arr) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int numOfSubarrays(int[] arr) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def numOfSubarrays(self, arr):\n        \"\"\"\n        :type arr: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def numOfSubarrays(self, arr: List[int]) -> int:\n        ",
+    "c": "int numOfSubarrays(int* arr, int arrSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NumOfSubarrays(int[] arr) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} arr\n * @return {number}\n */\nvar numOfSubarrays = function(arr) {\n    \n};",
+    "typescript": "function numOfSubarrays(arr: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $arr\n     * @return Integer\n     */\n    function numOfSubarrays($arr) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func numOfSubarrays(_ arr: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun numOfSubarrays(arr: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int numOfSubarrays(List<int> arr) {\n    \n  }\n}",
+    "golang": "func numOfSubarrays(arr []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} arr\n# @return {Integer}\ndef num_of_subarrays(arr)\n    \nend",
+    "scala": "object Solution {\n    def numOfSubarrays(arr: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn num_of_subarrays(arr: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (num-of-subarrays arr)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec num_of_subarrays(Arr :: [integer()]) -> integer().\nnum_of_subarrays(Arr) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec num_of_subarrays(arr :: [integer]) :: integer\n  def num_of_subarrays(arr) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func numOfSubarrays(arr: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,3,5]\n[2,4,6]\n[1,2,3,4,5,6,7]",
+  "hints": [
+    "Can we use the accumulative sum to keep track of all the odd-sum sub-arrays ?",
+    "if the current accu sum is odd, we care only about previous even accu sums and vice versa."
+  ]
+}

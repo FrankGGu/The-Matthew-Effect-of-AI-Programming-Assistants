@@ -1,0 +1,11 @@
+(define (min-cost subarray-costs k)
+  (define n (length subarray-costs))
+  (define dp (make-vector (+ n 1) +inf.0))
+  (vector-set! dp 0 0)
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 1 (min i k))])
+      (define cost (apply + (subarray-costs (sub1 i) (sub1 (- i j)))))
+      (vector-set! dp i (min (vector-ref dp i) (+ (vector-ref dp (- i j)) cost)))))
+  (vector-ref dp n))
+
+(min-cost '(1 2 3 4 5) 2)

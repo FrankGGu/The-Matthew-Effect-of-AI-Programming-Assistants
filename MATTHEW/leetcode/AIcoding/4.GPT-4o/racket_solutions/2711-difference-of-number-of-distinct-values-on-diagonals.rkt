@@ -1,0 +1,21 @@
+(define (difference-of-distinct-values mat)
+  (define (get-diagonal-values mat d)
+    (define values (make-hash))
+    (for ([i (in-range (length mat))])
+      (when (< d (length (list-ref mat i)))
+        (hash-set! values (list-ref (list-ref mat i) d) #t)))
+    (hash-count values))
+
+  (define n (length mat))
+  (define m (length (list-ref mat 0)))
+  (define result (make-vector n 0))
+
+  (for ([d (in-range (+ n m -1))])
+    (define diagonal-count (get-diagonal-values mat d))
+    (if (< d m)
+      (vector-set! result d diagonal-count)
+      (vector-set! result (- n 1 (- d m)) diagonal-count)))
+
+  (define left (for/sum ([i (in-range n)]) (vector-ref result i)))
+  (define right (for/sum ([i (in-range m)]) (vector-ref result (- n 1 i))))
+  (- left right))

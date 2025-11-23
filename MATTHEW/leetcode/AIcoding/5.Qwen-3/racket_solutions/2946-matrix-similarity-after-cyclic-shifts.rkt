@@ -1,0 +1,25 @@
+#lang racket
+
+(define (matrix-similarity-after-cyclic-shifts matrix)
+  (define (shift-row row)
+    (append (take-right row 1) (drop-right row 1)))
+  (define (shifted-matrix m)
+    (map shift-row m))
+  (define (compare-rows r1 r2)
+    (equal? r1 r2))
+  (define (compare-matrices m1 m2)
+    (andmap compare-rows m1 m2))
+  (define (rotated-matrix m)
+    (let loop ([m m] [n 0])
+      (if (= n (length m))
+          m
+          (loop (shifted-matrix m) (+ n 1)))))
+  (define (all-rotations m)
+    (let loop ([m m] [acc '()])
+      (if (member m acc)
+          acc
+          (loop (shifted-matrix m) (cons m acc)))))
+  (define (check-similarity m1 m2)
+    (let ([rotations (all-rotations m1)])
+      (ormap (lambda (r) (compare-matrices r m2)) rotations)))
+  (check-similarity matrix (shifted-matrix matrix)))

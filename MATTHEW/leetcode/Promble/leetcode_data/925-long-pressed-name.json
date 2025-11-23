@@ -1,0 +1,36 @@
+{
+  "id": "925",
+  "title": "Long Pressed Name",
+  "titleSlug": "long-pressed-name",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>Your friend is typing his <code>name</code> into a keyboard. Sometimes, when typing a character <code>c</code>, the key might get <em>long pressed</em>, and the character will be typed 1 or more times.</p>\n\n<p>You examine the <code>typed</code> characters of the keyboard. Return <code>True</code> if it is possible that it was your friends name, with some characters (possibly none) being long pressed.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> name = &quot;alex&quot;, typed = &quot;aaleex&quot;\n<strong>Output:</strong> true\n<strong>Explanation: </strong>&#39;a&#39; and &#39;e&#39; in &#39;alex&#39; were long pressed.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> name = &quot;saeed&quot;, typed = &quot;ssaaedd&quot;\n<strong>Output:</strong> false\n<strong>Explanation: </strong>&#39;e&#39; must have been pressed twice, but it was not in the typed output.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= name.length, typed.length &lt;= 1000</code></li>\n\t<li><code>name</code> and <code>typed</code> consist of only lowercase English letters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool isLongPressedName(string name, string typed) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean isLongPressedName(String name, String typed) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def isLongPressedName(self, name, typed):\n        \"\"\"\n        :type name: str\n        :type typed: str\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def isLongPressedName(self, name: str, typed: str) -> bool:\n        ",
+    "c": "bool isLongPressedName(char* name, char* typed) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool IsLongPressedName(string name, string typed) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} name\n * @param {string} typed\n * @return {boolean}\n */\nvar isLongPressedName = function(name, typed) {\n    \n};",
+    "typescript": "function isLongPressedName(name: string, typed: string): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $name\n     * @param String $typed\n     * @return Boolean\n     */\n    function isLongPressedName($name, $typed) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func isLongPressedName(_ name: String, _ typed: String) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun isLongPressedName(name: String, typed: String): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool isLongPressedName(String name, String typed) {\n    \n  }\n}",
+    "golang": "func isLongPressedName(name string, typed string) bool {\n    \n}",
+    "ruby": "# @param {String} name\n# @param {String} typed\n# @return {Boolean}\ndef is_long_pressed_name(name, typed)\n    \nend",
+    "scala": "object Solution {\n    def isLongPressedName(name: String, typed: String): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn is_long_pressed_name(name: String, typed: String) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (is-long-pressed-name name typed)\n  (-> string? string? boolean?)\n  )",
+    "erlang": "-spec is_long_pressed_name(Name :: unicode:unicode_binary(), Typed :: unicode:unicode_binary()) -> boolean().\nis_long_pressed_name(Name, Typed) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec is_long_pressed_name(name :: String.t, typed :: String.t) :: boolean\n  def is_long_pressed_name(name, typed) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func isLongPressedName(name: String, typed: String): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"alex\"\n\"aaleex\"\n\"saeed\"\n\"ssaaedd\"",
+  "hints": []
+}

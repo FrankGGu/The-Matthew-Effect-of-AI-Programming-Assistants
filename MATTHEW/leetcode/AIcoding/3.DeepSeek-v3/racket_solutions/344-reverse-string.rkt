@@ -1,0 +1,8 @@
+(define/contract (reverse-string s)
+  (-> (listof char?) void?)
+  (let loop ([left 0] [right (sub1 (length s))])
+    (when (< left right)
+      (let ([temp (list-ref s left)])
+        (list-set! s left (list-ref s right))
+        (list-set! s right temp)
+        (loop (add1 left) (sub1 right))))))

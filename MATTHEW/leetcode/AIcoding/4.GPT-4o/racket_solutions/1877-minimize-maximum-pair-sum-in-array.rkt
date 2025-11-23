@@ -1,0 +1,6 @@
+(define (minimize-max-pair-sum nums)
+  (define sorted-nums (sort nums <))
+  (define (pair-sum i)
+    (+ (list-ref sorted-nums i) (list-ref sorted-nums (- (length sorted-nums) 1 i))))
+  (define max-pair-sum (apply max (map pair-sum (range 0 (/ (length nums) 2)))))
+  max-pair-sum)

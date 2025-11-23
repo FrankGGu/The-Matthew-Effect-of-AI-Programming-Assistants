@@ -1,0 +1,26 @@
+(define (split-array-same-average nums)
+  (define n (length nums))
+  (if (<= n 1) #f
+      (let* ((sum-nums (apply + nums))
+             (dp (make-vector (+ n 1) #f)))
+        (vector-set! dp 0 #t)
+        (for* ((num nums)
+               (len (in-range 1 (+ n 1))))
+          (for ((i (in-range len 0 -1)))
+            (when (vector-ref dp (- i 1))
+              (vector-set! dp i #t))))
+        (for ((len (in-range 1 n)))
+          (when (and (vector-ref dp len)
+                     (= 0 (modulo (* sum-nums len) n)))
+            (let ((sub-sum (/ (* sum-nums len) n)))
+              (let loop ((i 0) (count 0))
+                (cond
+                  ((= count len) #t)
+                  ((= i n) #f)
+                  (else
+                   (if (>= (- sub-sum (list-ref nums i)) 0)
+                       (if (loop (+ i 1) (+ count 1))
+                           #t
+                           (loop (+ i 1) count))
+                       (loop (+ i 1) count))))))))
+        #f)))

@@ -1,0 +1,5 @@
+(define (count-special-characters s)
+  (let ([char-counts (make-hash)])
+    (for ([c (in-string s)])
+      (hash-update! char-counts c (λ (v) (+ v 1)) 1))
+    (hash-count char-counts)))

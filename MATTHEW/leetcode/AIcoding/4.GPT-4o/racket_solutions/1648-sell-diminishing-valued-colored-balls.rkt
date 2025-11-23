@@ -1,0 +1,11 @@
+(define (maxProfit inventory orders)
+  (define sorted-inv (sort inventory >))
+  (define (helper inv remaining)
+    (if (or (null? inv) (= remaining 0))
+        0
+        (let* ((current (car inv))
+               (next (if (null? (cdr inv)) 0 (car (cdr inv))))
+               (count (min remaining current))
+               (profit (* count (+ current (- current count)))))
+          (+ profit (helper (cons (- current count) (cdr inv)) (- remaining count)))))
+  (helper sorted-inv orders))

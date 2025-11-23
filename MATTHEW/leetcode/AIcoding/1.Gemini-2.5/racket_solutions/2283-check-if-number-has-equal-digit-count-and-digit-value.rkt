@@ -1,0 +1,10 @@
+(define (digit-count-value num)
+  (let* ((n (string-length num))
+         (num-chars (string->list num)))
+
+    (for/all ((i (in-range n)))
+      (let* ((digit-at-i-char (string-ref num i))
+             (expected-digit-value (- (char->integer digit-at-i-char) (char->integer #\0)))
+             (target-digit-char (integer->char (+ (char->integer #\0) i)))
+             (actual-count (count (lambda (c) (char=? c target-digit-char)) num-chars)))
+        (= expected-digit-value actual-count)))))

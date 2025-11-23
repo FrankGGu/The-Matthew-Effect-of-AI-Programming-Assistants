@@ -1,0 +1,37 @@
+{
+  "id": "45",
+  "title": "Jump Game II",
+  "titleSlug": "jump-game-ii",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "<p>You are given a <strong>0-indexed</strong> array of integers <code>nums</code> of length <code>n</code>. You are initially positioned at <code>nums[0]</code>.</p>\n\n<p>Each element <code>nums[i]</code> represents the maximum length of a forward jump from index <code>i</code>. In other words, if you are at <code>nums[i]</code>, you can jump to any <code>nums[i + j]</code> where:</p>\n\n<ul>\n\t<li><code>0 &lt;= j &lt;= nums[i]</code> and</li>\n\t<li><code>i + j &lt; n</code></li>\n</ul>\n\n<p>Return <em>the minimum number of jumps to reach </em><code>nums[n - 1]</code>. The test cases are generated such that you can reach <code>nums[n - 1]</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,1,1,4]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,0,1,4]\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>\n\t<li>It&#39;s guaranteed that you can reach <code>nums[n - 1]</code>.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int jump(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int jump(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def jump(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def jump(self, nums: List[int]) -> int:\n        ",
+    "c": "int jump(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int Jump(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar jump = function(nums) {\n    \n};",
+    "typescript": "function jump(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function jump($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func jump(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun jump(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int jump(List<int> nums) {\n    \n  }\n}",
+    "golang": "func jump(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef jump(nums)\n    \nend",
+    "scala": "object Solution {\n    def jump(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn jump(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (jump nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec jump(Nums :: [integer()]) -> integer().\njump(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec jump(nums :: [integer]) :: integer\n  def jump(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func jump(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,3,1,1,4]\n[2,3,0,1,4]",
+  "hints": []
+}

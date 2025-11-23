@@ -1,0 +1,10 @@
+(define/contract (longest-subsequence arr)
+  (-> (listof exact-integer?) exact-integer?)
+  (define n (length arr))
+  (if (zero? n) 0
+      (let ([dp (make-vector n 1)])
+        (for ([i (in-range 1 n)])
+          (for ([j (in-range i)])
+            (when (>= (- (list-ref arr j) (list-ref arr i)) (- i j))
+              (vector-set! dp i (max (vector-ref dp i) (+ 1 (vector-ref dp j)))))))
+        (apply max (vector->list dp)))))

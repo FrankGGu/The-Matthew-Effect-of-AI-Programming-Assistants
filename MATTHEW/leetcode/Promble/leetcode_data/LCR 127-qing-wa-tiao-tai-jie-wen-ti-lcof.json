@@ -1,0 +1,37 @@
+{
+  "id": "LCR 127",
+  "title": "跳跃训练",
+  "titleSlug": "qing-wa-tiao-tai-jie-wen-ti-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Memoization",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int trainWays(int num) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int trainWays(int num) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def trainWays(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def trainWays(self, num: int) -> int:\n        ",
+    "c": "int trainWays(int num) {\n    \n}",
+    "csharp": "public class Solution {\n    public int TrainWays(int num) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @return {number}\n */\nvar trainWays = function(num) {\n    \n};",
+    "typescript": "function trainWays(num: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @return Integer\n     */\n    function trainWays($num) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func trainWays(_ num: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun trainWays(num: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int trainWays(int num) {\n    \n  }\n}",
+    "golang": "func trainWays(num int) int {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @return {Integer}\ndef train_ways(num)\n    \nend",
+    "scala": "object Solution {\n    def trainWays(num: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn train_ways(num: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (train-ways num)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec train_ways(Num :: integer()) -> integer().\ntrain_ways(Num) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec train_ways(num :: integer) :: integer\n  def train_ways(num) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func trainWays(num: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "2\n5",
+  "hints": []
+}

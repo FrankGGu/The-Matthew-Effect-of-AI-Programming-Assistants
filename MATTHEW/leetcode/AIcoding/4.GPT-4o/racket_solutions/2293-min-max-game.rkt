@@ -1,0 +1,11 @@
+(define (min-max-game nums)
+  (define (helper nums)
+    (if (= (length nums) 1)
+        (car nums)
+        (helper (map (lambda (i) (if (even? i) (min (list-ref nums i) (list-ref nums (+ i 1))) 
+                                     (max (list-ref nums i) (list-ref nums (+ i 1))))) 
+                     (range 0 (length nums) 2)))))
+  (helper nums))
+
+(define (minMaxGame nums)
+  (min-max-game nums))

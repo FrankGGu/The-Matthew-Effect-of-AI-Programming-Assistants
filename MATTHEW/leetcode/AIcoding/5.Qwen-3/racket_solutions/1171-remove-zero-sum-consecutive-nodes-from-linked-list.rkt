@@ -1,0 +1,15 @@
+#lang racket
+
+(define (remove-zero-sum-nodes head)
+  (let ([dummy (cons 0 head)])
+    (let loop ([current dummy])
+      (when (not (null? current))
+        (let ([sum 0])
+          (let inner-loop ([node (cdr current)])
+            (set! sum (+ sum (car node)))
+            (when (= sum 0)
+              (set-cdr! current (cdr node)))
+            (when (not (null? node))
+              (inner-loop (cdr node)))))
+        (loop (cdr current))))
+    (cdr dummy)))

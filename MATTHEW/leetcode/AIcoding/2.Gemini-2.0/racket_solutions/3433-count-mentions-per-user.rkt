@@ -1,0 +1,6 @@
+(define (count-mentions-per-user mentions)
+  (define result (make-hash))
+  (for ([mention mentions])
+    (let ([mentions-count (hash-ref result (list-ref mention 0) 0)])
+      (hash-set! result (list-ref mention 0) (+ mentions-count 1)))))
+  (hash->list result))

@@ -1,0 +1,16 @@
+(define (min-refuel-stops target startFuel stations)
+  (define (dp i fuel stops)
+    (if (>= fuel target) stops
+        (if (or (null? stations) (<= i (length stations)))
+            (if (>= fuel target) stops (add1 (dp (add1 i) fuel stops)))
+            (let ((next-station (car stations)))
+              (let ((new-fuel (+ fuel (second next-station)))
+                    (next-stations (cdr stations)))
+                (min (dp (add1 i) fuel stops)
+                     (if (>= fuel (second next-station))
+                         (dp (add1 i) new-fuel (add1 stops))
+                         (dp (add1 i) fuel stops))))))))
+  (let ((result (dp 0 startFuel 0)))
+    (if (>= startFuel target) 0 result)))
+
+(min-refuel-stops 100 1 '((10 50) (20 30) (30 30) (60 40)))

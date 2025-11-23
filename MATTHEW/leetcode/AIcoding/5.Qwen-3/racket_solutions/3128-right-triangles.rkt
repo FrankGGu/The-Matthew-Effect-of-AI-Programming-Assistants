@@ -1,0 +1,23 @@
+#lang racket
+
+(define (right-triangles points)
+  (define (distance-squared p1 p2)
+    (+ (expt (- (car p1) (car p2)) 2)
+       (expt (- (cadr p1) (cadr p2)) 2)))
+  (define (count-right p1 p2 p3)
+    (let ((d1 (distance-squared p1 p2))
+          (d2 (distance-squared p1 p3))
+          (d3 (distance-squared p2 p3)))
+      (or (= d1 (+ d2 d3))
+          (= d2 (+ d1 d3))
+          (= d3 (+ d1 d2)))))
+  (define (loop i j k)
+    (if (>= i (length points))
+        0
+        (if (>= j (length points))
+            (loop (+ i 1) 0 0)
+            (if (>= k (length points))
+                (loop i (+ j 1) 0)
+                (+ (if (count-right (list-ref points i) (list-ref points j) (list-ref points k)) 1 0)
+                   (loop i j (+ k 1)))))))
+  (loop 0 0 0))

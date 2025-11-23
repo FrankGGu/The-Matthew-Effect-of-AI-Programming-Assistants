@@ -1,0 +1,18 @@
+(define (maxAverageRatio classes extraStudents)
+  (define (average class)
+    (let ((pass (car class))
+          (total (cadr class)))
+      (/ (+ pass 0.0) (+ total 0.0)))
+  (define (better? class1 class2)
+    (> (- (average class1) (average class2))
+       (/ (- (car class1) (cadr class1))
+          (+ (cadr class1) (cadr class2) 1)))
+  (define (greedy classes extra)
+    (if (zero? extra)
+        classes
+        (let ((next-class (apply max (map (lambda (cls) (if (null? classes) '() (cons cls (filter (lambda (x) (not (equal? cls x))) classes)))) classes))))
+          (greedy (cons (list (+ (car next-class) 1) (+ (cadr next-class) 1)) (filter (lambda (x) (not (equal? next-class x))) classes)) (sub1 extra)))))
+  (define final-classes (greedy classes extraStudents))
+  (apply + (map car final-classes)) / (apply + (map cadr final-classes)))
+
+(maxAverageRatio '((1 2) (2 3) (5 8)) 2)

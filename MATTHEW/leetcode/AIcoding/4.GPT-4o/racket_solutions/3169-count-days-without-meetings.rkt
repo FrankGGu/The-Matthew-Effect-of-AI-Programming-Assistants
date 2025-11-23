@@ -1,0 +1,11 @@
+(define (countDaysWithoutMeetings meetings)
+  (define days (make-vector 366 #f))
+  (for-each (lambda (meeting)
+              (vector-set! days (car meeting) #t))
+            meetings)
+  (define (count-free-days days)
+    (if (null? days)
+        0
+        (+ (if (not (vector-ref days (car days))) 1 0)
+           (count-free-days (cdr days)))))
+  (count-free-days (vector->list days)))

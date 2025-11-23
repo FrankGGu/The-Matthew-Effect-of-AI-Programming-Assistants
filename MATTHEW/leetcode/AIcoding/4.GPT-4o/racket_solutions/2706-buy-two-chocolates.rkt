@@ -1,0 +1,10 @@
+(define (buy-two-chocolates prices money)
+  (define sorted-prices (sort prices <))
+  (define first (car sorted-prices))
+  (define second (cadr sorted-prices))
+  (if (and (>= money (+ first second)) (not (= first second)))
+      (- money (+ first second))
+      money))
+
+(define (buyTwoChocolates prices money)
+  (buy-two-chocolates prices money))

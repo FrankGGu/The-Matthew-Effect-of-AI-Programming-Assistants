@@ -1,0 +1,16 @@
+(define/contract (can-merge triplets target)
+  (-> (listof (listof exact-integer?)) (listof exact-integer?) boolean?)
+  (define (valid? t)
+    (and (<= (list-ref t 0) (list-ref target 0))
+         (<= (list-ref t 1) (list-ref target 1))
+         (<= (list-ref t 2) (list-ref target 2))))
+  (define (contains t)
+    (and (= (list-ref t 0) (list-ref target 0))
+         (= (list-ref t 1) (list-ref target 1))
+         (= (list-ref t 2) (list-ref target 2))))
+  (define valid-triplets (filter valid? triplets))
+  (and (not (null? valid-triplets))
+       (let loop ([ts valid-triplets])
+         (cond [(null? ts) #f]
+               [(contains (car ts)) #t]
+               [else (loop (cdr ts))]))))

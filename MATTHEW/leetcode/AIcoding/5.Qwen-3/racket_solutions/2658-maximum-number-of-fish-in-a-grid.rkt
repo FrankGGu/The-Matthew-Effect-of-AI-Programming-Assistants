@@ -1,0 +1,22 @@
+(define (max-fish grid)
+  (define rows (length grid))
+  (define cols (if (> rows 0) (length (car grid)) 0))
+  (define visited (make-vector rows #f))
+  (define (dfs r c)
+    (cond [(or (< r 0) (>= r rows) (< c 0) (>= c cols) (vector-ref visited r) (zero? (list-ref (list-ref grid r) c))) 0]
+          [else
+           (vector-set! visited r #t)
+           (let ([current (list-ref (list-ref grid r) c)])
+             (+ current
+                (dfs (add1 r) c)
+                (dfs (sub1 r) c)
+                (dfs r (add1 c))
+                (dfs r (sub1 c))))]))
+  (define max-fish 0)
+  (for ([i (in-range rows)])
+    (vector-set! visited i #f))
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (when (and (not (vector-ref visited i)) (> (list-ref (list-ref grid i) j) 0))
+        (set! max-fish (max max-fish (dfs i j))))))
+  max-fish)

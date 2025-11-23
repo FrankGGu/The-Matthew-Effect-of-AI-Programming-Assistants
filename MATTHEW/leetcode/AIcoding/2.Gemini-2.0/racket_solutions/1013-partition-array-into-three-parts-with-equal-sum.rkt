@@ -1,0 +1,15 @@
+(define (can-three-parts-equal-sum arr)
+  (let* ((sum (apply + arr))
+         (n (length arr)))
+    (if (not (zero? (modulo sum 3)))
+        #f
+        (let* ((target (/ sum 3))
+               (count 0)
+               (current-sum 0))
+          (for ([i (in-range n)])
+            (set! current-sum (+ current-sum (list-ref arr i)))
+            (if (= current-sum target)
+                (begin
+                  (set! count (+ count 1))
+                  (set! current-sum 0)))))
+          (>= count 3)))))

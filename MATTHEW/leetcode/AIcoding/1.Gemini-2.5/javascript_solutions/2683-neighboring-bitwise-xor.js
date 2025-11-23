@@ -1,0 +1,7 @@
+var doesValidArrayExist = function(derived) {
+    let xorSum = 0;
+    for (let i = 0; i < derived.length; i++) {
+        xorSum ^= derived[i];
+    }
+    return xorSum === 0;
+};

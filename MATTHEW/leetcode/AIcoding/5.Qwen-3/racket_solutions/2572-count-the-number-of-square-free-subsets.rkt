@@ -1,0 +1,17 @@
+#lang racket
+
+(define (count-squares-free-subsets nums)
+  (define sqrt-limit 316227766017)
+  (define (is-square-free? x)
+    (let loop ((i 2))
+      (cond ((> i (sqrt x)) #t)
+            ((= (modulo x (* i i)) 0) #f)
+            (else (loop (+ i 1))))))
+  (define (dfs index subset)
+    (if (= index (length nums))
+        (if (and (not (null? subset)) (is-square-free? (apply * subset))) 1 0)
+        (+ (dfs (+ index 1) subset)
+           (if (and (not (null? subset)) (is-square-free? (* (list-ref nums index) (apply * subset))))
+               (dfs (+ index 1) (append subset (list (list-ref nums index))))
+               0))))
+  (dfs 0 '()))

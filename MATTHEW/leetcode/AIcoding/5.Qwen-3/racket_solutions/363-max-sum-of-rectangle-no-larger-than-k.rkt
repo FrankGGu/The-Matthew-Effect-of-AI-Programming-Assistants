@@ -1,0 +1,28 @@
+#lang racket
+
+(define (max-sum-submatrix-k matrix k)
+  (define rows (length matrix))
+  (define cols (length (car matrix)))
+  (define (get-col-sums row-start row-end)
+    (for/list ([c (in-range cols)])
+      (for/sum ([r (in-range row-start row-end)])
+        (list-ref (list-ref matrix r) c))))
+  (define (max-subarray-no-larger-than-k nums target)
+    (define sorted-s (sorted (cons 0 (for/fold ([s 0] [res -inf.0]) ([n nums])
+                                     (set! s (+ s n))
+                                     (when (<= (- s (car sorted-s)) target)
+                                       (set! res (max res (- s (car sorted-s)))))
+                                     (set! sorted-s (insert sorted-s s))
+                                     res))))
+    (if (equal? sorted-s '(0)) -inf.0 (apply max (filter (lambda (x) (<= x target)) sorted-s))))
+  (define (insert lst x)
+    (cond [(null? lst) (list x)]
+          [(<= x (car lst)) (cons x lst)]
+          [else (cons (car lst) (insert (cdr lst) x))]))
+  (define result -inf.0)
+  (for ([row-start (in-range rows)])
+    (for ([row-end (in-range row-start rows)])
+      (define col-sums (get-col-sums row-start row-end))
+      (define current-max (max-subarray-no-larger-than-k col-sums k))
+      (set! result (max result current-max))))
+  (if (= result -inf.0) 0 result))

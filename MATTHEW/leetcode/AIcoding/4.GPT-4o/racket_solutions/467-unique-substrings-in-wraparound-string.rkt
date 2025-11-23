@@ -1,0 +1,18 @@
+(define (find-unique-substrings s)
+  (define n (string-length s))
+  (define dp (make-vector 26 0))
+  (define max-len 0)
+  (for ([i (in-range n)])
+    (define current-char (string-ref s i))
+    (define index (- (char->integer current-char) (char->integer #\a)))
+    (if (and (> i 0) 
+             (= (modulo (- (char->integer current-char) (char->integer (string-ref s (- i 1)))) 26) 1))
+        (set! max-len (+ max-len 1))
+        (set! max-len 1))
+    (vector-set! dp index (max (vector-ref dp index) max-len)))
+  (apply + (vector->list dp)))
+
+(define (find-unique-substrings-wrapper s)
+  (find-unique-substrings s))
+
+(find-unique-substrings-wrapper "zab")

@@ -1,0 +1,13 @@
+(define (rangeSum nums n left right)
+  (define sums '())
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (set! sums (cons (+ (list-ref nums i) (list-ref nums j)) sums))))
+  (define sorted-sums (sort sums <))
+  (define total 0)
+  (for ([i (in-range left right)])
+    (set! total (+ total (list-ref sorted-sums i))))
+  total)
+
+(define (rangeSumOfSortedSubarraySums nums left right)
+  (rangeSum nums (length nums) left right))

@@ -1,0 +1,13 @@
+(define (find-lucky-integer arr)
+  (let ((counts (make-hash)))
+    (for-each (lambda (x)
+                (hash-update! counts x (lambda (v) (+ v 1)) 1))
+              arr)
+    (let loop ((keys (hash-keys counts))
+               (max-lucky -1))
+      (if (null? keys)
+          max-lucky
+          (let ((key (car keys)))
+            (if (= key (hash-ref counts key))
+                (loop (cdr keys) (max max-lucky key))
+                (loop (cdr keys) max-lucky)))))))

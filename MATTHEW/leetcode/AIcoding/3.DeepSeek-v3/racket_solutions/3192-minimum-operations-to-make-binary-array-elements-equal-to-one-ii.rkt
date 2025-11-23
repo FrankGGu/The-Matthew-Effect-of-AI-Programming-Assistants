@@ -1,0 +1,10 @@
+(define (min-operations nums)
+  (let loop ([i 0] [flips 0] [current 0])
+    (if (>= i (length nums))
+        0
+        (let ([num (if (even? flips) (list-ref nums i) (- 1 (list-ref nums i)))])
+          (if (= num current)
+              (loop (+ i 1) flips current)
+              (if (= i (- (length nums) 1))
+                  (if (= num 1) 0 1)
+                  (+ 1 (loop (+ i 1) (+ flips 1) (- 1 current))))))))

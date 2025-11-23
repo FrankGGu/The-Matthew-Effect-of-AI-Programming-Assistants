@@ -1,0 +1,15 @@
+(define/contract (rearrange-characters s target)
+  (-> string? string? exact-integer?)
+  (let* ([count-s (make-hash)]
+         [count-target (make-hash)]
+         [min-ratio +inf.0])
+    (for ([c (in-string s)])
+      (hash-update! count-s c add1 (lambda () 0)))
+    (for ([c (in-string target)])
+      (hash-update! count-target c add1 (lambda () 0)))
+    (for ([(c cnt) (in-hash count-target)])
+      (unless (hash-has-key? count-s c)
+        (set! min-ratio 0)
+        (break))
+      (set! min-ratio (min min-ratio (quotient (hash-ref count-s c) cnt)))
+    (if (= min-ratio +inf.0) 0 min-ratio)))

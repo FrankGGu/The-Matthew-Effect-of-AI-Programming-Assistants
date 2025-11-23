@@ -1,0 +1,34 @@
+{
+  "id": "LCP 47",
+  "title": "入场安检",
+  "titleSlug": "oPs9Bm",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int securityCheck(vector<int>& capacities, int k) {\n\n    }\n};",
+    "java": "class Solution {\n    public int securityCheck(int[] capacities, int k) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def securityCheck(self, capacities, k):\n        \"\"\"\n        :type capacities: List[int]\n        :type k: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def securityCheck(self, capacities: List[int], k: int) -> int:",
+    "c": "\n\nint securityCheck(int* capacities, int capacitiesSize, int k){\n\n}",
+    "csharp": "public class Solution {\n    public int SecurityCheck(int[] capacities, int k) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} capacities\n * @param {number} k\n * @return {number}\n */\nvar securityCheck = function(capacities, k) {\n\n};",
+    "typescript": "function securityCheck(capacities: number[], k: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $capacities\n     * @param Integer $k\n     * @return Integer\n     */\n    function securityCheck($capacities, $k) {\n\n    }\n}",
+    "swift": "class Solution {\n    func securityCheck(_ capacities: [Int], _ k: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun securityCheck(capacities: IntArray, k: Int): Int {\n\n    }\n}",
+    "golang": "func securityCheck(capacities []int, k int) int {\n\n}",
+    "ruby": "# @param {Integer[]} capacities\n# @param {Integer} k\n# @return {Integer}\ndef security_check(capacities, k)\n\nend",
+    "scala": "object Solution {\n    def securityCheck(capacities: Array[Int], k: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn security_check(capacities: Vec<i32>, k: i32) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (security-check capacities k)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n\n  )",
+    "erlang": "-spec security_check(Capacities :: [integer()], K :: integer()) -> integer().\nsecurity_check(Capacities, K) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec security_check(capacities :: [integer], k :: integer) :: integer\n  def security_check(capacities, k) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[2,2,3]\n2\n[3,3]\n3\n[4,3,2,2]\n6",
+  "hints": []
+}

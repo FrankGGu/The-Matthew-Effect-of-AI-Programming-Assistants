@@ -1,0 +1,6 @@
+(define (shift-distance s t)
+  (let ((n (string-length s)))
+    (for/first ([i (in-range n)])
+      #:when (string=? s (string-append (substring t i n) (substring t 0 i)))
+      i)
+    #:else -1))

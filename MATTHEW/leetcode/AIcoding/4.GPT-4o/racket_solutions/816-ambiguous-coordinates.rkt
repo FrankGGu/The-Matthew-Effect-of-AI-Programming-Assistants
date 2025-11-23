@@ -1,0 +1,43 @@
+(define (ambiguous-coordinates s)
+  (define (format-coordinates s)
+    (let loop ((i 1) (result '()))
+      (if (> i (string-length s))
+          result
+          (let ((left (substring s 0 i))
+                (right (substring s i)))
+            (if (or (string=? left "0") 
+                    (and (not (string=? left "0")) 
+                         (not (string=? right "0")) 
+                         (not (string=? right "0"))))
+                (loop (+ i 1) result)
+                (let ((formatted-left (if (string=? left "0") 
+                                          "0" 
+                                          (if (string=? (substring left 0 1) "0") 
+                                              (if (string=? left (string-append left "0")) 
+                                                  left 
+                                                  (string-append "0." (substring left 1))) 
+                                              left))))
+                  (for-each (lambda (r)
+                              (when (or (string=? r "0") 
+                                        (not (string=? (substring r 0 1) "0")))
+                                (let ((formatted-right (if (string=? r "0") 
+                                                           "0" 
+                                                           (if (string=? (substring r 0 1) "0") 
+                                                               (if (string=? r (string-append r "0")) 
+                                                                   r 
+                                                                   (string-append "0." (substring r 1))) 
+                                                               r))))
+                                  (set! result (cons (string-append formatted-left ", " formatted-right) result)))))
+                            (map (lambda (j) (substring right 0 j)) (range 1 (add1 (string-length right)))))
+                  (loop (+ i 1) result))))))
+
+  (define (generate-coordinates s)
+    (for/list ((i (in-range 1 (- (string-length s) 1))))
+      (let ((left (substring s 0 i))
+            (right (substring s i)))
+        (map (lambda (l)
+               (map (lambda (r) (string-append "(" l ", " r ")"))
+                    (format-coordinates right)))
+             (format-coordinates left)))))
+
+  (apply append (generate-coordinates (string-trim (substring s 1 (- (string-length s) 1))))))

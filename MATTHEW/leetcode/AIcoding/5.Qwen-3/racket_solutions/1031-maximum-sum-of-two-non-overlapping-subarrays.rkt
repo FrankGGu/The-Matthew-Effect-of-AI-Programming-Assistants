@@ -1,0 +1,55 @@
+(define (max-sum-two-no-overlapping-subarrays nums n)
+  (define len (length nums))
+  (define dp (make-vector len 0))
+  (define max1 (make-vector len 0))
+  (define max2 (make-vector len 0))
+  (define (max a b) (if (> a b) a b))
+  (define (min a b) (if (< a b) a b))
+  (define (sum l r)
+    (let loop ([i l] [s 0])
+      (if (> i r) s
+          (loop (+ i 1) (+ s (list-ref nums i))))))
+
+  (let loop ([i 0] [current 0] [max-so-far 0])
+    (when (< i len)
+      (set! current (+ current (list-ref nums i)))
+      (set! max-so-far (max max-so-far current))
+      (vector-set! dp i max-so-far)
+      (loop (+ i 1) current max-so-far)))
+
+  (let loop ([i 0] [current 0] [max-so-far 0])
+    (when (< i len)
+      (set! current (+ current (list-ref nums (- len 1 i))))
+      (set! max-so-far (max max-so-far current))
+      (vector-set! dp (- len 1 i) max-so-far)
+      (loop (+ i 1) current max-so-far)))
+
+  (let loop ([i 0] [current 0] [max-so-far 0])
+    (when (< i len)
+      (set! current (+ current (list-ref nums i)))
+      (set! max-so-far (max max-so-far current))
+      (vector-set! max1 i max-so-far)
+      (loop (+ i 1) current max-so-far)))
+
+  (let loop ([i 0] [current 0] [max-so-far 0])
+    (when (< i len)
+      (set! current (+ current (list-ref nums (- len 1 i))))
+      (set! max-so-far (max max-so-far current))
+      (vector-set! max2 (- len 1 i) max-so-far)
+      (loop (+ i 1) current max-so-far)))
+
+  (let loop ([i 0] [res 0])
+    (when (< i len)
+      (let ([left (if (> i n) (vector-ref max1 (- i n)) 0)]
+            [right (if (< i (- len n)) (vector-ref max2 (+ i n)) 0)])
+        (set! res (max res (+ left right))))
+      (loop (+ i 1) res)))
+
+  res)
+
+(define (main)
+  (define nums (read))
+  (define n (read))
+  (display (max-sum-two-no-overlapping-subarrays nums n)))
+
+(main)

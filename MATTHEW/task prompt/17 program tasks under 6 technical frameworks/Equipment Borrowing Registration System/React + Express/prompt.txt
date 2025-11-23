@@ -1,0 +1,25 @@
+Build a complete Equipment Borrowing Registration System using React 18 with functional components and hooks for the frontend, and Express.js with Prisma for the backend. Use PostgreSQL with this connection: postgresql://postgres:equipment_pass@localhost:5432/equipment_db
+
+Database schema:
+- equipment (id, name, model, serial_number, status, purchase_date, created_at, updated_at)
+- borrowers (id, name, email, department, created_at)
+- borrowing_records (id, equipment_id, borrower_id, borrow_date, expected_return_date, actual_return_date, status, notes, created_at)
+
+Frontend requirements (React):
+1. Equipment management: List, add, edit, and filter equipment
+2. Borrower management: List, add, and edit borrowers
+3. Borrow/return interface with date selection
+4. Dashboard with statistics and recent activities
+
+Backend requirements (Express.js):
+1. REST API with proper routing structure
+2. Use Prisma for database operations with proper schema definition
+3. Implement middleware for validation and error handling
+4. Add automatic status updates for overdue equipment
+
+Include:
+- Modern React patterns (hooks, context for state management)
+- Responsive UI with CSS modules or styled-components
+- Comprehensive error handling
+- API documentation
+- Instructions for setup and running the application

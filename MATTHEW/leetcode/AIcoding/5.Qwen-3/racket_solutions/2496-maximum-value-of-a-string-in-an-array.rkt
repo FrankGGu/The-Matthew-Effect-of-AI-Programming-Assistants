@@ -1,0 +1,7 @@
+(define (maximum-value words)
+  (define (value word)
+    (for/sum ([c word])
+      (if (char-alphabetic? c)
+          (- (char->integer c) (char->integer #\a) 1)
+          (string->number (string c)))))
+  (apply max (map value words)))

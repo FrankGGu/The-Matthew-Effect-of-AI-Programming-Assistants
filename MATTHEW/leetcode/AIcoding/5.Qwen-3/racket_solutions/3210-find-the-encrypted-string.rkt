@@ -1,0 +1,5 @@
+(define (encrypt s k)
+  (define len (string-length s))
+  (define (shift c)
+    (integer->char (+ (char->integer c) k)))
+  (list->string (map shift (string->list s))))

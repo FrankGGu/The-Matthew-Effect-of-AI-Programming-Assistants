@@ -1,0 +1,10 @@
+(define (decode xor)
+  (let* ((n (+ (length xor) 1))
+         (perm (make-vector n 0)))
+    (vector-set! perm 0 (vector-ref xor 0))
+    (for ([i (in-range 1 n)])
+      (vector-set! perm i (xor (vector-ref xor (- i 1)) (vector-ref perm (- i 1)))))
+    (vector->list perm)))
+
+(define (decode-xored-permutation xor)
+  (decode xor))

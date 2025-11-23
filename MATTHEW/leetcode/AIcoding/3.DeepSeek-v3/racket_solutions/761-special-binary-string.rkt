@@ -1,0 +1,12 @@
+(define (makeLargestSpecial s)
+  (let loop ([i 0] [res '()] [count 0])
+    (if (= i (string-length s))
+        (apply string-append (sort res string>?))
+        (let* ([c (string-ref s i)]
+               [new-count (if (char=? c #\1) (add1 count) (sub1 count))])
+          (if (zero? new-count)
+              (let ([sub (substring s 1 i)])
+                (loop (add1 i) 
+                      (cons (string-append "1" (makeLargestSpecial sub) "0") res) 
+                      0)
+              (loop (add1 i) res new-count))))))

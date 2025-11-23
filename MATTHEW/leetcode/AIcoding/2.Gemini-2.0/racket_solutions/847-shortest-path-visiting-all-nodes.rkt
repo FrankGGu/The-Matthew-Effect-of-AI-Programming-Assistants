@@ -1,0 +1,26 @@
+(define (shortest-path-length graph)
+  (define n (length graph))
+  (define target (arithmetic-sequence 1 2 n))
+  (define q (make-queue))
+  (define visited (make-hash))
+
+  (for ([i (in-range n)])
+    (define mask (expt 2 i))
+    (queue-enqueue! q (list i mask 0))
+    (hash-set! visited (list i mask) #t))
+
+  (let loop ()
+    (define current (queue-dequeue! q))
+    (define node (car current))
+    (define mask (cadr current))
+    (define dist (caddr current))
+
+    (when (= mask target)
+      (return dist))
+
+    (for ([neighbor (in-list (list-ref graph node))])
+      (define new-mask (bitwise-ior mask (expt 2 neighbor)))
+      (unless (hash-ref visited (list neighbor new-mask) #f)
+        (hash-set! visited (list neighbor new-mask) #t)
+        (queue-enqueue! q (list neighbor new-mask (+ dist 1))))))
+  (loop))

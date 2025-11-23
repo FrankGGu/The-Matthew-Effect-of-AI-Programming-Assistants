@@ -1,0 +1,5 @@
+(define (k-closest points origin k)
+  (define (distance point)
+    (+ (sqr (- (car point) (car origin)))
+       (sqr (- (cadr point) (cadr origin)))))
+  (take (sort points (lambda (a b) (< (distance a) (distance b)))) k))

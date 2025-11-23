@@ -1,0 +1,17 @@
+(define (reformat-phone-number number)
+  (define digits (filter (lambda (c) (char-numeric? c)) (string->list number)))
+  (define n (length digits))
+  (define result '())
+  (define i 0)
+  (while (< i n)
+    (if (>= (+ i 3) n)
+        (begin
+          (set! result (append result (sublist digits i n)))
+          (set! i n))
+        (begin
+          (set! result (append result (sublist digits i (+ i 3))))
+          (set! result (cons #\- result))
+          (set! i (+ i 3)))))
+  (if (equal? (last result) #\-)
+      (set! result (butlast result)))
+  (list->string (reverse result)))

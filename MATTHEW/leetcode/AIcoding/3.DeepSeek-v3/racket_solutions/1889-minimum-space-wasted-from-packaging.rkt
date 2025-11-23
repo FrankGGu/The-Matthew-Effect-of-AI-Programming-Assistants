@@ -1,0 +1,41 @@
+#lang racket
+
+(define/contract (min-wasted-space packages boxes)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)) exact-integer?)
+  (define MOD 1000000007)
+  (define sorted-packages (sort packages <))
+  (define total (for/sum ([p sorted-packages]) p))
+  (define min-waste +inf.0)
+
+  (for ([box-list (in-list boxes)])
+    (define sorted-boxes (sort box-list <))
+    (when (>= (last sorted-boxes) (last sorted-packages))
+    (define current-waste 0)
+    (define prev-idx 0)
+    (for ([box (in-list sorted-boxes)])
+      (define idx (bisect-right sorted-packages box prev-idx))
+      (define sum (sum-range sorted-packages prev-idx idx))
+      (set! current-waste (+ current-waste (- (* box (- idx prev-idx)) sum)))
+      (set! prev-idx idx)
+      (when (>= prev-idx (length sorted-packages)) (break))
+    (when (< current-waste min-waste)
+      (set! min-waste current-waste)))
+
+  (if (= min-waste +inf.0) -1 (modulo min-waste MOD)))
+
+(define (bisect-right lst target low)
+  (define high (length lst))
+  (let loop ([low low] [high high])
+    (if (< low high)
+        (let* ([mid (quotient (+ low high) 2)]
+               [mid-val (list-ref lst mid)])
+          (if (<= mid-val target)
+              (loop (add1 mid) high)
+              (loop low mid)))
+        low)))
+
+(define (sum-range lst start end)
+  (define prefix (make-vector (add1 (length lst)) 0)
+  (for ([i (in-range 1 (add1 (length lst)))])
+    (vector-set! prefix i (+ (vector-ref prefix (sub1 i)) (list-ref lst (sub1 i)))))
+  (- (vector-ref prefix end) (vector-ref prefix start)))

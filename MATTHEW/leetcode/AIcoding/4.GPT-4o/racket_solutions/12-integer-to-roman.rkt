@@ -1,0 +1,10 @@
+(define (int-to-roman num)
+  (define values '(1000 900 500 400 100 90 50 40 10 9 5 4 1))
+  (define symbols '("M" "CM" "D" "CD" "C" "XC" "L" "XL" "X" "IX" "V" "IV" "I"))
+  (define (helper n idx)
+    (if (zero? n)
+        ""
+        (if (>= n (list-ref values idx))
+            (string-append (list-ref symbols idx) (helper (- n (list-ref values idx)) idx))
+            (helper n (add1 idx)))))
+  (helper num 0))

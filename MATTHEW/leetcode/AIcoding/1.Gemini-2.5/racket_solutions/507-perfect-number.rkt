@@ -1,0 +1,11 @@
+(define (checkPerfectNumber num)
+  (if (<= num 1)
+      #f
+      (let loop ((i 2) (sum-divisors 1))
+        (if (> (* i i) num)
+            (= sum-divisors num)
+            (if (= (modulo num i) 0)
+                (if (= (* i i) num)
+                    (loop (+ i 1) (+ sum-divisors i))
+                    (loop (+ i 1) (+ sum-divisors i (quotient num i))))
+                (loop (+ i 1) sum-divisors))))))

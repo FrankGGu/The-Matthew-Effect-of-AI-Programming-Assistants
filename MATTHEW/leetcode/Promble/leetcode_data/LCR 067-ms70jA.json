@@ -1,0 +1,36 @@
+{
+  "id": "LCR 067",
+  "title": "数组中两个数的最大异或值",
+  "titleSlug": "ms70jA",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Trie",
+    "Array",
+    "Hash Table"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findMaximumXOR(vector<int>& nums) {\n\n    }\n};",
+    "java": "class Solution {\n    public int findMaximumXOR(int[] nums) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def findMaximumXOR(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def findMaximumXOR(self, nums: List[int]) -> int:",
+    "c": "\n\nint findMaximumXOR(int* nums, int numsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int FindMaximumXOR(int[] nums) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar findMaximumXOR = function(nums) {\n\n};",
+    "typescript": "function findMaximumXOR(nums: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function findMaximumXOR($nums) {\n\n    }\n}",
+    "swift": "class Solution {\n    func findMaximumXOR(_ nums: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun findMaximumXOR(nums: IntArray): Int {\n\n    }\n}",
+    "golang": "func findMaximumXOR(nums []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef find_maximum_xor(nums)\n\nend",
+    "scala": "object Solution {\n    def findMaximumXOR(nums: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_maximum_xor(nums: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (find-maximum-xor nums)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec find_maximum_xor(Nums :: [integer()]) -> integer().\nfind_maximum_xor(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_maximum_xor(nums :: [integer]) :: integer\n  def find_maximum_xor(nums) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[3,10,5,25,2,8]\n[0]\n[2,4]\n[8,10,2]\n[14,70,53,83,49,91,36,80,92,51,66,70]",
+  "hints": []
+}

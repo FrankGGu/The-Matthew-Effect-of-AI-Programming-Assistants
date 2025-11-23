@@ -1,0 +1,7 @@
+(define (firstDayBeenInAllRooms A)
+  (define n (length A))
+  (define dp (make-vector n 0))
+  (define mod 1000000007)
+  (for ([i (in-range 1 n)])
+    (vector-set! dp i (modulo (+ (vector-ref dp (- i 1)) (if (= (vector-ref A (- i 1)) 0) 1 (vector-ref dp (vector-ref A (- i 1))))) mod)))
+  (vector-ref dp (- n 1)))

@@ -1,0 +1,7 @@
+(define (maxFrequencyScore nums)
+  (define freq (make-hash))
+  (for-each (lambda (x) (hash-set! freq x (add1 (hash-ref freq x 0)))) nums)
+  (define max-freq (apply max (hash-values freq)))
+  (define result 0)
+  (for-each (lambda (x) (when (= (hash-ref freq x) max-freq) (set! result (+ result x)))) nums)
+  result)

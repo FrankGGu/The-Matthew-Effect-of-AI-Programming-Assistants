@@ -1,0 +1,44 @@
+Create a modern asynchronous inventory system using:
+- Frontend: SvelteKit with TypeScript
+- Backend: FastAPI with SQLAlchemy 2.0
+- ORM: SQLAlchemy with async support
+- Database: PostgreSQL
+
+**Database Connection:**
+- SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://admin:admin123@localhost:5432/inventory_db"
+
+**Required Features:**
+1. Real-time inventory dashboard
+2. Async CRUD operations
+3. Automatic API documentation
+4. WebSocket for live updates
+5. Modern responsive UI
+
+**Technical Specifications:**
+Backend:
+- FastAPI with async endpoints
+- SQLAlchemy 2.0 with async mode
+- Pydantic models for validation
+- JWT authentication with OAuth2
+- Automated OpenAPI documentation
+
+Frontend:
+- SvelteKit with TypeScript
+- Svelte stores for state management
+- Tailwind CSS for styling
+- Vite for building
+
+**Database Models:**
+```python
+class Product(Base):
+    __tablename__ = "products"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    specification = Column(Text)
+    # ... other fields
+
+class Inventory(Base):
+    __tablename__ = "inventory"
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey("products.id"))
+    # ... other fields

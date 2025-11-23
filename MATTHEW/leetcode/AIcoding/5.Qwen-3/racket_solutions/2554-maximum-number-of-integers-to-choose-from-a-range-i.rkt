@@ -1,0 +1,10 @@
+(define (max-choose nums)
+  (define sorted (sort nums <))
+  (define (helper prev count)
+    (if (null? sorted)
+        count
+        (let ((current (car sorted)))
+          (if (>= current prev)
+              (helper (+ current 1) (+ count 1))
+              (helper prev count)))))
+  (helper -inf.0 0))

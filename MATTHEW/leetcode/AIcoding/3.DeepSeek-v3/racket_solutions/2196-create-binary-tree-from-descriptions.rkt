@@ -1,0 +1,28 @@
+(define/contract (create-binary-tree descriptions)
+  (-> (listof (listof exact-integer?)) (or/c #f tree-node?))
+  (define nodes (make-hash))
+  (define parents (make-hash))
+  (for ([desc descriptions])
+    (define parent-val (first desc))
+    (define child-val (second desc))
+    (define is-left (= (third desc) 1))
+    (define parent-node (hash-ref nodes parent-val #f))
+    (unless parent-node
+      (set! parent-node (tree-node parent-val #f #f))
+      (hash-set! nodes parent-val parent-node))
+    (define child-node (hash-ref nodes child-val #f))
+    (unless child-node
+      (set! child-node (tree-node child-val #f #f))
+      (hash-set! nodes child-val child-node))
+    (if is-left
+        (set-tree-node-left! parent-node child-node)
+        (set-tree-node-right! parent-node child-node))
+    (hash-set! parents child-val parent-val))
+  (define root-val #f)
+  (for ([(val node) (in-hash nodes)])
+    (unless (hash-has-key? parents val)
+      (set! root-val val)
+      (break)))
+  (if root-val
+      (hash-ref nodes root-val)
+      #f))

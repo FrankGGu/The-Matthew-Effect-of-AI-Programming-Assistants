@@ -1,0 +1,15 @@
+(define/contract (generate-trees n)
+  (-> exact-integer? (listof (or/c #f tree-node?)))
+  (define (build-trees start end)
+    (if (> start end)
+        (list #f)
+        (for*/list ([i (in-range start (add1 end))]
+                    [left (build-trees start (sub1 i))]
+                    [right (build-trees (add1 i) end)])
+          (let ([root (tree-node i)])
+            (set-tree-node-left! root left)
+            (set-tree-node-right! root right)
+            root))))
+  (if (zero? n)
+      '()
+      (build-trees 1 n)))

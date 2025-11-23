@@ -1,0 +1,6 @@
+(define (unique-paths m n)
+  (let ((dp (make-vector n 1)))
+    (for ((i (in-range 1 m)))
+      (for ((j (in-range 1 n)))
+        (vector-set! dp j (+ (vector-ref dp j) (vector-ref dp (- j 1))))))
+    (vector-ref dp (- n 1))))

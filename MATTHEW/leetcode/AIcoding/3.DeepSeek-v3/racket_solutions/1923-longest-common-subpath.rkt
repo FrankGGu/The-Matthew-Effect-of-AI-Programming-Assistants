@@ -1,0 +1,41 @@
+#lang racket
+
+(define (longest-common-subpath n paths)
+  (define (check len)
+    (define base 1000000007)
+    (define (compute-hash path)
+      (define m (length path))
+      (define power (make-vector (add1 len) 1))
+      (for ([i (in-range 1 (add1 len))])
+        (vector-set! power i (modulo (* (vector-ref power (sub1 i)) base) base)))
+      (define hash (make-vector (add1 m) 0))
+      (for ([i (in-range 1 (add1 m))])
+        (vector-set! hash i (modulo (+ (* (vector-ref hash (sub1 i)) base) 
+                                    (list-ref path (sub1 i))) base)))
+      (define hashes (mutable-set))
+      (for ([i (in-range len (add1 m))])
+        (define h (modulo (- (vector-ref hash i) 
+                             (* (vector-ref hash (- i len)) (vector-ref power len))) base))
+        (set-add! hashes h))
+      hashes)
+    (define common (compute-hash (car paths)))
+    (for ([path (in-list (cdr paths))])
+      (define current (compute-hash path))
+      (set-intersect! common current)
+      (when (set-empty? common) (return #f)))
+    (not (set-empty? common)))
+
+  (define (binary-search left right)
+    (if (> left right)
+        left
+        (let ([mid (quotient (+ left right) 2)])
+          (if (check mid)
+              (binary-search (add1 mid) right)
+              (binary-search left (sub1 mid))))))
+
+  (if (null? paths)
+      0
+      (let ([min-len (apply min (map length paths))])
+        (binary-search 0 min-len))))
+
+(define (return x) x)

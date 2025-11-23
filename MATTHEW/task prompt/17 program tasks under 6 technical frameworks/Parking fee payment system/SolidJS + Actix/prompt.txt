@@ -1,0 +1,30 @@
+Create a parking fee payment system using emerging technologies: SolidJS frontend and Actix Web backend with SeaORM. Use the following PostgreSQL database schema:
+
+Database schema:
+- parking_lots (id, name, location, total_spaces, hourly_rate, max_daily_rate, is_active)
+- parking_spaces (id, parking_lot_id, space_number, space_type, is_occupied)
+- vehicles (id, license_plate, vehicle_type, is_regular_customer)
+- parking_sessions (id, vehicle_id, parking_space_id, entry_time, exit_time, base_fee, discount_amount, total_amount, status)
+- payments (id, parking_session_id, payment_time, amount, payment_method, status)
+- discount_rules (id, rule_name, description, discount_type, discount_value, min_hours, max_hours, applicable_vehicle_types, is_active)
+
+Required features:
+1. High-performance UI with fine-grained reactivity
+2. Real-time parking space monitoring
+3. Efficient vehicle entry/exit processing
+4. Memory-safe fee calculation implementation
+5. Secure payment handling
+6. Basic reporting functionality
+
+Technical requirements:
+- Frontend: SolidJS with TypeScript
+- Backend: Actix Web with SeaORM
+- Focus on safety and performance
+- Implement JWT authentication
+- Use Rust 2021 edition and modern crate ecosystem
+- Generate complete project with Cargo.toml and proper module structure
+
+Database connection:
+- Database URL: postgres://postgres:parking123@localhost:5432/parking_system
+
+Please create a complete project with proper error handling and performance optimizations.

@@ -1,0 +1,7 @@
+(define (find-disappeared-numbers nums)
+  (let* ((n (length nums))
+         (seen (make-vector (+ n 1) #f)))
+    (for ([num nums])
+      (vector-set! seen num #t))
+    (filter (lambda (i) (and (> i 0) (not (vector-ref seen i))))
+            (range 1 (+ n 1)))))

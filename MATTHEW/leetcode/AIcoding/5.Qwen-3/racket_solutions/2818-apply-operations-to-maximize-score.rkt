@@ -1,0 +1,16 @@
+(define (maximum-score nums k)
+  (define (apply-operations nums k)
+    (let loop ((nums nums) (k k))
+      (if (or (zero? k) (null? nums))
+          nums
+          (let* ((max-val (apply max nums))
+                 (index (index-of nums max-val)))
+            (if (and index (= (list-ref nums index) max-val))
+                (loop (append (take nums index) (list (+ max-val 1)) (drop nums (+ index 1))) (- k 1))
+                nums)))))
+  (define (sum-with-index nums)
+    (let loop ((nums nums) (i 0) (sum 0))
+      (if (null? nums)
+          sum
+          (loop (cdr nums) (+ i 1) (+ sum (* (car nums) i))))))
+  (sum-with-index (apply-operations nums k)))

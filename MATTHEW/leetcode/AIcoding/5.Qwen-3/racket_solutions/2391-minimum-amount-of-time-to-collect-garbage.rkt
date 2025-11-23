@@ -1,0 +1,13 @@
+(define (garbage-collection garbage travel-time)
+  (define (collect-time name)
+    (let loop ((i 0) (count 0))
+      (if (= i (length garbage))
+          count
+          (let ((g (list-ref garbage i)))
+            (if (member name g)
+                (loop (+ i 1) (+ count (list-ref travel-time i)))
+                (loop (+ i 1) count))))))
+  (let ((paper-time (collect-time "P"))
+        (glass-time (collect-time "G"))
+        (metal-time (collect-time "M")))
+    (+ paper-time glass-time metal-time)))

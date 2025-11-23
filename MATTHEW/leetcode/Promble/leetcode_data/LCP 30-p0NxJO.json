@@ -1,0 +1,37 @@
+{
+  "id": "LCP 30",
+  "title": "魔塔游戏",
+  "titleSlug": "p0NxJO",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int magicTower(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int magicTower(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def magicTower(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def magicTower(self, nums: List[int]) -> int:\n        ",
+    "c": "int magicTower(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MagicTower(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar magicTower = function(nums) {\n    \n};",
+    "typescript": "function magicTower(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function magicTower($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func magicTower(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun magicTower(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int magicTower(List<int> nums) {\n    \n  }\n}",
+    "golang": "func magicTower(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef magic_tower(nums)\n    \nend",
+    "scala": "object Solution {\n    def magicTower(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn magic_tower(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (magic-tower nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec magic_tower(Nums :: [integer()]) -> integer().\nmagic_tower(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec magic_tower(nums :: [integer]) :: integer\n  def magic_tower(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func magicTower(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[100,100,100,-250,-60,-140,-50,-50,100,150]\n[-200,-300,400,0]",
+  "hints": []
+}

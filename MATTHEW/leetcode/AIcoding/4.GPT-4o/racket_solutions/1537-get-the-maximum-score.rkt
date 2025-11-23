@@ -1,0 +1,12 @@
+(define (maxScore cardPoints k)
+  (define n (length cardPoints))
+  (define total (apply + cardPoints))
+  (define window-sum (apply + (take cardPoints (- n k))))
+  (define max-sum window-sum)
+  (for ([i (in-range k)])
+    (set! window-sum (- window-sum (list-ref cardPoints i)))
+    (set! window-sum (+ window-sum (list-ref cardPoints (+ n (- k i 1)))))
+    (set! max-sum (max max-sum window-sum)))
+  max-sum)
+
+(maxScore '(1 2 3 4 5 6 1) 3)

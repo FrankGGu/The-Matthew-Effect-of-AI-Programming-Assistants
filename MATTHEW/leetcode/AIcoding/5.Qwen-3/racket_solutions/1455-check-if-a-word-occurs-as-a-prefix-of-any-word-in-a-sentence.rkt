@@ -1,0 +1,5 @@
+(define (is-prefix-of-word sentence a)
+  (define words (string-split sentence))
+  (for/or ([word words])
+    (and (<= (string-length a) (string-length word))
+         (equal? a (substring word 0 (string-length a))))))

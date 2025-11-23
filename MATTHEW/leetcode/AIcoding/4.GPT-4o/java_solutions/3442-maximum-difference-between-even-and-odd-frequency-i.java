@@ -1,0 +1,16 @@
+class Solution {
+    public int maximumDifference(int[] nums) {
+        int maxEven = Integer.MIN_VALUE;
+        int minOdd = Integer.MAX_VALUE;
+
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                maxEven = Math.max(maxEven, num);
+            } else {
+                minOdd = Math.min(minOdd, num);
+            }
+        }
+
+        return maxEven == Integer.MIN_VALUE || minOdd == Integer.MAX_VALUE ? -1 : maxEven - minOdd;
+    }
+}

@@ -1,0 +1,15 @@
+#lang racket
+
+(define (count-k-constraint-substrings s k)
+  (define n (string-length s))
+  (define result 0)
+  (define (is-valid? start end)
+    (define cnt (make-hash))
+    (for ([i (in-range start (add1 end))])
+      (hash-update! cnt (string-ref s i) add1 0))
+    (and (<= (hash-count cnt) k)))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (when (is-valid? i j)
+        (set! result (+ result 1)))))
+  result)

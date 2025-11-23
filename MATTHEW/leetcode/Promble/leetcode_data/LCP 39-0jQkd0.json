@@ -1,0 +1,36 @@
+{
+  "id": "LCP 39",
+  "title": "无人机方阵",
+  "titleSlug": "0jQkd0",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Counting",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minimumSwitchingTimes(vector<vector<int>>& source, vector<vector<int>>& target) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minimumSwitchingTimes(int[][] source, int[][] target) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minimumSwitchingTimes(self, source, target):\n        \"\"\"\n        :type source: List[List[int]]\n        :type target: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minimumSwitchingTimes(self, source: List[List[int]], target: List[List[int]]) -> int:",
+    "c": "\n\nint minimumSwitchingTimes(int** source, int sourceSize, int* sourceColSize, int** target, int targetSize, int* targetColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MinimumSwitchingTimes(int[][] source, int[][] target) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} source\n * @param {number[][]} target\n * @return {number}\n */\nvar minimumSwitchingTimes = function(source, target) {\n\n};",
+    "typescript": "function minimumSwitchingTimes(source: number[][], target: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $source\n     * @param Integer[][] $target\n     * @return Integer\n     */\n    function minimumSwitchingTimes($source, $target) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minimumSwitchingTimes(_ source: [[Int]], _ target: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minimumSwitchingTimes(source: Array<IntArray>, target: Array<IntArray>): Int {\n\n    }\n}",
+    "golang": "func minimumSwitchingTimes(source [][]int, target [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} source\n# @param {Integer[][]} target\n# @return {Integer}\ndef minimum_switching_times(source, target)\n\nend",
+    "scala": "object Solution {\n    def minimumSwitchingTimes(source: Array[Array[Int]], target: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn minimum_switching_times(source: Vec<Vec<i32>>, target: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (minimum-switching-times source target)\n  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec minimum_switching_times(Source :: [[integer()]], Target :: [[integer()]]) -> integer().\nminimum_switching_times(Source, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec minimum_switching_times(source :: [[integer]], target :: [[integer]]) :: integer\n  def minimum_switching_times(source, target) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[1,3],[5,4]]\n[[3,1],[6,5]]\n[[1,2,3],[3,4,5]]\n[[1,3,5],[2,3,4]]",
+  "hints": []
+}

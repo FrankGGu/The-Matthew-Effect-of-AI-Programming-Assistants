@@ -1,0 +1,7 @@
+(define (maxScoreSightseeingPair A)
+  (define max_i 0)
+  (define max_score 0)
+  (for ((j (in-range 1 (length A))))
+    (set! max_score (max max_score (+ max_i A[j] (- j))))
+    (set! max_i (max max_i (+ A[j] j))))
+  max_score)

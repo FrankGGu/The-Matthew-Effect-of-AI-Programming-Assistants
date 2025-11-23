@@ -1,0 +1,15 @@
+(define (get-descent-periods prices)
+  (define (count-periods prices)
+    (define n (length prices))
+    (if (zero? n)
+        0
+        (let loop ((i 1) (count 1) (total 0))
+          (if (>= i n)
+              (+ total count)
+              (if (= (list-ref prices i) (- (list-ref prices (- i 1)) 1))
+                  (loop (+ i 1) (+ count 1) (+ total count))
+                  (loop (+ i 1) 1 (+ total count)))
+              ))))
+  (count-periods prices))
+
+(get-descent-periods prices)

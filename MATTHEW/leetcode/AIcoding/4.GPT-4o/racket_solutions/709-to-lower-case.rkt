@@ -1,0 +1,6 @@
+(define (toLowerCase str)
+  (define (char-to-lower c)
+    (if (and (>= c #\A) (<= c #\Z))
+        (integer->char (+ (char->integer c) 32))
+        c))
+  (list->string (map char-to-lower (string->list str))))

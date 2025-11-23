@@ -1,0 +1,13 @@
+(define/contract (distribute-cookies cookies k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([n (length cookies)])
+    (let loop ([i 0] [distribution (make-vector k 0)] [min-unfairness +inf.0])
+      (if (= i n)
+          (max (vector->list distribution))
+          (let ([current-min +inf.0])
+            (for ([j (in-range k)])
+              (let* ([new-distribution (vector-copy distribution)]
+                     [new-val (+ (vector-ref new-distribution j) (list-ref cookies i))])
+                (vector-set! new-distribution j new-val)
+                (set! current-min (min current-min (loop (+ i 1) new-distribution min-unfairness)))))
+            current-min)))))

@@ -1,0 +1,47 @@
+(define (get-trigger-times inc plots)
+  (define N (length inc))
+  (define M (length plots))
+
+  (define (find-first-ge vec target)
+    (let loop ((low 0) (high (- (vector-length vec) 1)) (ans -1))
+      (if (> low high)
+          ans
+          (let ((mid (+ low (quotient (- high low) 2))))
+            (if (>= (vector-ref vec mid) target)
+                (loop low (- mid 1) mid)
+                (loop (+ mid 1) high ans))))))
+
+  (define ps-a (make-vector (+ N 1) 0))
+  (define ps-b (make-vector (+ N 1) 0))
+  (define ps-c (make-vector (+ N 1) 0))
+
+  (let loop-inc ((i 0) (current-a 0) (current-b 0) (current-c 0) (remaining-inc inc))
+    (when (< i N)
+      (let ((daily-inc (car remaining-inc)))
+        (let ((da (list-ref daily-inc 0))
+              (db (list-ref daily-inc 1))
+              (dc (list-ref daily-inc 2)))
+          (let ((next-a (+ current-a da))
+                (next-b (+ current-b db))
+                (next-c (+ current-c dc)))
+            (vector-set! ps-a (+ i 1) next-a)
+            (vector-set! ps-b (+ i 1) next-b)
+            (vector-set! ps-c (+ i 1) next-c)
+            (loop-inc (+ i 1) next-a next-b next-c (cdr remaining-inc)))))))
+
+  (define results (make-vector M))
+  (let loop-plots ((i 0) (remaining-plots plots))
+    (when (< i M)
+      (let ((plot-req (car remaining-plots)))
+        (let ((req-a (list-ref plot-req 0))
+              (req-b (list-ref plot-req 1))
+              (req-c (list-ref plot-req 2)))
+
+          (define idx-a (find-first-ge ps-a req-a))
+          (define idx-b (find-first-ge ps-b req-b))
+          (define idx-c (find-first-ge ps-c req-c))
+
+          (vector-set! results i (max idx-a idx-b idx-c))
+          (loop-plots (+ i 1) (cdr remaining-plots))))))
+
+  (vector->list results))

@@ -1,0 +1,7 @@
+(define (haveConflict event1 event2)
+  (define start1 (string->number (substring (first event1) 0 2)))
+  (define end1 (string->number (substring (first event1) 3 5)))
+  (define start2 (string->number (substring (first event2) 0 2)))
+  (define end2 (string->number (substring (first event2) 3 5)))
+  (or (and (<= start1 end2) (>= end1 start2))
+      (and (<= start2 end1) (>= end2 start1))))

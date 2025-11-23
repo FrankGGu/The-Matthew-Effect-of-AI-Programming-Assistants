@@ -1,0 +1,5 @@
+(define (smallest-range-i A K)
+  (let* ((min-val (apply min A))
+         (max-val (apply max A))
+         (diff (- max-val min-val)))
+    (max 0 (- diff (* 2 K)))))

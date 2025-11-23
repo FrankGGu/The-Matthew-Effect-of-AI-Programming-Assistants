@@ -1,0 +1,8 @@
+(define (equal-sum-pairs nums k)
+  (define count (make-hash))
+  (define result 0)
+  (for ([num nums])
+    (when (hash-has-key? count (- k num))
+      (set! result (+ result (hash-ref count (- k num)))))
+    (hash-set! count num (+ (hash-ref count num 0) 1)))
+  result)

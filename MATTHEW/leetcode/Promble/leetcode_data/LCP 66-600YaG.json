@@ -1,0 +1,36 @@
+{
+  "id": "LCP 66",
+  "title": "最小展台数量",
+  "titleSlug": "600YaG",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minNumBooths(vector<string>& demand) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minNumBooths(String[] demand) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minNumBooths(self, demand):\n        \"\"\"\n        :type demand: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minNumBooths(self, demand: List[str]) -> int:",
+    "c": "\n\nint minNumBooths(char** demand, int demandSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MinNumBooths(string[] demand) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} demand\n * @return {number}\n */\nvar minNumBooths = function(demand) {\n\n};",
+    "typescript": "function minNumBooths(demand: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $demand\n     * @return Integer\n     */\n    function minNumBooths($demand) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minNumBooths(_ demand: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minNumBooths(demand: Array<String>): Int {\n\n    }\n}",
+    "golang": "func minNumBooths(demand []string) int {\n\n}",
+    "ruby": "# @param {String[]} demand\n# @return {Integer}\ndef min_num_booths(demand)\n\nend",
+    "scala": "object Solution {\n    def minNumBooths(demand: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_num_booths(demand: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (min-num-booths demand)\n  (-> (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec min_num_booths(Demand :: [unicode:unicode_binary()]) -> integer().\nmin_num_booths(Demand) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_num_booths(demand :: [String.t]) :: integer\n  def min_num_booths(demand) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"acd\",\"bed\",\"accd\"]\n[\"abc\",\"ab\",\"ac\",\"b\"]",
+  "hints": []
+}

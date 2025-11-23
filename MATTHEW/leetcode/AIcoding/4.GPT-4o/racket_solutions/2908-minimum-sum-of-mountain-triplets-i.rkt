@@ -1,0 +1,15 @@
+(define (minimumSumOfMountainTriplets arr)
+  (define (triplet-sum a b c)
+    (+ a b c))
+  (define (min-triplet-sum lst)
+    (if (or (null? lst) (< (length lst) 3))
+        +inf.0
+        (let loop ((i 0) (min-sum +inf.0))
+          (if (>= i (- (length lst) 2))
+              min-sum
+              (let* ((a (list-ref lst i))
+                     (b (list-ref lst (+ i 1)))
+                     (c (list-ref lst (+ i 2)))
+                     (current-sum (triplet-sum a b c)))
+                (loop (+ i 1) (min min-sum current-sum)))))))
+  (min-triplet-sum arr))

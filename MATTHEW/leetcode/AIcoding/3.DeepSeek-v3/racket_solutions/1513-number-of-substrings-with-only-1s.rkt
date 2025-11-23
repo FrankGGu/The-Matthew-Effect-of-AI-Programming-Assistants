@@ -1,0 +1,8 @@
+(define (numSub s)
+  (define (count n) (quotient (* n (+ n 1)) 2))
+  (let loop ([i 0] [res 0] [current 0])
+    (if (>= i (string-length s))
+        (modulo (+ res (count current)) 1000000007)
+        (if (char=? (string-ref s i) #\1)
+            (loop (+ i 1) res (+ current 1))
+            (loop (+ i 1) (+ res (count current)) 0)))))

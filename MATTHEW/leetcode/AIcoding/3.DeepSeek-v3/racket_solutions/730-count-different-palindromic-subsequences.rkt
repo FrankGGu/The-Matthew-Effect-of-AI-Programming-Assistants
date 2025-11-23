@@ -1,0 +1,37 @@
+(define (count-palindromic-subsequences s)
+  (let* ([n (string-length s)]
+         [modulo-const 1000000007]
+         [dp (make-vector (* n n) 0)])
+    (for ([i (in-range n)])
+      (vector-set! dp (+ i (* i n)) 1))
+    (for ([len (in-range 2 (+ n 1))])
+      (for ([i (in-range 0 (- n len -1))])
+        (let* ([j (+ i len -1)]
+               [c1 (string-ref s i)]
+               [c2 (string-ref s j)])
+          (if (equal? c1 c2)
+              (let ([left (+ i 1)]
+                    [right (- j 1)]
+                    [res 0])
+                (let loop ([k left])
+                  (when (<= k right)
+                    (when (equal? (string-ref s k) c1)
+                      (set! res (+ res 1))
+                      (when (> k left)
+                        (set! res (+ res (vector-ref dp (+ left (* n (- k 1))))))
+                      (set! res (modulo res modulo-const))
+                      (loop (+ k 1)))))
+                (let ([k right])
+                  (when (and (>= k left) (equal? (string-ref s k) c1))
+                  (set! res (+ res 1))
+                  (when (> k left)
+                    (set! res (+ res (vector-ref dp (+ left (* n (- k 1))))))
+                    (set! res (modulo res modulo-const))))
+                (set! res (+ res (vector-ref dp (+ (+ i 1) (* n (- j 1))))))
+                (vector-set! dp (+ i (* j n)) (modulo (+ res 2) modulo-const)))
+              (vector-set! dp (+ i (* j n))
+                           (modulo (- (+ (vector-ref dp (+ (+ i 1) (* j n)))
+                                         (vector-ref dp (+ i (* (- j 1) n)))
+                                       (vector-ref dp (+ (+ i 1) (* (- j 1) n))))
+                                    modulo-const))))))
+    (vector-ref dp (- n 1))))

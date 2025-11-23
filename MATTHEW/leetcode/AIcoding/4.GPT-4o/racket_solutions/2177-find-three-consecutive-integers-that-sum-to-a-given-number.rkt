@@ -1,0 +1,5 @@
+(define (sumOfThree(n))
+  (let* ((sum (/ (- n 3) 3)))
+    (if (and (even? (- n 3)) (>= sum 0))
+        (list sum (add1 sum) (add2 sum))
+        '())))

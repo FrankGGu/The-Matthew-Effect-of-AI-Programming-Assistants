@@ -1,0 +1,20 @@
+(define (longest-consecutive-sequence nums)
+  (define num-set (list->set nums))
+  (define (helper num)
+    (if (set-member? num-set (- num 1))
+        (helper (- num 1))
+        num))
+  (define (get-length n)
+    (if (set-member? num-set n)
+        (+ 1 (get-length (+ n 1)))
+        0))
+  (if (null? nums)
+      0
+      (let loop ([max-length 0]
+                 [nums nums])
+        (if (null? nums)
+            max-length
+            (let ([n (car nums)])
+              (if (not (set-member? num-set (- n 1)))
+                  (loop (max max-length (get-length n)) (cdr nums))
+                  (loop max-length (cdr nums))))))))

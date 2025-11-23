@@ -1,0 +1,10 @@
+(define (largest-combination nums)
+  (let loop ([bits (make-vector 32 0)]
+             [nums nums])
+    (if (null? nums)
+        (apply max (vector->list bits))
+        (let ([n (car nums)])
+          (for ([i (in-range 32)])
+            (when (positive? (bitwise-and n (arithmetic-shift 1 i)))
+              (vector-set! bits i (+ 1 (vector-ref bits i)))))
+          (loop bits (cdr nums))))))

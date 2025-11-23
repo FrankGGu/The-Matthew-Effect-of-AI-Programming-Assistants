@@ -1,0 +1,23 @@
+(define (makesquare matchsticks)
+  (define (can-form-square sides sticks)
+    (if (null? sticks)
+      (= (length sides) 4)
+      (for/or ([stick sticks])
+        (let ([remaining (remove stick sticks)])
+          (for/or ([i (in-range 4)])
+            (when (<= (+ (list-ref sides i) stick) target)
+              (define new-sides (vector-set! sides i (+ (list-ref sides i) stick)))
+              (if (can-form-square new-sides remaining)
+                (begin (vector-set! sides i (- (list-ref sides i) stick))
+                       #t)
+                (begin (vector-set! sides i (- (list-ref sides i) stick))
+                       #f)))))))
+
+  (define total (apply + matchsticks))
+  (define target (/ total 4))
+  (if (not (= (modulo total 4) 0)) 
+      #f 
+      (can-form-square (make-vector 4 0) (sort matchsticks >))))
+
+(define (isMatchsticksToSquare matchsticks)
+  (makesquare matchsticks))

@@ -1,0 +1,11 @@
+(define (maxProfit prices)
+  (define (helper prices profit)
+    (if (null? (cdr prices))
+        profit
+        (let* ((current (car prices))
+               (next (cadr prices))
+               (new-profit (if (> next current)
+                               (+ profit (- next current))
+                               profit)))
+          (helper (cdr prices) new-profit))))
+  (helper prices 0))

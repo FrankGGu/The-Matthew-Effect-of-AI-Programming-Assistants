@@ -1,0 +1,16 @@
+(define (constrained-subsequence-sum nums k)
+  (define n (length nums))
+  (define dp (make-vector n 0))
+  (define deque (make-vector n 0))
+  (define front 0)
+  (define back 0)
+
+  (for ([i (in-range n)])
+    (set! dp[i] (if (zero? i) (vector-ref nums i) (max (vector-ref nums i) (+ (vector-ref nums i) (if (zero? back) 0 (vector-ref deque front))))))
+    (while (and (> back front) (< (- back front) k) (< (vector-ref deque back) (vector-ref dp i)))
+      (set! back (sub1 back)))
+    (vector-set! deque back dp[i])
+    (set! back (add1 back))
+    (if (< back n) (vector-set! deque back 0)))
+
+  (apply max (vector->list dp)))

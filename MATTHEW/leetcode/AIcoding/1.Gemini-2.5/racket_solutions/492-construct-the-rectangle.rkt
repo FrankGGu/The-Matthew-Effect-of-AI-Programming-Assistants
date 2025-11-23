@@ -1,0 +1,6 @@
+(define (construct-rectangle area)
+  (let* ((w-start (floor (sqrt area))))
+    (let loop ((w w-start))
+      (if (zero? (modulo area w))
+          (list (/ area w) w)
+          (loop (- w 1))))))

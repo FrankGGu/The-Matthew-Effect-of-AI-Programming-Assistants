@@ -1,0 +1,17 @@
+#lang racket
+
+(define (length-of-lis nums)
+  (define n (length nums))
+  (define dp (make-vector n 1))
+  (define count (make-vector n 1))
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (< (list-ref nums j) (list-ref nums i))
+        (if (= (+ (vector-ref dp j) 1) (vector-ref dp i))
+            (vector-set! count i (+ (vector-ref count i) (vector-ref count j)))
+            (when (< (vector-ref dp j) (vector-ref dp i))
+              (vector-set! dp i (+ (vector-ref dp j) 1))
+              (vector-set! count i (vector-ref count j))))))
+  (define max-length (apply max (vector->list dp)))
+  (define total (for/sum ([i (in-range n)] #:when (= (vector-ref dp i) max-length)) (vector-ref count i))
+  total)

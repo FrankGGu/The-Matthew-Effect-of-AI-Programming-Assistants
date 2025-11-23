@@ -1,0 +1,16 @@
+(define/contract (min-height-shelves books shelfWidth)
+  (-> (listof (listof exact-integer?)) exact-integer? exact-integer?)
+  (let ([n (length books)])
+    (let ([dp (make-vector (add1 n) +inf.0)])
+      (vector-set! dp 0 0)
+      (for ([i (in-range 1 (add1 n))])
+        (let ([width 0]
+              [height 0]
+              [j i])
+          (while (and (> j 0) (<= (+ width (first (list-ref books (sub1 j)))) shelfWidth)
+            (set! width (+ width (first (list-ref books (sub1 j)))))
+            (set! height (max height (second (list-ref books (sub1 j)))))
+            (vector-set! dp i (min (vector-ref dp i)
+                                   (+ (vector-ref dp (sub1 j)) height)))
+            (set! j (sub1 j)))))
+      (vector-ref dp n)))

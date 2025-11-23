@@ -1,0 +1,16 @@
+func integerReplacement(n int) int {
+    count := 0
+    for n != 1 {
+        if n%2 == 0 {
+            n /= 2
+        } else {
+            if (n+1)%4 == 0 && n != 3 {
+                n++
+            } else {
+                n--
+            }
+        }
+        count++
+    }
+    return count
+}

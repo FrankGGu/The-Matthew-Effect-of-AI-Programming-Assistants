@@ -1,0 +1,8 @@
+(define (k-items-with-maximum-sum numOnes numZeros numNegOnes k)
+  (let* ((ones-to-take (min k numOnes))
+         (sum (+ ones-to-take))
+         (k-remaining (- k ones-to-take))
+         (zeros-to-take (min k-remaining numZeros))
+         (k-remaining-after-zeros (- k-remaining zeros-to-take))
+         (neg-ones-to-take (min k-remaining-after-zeros numNegOnes)))
+    (- sum neg-ones-to-take)))

@@ -1,0 +1,11 @@
+(define/contract (most-frequent nums key)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([counts (make-hash)])
+    (for ([i (in-range (sub1 (length nums)))])
+      (when (= (list-ref nums i) key)
+        (let ([target (list-ref nums (add1 i))])
+          (hash-update! counts target add1 0))))
+    (if (hash-empty? counts)
+        -1
+        (let ([max-count (apply max (hash-values counts))])
+          (car (findf (lambda (x) (= (cdr x) max-count)) (hash->list counts)))))))

@@ -1,0 +1,76 @@
+const MAX_LEVEL = 32;
+const P_FACTOR = 0.25;
+
+class SkiplistNode {
+    constructor(val, maxLevel) {
+        this.val = val;
+        this.forward = new Array(maxLevel).fill(null);
+    }
+}
+
+var Skiplist = function() {
+    this.head = new SkiplistNode(-1, MAX_LEVEL);
+    this.level = 0;
+};
+
+Skiplist.prototype.search = function(target) {
+    let curr = this.head;
+    for (let i = this.level - 1; i >= 0; i--) {
+        while (curr.forward[i] && curr.forward[i].val < target) {
+            curr = curr.forward[i];
+        }
+    }
+    curr = curr.forward[0];
+    return curr !== null && curr.val === target;
+};
+
+Skiplist.prototype.randomLevel = function() {
+    let lv = 1;
+    while (Math.random() < P_FACTOR && lv < MAX_LEVEL) {
+        lv++;
+    }
+    return lv;
+};
+
+Skiplist.prototype.add = function(num) {
+    const update = new Array(MAX_LEVEL).fill(this.head);
+    let curr = this.head;
+    for (let i = this.level - 1; i >= 0; i--) {
+        while (curr.forward[i] && curr.forward[i].val < num) {
+            curr = curr.forward[i];
+        }
+        update[i] = curr;
+    }
+    const lv = this.randomLevel();
+    this.level = Math.max(this.level, lv);
+    const newNode = new SkiplistNode(num, lv);
+    for (let i = 0; i < lv; i++) {
+        newNode.forward[i] = update[i].forward[i];
+        update[i].forward[i] = newNode;
+    }
+};
+
+Skiplist.prototype.erase = function(num) {
+    const update = new Array(MAX_LEVEL).fill(null);
+    let curr = this.head;
+    for (let i = this.level - 1; i >= 0; i--) {
+        while (curr.forward[i] && curr.forward[i].val < num) {
+            curr = curr.forward[i];
+        }
+        update[i] = curr;
+    }
+    curr = curr.forward[0];
+    if (!curr || curr.val !== num) {
+        return false;
+    }
+    for (let i = 0; i < this.level; i++) {
+        if (update[i].forward[i] !== curr) {
+            break;
+        }
+        update[i].forward[i] = curr.forward[i];
+    }
+    while (this.level > 1 && this.head.forward[this.level - 1] === null) {
+        this.level--;
+    }
+    return true;
+};

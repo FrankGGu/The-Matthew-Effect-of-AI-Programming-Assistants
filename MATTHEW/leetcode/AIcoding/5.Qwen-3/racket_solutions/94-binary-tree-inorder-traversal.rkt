@@ -1,0 +1,11 @@
+(define (inorder-traversal root)
+  (define (traverse node result)
+    (if (not node)
+        result
+        (let ((left (car node))
+              (val (cadr node))
+              (right (caddr node)))
+          (traverse left result)
+          (set! result (append result (list val)))
+          (traverse right result))))
+  (traverse root '()))

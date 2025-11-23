@@ -1,0 +1,39 @@
+{
+  "id": "522",
+  "title": "Longest Uncommon Subsequence II",
+  "titleSlug": "longest-uncommon-subsequence-ii",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "String",
+    "Sorting"
+  ],
+  "content": "<p>Given an array of strings <code>strs</code>, return <em>the length of the <strong>longest uncommon subsequence</strong> between them</em>. If the longest uncommon subsequence does not exist, return <code>-1</code>.</p>\n\n<p>An <strong>uncommon subsequence</strong> between an array of strings is a string that is a <strong>subsequence of one string but not the others</strong>.</p>\n\n<p>A <strong>subsequence</strong> of a string <code>s</code> is a string that can be obtained after deleting any number of characters from <code>s</code>.</p>\n\n<ul>\n\t<li>For example, <code>&quot;abc&quot;</code> is a subsequence of <code>&quot;aebdc&quot;</code> because you can delete the underlined characters in <code>&quot;a<u>e</u>b<u>d</u>c&quot;</code> to get <code>&quot;abc&quot;</code>. Other subsequences of <code>&quot;aebdc&quot;</code> include <code>&quot;aebdc&quot;</code>, <code>&quot;aeb&quot;</code>, and <code>&quot;&quot;</code> (empty string).</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> strs = [\"aba\",\"cdc\",\"eae\"]\n<strong>Output:</strong> 3\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> strs = [\"aaa\",\"aaa\",\"aa\"]\n<strong>Output:</strong> -1\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= strs.length &lt;= 50</code></li>\n\t<li><code>1 &lt;= strs[i].length &lt;= 10</code></li>\n\t<li><code>strs[i]</code> consists of lowercase English letters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findLUSlength(vector<string>& strs) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int findLUSlength(String[] strs) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def findLUSlength(self, strs):\n        \"\"\"\n        :type strs: List[str]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def findLUSlength(self, strs: List[str]) -> int:\n        ",
+    "c": "int findLUSlength(char** strs, int strsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int FindLUSlength(string[] strs) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string[]} strs\n * @return {number}\n */\nvar findLUSlength = function(strs) {\n    \n};",
+    "typescript": "function findLUSlength(strs: string[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $strs\n     * @return Integer\n     */\n    function findLUSlength($strs) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func findLUSlength(_ strs: [String]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun findLUSlength(strs: Array<String>): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int findLUSlength(List<String> strs) {\n    \n  }\n}",
+    "golang": "func findLUSlength(strs []string) int {\n    \n}",
+    "ruby": "# @param {String[]} strs\n# @return {Integer}\ndef find_lu_slength(strs)\n    \nend",
+    "scala": "object Solution {\n    def findLUSlength(strs: Array[String]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_lu_slength(strs: Vec<String>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (find-lu-slength strs)\n  (-> (listof string?) exact-integer?)\n  )",
+    "erlang": "-spec find_lu_slength(Strs :: [unicode:unicode_binary()]) -> integer().\nfind_lu_slength(Strs) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_lu_slength(strs :: [String.t]) :: integer\n  def find_lu_slength(strs) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func findLUSlength(strs: Array<String>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[\"aba\",\"cdc\",\"eae\"]\n[\"aaa\",\"aaa\",\"aa\"]",
+  "hints": []
+}

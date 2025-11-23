@@ -1,0 +1,17 @@
+(define (reflectionCount height width)
+  (define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (modulo a b))))
+  (define g (gcd height width))
+  (define h (/ height g))
+  (define w (/ width g))
+  (if (even? h)
+      (if (even? w) 
+          (sub1 (* h w))
+          (* h w))
+      (if (even? w) 
+          (* h w)
+          (sub1 (* h w)))))
+
+(reflectionCount height width)

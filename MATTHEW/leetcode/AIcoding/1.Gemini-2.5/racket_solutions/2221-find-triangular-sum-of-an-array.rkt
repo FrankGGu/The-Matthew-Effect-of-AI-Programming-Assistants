@@ -1,0 +1,8 @@
+(define (triangular-sum nums)
+  (let loop ((current-nums nums))
+    (if (= (length current-nums) 1)
+        (car current-nums)
+        (let ((next-nums (for/list ((a (in-list current-nums))
+                                    (b (in-list (cdr current-nums))))
+                           (modulo (+ a b) 10))))
+          (loop next-nums)))))

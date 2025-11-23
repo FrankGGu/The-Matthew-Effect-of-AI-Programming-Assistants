@@ -1,0 +1,5 @@
+(define (k-items-with-maximum-sum numOnes numZeros numNegOnes k)
+  (let ([total (min numOnes k)])
+    (if (>= k (+ numOnes numZeros))
+        (- total (- k (+ numOnes numZeros)))
+        total)))

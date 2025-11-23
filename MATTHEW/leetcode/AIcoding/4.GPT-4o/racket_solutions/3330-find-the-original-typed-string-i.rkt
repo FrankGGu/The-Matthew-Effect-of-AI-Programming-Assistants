@@ -1,0 +1,10 @@
+(define (finalString s)
+  (define (helper s result)
+    (if (string=? s "")
+        (list->string (reverse result))
+        (let* ((c (string-ref s 0))
+               (rest (substring s 1)))
+          (cond
+            ((char=? c #\#) (if (null? result) rest (helper rest (cdr result))))
+            (else (helper rest (cons c result)))))))
+  (helper s '()))

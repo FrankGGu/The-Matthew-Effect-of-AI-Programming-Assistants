@@ -1,0 +1,13 @@
+(define (countPairs nums k)
+  (define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (mod a b))))
+  (define count 0)
+  (define n (length nums))
+  (for ([i (in-range n)])
+    (for ([j (in-range (add1 i) n)])
+      (when (and (= (list-ref nums i) (list-ref nums j))
+                 (= 0 (mod (gcd i j) k)))
+        (set! count (add1 count)))))
+  count)

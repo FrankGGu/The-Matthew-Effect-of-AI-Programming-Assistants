@@ -1,0 +1,7 @@
+(define (smallest-unoccupied-chair chairs)
+  (define n (length chairs))
+  (define occupied (make-vector n #f))
+  (for-each (lambda (chair) (vector-set! occupied chair #t)) chairs)
+  (for ([i (in-range n)])
+    (if (not (vector-ref occupied i))
+        (return i))))

@@ -1,0 +1,22 @@
+(define (palindrome? s)
+  (define len (string-length s))
+  (define (check l r)
+    (cond
+      ((>= l r) #t)
+      ((char=? (string-ref s l) (string-ref s r)) (check (+ l 1) (- r 1)))
+      (else #f)))
+  (check 0 (- len 1)))
+
+(define (partition s)
+  (define (backtrack start-index)
+    (if (= start-index (string-length s))
+        (list (list))
+        (let loop ((i (+ start-index 1)) (acc (list)))
+          (if (> i (string-length s))
+              acc
+              (let ((prefix (substring s start-index i)))
+                (if (palindrome? prefix)
+                    (let ((sub-partitions (backtrack i)))
+                      (loop (+ i 1) (append acc (map (lambda (p) (cons prefix p)) sub-partitions))))
+                    (loop (+ i 1) acc)))))))
+  (backtrack 0))

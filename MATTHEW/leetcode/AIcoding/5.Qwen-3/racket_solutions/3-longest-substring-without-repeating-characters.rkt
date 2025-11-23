@@ -1,0 +1,10 @@
+(define (length-of-longest-substring s)
+  (define (helper i j seen max-len)
+    (if (>= i (string-length s))
+        max-len
+        (let ((char (string-ref s i)))
+          (if (and (hash-has-key? seen char) (<= (hash-ref seen char) j))
+              (helper (+ i 1) (+ j 1) (hash-set seen char i) max-len)
+              (helper (+ i 1) j (hash-set seen char i) (max max-len (- i j))))))
+  )
+  (helper 0 0 (make-hash) 0))

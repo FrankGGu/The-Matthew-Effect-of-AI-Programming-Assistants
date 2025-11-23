@@ -1,0 +1,26 @@
+(define (robotCollision robots)
+  (define stack '())
+  (for-each (lambda (robot)
+              (cond
+                ((equal? robot 0) (set! stack (cons robot stack)))
+                ((equal? robot 1) (set! stack (cons robot stack)))
+                ((equal? robot -1) 
+                 (let loop ()
+                   (cond
+                     ((null? stack) (set! stack (cons robot stack)))
+                     ((equal? (car stack) 1) (set! stack (cdr stack)))
+                     ((equal? (car stack) -1) (set! stack (cons robot stack)))
+                     (else (set! stack (cdr stack)))
+                     (loop)))))
+                ((equal? robot 2) 
+                 (let loop ()
+                   (cond
+                     ((null? stack) (set! stack (cons robot stack)))
+                     ((equal? (car stack) 1) (set! stack (cdr stack)))
+                     ((equal? (car stack) -1) (set! stack (cons robot stack)))
+                     (else (set! stack (cdr stack)))
+                     (loop)))))))
+            robots)
+  (reverse stack))
+
+(robotCollision '(1 0 -1 2 1 -1))

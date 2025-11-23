@@ -1,0 +1,62 @@
+(define (total-strength strength)
+  (define MOD 1000000007)
+  (define n (vector-length strength))
+
+  (define P (make-vector (+ n 1) 0))
+  (for ([i (in-range n)])
+    (vector-set! P (+ i 1)
+                 (modulo (+ (vector-ref P i) (vector-ref strength i)) MOD)))
+
+  (define P2 (make-vector (+ n 2) 0))
+  (for ([i (in-range (+ n 1))])
+    (vector-set! P2 (+ i 1)
+                 (modulo (+ (vector-ref P2 i) (vector-ref P i)) MOD)))
+
+  (define left-smaller (make-vector n -1))
+  (define stack-left '())
+  (for ([i (in-range n)])
+    (let loop ()
+      (when (and (pair? stack-left)
+                 (>= (vector-ref strength (car stack-left)) (vector-ref strength i)))
+        (set! stack-left (cdr stack-left))
+        (loop)))
+    (when (pair? stack-left)
+      (vector-set! left-smaller i (car stack-left)))
+    (set! stack-left (cons i stack-left)))
+
+  (define right-smaller-equal (make-vector n n))
+  (define stack-right '())
+  (for ([i (in-range (- n 1) -1 -1)])
+    (let loop ()
+      (when (and (pair? stack-right)
+                 (> (vector-ref strength (car stack-right)) (vector-ref strength i)))
+        (set! stack-right (cdr stack-right))
+        (loop)))
+    (when (pair? stack-right)
+      (vector-set! right-smaller-equal i (car stack-right)))
+    (set! stack-right (cons i stack-right)))
+
+  (define total-sum-strength 0)
+  (for ([i (in-range n)])
+    (define l (vector-ref left-smaller i))
+    (define r (vector-ref right-smaller-equal i))
+    (define current-strength (vector-ref strength i))
+
+    (define term1-factor (modulo (- i l) MOD))
+    (define p2-r-plus-1 (vector-ref P2 (+ r 1)))
+    (define p2-i-plus-1 (vector-ref P2 (+ i 1)))
+    (define term1-sum (modulo (- p2-r-plus-1 p2-i-plus-1) MOD))
+    (define term1 (modulo (* term1-factor term1-sum) MOD))
+
+    (define term2-factor (modulo (- r i) MOD))
+    (define p2-l-plus-1 (vector-ref P2 (+ l 1)))
+    (define term2-sum (modulo (- p2-i-plus-1 p2-l-plus-1) MOD))
+    (define term2 (modulo (* term2-factor term2-sum) MOD))
+
+    (define sum-of-sums (modulo (- term1 term2) MOD))
+    (set! total-sum-strength
+          (modulo (+ total-sum-strength
+                     (modulo (* current-strength sum-of-sums) MOD))
+                  MOD)))
+
+  total-sum-strength)

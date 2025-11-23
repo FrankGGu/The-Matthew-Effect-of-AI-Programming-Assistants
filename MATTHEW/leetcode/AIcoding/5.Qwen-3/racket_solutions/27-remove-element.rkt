@@ -1,0 +1,6 @@
+(define (remove-element nums val)
+  (define (helper lst res)
+    (cond ((null? lst) (reverse res))
+          ((equal? (car lst) val) (helper (cdr lst) res))
+          (else (helper (cdr lst) (cons (car lst) res)))))
+  (helper nums '()))

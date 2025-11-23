@@ -1,0 +1,17 @@
+(define (print-binary-tree root)
+  (define (height node)
+    (if (not node)
+        0
+        (+ 1 (max (height (TreeNode-left node)) (height (TreeNode-right node))))))
+  (define (build-tree node h res row col)
+    (when node
+      (set! res (vector-set! res row (vector-set! (vector-ref res row) col (number->string (TreeNode-val node)))))
+      (build-tree (TreeNode-left node) (- h 1) res (+ row 1) (- col (expt 2 (- h 1))))
+      (build-tree (TreeNode-right node) (- h 1) res (+ row 1) (+ col (expt 2 (- h 1))))))
+  (define h (height root))
+  (define rows (expt 2 h))
+  (define cols (expt 2 h) - 1)
+  (define res (make-vector rows (make-vector cols "")))
+  (build-tree root h res 0 (quotient cols 2))
+  (for/list ([r res])
+    (string-join (vector->list r) "")))

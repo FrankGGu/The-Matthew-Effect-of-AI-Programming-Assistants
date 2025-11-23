@@ -1,0 +1,11 @@
+(define (maxNumberOfGroups ls)
+  (define (canForm k)
+    (>= (apply + (map (lambda (x) (if (>= x k) 1 0)) ls)) k))
+  (define (binary-search left right)
+    (if (>= left right)
+        left
+        (let ((mid (quotient (+ left right) 2)))
+          (if (canForm mid)
+              (binary-search mid (+ right 1))
+              (binary-search left mid)))))
+  (binary-search 0 (length ls)))

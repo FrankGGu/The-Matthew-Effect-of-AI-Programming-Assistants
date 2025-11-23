@@ -1,0 +1,17 @@
+#include <vector>
+#include <string>
+#include <algorithm>
+
+class Solution {
+public:
+    std::string kthLargestNumber(std::vector<std::string>& nums, int k) {
+        std::sort(nums.begin(), nums.end(), [](const std::string& a, const std::string& b) {
+            if (a.length() != b.length()) {
+                return a.length() > b.length();
+            }
+            return a > b;
+        });
+
+        return nums[k - 1];
+    }
+};

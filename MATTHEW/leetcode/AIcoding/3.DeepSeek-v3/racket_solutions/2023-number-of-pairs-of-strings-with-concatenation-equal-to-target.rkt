@@ -1,0 +1,12 @@
+(define/contract (num-of-pairs nums target)
+  (-> (listof string?) string? exact-integer?)
+  (let loop ([i 0] [count 0])
+    (if (>= i (length nums))
+        count
+        (let loop2 ([j 0] [count count])
+          (if (>= j (length nums))
+              (loop (add1 i) count)
+              (if (and (not (= i j)) 
+                  (string=? (string-append (list-ref nums i) (list-ref nums j)) target)
+                  (loop2 (add1 j) (add1 count))
+                  (loop2 (add1 j) count)))))))

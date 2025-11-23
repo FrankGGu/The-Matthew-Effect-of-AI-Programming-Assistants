@@ -1,0 +1,12 @@
+(define (max-unique-split s)
+  (define (helper start seen)
+    (if (= start (string-length s))
+        (length seen)
+        (define max-count 0)
+        (for* ([end (in-range start (string-length s))]
+               #:when (not (set-member? seen (substring s start (add1 end)))))
+          (set-add! seen (substring s start (add1 end)))
+          (set! max-count (max max-count (helper (add1 start) seen)))
+          (set-delete! seen (substring s start (add1 end))))
+        max-count))
+  (helper 0 (set)))

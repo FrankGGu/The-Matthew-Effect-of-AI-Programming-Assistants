@@ -1,0 +1,8 @@
+(define (sub-sequence-gcds nums)
+  (define seen (make-hash))
+  (for ([n nums])
+    (for ([g (hash-keys seen)])
+      (let ([new-g (gcd g n)])
+        (hash-set! seen new-g #t)))
+    (hash-set! seen n #t))
+  (hash-count seen))

@@ -1,0 +1,32 @@
+{
+  "id": "LCP 09",
+  "title": "最小跳跃次数",
+  "titleSlug": "zui-xiao-tiao-yue-ci-shu",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Breadth-First Search",
+    "Segment Tree",
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minJump(vector<int>& jump) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minJump(int[] jump) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minJump(self, jump):\n        \"\"\"\n        :type jump: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minJump(self, jump: List[int]) -> int:",
+    "c": "\n\nint minJump(int* jump, int jumpSize){\n\n}\n",
+    "csharp": "public class Solution {\n    public int MinJump(int[] jump) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} jump\n * @return {number}\n */\nvar minJump = function(jump) {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $jump\n     * @return Integer\n     */\n    function minJump($jump) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minJump(_ jump: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minJump(jump: IntArray): Int {\n\n    }\n}",
+    "golang": "func minJump(jump []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} jump\n# @return {Integer}\ndef min_jump(jump)\n\nend",
+    "scala": "object Solution {\n    def minJump(jump: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_jump(jump: Vec<i32>) -> i32 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,5,1,1,1,1]",
+  "hints": []
+}

@@ -1,0 +1,33 @@
+#lang racket
+
+(struct H2O (h-slots o-slots h-rendezvous o-rendezvous barrier-mutex (barrier-count #:mutable))
+  #:methods
+  [
+   (define (releaseHydrogen self release-H)
+     (semaphore-wait (H2O-h-slots self))
+     (mutex-acquire (H2O-barrier-mutex self))
+     (set-H2O-barrier-count! self (+ (H2O-barrier-count self) 1))
+     (when (= (H2O-barrier-count self) 3)
+       (semaphore-post (H2O-o-rendezvous self))
+       (semaphore-post (H2O-h-rendezvous self))
+       (semaphore-post (H2O-h-rendezvous self))
+       (set-H2O-barrier-count! self 0))
+     (mutex-release (H2O-barrier-mutex self))
+     (semaphore-wait (H2O-h-rendezvous self))
+     (release-H)
+     (semaphore-post (H2O-h-slots self)))
+
+   (define (releaseOxygen self release-O)
+     (semaphore-wait (H2O-o-slots self))
+     (mutex-acquire (H2O-barrier-mutex self))
+     (set-H2O-barrier-count! self (+ (H2O-barrier-count self) 1))
+     (when (= (H2O-barrier-count self) 3)
+       (semaphore-post (H2O-o-rendezvous self))
+       (semaphore-post (H2O-h-rendezvous self))
+       (semaphore-post (H2O-h-rendezvous self))
+       (set-H2O-barrier-count! self 0))
+     (mutex-release (H2O-barrier-mutex self))
+     (semaphore-wait (H2O-o-rendezvous self))
+     (release-O)
+     (semaphore-post (H2O-o-slots self)))
+   ])

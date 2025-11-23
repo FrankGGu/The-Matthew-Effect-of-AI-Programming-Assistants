@@ -1,0 +1,12 @@
+(define (largest-values tree)
+  (define (helper tree level acc)
+    (if (null? tree)
+        acc
+        (let* ((val (car tree))
+               (left (cadr tree))
+               (right (caddr tree)))
+          (if (< (length acc) (add1 level))
+              (helper right level (helper left (add1 level) (append acc (list val))))
+              (let ((current-max (list-ref acc level)))
+                (helper right level (helper left (add1 level) (list-set acc level (max current-max val)))))))))
+  (helper tree 0 '()))

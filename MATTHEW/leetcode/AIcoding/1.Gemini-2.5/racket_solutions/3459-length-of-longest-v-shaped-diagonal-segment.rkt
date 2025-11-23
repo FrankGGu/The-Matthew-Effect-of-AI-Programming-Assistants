@@ -1,0 +1,47 @@
+(define (get-x p) (car p))
+(define (get-y p) (cadr p))
+
+(define (segment-length p1 p2)
+  (abs (- (get-x p1) (get-x p2))))
+
+(define (is-diagonal p1 p2)
+  (let* ((dx (abs (- (get-x p1) (get-x p2))))
+         (dy (abs (- (get-y p1) (get-y p2)))))
+    (and (> dx 0) (= dx dy))))
+
+(define (sign n)
+  (cond
+    ((> n 0) 1)
+    ((< n 0) -1)
+    (else 0)))
+
+(define (longest-v-shaped-diagonal-segment points)
+  (let* ((n (length points))
+         (max-len 0)
+         (points-vec (list->vector points)))
+    (unless (< n 3)
+      (for ([i (in-range n)])
+        (let ((p1 (vector-ref points-vec i)))
+          (for ([j (in-range n)])
+            (when (not (= i j))
+              (let ((p2 (vector-ref points-vec j)))
+                (when (is-diagonal p1 p2)
+                  (for ([k (in-range n)])
+                    (when (and (not (= k j)) (not (= k i)))
+                      (let ((p3 (vector-ref points-vec k)))
+                        (when (is-diagonal p2 p3)
+                          (let* ((x1 (get-x p1)) (y1 (get-y p1))
+                                 (x2 (get-x p2)) (y2 (get-y p2))
+                                 (x3 (get-x p3)) (y3 (get-y p3))
+                                 (dx1 (- x1 x2))
+                                 (dy1 (- y1 y2))
+                                 (dx2 (- x2 x3))
+                                 (dy2 (- y2 y3)))
+                            (let ((slope1-is-pos-diag? (= (sign dx1) (sign dy1)))
+                                  (slope2-is-pos-diag? (= (sign dx2) (sign dy2))))
+                              ;; For a V-shape, the two diagonal segments must have different slopes.
+                              ;; A diagonal segment has slope +1 if dx and dy have the same sign.
+                              ;; A diagonal segment has slope -1 if dx and dy have different signs.
+                              (when (not (= slope1-is-pos-diag? slope2-is-pos-diag?))
+                                (set! max-len (max max-len (+ (segment-length p1 p2) (segment-length p2 p3)))))))))))))))))
+    max-len))

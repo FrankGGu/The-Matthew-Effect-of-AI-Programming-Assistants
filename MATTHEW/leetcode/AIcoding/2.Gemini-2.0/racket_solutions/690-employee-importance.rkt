@@ -1,0 +1,13 @@
+(define (get-importance employees id)
+  (letrec ((emp-map (make-hash))
+           (build-map (lambda (emps)
+                       (for ([emp (in-list emps)])
+                         (hash-set! emp-map (employee-id emp) emp))))
+           (dfs (lambda (eid)
+                  (let ((emp (hash-ref emp-map eid #f)))
+                    (if emp
+                        (+ (employee-importance emp)
+                           (apply + (map dfs (employee-subordinates emp))))
+                        0)))))
+    (build-map employees)
+    (dfs id)))

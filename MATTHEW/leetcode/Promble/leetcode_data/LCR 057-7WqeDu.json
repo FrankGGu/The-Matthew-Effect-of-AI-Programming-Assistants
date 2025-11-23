@@ -1,0 +1,37 @@
+{
+  "id": "LCR 057",
+  "title": "存在重复元素 III",
+  "titleSlug": "7WqeDu",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Bucket Sort",
+    "Ordered Set",
+    "Sorting",
+    "Sliding Window"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def containsNearbyAlmostDuplicate(self, nums, k, t):\n        \"\"\"\n        :type nums: List[int]\n        :type k: int\n        :type t: int\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -> bool:",
+    "c": "\n\nbool containsNearbyAlmostDuplicate(int* nums, int numsSize, int k, int t){\n\n}",
+    "csharp": "public class Solution {\n    public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @param {number} k\n * @param {number} t\n * @return {boolean}\n */\nvar containsNearbyAlmostDuplicate = function(nums, k, t) {\n\n};",
+    "typescript": "function containsNearbyAlmostDuplicate(nums: number[], k: number, t: number): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @param Integer $k\n     * @param Integer $t\n     * @return Boolean\n     */\n    function containsNearbyAlmostDuplicate($nums, $k, $t) {\n\n    }\n}",
+    "swift": "class Solution {\n    func containsNearbyAlmostDuplicate(_ nums: [Int], _ k: Int, _ t: Int) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun containsNearbyAlmostDuplicate(nums: IntArray, k: Int, t: Int): Boolean {\n\n    }\n}",
+    "golang": "func containsNearbyAlmostDuplicate(nums []int, k int, t int) bool {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @param {Integer} k\n# @param {Integer} t\n# @return {Boolean}\ndef contains_nearby_almost_duplicate(nums, k, t)\n\nend",
+    "scala": "object Solution {\n    def containsNearbyAlmostDuplicate(nums: Array[Int], k: Int, t: Int): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn contains_nearby_almost_duplicate(nums: Vec<i32>, k: i32, t: i32) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (contains-nearby-almost-duplicate nums k t)\n  (-> (listof exact-integer?) exact-integer? exact-integer? boolean?)\n\n  )",
+    "erlang": "-spec contains_nearby_almost_duplicate(Nums :: [integer()], K :: integer(), T :: integer()) -> boolean().\ncontains_nearby_almost_duplicate(Nums, K, T) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec contains_nearby_almost_duplicate(nums :: [integer], k :: integer, t :: integer) :: boolean\n  def contains_nearby_almost_duplicate(nums, k, t) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[1,2,3,1]\n3\n0\n[1,0,1,1]\n1\n2",
+  "hints": []
+}

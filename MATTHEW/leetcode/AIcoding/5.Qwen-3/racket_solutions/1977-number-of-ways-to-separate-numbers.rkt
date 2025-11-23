@@ -1,0 +1,18 @@
+#lang racket
+
+(define (number-of-ways s)
+  (define MOD 1000000007)
+  (define len (string-length s))
+  (define dp (make-vector len 0))
+  (vector-set! dp 0 1)
+  (define pow10 (make-vector len 1))
+  (for ([i (in-range 1 len)])
+    (vector-set! pow10 i (* (vector-ref pow10 (- i 1)) 10)))
+  (for ([i (in-range 1 len)])
+    (when (not (= (string-ref s (- i 1)) #\0))
+      (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i 1))) MOD)))
+    (for ([j (in-range 1 i)])
+      (when (and (not (= (string-ref s (- i j)) #\0))
+                 (<= (string->number (substring s (- i j) i)) 1000000000))
+        (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i j))) MOD)))))
+  (vector-ref dp (- len 1)))

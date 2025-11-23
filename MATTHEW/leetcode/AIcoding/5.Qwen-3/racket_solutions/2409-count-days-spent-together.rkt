@@ -1,0 +1,21 @@
+(define (count-days-spend-together arrive1 leave1 arrive2 leave2)
+  (define (date->days date)
+    (let* ([year (string->number (substring date 0 4))]
+           [month (string->number (substring date 5 7))]
+           [day (string->number (substring date 8 10))]
+           [days 0])
+      (when (> month 1) (set! days (+ days 31)))
+      (when (> month 2) (set! days (+ days 28)))
+      (when (> month 3) (set! days (+ days 31)))
+      (when (> month 4) (set! days (+ days 30)))
+      (when (> month 5) (set! days (+ days 31)))
+      (when (> month 6) (set! days (+ days 30)))
+      (when (> month 7) (set! days (+ days 31)))
+      (when (> month 8) (set! days (+ days 31)))
+      (when (> month 9) (set! days (+ days 30)))
+      (when (> month 10) (set! days (+ days 31)))
+      (when (> month 11) (set! days (+ days 30)))
+      (+ days day)))
+  (define start (max (date->days arrive1) (date->days arrive2)))
+  (define end (min (date->days leave1) (date->days leave2)))
+  (if (<= start end) (- end start 1) 0))

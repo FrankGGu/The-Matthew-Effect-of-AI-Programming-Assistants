@@ -1,0 +1,36 @@
+{
+  "id": "LCR 177",
+  "title": "撞色搭配",
+  "titleSlug": "shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> sockCollocation(vector<int>& sockets) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] sockCollocation(int[] sockets) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def sockCollocation(self, sockets):\n        \"\"\"\n        :type sockets: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def sockCollocation(self, sockets: List[int]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* sockCollocation(int* sockets, int socketsSize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] SockCollocation(int[] sockets) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} sockets\n * @return {number[]}\n */\nvar sockCollocation = function(sockets) {\n    \n};",
+    "typescript": "function sockCollocation(sockets: number[]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $sockets\n     * @return Integer[]\n     */\n    function sockCollocation($sockets) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func sockCollocation(_ sockets: [Int]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun sockCollocation(sockets: IntArray): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> sockCollocation(List<int> sockets) {\n    \n  }\n}",
+    "golang": "func sockCollocation(sockets []int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} sockets\n# @return {Integer[]}\ndef sock_collocation(sockets)\n    \nend",
+    "scala": "object Solution {\n    def sockCollocation(sockets: Array[Int]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn sock_collocation(sockets: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (sock-collocation sockets)\n  (-> (listof exact-integer?) (listof exact-integer?))\n  )",
+    "erlang": "-spec sock_collocation(Sockets :: [integer()]) -> [integer()].\nsock_collocation(Sockets) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec sock_collocation(sockets :: [integer]) :: [integer]\n  def sock_collocation(sockets) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func sockCollocation(sockets: Array<Int64>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[4,5,2,4,6,6]\n[1,2,4,1,4,3,12,3]",
+  "hints": []
+}

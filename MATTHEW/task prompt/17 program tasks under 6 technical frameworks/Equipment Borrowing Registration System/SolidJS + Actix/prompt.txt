@@ -1,0 +1,25 @@
+Develop an Equipment Borrowing Registration System using the emerging technologies: SolidJS for the frontend and Actix Web with SeaORM for the backend. Use PostgreSQL with this connection: postgresql://postgres:equipment_pass@localhost:5432/equipment_db
+
+Database schema:
+- equipment (id, name, model, serial_number, status, purchase_date, created_at, updated_at)
+- borrowers (id, name, email, department, created_at)
+- borrowing_records (id, equipment_id, borrower_id, borrow_date, expected_return_date, actual_return_date, status, notes, created_at)
+
+Frontend requirements (SolidJS):
+1. High-performance equipment management interface
+2. Reactive borrower management
+3. Efficient borrow/return workflow
+4. Dashboard with real-time updates
+
+Backend requirements (Actix Web + SeaORM):
+1. Create high-performance REST API using Actix Web
+2. Use SeaORM for database operations with entity definitions
+3. Implement proper error handling and validation
+4. Add automated status updates for overdue items
+
+Include:
+- Modern, efficient UI with SolidJS fine-grained reactivity
+- High-performance backend with Actix Web
+- Proper error handling and validation
+- Instructions for setup and running the application
+- Note any emerging technology challenges and their solutions

@@ -1,0 +1,15 @@
+(define (get-remaining-lengths n)
+  (let loop ((i 0) (res '()))
+    (if (>= i n)
+        res
+        (loop (+ i 1) (cons (- 26 i) res)))))
+
+(define (get-smallest-string n k)
+  (let* ((remaining (get-remaining-lengths n))
+         (result (make-vector n #\a)))
+    (let loop ((i 0) (k k))
+      (when (< i n)
+        (let ((max-char (min (- 26 i) k)))
+          (vector-set! result i (integer->char (+ 97 max-char)))
+          (loop (+ i 1) (- k max-char)))))
+    (list->string (vector->list result))) )

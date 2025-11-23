@@ -1,0 +1,7 @@
+(define/contract (square-is-white coordinates)
+  (-> string? boolean?)
+  (let* ((x (char->integer (string-ref coordinates 0)))
+         (y (char->integer (string-ref coordinates 1)))
+         (x-pos (- x (char->integer #\a)))
+         (y-pos (- y (char->integer #\1))))
+    (not (even? (+ x-pos y-pos)))))

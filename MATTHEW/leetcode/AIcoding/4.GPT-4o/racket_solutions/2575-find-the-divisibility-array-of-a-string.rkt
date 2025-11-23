@@ -1,0 +1,16 @@
+(define (divisibility-array word m)
+  (define len (string-length word))
+  (define (divisible? n)
+    (if (zero? n) 
+        #f 
+        (= (modulo n m) 0)))
+  (define (helper i n result)
+    (if (>= i len)
+        (reverse result)
+        (let* ((digit (string->number (string-ref word i)))
+               (new-n (+ n digit)))
+          (helper (+ i 1) new-n (cons (if (divisible? new-n) 1 0) result)))))
+  (helper 0 0 '()))
+
+(define (divisibilityArray word m)
+  (divisibility-array word m))

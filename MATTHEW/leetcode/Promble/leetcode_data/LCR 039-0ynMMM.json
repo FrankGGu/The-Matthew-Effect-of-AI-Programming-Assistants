@@ -1,0 +1,35 @@
+{
+  "id": "LCR 039",
+  "title": "柱状图中最大的矩形",
+  "titleSlug": "0ynMMM",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Stack",
+    "Array",
+    "Monotonic Stack"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int largestRectangleArea(vector<int>& heights) {\n\n    }\n};",
+    "java": "class Solution {\n    public int largestRectangleArea(int[] heights) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def largestRectangleArea(self, heights):\n        \"\"\"\n        :type heights: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def largestRectangleArea(self, heights: List[int]) -> int:",
+    "c": "\n\nint largestRectangleArea(int* heights, int heightsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int LargestRectangleArea(int[] heights) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} heights\n * @return {number}\n */\nvar largestRectangleArea = function(heights) {\n\n};",
+    "typescript": "function largestRectangleArea(heights: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $heights\n     * @return Integer\n     */\n    function largestRectangleArea($heights) {\n\n    }\n}",
+    "swift": "class Solution {\n    func largestRectangleArea(_ heights: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun largestRectangleArea(heights: IntArray): Int {\n\n    }\n}",
+    "golang": "func largestRectangleArea(heights []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} heights\n# @return {Integer}\ndef largest_rectangle_area(heights)\n\nend",
+    "scala": "object Solution {\n    def largestRectangleArea(heights: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (largest-rectangle-area heights)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec largest_rectangle_area(Heights :: [integer()]) -> integer().\nlargest_rectangle_area(Heights) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec largest_rectangle_area(heights :: [integer]) :: integer\n  def largest_rectangle_area(heights) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[2,1,5,6,2,3]",
+  "hints": []
+}

@@ -1,0 +1,16 @@
+(define/contract (num-decodings s)
+  (-> string? exact-integer?)
+  (let ([n (string-length s)])
+    (if (zero? n)
+        0
+        (let ([dp (make-vector (add1 n) 0)])
+          (vector-set! dp 0 1)
+          (vector-set! dp 1 (if (equal? (string-ref s 0) #\0) 0 1))
+          (for ([i (in-range 2 (add1 n))])
+            (let ([one-digit (string->number (substring s (sub1 i) i))]
+                  [two-digits (string->number (substring s (- i 2) i))])
+              (if (>= one-digit 1)
+                  (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (sub1 i))))
+              (if (and (>= two-digits 10) (<= two-digits 26))
+                  (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i 2))))))
+          (vector-ref dp n)))))

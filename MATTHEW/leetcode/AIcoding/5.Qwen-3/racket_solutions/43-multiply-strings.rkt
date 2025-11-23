@@ -1,0 +1,30 @@
+#lang racket
+
+(define (multiply num1 num2)
+  (if (or (equal? num1 "0") (equal? num2 "0"))
+      "0"
+      (let* ((len1 (string-length num1))
+             (len2 (string-length num2))
+             (result (make-vector (+ len1 len2) 0)))
+        (for ([i (in-range len1)]
+              [j (in-range len2)])
+          (let* ((digit1 (- (char->integer (string-ref num1 (- len1 1 i))) 48))
+                 (digit2 (- (char->integer (string-ref num2 (- len2 1 j))) 48))
+                 (pos (+ i j)))
+            (vector-set! result pos (+ (vector-ref result pos) (* digit1 digit2)))))
+        (let loop ([i (- (+ len1 len2) 1)] [carry 0])
+          (if (< i 0)
+              (if (> carry 0)
+                  (number->string carry)
+                  "")
+              (let* ((sum (+ (vector-ref result i) carry))
+                     (digit (modulo sum 10))
+                     (new-carry (quotient sum 10)))
+                (vector-set! result i digit)
+                (string-append (loop (- i 1) new-carry) (number->string digit)))))
+        (let ([start (index-of result 0)])
+          (if (and start (= start 0))
+              (number->string (vector-ref result 0))
+              (let ([s (apply string (map (lambda (x) (number->string x)) (vector->list result)))]
+                    [start (index-of result 0)])
+                (substring s start (string-length s))))))))

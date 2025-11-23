@@ -1,0 +1,46 @@
+Build a modern inventory management system using:
+- Frontend: React 18 with TypeScript and React Router
+- Backend: Express.js with TypeScript
+- ORM: Prisma with PostgreSQL
+- Build tool: Vite for frontend
+
+**Database Connection:**
+- DATABASE_URL="postgresql://admin:admin123@localhost:5432/inventory_db"
+
+**Required Features:**
+1. Product CRUD operations with modal forms
+2. Real-time inventory updates
+3. Transaction history with date filters
+4. Low stock alerts dashboard
+5. Responsive design with modern UI
+
+**Technical Requirements:**
+Frontend:
+- React functional components with hooks
+- TypeScript interfaces for all entities
+- TanStack Query for server state management
+- Context API or Zustand for global state
+- Component library: Material-UI or Chakra UI
+
+Backend:
+- Express.js with TypeScript
+- Prisma for database operations
+- Zod for request validation
+- JWT authentication with refresh tokens
+- Proper error handling middleware
+
+**Code Structure:**
+- src/
+  - components/ (ProductForm, InventoryTable, TransactionList)
+  - hooks/ (custom hooks for API calls)
+  - types/ (TypeScript interfaces)
+  - utils/ (helpers and constants)
+- prisma/schema.prisma (with all models)
+- API routes with RESTful design
+
+**Deliverables:**
+- Complete React + TypeScript application
+- Express.js server with TypeScript
+- Prisma schema and migrations
+- Environment configuration
+- Build and run scripts

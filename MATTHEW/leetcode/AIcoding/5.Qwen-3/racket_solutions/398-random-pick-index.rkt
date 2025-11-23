@@ -1,0 +1,15 @@
+(define (make-rand-index nums)
+  (let ((n (length nums))
+        (index -1)
+        (count 0))
+    (lambda ()
+      (set! index (random n))
+      (set! count (+ count 1))
+      index)))
+
+(define (main)
+  (let* ((nums (list 1 2 3 3 2 3))
+         (rand (make-rand-index nums)))
+    (for-each (lambda (i) (display (rand)) (newline)) (range 10))))
+
+(main)

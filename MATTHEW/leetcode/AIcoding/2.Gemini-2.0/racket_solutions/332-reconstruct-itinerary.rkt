@@ -1,0 +1,18 @@
+(define (find-itinerary tickets)
+  (define adj (make-hash))
+  (for ([ticket tickets])
+    (let ([from (car ticket)] [to (cadr ticket)])
+      (hash-update adj from (lambda (v) (cons to v)) '())))
+  (hash-for-each adj (lambda (k v) (hash-set! adj k (sort v string<?))))
+
+  (define itinerary '())
+  (define (dfs airport)
+    (let ([destinations (hash-ref adj airport '())])
+      (when (not (null? destinations))
+        (let ([next (car destinations)])
+          (hash-set! adj airport (cdr destinations))
+          (dfs next))))
+    (set! itinerary (cons airport itinerary)))
+
+  (dfs "JFK")
+  itinerary)

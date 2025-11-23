@@ -1,0 +1,41 @@
+Build a personal accounting application with the following tech stack:
+
+**Technology Stack:**
+- Frontend: React 18 with hooks
+- Backend: Express.js
+- ORM: Prisma
+- Database: PostgreSQL (Dockerized)
+
+**Database:**
+Use the existing PostgreSQL database with tables:
+- transactions (id, amount, type, category, description, transaction_date, created_at)
+- categories (id, name, type)
+
+**Required Features:**
+1. Add income/expense transactions with form validation
+2. View transactions with month/year filter
+3. Display monthly summary with income/expense comparison
+4. Show category-based spending analysis
+
+**API Routes:**
+- GET /api/transactions?month=2025-08
+- POST /api/transactions
+- GET /api/summary?month=2025-08
+- GET /api/categories
+
+**Frontend Structure:**
+- Components: TransactionForm, TransactionList, SummaryDashboard, CategoryChart
+- Use React Router for navigation
+- Use React Query for data fetching
+- Implement responsive design with Tailwind CSS
+
+**Backend Requirements:**
+- Use Express.js with proper middleware setup
+- Implement Prisma for database operations
+- Add input validation and error handling
+- Include CORS configuration
+
+**Database Connection:**
+- DATABASE_URL="postgresql://postgres:financepass@localhost:5432/personal_finance"
+
+Generate the complete application with all necessary files and configurations.

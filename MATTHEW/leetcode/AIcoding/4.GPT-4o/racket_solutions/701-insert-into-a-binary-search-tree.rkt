@@ -1,0 +1,8 @@
+(define (insert-into-bst root val)
+  (if (null? root)
+      (list val)
+      (if (< val (car root))
+          (cons (car root) (insert-into-bst (cadr root) val))
+          (cons (car root) (if (null? (cadr root))
+                              (list (insert-into-bst '() val))
+                              (cons (cadr root) (insert-into-bst (caddr root) val)))))))

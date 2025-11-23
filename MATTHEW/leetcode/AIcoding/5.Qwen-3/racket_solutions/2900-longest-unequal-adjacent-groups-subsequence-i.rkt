@@ -1,0 +1,20 @@
+(define (longest-zero-subsequence s)
+  (define (helper i prev count max-count)
+    (if (= i (string-length s))
+        max-count
+        (let ((current (string-ref s i)))
+          (if (not (equal? current prev))
+              (helper (+ i 1) current (+ count 1) (max max-count (+ count 1)))
+              (helper (+ i 1) current 0 max-count)))))
+  (helper 0 #\0 0 0))
+
+(define (longest-unequal-adjacent-groups-subsequence i s)
+  (if (= i (string-length s))
+      '()
+      (let ((current (string-ref s i)))
+        (if (or (= i 0) (not (equal? current (string-ref s (- i 1)))))
+            (cons current (longest-unequal-adjacent-groups-subsequence (+ i 1) s))
+            (longest-unequal-adjacent-groups-subsequence (+ i 1) s)))))
+
+(define (main s)
+  (list->string (longest-unequal-adjacent-groups-subsequence 0 s)))

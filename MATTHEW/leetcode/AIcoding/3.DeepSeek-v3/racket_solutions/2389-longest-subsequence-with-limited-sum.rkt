@@ -1,0 +1,16 @@
+(define/contract (answer-queries nums queries)
+  (-> (listof exact-integer?) (listof exact-integer?) (listof exact-integer?))
+  (let* ([sorted-nums (sort nums <)]
+         [prefix (for/list ([i (in-range (length sorted-nums))])
+                   (if (zero? i)
+                       (list-ref sorted-nums i)
+                       (+ (list-ref prefix (sub1 i)) (list-ref sorted-nums i))))])
+    (for/list ([q (in-list queries)])
+      (let loop ([low 0]
+                 [high (sub1 (length prefix))])
+        (if (> low high)
+            (add1 high)
+            (let ([mid (quotient (+ low high) 2)])
+              (if (<= (list-ref prefix mid) q)
+                  (loop (add1 mid) high)
+                  (loop low (sub1 mid))))))))

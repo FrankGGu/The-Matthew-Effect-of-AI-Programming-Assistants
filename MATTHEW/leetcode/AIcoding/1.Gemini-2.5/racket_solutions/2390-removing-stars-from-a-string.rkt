@@ -1,0 +1,13 @@
+(define (remove-stars s)
+  (let loop ((chars (string->list s))
+             (stack '()))
+    (if (empty? chars)
+        (list->string (reverse stack))
+        (let ((current-char (car chars)))
+          (if (char=? current-char #\*)
+              (loop (cdr chars)
+                    (if (empty? stack)
+                        stack
+                        (cdr stack)))
+              (loop (cdr chars)
+                    (cons current-char stack)))))))

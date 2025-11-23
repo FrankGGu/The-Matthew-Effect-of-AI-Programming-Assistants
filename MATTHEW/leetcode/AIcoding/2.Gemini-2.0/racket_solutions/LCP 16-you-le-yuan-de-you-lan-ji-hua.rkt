@@ -1,0 +1,13 @@
+(define (max-attractions attractions max-time)
+  (define n (length attractions))
+  (define dp (make-vector (+ n 1) 0))
+  (for ([i (in-range 1 (+ n 1))])
+    (define attraction (list-ref attractions (- i 1)))
+    (define time (car attraction))
+    (define enjoyment (cdr attraction))
+    (for ([j (in-range max-time time -1)])
+      (vector-set! dp j (max (vector-ref dp j) (+ enjoyment (vector-ref dp (- j time)))))))
+  (apply max (vector->list dp)))
+
+(define (solve attractions max-time)
+  (max-attractions attractions max-time))

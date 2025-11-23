@@ -1,0 +1,12 @@
+(define/contract (defend-the-city walls attacks)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)) exact-integer?)
+  (let ([wall-map (make-hash)])
+    (for ([wall walls])
+      (hash-set! wall-map (car wall) (cadr wall)))
+    (for ([attack attacks])
+      (let ([wall-id (car attack)]
+            [damage (cadr attack)])
+        (hash-update! wall-map wall-id (lambda (x) (- x damage)) 0)))
+    (let ([min-health +inf.0])
+      (hash-for-each wall-map (lambda (k v) (when (< v min-health) (set! min-health v))))
+    (if (<= min-health 0) (abs (min 0 min-health)) 0)))

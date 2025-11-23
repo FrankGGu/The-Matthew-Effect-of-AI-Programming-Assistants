@@ -1,0 +1,8 @@
+(define (sortArrayByParity A)
+  (define evens '())
+  (define odds '())
+  (for ([x A])
+    (if (even? x)
+        (set! evens (cons x evens))
+        (set! odds (cons x odds))))
+  (append (reverse evens) (reverse odds)))

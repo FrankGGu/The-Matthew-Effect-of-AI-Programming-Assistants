@@ -1,0 +1,11 @@
+(define (num-rabbits xs)
+  (let ([count (make-hash)])
+    (for-each
+     (lambda (x)
+       (hash-set! count x (+ 1 (hash-ref count x 0))))
+     xs)
+    (for/sum ([k (in-hash-keys count)])
+      (let ([c (hash-ref count k)])
+        (if (= 0 (modulo c k))
+            (/ c k)
+            (+ 1 (quotient c k)))))))

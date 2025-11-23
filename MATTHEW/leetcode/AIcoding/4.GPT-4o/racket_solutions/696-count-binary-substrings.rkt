@@ -1,0 +1,22 @@
+(define (count-binary-substrings s)
+  (define (count-groups lst)
+    (define counts '())
+    (define (helper sub count)
+      (if (null? sub)
+          (if (> count 0) (cons count counts) counts)
+          (if (null? (cdr sub))
+              (if (> count 0) (cons (add1 count) counts) counts)
+              (if (equal? (car sub) (cadr sub))
+                  (helper (cdr sub) (add1 count))
+                  (helper (cdr sub) 1)))))
+    (reverse (helper (string->list s) 0)))
+
+  (define group-counts (count-groups s))
+  (define (count-pairs lst)
+    (if (< (length lst) 2) 0
+        (foldl (lambda (x acc)
+                  (+ acc (min x (car acc))))
+                0 (cdr lst)))
+  (count-pairs (map (lambda (x) (if (list? x) (car x) x)) group-counts)))
+
+(count-binary-substrings "00110011")

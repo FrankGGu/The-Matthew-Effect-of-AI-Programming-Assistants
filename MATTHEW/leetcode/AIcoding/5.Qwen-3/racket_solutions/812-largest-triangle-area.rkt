@@ -1,0 +1,13 @@
+(define (largest-triangle-area points)
+  (define (area p1 p2 p3)
+    (abs (+ (* (car p1) (cadr p2)) (* (car p2) (cadr p3)) (* (car p3) (cadr p1)))
+         (- (* (car p1) (cadr p3)) (* (car p2) (cadr p1)) (* (car p3) (cadr p2))))))
+  (define (max-area lst)
+    (if (null? lst)
+        0
+        (let ((p1 (car lst))
+              (p2 (cadr lst))
+              (p3 (caddr lst)))
+          (max (area p1 p2 p3)
+               (max-area (cdr lst)))))
+  (max-area points))

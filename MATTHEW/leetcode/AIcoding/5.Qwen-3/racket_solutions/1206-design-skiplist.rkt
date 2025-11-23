@@ -1,0 +1,73 @@
+#lang racket
+
+(define-struct node (value forward))
+
+(define (make-skiplist)
+  (let ((head (make-node #f (make-vector 16 #f))))
+    (lambda (msg . args)
+      (cond ((eq? msg 'search) (λ (x) (search head x)))
+            ((eq? msg 'add) (λ (x) (add head x)))
+            ((eq? msg 'erase) (λ (x) (erase head x)))))))
+
+(define (random-level)
+  (let loop ((level 1))
+    (if (and (< (random 100) 50) (< level 16))
+        (loop (+ level 1))
+        level)))
+
+(define (search head x)
+  (let loop ((current (node-forward (car head))) (level (- (vector-length (node-forward head)) 1)))
+    (cond ((= level -1) #f)
+          ((and (not (null? current)) (<= (node-value current) x))
+           (if (= (node-value current) x)
+               #t
+               (loop (node-forward current) level)))
+          (else
+           (loop (node-forward (vector-ref (node-forward head) level)) (- level 1))))))
+
+(define (add head x)
+  (let* ((update (make-vector 16 #f))
+         (current (node-forward (car head)))
+         (level (random-level)))
+    (let loop ((current (node-forward (car head))) (level (- (vector-length (node-forward head)) 1)))
+      (cond ((= level -1) #f)
+            ((and (not (null? current)) (<= (node-value current) x))
+             (set-vector! update level current)
+             (loop (node-forward current) level))
+            (else
+             (loop (node-forward (vector-ref (node-forward head) level)) (- level 1)))))
+    (let ((new-node (make-node x (make-vector level #f))))
+      (let loop ((i 0) (current (vector-ref (node-forward head) 0)))
+        (when (< i level)
+          (vector-set! (node-forward new-node) i (vector-ref (node-forward head) i))
+          (vector-set! (node-forward head) i new-node)
+          (loop (+ i 1) (vector-ref (node-forward head) i)))))))
+
+(define (erase head x)
+  (let* ((update (make-vector 16 #f))
+         (current (node-forward (car head)))
+         (level (- (vector-length (node-forward head)) 1)))
+    (let loop ((current (node-forward (car head))) (level (- (vector-length (node-forward head)) 1)))
+      (cond ((= level -1) #f)
+            ((and (not (null? current)) (<= (node-value current) x))
+             (set-vector! update level current)
+             (loop (node-forward current) level))
+            (else
+             (loop (node-forward (vector-ref (node-forward head) level)) (- level 1)))))
+    (let loop ((i 0) (current (vector-ref (node-forward head) 0)))
+      (when (< i (vector-length (node-forward head)))
+        (if (and (not (null? current)) (= (node-value current) x))
+            (vector-set! (node-forward head) i (vector-ref (node-forward current) i))
+            (loop (+ i 1) (vector-ref (node-forward head) i)))))))
+
+(define (main)
+  (define skiplist (make-skiplist))
+  (printf "Search 0: ~a\n" ((skiplist 'search) 0))
+  ((skiplist 'add) 1)
+  ((skiplist 'add) 2)
+  ((skiplist 'add) 3)
+  (printf "Search 3: ~a\n" ((skiplist 'search) 3))
+  ((skiplist 'erase) 2)
+  (printf "Search 2: ~a\n" ((skiplist 'search) 2)))
+
+(main)

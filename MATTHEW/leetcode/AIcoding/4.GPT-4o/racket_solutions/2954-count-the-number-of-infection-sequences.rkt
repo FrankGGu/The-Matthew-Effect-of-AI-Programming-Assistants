@@ -1,0 +1,10 @@
+(define (count-infection-sequences n infections)
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 0 i)])
+      (when (and (>= i (+ j infections)) (<= i (+ j (* 2 infections))))
+        (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp j))))))
+  (vector-ref dp n))
+
+(count-infection-sequences n infections)

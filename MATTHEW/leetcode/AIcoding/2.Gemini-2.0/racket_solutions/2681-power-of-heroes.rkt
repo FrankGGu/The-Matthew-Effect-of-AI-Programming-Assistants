@@ -1,0 +1,13 @@
+(define (power-of-heroes nums)
+  (let* ((n (length nums))
+         (mod 1000000007))
+    (if (= n 0)
+        0
+        (let* ((sorted-nums (sort nums <))
+               (ans 0)
+               (sum 0))
+          (for/fold ((i 0) (sum 0) (ans 0))
+                    ((num (in-list sorted-nums)))
+            (values (+ i 1)
+                    (modulo (+ (* 2 sum) num) mod)
+                    (modulo (+ ans (* num sum)) mod)))))))

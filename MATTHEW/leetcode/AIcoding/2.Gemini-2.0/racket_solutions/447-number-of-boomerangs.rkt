@@ -1,0 +1,16 @@
+(define (number-of-boomerangs points)
+  (let ((n (length points)))
+    (if (< n 3)
+        0
+        (let loop ((i 0) (count 0))
+          (if (= i n)
+              count
+              (let* ((distances (make-hash))
+                     (pi (list-ref points i)))
+                (for ((j (in-range n)))
+                  (when (!= i j)
+                    (let ((pj (list-ref points j))
+                          (dist (expt (- (car pi) (car pj)) 2) (+ (expt (- (cadr pi) (cadr pj)) 2))))
+                      (hash-update! distances dist (lambda (x) (+ x 1)) 1))))
+                (let ((boomerang-count (foldl (lambda (v acc) (+ acc (* v (- v 1)))) 0 (hash-values distances))))
+                  (loop (+ i 1) (+ count boomerang-count)))))))))

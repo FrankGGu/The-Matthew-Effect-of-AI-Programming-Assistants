@@ -1,0 +1,35 @@
+Create a book management system using the emerging Rust stack: SolidJS for frontend and Actix Web with SeaORM for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, role, membership_type, created_at
+- books: id, title, author, isbn, publisher, publication_date, genre, total_copies, available_copies, location, is_available, created_at
+- borrow_records: id, book_id, user_id, borrow_date, due_date, return_date, status, fine_amount, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - JWT authentication
+   - Role-based access control
+   - User profile management
+
+2. Book Management:
+   - CRUD operations for books
+   - Availability checking
+   - Advanced search capabilities
+
+3. Borrowing Management:
+   - Create, view, update, delete borrow records
+   - Due date tracking and notifications
+   - Fine management system
+
+Technical Specifications:
+- Frontend: SolidJS with fine-grained reactivity
+- Backend: Actix Web with JWT authentication, SeaORM as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:bookpass@localhost:5432/book_management
+- API: RESTful design with focus on performance
+
+Generate complete, runnable code including:
+- Actix Web server with routes, handlers, and middleware
+- SolidJS components with reactive patterns
+- SeaORM entities and database operations
+- Authentication system with JWT
+- Build and run instructions for both frontend and backend

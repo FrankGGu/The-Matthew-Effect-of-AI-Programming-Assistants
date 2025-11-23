@@ -1,0 +1,18 @@
+(define (minimum-additions-to-make-valid-string word)
+  (let* ((n (string-length word))
+         (result (for/fold ((additions 0) (current-char-index 0))
+                           ((i (in-range n)))
+                   (let* ((ch (string-ref word i))
+                          (val (- (char->integer ch) (char->integer #\a))))
+                     (cond
+                       ((= val current-char-index)
+                        (list additions (modulo (+ current-char-index 1) 3)))
+                       ((= val (modulo (+ current-char-index 1) 3))
+                        (list (+ additions 1) (modulo (+ val 1) 3)))
+                       ((= val (modulo (+ current-char-index 2) 3))
+                        (list (+ additions 2) (modulo (+ val 1) 3)))
+                       (else ; Should not happen for valid inputs 'a', 'b', 'c'
+                        (list additions current-char-index)))))))
+    (let ((final-additions (car result))
+          (final-char-index (cadr result)))
+      (+ final-additions (if (= final-char-index 0) 0 (- 3 final-char-index))))))

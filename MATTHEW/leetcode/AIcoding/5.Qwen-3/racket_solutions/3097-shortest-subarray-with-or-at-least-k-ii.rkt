@@ -1,0 +1,15 @@
+#lang racket
+
+(define (shortest-subarray nums k)
+  (define n (length nums))
+  (define result (box +inf.0))
+  (define prefix (make-vector n 0))
+  (vector-set! prefix 0 (car nums))
+  (for ([i (in-range 1 n)])
+    (vector-set! prefix i (bitwise-ior (vector-ref prefix (- i 1)) (list-ref nums i))))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (when (>= (bitwise-ior (vector-ref prefix j) (if (> i 0) (vector-ref prefix (- i 1)) 0)) k)
+        (set-box! result (- j i 1))
+        (break))))
+  (if (= (unbox result) +inf.0) -1 (unbox result)))

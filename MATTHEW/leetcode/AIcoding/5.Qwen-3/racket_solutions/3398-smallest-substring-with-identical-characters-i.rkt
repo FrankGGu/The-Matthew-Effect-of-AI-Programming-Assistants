@@ -1,0 +1,15 @@
+#lang racket
+
+(define (minimum-substring s)
+  (define (helper i j count)
+    (if (>= j (string-length s))
+        (if (zero? count) "" (substring s i j))
+        (let ([c (string-ref s j)])
+          (if (char=? c (string-ref s i))
+              (if (and (>= (- j i) 2) (or (zero? count) (< (- j i) count)))
+                  (helper i (add1 j) (- j i))
+                  (helper i (add1 j) count))
+              (if (and (>= (- j i) 2) (or (zero? count) (< (- j i) count)))
+                  (helper (add1 i) j (- j i))
+                  (helper (add1 i) j count))))))
+  (helper 0 0 0))

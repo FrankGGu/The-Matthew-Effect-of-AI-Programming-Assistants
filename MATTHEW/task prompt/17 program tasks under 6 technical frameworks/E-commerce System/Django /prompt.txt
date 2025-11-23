@@ -1,0 +1,38 @@
+Create an e-commerce system using Django REST Framework for backend and a modern JavaScript framework for frontend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, phone, address, created_at
+- products: id, name, description, price, category, stock_quantity, image_url, is_active, created_at
+- orders: id, user_id, total_amount, status, shipping_address, payment_status, created_at, updated_at
+- order_items: id, order_id, product_id, quantity, unit_price
+- reviews: id, product_id, user_id, rating, comment, created_at
+
+Requirements:
+1. User Management:
+   - Django authentication system
+   - User profiles with address information
+   - Admin interface for user management
+
+2. Product Management:
+   - CRUD operations through Django admin and API
+   - Product search and filtering by category, price range
+   - Inventory management with stock tracking
+
+3. Order Management:
+   - Create, view, update orders via API
+   - Shopping cart functionality
+   - Order status tracking and management
+   - Payment integration simulation
+
+Technical Specifications:
+- Backend: Django with Django REST Framework, Django ORM
+- Frontend: Use a modern JavaScript framework (specify which one)
+- Database: PostgreSQL with connection string: postgresql://postgres:ecopass@localhost:5432/ecommerce
+- API: RESTful design with token authentication
+
+Generate complete, runnable code including:
+- Django models, serializers, views, and URLs
+- Frontend components and API integration
+- Authentication system
+- Database migrations
+- Setup and running instructions

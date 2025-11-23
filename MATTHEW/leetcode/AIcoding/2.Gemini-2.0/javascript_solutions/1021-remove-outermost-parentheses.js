@@ -1,0 +1,18 @@
+var removeOuterParentheses = function(s) {
+    let result = "";
+    let openCount = 0;
+    for (let char of s) {
+        if (char === '(') {
+            if (openCount > 0) {
+                result += char;
+            }
+            openCount++;
+        } else {
+            openCount--;
+            if (openCount > 0) {
+                result += char;
+            }
+        }
+    }
+    return result;
+};

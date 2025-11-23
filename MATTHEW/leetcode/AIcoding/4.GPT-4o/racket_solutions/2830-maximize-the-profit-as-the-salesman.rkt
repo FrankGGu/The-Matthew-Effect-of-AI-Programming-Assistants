@@ -1,0 +1,12 @@
+(define (maxProfit inventory orders)
+  (define (calc-profit i o)
+    (if (zero? o)
+        0
+        (let* ((max-price (apply max i))
+               (max-count (count (lambda (x) (= x max-price)) i))
+               (sold (min o max-count))
+               (profit (* sold max-price)))
+          (+ profit (calc-profit (map (lambda (x) (if (= x max-price) (- x 1) x)) i)
+                                  (- o sold))))))
+  (modulo (calc-profit inventory orders) (expt 10 9))
+)

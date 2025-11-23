@@ -1,0 +1,34 @@
+{
+  "id": "LCP 70",
+  "title": "沙地治理",
+  "titleSlug": "XxZZjK",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> sandyLandManagement(int size) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[][] sandyLandManagement(int size) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def sandyLandManagement(self, size):\n        \"\"\"\n        :type size: int\n        :rtype: List[List[int]]\n        \"\"\"",
+    "python3": "class Solution:\n    def sandyLandManagement(self, size: int) -> List[List[int]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** sandyLandManagement(int size, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public int[][] SandyLandManagement(int size) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} size\n * @return {number[][]}\n */\nvar sandyLandManagement = function(size) {\n\n};",
+    "typescript": "function sandyLandManagement(size: number): number[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $size\n     * @return Integer[][]\n     */\n    function sandyLandManagement($size) {\n\n    }\n}",
+    "swift": "class Solution {\n    func sandyLandManagement(_ size: Int) -> [[Int]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun sandyLandManagement(size: Int): Array<IntArray> {\n\n    }\n}",
+    "golang": "func sandyLandManagement(size int) [][]int {\n\n}",
+    "ruby": "# @param {Integer} size\n# @return {Integer[][]}\ndef sandy_land_management(size)\n\nend",
+    "scala": "object Solution {\n    def sandyLandManagement(size: Int): Array[Array[Int]] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn sandy_land_management(size: i32) -> Vec<Vec<i32>> {\n\n    }\n}",
+    "racket": "(define/contract (sandy-land-management size)\n  (-> exact-integer? (listof (listof exact-integer?)))\n\n  )",
+    "erlang": "-spec sandy_land_management(Size :: integer()) -> [[integer()]].\nsandy_land_management(Size) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec sandy_land_management(size :: integer) :: [[integer]]\n  def sandy_land_management(size) do\n\n  end\nend"
+  },
+  "exampleTestcases": "3\n2",
+  "hints": []
+}

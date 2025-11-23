@@ -1,0 +1,10 @@
+(define (min-cost str1 str2 cost)
+  (define (helper i res)
+    (if (= i (string-length str1))
+        res
+        (let ((c1 (string-ref str1 i))
+              (c2 (string-ref str2 i)))
+          (if (char=? c1 c2)
+              (helper (+ i 1) res)
+              (helper (+ i 1) (+ res (vector-ref cost (- (char->integer c1) 97))))))))
+  (helper 0 0))

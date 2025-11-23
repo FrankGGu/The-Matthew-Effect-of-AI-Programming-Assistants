@@ -1,0 +1,12 @@
+(define/contract (find-max-k nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([num-set (list->set nums)])
+    (let loop ([max-k -1] [nums nums])
+      (if (null? nums)
+          max-k
+          (let ([current (car nums)])
+            (if (and (> current 0)
+                     (set-member? num-set (- current))
+                     (> current max-k))
+                (loop current (cdr nums))
+                (loop max-k (cdr nums)))))))

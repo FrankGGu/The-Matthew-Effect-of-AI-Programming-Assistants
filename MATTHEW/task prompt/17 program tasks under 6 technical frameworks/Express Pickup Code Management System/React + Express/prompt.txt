@@ -1,0 +1,35 @@
+Build a quick pickup code management system using React 18 frontend, Express.js backend, and Prisma ORM with PostgreSQL. Use the following database schema:
+
+Database schema:
+- pickup_locations (id, name, address, is_active, created_at)
+- pickup_items (id, name, description, price, is_available, created_at)
+- pickup_orders (id, customer_name, customer_phone, pickup_code, location_id, status, created_at, updated_at, expected_ready_time, actual_pickup_time)
+- order_items (id, order_id, item_id, quantity, special_instructions)
+- pickup_audit_log (id, order_id, action, performed_at, performed_by)
+
+Required features:
+1. React frontend with modern hooks and React Router
+2. Express.js backend with RESTful APIs
+3. Prisma ORM for database operations
+4. JWT authentication
+5. Unique 6-character alphanumeric pickup code generation
+6. Order status management (PENDING, READY, PICKED_UP, CANCELLED)
+7. Real-time updates using WebSockets or polling
+8. Admin dashboard and customer interface
+9. Responsive design with modern CSS framework
+
+Implementation requirements:
+- Use TypeScript for both frontend and backend
+- Implement proper error handling and input validation
+- Include comprehensive unit and integration tests
+- Use state management (Redux or Context API)
+- Generate complete, runnable code with proper documentation
+- Include Prisma migrations and seed data
+
+Generate the complete project structure including:
+- React application with components and hooks
+- Express.js server with routes, controllers, and middleware
+- Prisma schema and migrations
+- Docker configuration
+- Environment configuration files
+- API documentation

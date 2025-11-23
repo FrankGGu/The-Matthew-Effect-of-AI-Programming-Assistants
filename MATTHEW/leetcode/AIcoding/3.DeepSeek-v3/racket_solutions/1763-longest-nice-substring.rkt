@@ -1,0 +1,21 @@
+(define/contract (longest-nice-substring s)
+  (-> string? string?)
+  (define (nice? str)
+    (let loop ([chars (string->list str)])
+      (if (null? chars)
+          #t
+          (let ([c (car chars)])
+            (and (or (and (char-lower-case? c)
+                          (member (char-upcase c) chars))
+                     (and (char-upper-case? c)
+                          (member (char-downcase c) chars)))
+                 (loop (cdr chars)))))))
+
+  (let ([n (string-length s)]
+        [result ""])
+    (for ([i (in-range n)])
+      (for ([j (in-range (add1 i) (add1 n))])
+        (let ([sub (substring s i j)])
+          (when (and (nice? sub) (> (string-length sub) (string-length result)))
+            (set! result sub))))
+    result))

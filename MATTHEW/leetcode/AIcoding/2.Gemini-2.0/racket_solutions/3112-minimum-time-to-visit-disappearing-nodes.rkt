@@ -1,0 +1,40 @@
+(define (minimum-time-to-visit-disappearing-nodes n edges nodesAtTime timeToDisappear)
+  (define adj (make-vector (+ n 1) '()))
+  (for-each (lambda (edge)
+              (vector-set! adj (car edge) (cons (cadr edge) (vector-ref adj (car edge)))))
+            edges)
+  (for-each (lambda (edge)
+              (vector-set! adj (cadr edge) (cons (car edge) (vector-ref adj (cadr edge)))))
+            edges)
+
+  (define (calculate-time start)
+    (define visited (make-vector (+ n 1) #f))
+    (vector-set! visited start #t)
+    (define queue (list (list start 0)))
+    (define total-time 0)
+
+    (define (bfs)
+      (if (null? queue)
+          total-time
+          (let* ((curr-node (caar queue))
+                 (curr-time (cadar queue))
+                 (new-queue (cdr queue)))
+
+            (if (and (>= curr-time (vector-ref timeToDisappear curr-node))
+                     (not (= (vector-ref nodesAtTime curr-node) 0)))
+                (begin
+                  (set! total-time (+ total-time (vector-ref nodesAtTime curr-node)))
+                  (vector-set! nodesAtTime curr-node 0))
+                '())
+
+            (define neighbors (vector-ref adj curr-node))
+            (for-each (lambda (neighbor)
+                        (if (not (vector-ref visited neighbor))
+                            (begin
+                              (vector-set! visited neighbor #t)
+                              (set! new-queue (append new-queue (list (list neighbor (+ curr-time 1))))))))
+                      neighbors)
+            (set! queue new-queue)
+            (bfs))))
+    (bfs))
+  (calculate-time 1))

@@ -1,0 +1,55 @@
+(define (maximum-escape-time forest start fire)
+  (define n (length forest))
+  (define m (length (first forest)))
+
+  (define (in-bound? x y)
+    (and (>= x 0) (< x n) (>= y 0) (< y m)))
+
+  (define (bfs start fire)
+    (define directions '((1 0) (-1 0) (0 1) (0 -1)))
+    (define fire-dist (make-vector (* n m) +inf.0))
+    (define player-dist (make-vector (* n m) +inf.0))
+
+    (define (update-dist queue dist)
+      (for-each (lambda (pos)
+                    (let ((x (car pos))
+                          (y (cadr pos)))
+                      (for-each (lambda (dir)
+                                  (let ((nx (+ x (car dir)))
+                                        (ny (+ y (cadr dir))))
+                                    (when (and (in-bound? nx ny)
+                                               (not (= (vector-ref dist (+ nx (* ny m))) -1))
+                                               (> (vector-ref dist (+ nx (* ny m))) (+ (vector-ref dist (+ x (* y m))) 1)))
+                                      (vector-set! dist (+ nx (* ny m)) (+ (vector-ref dist (+ x (* y m))) 1))
+                                      (vector-set! dist (+ nx (* ny m)) 1)
+                                      (vector-set! dist (+ nx (* ny m)) (vector-ref dist (+ nx (* ny m))))
+                                      (set! queue (cons (list nx ny) queue))))))
+                            directions)))
+
+    (define fire-queue (list))
+    (for-each (lambda (f)
+                  (let ((fx (car f))
+                        (fy (cadr f)))
+                    (vector-set! fire-dist (+ fx (* fy m)) 0)
+                    (set! fire-queue (cons (list fx fy) fire-queue))))
+                fire)
+
+    (update-dist fire-queue fire-dist)
+
+    (define player-queue (list))
+    (let ((sx (car start))
+          (sy (cadr start)))
+      (vector-set! player-dist (+ sx (* sy m)) 0)
+      (set! player-queue (cons (list sx sy) player-queue)))
+
+    (update-dist player-queue player-dist)
+
+    (define max-time 0)
+    (for-each (lambda (i j)
+                  (when (< (vector-ref player-dist (+ i (* j m))) (vector-ref fire-dist (+ i (* j m))))
+                    (set! max-time (max max-time (vector-ref player-dist (+ i (* j m)))))))
+                (range n) (range m))
+
+    (if (= max-time +inf.0) -1 max-time))
+
+  (maximum-escape-time forest start fire))

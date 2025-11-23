@@ -1,0 +1,8 @@
+(define/contract (intersection nums)
+  (-> (listof (listof exact-integer?)) (listof exact-integer?))
+  (let ([count (make-hash)])
+    (for ([lst nums])
+      (for ([num lst])
+        (hash-update! count num add1 0)))
+    (let ([n (length nums)])
+      (sort (for/list ([(k v) (in-hash count)] #:when (= v n)) k) <))))

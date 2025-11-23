@@ -1,0 +1,16 @@
+(define (partition s)
+  (define (is-palindrome? str)
+    (string=? str (list->string (reverse (string->list str)))))
+
+  (define (backtrack start-index current-path)
+    (if (= start-index (string-length s))
+        (list current-path)
+        (let loop ((i (add1 start-index)) (res '()))
+          (if (> i (string-length s))
+              res
+              (let ((sub (substring s start-index i)))
+                (if (is-palindrome? sub)
+                    (let ((partitions-from-suffix (backtrack i (append current-path (list sub)))))
+                      (loop (add1 i) (append res partitions-from-suffix)))
+                    (loop (add1 i) res)))))))
+  (backtrack 0 '()))

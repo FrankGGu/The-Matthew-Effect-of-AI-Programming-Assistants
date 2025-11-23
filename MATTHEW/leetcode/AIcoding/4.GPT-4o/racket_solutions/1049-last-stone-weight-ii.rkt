@@ -1,0 +1,12 @@
+(define (lastStoneWeightII stones)
+  (define total (apply + stones))
+  (define target (quotient total 2))
+  (define dp (make-vector (+ target 1) 0))
+  (for-each (lambda (stone)
+              (for ((j (in-range target (- total stone -1))))
+                (vector-set! dp j (max (vector-ref dp j) (+ (vector-ref dp (- j stone)) stone)))))
+            stones)
+  (- total (* 2 (vector-ref dp target))))
+
+(define (lastStoneWeightII-main stones)
+  (lastStoneWeightII stones))

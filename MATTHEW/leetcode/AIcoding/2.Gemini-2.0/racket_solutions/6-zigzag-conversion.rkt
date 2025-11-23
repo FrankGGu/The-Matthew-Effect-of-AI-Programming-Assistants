@@ -1,0 +1,18 @@
+(define (convert s numRows)
+  (if (or (= numRows 1) (>= numRows (string-length s)))
+      s
+      (let* ((rows (make-vector numRows ""))
+             (down? #t)
+             (row 0))
+        (for ([char (in-string s)])
+          (vector-set! rows row (string-append (vector-ref rows row) (string char)))
+          (if down?
+              (if (= row (- numRows 1))
+                  (begin (set! row (- row 1))
+                         (set! down? #f))
+                  (set! row (+ row 1)))
+              (if (= row 0)
+                  (begin (set! row (+ row 1))
+                         (set! down? #t))
+                  (set! row (- row 1)))))
+        (string-append* (vector->list rows)))))

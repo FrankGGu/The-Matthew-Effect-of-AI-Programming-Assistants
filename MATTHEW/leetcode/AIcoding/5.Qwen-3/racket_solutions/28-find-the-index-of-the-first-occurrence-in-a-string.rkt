@@ -1,0 +1,8 @@
+(define (str-str haystack needle)
+  (define (helper h n i)
+    (cond ((>= i (string-length h)) -1)
+          ((and (<= (- (string-length h) i) (string-length n))
+                (equal? (substring h i (+ i (string-length n))) n))
+           i)
+          (else (helper h n (+ i 1)))))
+  (helper haystack needle 0))

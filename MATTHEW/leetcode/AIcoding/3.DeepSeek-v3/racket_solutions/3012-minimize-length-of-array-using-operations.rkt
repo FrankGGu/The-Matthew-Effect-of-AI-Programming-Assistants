@@ -1,0 +1,7 @@
+(define/contract (minimum-array-length nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([min-val (apply min nums)])
+    (let ([count (count (lambda (x) (= x min-val)) nums)])
+      (if (even? count)
+          (max 1 (quotient count 2))
+          (max 1 (add1 (quotient count 2)))))))

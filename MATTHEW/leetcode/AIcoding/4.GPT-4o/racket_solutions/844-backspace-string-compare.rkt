@@ -1,0 +1,10 @@
+(define (backspaceCompare s t)
+  (define (process str)
+    (define stack '())
+    (for-each (lambda (char)
+                (cond
+                  ((equal? char #\backspace) (if (null? stack) '() (cdr stack)))
+                  (else (set! stack (cons char stack)))))
+              str)
+    (apply string (reverse stack)))
+  (equal? (process s) (process t)))

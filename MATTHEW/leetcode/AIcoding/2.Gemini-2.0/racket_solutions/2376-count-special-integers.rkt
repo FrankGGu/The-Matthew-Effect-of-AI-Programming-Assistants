@@ -1,0 +1,32 @@
+(define (count-special-integers n)
+  (define (digits n)
+    (if (= n 0)
+        '()
+        (cons (modulo n 10) (digits (quotient n 10)))))
+
+  (define (count-special-integers-helper digits-list index used)
+    (if (= index (length digits-list))
+        1
+        (let* ((digit (list-ref digits-list index))
+               (count 0))
+          (for ((i (in-range (if (= index 0) 1 0) 10)))
+            (if (not (set-member? used i))
+                (if (< i digit)
+                    (set! count (+ count (expt (- 10 (length used) 1) (- (length digits-list) index 1))))
+                    (if (= i digit)
+                        (set! count (+ count (count-special-integers-helper digits-list (+ index 1) (set-add used i))))))))
+          count)))
+
+  (define (count-special-integers-less-than-n digits-list)
+    (let ((len (length digits-list)))
+      (if (= len 1)
+          n
+          (+ (- (expt 10 len) (expt 9 len)) (count-special-integers-less-than-n (drop digits-list 1))))))
+
+  (let ((digits-list (reverse (digits n))))
+    (+ (count-special-integers-helper digits-list 0 (set))
+       (- (if (equal? (remove-duplicates digits-list) digits-list) 0 1))
+       (if (> (length digits-list) 1)
+           (foldr + 0 (map (lambda (x) (- (expt 10 x) (expt 9 x))) (range 1 (length digits-list))))
+           0)
+       )))

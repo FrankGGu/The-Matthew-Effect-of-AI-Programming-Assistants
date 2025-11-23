@@ -1,0 +1,10 @@
+(define (majority-element nums)
+  (let loop ([count 0] [candidate #f] [nums nums])
+    (if (null? nums)
+        candidate
+        (let ([num (car nums)])
+          (if (= count 0)
+              (loop 1 num (cdr nums))
+              (if (= num candidate)
+                  (loop (+ count 1) candidate (cdr nums))
+                  (loop (- count 1) candidate (cdr nums))))))))

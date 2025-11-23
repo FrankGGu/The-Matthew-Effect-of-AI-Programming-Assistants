@@ -1,0 +1,12 @@
+(define (equal? a b c)
+  (and (= a b) (= b c)))
+
+(define (num-unequal-triplets nums)
+  (define n (length nums))
+  (define count 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range (+ i 1) n)])
+      (for ([k (in-range (+ j 1) n)])
+        (when (not (equal? (list-ref nums i) (list-ref nums j) (list-ref nums k)))
+          (set! count (+ count 1))))))
+  count)

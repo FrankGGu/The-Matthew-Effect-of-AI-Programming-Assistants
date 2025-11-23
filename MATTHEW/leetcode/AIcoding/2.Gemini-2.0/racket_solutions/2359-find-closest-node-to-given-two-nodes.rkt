@@ -1,0 +1,40 @@
+(define (closest-meeting-node edges node1 node2)
+  (define n (vector-length edges))
+  (define (bfs start-node)
+    (define dist (make-vector n #f))
+    (define q (queue))
+    (queue-enqueue! q start-node)
+    (vector-set! dist start-node 0)
+    (let loop ()
+      (if (queue-empty? q)
+          dist
+          (let ((u (queue-dequeue! q)))
+            (let ((v (vector-ref edges u)))
+              (if (and (not (equal? v -1))
+                       (not (vector-ref dist v)))
+                  (begin
+                    (vector-set! dist v (+ 1 (vector-ref dist u)))
+                    (queue-enqueue! q v)
+                    (loop))
+                  (loop))))))
+    dist)
+
+  (define dist1 (bfs node1))
+  (define dist2 (bfs node2))
+
+  (define min-dist #f)
+  (define min-node -1)
+
+  (for/list ((i (in-range n)))
+    (let ((d1 (vector-ref dist1 i))
+          (d2 (vector-ref dist2 i)))
+      (if (and d1 d2)
+          (let ((max-dist (max d1 d2)))
+            (if (or (not min-dist) (< max-dist min-dist))
+                (begin
+                  (set! min-dist max-dist)
+                  (set! min-node i))
+                (if (= max-dist min-dist)
+                    (set! min-node (min min-node i))))))))
+
+  min-node)

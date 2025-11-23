@@ -1,0 +1,30 @@
+(define (findKthLargest nums k)
+  (define (quick-select arr left right k)
+    (if (= left right)
+        (list-ref arr left)
+        (let* ((pivot-index (random (+ left (- right) 1)))
+               (pivot (list-ref arr pivot-index))
+               (i left)
+               (j right))
+          (define (swap arr i j)
+            (let ((temp (list-ref arr i)))
+              (list-set! arr i (list-ref arr j))
+              (list-set! arr j temp)
+              arr))
+
+          (swap arr pivot-index right)
+
+          (for ((p (in-range left right)))
+            (if (> (list-ref arr p) pivot)
+                (begin
+                  (swap arr i p)
+                  (set! i (+ i 1)))))
+
+          (swap arr i right)
+
+          (if (= k (+ i 1))
+              (list-ref arr i)
+              (if (< k (+ i 1))
+                  (quick-select arr left (- i 1) k)
+                  (quick-select arr (+ i 1) right k))))))
+  (quick-select (vector->list nums) 0 (- (length nums) 1) k))

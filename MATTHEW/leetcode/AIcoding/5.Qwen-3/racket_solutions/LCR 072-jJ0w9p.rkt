@@ -1,0 +1,11 @@
+(define (my-sqrt x)
+  (define (sqrt-helper low high)
+    (let ((mid (floor (/ (+ low high) 2))))
+      (if (> (* mid mid) x)
+          (sqrt-helper low (- mid 1))
+          (if (<= (* (+ mid 1) (+ mid 1)) x)
+              (sqrt-helper (+ mid 1) high)
+              mid))))
+  (if (= x 0)
+      0
+      (sqrt-helper 0 x)))

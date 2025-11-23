@@ -1,0 +1,12 @@
+(define/contract (is-covered ranges left right)
+  (-> (listof (listof exact-integer?)) exact-integer? exact-integer? boolean?)
+  (let ([covered (make-hash)])
+    (for ([range ranges])
+      (let ([start (first range)]
+            [end (second range)])
+        (for ([i (in-range start (add1 end))])
+          (hash-set! covered i #t))))
+    (for ([i (in-range left (add1 right))])
+      (unless (hash-ref covered i #f)
+        (return #f)))
+    #t))

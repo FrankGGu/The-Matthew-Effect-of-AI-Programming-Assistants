@@ -1,0 +1,36 @@
+{
+  "id": "LCR 187",
+  "title": "破冰游戏",
+  "titleSlug": "yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Recursion",
+    "Math"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int iceBreakingGame(int num, int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int iceBreakingGame(int num, int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def iceBreakingGame(self, num, target):\n        \"\"\"\n        :type num: int\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def iceBreakingGame(self, num: int, target: int) -> int:\n        ",
+    "c": "int iceBreakingGame(int num, int target) {\n    \n}",
+    "csharp": "public class Solution {\n    public int IceBreakingGame(int num, int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @param {number} target\n * @return {number}\n */\nvar iceBreakingGame = function(num, target) {\n    \n};",
+    "typescript": "function iceBreakingGame(num: number, target: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @param Integer $target\n     * @return Integer\n     */\n    function iceBreakingGame($num, $target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func iceBreakingGame(_ num: Int, _ target: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun iceBreakingGame(num: Int, target: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int iceBreakingGame(int num, int target) {\n    \n  }\n}",
+    "golang": "func iceBreakingGame(num int, target int) int {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @param {Integer} target\n# @return {Integer}\ndef ice_breaking_game(num, target)\n    \nend",
+    "scala": "object Solution {\n    def iceBreakingGame(num: Int, target: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn ice_breaking_game(num: i32, target: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (ice-breaking-game num target)\n  (-> exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec ice_breaking_game(Num :: integer(), Target :: integer()) -> integer().\nice_breaking_game(Num, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec ice_breaking_game(num :: integer, target :: integer) :: integer\n  def ice_breaking_game(num, target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func iceBreakingGame(num: Int64, target: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "7\n4\n12\n5",
+  "hints": []
+}

@@ -1,0 +1,10 @@
+(define (min-increments target)
+  (define (helper target current-height)
+    (if (null? target)
+        0
+        (let ((height (car target))
+              (rest (cdr target)))
+          (if (> height current-height)
+              (+ (- height current-height) (helper rest height))
+              (helper rest height)))))
+  (helper target 0))

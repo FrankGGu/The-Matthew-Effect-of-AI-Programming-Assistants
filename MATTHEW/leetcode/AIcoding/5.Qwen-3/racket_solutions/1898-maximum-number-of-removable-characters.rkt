@@ -1,0 +1,13 @@
+(define (max-removable-characters s p)
+  (define (can-remove? s p)
+    (let loop ((i 0) (j 0))
+      (cond ((>= j (string-length p)) #t)
+            ((>= i (string-length s)) #f)
+            ((char=? (string-ref s i) (string-ref p j))
+             (loop (+ i 1) (+ j 1)))
+            (else (loop (+ i 1) j)))))
+
+  (let loop ((s s) (count 0))
+    (if (can-remove? s p)
+        (loop (substring s 0 (- (string-length s) 1)) (+ count 1))
+        count)))

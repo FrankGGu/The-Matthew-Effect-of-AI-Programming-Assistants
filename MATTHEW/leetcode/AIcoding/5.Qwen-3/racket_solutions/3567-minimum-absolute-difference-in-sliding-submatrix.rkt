@@ -1,0 +1,21 @@
+#lang racket
+
+(define (minimum-absolute-difference-in-sliding-submatrix matrix k)
+  (define rows (length matrix))
+  (define cols (length (car matrix)))
+  (define (get-min i j)
+    (define start-i (max 0 (- i k)))
+    (define end-i (min (- rows 1) (+ i k)))
+    (define start-j (max 0 (- j k)))
+    (define end-j (min (- cols 1) (+ j k)))
+    (define lst (for*/list ([x (in-range start-i (+ end-i 1))]
+                            [y (in-range start-j (+ end-j 1))])
+                  (list-ref (list-ref matrix x) y)))
+    (define sorted-lst (sort lst <))
+    (define min-abs (apply min (map (lambda (a b) (abs (- a b))) sorted-lst (cdr sorted-lst))))
+    min-abs)
+  (define result '())
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (set! result (append result (list (get-min i j))))))
+  result)

@@ -1,0 +1,37 @@
+{
+  "id": "LCR 137",
+  "title": "模糊搜索验证",
+  "titleSlug": "zheng-ze-biao-da-shi-pi-pei-lcof",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Recursion",
+    "String",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool articleMatch(string s, string p) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean articleMatch(String s, String p) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def articleMatch(self, s, p):\n        \"\"\"\n        :type s: str\n        :type p: str\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def articleMatch(self, s: str, p: str) -> bool:\n        ",
+    "c": "bool articleMatch(char* s, char* p) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool ArticleMatch(string s, string p) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @param {string} p\n * @return {boolean}\n */\nvar articleMatch = function(s, p) {\n    \n};",
+    "typescript": "function articleMatch(s: string, p: string): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @param String $p\n     * @return Boolean\n     */\n    function articleMatch($s, $p) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func articleMatch(_ s: String, _ p: String) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun articleMatch(s: String, p: String): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool articleMatch(String s, String p) {\n    \n  }\n}",
+    "golang": "func articleMatch(s string, p string) bool {\n    \n}",
+    "ruby": "# @param {String} s\n# @param {String} p\n# @return {Boolean}\ndef article_match(s, p)\n    \nend",
+    "scala": "object Solution {\n    def articleMatch(s: String, p: String): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn article_match(s: String, p: String) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (article-match s p)\n  (-> string? string? boolean?)\n  )",
+    "erlang": "-spec article_match(S :: unicode:unicode_binary(), P :: unicode:unicode_binary()) -> boolean().\narticle_match(S, P) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec article_match(s :: String.t, p :: String.t) :: boolean\n  def article_match(s, p) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func articleMatch(s: String, p: String): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"aa\"\n\"a\"\n\"aa\"\n\"a*\"",
+  "hints": []
+}

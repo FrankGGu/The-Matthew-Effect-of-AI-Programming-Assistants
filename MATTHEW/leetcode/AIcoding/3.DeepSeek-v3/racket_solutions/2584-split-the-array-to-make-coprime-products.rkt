@@ -1,0 +1,15 @@
+(define/contract (find-valid-split nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (define (gcd-list lst)
+    (foldl gcd (car lst) (cdr lst)))
+  (define n (length nums))
+  (define (product lst)
+    (foldl * 1 lst))
+  (let loop ((i 0))
+    (if (>= i (- n 1))
+        -1
+        (let ((left (take nums (+ i 1)))
+              (right (drop nums (+ i 1))))
+          (if (= (gcd (product left) (product right)) 1)
+              i
+              (loop (+ i 1)))))))

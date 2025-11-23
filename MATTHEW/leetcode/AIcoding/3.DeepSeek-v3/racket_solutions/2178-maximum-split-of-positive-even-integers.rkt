@@ -1,0 +1,8 @@
+(define/contract (maximum-even-split finalSum)
+  (-> exact-integer? (listof exact-integer?))
+  (if (odd? finalSum)
+      '()
+      (let loop ([n 2] [remaining finalSum] [result '()])
+        (if (> n remaining)
+            (cons (+ (car result) remaining) (cdr result))
+            (loop (+ n 2) (- remaining n) (cons n result))))))

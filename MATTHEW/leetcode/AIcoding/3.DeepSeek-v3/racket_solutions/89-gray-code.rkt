@@ -1,0 +1,5 @@
+(define (gray-code n)
+  (if (zero? n)
+      '(0)
+      (let ((prev (gray-code (- n 1))))
+        (append prev (map (lambda (x) (+ (expt 2 (- n 1)) x)) (reverse prev))))))

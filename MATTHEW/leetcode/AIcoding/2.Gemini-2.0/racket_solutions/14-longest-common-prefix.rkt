@@ -1,0 +1,11 @@
+(define (longest-common-prefix strs)
+  (if (null? strs)
+      ""
+      (let loop ([i 0])
+        (if (or (null? (car strs))
+                (>= i (string-length (car strs))))
+            (substring (car strs) 0 i)
+            (let ([char (string-ref (car strs) i)])
+              (if (every? (lambda (str) (and (>= (string-length str) (+ i 1)) (char=? char (string-ref str i)))) strs)
+                  (loop (+ i 1))
+                  (substring (car strs) 0 i)))))))

@@ -1,0 +1,16 @@
+(define/contract (max-profit k prices)
+  (-> exact-integer? (listof exact-integer?) exact-integer?)
+  (let ([n (length prices)])
+    (if (or (zero? n) (zero? k)) 0
+        (if (>= k (quotient n 2))
+            (let loop ([i 1] [profit 0])
+              (if (>= i n) profit
+                  (loop (add1 i) (+ profit (max 0 (- (list-ref prices i) (list-ref prices (sub1 i))))))))
+            (let ([dp (make-vector (add1 k) (make-vector n 0))])
+              (for ([t (in-range 1 (add1 k))])
+                (let ([max-diff (- (vector-ref (vector-ref dp (sub1 t)) 0) (list-ref prices 0))])
+                  (for ([i (in-range 1 n))])
+                    (vector-set! (vector-ref dp t) i (max (vector-ref (vector-ref dp t) (sub1 i))
+                                                         (+ (list-ref prices i) max-diff)))
+                    (set! max-diff (max max-diff (- (vector-ref (vector-ref dp (sub1 t)) i) (list-ref prices i))))))
+              (vector-ref (vector-ref dp k) (sub1 n))))))

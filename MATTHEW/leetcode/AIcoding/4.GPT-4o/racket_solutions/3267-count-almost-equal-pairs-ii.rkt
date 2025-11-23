@@ -1,0 +1,8 @@
+(define (count-almost-equal-pairs a b)
+  (define n (length a))
+  (define count 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range n)])
+      (when (and (not (= i j)) (= (abs (- (list-ref a i) (list-ref b j))) 1))
+        (set! count (+ count 1)))))
+  count)

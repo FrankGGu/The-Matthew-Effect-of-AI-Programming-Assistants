@@ -1,0 +1,16 @@
+(define (convert-row-column row column nums)
+  (define len (length nums))
+  (if (not (= (* row column) len))
+      #f
+      (let loop ((i 0) (result '()))
+        (if (>= i row)
+            (reverse result)
+            (loop (+ i 1) (cons (take nums (* i column) (+ i 1) column) result))))) ) )
+
+(define (convert-1d-array-into-2d-array nums row column)
+  (if (not (= (* row column) (length nums)))
+      '()
+      (let loop ((i 0) (result '()))
+        (if (>= i row)
+            (reverse result)
+            (loop (+ i 1) (cons (take nums (* i column) (+ i 1) column) result))))) )

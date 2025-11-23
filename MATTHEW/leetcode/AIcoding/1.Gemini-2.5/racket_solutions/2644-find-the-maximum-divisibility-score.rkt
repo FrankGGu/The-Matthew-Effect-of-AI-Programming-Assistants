@@ -1,0 +1,20 @@
+(define (find-maximum-divisibility-score nums divisors)
+  (let ((max-score -1)
+        (result-divisor -1))
+
+    (for-each (lambda (d)
+                (let ((current-score 0))
+                  (for-each (lambda (n)
+                              (when (zero? (modulo n d))
+                                (set! current-score (+ current-score 1))))
+                            nums)
+
+                  (when (> current-score max-score)
+                    (set! max-score current-score)
+                    (set! result-divisor d))
+
+                  (when (and (= current-score max-score)
+                             (< d result-divisor))
+                    (set! result-divisor d))))
+              divisors)
+    result-divisor))

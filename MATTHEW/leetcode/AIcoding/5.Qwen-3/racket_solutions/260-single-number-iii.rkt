@@ -1,0 +1,11 @@
+(define (single-number nums)
+  (let ([xor (apply bitwise-xor nums)])
+    (let ([lsb (bitwise-and xor (- xor 1))])
+      (let ([a 0] [b 0])
+        (for-each
+         (lambda (num)
+           (if (bitwise-and num lsb)
+               (set! a (bitwise-xor a num))
+               (set! b (bitwise-xor b num))))
+         nums)
+        (list a b)))))

@@ -1,0 +1,11 @@
+(define (findKthPositive arr k)
+  (define (missing-count n)
+    (- n (length (filter (lambda (x) (<= x n)) arr))))
+  (define (binary-search low high)
+    (if (= low high)
+        low
+        (let ((mid (quotient (+ low high) 2)))
+          (if (< (missing-count mid) k)
+              (binary-search (+ mid 1) high)
+              (binary-search low mid)))))
+  (binary-search 1 (+ (length arr) k)))

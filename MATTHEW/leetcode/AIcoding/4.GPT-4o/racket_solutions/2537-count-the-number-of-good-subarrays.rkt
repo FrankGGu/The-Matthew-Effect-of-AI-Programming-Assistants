@@ -1,0 +1,15 @@
+(define (count-good-subarrays nums k)
+  (define (count-subarrays-with-sum target)
+    (define counts (make-hash))
+    (hash-set! counts 0 1)
+    (define (helper sum count)
+      (if (null? nums)
+          count
+          (let* ((new-sum (+ sum (car nums)))
+                 (needed (- new-sum target)))
+            (hash-set! counts new-sum (add1 (hash-ref counts new-sum 0)))
+            (helper (cdr nums) (+ count (hash-ref counts needed 0))))))
+    (helper 0 0))
+  (count-subarrays-with-sum k))
+
+(count-good-subarrays '(1 1 1) 2)

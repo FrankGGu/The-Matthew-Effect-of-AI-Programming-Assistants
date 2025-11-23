@@ -1,0 +1,12 @@
+(define/contract (max-consecutive-answers answer-key k)
+  (-> string? exact-integer? exact-integer?)
+  (define (max-consecutive char)
+    (let loop ([left 0] [right 0] [count 0] [max-len 0])
+      (if (>= right (string-length answer-key))
+          max-len
+          (if (char=? (string-ref answer-key right) char)
+              (loop left (add1 right) count (max max-len (- (add1 right) left)))
+              (if (< count k)
+                  (loop left (add1 right) (add1 count) (max max-len (- (add1 right) left))
+                  (loop (add1 left) right (if (char=? (string-ref answer-key left) char) count (sub1 count)) max-len))))))
+  (max (max-consecutive #\T) (max-consecutive #\F)))

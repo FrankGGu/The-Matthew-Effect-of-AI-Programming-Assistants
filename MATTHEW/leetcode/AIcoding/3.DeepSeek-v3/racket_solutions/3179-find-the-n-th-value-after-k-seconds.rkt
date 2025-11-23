@@ -1,0 +1,12 @@
+(define (value-after-k-seconds n k)
+  (define MOD 1000000007)
+  (let loop ([i 0]
+             [vec (make-vector n 1)])
+    (if (= i k)
+        (vector-ref vec (- n 1))
+        (let ([new-vec (make-vector n 1)])
+          (for ([j (in-range 1 n)])
+            (vector-set! new-vec j (modulo (+ (vector-ref new-vec (- j 1)) 
+                                           (vector-ref vec j)) 
+                         MOD))
+          (loop (+ i 1) new-vec)))))

@@ -1,0 +1,3 @@
+Unfortunately, there is no LeetCode problem titled "Kth Smallest Amount With Single Denomination Combination" in their official problem set. It's possible that the title is incorrect or the problem might be from a different platform or contest.
+
+If you can provide the correct problem title or description, I'd be happy to help you with a Racket solution for it. Alternatively, if you're looking for a solution to a similar problem (like finding the k-th smallest sum from combinations of denominations), please provide more details about the problem's requirements and I'll do my best to assist you.

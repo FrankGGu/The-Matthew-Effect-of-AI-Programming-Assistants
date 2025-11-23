@@ -1,0 +1,11 @@
+(define (remove-adjacent s)
+  (define (loop s)
+    (let loop* ((s s) (changed #f))
+      (if (null? (cdr s))
+          (if changed (loop (filter (lambda (x) (not (equal? x (car s)))) (cdr s))) (list (car s)))
+          (if (equal? (car s) (cadr s))
+              (loop* (cdr s) #t)
+              (cons (car s) (loop* (cdr s) changed))))))
+  (apply string (loop (string->list s))))
+
+(remove-adjacent "abbaca")

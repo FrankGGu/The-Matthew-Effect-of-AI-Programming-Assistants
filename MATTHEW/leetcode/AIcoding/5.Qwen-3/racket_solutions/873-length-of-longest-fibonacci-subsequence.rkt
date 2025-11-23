@@ -1,0 +1,15 @@
+(define (len-longest-fib-seq fibs)
+  (define dp (make-hash))
+  (define n (length fibs))
+  (define result 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (define prev (- (list-ref fibs i) (list-ref fibs j)))
+      (if (hash-has-key? dp (cons prev j))
+          (begin
+            (hash-set! dp (cons (list-ref fibs i) i) (+ (hash-ref dp (cons prev j)) 1))
+            (set! result (max result (hash-ref dp (cons (list-ref fibs i) i)))))
+          (begin
+            (hash-set! dp (cons (list-ref fibs i) i) 2)
+            (set! result (max result 2)))))
+  (if (>= result 2) result 0))

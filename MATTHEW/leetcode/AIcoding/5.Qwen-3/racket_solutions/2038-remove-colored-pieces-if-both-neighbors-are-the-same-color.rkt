@@ -1,0 +1,15 @@
+(define (is-movable? s i)
+  (and (>= i 1)
+       (< i (- (string-length s) 1))
+       (= (string-ref s (- i 1)) (string-ref s (+ i 1)))))
+
+(define (remove-colored-pieces s)
+  (define len (string-length s))
+  (define (helper i res)
+    (if (>= i len)
+        res
+        (let ((current (string-ref s i)))
+          (if (is-movable? s i)
+              (helper (+ i 1) (cons current res))
+              (helper (+ i 1) res)))))
+  (length (helper 0 '())))

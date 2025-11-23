@@ -1,0 +1,30 @@
+(define (substring-xor-queries s queries)
+  (define (string->number str)
+    (foldl (lambda (c acc) (+ (* acc 2) (if (equal? c #\1) 1 0))) 0 str))
+
+  (define s-len (string-length s))
+  (define substrings (for/list ([i (in-range s-len)])
+                       (for/list ([j (in-range i s-len)])
+                         (substring s i (+ j 1)))))
+
+  (define substr-to-index (foldl (lambda (sub idx-map)
+                                     (hash-set! idx-map (string->number sub) (cons (substring s (car sub) (add1 (car sub))) (hash-ref idx-map (string->number sub) '()))))
+                                   (make-hash) 
+                                   (map (lambda (x) (list (string->number x) (string-length x))) substrings)))
+
+  (map (lambda (query)
+         (let ((qnum (car query)))
+           (if (hash-has-key? substr-to-index qnum)
+               (let ((indices (hash-ref substr-to-index qnum)))
+                 (if (null? indices)
+                     '(-1 -1)
+                     (list (car indices) (cadr indices))))
+               '(-1 -1))))
+       queries))
+
+(define (main)
+  (define s "101101")
+  (define queries '((1) (2) (3) (5) (6)))
+  (substring-xor-queries s queries))
+
+(main)

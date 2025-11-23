@@ -1,0 +1,62 @@
+You are a senior full-stack developer. Create a complete gym membership management system using Vue 3 frontend with Spring Boot backend and Hibernate JPA.
+
+**TECHNOLOGY STACK:**
+- Frontend: Vue 3 with Composition API, Vue Router, Pinia for state management
+- Backend: Spring Boot 3.x with Spring Data JPA (Hibernate)
+- Database: PostgreSQL (already configured with tables)
+- Build: Maven for backend, Vite for frontend
+
+**DATABASE CONNECTION:**
+- URL: jdbc:postgresql://localhost:5432/gym_management
+- Username: postgres
+- Password: gymsecret
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - CRUD operations for membership plans
+   - List all active plans with pricing and features
+
+2. **Member Management**
+   - Register new members with personal details
+   - View/update member information
+   - Search and filter members
+
+3. **Membership Card Management**
+   - Issue new membership cards linked to plans
+   - Track card status (active/expired/suspended)
+   - Automatic expiration checking
+
+4. **Check-in System**
+   - Member check-in/check-out functionality
+   - Check-in history with timestamps
+
+5. **Payment Processing**
+   - Record membership payments
+   - Payment history per member
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use Spring Data JPA with Hibernate for all database operations
+- Implement proper REST API with Spring MVC
+- Use DTOs for API requests/responses
+- Add input validation with Bean Validation API
+- Implement proper error handling with @ControllerAdvice
+- Vue frontend should use Composition API with TypeScript
+- Use Vue Router for navigation and Pinia for state management
+- Implement responsive UI with Tailwind CSS
+
+**CODE STRUCTURE:**
+Backend (Spring Boot):
+- Entity classes for all tables
+- Repository interfaces extending JpaRepository
+- Service layer with business logic
+- REST controllers with proper HTTP status codes
+- Configuration for CORS and database
+
+Frontend (Vue 3):
+- Components for each feature (Members, Cards, Checkins, etc.)
+- Services for API calls using axios
+- TypeScript interfaces for all data models
+- Router configuration for navigation
+
+Generate the complete application with all necessary files and include a README with setup instructions.

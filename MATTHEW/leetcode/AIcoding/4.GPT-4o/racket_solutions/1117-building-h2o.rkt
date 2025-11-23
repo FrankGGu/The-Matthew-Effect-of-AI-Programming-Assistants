@@ -1,0 +1,50 @@
+(define Queue
+  (lambda ()
+    (let ([queue '()])
+      (define (enqueue x)
+        (set! queue (append queue (list x))))
+      (define (dequeue)
+        (let ([front (car queue)])
+          (set! queue (cdr queue))
+          front))
+      (define (is-empty)
+        (null? queue))
+      (define (size)
+        (length queue))
+      (define-values (enqueue dequeue is-empty size)))))
+
+(define H2O
+  (lambda ()
+    (define h-count 0)
+    (define o-count 0)
+    (define queue (Queue))
+
+    (define (h)
+      (begin
+        (enqueue queue 'H)
+        (set! h-count (+ h-count 1))
+        (while (and (>= h-count 2) (>= o-count 1))
+          (dequeue)
+          (dequeue)
+          (dequeue)
+          (set! h-count (- h-count 2))
+          (set! o-count (- o-count 1))
+          (display "H2O"))))
+
+    (define (o)
+      (begin
+        (enqueue queue 'O)
+        (set! o-count (+ o-count 1))
+        (while (and (>= h-count 2) (>= o-count 1))
+          (dequeue)
+          (dequeue)
+          (dequeue)
+          (set! h-count (- h-count 2))
+          (set! o-count (- o-count 1))
+          (display "H2O"))))
+
+    (define-values (h o))))
+
+(define h2o (H2O))
+(define h (car h2o))
+(define o (cadr h2o))

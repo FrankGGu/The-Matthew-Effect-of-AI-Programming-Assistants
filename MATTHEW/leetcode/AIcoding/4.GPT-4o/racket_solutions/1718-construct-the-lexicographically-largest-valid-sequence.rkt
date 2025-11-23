@@ -1,0 +1,16 @@
+(define (constructLargestSequence n)
+  (define (helper k)
+    (if (= k 0)
+        '()
+        (cons k (helper (- k 1)))))
+  (define (build-sequence n)
+    (if (= n 0)
+        '()
+        (append (helper n) (build-sequence (- n 1)))))
+  (build-sequence n))
+
+(define (lexicographicallyLargestValidSequence n)
+  (let ((result (constructLargestSequence n)))
+    (string-join (map number->string result) "")))
+
+(lexicographicallyLargestValidSequence 5)

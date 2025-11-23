@@ -1,0 +1,26 @@
+(define/contract (eaten-apples apples days)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer?)
+  (let ([n (length apples)]
+        [heap (make-heap (lambda (a b) (< (car a) (car b))))]
+        [res 0]
+        [i 0])
+    (let loop ()
+      (when (or (< i n) (not (heap-empty? heap)))
+        (when (< i n)
+          (let ([a (list-ref apples i)]
+                [d (list-ref days i)])
+            (when (> a 0)
+              (heap-add! heap (cons (+ i d) a)))))
+        (let ()
+          (while (and (not (heap-empty? heap))
+                      (or (< (car (heap-min heap)) i)
+                          (= (cdr (heap-min heap)) 0)))
+            (heap-remove-min! heap))
+          (unless (heap-empty? heap)
+            (let ([top (heap-min heap)])
+              (heap-remove-min! heap)
+              (heap-add! heap (cons (car top) (sub1 (cdr top))))
+            (set! res (add1 res))))
+        (set! i (add1 i))
+        (loop)))
+    res))

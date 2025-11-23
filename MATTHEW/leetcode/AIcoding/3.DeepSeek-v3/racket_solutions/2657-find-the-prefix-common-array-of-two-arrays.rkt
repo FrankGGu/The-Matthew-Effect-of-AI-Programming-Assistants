@@ -1,0 +1,13 @@
+(define (find-the-prefix-common-array A B)
+  (define n (length A))
+  (define common (make-vector n 0))
+  (define freq (make-hash))
+
+  (for ([i (in-range n)])
+    (hash-update! freq (list-ref A i) add1 0)
+    (hash-update! freq (list-ref B i) add1 0)
+    (define cnt 0)
+    (for ([(k v) (in-hash freq)])
+      (when (>= v 2) (set! cnt (add1 cnt))))
+    (vector-set! common i cnt))
+  (vector->list common))

@@ -1,0 +1,25 @@
+#lang racket
+
+(define (max-target-nodes edges)
+  (define n (length edges))
+  (define adj (make-vector (+ n 1) '()))
+  (for ([e edges])
+    (define u (car e))
+    (define v (cadr e))
+    (vector-set! adj u (cons v (vector-ref adj u)))
+    (vector-set! adj v (cons u (vector-ref adj v))))
+
+  (define (dfs node parent)
+    (define cnt 0)
+    (for ([child (vector-ref adj node)])
+      (when (not (= child parent))
+        (set! cnt (+ cnt (dfs child node)))))
+    (if (= cnt 0) 1 cnt))
+
+  (define res 0)
+  (for ([i (in-range 1 (+ n 1))])
+    (define total 0)
+    (for ([child (vector-ref adj i)])
+      (set! total (+ total (dfs child i))))
+    (set! res (max res total)))
+  res)

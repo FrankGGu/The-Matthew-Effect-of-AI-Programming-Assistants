@@ -1,0 +1,21 @@
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+(define (number-of-different-subsequences-gc-ds nums)
+  (define max-num (apply max nums))
+  (define possible-gcds (make-set))
+  (for ([i (in-range 1 (+ max-num 1))])
+    (define current-gcd 0)
+    (define found #f)
+    (for ([num (in-list nums)])
+      (if (zero? (remainder num i))
+          (begin
+            (set! found #t)
+            (if (zero? current-gcd)
+                (set! current-gcd num)
+                (set! current-gcd (gcd current-gcd num))))))
+    (if (and found (= current-gcd i))
+        (set! possible-gcds (set-add possible-gcds i))))
+  (set-count possible-gcds))

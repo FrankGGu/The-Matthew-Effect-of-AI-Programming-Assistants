@@ -1,0 +1,12 @@
+Task: Build a simple chatbot service that replies based on keywords.
+
+Technology stack (must use exactly this):
+[Option A] Python + FastAPI
+[Option B] Node.js + Express
+[Option C] Haskell + Servant
+
+Requirements:
+- Implement an endpoint /chat?message=...
+- If message contains "hi", return "hello!".
+- If message contains "bye", return "goodbye!".
+- Otherwise return "I don't understand".

@@ -1,0 +1,11 @@
+function removeDuplicates(nums) {
+    if (nums.length === 0) return 0;
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[j] !== nums[i] || (nums[j] === nums[i] && i < 1 || nums[j] !== nums[i - 1])) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
+}

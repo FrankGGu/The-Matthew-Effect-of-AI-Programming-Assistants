@@ -1,0 +1,37 @@
+{
+  "id": "LCR 148",
+  "title": "验证图书取出顺序",
+  "titleSlug": "zhan-de-ya-ru-dan-chu-xu-lie-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Stack",
+    "Array",
+    "Simulation"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool validateBookSequences(vector<int>& putIn, vector<int>& takeOut) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean validateBookSequences(int[] putIn, int[] takeOut) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def validateBookSequences(self, putIn, takeOut):\n        \"\"\"\n        :type putIn: List[int]\n        :type takeOut: List[int]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def validateBookSequences(self, putIn: List[int], takeOut: List[int]) -> bool:\n        ",
+    "c": "bool validateBookSequences(int* putIn, int putInSize, int* takeOut, int takeOutSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool ValidateBookSequences(int[] putIn, int[] takeOut) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} putIn\n * @param {number[]} takeOut\n * @return {boolean}\n */\nvar validateBookSequences = function(putIn, takeOut) {\n    \n};",
+    "typescript": "function validateBookSequences(putIn: number[], takeOut: number[]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $putIn\n     * @param Integer[] $takeOut\n     * @return Boolean\n     */\n    function validateBookSequences($putIn, $takeOut) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func validateBookSequences(_ putIn: [Int], _ takeOut: [Int]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun validateBookSequences(putIn: IntArray, takeOut: IntArray): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool validateBookSequences(List<int> putIn, List<int> takeOut) {\n    \n  }\n}",
+    "golang": "func validateBookSequences(putIn []int, takeOut []int) bool {\n    \n}",
+    "ruby": "# @param {Integer[]} put_in\n# @param {Integer[]} take_out\n# @return {Boolean}\ndef validate_book_sequences(put_in, take_out)\n    \nend",
+    "scala": "object Solution {\n    def validateBookSequences(putIn: Array[Int], takeOut: Array[Int]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn validate_book_sequences(put_in: Vec<i32>, take_out: Vec<i32>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (validate-book-sequences putIn takeOut)\n  (-> (listof exact-integer?) (listof exact-integer?) boolean?)\n  )",
+    "erlang": "-spec validate_book_sequences(PutIn :: [integer()], TakeOut :: [integer()]) -> boolean().\nvalidate_book_sequences(PutIn, TakeOut) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec validate_book_sequences(put_in :: [integer], take_out :: [integer]) :: boolean\n  def validate_book_sequences(put_in, take_out) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func validateBookSequences(putIn: Array<Int64>, takeOut: Array<Int64>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[6,7,8,9,10,11]\n[9,11,10,8,7,6]\n[6,7,8,9,10,11]\n[11,9,8,10,6,7]",
+  "hints": []
+}

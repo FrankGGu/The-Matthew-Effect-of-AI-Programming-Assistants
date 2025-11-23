@@ -1,0 +1,11 @@
+(define (maxTasksAssign difficulty worker)
+  (define sorted-worker (sort worker <))
+  (define (helper tasks)
+    (if (null? tasks)
+        0
+        (let* ((task (car tasks))
+               (eligible-workers (filter (lambda (w) (<= task w)) sorted-worker)))
+          (if (null? eligible-workers)
+              (helper (cdr tasks))
+              (+ 1 (helper (cdr tasks)))))))
+  (helper (sort difficulty <)))

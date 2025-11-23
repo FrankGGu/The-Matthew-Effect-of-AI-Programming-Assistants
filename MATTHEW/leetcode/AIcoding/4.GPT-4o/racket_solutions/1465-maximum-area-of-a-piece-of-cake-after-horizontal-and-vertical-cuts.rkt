@@ -1,0 +1,13 @@
+(define (maxArea h w horizontalCuts verticalCuts)
+  (define mod 1000000007)
+  (define (max-diff lst)
+    (let ((sorted (sort lst <)))
+      (define diffs (map - (cdr sorted) sorted))
+      (apply max 0 diffs)))
+  (let* ((h-cuts (cons 0 (cons h (sort horizontalCuts <))))
+         (v-cuts (cons 0 (cons w (sort verticalCuts <))))
+         (max-h (max-diff h-cuts))
+         (max-v (max-diff v-cuts)))
+    (modulo (* max-h max-v) mod)))
+
+(maxArea 5 4 (list 1 2 4) (list 1 3))

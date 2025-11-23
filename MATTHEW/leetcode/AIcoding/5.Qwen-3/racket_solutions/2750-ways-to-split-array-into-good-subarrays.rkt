@@ -1,0 +1,30 @@
+(define (num-subarrays nums)
+  (define (helper i count)
+    (if (= i (length nums))
+        count
+        (let ((current (list-ref nums i)))
+          (if (= current 1)
+              (helper (+ i 1) (+ count 1))
+              (helper (+ i 1) count)))))
+  (helper 0 0))
+
+(define (is-good? nums)
+  (let ((ones (num-subarrays nums)))
+    (and (>= ones 1)
+         (<= ones (length nums)))))
+
+(define (split-array nums)
+  (define n (length nums))
+  (define (helper i res)
+    (if (= i (- n 1))
+        res
+        (let ((left (take nums i))
+              (right (drop nums i)))
+          (if (and (is-good? left) (is-good? right))
+              (helper (+ i 1) (+ res 1))
+              (helper (+ i 1) res)))))
+  (helper 0 0))
+
+(define/contract (ways-to-split-array nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (split-array nums))

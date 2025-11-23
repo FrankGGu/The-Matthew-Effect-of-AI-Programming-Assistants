@@ -1,0 +1,11 @@
+(define (min-extra-char s wordDict)
+  (let* ([n (string-length s)]
+         [dp (make-vector (add1 n) n)])
+    (vector-set! dp 0 0)
+    (for ([i (in-range 1 (add1 n))])
+      (for ([j (in-range i)])
+        (let ([sub (substring s j i)])
+          (when (member sub wordDict)
+            (vector-set! dp i (min (vector-ref dp i) (vector-ref dp j))))))
+      (vector-set! dp i (min (vector-ref dp i) (add1 (vector-ref dp (sub1 i))))))
+    (vector-ref dp n)))

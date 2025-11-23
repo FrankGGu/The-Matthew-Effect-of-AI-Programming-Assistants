@@ -1,0 +1,12 @@
+(define (largest-outlier arr)
+  (let* ((n (length arr))
+         (sorted-arr (sort arr <))
+         (q1 (list-ref sorted-arr (floor (* 0.25 n))))
+         (q3 (list-ref sorted-arr (floor (* 0.75 n))))
+         (iqr (- q3 q1))
+         (lower-bound (- q1 (* 1.5 iqr)))
+         (upper-bound (+ q3 (* 1.5 iqr)))
+         (outliers (filter (lambda (x) (or (< x lower-bound) (> x upper-bound))) arr)))
+    (if (empty? outliers)
+        -1
+        (apply max outliers))))

@@ -1,0 +1,23 @@
+(define (min-interval intervals queries)
+  (define sorted-intervals (sort intervals (lambda (a b) (< (first a) (first b)))))
+  (define sorted-queries (map (lambda (q) (list q (index-of queries q))) queries))
+  (define sorted-queries (sort sorted-queries (lambda (a b) (< (first a) (first b)))))
+
+  (define min-heap (make-heap))
+  (define results (make-vector (length queries) #f))
+  (define interval-index 0)
+
+  (for-each (lambda (query)
+              (let* ((q (first query))
+                     (idx (second query)))
+                (while (and (< interval-index (length sorted-intervals))
+                            (<= (first (list-ref sorted-intervals interval-index)) q))
+                  (let ((interval (list-ref sorted-intervals interval-index)))
+                    (heap-push! min-heap (list (- (second interval) (first interval) + 1) interval)))
+                    (set! interval-index (+ interval-index 1))))
+                (when (not (heap-empty? min-heap))
+                  (let ((min-interval (heap-peek min-heap)))
+                    (vector-set! results idx (first min-interval)))))))
+            sorted-queries)
+
+  (vector->list results))

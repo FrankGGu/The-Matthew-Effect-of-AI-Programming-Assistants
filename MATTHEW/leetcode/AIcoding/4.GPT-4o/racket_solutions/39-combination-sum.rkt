@@ -1,0 +1,12 @@
+(define (combination-sum candidates target)
+  (define (backtrack start path target)
+    (if (= target 0)
+      (list path)
+      (if (< target 0)
+        '()
+        (for/fold ([acc '()]) ([i (in-range start (length candidates))])
+          (append acc (backtrack i (cons (list-ref candidates i) path) (- target (list-ref candidates i))))))))
+  (backtrack 0 '() target))
+
+(define (combinationSum candidates target)
+  (reverse (combination-sum candidates target)))

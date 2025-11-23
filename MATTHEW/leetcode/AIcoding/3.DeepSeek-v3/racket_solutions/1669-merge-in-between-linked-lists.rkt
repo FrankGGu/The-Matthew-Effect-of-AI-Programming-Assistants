@@ -1,0 +1,15 @@
+(define/contract (merge-in-between list1 a b list2)
+  (-> (or/c null? (cons/c any/c (or/c null? (cons/c any/c any/c)))) integer? integer? (or/c null? (cons/c any/c (or/c null? (cons/c any/c any/c)))) (or/c null? (cons/c any/c (or/c null? (cons/c any/c any/c)))))
+  (define (find-nth lst n)
+    (if (or (null? lst) (<= n 0))
+        lst
+        (find-nth (cdr lst) (- n 1))))
+  (define pre-a (find-nth list1 (- a 1)))
+  (define post-b (find-nth list1 (+ b 1))))
+  (define (get-tail lst)
+    (if (null? (cdr lst))
+        lst
+        (get-tail (cdr lst))))
+  (set-cdr! pre-a list2)
+  (set-cdr! (get-tail list2) post-b)
+  list1)

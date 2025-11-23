@@ -1,0 +1,10 @@
+(define (break-palindrome palindrome)
+  (let ((n (string-length palindrome)))
+    (if (= n 1)
+        "a"
+        (let loop ((i 0))
+          (if (>= i (quotient n 2))
+              (substring palindrome (- n 1) n)
+              (if (not (char=? (string-ref palindrome i) #\a))
+                  (string-append (substring palindrome 0 i) "a" (substring palindrome (+ i 1) n))
+                  (loop (+ i 1))))))))

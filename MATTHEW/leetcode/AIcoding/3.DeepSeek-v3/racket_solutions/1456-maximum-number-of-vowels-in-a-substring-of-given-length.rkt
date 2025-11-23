@@ -1,0 +1,15 @@
+(define/contract (max-vowels s k)
+  (-> string? exact-integer? exact-integer?)
+  (define vowels (set #\a #\e #\i #\o #\u))
+  (define n (string-length s))
+  (define (vowel? c) (set-member? vowels c))
+  (define count
+    (for/sum ([i (in-range k)])
+      (if (vowel? (string-ref s i)) 1 0)))
+  (define max-count count)
+  (for ([i (in-range k n)])
+    (set! count (+ count 
+                   (if (vowel? (string-ref s i)) 1 0)
+                   (- (if (vowel? (string-ref s (- i k))) 1 0))))
+    (set! max-count (max max-count count))
+  max-count)

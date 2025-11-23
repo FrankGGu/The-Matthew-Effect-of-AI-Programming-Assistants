@@ -1,0 +1,8 @@
+(define (sum-of-power nums k)
+  (define n (length nums))
+  (define sum 0)
+  (for ([i (in-range 0 (- n k -1))])
+    (define subarray (take (drop nums i) k))
+    (define min-val (apply min subarray))
+    (set! sum (+ sum min-val)))
+  sum)

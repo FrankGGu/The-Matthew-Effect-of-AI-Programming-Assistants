@@ -1,0 +1,12 @@
+(define (find-least-num-of-unique-ints arr k)
+  (let* ((counts (make-hash))
+         (_ (for-each (lambda (x) (hash-update! counts x (lambda (v) (if v (+ v 1) 1)) 1)) arr))
+         (freqs (sort (hash-values counts) <))
+         (remaining k))
+    (for/fold ([unique-count (hash-count counts)]
+               [i 0])
+              ([freq (in-list freqs)])
+      (if (>= remaining freq)
+          (let ([new-remaining (- remaining freq)])
+            (values (- unique-count 1) new-remaining))
+          (values unique-count remaining)))))

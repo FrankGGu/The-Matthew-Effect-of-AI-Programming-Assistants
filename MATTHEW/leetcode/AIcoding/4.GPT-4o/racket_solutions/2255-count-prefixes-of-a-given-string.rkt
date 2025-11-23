@@ -1,0 +1,10 @@
+(define (count-prefixes words s)
+  (define (is-prefix? prefix s)
+    (and (<= (string-length prefix) (string-length s))
+         (string=? (substring s 0 (string-length prefix)) prefix)))
+  (define (count-helper words count)
+    (cond
+      ((null? words) count)
+      ((is-prefix? (car words) s) (count-helper (cdr words) (+ count 1)))
+      (else (count-helper (cdr words) count))))
+  (count-helper words 0))

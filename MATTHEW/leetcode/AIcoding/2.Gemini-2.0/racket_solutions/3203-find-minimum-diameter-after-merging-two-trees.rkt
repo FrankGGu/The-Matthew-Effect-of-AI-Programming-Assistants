@@ -1,0 +1,60 @@
+(define (find-min-diameter n edges)
+  (define adj (make-vector (add1 n) '()))
+  (for-each (lambda (e)
+              (let ((u (car e)) (v (cadr e)))
+                (vector-set! adj u (cons v (vector-ref adj u)))
+                (vector-set! adj v (cons u (vector-ref adj v)))))
+            edges)
+
+  (define (bfs start)
+    (define dist (make-vector (add1 n) #f))
+    (define q (queue))
+    (enqueue! q start)
+    (vector-set! dist start 0)
+
+    (let loop ()
+      (if (queue-empty? q)
+          dist
+          (let ((u (dequeue! q)))
+            (for-each (lambda (v)
+                        (if (not (vector-ref dist v))
+                            (begin
+                              (vector-set! dist v (add1 (vector-ref dist u)))
+                              (enqueue! q v))))
+                      (vector-ref adj u))
+            (loop))))
+
+  (define (find-farthest start)
+    (let ((dists (bfs start)))
+      (let loop ((i 1) (max-dist -1) (farthest -1))
+        (if (> i n)
+            farthest
+            (let ((dist (vector-ref dists i)))
+              (if (> dist max-dist)
+                  (loop (add1 i) dist i)
+                  (loop (add1 i) max-dist farthest)))))))
+
+  (define (diameter start)
+    (let ((farthest (find-farthest start)))
+      (let ((dists (bfs farthest)))
+        (apply max (vector->list dists)))))
+
+  (define (min-diameter u v)
+    (let* ((du (diameter u))
+           (dv (diameter v))
+           (dists_u (bfs u))
+           (dists_v (bfs v)))
+      (let loop ((i 1) (min-val +inf.0))
+        (if (> i n)
+            min-val
+            (let ((dist_u (vector-ref dists_u i))
+                  (dist_v (vector-ref dists_v i)))
+              (if (and dist_u dist_v)
+                  (loop (add1 i) (min min-val (add1 (+ dist_u dist_v))))
+                  (loop (add1 i) min-val)))))))
+
+  (let loop ((i 1) (min-diam +inf.0))
+    (if (> i n)
+        min-diam
+        (loop (add1 i) (min min-diam (min-diameter 1 i)))))
+  )

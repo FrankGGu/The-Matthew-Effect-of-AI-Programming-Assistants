@@ -1,0 +1,15 @@
+(define (last-remaining n)
+  (let loop ((head 1)
+             (step 1)
+             (remaining n)
+             (direction 0)) ; 0 for L-R, 1 for R-L
+    (if (= remaining 1)
+        head
+        (loop (if (= direction 0)
+                  (+ head step)
+                  (if (odd? remaining)
+                      (+ head step)
+                      head))
+              (* step 2)
+              (floor (/ remaining 2))
+              (if (= direction 0) 1 0)))))

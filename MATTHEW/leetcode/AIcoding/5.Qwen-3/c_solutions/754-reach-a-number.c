@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int reachNumber(int target) {
+    target = abs(target);
+    int step = 0, sum = 0;
+    while (sum < target || (sum - target) % 2 != 0) {
+        step++;
+        sum += step;
+    }
+    return step;
+}

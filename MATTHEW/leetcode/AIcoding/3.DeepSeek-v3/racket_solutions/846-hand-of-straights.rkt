@@ -1,0 +1,21 @@
+(define (is-n-straight-hand hand groupSize)
+  (let ((len (length hand)))
+    (if (not (= (modulo len groupSize) 0))
+        #f
+        (let ((count (make-hash)))
+          (for ([card hand])
+            (hash-update! count card add1 0))
+          (let loop ()
+            (if (hash-empty? count)
+                #t
+                (let* ((min-card (apply min (hash-keys count)))
+                       (found #t))
+                  (for ([i (in-range groupSize)])
+                    (let ((current-card (+ min-card i)))
+                      (if (hash-has-key? count current-card)
+                          (begin
+                            (hash-update! count current-card sub1)
+                            (when (= (hash-ref count current-card) 0)
+                              (hash-remove! count current-card)))
+                          (set! found #f))))
+                  (if found (loop) #f))))))))

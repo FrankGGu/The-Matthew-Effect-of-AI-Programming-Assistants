@@ -1,0 +1,11 @@
+package main
+
+func minIncrMoves(target []int, m int) int {
+    res := 0
+    for i := 1; i < len(target); i++ {
+        if target[i] > target[i-1] {
+            res += target[i] - target[i-1]
+        }
+    }
+    return res
+}

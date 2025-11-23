@@ -1,0 +1,5 @@
+(define/contract (pivot-array nums pivot)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (append (filter (lambda (x) (< x pivot)) nums)
+          (filter (lambda (x) (= x pivot)) nums)
+          (filter (lambda (x) (> x pivot)) nums)))

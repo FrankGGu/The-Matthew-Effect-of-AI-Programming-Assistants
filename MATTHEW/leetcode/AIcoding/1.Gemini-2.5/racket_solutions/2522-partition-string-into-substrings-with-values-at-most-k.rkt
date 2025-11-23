@@ -1,0 +1,13 @@
+(define (partition-string-into-substrings-with-values-at-most-k s k)
+  (let ((n (string-length s)))
+    (let loop ((idx 0)
+               (current-val 0)
+               (partitions 1))
+      (if (= idx n)
+          partitions
+          (let* ((char-digit (string-ref s idx))
+                 (digit (- (char->integer char-digit) (char->integer #\0)))
+                 (new-val (+ (* current-val 10) digit)))
+            (if (> new-val k)
+                (loop (+ idx 1) digit (+ partitions 1))
+                (loop (+ idx 1) new-val partitions)))))))

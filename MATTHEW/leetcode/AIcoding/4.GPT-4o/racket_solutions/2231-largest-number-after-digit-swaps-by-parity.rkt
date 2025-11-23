@@ -1,0 +1,18 @@
+(define (largestNumberAfterDigitSwapsByParity num)
+  (define digits (map string->number (string-split (number->string num) "")))
+  (define evens (filter even? digits))
+  (define odds (filter odd? digits))
+  (define sorted-evens (sort evens >))
+  (define sorted-odds (sort odds >))
+  (define (swap digits)
+    (map (lambda (d)
+           (cond
+             ((even? d) (car sorted-evens))
+             ((odd? d) (car sorted-odds))
+             (else d)))
+         digits))
+  (define result (swap digits))
+  (define result-str (apply string-append (map number->string result)))
+  (string->number result-str))
+
+(largestNumberAfterDigitSwapsByParity 2736)

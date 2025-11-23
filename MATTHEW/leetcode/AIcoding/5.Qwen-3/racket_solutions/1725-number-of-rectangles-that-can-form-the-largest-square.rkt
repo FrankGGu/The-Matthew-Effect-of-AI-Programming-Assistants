@@ -1,0 +1,6 @@
+(define (num-rectangles-to-form-largest-square rectangles)
+  (define (max-square-area rect)
+    (min (car rect) (cadr rect)))
+  (define areas (map max-square-area rectangles))
+  (define max-area (apply max areas))
+  (count (lambda (a) (= a max-area)) areas))

@@ -1,0 +1,37 @@
+{
+  "id": "LCR 185",
+  "title": "统计结果概率",
+  "titleSlug": "nge-tou-zi-de-dian-shu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Probability and Statistics"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<double> statisticsProbability(int num) {\n        \n    }\n};",
+    "java": "class Solution {\n    public double[] statisticsProbability(int num) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def statisticsProbability(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: List[float]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def statisticsProbability(self, num: int) -> List[float]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\ndouble* statisticsProbability(int num, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public double[] StatisticsProbability(int num) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @return {number[]}\n */\nvar statisticsProbability = function(num) {\n    \n};",
+    "typescript": "function statisticsProbability(num: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @return Float[]\n     */\n    function statisticsProbability($num) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func statisticsProbability(_ num: Int) -> [Double] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun statisticsProbability(num: Int): DoubleArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<double> statisticsProbability(int num) {\n    \n  }\n}",
+    "golang": "func statisticsProbability(num int) []float64 {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @return {Float[]}\ndef statistics_probability(num)\n    \nend",
+    "scala": "object Solution {\n    def statisticsProbability(num: Int): Array[Double] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn statistics_probability(num: i32) -> Vec<f64> {\n        \n    }\n}",
+    "racket": "(define/contract (statistics-probability num)\n  (-> exact-integer? (listof flonum?))\n  )",
+    "erlang": "-spec statistics_probability(Num :: integer()) -> [float()].\nstatistics_probability(Num) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec statistics_probability(num :: integer) :: [float]\n  def statistics_probability(num) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func statisticsProbability(num: Int64): Array<Float64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "3",
+  "hints": []
+}

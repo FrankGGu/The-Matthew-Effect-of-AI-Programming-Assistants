@@ -1,0 +1,11 @@
+(define/contract (num-subarray-bounded-max nums left right)
+  (-> (listof exact-integer?) exact-integer? exact-integer? exact-integer?)
+  (define (count nums bound)
+    (let loop ([i 0] [res 0] [cnt 0])
+      (if (>= i (length nums))
+          res
+          (let ([num (list-ref nums i)])
+            (if (<= num bound)
+                (loop (+ i 1) (+ res (set! cnt (+ cnt 1))) cnt)
+                (loop (+ i 1) res 0))))))
+  (- (count nums right) (count nums (- left 1))))

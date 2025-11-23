@@ -1,0 +1,18 @@
+(define (calculate-tax brackets income)
+  (let loop ((remaining-income income)
+             (prev-upper 0)
+             (total-tax 0.0)
+             (bs brackets))
+    (if (or (empty? bs) (<= remaining-income 0))
+        total-tax
+        (let* ((current-bracket (car bs))
+               (upper (car current-bracket))
+               (percent (cadr current-bracket))
+               (taxable-amount (min remaining-income (- upper prev-upper))))
+          (if (<= taxable-amount 0)
+              (loop remaining-income upper total-tax (cdr bs))
+              (let* ((tax-for-this-bracket (* taxable-amount (/ percent 100.0))))
+                (loop (- remaining-income taxable-amount)
+                      upper
+                      (+ total-tax tax-for-this-bracket)
+                      (cdr bs))))))))

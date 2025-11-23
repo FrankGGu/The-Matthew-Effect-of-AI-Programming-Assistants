@@ -1,0 +1,7 @@
+(define (divide-string s k)
+  (define (helper str)
+    (if (string=? str "")
+        '()
+        (cons (substring str 0 (min k (string-length str)))
+              (helper (substring str k)))))
+  (helper s))

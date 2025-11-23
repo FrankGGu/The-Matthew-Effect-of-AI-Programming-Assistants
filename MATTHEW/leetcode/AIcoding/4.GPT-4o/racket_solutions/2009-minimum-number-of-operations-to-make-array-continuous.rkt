@@ -1,0 +1,12 @@
+(define (minOperations nums)
+  (define sorted-nums (sort nums <))
+  (define n (length sorted-nums))
+  (define max-length 0)
+  (define j 0)
+  (for ([i (in-range n)])
+    (while (and (< j n) (<= (- (list-ref sorted-nums i) (list-ref sorted-nums 0)) 2))
+      (set! j (+ j 1)))
+    (set! max-length (max max-length (- j i))))
+  (- n max-length))
+
+(minOperations '(1 2 3 4 5))

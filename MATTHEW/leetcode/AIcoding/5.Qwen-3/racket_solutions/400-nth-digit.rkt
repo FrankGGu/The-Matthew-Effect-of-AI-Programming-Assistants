@@ -1,0 +1,5 @@
+(define (find-nth-digit n)
+  (let loop ((digits 1) (count 9) (start 1))
+    (if (> n count)
+        (loop (+ digits 1) (* count 10) (* start 10))
+        (+ start (quotient (- n 1) digits)))))

@@ -1,0 +1,16 @@
+(define (rob houses)
+  (define (rob-range start end)
+    (define prev1 0)
+    (define prev2 0)
+    (for ([i (in-range start end)])
+      (define curr (max prev1 (+ prev2 (list-ref houses i))))
+      (set! prev2 prev1)
+      (set! prev1 curr))
+    prev1)
+  (if (null? houses)
+      0
+      (max (rob-range 0 (- (length houses) 1))
+           (rob-range 1 (length houses)))))
+
+(define (rob-houses houses)
+  (rob houses))

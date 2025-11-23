@@ -1,0 +1,36 @@
+{
+  "id": "LCR 178",
+  "title": "训练计划 VI",
+  "titleSlug": "shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int trainingPlan(vector<int>& actions) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int trainingPlan(int[] actions) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def trainingPlan(self, actions):\n        \"\"\"\n        :type actions: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def trainingPlan(self, actions: List[int]) -> int:\n        ",
+    "c": "int trainingPlan(int* actions, int actionsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int TrainingPlan(int[] actions) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} actions\n * @return {number}\n */\nvar trainingPlan = function(actions) {\n    \n};",
+    "typescript": "function trainingPlan(actions: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $actions\n     * @return Integer\n     */\n    function trainingPlan($actions) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func trainingPlan(_ actions: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun trainingPlan(actions: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int trainingPlan(List<int> actions) {\n    \n  }\n}",
+    "golang": "func trainingPlan(actions []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} actions\n# @return {Integer}\ndef training_plan(actions)\n    \nend",
+    "scala": "object Solution {\n    def trainingPlan(actions: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn training_plan(actions: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (training-plan actions)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec training_plan(Actions :: [integer()]) -> integer().\ntraining_plan(Actions) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec training_plan(actions :: [integer]) :: integer\n  def training_plan(actions) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func trainingPlan(actions: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[5,7,5,5]\n[12,1,6,12,6,12,6]",
+  "hints": []
+}

@@ -1,0 +1,11 @@
+(define (maximum-units-on-a-truck box-types truck-size)
+  (define (sort-fn a b)
+    (> (car a) (car b)))
+  (define sorted-boxes (sort box-types sort-fn))
+  (let loop ((boxes sorted-boxes) (remaining truck-size) (units 0))
+    (if (or (null? boxes) (= remaining 0))
+        units
+        (let* ((num-boxes (caar boxes))
+               (unit-per-box (cadar boxes))
+               (take (min num-boxes remaining)))
+          (loop (cdr boxes) (- remaining take) (+ units (* take unit-per-box)))))))

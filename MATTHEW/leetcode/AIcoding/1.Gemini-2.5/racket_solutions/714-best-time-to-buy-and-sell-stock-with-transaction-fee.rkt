@@ -1,0 +1,11 @@
+(define (max-profit prices fee)
+  (if (null? prices)
+      0
+      (let-values (((final-hold final-cash)
+                    (for/fold ((hold (- (car prices)))
+                               (cash 0))
+                              ((price (cdr prices)))
+                      (let ((next-hold (max hold (- cash price)))
+                            (next-cash (max cash (+ hold price (- fee)))))
+                        (values next-hold next-cash))))
+        final-cash)))

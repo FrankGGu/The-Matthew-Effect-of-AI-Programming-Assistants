@@ -1,0 +1,8 @@
+(define (k-length-apart nums k)
+  (define last-index -1)
+  (for ([i (in-range (length nums))])
+    (when (= (list-ref nums i) 1)
+      (when (and (>= last-index 0) (< (- i last-index) k))
+        (return #f))
+      (set! last-index i)))
+  #t)

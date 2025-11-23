@@ -1,0 +1,20 @@
+(define/contract (supply-wagons wagons)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (let loop ([ws wagons])
+    (if (<= (length ws) (length wagons))
+        (let ([n (length ws)])
+          (if (<= n 2)
+              ws
+              (let* ([min-sum +inf.0]
+                     [best-i 0]
+                     [best-sum (for/fold ([min-sum +inf.0] [best-i 0])
+                                         ([i (in-range (- n 1))])
+                                (let ([sum (+ (list-ref ws i) (list-ref ws (+ i 1)))])
+                                  (if (< sum min-sum)
+                                      (values sum i)
+                                      (values min-sum best-i))))])
+                (let ([new-ws (append (take ws best-i)
+                                      (list (+ (list-ref ws best-i) (list-ref ws (+ best-i 1))))
+                                      (drop ws (+ best-i 2)))])
+                  (loop new-ws))))
+        ws)))

@@ -1,0 +1,10 @@
+(define (lex-largest-string box)
+  (define (lex-compare a b)
+    (string>? a b))
+  (let loop ([i 0] [max-str ""])
+    (if (>= i (vector-length box))
+        max-str
+        (let ([current (vector-ref box i)])
+          (if (and (string? current) (lex-compare current max-str))
+              (loop (add1 i) current)
+              (loop (add1 i) max-str))))))

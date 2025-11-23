@@ -1,0 +1,16 @@
+(define/contract (flood-fill image sr sc color)
+  (-> (listof (listof exact-integer?)) exact-integer? exact-integer? exact-integer? (listof (listof exact-integer?)))
+  (let ([rows (length image)]
+        [cols (if (null? image) 0 (length (car image)))]
+        [original-color (list-ref (list-ref image sr) sc)])
+    (define (dfs r c)
+      (when (and (>= r 0) (< r rows) (>= c 0) (< c cols)
+        (let ([current (list-ref (list-ref image r) c)])
+          (when (and (= current original-color) (not (= current color)))
+            (set! image (list-set image r (list-set (list-ref image r) c color)))
+            (dfs (add1 r) c)
+            (dfs (sub1 r) c)
+            (dfs r (add1 c))
+            (dfs r (sub1 c))))))
+    (if (not (= original-color color)) (dfs sr sc))
+    image))

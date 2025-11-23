@@ -1,0 +1,8 @@
+(define (find-ocurrences text first second)
+  (let* ((words (string-split text))
+         (result '()))
+    (for ([i (in-range (- (length words) 2))])
+      (when (and (string=? (list-ref words i) first)
+                (string=? (list-ref words (+ i 1)) second))
+        (set! result (cons (list-ref words (+ i 2)) result)))
+    (reverse result)))

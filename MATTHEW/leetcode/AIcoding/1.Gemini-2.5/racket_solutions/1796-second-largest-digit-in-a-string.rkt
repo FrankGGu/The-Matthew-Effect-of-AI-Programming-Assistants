@@ -1,0 +1,12 @@
+(define (second-largest-digit s)
+  (let* ((digits (let loop ((i 0) (acc '()))
+                   (if (= i (string-length s))
+                       acc
+                       (let ((c (string-ref s i)))
+                         (if (char-numeric? c)
+                             (loop (+ i 1) (cons (char-digit-value c) acc))
+                             (loop (+ i 1) acc))))))
+         (unique-sorted-digits (sort (remove-duplicates digits) >)))
+    (if (>= (length unique-sorted-digits) 2)
+        (list-ref unique-sorted-digits 1)
+        -1)))

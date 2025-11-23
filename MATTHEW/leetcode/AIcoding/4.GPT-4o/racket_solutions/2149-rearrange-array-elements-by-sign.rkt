@@ -1,0 +1,6 @@
+(define (rearrange-array nums)
+  (define positives (filter (lambda (x) (> x 0)) nums))
+  (define negatives (filter (lambda (x) (< x 0)) nums))
+  (for/list ([i (in-range (length positives))])
+    (list-ref positives i)
+    (list-ref negatives i)))

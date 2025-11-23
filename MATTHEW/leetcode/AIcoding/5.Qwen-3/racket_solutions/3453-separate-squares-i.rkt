@@ -1,0 +1,17 @@
+#lang racket
+
+(define (split-on-squares s)
+  (define (is-square? n)
+    (define root (integer-sqrt n))
+    (= (* root root) n))
+  (define (helper i res)
+    (if (> i (string-length s))
+        (reverse res)
+        (let loop ((j (add1 i)))
+          (if (> j (string-length s))
+              (helper (add1 i) res)
+              (let ((num (string->number (substring s i j))))
+                (if (and num (is-square? num))
+                    (helper j (cons num res))
+                    (loop (add1 j))))))))
+  (helper 0 '()))

@@ -1,0 +1,13 @@
+(define (count-partitions-with-even-sum-difference nums)
+  (define n (length nums))
+  (define total-sum (apply + nums))
+  (if (odd? total-sum)
+      0
+      (let ([target (/ total-sum 2)])
+        (define dp (make-vector (+ target 1) 0))
+        (vector-set! dp 0 1)
+        (for ([num (in-list nums)])
+          (for ([i (in-range target num -1)])
+            (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i num))))))
+        (let ([result (vector-ref dp target)])
+          (remainder result (expt 10 9 + 7)))))))

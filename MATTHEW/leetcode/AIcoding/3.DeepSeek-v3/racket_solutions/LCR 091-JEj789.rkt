@@ -1,0 +1,18 @@
+(define/contract (min-cost costs)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (if (null? costs)
+      0
+      (let loop ([prev (car costs)] [rest (cdr costs)])
+        (if (null? rest)
+            (apply min prev)
+            (let ([curr (list
+                         (+ (cadr prev) (car (car rest)))
+                         (+ (caddr prev) (car (car rest)))
+                         (+ (car prev) (cadr (car rest)))
+                         (+ (caddr prev) (cadr (car rest)))
+                         (+ (car prev) (caddr (car rest)))
+                         (+ (cadr prev) (caddr (car rest))))])
+              (loop (list (min (car curr) (cadr curr))
+                          (min (caddr curr) (cadddr curr))
+                          (min (list-ref curr 4) (list-ref curr 5)))
+                    (cdr rest)))))))

@@ -1,0 +1,16 @@
+#lang racket
+
+(define (k-inverse-pairs n k)
+  (define mod 1000000007)
+  (define dp (make-vector (+ k 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 2 (+ n 1))])
+    (define new-dp (make-vector (+ k 1) 0))
+    (define sum 0)
+    (for ([j (in-range (+ k 1))])
+      (set! sum (modulo (+ sum (vector-ref dp j)) mod))
+      (when (>= j i)
+        (set! sum (modulo (- sum (vector-ref dp (- j i))) mod)))
+      (vector-set! new-dp j sum))
+    (set! dp new-dp))
+  (vector-ref dp k))

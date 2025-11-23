@@ -1,0 +1,15 @@
+(struct ListNode (val next))
+
+(define (Solution head)
+  (define (get-random)
+    (let loop ((node head)
+               (result 0)
+               (count 0))
+      (if (null? node)
+          result
+          (let ((new-count (+ count 1)))
+            (if (= (random new-count) 0)
+                (loop (ListNode-next node) (ListNode-val node) new-count)
+                (loop (ListNode-next node) result new-count))))))
+  (define (pick) (get-random))
+  (list pick))

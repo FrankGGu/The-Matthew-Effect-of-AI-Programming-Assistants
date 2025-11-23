@@ -1,0 +1,11 @@
+(define (arraySign nums)
+  (define (sign x)
+    (cond
+      ((= x 0) 0)
+      ((< x 0) -1)
+      (else 1)))
+  (define product-sign 1)
+  (for-each (lambda (num)
+              (set! product-sign (* product-sign (sign num))))
+            nums)
+  (if (= product-sign 0) 0 product-sign))

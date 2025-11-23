@@ -1,0 +1,12 @@
+(define (mostCommonWord paragraph banned)
+  (define words (string-split (string-downcase paragraph) #\space))
+  (define word-count (make-hash))
+  (for-each (lambda (word)
+              (define cleaned-word (string-trim (regexp-replace* #px"[^a-zA-Z]+" word "")))
+              (unless (member cleaned-word banned)
+                (hash-set! word-count cleaned-word (+ 1 (hash-ref word-count cleaned-word 0)))))
+            words)
+  (define max-word (car (hash-map word-count (lambda (w c) (cons c w)) '())))
+  (car (sort (hash-map word-count (lambda (w c) (cons c w)) '()) (lambda (x y) (> (cdr x) (cdr y))))))
+
+(mostCommonWord "Bob hit a ball, the hit BALL flew far after it was hit." '("hit"))

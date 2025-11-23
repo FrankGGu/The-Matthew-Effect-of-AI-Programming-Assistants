@@ -1,0 +1,13 @@
+(define/contract (get-minimum-difference root)
+  (-> (or/c null? tree-node?) exact-integer?)
+  (define prev null)
+  (define min-diff +inf.0)
+  (define (in-order node)
+    (when node
+      (in-order (tree-node-left node))
+      (when (not (null? prev))
+        (set! min-diff (min min-diff (- (tree-node-val node) prev))))
+      (set! prev (tree-node-val node))
+      (in-order (tree-node-right node))))
+  (in-order root)
+  min-diff)

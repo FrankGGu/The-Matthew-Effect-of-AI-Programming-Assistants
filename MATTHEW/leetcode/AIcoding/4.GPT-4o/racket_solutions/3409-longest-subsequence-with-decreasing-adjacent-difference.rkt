@@ -1,0 +1,10 @@
+(define (longest-subsequence arr d)
+  (define n (length arr))
+  (define dp (make-vector n 1))
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (= (abs (- (vector-ref arr i) (vector-ref arr j))) d)
+        (vector-set! dp i (max (vector-ref dp i) (+ 1 (vector-ref dp j)))))))
+  (apply max (vector->list dp)))
+
+(longest-subsequence (vector 5 3 4 2 1) 1)

@@ -1,0 +1,12 @@
+(define (find-bottom-left-value root)
+  (define (helper node depth)
+    (if (null? node)
+        (values #f depth)
+        (let-values ([(left-left left-depth) (helper (node-left node) (+ depth 1))]
+                     [(right-left right-depth) (helper (node-right node) (+ depth 1))])
+          (if (and (not left-left) (not right-left))
+              (values (node-val node) depth)
+              (if (> left-depth right-depth)
+                  (values left-left left-depth)
+                  (values right-left right-depth))))))
+  (car (helper root 0)))

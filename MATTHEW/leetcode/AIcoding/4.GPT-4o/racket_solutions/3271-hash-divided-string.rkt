@@ -1,0 +1,8 @@
+(define (hash-divided-string s)
+  (define (hash-value c)
+    (modulo (char->integer c) 3))
+  (define (check-divisible s)
+    (define sum 0)
+    (for-each (lambda (c) (set! sum (+ sum (hash-value c)))) s)
+    (zero? (modulo sum 3)))
+  (check-divisible s))

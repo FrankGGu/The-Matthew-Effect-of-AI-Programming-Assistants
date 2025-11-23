@@ -1,0 +1,10 @@
+(define (validate-stack-sequences pushed popped)
+  (define stack '())
+  (define j 0)
+  (for ([x pushed])
+    (begin
+      (set! stack (cons x stack))
+      (while (and (not (null? stack)) (= (car stack) (list-ref popped j)))
+        (set! stack (cdr stack))
+        (set! j (+ j 1)))))
+  (null? stack))

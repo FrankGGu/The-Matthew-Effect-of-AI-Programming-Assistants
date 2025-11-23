@@ -1,0 +1,10 @@
+(define (find-center edges)
+  (let* ((edge1 (car edges))
+         (node1a (car edge1))
+         (node1b (cadr edge1))
+         (edge2 (cadr edges))
+         (node2a (car edge2))
+         (node2b (cadr edge2)))
+    (if (or (= node1a node2a) (= node1a node2b))
+        node1a
+        node1b)))

@@ -1,0 +1,10 @@
+(define (distribute-candies candies n)
+  (define (loop i remaining res)
+    (if (<= remaining 0)
+        res
+        (let* ((give (min remaining i))
+               (new-res (append res (list give)))
+               (new-remaining (- remaining give))
+               (new-i (+ i 1)))
+          (loop new-i new-remaining new-res))))
+  (reverse (loop 1 candies '())))

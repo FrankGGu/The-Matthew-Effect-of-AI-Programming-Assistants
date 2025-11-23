@@ -1,0 +1,12 @@
+(define (add-two-numbers l1 l2)
+  (letrec ((helper (lambda (l1 l2 carry)
+                     (cond
+                       ((and (null? l1) (null? l2) (= carry 0)) '())
+                       ((and (null? l1) (null? l2)) (list carry))
+                       ((null? l1) (let ((sum (+ (car l2) carry)))
+                                      (cons (modulo sum 10) (helper '() (cdr l2) (quotient sum 10)))))
+                       ((null? l2) (let ((sum (+ (car l1) carry)))
+                                      (cons (modulo sum 10) (helper (cdr l1) '() (quotient sum 10)))))
+                       (else (let ((sum (+ (car l1) (car l2) carry)))
+                               (cons (modulo sum 10) (helper (cdr l1) (cdr l2) (quotient sum 10)))))))))
+    (helper l1 l2 0)))

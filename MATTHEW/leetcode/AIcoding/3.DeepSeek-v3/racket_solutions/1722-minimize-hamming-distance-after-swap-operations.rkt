@@ -1,0 +1,38 @@
+(define (minimum-hamming-distance source target allowedSwaps)
+  (define n (length source))
+  (define parent (make-vector n 0))
+  (for ([i (in-range n)]) (vector-set! parent i i))
+
+  (define (find u)
+    (if (= u (vector-ref parent u))
+        u
+        (begin
+          (vector-set! parent u (find (vector-ref parent u)))
+          (vector-ref parent u))))
+
+  (for ([swap (in-list allowedSwaps)])
+    (define u (car swap))
+    (define v (cadr swap))
+    (define pu (find u))
+    (define pv (find v))
+    (when (not (= pu pv))
+      (vector-set! parent pv pu)))
+
+  (define groups (make-hash))
+  (for ([i (in-range n)])
+    (define root (find i))
+    (hash-update! groups root (lambda (lst) (cons i lst)) (list)))
+
+  (define res 0)
+  (for ([(root indices) (in-hash groups)])
+    (define freq (make-hash))
+    (for ([i (in-list indices)])
+      (define num (list-ref source i))
+      (hash-update! freq num add1 0))
+    (for ([i (in-list indices)])
+      (define num (list-ref target i))
+      (hash-update! freq num sub1 0))
+    (for ([(k v) (in-hash freq)])
+      (when (> v 0)
+        (set! res (+ res v))))
+  (quotient res 2))

@@ -1,0 +1,35 @@
+{
+  "id": "520",
+  "title": "Detect Capital",
+  "titleSlug": "detect-capital",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "String"
+  ],
+  "content": "<p>We define the usage of capitals in a word to be right when one of the following cases holds:</p>\n\n<ul>\n\t<li>All letters in this word are capitals, like <code>&quot;USA&quot;</code>.</li>\n\t<li>All letters in this word are not capitals, like <code>&quot;leetcode&quot;</code>.</li>\n\t<li>Only the first letter in this word is capital, like <code>&quot;Google&quot;</code>.</li>\n</ul>\n\n<p>Given a string <code>word</code>, return <code>true</code> if the usage of capitals in it is right.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> word = \"USA\"\n<strong>Output:</strong> true\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> word = \"FlaG\"\n<strong>Output:</strong> false\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= word.length &lt;= 100</code></li>\n\t<li><code>word</code> consists of lowercase and uppercase English letters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool detectCapitalUse(string word) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean detectCapitalUse(String word) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def detectCapitalUse(self, word):\n        \"\"\"\n        :type word: str\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def detectCapitalUse(self, word: str) -> bool:\n        ",
+    "c": "bool detectCapitalUse(char* word) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool DetectCapitalUse(string word) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} word\n * @return {boolean}\n */\nvar detectCapitalUse = function(word) {\n    \n};",
+    "typescript": "function detectCapitalUse(word: string): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $word\n     * @return Boolean\n     */\n    function detectCapitalUse($word) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func detectCapitalUse(_ word: String) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun detectCapitalUse(word: String): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool detectCapitalUse(String word) {\n    \n  }\n}",
+    "golang": "func detectCapitalUse(word string) bool {\n    \n}",
+    "ruby": "# @param {String} word\n# @return {Boolean}\ndef detect_capital_use(word)\n    \nend",
+    "scala": "object Solution {\n    def detectCapitalUse(word: String): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn detect_capital_use(word: String) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (detect-capital-use word)\n  (-> string? boolean?)\n  )",
+    "erlang": "-spec detect_capital_use(Word :: unicode:unicode_binary()) -> boolean().\ndetect_capital_use(Word) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec detect_capital_use(word :: String.t) :: boolean\n  def detect_capital_use(word) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func detectCapitalUse(word: String): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"USA\"\n\"FlaG\"",
+  "hints": []
+}

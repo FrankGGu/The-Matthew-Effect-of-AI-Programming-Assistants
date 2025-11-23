@@ -1,0 +1,16 @@
+(define/contract (count-different-subsequence-gcds nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let* ([max-num (apply max nums)]
+         [gcds (make-hash)]
+         [seen (make-hash)])
+    (for ([num nums])
+      (hash-set! seen num #t))
+    (for ([i (in-range 1 (add1 max-num))])
+      (let ([current-gcd 0])
+        (for ([j (in-range i (add1 max-num) i)])
+          (when (hash-ref seen j #f)
+            (set! current-gcd (gcd current-gcd j))
+            (when (= current-gcd i)
+              (hash-set! gcds i #t)
+              (break)))))
+    (hash-count gcds)))

@@ -1,0 +1,11 @@
+(define (count-copied-arrays n)
+  (define MOD 1000000007)
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 1 (+ i 1))])
+      (vector-set! dp i (mod (+ (vector-ref dp i) (vector-ref dp (- i j))) MOD))))
+  (vector-ref dp n))
+
+(define (numCopyArrays n)
+  (count-copied-arrays n))

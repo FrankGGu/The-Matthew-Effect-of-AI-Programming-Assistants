@@ -1,0 +1,32 @@
+{
+  "id": "LCP 79",
+  "title": "提取咒文",
+  "titleSlug": "kjpLFZ",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int extractMantra(vector<string>& matrix, string mantra) {\n\n    }\n};",
+    "java": "class Solution {\n    public int extractMantra(String[] matrix, String mantra) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def extractMantra(self, matrix, mantra):\n        \"\"\"\n        :type matrix: List[str]\n        :type mantra: str\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def extractMantra(self, matrix: List[str], mantra: str) -> int:",
+    "c": "int extractMantra(char** matrix, int matrixSize, char* mantra){\n\n}",
+    "csharp": "public class Solution {\n    public int ExtractMantra(string[] matrix, string mantra) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} matrix\n * @param {string} mantra\n * @return {number}\n */\nvar extractMantra = function(matrix, mantra) {\n\n};",
+    "typescript": "function extractMantra(matrix: string[], mantra: string): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $matrix\n     * @param String $mantra\n     * @return Integer\n     */\n    function extractMantra($matrix, $mantra) {\n\n    }\n}",
+    "swift": "class Solution {\n    func extractMantra(_ matrix: [String], _ mantra: String) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun extractMantra(matrix: Array<String>, mantra: String): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int extractMantra(List<String> matrix, String mantra) {\n\n  }\n}",
+    "golang": "func extractMantra(matrix []string, mantra string) int {\n\n}",
+    "ruby": "# @param {String[]} matrix\n# @param {String} mantra\n# @return {Integer}\ndef extract_mantra(matrix, mantra)\n\nend",
+    "scala": "object Solution {\n    def extractMantra(matrix: Array[String], mantra: String): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn extract_mantra(matrix: Vec<String>, mantra: String) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (extract-mantra matrix mantra)\n  (-> (listof string?) string? exact-integer?)\n\n  )",
+    "erlang": "-spec extract_mantra(Matrix :: [unicode:unicode_binary()], Mantra :: unicode:unicode_binary()) -> integer().\nextract_mantra(Matrix, Mantra) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec extract_mantra(matrix :: [String.t], mantra :: String.t) :: integer\n  def extract_mantra(matrix, mantra) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"sd\",\"ep\"]\n\"speed\"\n[\"abc\",\"daf\",\"geg\"]\n\"sad\"",
+  "hints": []
+}

@@ -1,0 +1,18 @@
+(require racket/hash)
+
+(define (find-minimum-possible-sum-of-a-beautiful-array n target)
+  (let loop ((ans 0)
+             (count 0)
+             (current-num 1)
+             (forbidden-set (let ((init-set (hash-set)))
+                              (if (even? target)
+                                  (hash-set-add init-set (/ target 2))
+                                  init-set))))
+    (if (= count n)
+        ans
+        (if (hash-set-contains? forbidden-set current-num)
+            (loop ans count (+ current-num 1) forbidden-set)
+            (loop (+ ans current-num)
+                  (+ count 1)
+                  (+ current-num 1)
+                  (hash-set-add forbidden-set (- target current-num)))))))

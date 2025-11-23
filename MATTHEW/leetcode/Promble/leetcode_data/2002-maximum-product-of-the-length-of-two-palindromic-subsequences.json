@@ -1,0 +1,42 @@
+{
+  "id": "2002",
+  "title": "Maximum Product of the Length of Two Palindromic Subsequences",
+  "titleSlug": "maximum-product-of-the-length-of-two-palindromic-subsequences",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "String",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bitmask"
+  ],
+  "content": "<p>Given a string <code>s</code>, find two <strong>disjoint palindromic subsequences</strong> of <code>s</code> such that the <strong>product</strong> of their lengths is <strong>maximized</strong>. The two subsequences are <strong>disjoint</strong> if they do not both pick a character at the same index.</p>\n\n<p>Return <em>the <strong>maximum</strong> possible <strong>product</strong> of the lengths of the two palindromic subsequences</em>.</p>\n\n<p>A <strong>subsequence</strong> is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters. A string is <strong>palindromic</strong> if it reads the same forward and backward.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"example-1\" src=\"https://assets.leetcode.com/uploads/2021/08/24/two-palindromic-subsequences.png\" style=\"width: 550px; height: 124px;\" />\n<pre>\n<strong>Input:</strong> s = &quot;leetcodecom&quot;\n<strong>Output:</strong> 9\n<strong>Explanation</strong>: An optimal solution is to choose &quot;ete&quot; for the 1<sup>st</sup> subsequence and &quot;cdc&quot; for the 2<sup>nd</sup> subsequence.\nThe product of their lengths is: 3 * 3 = 9.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;bb&quot;\n<strong>Output:</strong> 1\n<strong>Explanation</strong>: An optimal solution is to choose &quot;b&quot; (the first character) for the 1<sup>st</sup> subsequence and &quot;b&quot; (the second character) for the 2<sup>nd</sup> subsequence.\nThe product of their lengths is: 1 * 1 = 1.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;accbcaxxcxx&quot;\n<strong>Output:</strong> 25\n<strong>Explanation</strong>: An optimal solution is to choose &quot;accca&quot; for the 1<sup>st</sup> subsequence and &quot;xxcxx&quot; for the 2<sup>nd</sup> subsequence.\nThe product of their lengths is: 5 * 5 = 25.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= s.length &lt;= 12</code></li>\n\t<li><code>s</code> consists of lowercase English letters only.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxProduct(string s) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxProduct(String s) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxProduct(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxProduct(self, s: str) -> int:\n        ",
+    "c": "int maxProduct(char* s) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxProduct(string s) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {number}\n */\nvar maxProduct = function(s) {\n    \n};",
+    "typescript": "function maxProduct(s: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return Integer\n     */\n    function maxProduct($s) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxProduct(_ s: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxProduct(s: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxProduct(String s) {\n    \n  }\n}",
+    "golang": "func maxProduct(s string) int {\n    \n}",
+    "ruby": "# @param {String} s\n# @return {Integer}\ndef max_product(s)\n    \nend",
+    "scala": "object Solution {\n    def maxProduct(s: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_product(s: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-product s)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec max_product(S :: unicode:unicode_binary()) -> integer().\nmax_product(S) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_product(s :: String.t) :: integer\n  def max_product(s) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxProduct(s: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"leetcodecom\"\n\"bb\"\n\"accbcaxxcxx\"",
+  "hints": [
+    "Could you generate all possible pairs of disjoint subsequences?",
+    "Could you find the maximum length palindrome in each subsequence for a pair of disjoint subsequences?"
+  ]
+}

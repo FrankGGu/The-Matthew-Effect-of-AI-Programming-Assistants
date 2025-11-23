@@ -1,0 +1,6 @@
+(define (find-max-consecutive-ones nums)
+  (define (helper nums count max-count)
+    (cond ((null? nums) max-count)
+          ((= (car nums) 1) (helper (cdr nums) (+ count 1) (max max-count count)))
+          (else (helper (cdr nums) 0 max-count))))
+  (helper nums 0 0))

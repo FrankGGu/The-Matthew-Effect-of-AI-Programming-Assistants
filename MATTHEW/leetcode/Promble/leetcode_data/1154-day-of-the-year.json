@@ -1,0 +1,38 @@
+{
+  "id": "1154",
+  "title": "Day of the Year",
+  "titleSlug": "day-of-the-year",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "String"
+  ],
+  "content": "<p>Given a string <code>date</code> representing a <a href=\"https://en.wikipedia.org/wiki/Gregorian_calendar\" target=\"_blank\">Gregorian calendar</a> date formatted as <code>YYYY-MM-DD</code>, return <em>the day number of the year</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> date = &quot;2019-01-09&quot;\n<strong>Output:</strong> 9\n<strong>Explanation:</strong> Given date is the 9th day of the year in 2019.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> date = &quot;2019-02-10&quot;\n<strong>Output:</strong> 41\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>date.length == 10</code></li>\n\t<li><code>date[4] == date[7] == &#39;-&#39;</code>, and all other <code>date[i]</code>&#39;s are digits</li>\n\t<li><code>date</code> represents a calendar date between Jan 1<sup>st</sup>, 1900 and Dec 31<sup>st</sup>, 2019.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int dayOfYear(string date) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int dayOfYear(String date) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def dayOfYear(self, date):\n        \"\"\"\n        :type date: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def dayOfYear(self, date: str) -> int:\n        ",
+    "c": "int dayOfYear(char* date) {\n    \n}",
+    "csharp": "public class Solution {\n    public int DayOfYear(string date) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} date\n * @return {number}\n */\nvar dayOfYear = function(date) {\n    \n};",
+    "typescript": "function dayOfYear(date: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $date\n     * @return Integer\n     */\n    function dayOfYear($date) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func dayOfYear(_ date: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun dayOfYear(date: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int dayOfYear(String date) {\n    \n  }\n}",
+    "golang": "func dayOfYear(date string) int {\n    \n}",
+    "ruby": "# @param {String} date\n# @return {Integer}\ndef day_of_year(date)\n    \nend",
+    "scala": "object Solution {\n    def dayOfYear(date: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn day_of_year(date: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (day-of-year date)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec day_of_year(Date :: unicode:unicode_binary()) -> integer().\nday_of_year(Date) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec day_of_year(date :: String.t) :: integer\n  def day_of_year(date) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func dayOfYear(date: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"2019-01-09\"\n\"2019-02-10\"",
+  "hints": [
+    "Have a integer array of how many days there are per month.  February gets one extra day if its a leap year.  Then, we can manually count the ordinal as day + (number of days in months before this one)."
+  ]
+}

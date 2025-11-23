@@ -1,0 +1,16 @@
+(define (bitwise-ors-subarrays arr)
+  (define n (length arr))
+  (define result (make-hash))
+  (define current-ors (make-set))
+
+  (for ([i (in-range n)])
+    (define new-ors (make-set))
+    (set-add! new-ors (list-ref arr i))
+    (hash-set! result (list-ref arr i) #t)
+    (for ([or-val (in-set current-ors)])
+      (let ([new-or (bitwise-ior or-val (list-ref arr i))])
+        (set-add! new-ors new-or)
+        (hash-set! result new-or #t)))
+    (set! current-ors new-ors))
+
+  (hash-count result))

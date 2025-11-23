@@ -1,0 +1,18 @@
+#lang racket
+
+(define/contract (latest-time-2023-11-17 s target)
+  (-> string? string? exact-nonnegative-integer?)
+  (define n (string-length s))
+  (define m (string-length target))
+  (define dp (make-vector m #f))
+  (vector-set! dp 0 #t)
+  (for ([i (in-range n)])
+    (when (and (>= i 1) (char=? (string-ref s i) (string-ref target 0)))
+      (vector-set! dp 0 #t))
+    (for ([j (in-range (sub1 m) -1 -1)])
+      (when (and (char=? (string-ref s i) (string-ref target j)) (vector-ref dp j))
+        (vector-set! dp (add1 j) #t))))
+  (let loop ([i (sub1 m)])
+    (if (vector-ref dp i)
+        (- i 1)
+        (loop (sub1 i)))))

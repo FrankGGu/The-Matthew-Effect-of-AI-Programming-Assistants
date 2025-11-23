@@ -1,0 +1,8 @@
+(define (calculate s)
+  (let loop ([x 1] [y 0] [i 0])
+    (if (= i (string-length s))
+        (+ x y)
+        (let ([c (string-ref s i)])
+          (if (char=? c #\A)
+              (loop (+ x y) y (+ i 1))
+              (loop x (+ x y) (+ i 1))))))

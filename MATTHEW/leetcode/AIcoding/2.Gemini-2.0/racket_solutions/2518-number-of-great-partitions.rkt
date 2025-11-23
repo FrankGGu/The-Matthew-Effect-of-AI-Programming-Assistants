@@ -1,0 +1,37 @@
+(define (number-of-great-partitions nums k)
+  (define n (length nums))
+  (define MOD 1000000007)
+
+  (define (pow a b)
+    (if (= b 0)
+        1
+        (let ((half (pow a (quotient b 2))))
+          (modulo (if (even? b)
+                      (modulo (* half half) MOD)
+                      (modulo (* a (* half half)) MOD))
+                  MOD))))
+
+  (define (inverse a)
+    (pow a (- MOD 2)))
+
+  (define (combinations n k)
+    (if (or (< k 0) (> k n))
+        0
+        (let loop ((i 1) (res 1) (num 1) (den 1))
+          (if (> i k)
+              (modulo (* num (inverse den)) MOD)
+              (loop (+ i 1) (modulo (* res (- n i -1)) MOD)
+                    (modulo (* num (- n i -1)) MOD)
+                    (modulo (* den i) MOD))))))
+
+  (let ((sum (apply + nums)))
+    (if (>= sum (* 2 k))
+        (let ((dp (make-vector (+ k 1) 0)))
+          (vector-set! dp 0 1)
+          (for ([num nums])
+            (for ([i (reverse (range num (+ k 1)))])
+              (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i num))) MOD))))
+          (let ((total-partitions (pow 2 (- n 1))))
+            (let ((invalid-partitions (vector-ref dp k)))
+              (modulo (- total-partitions invalid-partitions) MOD))))
+        0)))

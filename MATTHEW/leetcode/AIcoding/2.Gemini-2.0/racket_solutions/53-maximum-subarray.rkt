@@ -1,0 +1,11 @@
+(define (max-subarray nums)
+  (let loop ((i 1)
+             (max-so-far (car nums))
+             (current-max (car nums)))
+    (if (= i (length nums))
+        max-so-far
+        (let ((num (list-ref nums i)))
+          (let ((new-current-max (max num (+ current-max num))))
+            (loop (+ i 1)
+                  (max max-so-far new-current-max)
+                  new-current-max))))))

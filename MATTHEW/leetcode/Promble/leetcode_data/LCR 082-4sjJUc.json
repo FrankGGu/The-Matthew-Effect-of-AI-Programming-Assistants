@@ -1,0 +1,34 @@
+{
+  "id": "LCR 082",
+  "title": "组合总和 II",
+  "titleSlug": "4sjJUc",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Backtracking"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {\n\n    }\n};",
+    "java": "class Solution {\n    public List<List<Integer>> combinationSum2(int[] candidates, int target) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def combinationSum2(self, candidates, target):\n        \"\"\"\n        :type candidates: List[int]\n        :type target: int\n        :rtype: List[List[int]]\n        \"\"\"",
+    "python3": "class Solution:\n    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public IList<IList<int>> CombinationSum2(int[] candidates, int target) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} candidates\n * @param {number} target\n * @return {number[][]}\n */\nvar combinationSum2 = function(candidates, target) {\n\n};",
+    "typescript": "function combinationSum2(candidates: number[], target: number): number[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $candidates\n     * @param Integer $target\n     * @return Integer[][]\n     */\n    function combinationSum2($candidates, $target) {\n\n    }\n}",
+    "swift": "class Solution {\n    func combinationSum2(_ candidates: [Int], _ target: Int) -> [[Int]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun combinationSum2(candidates: IntArray, target: Int): List<List<Int>> {\n\n    }\n}",
+    "golang": "func combinationSum2(candidates []int, target int) [][]int {\n\n}",
+    "ruby": "# @param {Integer[]} candidates\n# @param {Integer} target\n# @return {Integer[][]}\ndef combination_sum2(candidates, target)\n\nend",
+    "scala": "object Solution {\n    def combinationSum2(candidates: Array[Int], target: Int): List[List[Int]] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn combination_sum2(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {\n\n    }\n}",
+    "racket": "(define/contract (combination-sum2 candidates target)\n  (-> (listof exact-integer?) exact-integer? (listof (listof exact-integer?)))\n\n  )",
+    "erlang": "-spec combination_sum2(Candidates :: [integer()], Target :: integer()) -> [[integer()]].\ncombination_sum2(Candidates, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec combination_sum2(candidates :: [integer], target :: integer) :: [[integer]]\n  def combination_sum2(candidates, target) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[10,1,2,7,6,1,5]\n8\n[2,5,2,1,2]\n5",
+  "hints": []
+}

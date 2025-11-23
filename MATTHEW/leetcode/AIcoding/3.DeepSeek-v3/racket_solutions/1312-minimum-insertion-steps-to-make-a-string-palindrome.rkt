@@ -1,0 +1,10 @@
+(define (min-insertions s)
+  (let* ([n (string-length s)]
+         [dp (make-vector (make-vector n 0) n)])
+    (for ([i (in-range (- n 2) -1 -1)])
+      (for ([j (in-range (+ i 1) n)])
+        (if (equal? (string-ref s i) (string-ref s j))
+            (vector-set! (vector-ref dp i) j (vector-ref (vector-ref dp (+ i 1)) (- j 1)))
+            (vector-set! (vector-ref dp i) j (+ 1 (min (vector-ref (vector-ref dp (+ i 1)) j)
+                                                   (vector-ref (vector-ref dp i) (- j 1))))))))
+    (vector-ref (vector-ref dp 0) (- n 1))))

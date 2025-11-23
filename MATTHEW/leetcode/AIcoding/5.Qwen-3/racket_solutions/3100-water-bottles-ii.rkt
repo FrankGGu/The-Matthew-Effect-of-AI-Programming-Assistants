@@ -1,0 +1,5 @@
+(define (num-water-bottles empty full)
+  (let loop ([empty empty] [full full] [total 0])
+    (if (< full 3)
+        (+ total full)
+        (loop (+ empty full) (quotient (+ full empty) 3) (+ total full)))))

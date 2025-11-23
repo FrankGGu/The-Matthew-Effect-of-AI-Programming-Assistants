@@ -1,0 +1,5 @@
+(define (max-valid-subsequence-length nums ban)
+  (define ban-set (set ban))
+  (define (valid? num)
+    (not (set-member? ban-set num)))
+  (length (filter valid? nums)))

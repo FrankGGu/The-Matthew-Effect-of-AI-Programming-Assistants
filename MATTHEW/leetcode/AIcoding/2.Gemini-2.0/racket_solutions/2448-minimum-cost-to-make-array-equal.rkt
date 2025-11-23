@@ -1,0 +1,23 @@
+(define (min-cost nums cost)
+  (define n (length nums))
+  (define (calculate-cost target)
+    (foldl + 0 (map (lambda (num c) (* c (abs (- num target)))) nums cost)))
+
+  (define (ternary-search left right)
+    (if (<= (- right left) 2)
+        (let ((cost-left (calculate-cost left))
+              (cost-right (calculate-cost right)))
+          (if (< cost-left cost-right)
+              cost-left
+              cost-right))
+        (let* ((m1 (+ left (floor (/ (- right left) 3))))
+               (m2 (- right (floor (/ (- right left) 3))))
+               (cost-m1 (calculate-cost m1))
+               (cost-m2 (calculate-cost m2)))
+          (if (< cost-m1 cost-m2)
+              (ternary-search left m2)
+              (ternary-search m1 right)))))
+
+  (let ((min-num (apply min nums))
+        (max-num (apply max nums)))
+    (ternary-search min-num max-num)))

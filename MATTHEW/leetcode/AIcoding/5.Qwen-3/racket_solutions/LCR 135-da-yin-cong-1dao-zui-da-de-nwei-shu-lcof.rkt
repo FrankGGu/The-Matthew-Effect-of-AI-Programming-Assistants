@@ -1,0 +1,11 @@
+(define (count-and-say n)
+  (if (= n 1)
+      "1"
+      (let ((prev (count-and-say (- n 1))))
+        (let loop ((s prev) (current-char #f) (count 0) (result '()))
+          (if (null? s)
+              (apply string-append (reverse result))
+              (let ((char (car s)))
+                (if (equal? char current-char)
+                    (loop (cdr s) char (+ count 1) result)
+                    (loop (cdr s) char 1 (cons (string-append (number->string count) (string char)) result)))))))))

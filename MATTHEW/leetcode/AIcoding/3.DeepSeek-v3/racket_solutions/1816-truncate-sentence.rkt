@@ -1,0 +1,5 @@
+(define/contract (truncate-sentence s k)
+  (-> string? exact-integer? string?)
+  (let* ((words (string-split s))
+         (truncated (take words k)))
+    (string-join truncated " ")))

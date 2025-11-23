@@ -1,0 +1,35 @@
+{
+  "id": "LCR 010",
+  "title": "和为 K 的子数组",
+  "titleSlug": "QTMn0o",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int subarraySum(vector<int>& nums, int k) {\n\n    }\n};",
+    "java": "class Solution {\n    public int subarraySum(int[] nums, int k) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def subarraySum(self, nums, k):\n        \"\"\"\n        :type nums: List[int]\n        :type k: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def subarraySum(self, nums: List[int], k: int) -> int:",
+    "c": "\n\nint subarraySum(int* nums, int numsSize, int k){\n\n}",
+    "csharp": "public class Solution {\n    public int SubarraySum(int[] nums, int k) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @param {number} k\n * @return {number}\n */\nvar subarraySum = function(nums, k) {\n\n};",
+    "typescript": "function subarraySum(nums: number[], k: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @param Integer $k\n     * @return Integer\n     */\n    function subarraySum($nums, $k) {\n\n    }\n}",
+    "swift": "class Solution {\n    func subarraySum(_ nums: [Int], _ k: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun subarraySum(nums: IntArray, k: Int): Int {\n\n    }\n}",
+    "golang": "func subarraySum(nums []int, k int) int {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @param {Integer} k\n# @return {Integer}\ndef subarray_sum(nums, k)\n\nend",
+    "scala": "object Solution {\n    def subarraySum(nums: Array[Int], k: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn subarray_sum(nums: Vec<i32>, k: i32) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (subarray-sum nums k)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n\n  )",
+    "erlang": "-spec subarray_sum(Nums :: [integer()], K :: integer()) -> integer().\nsubarray_sum(Nums, K) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec subarray_sum(nums :: [integer], k :: integer) :: integer\n  def subarray_sum(nums, k) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[1,1,1]\n2\n[1,2,3]\n3",
+  "hints": []
+}

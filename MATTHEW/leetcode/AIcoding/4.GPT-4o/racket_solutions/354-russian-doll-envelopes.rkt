@@ -1,0 +1,41 @@
+(define (maxEnvelopes envelopes)
+  (define (compare-envs e1 e2)
+    (if (= (car e1) (car e2))
+        (> (cadr e1) (cadr e2))
+        (> (car e1) (car e2))))
+
+  (define sorted-envs (sort envelopes compare-envs))
+  (define (lis seq)
+    (define dp (vector))
+    (for-each (lambda (x)
+                (define pos (binary-search dp x))
+                (if (= pos (vector-length dp))
+                    (vector-set! dp pos x)
+                    (vector-set! dp pos x)))
+              seq)
+    (vector-length dp))
+
+  (lis (map cadr sorted-envs)))
+
+(define (binary-search dp x)
+  (define low 0)
+  (define high (vector-length dp))
+  (define result high)
+  (while (< low high)
+    (define mid (quotient (+ low high) 2))
+    (if (< (vector-ref dp mid) x)
+        (set! low (+ mid 1))
+        (begin
+          (set! result mid)
+          (set! high mid))))
+  result)
+
+(define (maxEnvelopes envelopes)
+  (if (null? envelopes) 0
+      (let* ((sorted-envs (sort envelopes (lambda (a b) (if (= (car a) (car b))
+                                                             (> (cadr a) (cadr b))
+                                                             (> (car a) (car b))))))
+             (heights (map cadr sorted-envs)))
+        (lis heights))))
+
+(maxEnvelopes '((5 4) (6 7) (2 3) (1 1) (4 5) (3 6)))

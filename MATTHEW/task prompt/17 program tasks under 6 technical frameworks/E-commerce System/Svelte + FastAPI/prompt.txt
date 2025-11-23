@@ -1,0 +1,37 @@
+Develop a modern e-commerce system using Svelte for frontend and FastAPI with SQLAlchemy for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, phone, address, created_at
+- products: id, name, description, price, category, stock_quantity, image_url, is_active, created_at
+- orders: id, user_id, total_amount, status, shipping_address, payment_status, created_at, updated_at
+- order_items: id, order_id, product_id, quantity, unit_price
+- reviews: id, product_id, user_id, rating, comment, created_at
+
+Requirements:
+1. User Management:
+   - JWT authentication
+   - User profile management
+   - Multiple address support
+
+2. Product Management:
+   - Full CRUD operations
+   - Real-time stock management
+   - Advanced filtering options
+
+3. Order Management:
+   - Create, view, edit orders
+   - Shopping cart functionality
+   - Order status tracking
+
+Technical Specifications:
+- Frontend: Svelte with SvelteKit for routing
+- Backend: FastAPI with SQLAlchemy as ORM, Pydantic for validation
+- Database: PostgreSQL with connection string: postgresql://postgres:ecopass@localhost:5432/ecommerce
+- API: RESTful design with OpenAPI documentation
+
+Generate complete, runnable code including:
+- FastAPI application with routes, models, and schemas
+- Svelte components with reactive programming
+- SQLAlchemy models and database operations
+- Authentication system with JWT
+- Setup and running instructions

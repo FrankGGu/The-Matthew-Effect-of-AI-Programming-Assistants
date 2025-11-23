@@ -1,0 +1,16 @@
+(define (max-split-subarrays nums k)
+  (define n (length nums))
+  (define dp (make-vector (add1 n) 0))
+  (define sum 0)
+
+  (for ([i (in-range n)])
+    (set! sum (+ sum (list-ref nums i)))
+    (for ([j (in-range (max 0 (- i k)))])
+      (set! dp (vector-set! dp (add1 i) (max (vector-ref dp (add1 i)) (add1 (vector-ref dp (add1 j)))))))
+    (set! dp (vector-set! dp (add1 i) (max (vector-ref dp (add1 i)) (add1 (vector-ref dp i))))))
+    (if (>= sum k)
+      (set! dp (vector-set! dp (add1 i) (max (vector-ref dp (add1 i)) (add1 (vector-ref dp (add1 (sub1 i)))))))))
+  (vector-ref dp n))
+
+(define (split-array-into-max-subarrays nums k)
+  (max-split-subarrays nums k))

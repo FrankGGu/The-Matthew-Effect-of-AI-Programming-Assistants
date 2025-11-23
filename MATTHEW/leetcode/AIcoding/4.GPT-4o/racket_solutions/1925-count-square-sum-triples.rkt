@@ -1,0 +1,13 @@
+(define (countTriplets n)
+  (define (is-square? x)
+    (let ((sqrt (sqrt x)))
+      (= sqrt (floor sqrt))))
+  (define count 0)
+  (for ((a (in-range 1 (add1 n))))
+    (for ((b (in-range a (add1 n))))
+      (for ((c (in-range b (add1 n))))
+        (when (is-square? (+ (* a a) (* b b) (* c c)))
+          (set! count (+ count 1))))))
+  count)
+
+(countTriplets 250)

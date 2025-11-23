@@ -1,0 +1,16 @@
+(define (permute-unique nums)
+  (define (backtrack path used)
+    (if (= (length path) (length nums))
+        (list path)
+        (let loop ((i 0) (result '()))
+          (if (>= i (length nums))
+              result
+              (let ((num (list-ref nums i)))
+                (if (and (not (equal? num (list-ref nums (- i 1)))) (not (list-ref used i)))
+                    (begin
+                      (set! used (list-set used i #t))
+                      (append result (backtrack (cons num path) used))
+                      (set! used (list-set used i #f)))
+                    (loop (+ i 1) result))))))
+  (define sorted (sort nums <))
+  (backtrack '() (make-list (length sorted) #f)))

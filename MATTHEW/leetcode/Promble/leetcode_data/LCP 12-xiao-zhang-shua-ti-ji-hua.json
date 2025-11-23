@@ -1,0 +1,36 @@
+{
+  "id": "LCP 12",
+  "title": "小张刷题计划",
+  "titleSlug": "xiao-zhang-shua-ti-ji-hua",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Binary Search"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minTime(vector<int>& time, int m) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int minTime(int[] time, int m) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def minTime(self, time, m):\n        \"\"\"\n        :type time: List[int]\n        :type m: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def minTime(self, time: List[int], m: int) -> int:\n        ",
+    "c": "int minTime(int* time, int timeSize, int m) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MinTime(int[] time, int m) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} time\n * @param {number} m\n * @return {number}\n */\nvar minTime = function(time, m) {\n    \n};",
+    "typescript": "function minTime(time: number[], m: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $time\n     * @param Integer $m\n     * @return Integer\n     */\n    function minTime($time, $m) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func minTime(_ time: [Int], _ m: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun minTime(time: IntArray, m: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int minTime(List<int> time, int m) {\n    \n  }\n}",
+    "golang": "func minTime(time []int, m int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} time\n# @param {Integer} m\n# @return {Integer}\ndef min_time(time, m)\n    \nend",
+    "scala": "object Solution {\n    def minTime(time: Array[Int], m: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_time(time: Vec<i32>, m: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (min-time time m)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec min_time(Time :: [integer()], M :: integer()) -> integer().\nmin_time(Time, M) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_time(time :: [integer], m :: integer) :: integer\n  def min_time(time, m) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func minTime(time: Array<Int64>, m: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,3]\n2\n[1,2,3,3,3]\n2",
+  "hints": []
+}

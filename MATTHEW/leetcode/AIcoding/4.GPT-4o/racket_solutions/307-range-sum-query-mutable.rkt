@@ -1,0 +1,20 @@
+(define RangeSumQuery
+  (lambda ()
+    (define (make-array nums)
+      (define arr nums)
+      (define (update index val)
+        (set! arr (list-set arr index val)))
+      (define (sum left right)
+        (foldl + 0 (sublist arr left (+ right 1))))
+      (define (get-nums)
+        arr)
+      (list update sum get-nums)))
+
+(define myArray (make-array (list 1 3 5)))
+(define update (car myArray))
+(define sum (cadr myArray))
+(define get-nums (caddr myArray))
+
+(update 1 2)
+(sum 0 2)
+(get-nums)

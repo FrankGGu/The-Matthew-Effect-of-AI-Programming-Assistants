@@ -1,0 +1,48 @@
+#lang racket
+
+(define (count-complete-components n edges)
+  (define graph (make-hash))
+  (for ([u v] edges)
+    (hash-update! graph u (λ (lst) (cons v lst)) '())
+    (hash-update! graph v (λ (lst) (cons u lst)) '()))
+
+  (define visited (make-hash))
+  (define (dfs node)
+    (hash-set! visited node #t)
+    (for ([neighbor (hash-ref graph node)])
+      (when (not (hash-has-key? visited neighbor))
+        (dfs neighbor))))
+
+  (define (count-components)
+    (define count 0)
+    (for ([node (in-range n)])
+      (when (not (hash-has-key? visited node))
+        (dfs node)
+        (set! count (+ count 1))))
+    count)
+
+  (define (is-complete? nodes)
+    (define size (length nodes))
+    (and (>= size 1)
+         (for/and ([u nodes])
+           (= (length (hash-ref graph u)) (- size 1)))))
+
+  (define (get-components)
+    (define components '())
+    (define visited (make-hash))
+    (define (dfs node component)
+      (hash-set! visited node #t)
+      (set! component (cons node component))
+      (for ([neighbor (hash-ref graph node)])
+        (when (not (hash-has-key? visited neighbor))
+          (dfs neighbor component)))
+      component)
+
+    (for ([node (in-range n)])
+      (when (not (hash-has-key? visited node))
+        (set! components (cons (dfs node '()) components))))
+    components)
+
+  (define components (get-components))
+  (for/sum ([comp components])
+    (if (is-complete? comp) 1 0)))

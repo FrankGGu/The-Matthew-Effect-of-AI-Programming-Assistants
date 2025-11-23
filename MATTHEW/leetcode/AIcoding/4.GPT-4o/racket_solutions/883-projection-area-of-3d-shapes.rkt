@@ -1,0 +1,7 @@
+(define (projectionArea grid)
+  (define xy (foldl (lambda (row acc) (+ acc (if (> row 0) 1 0))) 0 grid))
+  (define xz (foldl (lambda (row acc) (+ acc (apply max row))) 0 grid))
+  (define yz (foldl (lambda (j acc)
+                      (+ acc (foldl (lambda (row acc) (if (> (list-ref row j) 0) (+ acc 1) acc)) 0 grid)))
+                    0 (range (length (first grid)))))
+  (+ xy xz yz))

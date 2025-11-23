@@ -1,0 +1,10 @@
+(define-struct TreeNode (val left right))
+
+(define (insertIntoMaxTree root val)
+  (if (not root)
+      (make-TreeNode val #f #f)
+      (if (> val (TreeNode-val root))
+          (make-TreeNode val root #f)
+          (make-TreeNode (TreeNode-val root)
+                         (TreeNode-left root)
+                         (insertIntoMaxTree (TreeNode-right root) val)))))

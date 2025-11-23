@@ -1,0 +1,15 @@
+(define (max-power s)
+  (let ((n (string-length s)))
+    (cond
+      ((zero? n) 0)
+      (else
+       (let loop ((i 1)
+                  (max-len 1)
+                  (current-len 1))
+         (if (= i n)
+             (max max-len current-len)
+             (let ((prev-char (string-ref s (sub1 i)))
+                   (curr-char (string-ref s i)))
+               (if (char=? prev-char curr-char)
+                   (loop (add1 i) max-len (add1 current-len))
+                   (loop (add1 i) (max max-len current-len) 1)))))))))

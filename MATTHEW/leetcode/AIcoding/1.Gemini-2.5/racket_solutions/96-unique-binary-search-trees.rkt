@@ -1,0 +1,13 @@
+(define (num-trees n)
+  (if (= n 0)
+      1
+      (let ([dp (make-vector (+ n 1) 0)])
+        (vector-set! dp 0 1)
+        (vector-set! dp 1 1)
+
+        (for ([i (in-range 2 (+ n 1))])
+          (for ([j (in-range 1 (+ i 1))])
+            (let ([left-count (vector-ref dp (- j 1))]
+                  [right-count (vector-ref dp (- i j))])
+              (vector-set! dp i (+ (vector-ref dp i) (* left-count right-count))))))
+        (vector-ref dp n))))

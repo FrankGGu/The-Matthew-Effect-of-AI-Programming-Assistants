@@ -1,0 +1,27 @@
+(define (gcd a b)
+  (if (zero? b)
+      a
+      (gcd b (modulo a b))))
+
+(define (lcm a b)
+  (/ (* a b) (gcd a b)))
+
+(define (count-magical x a b common-multiple)
+  (+ (floor (/ x a))
+     (floor (/ x b))
+     (- (floor (/ x common-multiple)))))
+
+(define (nth-magical-number n a b)
+  (let* ((MOD 1000000007)
+         (common-multiple (lcm a b))
+         (low 1)
+         (high (* n (max a b))))
+    (let loop ((l low) (h high) (result 0))
+      (if (> l h)
+          (modulo result MOD)
+          (let* ((mid (+ l (floor (/ (- h l) 2))))
+                 (count (count-magical mid a b common-multiple)))
+            (if (>= count n)
+                (loop l (- mid 1) mid)
+                (loop (+ mid 1) h result)))))
+    ))

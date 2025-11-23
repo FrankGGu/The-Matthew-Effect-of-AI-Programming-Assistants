@@ -1,0 +1,6 @@
+(define (min-cost equalize-array)
+  (define counts (make-hash))
+  (for-each (lambda (x) (hash-set! counts x (1+ (hash-ref counts x 0 0)))) equalize-array)
+  (define total (apply + (hash-values counts)))
+  (define min-cost (apply min (hash-map counts (lambda (k v) (* v (- total v))))))
+  min-cost)

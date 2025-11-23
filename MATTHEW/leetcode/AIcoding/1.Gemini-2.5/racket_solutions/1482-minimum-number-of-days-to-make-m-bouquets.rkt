@@ -1,0 +1,32 @@
+(define (can-make-bouquets? days m k bloomDay)
+  (let loop ((current-bloom-days bloomDay)
+             (bouquets-made 0)
+             (current-flowers 0))
+    (cond
+      ((null? current-bloom-days)
+       (>= bouquets-made m))
+      (else
+       (let ((bloom-day-val (car current-bloom-days)))
+         (if (<= bloom-day-val days)
+             (let ((new-current-flowers (+ current-flowers 1)))
+               (if (= new-current-flowers k)
+                   (loop (cdr current-bloom-days) (+ bouquets-made 1) 0)
+                   (loop (cdr current-bloom-days) bouquets-made new-current-flowers)))
+             (loop (cdr current-bloom-days) bouquets-made 0)))))))
+
+(define (min-days bloomDay m k)
+  (let* ((n (length bloomDay))
+         (required-flowers (* m k)))
+    (if (> required-flowers n)
+        -1
+        (let* ((min-val (apply min bloomDay))
+               (max-val (apply max bloomDay)))
+          (let loop ((low min-val)
+                     (high max-val)
+                     (ans -1))
+            (if (> low high)
+                ans
+                (let ((mid (+ low (quotient (- high low) 2))))
+                  (if (can-make-bouquets? mid m k bloomDay)
+                      (loop low (- mid 1) mid)
+                      (loop (+ mid 1) high ans)))))))))

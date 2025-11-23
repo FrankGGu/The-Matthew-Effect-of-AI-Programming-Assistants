@@ -1,0 +1,11 @@
+(define (burst-balloons nums)
+  (define (dp l r)
+    (if (>= l r) 0
+        (let ((max-coin 0))
+          (for ([i (in-range l r)])
+            (define left (if (> l 0) (dp l (- i 1)) 0))
+            (define right (if (< r (vector-length nums)) (dp (+ i 1) r) 0))
+            (define coins (+ left (* (vector-ref nums l) (vector-ref nums i) (vector-ref nums r)) right))
+            (set! max-coin (max max-coin coins)))
+          max-coin)))
+  (dp 0 (sub1 (vector-length nums))))

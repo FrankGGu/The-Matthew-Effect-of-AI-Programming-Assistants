@@ -1,0 +1,33 @@
+#lang racket
+
+(define (max-non-overlapping-substrings s)
+  (define (is-valid s substr)
+    (let loop ((i 0) (j 0))
+      (cond ((= j (string-length substr)) #t)
+            ((= i (string-length s)) #f)
+            ((and (= (string-ref s i) (string-ref substr j))
+                  (loop (+ i 1) (+ j 1)))
+             #t)
+            (else (loop (+ i 1) 0)))))
+
+  (define (solve s)
+    (let loop ((i 0) (result '()))
+      (if (>= i (string-length s))
+          (reverse result)
+          (let loop2 ((j (min (+ i 1) (string-length s))))
+            (if (> j (string-length s))
+                (loop (+ i 1) result)
+                (let ((substr (substring s i j)))
+                  (if (and (is-valid s substr)
+                           (not (any (lambda (x) (overlap? x substr)) result)))
+                      (loop j (cons substr result))
+                      (loop2 (+ j 1)))))))))
+
+  (define (overlap? a b)
+    (and (<= (string-length a) (string-length b))
+         (or (and (<= (string-index a b) (string-length a))
+                  (<= (string-index b a) (string-length b)))
+             (and (<= (string-index b a) (string-length b))
+                  (<= (string-index a b) (string-length a))))))
+
+  (solve s))

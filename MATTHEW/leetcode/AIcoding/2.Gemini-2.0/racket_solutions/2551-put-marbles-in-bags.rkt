@@ -1,0 +1,7 @@
+(define (put-marbles-in-bags weights k)
+  (let* ((n (length weights))
+         (pairs (map + (take weights (- n 1)) (drop weights 1)))
+         (sorted-pairs (sort pairs <))
+         (min-sum (+ (first weights) (last weights) (apply + (take sorted-pairs (- k 1)))))
+         (max-sum (+ (first weights) (last weights) (apply + (drop-right sorted-pairs (- n k))))))
+    (- max-sum min-sum)))

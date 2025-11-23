@@ -1,0 +1,7 @@
+(define (remove-element nums val)
+  (define count 0)
+  (for ([i (in-range (length nums))])
+    (when (not (= (vector-ref nums i) val))
+      (vector-set! nums count (vector-ref nums i))
+      (set! count (+ count 1))))
+  count)

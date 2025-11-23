@@ -1,0 +1,11 @@
+(define (minDays n)
+  (define (helper n memo)
+    (if (zero? n) 0
+      (if (hash-has-key? memo n)
+          (hash-ref memo n)
+          (let* ((days1 (if (even? n) (add1 (helper (/ n 2) memo)) (add1 (helper (- n 1) memo))))
+                 (days2 (if (odd? n) (add1 (helper (/ (- n 1) 3) memo)) (add1 (helper (- n 1) memo))))
+                 (min-days (min days1 days2)))
+            (hash-set! memo n min-days)
+            min-days))))
+  (helper n (make-hash)))

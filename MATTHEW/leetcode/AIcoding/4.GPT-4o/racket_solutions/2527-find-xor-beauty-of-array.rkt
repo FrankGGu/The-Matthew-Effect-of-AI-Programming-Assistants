@@ -1,0 +1,10 @@
+(define (xor-beauty arr)
+  (define n (length arr))
+  (define result 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (set! result (+ result (bitwise-xor (list-ref arr i) (list-ref arr j))))))
+  result)
+
+(define (findXorBeauty arr)
+  (xor-beauty arr))

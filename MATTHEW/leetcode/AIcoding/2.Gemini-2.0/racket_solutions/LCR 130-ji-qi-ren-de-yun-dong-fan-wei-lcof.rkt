@@ -1,0 +1,5 @@
+(define (closet-organizer items)
+  (let ([counts (make-hash)])
+    (for ([item items])
+      (hash-update! counts item (λ (k v) (+ v 1)) 1))
+    (sort (hash-keys counts) string<?)))

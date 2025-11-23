@@ -1,0 +1,33 @@
+(define/contract (reorganize-string s)
+  (-> string? string?)
+  (let* ([freq (make-hash)]
+         [n (string-length s)]
+         [max-char #\a]
+         [max-count 0])
+    (for ([c s])
+      (hash-update! freq c add1 0)
+      (when (> (hash-ref freq c) max-count)
+        (set! max-count (hash-ref freq c))
+      (when (> (hash-ref freq c) max-count)
+        (set! max-char c)))
+    (if (> max-count (add1 (quotient n 2)))
+        ""
+        (let* ([result (make-string n #\space)]
+               [i 0])
+          (let loop ()
+            (when (> max-count 0)
+              (string-set! result i max-char)
+              (set! i (+ i 2))
+              (hash-update! freq max-char sub1)
+              (set! max-count (sub1 max-count))
+              (loop)))
+          (for ([(c count) freq])
+            (when (> count 0)
+              (let loop ([count count])
+                (when (> count 0)
+                  (when (>= i n)
+                    (set! i 1))
+                  (string-set! result i c)
+                  (set! i (+ i 2))
+                  (loop (sub1 count)))))))
+          result))))

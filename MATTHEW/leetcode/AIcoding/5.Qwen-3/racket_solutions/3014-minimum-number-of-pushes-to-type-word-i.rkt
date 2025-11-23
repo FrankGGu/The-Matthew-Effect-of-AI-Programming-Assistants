@@ -1,0 +1,12 @@
+(define (minimum-number-of-pushes word)
+  (define freq (make-hash))
+  (for-each (lambda (c) (hash-set! freq c (+ 1 (hash-ref freq c 0)))) (string->list word))
+  (define sorted (sort (hash->list freq) (lambda (a b) (> (cdr a) (cdr b)))))
+  (define pushes 0)
+  (define count 0)
+  (for-each
+   (lambda (pair)
+     (set! pushes (+ pushes (* (cdr pair) (+ 1 (quotient count 8)))))
+     (set! count (+ count 1)))
+   sorted)
+  pushes)

@@ -1,0 +1,18 @@
+(define/contract (largest-triangle-area points)
+  (-> (listof (listof exact-integer?)) flonum?)
+  (define (area p1 p2 p3)
+    (abs (/ (+ (* (car p1) (- (cadr p2) (cadr p3)))
+               (* (car p2) (- (cadr p3) (cadr p1)))
+               (* (car p3) (- (cadr p1) (cadr p2))))
+          2.0)))
+  (define max-area 0.0)
+  (define n (length points))
+  (for* ([i (in-range n)]
+         [j (in-range (add1 i) n)]
+         [k (in-range (add1 j) n)])
+    (define current-area (area (list-ref points i)
+                               (list-ref points j)
+                               (list-ref points k)))
+    (when (> current-area max-area)
+      (set! max-area current-area)))
+  max-area)

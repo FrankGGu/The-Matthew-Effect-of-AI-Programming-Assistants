@@ -1,0 +1,18 @@
+(define (minDifficulty jobDifficulty d)
+  (define n (length jobDifficulty))
+  (if (> n d) 
+      (let loop ([i 0] [j 0] [dp (make-vector (+ n 1) (make-vector (+ d 1) +inf.))])
+                 [max-j 0])
+        (vector-set! dp 0 0)
+        (for ([day (in-range 1 (+ d 1))])
+          (for ([start (in-range 0 (+ n 1))])
+            (if (>= start day)
+                (begin
+                  (for ([end (in-range start (+ n 1))])
+                    (set! max-j (max max-j (vector-ref jobDifficulty end)))
+                    (vector-set! dp start day 
+                      (min (vector-ref dp start day) 
+                           (+ (vector-ref dp start (- day 1)) max-j)))
+                    )))))
+        (if (= (vector-ref dp n d) +inf.) -1 (vector-ref dp n d)))
+      -1))

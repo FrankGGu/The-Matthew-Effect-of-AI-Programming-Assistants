@@ -1,0 +1,20 @@
+(define/contract (verify-postorder postorder)
+  (-> (listof exact-integer?) boolean?)
+  (define (helper postorder min max)
+    (if (null? postorder)
+        #t
+        (let* ([root (last postorder)]
+               [postorder (drop-right postorder 1)]
+               [i (let loop ([i (length postorder)])
+                    (if (or (zero? i) (< (list-ref postorder (sub1 i)) root))
+                        (sub1 i)
+                        (loop (sub1 i))))])
+          (and (for/and ([val (take postorder (add1 i))])
+                  (< val root)
+                  (> val min))
+               (for/and ([val (drop postorder (add1 i))])
+                  (> val root)
+                  (< val max))
+               (helper (take postorder (add1 i)) min root)
+               (helper (drop postorder (add1 i)) root max)))))
+  (helper postorder -inf.0 +inf.0))

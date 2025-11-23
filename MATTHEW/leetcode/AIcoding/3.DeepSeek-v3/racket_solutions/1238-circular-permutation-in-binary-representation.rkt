@@ -1,0 +1,7 @@
+(define (circularPermutation n start)
+  (let loop ((i 0)
+             (res '()))
+    (if (> i (sub1 (expt 2 n)))
+        (let ((idx (index-of res start)))
+          (append (drop res idx) (take res idx)))
+        (loop (add1 i) (cons (bitwise-xor i (arithmetic-shift i -1)) res)))))

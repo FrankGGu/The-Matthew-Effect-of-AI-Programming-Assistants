@@ -1,0 +1,11 @@
+(define (musical-position row col total-rows total-cols)
+  (define (min4 a b c d)
+    (min a (min b (min c d))))
+  (define d (min4 row col (- total-rows 1 row) (- total-cols 1 col)))
+  (define perimeter (* 2 (+ total-rows total-cols)) )
+  (define circle-perimeter (* 2 (+ (- total-rows (* 2 d)) (- total-cols (* 2 d)))))
+  (define result (+ (* d 4) (modulo (- (+ row col) (* d 2)) (- circle-perimeter (* d 4)))))
+  (add1 (modulo result 9)))
+
+(define (orchestra SR SC numRows numCols)
+  (musical-position (- SR 1) (- SC 1) numRows numCols))

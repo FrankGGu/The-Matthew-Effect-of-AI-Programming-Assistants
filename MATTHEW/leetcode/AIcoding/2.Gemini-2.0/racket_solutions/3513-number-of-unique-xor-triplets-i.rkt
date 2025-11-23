@@ -1,0 +1,13 @@
+(define (count-triplets nums)
+  (let ((n (length nums)))
+    (let loop ((i 0) (count 0))
+      (if (= i n)
+          count
+          (let loop2 ((j (+ i 1)))
+            (if (= j n)
+                (loop (+ i 1) count)
+                (let loop3 ((k (+ j 1)))
+                  (if (= k n)
+                      (loop2 (+ j 1))
+                      (let ((xor-val (bitwise-xor (list-ref nums i) (bitwise-xor (list-ref nums j) (list-ref nums k)))))
+                        (loop3 (+ k 1) (if (= xor-val 0) (+ count 1) count))))))))))))

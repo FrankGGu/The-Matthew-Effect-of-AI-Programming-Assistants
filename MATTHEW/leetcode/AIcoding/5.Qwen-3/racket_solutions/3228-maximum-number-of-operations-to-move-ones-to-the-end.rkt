@@ -1,0 +1,15 @@
+(define (max-operations-to-move-ones-to-end s)
+  (define len (string-length s))
+  (define ones (for/sum ([c s]) (if (char=? c #\1) 1 0)))
+  (define zeros (sub1 len))
+  (define (helper i count)
+    (if (= i len)
+        count
+        (let ([c (string-ref s i)])
+          (if (char=? c #\1)
+              (helper (add1 i) count)
+              (helper (add1 i) (add1 count)))))
+  (if (= ones 0)
+      0
+      (let ([count (helper 0 0)])
+        (min count (- len ones)))))

@@ -1,0 +1,31 @@
+(define (vowelSpellchecker wordlist queries)
+  (define (normalize word)
+    (string->symbol (string-replace (string-replace word "[aeiou]" "*") " " "")))
+
+  (define (get-vowel-variants word)
+    (define vowels '(#\a #\e #\i #\o #\u))
+    (define (replace-vowels word)
+      (if (string-empty? word)
+          '()
+          (for/list ([vowels vowels])
+            (for/list ([ch (string->list word)])
+              (if (member ch vowels)
+                  (map (lambda (v) (string-append (string (if (equal? ch v) ch v)) (string-replace (substring word 0 (index word ch)) "") (string-replace (substring word (add1 (index word ch))) ""))) (list v))
+                  (list (string ch)))))))
+    (define variants (remove-duplicates (apply append (map replace-vowels (list word)))))
+    (cons word variants))
+
+  (define valid-words (set (map string->symbol wordlist)))
+  (define lowercased (set (map string->symbol (map string-downcase wordlist))))
+  (define capitalized (set (map string->symbol (map string-capitalize wordlist))))
+
+  (map (lambda (query)
+         (cond
+           ((set-member? valid-words (string->symbol query)) query)
+           ((set-member? lowercased (string->symbol (string-downcase query))) query)
+           ((set-member? capitalized (string->symbol (string-capitalize query))) query)
+           (else
+            (define variants (get-vowel-variants query))
+            (define found (find (lambda (w) (set-member? valid-words (string->symbol w))) variants))
+            (if found found "")))))
+      queries))

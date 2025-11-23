@@ -1,0 +1,15 @@
+#lang racket
+
+(define (sum-of-powers nums)
+  (define MOD 1000000007)
+  (define len (length nums))
+  (define pow2 (make-vector (add1 len) 1))
+  (for ([i (in-range 1 (add1 len))])
+    (vector-set! pow2 i (* (vector-ref pow2 (sub1 i)) 2)))
+  (define res 0)
+  (for ([x nums])
+    (set! res (modulo (+ res x) MOD)))
+  (define total 0)
+  (for ([x nums])
+    (set! total (modulo (+ total (* x (vector-ref pow2 (sub1 len)))) MOD)))
+  (modulo (* total (expt 2 (sub1 len))) MOD))

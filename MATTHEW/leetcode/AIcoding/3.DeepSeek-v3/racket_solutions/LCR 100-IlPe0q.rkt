@@ -1,0 +1,7 @@
+(define/contract (minimum-total triangle)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define dp (last triangle))
+  (for ([row (in-list (reverse (rest (reverse triangle))))])
+    (for ([i (in-range (length row))])
+      (set! dp (list-set dp i (+ (list-ref row i) (min (list-ref dp i) (list-ref dp (add1 i))))))))
+  (first dp))

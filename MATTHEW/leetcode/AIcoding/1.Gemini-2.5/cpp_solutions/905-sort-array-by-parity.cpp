@@ -1,0 +1,16 @@
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    std::vector<int> sortArrayByParity(std::vector<int>& nums) {
+        int i = 0;
+        for (int j = 0; j < nums.size(); j++) {
+            if (nums[j] % 2 == 0) {
+                std::swap(nums[i], nums[j]);
+                i++;
+            }
+        }
+        return nums;
+    }
+};

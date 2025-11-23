@@ -1,0 +1,35 @@
+{
+  "id": "434",
+  "title": "Number of Segments in a String",
+  "titleSlug": "number-of-segments-in-a-string",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "String"
+  ],
+  "content": "<p>Given a string <code>s</code>, return <em>the number of segments in the string</em>.</p>\n\n<p>A <strong>segment</strong> is defined to be a contiguous sequence of <strong>non-space characters</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;Hello, my name is John&quot;\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> The five segments are [&quot;Hello,&quot;, &quot;my&quot;, &quot;name&quot;, &quot;is&quot;, &quot;John&quot;]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;Hello&quot;\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= s.length &lt;= 300</code></li>\n\t<li><code>s</code> consists of lowercase and uppercase English letters, digits, or one of the following characters <code>&quot;!@#$%^&amp;*()_+-=&#39;,.:&quot;</code>.</li>\n\t<li>The only space character in <code>s</code> is <code>&#39; &#39;</code>.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int countSegments(string s) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int countSegments(String s) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def countSegments(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def countSegments(self, s: str) -> int:\n        ",
+    "c": "int countSegments(char* s) {\n    \n}",
+    "csharp": "public class Solution {\n    public int CountSegments(string s) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {number}\n */\nvar countSegments = function(s) {\n    \n};",
+    "typescript": "function countSegments(s: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return Integer\n     */\n    function countSegments($s) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func countSegments(_ s: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun countSegments(s: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int countSegments(String s) {\n    \n  }\n}",
+    "golang": "func countSegments(s string) int {\n    \n}",
+    "ruby": "# @param {String} s\n# @return {Integer}\ndef count_segments(s)\n    \nend",
+    "scala": "object Solution {\n    def countSegments(s: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn count_segments(s: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (count-segments s)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec count_segments(S :: unicode:unicode_binary()) -> integer().\ncount_segments(S) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec count_segments(s :: String.t) :: integer\n  def count_segments(s) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func countSegments(s: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"Hello, my name is John\"\n\"Hello\"",
+  "hints": []
+}

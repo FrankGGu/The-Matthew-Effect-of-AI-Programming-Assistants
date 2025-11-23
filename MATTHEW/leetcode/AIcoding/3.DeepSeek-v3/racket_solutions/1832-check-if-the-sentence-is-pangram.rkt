@@ -1,0 +1,6 @@
+(define/contract (check-if-pangram sentence)
+  (-> string? boolean?)
+  (let ([letters (make-hash)])
+    (for ([c sentence])
+      (hash-set! letters c #t))
+    (= (hash-count letters) 26)))

@@ -1,0 +1,11 @@
+(define (minimum-swaps s1 s2)
+  (let* ((xy (for/sum ((i (in-range (string-length s1))))
+               (if (and (char=? (string-ref s1 i) #\x) (char=? (string-ref s2 i) #\y)) 1 0)))
+         (yx (for/sum ((i (in-range (string-length s1))))
+               (if (and (char=? (string-ref s1 i) #\y) (char=? (string-ref s2 i) #\x)) 1 0))))
+    (cond
+      ((and (even? xy) (even? yx))
+       (+ (/ xy 2) (/ yx 2)))
+      ((and (odd? xy) (odd? yx))
+       (+ (/ (- xy 1) 2) (/ (- yx 1) 2) 2))
+      (else -1))))

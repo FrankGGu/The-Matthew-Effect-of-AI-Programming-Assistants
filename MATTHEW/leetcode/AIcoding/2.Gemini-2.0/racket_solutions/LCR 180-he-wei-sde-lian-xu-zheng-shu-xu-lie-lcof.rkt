@@ -1,0 +1,8 @@
+(define (group-anagrams strs)
+  (define (normalize s)
+    (list->string (sort (string->list s) char<?)))
+  (define groups (make-hash))
+  (for ([s strs])
+    (let ([normalized (normalize s)])
+      (hash-update! groups normalized (lambda (v) (cons s v)) (list s))))
+  (hash-values groups))

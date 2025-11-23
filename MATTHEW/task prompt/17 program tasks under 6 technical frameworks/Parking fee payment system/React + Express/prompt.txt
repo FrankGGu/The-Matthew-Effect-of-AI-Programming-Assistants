@@ -1,0 +1,31 @@
+Build a modern parking fee payment system using React frontend and Express.js backend with Prisma ORM. Use the following PostgreSQL database schema:
+
+Database schema:
+- parking_lots (id, name, location, total_spaces, hourly_rate, max_daily_rate, is_active)
+- parking_spaces (id, parking_lot_id, space_number, space_type, is_occupied)
+- vehicles (id, license_plate, vehicle_type, is_regular_customer)
+- parking_sessions (id, vehicle_id, parking_space_id, entry_time, exit_time, base_fee, discount_amount, total_amount, status)
+- payments (id, parking_session_id, payment_time, amount, payment_method, status)
+- discount_rules (id, rule_name, description, discount_type, discount_value, min_hours, max_hours, applicable_vehicle_types, is_active)
+
+Required features:
+1. Responsive UI with real-time updates using WebSockets or polling
+2. Admin dashboard for managing parking lots and viewing statistics
+3. Vehicle entry/exit system with license plate recognition (simulated)
+4. Dynamic fee calculation with discount application
+5. Payment processing with multiple methods
+6. Reporting: Occupancy rates, revenue charts, peak hours analysis
+
+Technical requirements:
+- Frontend: React 18 with functional components and hooks, React Router, Tailwind CSS
+- Backend: Express.js with Prisma as ORM
+- Use TypeScript for both frontend and backend
+- Implement proper error boundaries and loading states
+- Include JWT authentication
+- Generate complete project with package.json and configuration files
+
+Database connection:
+- URL: postgresql://postgres:parking123@localhost:5432/parking_system
+- Prisma schema should match the provided database structure
+
+Please create a complete, runnable application with all necessary dependencies.

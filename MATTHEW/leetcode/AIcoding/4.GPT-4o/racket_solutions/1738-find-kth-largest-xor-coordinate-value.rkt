@@ -1,0 +1,15 @@
+(define (kthLargestValue matrix k)
+  (define (xor-sum x y)
+    (if (or (< x 0) (< y 0)) 0
+        (+ (vector-ref (vector-ref matrix x) y)
+           (xor-sum (sub1 x) y)
+           (xor-sum x (sub1 y))
+           (if (and (> x 0) (> y 0))
+               (xor-sum (sub1 x) (sub1 y))
+               0))))
+
+  (define n (vector-length matrix))
+  (define m (vector-length (vector-ref matrix 0)))
+  (define values (for/list ([i n] [j m]) (xor-sum i j)))
+  (define sorted-values (sort values >))
+  (vector-ref sorted-values (sub1 k)))

@@ -1,0 +1,31 @@
+Create a lightweight high-performance parking system using Preact frontend and Gin backend with GORM. Use the following PostgreSQL database schema:
+
+Database schema:
+- parking_lots (id, name, location, total_spaces, hourly_rate, max_daily_rate, is_active)
+- parking_spaces (id, parking_lot_id, space_number, space_type, is_occupied)
+- vehicles (id, license_plate, vehicle_type, is_regular_customer)
+- parking_sessions (id, vehicle_id, parking_space_id, entry_time, exit_time, base_fee, discount_amount, total_amount, status)
+- payments (id, parking_session_id, payment_time, amount, payment_method, status)
+- discount_rules (id, rule_name, description, discount_type, discount_value, min_hours, max_hours, applicable_vehicle_types, is_active)
+
+Required features:
+1. Minimalist UI with focus on performance
+2. Real-time parking space status updates
+3. Fast vehicle check-in/check-out system
+4. Efficient fee calculation algorithm
+5. Basic payment processing
+6. Simple reporting dashboard
+
+Technical requirements:
+- Frontend: Preact with minimal dependencies
+- Backend: Gin framework with GORM ORM
+- Focus on performance and low memory footprint
+- Implement JWT authentication
+- Use Go modules for dependency management
+- Generate complete, compilable code
+
+Database connection:
+- Use GORM with PostgreSQL driver
+- Connection string: host=localhost user=postgres password=parking123 dbname=parking_system port=5432 sslmode=disable
+
+Please create a complete project with proper package structure and build configurations.

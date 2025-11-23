@@ -1,0 +1,13 @@
+(define (smallest-string s k)
+  (define n (string-length s))
+  (define (helper i res)
+    (if (= i n)
+        res
+        (let* ((current-char (string-ref s i))
+               (min-char (integer->char (min (char->integer current-char)
+                                            (char->integer #\a))))
+          (if (<= (- (char->integer current-char) (char->integer min-char)) k)
+              (helper (+ i 1) (string-append res (string min-char)))
+              (let ((target-char (integer->char (- (char->integer current-char) k))))
+                (helper (+ i 1) (string-append res (string target-char))))))))
+  (helper 0 ""))

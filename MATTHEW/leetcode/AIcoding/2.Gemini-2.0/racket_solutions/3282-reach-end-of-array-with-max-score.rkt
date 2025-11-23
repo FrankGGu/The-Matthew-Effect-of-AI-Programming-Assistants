@@ -1,0 +1,20 @@
+(define (max-score-reach-end nums k)
+  (define n (length nums))
+  (define dp (make-vector n (- (car nums))))
+  (define queue (list 0))
+  (vector-set! dp 0 (car nums))
+
+  (for ([i (in-range 1 n)])
+    (when (> (car queue) (- i k 1))
+      (set! queue (cdr queue)))
+    (vector-set! dp i (+ (vector-ref dp (car queue)) (list-ref nums i)))
+    (define val (vector-ref dp i))
+    (define new-queue (list i))
+    (for ([q (in-list queue)])
+      (when (<= (vector-ref dp q) val)
+        (set! new-queue (append new-queue (list q)))))
+
+    (set! queue (reverse new-queue))
+    )
+
+  (vector-ref dp (- n 1)))

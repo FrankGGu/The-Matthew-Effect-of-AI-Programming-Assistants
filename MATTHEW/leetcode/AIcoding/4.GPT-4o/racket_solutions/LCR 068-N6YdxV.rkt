@@ -1,0 +1,10 @@
+(define (search-insert nums target)
+  (define (binary-search low high)
+    (if (>= low high)
+        low
+        (let* ((mid (quotient (+ low high) 2))
+               (mid-value (list-ref nums mid)))
+          (cond ((= mid-value target) mid)
+                ((< mid-value target) (binary-search (+ mid 1) high))
+                (else (binary-search low mid))))))
+  (binary-search 0 (length nums)))

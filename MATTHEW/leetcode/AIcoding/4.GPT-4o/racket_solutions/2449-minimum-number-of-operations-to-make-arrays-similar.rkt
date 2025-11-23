@@ -1,0 +1,17 @@
+(define (minOperations A B)
+  (define (count-diff a b)
+    (if (>= a b) 
+        (list (- a b) 0) 
+        (list 0 (- b a))))
+  (define counts-a (foldl (lambda (x acc) (let-values (((c d) (count-diff x 0))) (list (+ (car acc) c) (+ (cadr acc) d)))) (list 0 0) A))
+  (define counts-b (foldl (lambda (x acc) (let-values (((c d) (count-diff x 0))) (list (+ (car acc) c) (+ (cadr acc) d)))) (list 0 0) B))
+  (if (and (= (car counts-a) (car counts-b)) (= (cadr counts-a) (cadr counts-b)))
+      (+ (car counts-a) (cadr counts-a))
+      -1))
+
+(define (solution)
+  (let ((A (vector->list (vector 1 2 5)))
+        (B (vector->list (vector 2 4 1))))
+    (minOperations A B)))
+
+(solution)

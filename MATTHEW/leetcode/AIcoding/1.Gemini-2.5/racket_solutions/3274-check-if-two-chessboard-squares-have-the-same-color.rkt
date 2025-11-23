@@ -1,0 +1,7 @@
+(define (squares-are-same-color square1 square2)
+  (let* ((col1 (- (char->integer (string-ref square1 0)) (char->integer #\a)))
+         (row1 (- (char->integer (string-ref square1 1)) (char->integer #\1)))
+         (col2 (- (char->integer (string-ref square2 0)) (char->integer #\a)))
+         (row2 (- (char->integer (string-ref square2 1)) (char->integer #\1))))
+    (= (modulo (+ col1 row1) 2)
+       (modulo (+ col2 row2) 2))))

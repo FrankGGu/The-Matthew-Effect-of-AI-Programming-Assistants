@@ -1,0 +1,11 @@
+(define (delete-columns-to-make-sorted strs)
+  (define (is-sorted? row)
+    (or (null? row) (and (<= (car row) (cadr row)) (is-sorted? (cdr row)))))
+  (define (check-cols cols)
+    (if (null? cols)
+        0
+        (let ((col (map car cols)))
+          (if (is-sorted? col)
+              (+ 1 (check-cols (map cdr cols)))
+              (check-cols (map cdr cols))))))
+  (check-cols (map (lambda (s) (string->list s)) strs)))

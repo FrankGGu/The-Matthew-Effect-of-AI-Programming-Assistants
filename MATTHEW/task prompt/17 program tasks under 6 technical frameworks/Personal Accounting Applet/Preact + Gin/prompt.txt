@@ -1,0 +1,41 @@
+Develop a lightweight personal finance app using the following technologies:
+
+**Technology Stack:**
+- Frontend: Preact with TypeScript
+- Backend: Gin framework
+- ORM: GORM
+- Database: PostgreSQL (Docker container)
+
+**Database:**
+Connect to existing PostgreSQL with tables:
+- transactions (id, amount, type, category, description, transaction_date, created_at)
+- categories (id, name, type)
+
+**Core Functionality:**
+1. Add income/expense transactions
+2. View transactions with month filter
+3. Display monthly income vs expense comparison
+4. Show spending by category
+
+**API Endpoints:**
+- GET /transactions?month=2025-08 → Get filtered transactions
+- POST /transactions → Create new transaction
+- GET /summary?month=2025-08 → Get monthly summary
+- GET /categories → Get all categories
+
+**Frontend Requirements:**
+- Use Preact with TypeScript
+- Implement client-side routing
+- Use lightweight CSS framework (Bulma or Milligram)
+- Include form validation
+
+**Backend Requirements:**
+- Use Gin web framework
+- Implement GORM for database operations
+- Add proper error handling
+- Include input validation
+
+**Database Connection:**
+- dsn := "host=localhost user=postgres password=financepass dbname=personal_finance port=5432 sslmode=disable"
+
+Generate the complete application with minimal dependencies and optimized bundle size.

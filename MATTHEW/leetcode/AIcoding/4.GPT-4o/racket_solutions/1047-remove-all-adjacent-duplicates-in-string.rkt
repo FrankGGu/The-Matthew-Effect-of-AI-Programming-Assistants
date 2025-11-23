@@ -1,0 +1,11 @@
+(define (remove-duplicates s)
+  (define (helper chars stack)
+    (if (null? chars)
+        (list->string (reverse stack))
+        (let ((current (car chars)))
+          (if (and (not (null? stack)) (equal? current (car stack)))
+              (helper (cdr chars) (cdr stack))
+              (helper (cdr chars) (cons current stack))))))
+  (helper (string->list s) '()))
+
+(remove-duplicates "abbaca")

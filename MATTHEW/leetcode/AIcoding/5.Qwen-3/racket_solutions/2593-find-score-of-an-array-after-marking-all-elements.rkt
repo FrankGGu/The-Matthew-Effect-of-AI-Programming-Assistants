@@ -1,0 +1,15 @@
+#lang racket
+
+(define (find-score nums)
+  (define n (length nums))
+  (define sorted (sort (map list (range n) nums) (lambda (a b) (< (second a) (second b)))))
+  (define marked (make-vector n #f))
+  (define score 0)
+  (for ([i (in-range n)])
+    (define idx (first (list-ref sorted i)))
+    (when (not (vector-ref marked idx))
+      (set! score (+ score (second (list-ref sorted i))))
+      (vector-set! marked idx #t)
+      (when (< idx (sub1 n)) (vector-set! marked (add1 idx) #t))
+      (when (> idx 0) (vector-set! marked (sub1 idx) #t))))
+  score)

@@ -1,0 +1,5 @@
+(define (create-new-column df transform-fn column-name)
+  (define new-column (map transform-fn (vector->list (dataframe-column df 0))))
+  (define new-df (dataframe (vector->vector (append (vector->list (dataframe-columns df)) (list (list->vector new-column))))
+                            (append (dataframe-column-names df) (list column-name))))
+  new-df)

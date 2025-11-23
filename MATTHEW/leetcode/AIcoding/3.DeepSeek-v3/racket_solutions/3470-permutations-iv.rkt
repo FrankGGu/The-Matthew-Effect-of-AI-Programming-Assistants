@@ -1,0 +1,13 @@
+(define/contract (permutation-iv nums)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)))
+  (define (insert-everywhere x lst)
+    (if (null? lst)
+        (list (list x))
+        (cons (cons x lst)
+              (map (lambda (rest) (cons (car lst) rest))
+                   (insert-everywhere x (cdr lst))))))
+  (if (null? nums)
+      (list null)
+      (apply append
+             (map (lambda (perm) (insert-everywhere (car nums) perm))
+                  (permutation-iv (cdr nums))))))

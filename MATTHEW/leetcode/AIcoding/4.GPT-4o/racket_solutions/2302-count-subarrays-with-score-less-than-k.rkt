@@ -1,0 +1,13 @@
+(define (countSubarrays A K)
+  (define (count-prefix-sums prefix-sums n)
+    (let loop ((i 0) (count 0))
+      (if (< i n)
+          (loop (add1 i)
+                (+ count (length (filter (lambda (x) (< x K)) (map (lambda (x) (- (list-ref prefix-sums i) x)) (take prefix-sums i)))))
+                )
+          count)))
+
+  (define n (length A))
+  (define prefix-sums (map (lambda (x) (if (zero? x) 0 (+ (if (zero? (car prefix-sums)) 0 (car prefix-sums)) x))) A))
+  (define prefix-sums (cons 0 prefix-sums))
+  (count-prefix-sums prefix-sums n))

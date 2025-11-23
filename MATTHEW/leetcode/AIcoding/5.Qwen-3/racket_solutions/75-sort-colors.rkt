@@ -1,0 +1,11 @@
+(define (sort-colors nums)
+  (let loop ((i 0) (zero 0) (two (- (length nums) 1)))
+    (when (< i (length nums))
+      (cond ((= (list-ref nums i) 0)
+             (swap! nums i zero)
+             (loop (+ i 1) (+ zero 1) two))
+            ((= (list-ref nums i) 2)
+             (swap! nums i two)
+             (loop i zero (- two 1)))
+            (else
+             (loop (+ i 1) zero two))))))

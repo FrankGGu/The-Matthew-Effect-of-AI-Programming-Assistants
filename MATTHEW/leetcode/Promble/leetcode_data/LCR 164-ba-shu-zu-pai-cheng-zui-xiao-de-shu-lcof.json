@@ -1,0 +1,37 @@
+{
+  "id": "LCR 164",
+  "title": "破解闯关密码",
+  "titleSlug": "ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "String",
+    "Sorting"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string crackPassword(vector<int>& password) {\n        \n    }\n};",
+    "java": "class Solution {\n    public String crackPassword(int[] password) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def crackPassword(self, password):\n        \"\"\"\n        :type password: List[int]\n        :rtype: str\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def crackPassword(self, password: List[int]) -> str:\n        ",
+    "c": "char* crackPassword(int* password, int passwordSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public string CrackPassword(int[] password) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} password\n * @return {string}\n */\nvar crackPassword = function(password) {\n    \n};",
+    "typescript": "function crackPassword(password: number[]): string {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $password\n     * @return String\n     */\n    function crackPassword($password) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func crackPassword(_ password: [Int]) -> String {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun crackPassword(password: IntArray): String {\n        \n    }\n}",
+    "dart": "class Solution {\n  String crackPassword(List<int> password) {\n    \n  }\n}",
+    "golang": "func crackPassword(password []int) string {\n    \n}",
+    "ruby": "# @param {Integer[]} password\n# @return {String}\ndef crack_password(password)\n    \nend",
+    "scala": "object Solution {\n    def crackPassword(password: Array[Int]): String = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn crack_password(password: Vec<i32>) -> String {\n        \n    }\n}",
+    "racket": "(define/contract (crack-password password)\n  (-> (listof exact-integer?) string?)\n  )",
+    "erlang": "-spec crack_password(Password :: [integer()]) -> unicode:unicode_binary().\ncrack_password(Password) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec crack_password(password :: [integer]) :: String.t\n  def crack_password(password) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func crackPassword(password: Array<Int64>): String {\n\n    }\n}"
+  },
+  "exampleTestcases": "[15,8,7]",
+  "hints": []
+}

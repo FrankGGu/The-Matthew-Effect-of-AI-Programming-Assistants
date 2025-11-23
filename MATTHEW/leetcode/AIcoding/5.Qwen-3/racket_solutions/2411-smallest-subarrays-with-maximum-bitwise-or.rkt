@@ -1,0 +1,28 @@
+#lang racket
+
+(define (max-or-subarrays nums)
+  (define n (length nums))
+  (define res (make-vector n 0))
+  (define prev (make-hash))
+  (for ([i (in-range n)])
+    (define current (make-hash))
+    (hash-set! current i (vector-ref nums i))
+    (define max-or (vector-ref nums i))
+    (for ([j (in-range i -1 -1)])
+      (define or-val (bitwise-ior (vector-ref nums j) (hash-ref current (add1 j))))
+      (hash-set! current j or-val)
+      (when (> or-val max-or)
+        (set! max-or or-val)))
+    (for ([j (in-range i +1)])
+      (define or-val (bitwise-ior (vector-ref nums j) (hash-ref current (sub1 j))))
+      (hash-set! current j or-val)
+      (when (> or-val max-or)
+        (set! max-or or-val)))
+    (vector-set! res i max-or))
+  (vector->list res))
+
+(define (main)
+  (define input (read))
+  (displayln (max-or-subarrays input)))
+
+(main)

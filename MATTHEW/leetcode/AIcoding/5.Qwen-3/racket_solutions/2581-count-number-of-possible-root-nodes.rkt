@@ -1,0 +1,27 @@
+#lang racket
+
+(define (count-nodes edges)
+  (define n (add1 (apply max (flatten edges))))
+  (define adj (make-vector n '()))
+  (for-each
+   (lambda (e)
+     (let ([u (car e)] [v (cadr e)])
+       (vector-set! adj u (cons v (vector-ref adj u)))
+       (vector-set! adj v (cons u (vector-ref adj v)))))
+   edges)
+  (define visited (make-vector n #f))
+  (define (dfs node parent)
+    (let ([count 1])
+      (for-each
+       (lambda (nei)
+         (when (not (= nei parent))
+           (set! count (+ count (dfs nei node)))))
+      count))
+  (define res 0)
+  (for ([i (in-range n)])
+    (vector-set! visited i #t)
+    (define cnt (dfs i -1))
+    (when (= cnt n)
+      (set! res (+ res 1)))
+    (vector-set! visited i #f))
+  res)

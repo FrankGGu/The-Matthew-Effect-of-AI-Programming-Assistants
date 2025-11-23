@@ -1,0 +1,13 @@
+(define (separate-squares nums)
+  (define (partition acc pos)
+    (if (null? pos)
+        (list (reverse acc) '())
+        (let ((x (car pos)))
+          (if (positive? x)
+              (partition (cons x acc) (cdr pos))
+              (list (reverse acc) (cons x (partition '() (cdr pos))))))))
+  (partition '() nums))
+
+(define (separate-squares-ii nums)
+  (define values (separate-squares nums))
+  (append (car values) (cdr values)))

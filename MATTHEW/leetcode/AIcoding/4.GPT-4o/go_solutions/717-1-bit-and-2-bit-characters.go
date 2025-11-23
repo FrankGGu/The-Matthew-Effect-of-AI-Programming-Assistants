@@ -1,0 +1,17 @@
+func isOneBitCharacter(bits []int) bool {
+    n := len(bits)
+    if n == 1 {
+        return true
+    }
+
+    i := 0
+    for i < n-1 {
+        if bits[i] == 1 {
+            i += 2
+        } else {
+            i++
+        }
+    }
+
+    return i == n-1
+}

@@ -1,0 +1,8 @@
+(define/contract (results-array nums k)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (let ((n (length nums)))
+    (let loop ((i 0) (res '()))
+      (if (>= i (- n k))
+          (reverse res)
+          (let ((sub (take nums (+ i k))))
+            (loop (+ i 1) (cons (apply * sub) res)))))))

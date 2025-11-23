@@ -1,0 +1,16 @@
+#lang racket
+
+(define/contract (odd-and-even-transactions transactions)
+  (-> (listof (listof any/c)) (listof (listof any/c)))
+  (define grouped (make-hash))
+  (for ([t transactions])
+    (define key (list (second t) (third t)))
+    (hash-update! grouped key (lambda (v) (cons t v)) '()))
+  (define result '())
+  (hash-for-each grouped (lambda (k v)
+    (define trans-list (reverse v))
+    (define total (for/sum ([t trans-list]) (fourth t)))
+    (define is-valid (if (odd? total) "yes" "no"))
+    (for ([t trans-list])
+      (set! result (cons (append t (list is-valid)) result))))
+  (sort result (lambda (a b) (string<? (first a) (first b)))))

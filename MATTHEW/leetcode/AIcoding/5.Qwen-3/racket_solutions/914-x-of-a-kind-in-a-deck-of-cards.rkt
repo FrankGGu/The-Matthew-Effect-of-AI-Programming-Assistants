@@ -1,0 +1,6 @@
+(define (has-x-of-a-kind-in-a-deck-of-cards deck)
+  (let ((counts (make-hash)))
+    (for-each (lambda (card) (hash-update! counts card add1 0)) deck)
+    (define values (hash-values counts))
+    (define g (apply gcd values))
+    (>= g 2)))

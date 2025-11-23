@@ -1,0 +1,39 @@
+{
+  "id": "1390",
+  "title": "Four Divisors",
+  "titleSlug": "four-divisors",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "content": "<p>Given an integer array <code>nums</code>, return <em>the sum of divisors of the integers in that array that have exactly four divisors</em>. If there is no such integer in the array, return <code>0</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [21,4,7]\n<strong>Output:</strong> 32\n<strong>Explanation:</strong> \n21 has 4 divisors: 1, 3, 7, 21\n4 has 3 divisors: 1, 2, 4\n7 has 2 divisors: 1, 7\nThe answer is the sum of divisors of 21 only.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [21,21]\n<strong>Output:</strong> 64\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4,5]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int sumFourDivisors(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int sumFourDivisors(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def sumFourDivisors(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def sumFourDivisors(self, nums: List[int]) -> int:\n        ",
+    "c": "int sumFourDivisors(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int SumFourDivisors(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar sumFourDivisors = function(nums) {\n    \n};",
+    "typescript": "function sumFourDivisors(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function sumFourDivisors($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func sumFourDivisors(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun sumFourDivisors(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int sumFourDivisors(List<int> nums) {\n    \n  }\n}",
+    "golang": "func sumFourDivisors(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef sum_four_divisors(nums)\n    \nend",
+    "scala": "object Solution {\n    def sumFourDivisors(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn sum_four_divisors(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (sum-four-divisors nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec sum_four_divisors(Nums :: [integer()]) -> integer().\nsum_four_divisors(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec sum_four_divisors(nums :: [integer]) :: integer\n  def sum_four_divisors(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func sumFourDivisors(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[21,4,7]\n[21,21]\n[1,2,3,4,5]",
+  "hints": [
+    "Find the divisors of each element in the array.",
+    "You only need to loop to the square root of a number to find its divisors."
+  ]
+}

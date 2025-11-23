@@ -1,0 +1,17 @@
+#lang racket
+
+(define (num-ways arr)
+  (define MOD 1000000007)
+  (define count (make-hash))
+  (define res 1)
+  (define pos -1)
+  (for ([i (in-range (length arr))])
+    (when (= (list-ref arr i) 1)
+      (set! pos i)
+      (hash-set! count i 1)))
+  (for ([i (in-range (add1 pos) (length arr))])
+    (when (= (list-ref arr i) 1)
+      (let ([prev (hash-ref count (- i 1) 0)])
+        (hash-set! count i (+ prev (hash-ref count (- i 1) 0)))
+        (set! res (modulo (* res (hash-ref count i)) MOD)))))
+  res)

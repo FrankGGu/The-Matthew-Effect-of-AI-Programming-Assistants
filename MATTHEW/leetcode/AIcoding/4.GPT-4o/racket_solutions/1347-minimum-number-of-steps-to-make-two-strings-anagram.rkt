@@ -1,0 +1,7 @@
+(define (minSteps s t)
+  (define count (make-vector 26 0))
+  (for-each (lambda (c) (vector-set! count (- (char->integer c) (char->integer #\a)) (+ 1 (vector-ref count (- (char->integer c) (char->integer #\a))))) )
+            s)
+  (for-each (lambda (c) (vector-set! count (- (char->integer c) (char->integer #\a)) (- (vector-ref count (- (char->integer c) (char->integer #\a))) 1)))
+            t)
+  (foldl (lambda (acc x) (+ acc (max 0 x))) 0 count))

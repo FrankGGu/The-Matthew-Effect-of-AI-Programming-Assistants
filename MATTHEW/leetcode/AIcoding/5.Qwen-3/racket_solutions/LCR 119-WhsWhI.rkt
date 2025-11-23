@@ -1,0 +1,12 @@
+(define (longest-consecutive-sequence nums)
+  (define num-set (list->set nums))
+  (define (longest-starting-at n)
+    (if (set-member? num-set (- n 1))
+        (longest-starting-at (- n 1))
+        (let loop ((current n) (count 1))
+          (if (set-member? num-set (+ current 1))
+              (loop (+ current 1) (+ count 1))
+              count))))
+  (if (null? nums)
+      0
+      (apply max (map longest-starting-at (set->list num-set)))))

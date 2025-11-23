@@ -1,0 +1,5 @@
+(define (minimum-impossible-or nums)
+  (let loop ([i 1])
+    (if (member? i nums)
+        (loop (* 2 i))
+        i)))

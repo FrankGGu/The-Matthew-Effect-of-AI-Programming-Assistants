@@ -1,0 +1,26 @@
+(define (count-sub-multisets nums l r)
+  (define counts (make-hash))
+  (for-each (lambda (n) (hash-update! counts n (lambda (v) (+ 1 v)) 0)) nums)
+  (define zero-count (hash-ref counts 0 0))
+  (hash-remove! counts 0)
+  (define mod 1000000007)
+
+  (define (solve counts l r)
+    (define dp (make-vector (+ 1 r) 0))
+    (vector-set! dp 0 1)
+    (for-each
+     (lambda (kv)
+       (define num (car kv))
+       (define count (cdr kv))
+       (for ([j (in-range num (+ 1 r))]
+             [k (in-range 1 (+ 1 count))])
+         (define index (+ j (* k num)))
+         (when (<= index r)
+           (vector-set! dp index (modulo (+ (vector-ref dp index) (vector-ref dp j)) mod)))))
+     (hash->list counts))
+    (define ans 0)
+    (for ([i (in-range l (+ 1 r))])
+      (set! ans (modulo (+ ans (vector-ref dp i)) mod)))
+    (modulo (* ans (expt 2 zero-count mod)) mod))
+
+  (solve counts l r))

@@ -1,0 +1,12 @@
+(define/contract (check-distances s distance)
+  (-> string? (listof exact-integer?) boolean?)
+  (let ([dist-vec (make-vector 26 -1)])
+    (for ([i (in-range (string-length s))]
+          [c (in-string s)])
+      (let ([idx (- (char->integer c) (char->integer #\a))])
+        (if (= (vector-ref dist-vec idx) -1)
+            (vector-set! dist-vec idx i)
+            (vector-set! dist-vec idx (- i (vector-ref dist-vec idx) 1)))))
+    (for/and ([i (in-range 26)])
+      (or (= (vector-ref dist-vec i) -1)
+          (= (vector-ref dist-vec i) (list-ref distance i))))))

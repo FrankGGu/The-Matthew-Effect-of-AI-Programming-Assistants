@@ -1,0 +1,23 @@
+(define (max-envelopes envelopes)
+  (define sorted-envelopes (sort envelopes (lambda (a b)
+                                              (cond [(< (car a) (car b)) #t]
+                                                    [(and (= (car a) (car b)) (> (cadr a) (cadr b))) #t]
+                                                    [else #f]))))
+  (define (longest-increasing-subsequence nums)
+    (define tail (make-vector (length nums) #f))
+    (define size 0)
+    (for ([num nums])
+      (define i 0)
+      (define j size)
+      (while (< i j)
+        (define mid (quotient (+ i j) 2))
+        (if (< (vector-ref tail mid) num)
+            (set! i (+ mid 1))
+            (set! j mid)))
+      (vector-set! tail i num)
+      (if (= i size)
+          (set! size (+ size 1))))
+    size)
+
+  (define heights (map cadr sorted-envelopes))
+  (longest-increasing-subsequence heights))

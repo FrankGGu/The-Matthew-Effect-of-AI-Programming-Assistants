@@ -1,0 +1,5 @@
+(define (has-alternating-bits n)
+  (let* ((shifted-n (arithmetic-shift n -1))
+         (xor-result (bitwise-xor n shifted-n))
+         (m-plus-1 (+ xor-result 1)))
+    (= (bitwise-and xor-result m-plus-1) 0)))

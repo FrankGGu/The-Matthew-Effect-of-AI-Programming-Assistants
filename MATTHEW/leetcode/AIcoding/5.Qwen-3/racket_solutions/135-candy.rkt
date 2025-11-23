@@ -1,0 +1,12 @@
+(define (candy ratings)
+  (let ((n (length ratings)))
+    (if (= n 0) 0
+        (let ((left (make-vector n 1))
+              (right (make-vector n 1)))
+          (for ([i (in-range 1 n)])
+            (when (> (list-ref ratings i) (list-ref ratings (- i 1)))
+              (vector-set! left i (+ (vector-ref left (- i 1)) 1))))
+          (for ([i (in-range (- n 2) -1 -1)])
+            (when (> (list-ref ratings i) (list-ref ratings (+ i 1)))
+              (vector-set! right i (+ (vector-ref right (+ i 1)) 1))))
+          (apply + (map (lambda (a b) (+ a b)) (vector->list left) (vector->list right)))))))

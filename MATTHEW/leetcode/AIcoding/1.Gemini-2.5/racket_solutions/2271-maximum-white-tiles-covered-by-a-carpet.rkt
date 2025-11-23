@@ -1,0 +1,30 @@
+#lang racket
+
+(define (maximum-white-tiles tiles carpetLength)
+  (define n (length tiles))
+  (if (= n 0)
+      0
+      (let loop ((i 0)
+                 (j 0)
+                 (current-covered 0)
+                 (max-covered 0))
+        (if (= i n)
+            max-covered
+            (let* ((tile-i (list-ref tiles i))
+                   (l_i (car tile-i))
+                   (r_i (cadr tile-i))
+                   (carpet-end (+ l_i carpetLength -1)))
+
+              (let inner-loop ((current-j j)
+                               (current-covered-inner current-covered))
+                (if (or (= current-j n)
+                        (> (car (list-ref tiles current-j)) carpet-end))
+                    (let* ((new-max-covered (max max-covered current-covered-inner))
+                           (removed-part-of-i (+ (- (min r_i carpet-end) l_i) 1))
+                           (new-current-covered (- current-covered-inner removed-part-of-i)))
+                      (loop (+ i 1) current-j new-current-covered new-max-covered))
+                    (let* ((tile-j (list-ref tiles current-j))
+                           (l_j (car tile-j))
+                           (r_j (cadr tile-j))
+                           (covered-part-of-j (+ (- (min r_j carpet-end) l_j) 1)))
+                      (inner-loop (+ current-j 1) (+ current-covered-inner covered-part-of-j))))))))))

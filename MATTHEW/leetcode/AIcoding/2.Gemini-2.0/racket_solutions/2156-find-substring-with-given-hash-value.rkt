@@ -1,0 +1,22 @@
+(define (sub-str-hash s power modulo k hash-value)
+  (define n (string-length s))
+  (define h 0)
+  (define p (expt power k))
+  (for ([i (in-range (- n k) n -1)])
+    (set! h (modulo (+ (* h power) (char->integer (string-ref s i))) modulo)))
+
+  (when (= h hash-value)
+    (return (substring s (- n k) n)))
+
+  (for ([i (in-range (- n k -1) -1 -1)])
+    (set! h (modulo (- (* h power)
+                        (* (char->integer (string-ref s (+ i k))) p)
+                        (- (char->integer (string-ref s (+ i k)))
+                           (char->integer (string-ref s (+ i k))))
+                        (+ (char->integer (string-ref s i)))
+                        modulo)
+                  modulo))
+
+    (when (= h hash-value)
+      (return (substring s i (+ i k)))))
+  "")

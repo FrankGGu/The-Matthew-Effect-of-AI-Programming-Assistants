@@ -1,0 +1,8 @@
+(define/contract (check-x-matrix grid)
+  (-> (listof (listof exact-integer?)) boolean?)
+  (let ([n (length grid)])
+    (for/and ([i (in-range n)])
+      (for/and ([j (in-range n)])
+        (if (or (= i j) (= (+ i j) (- n 1)))
+            (not (zero? (list-ref (list-ref grid i) j)))
+            (zero? (list-ref (list-ref grid i) j)))))))

@@ -1,0 +1,39 @@
+{
+  "id": "1432",
+  "title": "Max Difference You Can Get From Changing an Integer",
+  "titleSlug": "max-difference-you-can-get-from-changing-an-integer",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Math"
+  ],
+  "content": "<p>You are given an integer <code>num</code>. You will apply the following steps to <code>nums</code> <strong>two</strong> times <strong>independently</strong>:</p>\n\n<ul>\n\t<li>Pick a digit <code>x (0 &lt;= x &lt;= 9)</code>.</li>\n\t<li>Pick another digit <code>y (0 &lt;= y &lt;= 9)</code>. Note <code>y</code> can be equal to <code>x</code>.</li>\n\t<li>Replace all the occurrences of <code>x</code> in the decimal representation of <code>num</code> by <code>y</code>.</li>\n</ul>\n\n<p>Let <code>a</code> and <code>b</code> be the two results from applying the operation to <code>num</code> <em>independently</em>.</p>\n\n<p>Return <em>the max difference</em> between <code>a</code> and <code>b</code>.</p>\n\n<p>Note that the new integer (either <code>a</code> or <code>b</code>) <strong>must not</strong> have any leading zeros, and it <strong>must not</strong> be 0.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 555\n<strong>Output:</strong> 888\n<strong>Explanation:</strong> The first time pick x = 5 and y = 9 and store the new integer in a.\nThe second time pick x = 5 and y = 1 and store the new integer in b.\nWe have now a = 999 and b = 111 and max difference = 888\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 9\n<strong>Output:</strong> 8\n<strong>Explanation:</strong> The first time pick x = 9 and y = 9 and store the new integer in a.\nThe second time pick x = 9 and y = 1 and store the new integer in b.\nWe have now a = 9 and b = 1 and max difference = 8\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= num &lt;= 10<sup>8</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxDiff(int num) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxDiff(int num) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxDiff(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxDiff(self, num: int) -> int:\n        ",
+    "c": "int maxDiff(int num) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxDiff(int num) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @return {number}\n */\nvar maxDiff = function(num) {\n    \n};",
+    "typescript": "function maxDiff(num: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @return Integer\n     */\n    function maxDiff($num) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxDiff(_ num: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxDiff(num: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxDiff(int num) {\n    \n  }\n}",
+    "golang": "func maxDiff(num int) int {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @return {Integer}\ndef max_diff(num)\n    \nend",
+    "scala": "object Solution {\n    def maxDiff(num: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_diff(num: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-diff num)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec max_diff(Num :: integer()) -> integer().\nmax_diff(Num) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_diff(num :: integer) :: integer\n  def max_diff(num) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxDiff(num: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "555\n9",
+  "hints": [
+    "We need to get the max and min value after changing num and the answer is max - min.",
+    "Use brute force, try all possible changes and keep the minimum and maximum values."
+  ]
+}

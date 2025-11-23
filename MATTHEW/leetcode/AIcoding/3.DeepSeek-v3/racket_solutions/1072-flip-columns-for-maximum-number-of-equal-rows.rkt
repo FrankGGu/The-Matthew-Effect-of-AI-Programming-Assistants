@@ -1,0 +1,11 @@
+(define/contract (max-equal-rows-after-flips matrix)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define (row-key row)
+    (if (= (car row) 0)
+        row
+        (map (lambda (x) (- 1 x)) row)))
+  (let ([freq (make-hash)])
+    (for ([row matrix])
+      (let ([key (row-key row)])
+        (hash-update! freq key add1 0)))
+    (apply max (hash-values freq))))

@@ -1,0 +1,6 @@
+(define (duplicate-zeros arr)
+  (let loop ([i 0] [n (length arr)])
+    (when (< i n)
+      (when (= (list-ref arr i) 0)
+        (set! arr (append (take arr (add1 i)) (list 0) (drop arr i))))
+      (loop (add1 i) n))))

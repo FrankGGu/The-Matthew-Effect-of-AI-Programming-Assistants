@@ -1,0 +1,34 @@
+{
+  "id": "LCP 62",
+  "title": "交通枢纽",
+  "titleSlug": "D9PW8w",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Graph"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int transportationHub(vector<vector<int>>& path) {\n\n    }\n};",
+    "java": "class Solution {\n    public int transportationHub(int[][] path) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def transportationHub(self, path):\n        \"\"\"\n        :type path: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def transportationHub(self, path: List[List[int]]) -> int:",
+    "c": "\n\nint transportationHub(int** path, int pathSize, int* pathColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int TransportationHub(int[][] path) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} path\n * @return {number}\n */\nvar transportationHub = function(path) {\n\n};",
+    "typescript": "function transportationHub(path: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $path\n     * @return Integer\n     */\n    function transportationHub($path) {\n\n    }\n}",
+    "swift": "class Solution {\n    func transportationHub(_ path: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun transportationHub(path: Array<IntArray>): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int transportationHub(List<List<int>> path) {\n\n  }\n}",
+    "golang": "func transportationHub(path [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} path\n# @return {Integer}\ndef transportation_hub(path)\n\nend",
+    "scala": "object Solution {\n    def transportationHub(path: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn transportation_hub(path: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (transportation-hub path)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec transportation_hub(Path :: [[integer()]]) -> integer().\ntransportation_hub(Path) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec transportation_hub(path :: [[integer]]) :: integer\n  def transportation_hub(path) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[0,1],[0,3],[1,3],[2,0],[2,3]]\n[[0,3],[1,0],[1,3],[2,0],[3,0],[3,2]]",
+  "hints": []
+}

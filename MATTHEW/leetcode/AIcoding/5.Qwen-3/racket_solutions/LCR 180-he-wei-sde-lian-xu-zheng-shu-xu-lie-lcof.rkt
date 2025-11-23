@@ -1,0 +1,8 @@
+(define (combine n k)
+  (define (backtrack start current result)
+    (if (= (length current) k)
+        (cons (reverse current) result)
+        (for/fold ([res result])
+                  ([i (in-range start (+ n 1))])
+          (backtrack (+ i 1) (cons i current) res))))
+  (reverse (backtrack 1 '() '())))

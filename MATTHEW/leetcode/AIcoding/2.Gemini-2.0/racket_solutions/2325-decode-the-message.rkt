@@ -1,0 +1,5 @@
+(define (decode-message key message)
+  (let* ((key-chars (string->list key))
+         (unique-chars (remove-duplicates (filter (lambda (c) (char-alphabetic? c)) key-chars)))
+         (char-map (make-hash (map (lambda (i c) (cons c (integer->char (+ (char->integer #\a) i)))) (range (length unique-chars)) unique-chars))))
+    (list->string (map (lambda (c) (if (hash-ref char-map c #f) (hash-ref char-map c) c)) (string->list message)))))

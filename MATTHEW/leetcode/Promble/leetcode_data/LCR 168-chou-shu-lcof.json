@@ -1,0 +1,38 @@
+{
+  "id": "LCR 168",
+  "title": "丑数",
+  "titleSlug": "chou-shu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Hash Table",
+    "Math",
+    "Dynamic Programming",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int nthUglyNumber(int n) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int nthUglyNumber(int n) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def nthUglyNumber(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def nthUglyNumber(self, n: int) -> int:\n        ",
+    "c": "int nthUglyNumber(int n) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NthUglyNumber(int n) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @return {number}\n */\nvar nthUglyNumber = function(n) {\n    \n};",
+    "typescript": "function nthUglyNumber(n: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @return Integer\n     */\n    function nthUglyNumber($n) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func nthUglyNumber(_ n: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun nthUglyNumber(n: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int nthUglyNumber(int n) {\n    \n  }\n}",
+    "golang": "func nthUglyNumber(n int) int {\n    \n}",
+    "ruby": "# @param {Integer} n\n# @return {Integer}\ndef nth_ugly_number(n)\n    \nend",
+    "scala": "object Solution {\n    def nthUglyNumber(n: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn nth_ugly_number(n: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (nth-ugly-number n)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec nth_ugly_number(N :: integer()) -> integer().\nnth_ugly_number(N) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec nth_ugly_number(n :: integer) :: integer\n  def nth_ugly_number(n) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func nthUglyNumber(n: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "10",
+  "hints": []
+}

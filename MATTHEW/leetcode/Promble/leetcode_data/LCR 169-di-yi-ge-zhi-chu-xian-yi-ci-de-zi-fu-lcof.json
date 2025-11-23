@@ -1,0 +1,38 @@
+{
+  "id": "LCR 169",
+  "title": "招式拆解 II",
+  "titleSlug": "di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Queue",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    char dismantlingAction(string arr) {\n        \n    }\n};",
+    "java": "class Solution {\n    public char dismantlingAction(String arr) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def dismantlingAction(self, arr):\n        \"\"\"\n        :type arr: str\n        :rtype: str\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def dismantlingAction(self, arr: str) -> str:\n        ",
+    "c": "char dismantlingAction(char* arr) {\n    \n}",
+    "csharp": "public class Solution {\n    public char DismantlingAction(string arr) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} arr\n * @return {character}\n */\nvar dismantlingAction = function(arr) {\n    \n};",
+    "typescript": "function dismantlingAction(arr: string): string {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $arr\n     * @return String\n     */\n    function dismantlingAction($arr) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func dismantlingAction(_ arr: String) -> Character {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun dismantlingAction(arr: String): Char {\n        \n    }\n}",
+    "dart": "class Solution {\n  String dismantlingAction(String arr) {\n    \n  }\n}",
+    "golang": "func dismantlingAction(arr string) byte {\n    \n}",
+    "ruby": "# @param {String} arr\n# @return {Character}\ndef dismantling_action(arr)\n    \nend",
+    "scala": "object Solution {\n    def dismantlingAction(arr: String): Char = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn dismantling_action(arr: String) -> char {\n        \n    }\n}",
+    "racket": "(define/contract (dismantling-action arr)\n  (-> string? char?)\n  )",
+    "erlang": "-spec dismantling_action(Arr :: unicode:unicode_binary()) -> char().\ndismantling_action(Arr) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec dismantling_action(arr :: String.t) :: char\n  def dismantling_action(arr) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func dismantlingAction(arr: String): Rune {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"abbccdeff\"\n\"ccdd\"",
+  "hints": []
+}

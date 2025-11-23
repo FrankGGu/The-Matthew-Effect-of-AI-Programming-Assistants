@@ -1,0 +1,8 @@
+(define (number-of-arithmetic-slices nums)
+  (let loop ([i 0] [count 0] [len (length nums)])
+    (if (< i (- len 2))
+        (let loop2 ([j (+ i 2)] [diff (- (list-ref nums (+ i 1)) (list-ref nums i))] [sub-count 0])
+          (if (and (< j len) (= (- (list-ref nums j) (list-ref nums (- j 1))) diff))
+              (loop2 (+ j 1) diff (+ sub-count 1))
+              (loop (+ i 1) (+ count sub-count) len)))
+        count)))

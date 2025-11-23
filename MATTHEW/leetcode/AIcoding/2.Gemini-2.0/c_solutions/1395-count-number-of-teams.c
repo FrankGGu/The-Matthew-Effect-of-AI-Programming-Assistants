@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int numTeams(int* rating, int ratingSize){
+    int count = 0;
+    for (int i = 0; i < ratingSize; i++) {
+        for (int j = i + 1; j < ratingSize; j++) {
+            for (int k = j + 1; k < ratingSize; k++) {
+                if ((rating[i] < rating[j] && rating[j] < rating[k]) ||
+                    (rating[i] > rating[j] && rating[j] > rating[k])) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}

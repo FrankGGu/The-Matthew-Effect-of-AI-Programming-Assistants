@@ -1,0 +1,6 @@
+(define (allPathsSourceTarget graph)
+  (define (dfs node path)
+    (if (= node (sub1 (length graph)))
+        (list (cons node path))
+        (apply append (map (lambda (next) (dfs next (cons node path))) (vector->list (list-ref graph node))))))
+  (reverse (dfs 0 '())))

@@ -1,0 +1,13 @@
+(define (di-string-match s)
+  (let* ((n (string-length s))
+         (result (make-vector (+ n 1) 0))
+    (let loop ((i 0) (low 0) (high n))
+      (if (<= i n)
+          (begin
+            (if (or (= i n) (char=? (string-ref s i) #\I))
+                (vector-set! result i low)
+                (vector-set! result i high))
+            (if (or (= i n) (char=? (string-ref s i) #\I))
+                (loop (+ i 1) (+ low 1) high)
+                (loop (+ i 1) low (- high 1))))
+          result))))

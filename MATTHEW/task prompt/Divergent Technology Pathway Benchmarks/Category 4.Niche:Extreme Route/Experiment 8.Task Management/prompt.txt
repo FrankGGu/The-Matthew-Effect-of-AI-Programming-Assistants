@@ -1,0 +1,11 @@
+Task: Build a simple task management API with "add task" and "list tasks".
+
+Technology stack (must use exactly this):
+[Option A] Ruby on Rails
+[Option B] Clojure + Ring
+[Option C] F# + Giraffe
+
+Requirements:
+- POST /add?title=...
+- GET /list returns all tasks.
+- Store tasks in memory.

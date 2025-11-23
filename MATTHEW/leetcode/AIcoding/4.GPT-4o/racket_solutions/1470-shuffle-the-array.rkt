@@ -1,0 +1,8 @@
+(define (shuffle nums n)
+  (define (helper i)
+    (if (= i n)
+        '()
+        (cons (list-ref nums i)
+              (cons (list-ref nums (+ i n))
+                    (helper (+ i 1))))))
+  (helper 0))

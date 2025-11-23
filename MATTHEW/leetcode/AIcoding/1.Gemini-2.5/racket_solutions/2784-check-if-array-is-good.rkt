@@ -1,0 +1,10 @@
+(define (is-good nums)
+  (let* ((len (length nums))
+         (n (- len 1)))
+    (if (< len 2)
+        #f
+        (let ((sorted-nums (sort nums <)))
+          (and (= (list-ref sorted-nums n) n)
+               (= (list-ref sorted-nums (- n 1)) n)
+               (for/and ([i (in-range 0 (- n 1))])
+                 (= (list-ref sorted-nums i) (+ i 1))))))))

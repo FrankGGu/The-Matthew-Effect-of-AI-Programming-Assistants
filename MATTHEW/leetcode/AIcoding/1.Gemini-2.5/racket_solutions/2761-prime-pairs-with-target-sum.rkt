@@ -1,0 +1,18 @@
+(define (prime-pairs-with-target-sum n)
+  (if (< n 4)
+      '()
+      (let* ([sieve (make-vector (+ n 1) #t)])
+        (vector-set! sieve 0 #f)
+        (vector-set! sieve 1 #f)
+
+        (for ([p (in-range 2 (add1 (floor (sqrt n))))])
+          (when (vector-ref sieve p)
+            (for ([i (in-range (* p p) (add1 n) p)])
+              (vector-set! sieve i #f))))
+
+        (let loop ([i 2])
+          (if (> i (/ n 2))
+              '()
+              (if (and (vector-ref sieve i) (vector-ref sieve (- n i)))
+                  (list i (- n i))
+                  (loop (add1 i))))))))

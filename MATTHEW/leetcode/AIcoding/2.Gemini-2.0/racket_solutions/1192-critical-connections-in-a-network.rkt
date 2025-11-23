@@ -1,0 +1,43 @@
+(define (critical-connections n connections)
+  (define graph (make-hash))
+  (for-each (lambda (edge)
+              (define u (car edge))
+              (define v (cadr edge))
+              (hash-update! graph u (lambda (xs) (cons v xs)) '())
+              (hash-update! graph v (lambda (xs) (cons u xs)) '()))
+            connections)
+
+  (define disc (make-vector n #f))
+  (define low (make-vector n #f))
+  (define parent (make-vector n #f))
+  (define timer (box 0))
+  (define result '())
+
+  (define (dfs u)
+    (vector-set! disc u (box-unbox timer))
+    (vector-set! low u (box-unbox timer))
+    (set-box! timer (+ (box-unbox timer) 1))
+
+    (for-each (lambda (v)
+                (if (not (vector-ref! disc v))
+                    (begin
+                      (vector-set! parent v u)
+                      (dfs v)
+                      (vector-set! low u (min (vector-ref! low u) (vector-ref! low v)))
+                      (if (> (vector-ref! low v) (vector-ref! disc u))
+                          (set! result (cons (list u v) result))))
+                    (if (not (= v (vector-ref! parent u)))
+                        (vector-set! low u (min (vector-ref! low u) (vector-ref! disc v))))))
+              (hash-ref graph u '()))
+    )
+
+  (for/list ([i (in-range n)])
+    (vector-set! disc i #f)
+    (vector-set! low i #f)
+    (vector-set! parent i #f))
+
+  (for/list ([i (in-range n)])
+    (if (not (vector-ref! disc i))
+        (dfs i)))
+
+  result)

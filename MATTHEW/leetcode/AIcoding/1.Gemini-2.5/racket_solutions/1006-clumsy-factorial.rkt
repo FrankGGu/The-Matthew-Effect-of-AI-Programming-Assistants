@@ -1,0 +1,26 @@
+(define (clumsy n)
+  (cond
+    ((= n 1) 1)
+    ((= n 2) 2)
+    ((= n 3) 6)
+    (else
+     (let loop ((i (- n 1))
+                (op-idx 0) ; 0:*, 1:/, 2:+, 3:-
+                (stack (list n)))
+       (if (< i 1)
+           (apply + stack)
+           (let* ((current-val i)
+                  (current-op-type (modulo op-idx 4)))
+             (cond
+               ((= current-op-type 0) ; Multiplication (*)
+                (let ((top (car stack))
+                      (rest (cdr stack)))
+                  (loop (- i 1) (+ op-idx 1) (cons (* top current-val) rest))))
+               ((= current-op-type 1) ; Division (/)
+                (let ((top (car stack))
+                      (rest (cdr stack)))
+                  (loop (- i 1) (+ op-idx 1) (cons (quotient top current-val) rest))))
+               ((= current-op-type 2) ; Addition (+)
+                (loop (- i 1) (+ op-idx 1) (cons current-val stack)))
+               ((= current-op-type 3) ; Subtraction (-)
+                (loop (- i 1) (+ op-idx 1) (cons (- current-val) stack))))))))))

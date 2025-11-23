@@ -1,0 +1,37 @@
+{
+  "id": "LCR 166",
+  "title": "珠宝的最高价值",
+  "titleSlug": "li-wu-de-zui-da-jie-zhi-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int jewelleryValue(vector<vector<int>>& frame) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int jewelleryValue(int[][] frame) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def jewelleryValue(self, frame):\n        \"\"\"\n        :type frame: List[List[int]]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def jewelleryValue(self, frame: List[List[int]]) -> int:\n        ",
+    "c": "int jewelleryValue(int** frame, int frameSize, int* frameColSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int JewelleryValue(int[][] frame) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[][]} frame\n * @return {number}\n */\nvar jewelleryValue = function(frame) {\n    \n};",
+    "typescript": "function jewelleryValue(frame: number[][]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $frame\n     * @return Integer\n     */\n    function jewelleryValue($frame) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func jewelleryValue(_ frame: [[Int]]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun jewelleryValue(frame: Array<IntArray>): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int jewelleryValue(List<List<int>> frame) {\n    \n  }\n}",
+    "golang": "func jewelleryValue(frame [][]int) int {\n    \n}",
+    "ruby": "# @param {Integer[][]} frame\n# @return {Integer}\ndef jewellery_value(frame)\n    \nend",
+    "scala": "object Solution {\n    def jewelleryValue(frame: Array[Array[Int]]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn jewellery_value(frame: Vec<Vec<i32>>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (jewellery-value frame)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n  )",
+    "erlang": "-spec jewellery_value(Frame :: [[integer()]]) -> integer().\njewellery_value(Frame) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec jewellery_value(frame :: [[integer]]) :: integer\n  def jewellery_value(frame) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func jewelleryValue(frame: Array<Array<Int64>>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[[1,3,1],[1,5,1],[4,2,1]]",
+  "hints": []
+}

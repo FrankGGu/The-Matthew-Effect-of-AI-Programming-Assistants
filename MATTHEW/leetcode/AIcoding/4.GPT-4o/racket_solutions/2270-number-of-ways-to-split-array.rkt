@@ -1,0 +1,12 @@
+(define (ways-to-split-array nums)
+  (define total-sum (apply + nums))
+  (define left-sum 0)
+  (define count 0)
+  (for ([i (in-range (sub1 (length nums)))])
+    (set! left-sum (+ left-sum (list-ref nums i)))
+    (when (>= left-sum (/ total-sum 2))
+      (set! count (+ count 1))))
+  count)
+
+(define (num-ways nums)
+  (ways-to-split-array nums))

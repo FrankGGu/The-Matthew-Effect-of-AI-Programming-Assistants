@@ -1,0 +1,7 @@
+(define (sum-of-squares-of-special-elements nums)
+  (let* ([n (length nums)])
+    (for/sum ([i (in-range 1 (+ n 1))])
+      (if (= (remainder n i) 0)
+          (let ([element (list-ref nums (- i 1))])
+            (* element element))
+          0))))

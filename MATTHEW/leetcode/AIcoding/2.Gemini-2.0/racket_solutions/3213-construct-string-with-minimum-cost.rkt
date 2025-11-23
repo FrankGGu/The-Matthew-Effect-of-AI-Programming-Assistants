@@ -1,0 +1,10 @@
+(define (min-cost s cost)
+  (let* ([n (string-length s)]
+         [dp (make-vector n (make-vector 2 0))])
+    (vector-set! (vector-ref dp 0) 0 (vector-ref cost 0))
+    (vector-set! (vector-ref dp 0) 1 0)
+    (for ([i (in-range 1 n)])
+      (let ([prev-dp (vector-ref dp (- i 1))])
+        (vector-set! (vector-ref dp i) 0 (+ (vector-min (vector-ref prev-dp 0) (vector-ref prev-dp 1)) (vector-ref cost i)))
+        (vector-set! (vector-ref dp i) 1 (+ (vector-ref prev-dp 0) (if (char=? (string-ref s (- i 1)) (string-ref s i)) 0 (vector-ref cost (- i 1))))))
+    (vector-min (vector-ref (vector-ref dp (- n 1)) 0) (vector-ref (vector-ref dp (- n 1)) 1))))

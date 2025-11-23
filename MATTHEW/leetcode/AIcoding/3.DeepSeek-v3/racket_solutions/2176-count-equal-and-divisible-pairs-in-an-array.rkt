@@ -1,0 +1,11 @@
+(define (count-pairs nums k)
+  (let loop ([i 0] [count 0])
+    (if (>= i (length nums))
+        count
+        (let inner-loop ([j (+ i 1)] [current-count count])
+          (if (>= j (length nums))
+              (loop (+ i 1) current-count)
+              (if (and (= (list-ref nums i) (list-ref nums j)) 
+                       (= (modulo (* i j) k) 0))
+                  (inner-loop (+ j 1) (+ current-count 1))
+                  (inner-loop (+ j 1) current-count))))))

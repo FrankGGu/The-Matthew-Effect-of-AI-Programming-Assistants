@@ -1,0 +1,8 @@
+(define/contract (merge-similar-items items1 items2)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)) (listof (listof exact-integer?)))
+  (define ht (make-hash))
+  (for ([item items1])
+    (hash-update! ht (first item) (lambda (v) (+ v (second item))) (lambda () 0)))
+  (for ([item items2])
+    (hash-update! ht (first item) (lambda (v) (+ v (second item))) (lambda () 0)))
+  (sort (hash-map ht (lambda (k v) (list k v))) (lambda (a b) (< (first a) (first b)))))

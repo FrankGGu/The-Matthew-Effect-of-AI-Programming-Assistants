@@ -1,0 +1,37 @@
+{
+  "id": "LCR 182",
+  "title": "动态口令",
+  "titleSlug": "zuo-xuan-zhuan-zi-fu-chuan-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string dynamicPassword(string password, int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public String dynamicPassword(String password, int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def dynamicPassword(self, password, target):\n        \"\"\"\n        :type password: str\n        :type target: int\n        :rtype: str\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def dynamicPassword(self, password: str, target: int) -> str:\n        ",
+    "c": "char* dynamicPassword(char* password, int target) {\n    \n}",
+    "csharp": "public class Solution {\n    public string DynamicPassword(string password, int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} password\n * @param {number} target\n * @return {string}\n */\nvar dynamicPassword = function(password, target) {\n    \n};",
+    "typescript": "function dynamicPassword(password: string, target: number): string {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $password\n     * @param Integer $target\n     * @return String\n     */\n    function dynamicPassword($password, $target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func dynamicPassword(_ password: String, _ target: Int) -> String {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun dynamicPassword(password: String, target: Int): String {\n        \n    }\n}",
+    "dart": "class Solution {\n  String dynamicPassword(String password, int target) {\n    \n  }\n}",
+    "golang": "func dynamicPassword(password string, target int) string {\n    \n}",
+    "ruby": "# @param {String} password\n# @param {Integer} target\n# @return {String}\ndef dynamic_password(password, target)\n    \nend",
+    "scala": "object Solution {\n    def dynamicPassword(password: String, target: Int): String = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn dynamic_password(password: String, target: i32) -> String {\n        \n    }\n}",
+    "racket": "(define/contract (dynamic-password password target)\n  (-> string? exact-integer? string?)\n  )",
+    "erlang": "-spec dynamic_password(Password :: unicode:unicode_binary(), Target :: integer()) -> unicode:unicode_binary().\ndynamic_password(Password, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec dynamic_password(password :: String.t, target :: integer) :: String.t\n  def dynamic_password(password, target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func dynamicPassword(password: String, target: Int64): String {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"s3cur1tyC0d3\"\n4\n\"vbzkgsaoiu\"\n2",
+  "hints": []
+}

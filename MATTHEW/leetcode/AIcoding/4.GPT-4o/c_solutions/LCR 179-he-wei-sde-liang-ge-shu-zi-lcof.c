@@ -1,0 +1,15 @@
+int* twoSum(int* prices, int pricesSize, int target, int* returnSize) {
+    int* result = (int*)malloc(2 * sizeof(int));
+    *returnSize = 2;
+    for (int i = 0; i < pricesSize; i++) {
+        for (int j = i + 1; j < pricesSize; j++) {
+            if (prices[i] + prices[j] == target) {
+                result[0] = i;
+                result[1] = j;
+                return result;
+            }
+        }
+    }
+    *returnSize = 0;
+    return NULL;
+}

@@ -1,0 +1,6 @@
+(define/contract (maximum-groups grades)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([n (length grades)] [k 1])
+    (if (>= (- n k) 0)
+        (loop (- n k) (add1 k))
+        (sub1 k))))

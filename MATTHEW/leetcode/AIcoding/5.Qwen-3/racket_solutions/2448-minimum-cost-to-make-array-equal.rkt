@@ -1,0 +1,5 @@
+(define (min-cost-to-make-array-equal nums)
+  (define n (length nums))
+  (define sorted (sort nums <))
+  (define median (list-ref sorted (quotient n 2)))
+  (apply + (map (lambda (x) (abs (- x median))) nums)))

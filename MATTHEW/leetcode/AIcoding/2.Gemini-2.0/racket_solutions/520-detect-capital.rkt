@@ -1,0 +1,7 @@
+(define (detect-capital-use word)
+  (let* ((n (string-length word))
+         (first-upper? (and (> n 0) (char-upper-case? (string-ref word 0))))
+         (all-upper? (andmap char-upper-case? (string->list word)))
+         (all-lower? (andmap char-lower-case? (string->list word)))
+         (rest-lower? (andmap char-lower-case? (drop (string->list word) 1))))
+    (or all-upper? all-lower? (and first-upper? rest-lower?))))

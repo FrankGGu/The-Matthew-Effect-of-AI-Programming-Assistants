@@ -1,0 +1,35 @@
+{
+  "id": "LCR 192",
+  "title": "把字符串转换成整数 (atoi)",
+  "titleSlug": "ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "String"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int myAtoi(string str) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int myAtoi(String str) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def myAtoi(self, str):\n        \"\"\"\n        :type str: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def myAtoi(self, str: str) -> int:\n        ",
+    "c": "int myAtoi(char* str) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MyAtoi(string str) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} str\n * @return {number}\n */\nvar myAtoi = function(str) {\n    \n};",
+    "typescript": "function myAtoi(str: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $str\n     * @return Integer\n     */\n    function myAtoi($str) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func myAtoi(_ str: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun myAtoi(str: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int myAtoi(String str) {\n    \n  }\n}",
+    "golang": "func myAtoi(str string) int {\n    \n}",
+    "ruby": "# @param {String} str\n# @return {Integer}\ndef my_atoi(str)\n    \nend",
+    "scala": "object Solution {\n    def myAtoi(str: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn my_atoi(str: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (my-atoi str)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec my_atoi(Str :: unicode:unicode_binary()) -> integer().\nmy_atoi(Str) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec my_atoi(str :: String.t) :: integer\n  def my_atoi(str) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func myAtoi(str: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"42\"\n\"   -42\"\n\"4193 with words\"",
+  "hints": []
+}

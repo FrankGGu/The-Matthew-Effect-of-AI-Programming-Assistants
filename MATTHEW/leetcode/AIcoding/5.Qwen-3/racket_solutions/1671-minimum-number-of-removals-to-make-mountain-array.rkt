@@ -1,0 +1,18 @@
+#lang racket
+
+(define (make-mountain-array arr)
+  (define n (length arr))
+  (define left (make-vector n 1))
+  (define right (make-vector n 1))
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (< (list-ref arr j) (list-ref arr i))
+        (vector-set! left i (max (vector-ref left i) (+ (vector-ref left j) 1)))))
+    (for ([j (in-range (- n 1) i -1)])
+      (when (< (list-ref arr j) (list-ref arr i))
+        (vector-set! right i (max (vector-ref right i) (+ (vector-ref right j) 1))))))
+  (define max-length 0)
+  (for ([i (in-range n)])
+    (when (and (> (vector-ref left i) 1) (> (vector-ref right i) 1))
+      (set! max-length (max max-length (+ (vector-ref left i) (vector-ref right i) -1)))))
+  (- n max-length))

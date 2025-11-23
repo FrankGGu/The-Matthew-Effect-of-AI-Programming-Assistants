@@ -1,0 +1,17 @@
+(define/contract (min-difficulty jobDifficulty d)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([n (length jobDifficulty)])
+    (if (< n d)
+        -1
+        (let ([dp (make-vector (add1 n) (make-vector (add1 d) +inf.0))])
+          (vector-set! (vector-ref dp 0) 0 0)
+          (for ([i (in-range 1 (add1 n))])
+            (for ([k (in-range 1 (add1 d))])
+              (let ([max-difficulty 0])
+                (for ([j (in-range i 0 -1)])
+                  (set! max-difficulty (max max-difficulty (list-ref jobDifficulty (sub1 j))))
+                  (vector-set! (vector-ref dp i) k 
+                               (min (vector-ref (vector-ref dp i) k)
+                                    (+ (vector-ref (vector-ref dp (sub1 j)) (sub1 k)) max-difficulty))))))))
+          (let ([result (vector-ref (vector-ref dp n) d)])
+            (if (= result +inf.0) -1 result))))))

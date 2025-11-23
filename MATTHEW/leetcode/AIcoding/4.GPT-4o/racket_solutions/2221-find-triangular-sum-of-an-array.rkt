@@ -1,0 +1,5 @@
+(define (triangular-sum nums)
+  (let loop ((n nums))
+    (if (= (length n) 1)
+        (car n)
+        (loop (map + (butlast n) (cdr n))))))

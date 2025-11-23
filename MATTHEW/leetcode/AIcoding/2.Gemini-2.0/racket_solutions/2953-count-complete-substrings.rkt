@@ -1,0 +1,16 @@
+(define (count-complete-substrings word k)
+  (let* ([n (string-length word)]
+         [count 0])
+    (for* ([len (in-range 1 27)]
+           [i (in-range 0 (- n len -1))])
+      (let ([sub (substring word i (+ i len))])
+        (when (and (= (string-length sub) len)
+                   (let ([freq (make-hash)])
+                     (for ([c (in-string sub)])
+                       (hash-update! freq c add1 0))
+                     (and (= (hash-count freq) len)
+                          (for/and ([v (in-hash-values freq)])
+                            (= v k))))
+              )
+          (set! count (+ count 1)))))
+    count))

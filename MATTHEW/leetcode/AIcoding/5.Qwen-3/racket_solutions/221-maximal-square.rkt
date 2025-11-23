@@ -1,0 +1,23 @@
+(define (maximal-square matrix)
+  (let ((m (length matrix))
+        (n (if (null? matrix) 0 (length (car matrix)))))
+    (if (or (= m 0) (= n 0)) 0
+        (let ((dp (make-vector m (make-vector n 0))))
+          (let loop ((i 0) (max-side 0))
+            (if (= i m) max-side
+                (let loop2 ((j 0))
+                  (if (= j n)
+                      (loop (+ i 1) max-side)
+                      (begin
+                        (when (and (= (vector-ref (vector-ref matrix i) j) #\1)
+                                   (or (= i 0) (= j 0)))
+                          (vector-set! (vector-ref dp i) j 1)
+                          (set! max-side (max max-side 1)))
+                        (when (and (not (= i 0)) (not (= j 0)) (= (vector-ref (vector-ref matrix i) j) #\1))
+                          (let ((min-val (min (vector-ref (vector-ref dp (- i 1) j)
+                                                         (vector-ref (vector-ref dp i (- j 1))
+                                                                     (vector-ref (vector-ref dp (- i 1) (- j 1)))))))
+                            (vector-set! (vector-ref dp i) j (+ min-val 1))
+                            (set! max-side (max max-side (+ min-val 1)))))
+                        (loop2 (+ j 1)))))))
+          (if (zero? max-side) 0 (* max-side max-side))))))

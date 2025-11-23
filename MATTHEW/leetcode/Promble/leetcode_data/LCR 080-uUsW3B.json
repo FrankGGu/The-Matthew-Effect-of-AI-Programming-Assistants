@@ -1,0 +1,34 @@
+{
+  "id": "LCR 080",
+  "title": "组合",
+  "titleSlug": "uUsW3B",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Backtracking"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> combine(int n, int k) {\n\n    }\n};",
+    "java": "class Solution {\n    public List<List<Integer>> combine(int n, int k) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def combine(self, n, k):\n        \"\"\"\n        :type n: int\n        :type k: int\n        :rtype: List[List[int]]\n        \"\"\"",
+    "python3": "class Solution:\n    def combine(self, n: int, k: int) -> List[List[int]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** combine(int n, int k, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public IList<IList<int>> Combine(int n, int k) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @param {number} k\n * @return {number[][]}\n */\nvar combine = function(n, k) {\n\n};",
+    "typescript": "function combine(n: number, k: number): number[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @param Integer $k\n     * @return Integer[][]\n     */\n    function combine($n, $k) {\n\n    }\n}",
+    "swift": "class Solution {\n    func combine(_ n: Int, _ k: Int) -> [[Int]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun combine(n: Int, k: Int): List<List<Int>> {\n\n    }\n}",
+    "golang": "func combine(n int, k int) [][]int {\n\n}",
+    "ruby": "# @param {Integer} n\n# @param {Integer} k\n# @return {Integer[][]}\ndef combine(n, k)\n\nend",
+    "scala": "object Solution {\n    def combine(n: Int, k: Int): List[List[Int]] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn combine(n: i32, k: i32) -> Vec<Vec<i32>> {\n\n    }\n}",
+    "racket": "(define/contract (combine n k)\n  (-> exact-integer? exact-integer? (listof (listof exact-integer?)))\n\n  )",
+    "erlang": "-spec combine(N :: integer(), K :: integer()) -> [[integer()]].\ncombine(N, K) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec combine(n :: integer, k :: integer) :: [[integer]]\n  def combine(n, k) do\n\n  end\nend"
+  },
+  "exampleTestcases": "4\n2\n1\n1",
+  "hints": []
+}

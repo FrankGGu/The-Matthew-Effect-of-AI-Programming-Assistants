@@ -1,0 +1,20 @@
+#lang racket
+
+(require racket/async)
+
+(define (foo-bar n)
+  (define foo-ch (make-channel))
+  (define bar-ch (make-channel))
+  (define (print-foo)
+    (for ([i (in-range n)])
+      (channel-get foo-ch)
+      (printf "foo")
+      (channel-put bar-ch #t)))
+  (define (print-bar)
+    (for ([i (in-range n)])
+      (channel-get bar-ch)
+      (printf "bar")
+      (channel-put foo-ch #t)))
+  (thread print-foo)
+  (thread print-bar)
+  (channel-put foo-ch #t))

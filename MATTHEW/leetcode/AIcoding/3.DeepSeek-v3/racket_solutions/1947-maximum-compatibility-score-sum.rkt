@@ -1,0 +1,17 @@
+#lang racket
+
+(define (max-compatibility-sum students mentors)
+  (define m (length students))
+  (define n (length (car students)))
+  (define (score s m)
+    (for/sum ([si s] [mi m])
+      (if (equal? si mi) 1 0)))
+  (define perms (permutations (range m)))
+  (define max-score 0)
+  (for ([perm perms])
+    (define current-score 0)
+    (for ([i (in-range m)])
+      (set! current-score (+ current-score (score (list-ref students i) (list-ref mentors (list-ref perm i)))))
+    (when (> current-score max-score)
+      (set! max-score current-score)))
+  max-score)

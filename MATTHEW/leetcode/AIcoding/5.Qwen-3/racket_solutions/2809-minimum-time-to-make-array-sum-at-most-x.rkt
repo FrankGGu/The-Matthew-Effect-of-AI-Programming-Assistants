@@ -1,0 +1,57 @@
+#lang racket
+
+(define (min-time nums x)
+  (define (cmp a b)
+    (> (car a) (car b)))
+  (define heap (list '()))
+  (define (push val)
+    (set! heap (heap-add heap val)))
+  (define (pop)
+    (let ((val (heap-extract-max heap)))
+      (if (null? val)
+          #f
+          val)))
+  (define (heap-add h val)
+    (if (null? h)
+        (list val)
+        (let ((new-h (cons val (cdr h))))
+          (let loop ((i 1))
+            (if (> i (quotient (- (length new-h) 1) 2))
+                new-h
+                (let* ((parent (quotient (- i 1) 2))
+                       (parent-val (list-ref new-h parent))
+                       (child-val (list-ref new-h i)))
+                  (if (> (car child-val) (car parent-val))
+                      (begin
+                        (set! new-h (list-set new-h parent child-val))
+                        (set! new-h (list-set new-h i parent-val))
+                        (loop parent))
+                      new-h))))))
+  (define (heap-extract-max h)
+    (if (null? h)
+        #f
+        (let ((max-val (list-ref h 0)))
+          (set! h (append (list (last h)) (take h (- (length h) 1))))
+          (let loop ((i 0))
+            (let* ((left (+ (* i 2) 1))
+                   (right (+ (* i 2) 2))
+                   (children (filter (lambda (x) (< x (length h))) (list left right)))
+                   (max-child (if (null? children)
+                                  #f
+                                  (let ((child-vals (map (lambda (x) (list-ref h x)) children)))
+                                    (apply min child-vals))))
+              (if (or (null? children) (> (car max-child) (car (list-ref h i))))
+                  h
+                  (begin
+                    (set! h (list-set h i max-child))
+                    (set! h (list-set h (index-of h max-child) (list-ref h i)))
+                    (loop (index-of h max-child)))))))
+          max-val))
+  (for-each (lambda (n) (push (list n))) nums)
+  (let loop ((time 0))
+    (if (<= (apply + nums) x)
+        time
+        (let* ((max-val (pop))
+               (new-val (- (car max-val) 1)))
+          (push (list new-val))
+          (loop (+ time 1))))))

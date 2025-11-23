@@ -1,0 +1,7 @@
+(define/contract (divide-string s k fill)
+  (-> string? exact-integer? char? (listof string?))
+  (let loop ([s s] [res '()])
+    (if (<= (string-length s) k)
+        (reverse (cons (string-append s (make-string (max 0 (- k (string-length s))) fill)) res))
+        (loop (substring s k)
+              (cons (substring s 0 k) res)))))

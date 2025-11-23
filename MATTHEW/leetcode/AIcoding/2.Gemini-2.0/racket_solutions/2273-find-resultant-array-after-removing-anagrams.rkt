@@ -1,0 +1,12 @@
+(define (remove-anagrams words)
+  (let loop ([result '()] [remaining words])
+    (if (null? remaining)
+        (reverse result)
+        (let ([current (car remaining)]
+              [rest (cdr remaining)])
+          (if (null? result)
+              (loop (list current) rest)
+              (let ([last (car result)])
+                (if (equal? (sort (string->list current) char<?) (sort (string->list last) char<?))
+                    (loop result rest)
+                    (loop (cons current result) rest))))))))

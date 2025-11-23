@@ -1,0 +1,13 @@
+(define (findLength A B)
+  (define n (length A))
+  (define m (length B))
+  (define dp (make-vector (+ 1 n) (lambda () (make-vector (+ 1 m) 0))))
+  (define max-len 0)
+  (for ([i (in-range 1 (+ 1 n))])
+    (for ([j (in-range 1 (+ 1 m))])
+      (if (= (vector-ref A (- i 1)) (vector-ref B (- j 1)))
+          (begin
+            (vector-set! (vector-ref dp i) j (+ 1 (vector-ref (vector-ref dp (- i 1)) (- j 1))))
+            (set! max-len (max max-len (vector-ref (vector-ref dp i) j))))))
+    )
+  max-len)

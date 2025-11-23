@@ -1,0 +1,44 @@
+Build a lightweight high-performance inventory system using:
+- Frontend: Preact with TypeScript
+- Backend: Gin Gonic web framework
+- ORM: GORM with PostgreSQL
+- Build: ESBuild for frontend
+
+**Database Connection:**
+- dsn := "host=localhost user=admin password=admin123 dbname=inventory_db port=5432 sslmode=disable"
+
+**Required Features:**
+1. Minimalist UI with fast loading
+2. High-performance API endpoints
+3. Real-time inventory updates
+4. Transaction logging with audit trail
+5. Export functionality
+
+**Technical Specifications:**
+Backend:
+- Gin router with middleware
+- GORM for database operations
+- Structured logging with Zap
+- JWT authentication
+- Validator for input validation
+
+Frontend:
+- Preact with hooks
+- TypeScript for type safety
+- Minimal CSS (no heavy frameworks)
+- Virtual DOM for performance
+
+**Code Structure:**
+- /cmd/server (main application)
+- /internal/models (GORM models)
+- /internal/handlers (HTTP handlers)
+- /internal/middleware (custom middleware)
+- /web (Preact frontend)
+- /pkg (shared packages)
+
+**Deliverables:**
+- Go module with proper structure
+- Preact application with build configuration
+- Dockerfile for containerization
+- Makefile for build commands
+- API documentation

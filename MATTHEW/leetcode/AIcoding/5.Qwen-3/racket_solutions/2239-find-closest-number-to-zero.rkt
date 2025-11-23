@@ -1,0 +1,6 @@
+(define (closest-number-to-zero nums)
+  (define (compare a b)
+    (if (= (abs a) (abs b))
+        (if (> a b) a b)
+        (if (< (abs a) (abs b)) a b)))
+  (foldl compare (car nums) (cdr nums)))

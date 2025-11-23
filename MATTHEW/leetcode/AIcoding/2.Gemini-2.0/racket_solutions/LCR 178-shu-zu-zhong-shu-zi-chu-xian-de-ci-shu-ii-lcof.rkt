@@ -1,0 +1,13 @@
+(define (training-plan tasks workers)
+  (let* ((n (length tasks))
+         (m (length workers))
+         (dp (make-vector (+ n 1) (make-vector (+ m 1) 0))))
+    (for* ((i (in-range 1 (+ n 1)))
+           (j (in-range 1 (+ m 1))))
+      (vector-set! (vector-ref dp i) j
+                   (max (vector-ref (vector-ref dp (- i 1)) j)
+                        (+ (vector-ref (vector-ref dp (- i 1)) (- j 1))
+                           (if (<= (list-ref tasks (- i 1)) (list-ref workers (- j 1)))
+                               (list-ref tasks (- i 1))
+                               0)))))
+    (vector-ref (vector-ref dp n) m)))

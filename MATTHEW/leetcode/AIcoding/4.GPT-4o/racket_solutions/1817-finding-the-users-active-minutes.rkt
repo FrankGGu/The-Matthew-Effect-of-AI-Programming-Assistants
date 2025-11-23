@@ -1,0 +1,18 @@
+(define (finding-users-active-minutes logs k)
+  (define user-activity (make-hash))
+  (for-each (lambda (log)
+              (let ((user (first log))
+                    (minute (second log)))
+                (hash-set! user-activity user (add1 (hash-ref user-activity user 0)))))
+            logs)
+  (define activity-count (make-vector (add1 k) 0))
+  (hash-for-each user-activity
+                 (lambda (user minutes)
+                   (if (<= minutes k)
+                       (vector-set! activity-count minutes (add1 (vector-ref activity-count minutes)))))
+                 )
+  (for/vector ([i (in-range 1 (add1 k))])
+    (vector-ref activity-count i)))
+
+(define (finding-users-active-minutes-outer logs k)
+  (finding-users-active-minutes logs k))

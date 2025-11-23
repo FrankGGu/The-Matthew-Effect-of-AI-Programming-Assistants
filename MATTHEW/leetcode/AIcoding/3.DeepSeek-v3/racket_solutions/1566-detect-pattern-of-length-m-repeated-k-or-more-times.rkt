@@ -1,0 +1,15 @@
+(define/contract (contains-pattern arr m k)
+  (-> (listof exact-integer?) exact-integer? exact-integer? boolean?)
+  (let loop ((i 0))
+    (if (> (+ i (* m k)) (length arr))
+        #f
+        (let ((pattern (take (drop arr i) m)))
+          (let inner ((j 1) (count 1))
+            (if (>= count k)
+                #t
+                (if (>= (+ i (* m (add1 j))) (length arr))
+                    (loop (add1 i))
+                    (let ((next (take (drop arr (+ i (* m j))) m)))
+                      (if (equal? pattern next)
+                          (inner (add1 j) (add1 count))
+                          (loop (add1 i)))))))))))

@@ -1,0 +1,8 @@
+(define (can-convert s1 s2)
+  (define (count-chars str)
+    (for/fold ([counts (hash)]) ([c (in-string str)])
+      (hash-update counts c add1 0)))
+  (define c1 (count-chars s1))
+  (define c2 (count-chars s2))
+  (and (equal? (sort (hash-keys c1) char<?) (sort (hash-keys c2) char<?))
+       (andmap (lambda (k) (<= (hash-ref c1 k 0) (hash-ref c2 k 0))) (hash-keys c1))))

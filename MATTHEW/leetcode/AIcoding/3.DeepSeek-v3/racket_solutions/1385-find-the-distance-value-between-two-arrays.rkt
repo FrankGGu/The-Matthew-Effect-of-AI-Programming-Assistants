@@ -1,0 +1,6 @@
+(define/contract (find-the-distance-value arr1 arr2 d)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer? exact-integer?)
+  (define (valid? x)
+    (for/and ([y (in-list arr2)])
+      (> (abs (- x y)) d)))
+  (count valid? arr1))

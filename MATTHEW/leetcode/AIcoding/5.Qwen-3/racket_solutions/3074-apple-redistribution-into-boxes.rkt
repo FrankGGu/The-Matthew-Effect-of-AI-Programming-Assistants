@@ -1,0 +1,6 @@
+(define (can-put-in-boxes apple boxes)
+  (let loop ((a apple) (b boxes) (i 0))
+    (cond ((null? b) #t)
+          ((= (car b) 0) (loop a (cdr b) (+ i 1)))
+          ((>= a (car b)) (loop (- a (car b)) (cdr b) (+ i 1)))
+          (else #f))))

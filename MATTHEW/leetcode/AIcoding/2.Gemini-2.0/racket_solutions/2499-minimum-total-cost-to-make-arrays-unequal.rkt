@@ -1,0 +1,38 @@
+(define (minimumTotalCost nums1 nums2)
+  (define n (vector-length nums1))
+  (define mismatches '())
+  (define counts (make-hash))
+  (define total-cost 0)
+  (define most-common-val #f)
+  (define most-common-count 0)
+
+  (for ([i (in-range n)])
+    (when (not (equal? (vector-ref nums1 i) (vector-ref nums2 i)))
+      (set! mismatches (cons i mismatches))
+      (define val (vector-ref nums1 i))
+      (hash-update! counts val (lambda (v) (+ v 1)) 1)
+      (when (> (hash-ref counts val) most-common-count)
+        (set! most-common-count (hash-ref counts val))
+        (set! most-common-val val))
+      (set! total-cost (+ total-cost i))))
+
+  (define num-mismatches (length mismatches))
+  (when (zero? num-mismatches)
+    (return 0))
+
+  (when (> most-common-count (/ (+ num-mismatches 1) 2))
+    (define extra-swaps (- most-common-count (/ (+ num-mismatches 1) 2)))
+    (define available-indices '())
+    (for ([i (in-range n)])
+      (when (and (equal? (vector-ref nums1 i) most-common-val)
+                 (not (member i mismatches)))
+        (set! available-indices (cons i available-indices))))
+
+    (when (< (length available-indices) extra-swaps)
+      (return -1))
+
+    (for ([i (in-range extra-swaps)])
+      (set! total-cost (+ total-cost (car available-indices)))
+      (set! available-indices (cdr available-indices))))
+
+  total-cost)

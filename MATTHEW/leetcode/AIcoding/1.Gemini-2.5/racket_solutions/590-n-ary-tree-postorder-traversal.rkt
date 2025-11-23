@@ -1,0 +1,6 @@
+(define (postorder root)
+  (if (not root)
+      '()
+      (let* ((children-results (map postorder (Node-children root)))
+             (flattened-children-results (apply append children-results)))
+        (append flattened-children-results (list (Node-val root))))))

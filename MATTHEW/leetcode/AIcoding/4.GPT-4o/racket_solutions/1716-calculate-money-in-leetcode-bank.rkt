@@ -1,0 +1,5 @@
+(define (totalMoney n)
+  (define weeks (quotient n 7))
+  (define days (remainder n 7))
+  (define sum-weeks (* weeks (+ 1 (quotient weeks 2) 7)))
+  (+ sum-weeks (* days (+ weeks 1 days))))

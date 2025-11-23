@@ -1,0 +1,10 @@
+(define (balanced-string-split s)
+  (let loop ((s s) (count 0) (balance 0))
+    (if (null? s)
+        count
+        (let ((c (car s)))
+          (loop (cdr s)
+                (if (= balance 0) (+ count 1) count)
+                (if (char=? c #\L)
+                    (+ balance 1)
+                    (- balance 1)))))))

@@ -1,0 +1,41 @@
+Create a lightweight Class Roll Call System using Preact frontend and Gin backend with GORM. Focus on performance and minimal resource usage while providing full functionality.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Frontend Requirements (Preact):**
+- Minimal UI with essential features only
+- Student list management
+- Attendance recording interface
+- Basic reporting
+- Small bundle size
+
+**Backend Requirements (Gin):**
+- High-performance Gin router
+- GORM for database operations
+- Minimal middleware
+- Efficient memory usage
+- Simple authentication if needed
+
+**Key Features:**
+- Add/edit/delete students
+- Record attendance with date selection
+- View attendance by date or student
+- Prevent duplicate records
+
+**Database Connection:**
+Use GORM with PostgreSQL: postgresql://localhost:5432/rollcall_db
+
+**Code Structure:**
+- Minimal dependencies
+- Efficient code organization
+- Focus on performance
+- Lightweight frontend assets
+
+**Deliverables:**
+- Complete source code for both frontend and backend
+- Go.mod for dependencies
+- Build configuration
+- Performance notes in README

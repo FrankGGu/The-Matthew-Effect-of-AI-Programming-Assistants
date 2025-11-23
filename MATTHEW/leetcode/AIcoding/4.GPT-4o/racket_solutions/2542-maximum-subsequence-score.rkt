@@ -1,0 +1,25 @@
+(define (maxScore nums1 nums2 k)
+  (define n (length nums1))
+  (define indices (map car (sort (map (lambda (i) (list (vector-ref nums2 i) i)) (range n)) 
+                                   (lambda (a b) (> (car a) (car b))))))
+  (define max-sum 0)
+  (define sum 0)
+  (define min-heap (make-heap))
+
+  (for ([i (in-range k)])
+    (define idx (vector-ref indices i))
+    (set! sum (+ sum (vector-ref nums1 idx)))
+    (heap-add! min-heap (vector-ref nums1 idx)))
+
+  (set! max-sum (* sum (vector-ref nums2 (vector-ref indices (1- k)))))
+
+  (for ([i (in-range k n)])
+    (define idx (vector-ref indices i))
+    (heap-add! min-heap (vector-ref nums1 idx))
+    (set! sum (+ sum (vector-ref nums1 idx)))
+    (if (> (heap-size min-heap) k)
+        (set! sum (- sum (heap-remove! min-heap))))
+    (when (= (heap-size min-heap) k)
+      (set! max-sum (max max-sum (* sum (vector-ref nums2 (vector-ref indices (1- i))))))))
+
+  max-sum)

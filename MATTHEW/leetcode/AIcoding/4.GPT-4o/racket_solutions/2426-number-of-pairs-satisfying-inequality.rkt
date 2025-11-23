@@ -1,0 +1,20 @@
+(define (countPairs nums k)
+  (define (count-inversions lst)
+    (let loop ((lst lst) (acc '()) (count 0))
+      (if (null? lst)
+          count
+          (let ((x (car lst))
+                (rest (cdr lst)))
+            (loop rest
+                  (append acc (list x))
+                  (+ count (length (filter (lambda (y) (> x y)) acc))))))))
+  (count-inversions nums))
+
+(define (numberOfPairs nums k)
+  (define n (length nums))
+  (define count 0)
+  (for ((i (in-range n)))
+    (for ((j (in-range n)))
+      (when (and (< i j) (< (abs (- (list-ref nums i) (list-ref nums j))) k))
+        (set! count (+ count 1)))))
+  count)

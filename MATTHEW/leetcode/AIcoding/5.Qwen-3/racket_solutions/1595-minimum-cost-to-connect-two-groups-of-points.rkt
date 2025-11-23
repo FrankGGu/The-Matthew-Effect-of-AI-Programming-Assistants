@@ -1,0 +1,16 @@
+#lang racket
+
+(define (connect-two-groups cost)
+  (define n (length cost))
+  (define m (length (car cost)))
+  (define dp (make-vector (+ n 1) (make-vector (+ m 1) 0)))
+  (for ([i (in-range 1 (add1 n))])
+    (vector-set! (vector-ref dp i) 0 0))
+  (for ([j (in-range 1 (add1 m))])
+    (vector-set! (vector-ref dp 0) j (* j (vector-ref (vector-ref cost 0) (sub1 j)))))
+  (for ([i (in-range 1 (add1 n))])
+    (for ([j (in-range 1 (add1 m))])
+      (vector-set! (vector-ref dp i) j (min (vector-ref (vector-ref dp (sub1 i)) j)
+                                          (vector-ref (vector-ref dp i) (sub1 j))
+                                          (+ (vector-ref (vector-ref dp (sub1 i)) (sub1 j)) (vector-ref (vector-ref cost (sub1 i)) (sub1 j)))))))
+  (vector-ref (vector-ref dp (sub1 n)) (sub1 m)))

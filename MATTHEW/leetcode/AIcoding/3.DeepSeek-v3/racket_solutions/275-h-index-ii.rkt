@@ -1,0 +1,10 @@
+(define/contract (h-index citations)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([low 0]
+             [high (sub1 (length citations))])
+    (if (> low high)
+        (- (length citations) low)
+        (let ([mid (quotient (+ low high) 2)])
+          (if (< (list-ref citations mid) (- (length citations) mid))
+              (loop (add1 mid) high)
+              (loop low (sub1 mid))))))

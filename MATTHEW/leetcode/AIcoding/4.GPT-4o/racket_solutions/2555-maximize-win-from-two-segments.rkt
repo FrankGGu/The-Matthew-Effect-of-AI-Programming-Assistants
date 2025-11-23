@@ -1,0 +1,12 @@
+(define (maximize-win A k)
+  (define (maximize a k)
+    (define n (length a))
+    (define dp (make-vector (+ n 1) 0))
+    (for ([i (in-range n)])
+      (vector-set! dp (+ i 1) (max (vector-ref dp i) (vector-ref dp i) (+ (vector-ref dp i) (if (<= (vector-ref a i) (+ (vector-ref a i) k)) 1 0)))))
+      (if (<= (vector-ref a i) (+ (vector-ref a (max 0 (- i 1))) k))
+          (vector-set! dp (+ i 1) (max (vector-ref dp (+ i 1)) (1+ (vector-ref dp i))))))
+    (apply max (vector->list dp)))
+  (maximize (sort A <) k))
+
+(maximize-win '(1 3 5 7 9) 2)

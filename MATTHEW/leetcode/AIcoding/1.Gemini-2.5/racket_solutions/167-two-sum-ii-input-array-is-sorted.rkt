@@ -1,0 +1,11 @@
+(define (two-sum numbers target)
+  (let* ((vec (list->vector numbers))
+         (n (vector-length vec))
+         (left 0)
+         (right (- n 1)))
+    (let loop ((l left) (r right))
+      (let ((sum (+ (vector-ref vec l) (vector-ref vec r))))
+        (cond
+          ((= sum target) (list (+ l 1) (+ r 1)))
+          ((< sum target) (loop (+ l 1) r))
+          (else (loop l (- r 1))))))))

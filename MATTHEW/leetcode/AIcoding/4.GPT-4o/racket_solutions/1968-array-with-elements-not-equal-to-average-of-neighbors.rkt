@@ -1,0 +1,13 @@
+(define (arrayNotEqualToAverage neighbors)
+  (define (not-equal-to-average? x left right)
+    (and (not (= x (/ (+ left right) 2))) (not (= x left)) (not (= x right))))
+  (define len (length neighbors))
+  (if (< len 3) neighbors
+      (for/list ((i (in-range len)))
+        (if (or (= i 0) (= i (- len 1)))
+            (list-ref neighbors i)
+            (if (not-equal-to-average? (list-ref neighbors i)
+                                       (list-ref neighbors (- i 1))
+                                       (list-ref neighbors (+ i 1)))
+                (list-ref neighbors i)
+                0)))))

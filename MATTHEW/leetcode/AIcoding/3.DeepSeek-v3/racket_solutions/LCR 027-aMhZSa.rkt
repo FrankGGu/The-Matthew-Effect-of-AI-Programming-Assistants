@@ -1,0 +1,8 @@
+(define/contract (is-palindrome head)
+  (-> (or/c list? null?) boolean?)
+  (let ([vals '()])
+    (let loop ([node head])
+      (when (not (null? node))
+        (set! vals (cons (car node) vals))
+        (loop (cdr node))))
+    (equal? vals (reverse vals))))

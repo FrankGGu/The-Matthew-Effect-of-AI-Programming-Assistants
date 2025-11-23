@@ -1,0 +1,12 @@
+(define (maxNumOfItems price limit)
+  (define (helper prices k)
+    (define sorted-prices (sort prices <))
+    (define (count-items prices k count)
+      (if (or (null? prices) (<= k 0))
+          count
+          (let ((first (car prices)))
+            (if (<= first k)
+                (count-items (cdr prices) (- k first) (+ count 1))
+                count))))
+    (count-items sorted-prices k 0))
+  (helper price limit))

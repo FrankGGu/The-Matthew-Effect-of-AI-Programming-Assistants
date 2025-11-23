@@ -1,0 +1,11 @@
+(define (countHouses distance houses)
+  (let loop ((i 0) (count 0))
+    (if (< i (length houses))
+        (let ((current (list-ref houses i)))
+          (if (and (>= current (- distance)) (<= current distance))
+              (loop (+ i 1) (+ count 1))
+              (loop (+ i 1) count)))
+        count)))
+
+(define (countHousesAtDistance distance houses)
+  (countHouses distance houses))

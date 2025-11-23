@@ -1,0 +1,5 @@
+(define (minimum-perimeter neededApples)
+  (let loop ([side 1])
+    (if (>= (* 4 side (+ side 1) 2) neededApples)
+        (* 8 side)
+        (loop (+ side 1)))))

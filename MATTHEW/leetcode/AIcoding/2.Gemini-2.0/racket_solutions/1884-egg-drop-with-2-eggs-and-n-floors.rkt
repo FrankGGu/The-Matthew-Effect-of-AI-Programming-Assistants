@@ -1,0 +1,5 @@
+(define (two-egg-drop n)
+  (let loop ([x 1] [acc 0])
+    (if (> acc n)
+        (- x 1)
+        (loop (+ x 1) (+ acc x)))))

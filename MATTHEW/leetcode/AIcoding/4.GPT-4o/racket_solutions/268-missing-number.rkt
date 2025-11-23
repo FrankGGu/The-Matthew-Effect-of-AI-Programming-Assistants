@@ -1,0 +1,5 @@
+(define (missingNumber nums)
+  (define n (+ 1 (length nums)))
+  (define expected-sum (/ (* n (+ n -1)) 2))
+  (define actual-sum (apply + nums))
+  (- expected-sum actual-sum))

@@ -1,0 +1,7 @@
+(define/contract (get-strongest arr k)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (define sorted-arr (sort arr <))
+  (define m (list-ref sorted-arr (quotient (- (length arr) 1) 2)))
+  (define (strength x) (abs (- x m)))
+  (define sorted-by-strength (sort sorted-arr (lambda (a b) (or (> (strength a) (strength b)) (and (= (strength a) (strength b)) (> a b))))))
+  (take sorted-by-strength k))

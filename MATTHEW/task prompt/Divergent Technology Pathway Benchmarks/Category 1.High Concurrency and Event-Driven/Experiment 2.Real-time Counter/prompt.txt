@@ -1,0 +1,11 @@
+Task: Build a simple real-time counter service where multiple clients can increment a counter and see the updated value.
+
+Technology stack (must use exactly this):
+[Option A] Rust + Actix Web + Tokio
+[Option B] Node.js + Express + ws
+[Option C] Python + Django Channels
+
+Requirements:
+- Maintain a shared counter variable.
+- Provide an endpoint or WebSocket for incrementing.
+- Broadcast the updated counter to all connected clients.

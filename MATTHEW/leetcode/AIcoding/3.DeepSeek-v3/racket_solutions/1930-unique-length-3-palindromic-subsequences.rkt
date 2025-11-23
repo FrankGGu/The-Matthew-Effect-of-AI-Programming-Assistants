@@ -1,0 +1,21 @@
+(define/contract (count-palindromic-subsequence s)
+  (-> string? exact-integer?)
+  (let* ([n (string-length s)]
+         [first-occ (make-hash)]
+         [last-occ (make-hash)]
+         [result (mutable-set)])
+    (for ([i (in-range n)])
+    (for ([i (in-range n)])
+      (when (not (hash-has-key? first-occ (string-ref s i)))
+        (hash-set! first-occ (string-ref s i) i))
+      (hash-set! last-occ (string-ref s i) i))
+    (for ([(c i) (in-hash first-occ)])
+    (for ([(c i) (in-hash first-occ)])
+    (for ([(c i) (in-hash first-occ)])
+      (let ([j (hash-ref last-occ c)])
+      (when (> j (+ i 1))
+        (let ([unique-chars (mutable-set)])
+          (for ([k (in-range (+ i 1) j)])
+            (set-add! unique-chars (string-ref s k)))
+          (set-union! result unique-chars)))))
+    (set-count result)))

@@ -1,0 +1,18 @@
+(define/contract (reverse-str s k)
+  (-> string? exact-integer? string?)
+  (define len (string-length s))
+  (define (reverse-substring s start end)
+    (let loop ([i start] [j end] [s (string-copy s)])
+      (if (>= i j)
+          s
+          (let ([tmp (string-ref s i)])
+            (string-set! s i (string-ref s j))
+            (string-set! s j tmp)
+            (loop (add1 i) (sub1 j) s)))))
+  (let loop ([i 0] [result s])
+    (if (>= i len)
+        result
+        (let ([end (min (+ i k) len)])
+          (if (even? (quotient i k))
+              (loop (+ i (* 2 k)) (reverse-substring result i (sub1 end)))
+              (loop (+ i (* 2 k)) result)))))

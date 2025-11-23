@@ -1,0 +1,18 @@
+(define (findSubstringInWraproundString p)
+  (let ((counts (make-hash))
+        (len (string-length p)))
+    (let loop ((i 0) (current-len 0))
+      (if (< i len)
+          (let ((current-char (string-ref p i)))
+            (if (or (= i 0)
+                    (let ((prev-char (string-ref p (- i 1))))
+                      (or (= (modulo (- (char->integer current-char) (char->integer prev-char)) 26)
+                          (= (char->integer current-char) (+ (char->integer prev-char) 1)))))
+                (begin
+                  (set! current-len (+ current-len 1))
+                  (hash-update! counts current-char (lambda (v) (max v current-len)) (lambda () 0))
+                (begin
+                  (set! current-len 1)
+                  (hash-update! counts current-char (lambda (v) (max v current-len)) (lambda () 0))))
+            (loop (+ i 1) current-len))
+          (apply + (hash-values counts))))))

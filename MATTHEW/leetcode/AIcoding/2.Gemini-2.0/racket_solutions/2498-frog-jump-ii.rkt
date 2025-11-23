@@ -1,0 +1,8 @@
+(define (frog-jump-ii stones)
+  (let* ((n (length stones))
+         (max-dist 0))
+    (for/fold ((max-dist 0))
+              ((i (in-range 0 (- n 1))))
+      (let ((dist1 (- (list-ref stones (+ i 1)) (list-ref stones i)))
+            (dist2 (- (list-ref stones (- n 1)) (list-ref stones (- n 2)))))
+        (max (max-dist dist1) (if (< (+ i 2) n) (- (list-ref stones (+ i 2)) (list-ref stones (+ i 1))) 0))))))

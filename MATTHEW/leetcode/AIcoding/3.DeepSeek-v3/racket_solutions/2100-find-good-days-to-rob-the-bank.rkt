@@ -1,0 +1,22 @@
+(define/contract (good-days-to_rob_bank security time)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (define n (length security))
+  (define left (make-vector n 0))
+  (define right (make-vector n 0))
+
+  (for ([i (in-range 1 n)])
+    (if (>= (list-ref security i) (list-ref security (sub1 i)))
+        (vector-set! left i (add1 (vector-ref left (sub1 i))))
+        (vector-set! left i 0)))
+
+  (for ([i (in-range (- n 2) -1 -1)])
+    (if (>= (list-ref security i) (list-ref security (add1 i)))
+        (vector-set! right i (add1 (vector-ref right (add1 i))))
+        (vector-set! right i 0)))
+
+  (define result '())
+  (for ([i (in-range n)])
+    (when (and (>= (vector-ref left i) time)
+                (>= (vector-ref right i) time))
+      (set! result (cons i result))))
+  (reverse result))

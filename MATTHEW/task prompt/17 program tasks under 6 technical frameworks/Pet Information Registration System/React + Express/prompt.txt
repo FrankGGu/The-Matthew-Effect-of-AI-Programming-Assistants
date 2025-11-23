@@ -1,0 +1,43 @@
+Build a Pet Information Registration System using React frontend with Express.js backend and Prisma ORM.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (Express.js):**
+1. Implement REST API with proper middleware setup
+2. Use Prisma as ORM with proper schema definition
+3. Create controllers for pets and vaccinations
+4. Add input validation using Joi or similar
+5. Implement proper error handling middleware
+6. Add CORS support
+7. Include request logging
+
+**Frontend Requirements (React):**
+1. Create using React 18 with functional components and hooks
+2. Implement pages/components for:
+   - Pet listing with search and filters
+   - Pet form (add/edit)
+   - Vaccination records view
+   - Vaccination form
+3. Use React Router for navigation
+4. Use modern state management (Context API or Zustand)
+5. Implement form validation with proper UX
+6. Add loading states and error handling
+
+**API Endpoints:**
+- GET /api/pets - List pets (with query params for filtering)
+- POST /api/pets - Create pet
+- GET /api/pets/:id - Get pet details
+- PUT /api/pets/:id - Update pet
+- DELETE /api/pets/:id - Delete pet
+- GET /api/pets/:id/vaccinations - Get pet's vaccinations
+- POST /api/vaccinations - Add vaccination
+- PUT /api/vaccinations/:id - Update vaccination
+- DELETE /api/vaccinations/:id - Delete vaccination
+
+**Database Connection:**
+- DATABASE_URL="postgresql://postgres:petpassword@localhost:5432/pet_registry"
+
+Generate complete code with proper project structure, package.json files, Prisma schema, and all necessary configurations.

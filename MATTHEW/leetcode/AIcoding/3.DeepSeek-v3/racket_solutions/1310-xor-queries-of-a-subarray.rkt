@@ -1,0 +1,7 @@
+(define (xor-queries arr queries)
+  (define prefix (make-vector (add1 (length arr)) 0)
+  (for ([i (in-range (length arr))])
+    (vector-set! prefix (add1 i) (bitwise-xor (vector-ref prefix i) (list-ref arr i)))
+  (for/list ([q queries])
+    (bitwise-xor (vector-ref prefix (car q)) (vector-ref prefix (add1 (cadr q))))))
+)

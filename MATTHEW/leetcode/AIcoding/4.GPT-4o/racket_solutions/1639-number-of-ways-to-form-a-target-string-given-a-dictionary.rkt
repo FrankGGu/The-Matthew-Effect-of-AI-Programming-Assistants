@@ -1,0 +1,20 @@
+(define (num-ways words target)
+  (define m (length (car words)))
+  (define n (length target))
+  (define mod 1000000007)
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+
+  (for ([i (in-range n)])
+    (for ([j (in-range (length words))])
+      (let ([word (list-ref words j)])
+        (for ([k (in-range (length word))])
+          (when (and (<= k i) (char=? (string-ref word k) (string-ref target i)))
+            (vector-set! dp (+ 1 i) (mod (+ (vector-ref dp (+ 1 i)) (vector-ref dp i)) mod))))))
+    (vector-set! dp i (vector-ref dp (+ 1 i))))
+
+  (vector-ref dp n))
+
+(define words '("acca" "bbbb" "cccc"))
+(define target "ab")
+(num-ways words target)

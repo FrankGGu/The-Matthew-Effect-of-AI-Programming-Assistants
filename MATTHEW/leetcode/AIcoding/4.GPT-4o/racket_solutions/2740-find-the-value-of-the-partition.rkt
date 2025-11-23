@@ -1,0 +1,8 @@
+(define (findValueOfPartition nums)
+  (define sorted-nums (sort nums <))
+  (define (min-diff lst)
+    (if (null? (cdr lst))
+        (infinity)
+        (min (abs (- (car lst) (cadr lst)))
+             (min-diff (cdr lst)))))
+  (min-diff sorted-nums))

@@ -1,0 +1,5 @@
+(define (modify-columns df)
+  (list (list "name" "age")
+        (map (lambda (row)
+               (list (car row) (string->number (cadr row))))
+             (cdr df))))

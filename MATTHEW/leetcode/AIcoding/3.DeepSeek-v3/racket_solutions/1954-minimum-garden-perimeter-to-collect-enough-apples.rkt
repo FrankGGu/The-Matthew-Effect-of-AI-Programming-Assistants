@@ -1,0 +1,13 @@
+(define (minimum-perimeter needed-apples)
+  (define (sum-apples k)
+    (* 2 k (+ k 1) (+ (* 2 k) 1)))
+  (let loop ([left 1] [right (expt needed-apples 1/3)])
+    (if (>= left right)
+        (if (>= (sum-apples left) needed-apples)
+            (* 8 left)
+            (* 8 (+ left 1)))
+        (let* ([mid (quotient (+ left right) 2)]
+               [total (sum-apples mid)])
+          (if (>= total needed-apples)
+              (loop left mid)
+              (loop (+ mid 1) right))))))

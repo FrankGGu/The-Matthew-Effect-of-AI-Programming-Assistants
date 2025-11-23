@@ -1,0 +1,13 @@
+(define (minCostToOperateWheel cost)
+  (define n (length cost))
+  (define dp (make-vector (+ n 1) 0))
+  (for ([i (in-range n)])
+    (vector-set! dp (+ i 1) (max (vector-ref dp i) (if (>= i 1) (+ (vector-ref dp (- i 1)) (list-ref cost i)) 0))))
+    (when (>= i 1)
+      (vector-set! dp (+ i 1) (max (vector-ref dp (+ i 1)) (+ (vector-ref dp (- i 1)) (if (>= i 2) (list-ref cost (- i 2)) 0)))))
+    (when (>= i 2)
+      (vector-set! dp (+ i 1) (max (vector-ref dp (+ i 1)) (+ (vector-ref dp (- i 2)) (if (>= i 3) (list-ref cost (- i 3)) 0))))))
+  (vector-ref dp n))
+
+(define (maxProfit cost)
+  (minCostToOperateWheel cost))

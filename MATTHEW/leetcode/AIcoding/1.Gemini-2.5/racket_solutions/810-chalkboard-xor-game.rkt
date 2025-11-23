@@ -1,0 +1,5 @@
+(define (chalkboard-xor-game nums)
+  (let* ((len (length nums))
+         (initial-xor-sum (foldl bit-xor 0 nums)))
+    (or (= initial-xor-sum 0)
+        (= (modulo len 2) 0))))

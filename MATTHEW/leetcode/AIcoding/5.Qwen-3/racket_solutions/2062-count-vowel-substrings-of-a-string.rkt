@@ -1,0 +1,20 @@
+#lang racket
+
+(define (count-vowel-substrings s)
+  (define vowels #(#\a #\e #\i #\o #\u))
+  (define len (string-length s))
+  (define result 0)
+  (define (is-vowel c)
+    (member c vowels))
+  (define (check-substring start end)
+    (and (<= start end)
+         (let loop ([i start] [valid? #t])
+           (if (> i end)
+               valid?
+               (loop (+ i 1) (and valid? (is-vowel (string-ref s i))))))))
+  (for ([i (in-range len)])
+    (when (is-vowel (string-ref s i))
+      (for ([j (in-range i len)])
+        (when (check-substring i j)
+          (set! result (+ result 1))))))
+  result)

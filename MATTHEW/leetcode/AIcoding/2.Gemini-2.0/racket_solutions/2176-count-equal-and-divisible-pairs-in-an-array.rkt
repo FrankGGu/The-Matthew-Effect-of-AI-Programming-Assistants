@@ -1,0 +1,12 @@
+(define (count-equal-divisible-pairs nums k)
+  (let ([n (length nums)])
+    (let loop ([i 0] [count 0])
+      (if (= i n)
+          count
+          (let loop2 ([j (add1 i)])
+            (if (= j n)
+                (loop (add1 i) count)
+                (if (and (= (list-ref nums i) (list-ref nums j))
+                         (zero? (remainder (multiply i j) k)))
+                    (loop2 (add1 j) (add1 count))
+                    (loop2 (add1 j) count))))))))

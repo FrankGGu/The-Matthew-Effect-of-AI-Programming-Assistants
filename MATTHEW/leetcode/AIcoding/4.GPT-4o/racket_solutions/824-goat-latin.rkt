@@ -1,0 +1,13 @@
+(define (to-goat-latin s)
+  (define vowels '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U))
+  (define (convert-word word index)
+    (let* ((first-char (string-ref word 0))
+           (suffix (string-append word (if (member first-char vowels) "ma" (string-append (string first-char) "a")) "a" (make-string index #\a))))
+      suffix))
+  (define words (string-split s))
+  (define converted (map-indexed (lambda (i word) (convert-word word (+ i 1))) words))
+  (string-join converted " "))
+
+(define (main)
+  (to-goat-latin "I speak Goat Latin"))
+(main)

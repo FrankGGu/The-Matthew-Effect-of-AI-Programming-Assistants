@@ -1,0 +1,45 @@
+Build a modern movie ticket booking system using Python/JS stack:
+
+**Technology Stack:**
+- Frontend: SvelteKit with TypeScript
+- Backend: FastAPI
+- ORM: SQLAlchemy with async
+- Database: PostgreSQL (configured below)
+
+**Database Connection:**
+- URL: postgresql+asyncpg://postgres:moviepass@localhost:5432/movie_booking
+- Async database operations throughout
+
+**Core Features:**
+1. Real-time schedule updates
+   - WebSocket connections for live updates
+   - FastAPI dependency injection
+   - Automatic API documentation
+
+2. Interactive seat selection
+   - Svelte animations and transitions
+   - Real-time seat status
+   - Smooth user experience
+
+3. Modern checkout flow
+   - SvelteKit form actions
+   - FastAPI background tasks for emails
+   - Async processing throughout
+
+**Technical Requirements:**
+- Use FastAPI's async capabilities
+- Implement SQLAlchemy 2.0 async patterns
+- Use SvelteKit's load functions
+- Add OpenAPI documentation
+- Use Pydantic for validation
+
+**File Structure:**
+- backend/ (FastAPI app, models, routers)
+- frontend/ (SvelteKit routes, components)
+- shared/ (Pydantic models)
+- alembic/ (database migrations)
+
+**Output:**
+- Complete async application
+- Automatic API docs at /docs
+- Optimized bundle with Svelte

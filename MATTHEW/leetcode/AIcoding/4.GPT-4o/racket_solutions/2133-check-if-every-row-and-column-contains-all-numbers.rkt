@@ -1,0 +1,8 @@
+(define (check-valid-grid grid)
+  (define n (length grid))
+  (define (check-row row)
+    (equal? (sort (remove-duplicates row) <) (range 1 (+ n 1))))
+  (define (check-col col)
+    (equal? (sort (remove-duplicates (map (lambda (row) (list-ref row col)) grid)) <) (range 1 (+ n 1))))
+  (and (for/all ((row grid)) (check-row row))
+       (for/all ((col (range n))) (check-col col))))

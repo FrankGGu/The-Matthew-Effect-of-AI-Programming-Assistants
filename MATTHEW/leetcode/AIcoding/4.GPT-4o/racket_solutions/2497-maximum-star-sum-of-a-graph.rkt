@@ -1,0 +1,21 @@
+(define (maxStarSum vals edges k)
+  (define n (length vals))
+  (define adjacency-list (make-vector n '()))
+  (for ([edge edges])
+    (let ([u (car edge)]
+          [v (cadr edge)])
+      (vector-set! adjacency-list u (cons v (vector-ref adjacency-list u)))
+      (vector-set! adjacency-list v (cons u (vector-ref adjacency-list v)))))
+
+  (define (star-sum node)
+    (define neighbors (vector-ref adjacency-list node))
+    (define sorted-neighbors (sort (filter (lambda (x) (> (vector-ref vals x) 0)) neighbors) >))
+    (define total (vector-ref vals node))
+    (for ([neighbor (take sorted-neighbors k)])
+      (set! total (+ total (vector-ref vals neighbor))))
+    total)
+
+  (define max-sum 0)
+  (for ([i (in-range n)])
+    (set! max-sum (max max-sum (star-sum i))))
+  max-sum)

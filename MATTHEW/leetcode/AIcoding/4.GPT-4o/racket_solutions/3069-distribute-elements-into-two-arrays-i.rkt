@@ -1,0 +1,11 @@
+(define (distributeArray nums)
+  (define (helper nums a b)
+    (if (null? nums)
+        (list a b)
+        (let ((x (car nums)))
+          (if (even? (length a))
+              (helper (cdr nums) (cons x a) b)
+              (helper (cdr nums) a (cons x b))))))
+  (helper nums '() '()))
+
+(distributeArray '(1 2 3 4 5 6 7 8))

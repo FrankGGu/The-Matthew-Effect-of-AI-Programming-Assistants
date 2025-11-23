@@ -1,0 +1,6 @@
+(define (maxPairSum nums)
+  (define sorted-nums (sort nums >))
+  (define n (length nums))
+  (define max-sum (for/sum ([i (in-range (/ n 2))])
+                     (+ (list-ref sorted-nums i) (list-ref sorted-nums (- n 1 i)))))
+  max-sum)

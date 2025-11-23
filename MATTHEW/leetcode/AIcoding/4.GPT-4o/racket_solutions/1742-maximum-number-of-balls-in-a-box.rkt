@@ -1,0 +1,7 @@
+(define (count-balls lowLimit highLimit)
+  (define (box-number n)
+    (apply + (map (lambda (x) (string->number (string (car (string->list (number->string x)))))) (number->list n))))
+  (define boxes (make-vector 46 0))
+  (for ((i (in-range lowLimit (+ highLimit 1))))
+    (vector-set! boxes (box-number i) (+ 1 (vector-ref boxes (box-number i)))))
+  (apply max (vector->list boxes)))

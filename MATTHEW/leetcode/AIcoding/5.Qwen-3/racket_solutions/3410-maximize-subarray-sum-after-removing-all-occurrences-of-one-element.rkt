@@ -1,0 +1,17 @@
+#lang racket
+
+(define (maximum-subarray-sum nums)
+  (define n (length nums))
+  (define max-sum 0)
+  (define (max-subarray arr)
+    (define current-max 0)
+    (define max-so-far 0)
+    (for-each (lambda (x)
+                (set! current-max (max x (+ current-max x)))
+                (set! max-so-far (max max-so-far current-max)))
+              arr)
+    max-so-far)
+  (for ([i (in-range n)])
+    (define new-arr (append (take nums i) (drop nums (+ i 1))))
+    (set! max-sum (max max-sum (max-subarray new-arr))))
+  max-sum)

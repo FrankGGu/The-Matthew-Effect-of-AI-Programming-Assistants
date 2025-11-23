@@ -1,0 +1,10 @@
+(define (diameter-of-binary-tree root)
+  (define (helper node)
+    (if (null? node)
+        (values -1 0)
+        (let-values ([(left-diameter left-height) (helper (car node))]
+                       [(right-diameter right-height) (helper (cdr node))])
+          (values (max left-diameter right-diameter (+ left-height right-height 2))
+                  (+ (max left-height right-height) 1)))))
+  (let-values ([(diameter height) (helper root)])
+    diameter))

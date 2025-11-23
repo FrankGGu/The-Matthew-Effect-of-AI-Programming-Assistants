@@ -1,0 +1,7 @@
+(define (longest-arithmetic-subsequence nums difference)
+  (define dp (make-hash))
+  (for/fold ([max-len 0])
+            ([num nums])
+    (let ([prev (hash-ref dp (- num difference) 0)])
+      (hash-set! dp num (+ prev 1))
+      (max max-len (+ prev 1)))))

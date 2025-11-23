@@ -1,0 +1,12 @@
+(define (max-path-sum root)
+  (define (helper node)
+    (if (null? node)
+        0
+        (let* ((left (max (helper (car node)) 0))
+               (right (max (helper (cadr node)) 0))
+               (current-max (+ (car node) left right)))
+          (set! max-sum (max max-sum current-max))
+          (+ (car node) (max left right)))))
+  (define max-sum -inf)
+  (helper root)
+  max-sum)

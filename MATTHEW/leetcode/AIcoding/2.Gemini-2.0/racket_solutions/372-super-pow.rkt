@@ -1,0 +1,11 @@
+(define (super-pow a b)
+  (define MOD 1337)
+  (define (pow a b)
+    (cond ((= b 0) 1)
+          ((even? b) (modulo (* (pow a (/ b 2)) (pow a (/ b 2))) MOD))
+          (else (modulo (* a (pow a (- b 1))) MOD))))
+  (define (super-pow-helper a b)
+    (if (null? b)
+        1
+        (modulo (* (pow a (last b)) (super-pow-helper (pow a 10) (drop-right b 1))) MOD)))
+  (super-pow-helper a b))

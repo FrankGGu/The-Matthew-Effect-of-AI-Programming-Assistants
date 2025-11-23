@@ -1,0 +1,18 @@
+(define (monotonic-pairs nums)
+  (define n (length nums))
+  (define (count-monotonic direction)
+    (define count 0)
+    (define (helper i)
+      (if (>= i n)
+          count
+          (let loop ((j (+ i 1)) (c 1))
+            (if (>= j n)
+                (begin (set! count (+ count c)) (helper (+ i 1)))
+                (if (direction (list-ref nums j) (list-ref nums i))
+                    (loop (+ j 1) (+ c 1))
+                    (begin (set! count (+ count c)) (helper (+ i 1))))))))
+    (helper 0))
+  (+ (count-monotonic <) (count-monotonic >)))
+
+(define (findMonotonicPairs nums)
+  (monotonic-pairs nums))

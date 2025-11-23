@@ -1,0 +1,10 @@
+(define (maximumNumber nums)
+  (define (compare x y)
+    (string>? (string-append (number->string x) (number->string y))
+               (string-append (number->string y) (number->string x))))
+  (define sorted-nums (sort nums compare))
+  (define result (apply string-append (map number->string sorted-nums)))
+  (if (equal? result "0") "0" result))
+
+(define (maximumNumberWrapper nums)
+  (maximumNumber nums))

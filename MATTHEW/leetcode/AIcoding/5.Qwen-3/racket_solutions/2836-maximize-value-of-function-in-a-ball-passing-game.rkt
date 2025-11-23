@@ -1,0 +1,18 @@
+#lang racket
+
+(define (max-value-of-function n m passes)
+  (define dp (make-vector m 0))
+  (define (update i v)
+    (vector-set! dp i v))
+  (define (get i)
+    (vector-ref dp i))
+  (for ([i (in-range m)])
+    (update i (car passes)))
+  (for ([_ (in-range (- n 1))])
+    (define new-dp (make-vector m 0))
+    (for ([i (in-range m)])
+      (define current (get i))
+      (define next (vector-ref passes i))
+      (vector-set! new-dp i (+ current next)))
+    (set! dp new-dp))
+  (apply max (vector->list dp)))

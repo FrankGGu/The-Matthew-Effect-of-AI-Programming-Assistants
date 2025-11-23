@@ -1,0 +1,25 @@
+(define (num-matches-songs songs)
+  (define (count-occurrences lst)
+    (let loop ((lst lst) (counts '()))
+      (if (null? lst)
+          counts
+          (loop (cdr lst)
+                (cons (cons (car lst) (length (filter (lambda (x) (= x (car lst))) lst)))
+                      counts)))))
+  (define (get-freqs lst)
+    (map cdr (count-occurrences lst)))
+  (define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (remainder a b))))
+  (define (lcm a b)
+    (/ (* a b) (gcd a b)))
+  (define (compute-lcm lst)
+    (if (null? lst)
+        1
+        (lcm (car lst) (compute-lcm (cdr lst)))))
+  (define (compute-result freqs)
+    (if (null? freqs)
+        0
+        (+ (car freqs) (compute-result (cdr freqs)))))
+  (compute-result (get-freqs songs)))

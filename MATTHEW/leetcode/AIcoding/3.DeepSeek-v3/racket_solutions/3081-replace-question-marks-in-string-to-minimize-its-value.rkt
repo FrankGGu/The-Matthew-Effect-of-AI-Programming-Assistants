@@ -1,0 +1,26 @@
+(define/contract (minimize-string-value s)
+  (-> string? string?)
+  (define freq (make-hash))
+  (define n (string-length s))
+  (define (char->index c) (- (char->integer c) (char->integer #\a)))
+  (define (index->char i) (integer->char (+ i (char->integer #\a))))
+
+  (for ([c s])
+    (unless (char=? c #\?)
+      (hash-update! freq (char->index c) add1 0)))
+
+  (define (get-min-char)
+    (define min-count (apply min (hash-values freq)))
+    (for/first ([i (in-range 26)]
+                #:when (equal? (hash-ref freq i 0) min-count))
+      i))
+
+  (define result (make-string n))
+  (for ([i (in-range n)])
+    (define c (string-ref s i))
+    (if (char=? c #\?)
+        (let ([min-char (get-min-char)])
+          (string-set! result i (index->char min-char))
+          (hash-update! freq min-char add1 0))
+        (string-set! result i c)))
+  result)

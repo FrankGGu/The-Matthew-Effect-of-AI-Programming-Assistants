@@ -1,0 +1,12 @@
+(define (minOperations nums)
+  (define freq (make-hash))
+  (define freq2 (make-hash))
+  (for-each (lambda (x)
+              (hash-set! freq x (add1 (hash-ref freq x 0)))
+              (hash-set! freq2 (if (even? (length freq)) (modulo x 2) (modulo x 2)) (add1 (hash-ref freq2 (if (even? (length freq)) (modulo x 2) (modulo x 2)) 0)))))
+            nums)
+  (define first-max (apply max (hash-values freq)))
+  (define second-max (apply max (hash-values freq2)))
+  (- (length nums) (+ first-max second-max)))
+
+(minOperations '(1 2 2 3 3 2 2))

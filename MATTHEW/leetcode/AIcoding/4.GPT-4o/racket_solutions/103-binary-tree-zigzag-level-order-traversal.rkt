@@ -1,0 +1,11 @@
+(define (zigzagLevelOrder root)
+  (define (traverse level nodes result direction)
+    (if (null? nodes)
+        result
+        (let* ((next-level (map (lambda (node) (if node (list (node-left node) (node-right node)))) nodes))
+               (flattened (apply append (filter-map identity next-level)))
+               (current-level (if (equal? direction 'left) 
+                                  (map car nodes) 
+                                  (reverse (map car nodes)))))
+          (traverse (+ level 1) flattened (cons current-level result) (if (equal? direction 'left) 'right 'left)))))
+  (reverse (traverse 0 (list root) '() 'left)))

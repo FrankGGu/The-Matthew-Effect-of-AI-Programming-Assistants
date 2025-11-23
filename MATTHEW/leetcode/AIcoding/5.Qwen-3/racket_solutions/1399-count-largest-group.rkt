@@ -1,0 +1,11 @@
+(define (count-largest-group n)
+  (define (digit-sum k)
+    (if (= k 0)
+        0
+        (+ (remainder k 10) (digit-sum (quotient k 10)))))
+  (define counts (make-hash))
+  (for ([i (in-range 1 (add1 n))])
+    (define s (digit-sum i))
+    (hash-set! counts s (add1 (hash-ref counts s 0))))
+  (define max-size (apply max (hash-values counts)))
+  (count (lambda (v) (= v max-size)) (hash-values counts)))

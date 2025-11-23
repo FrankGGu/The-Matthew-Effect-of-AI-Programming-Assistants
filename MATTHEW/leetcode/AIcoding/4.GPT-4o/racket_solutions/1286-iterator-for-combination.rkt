@@ -1,0 +1,37 @@
+(define (CombinationIterator characters combinationLength)
+  (define (next-combination state)
+    (let loop ((i (sub1 (length state))))
+      (cond
+        ((< i 0) '())
+        ((= (vector-ref state i) (sub1 (length characters)))
+         (vector-set! state i -1)
+         (loop (sub1 i)))
+        (else
+         (vector-set! state i (add1 (vector-ref state i)))
+         (for ([j (add1 i) (length state)])
+           (vector-set! state j (vector-ref state (sub1 j))))
+         state))))
+
+  (define (has-next? state)
+    (not (equal? (vector-ref state 0) -1)))
+
+  (define (next state)
+    (if (has-next? state)
+      (let ((result (vector-map (lambda (i) (vector-ref characters i)) state)))
+        (define new-state (next-combination state))
+        (set! state new-state)
+        result)
+      '()))
+
+  (define state (make-vector combinationLength 0))
+  (define (init)
+    (for* ([i (in-range combinationLength)])
+      (vector-set! state i i)))
+  (init)
+
+  (lambda ()
+    (define (next-wrapper)
+      (next state))
+    (define (has-next-wrapper)
+      (has-next? state))
+    (values has-next-wrapper next-wrapper)))

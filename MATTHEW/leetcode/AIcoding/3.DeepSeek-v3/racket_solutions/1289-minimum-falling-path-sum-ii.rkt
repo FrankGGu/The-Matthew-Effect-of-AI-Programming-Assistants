@@ -1,0 +1,25 @@
+(define/contract (min-falling-path-sum grid)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let* ([n (length grid)]
+         [dp (make-vector n #f)]
+         [prev-min1 0]
+         [prev-min2 0]
+         [prev-pos -1])
+    (for ([i (in-range n)])
+    (for ([i (in-range n)])
+      (vector-set! dp i (list-ref (list-ref grid 0) i)))
+    (set! prev-min1 (apply min (vector->list dp)))
+    (set! prev-pos (vector-member prev-min1 dp))
+    (set! prev-min2 (apply min (for/list ([x (vector->list dp)] [j (in-range n)] #:when (not (= j prev-pos))) x)))
+    (for ([i (in-range 1 n)])
+    (for ([i (in-range 1 n)])
+    (let ([curr-dp (make-vector n 0)])
+      (for ([j (in-range n)])
+        (if (= j prev-pos)
+            (vector-set! curr-dp j (+ (list-ref (list-ref grid i) j) prev-min2))
+            (vector-set! curr-dp j (+ (list-ref (list-ref grid i) j) prev-min1))))
+    (set! dp curr-dp)
+    (set! prev-min1 (apply min (vector->list dp)))
+    (set! prev-pos (vector-member prev-min1 dp))
+    (set! prev-min2 (apply min (for/list ([x (vector->list dp)] [j (in-range n)] #:when (not (= j prev-pos))) x)))
+    (apply min (vector->list dp))))

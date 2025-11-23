@@ -1,0 +1,21 @@
+(define/contract (count-rectangles rectangles points)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)) (listof exact-integer?))
+  (define rects (sort rectangles (λ (a b) (or (< (first a) (first b)) (and (= (first a) (first b)) (< (second a) (second b))))))
+  (define (binary-search x y)
+    (let loop ([low 0]
+               [high (length rects)])
+      (if (< low high)
+          (let* ([mid (quotient (+ low high) 2)]
+                 [rect (list-ref rects mid)])
+            (if (or (> (first rect) x) (and (= (first rect) x) (>= (second rect) y))
+                (loop low mid)
+                (loop (add1 mid) high)))
+          low)))
+  (for/list ([point points])
+    (let ([x (first point)]
+          [y (second point)])
+      (let ([count 0])
+        (for ([rect rects])
+          (when (and (<= (first rect) x) (<= (second rect) y))
+            (set! count (add1 count))))
+        count)))

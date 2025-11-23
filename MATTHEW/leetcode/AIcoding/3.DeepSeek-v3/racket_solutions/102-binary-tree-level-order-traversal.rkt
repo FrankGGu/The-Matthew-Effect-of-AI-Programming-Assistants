@@ -1,0 +1,13 @@
+(define/contract (level-order root)
+  (-> (or/c null? tree-node?) (listof (listof exact-integer?)))
+  (if (null? root)
+      '()
+      (let loop ([nodes (list root)]
+                 [result '()])
+        (if (null? nodes)
+            (reverse result)
+            (loop (append* (map (lambda (node)
+                                  (filter (lambda (x) (not (null? x)))
+                                          (list (tree-node-left node) (tree-node-right node))))
+                                nodes))
+                  (cons (map (lambda (node) (tree-node-val node)) nodes) result))))))

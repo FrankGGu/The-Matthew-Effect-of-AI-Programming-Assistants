@@ -1,0 +1,10 @@
+(define (reverse-degree-of-string s)
+  (define (char->degree ch)
+    (if (char? ch)
+        (modulo (- (char->integer ch) (char->integer #\a)) 26)
+        0))
+  (define degrees (map char->degree (string->list s)))
+  (define reversed-degrees (reverse degrees))
+  (apply string (map (lambda (d) (integer->char (+ d (char->integer #\a)))) reversed-degrees)))
+
+(reverse-degree-of-string "abc")

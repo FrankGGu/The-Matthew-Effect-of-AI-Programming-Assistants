@@ -1,0 +1,15 @@
+(define (vowel? ch)
+  (member ch '(#\a #\e #\i #\o #\u)))
+
+(define (is-vowel-string? s)
+  (and (> (string-length s) 0)
+       (for/all ([ch (in-string s)])
+         (vowel? ch))))
+
+(define (count-vowel-strings words left right)
+  (define selected-words (subvector words left right))
+  (define count 0)
+  (for ([word selected-words])
+    (when (is-vowel-string? word)
+      (set! count (+ count 1))))
+  count)

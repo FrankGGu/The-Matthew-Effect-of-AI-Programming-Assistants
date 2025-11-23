@@ -1,0 +1,15 @@
+(define (maxContainers capacity weights)
+  (define (canFill containers)
+    (<= (apply + (take weights containers)) capacity))
+  (define (binary-search low high)
+    (if (= low high)
+        low
+        (let* ((mid (quotient (+ low high) 2))
+               (current-weight (apply + (take weights mid))))
+          (if (canFill mid)
+              (binary-search mid high)
+              (binary-search low mid)))))
+  (binary-search 0 (length weights)))
+
+(define (maxContainersOnShip capacity weights)
+  (maxContainers capacity (sort weights <)))

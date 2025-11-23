@@ -1,0 +1,38 @@
+{
+  "id": "881",
+  "title": "Boats to Save People",
+  "titleSlug": "boats-to-save-people",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "content": "<p>You are given an array <code>people</code> where <code>people[i]</code> is the weight of the <code>i<sup>th</sup></code> person, and an <strong>infinite number of boats</strong> where each boat can carry a maximum weight of <code>limit</code>. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most <code>limit</code>.</p>\n\n<p>Return <em>the minimum number of boats to carry every given person</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> people = [1,2], limit = 3\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> 1 boat (1, 2)\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> people = [3,2,2,1], limit = 3\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> 3 boats (1, 2), (2) and (3)\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> people = [3,5,3,4], limit = 5\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> 4 boats (3), (3), (4), (5)\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= people.length &lt;= 5 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= people[i] &lt;= limit &lt;= 3 * 10<sup>4</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int numRescueBoats(vector<int>& people, int limit) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int numRescueBoats(int[] people, int limit) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def numRescueBoats(self, people, limit):\n        \"\"\"\n        :type people: List[int]\n        :type limit: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def numRescueBoats(self, people: List[int], limit: int) -> int:\n        ",
+    "c": "int numRescueBoats(int* people, int peopleSize, int limit) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NumRescueBoats(int[] people, int limit) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} people\n * @param {number} limit\n * @return {number}\n */\nvar numRescueBoats = function(people, limit) {\n    \n};",
+    "typescript": "function numRescueBoats(people: number[], limit: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $people\n     * @param Integer $limit\n     * @return Integer\n     */\n    function numRescueBoats($people, $limit) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func numRescueBoats(_ people: [Int], _ limit: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun numRescueBoats(people: IntArray, limit: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int numRescueBoats(List<int> people, int limit) {\n    \n  }\n}",
+    "golang": "func numRescueBoats(people []int, limit int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} people\n# @param {Integer} limit\n# @return {Integer}\ndef num_rescue_boats(people, limit)\n    \nend",
+    "scala": "object Solution {\n    def numRescueBoats(people: Array[Int], limit: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn num_rescue_boats(people: Vec<i32>, limit: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (num-rescue-boats people limit)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec num_rescue_boats(People :: [integer()], Limit :: integer()) -> integer().\nnum_rescue_boats(People, Limit) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec num_rescue_boats(people :: [integer], limit :: integer) :: integer\n  def num_rescue_boats(people, limit) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func numRescueBoats(people: Array<Int64>, limit: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2]\n3\n[3,2,2,1]\n3\n[3,5,3,4]\n5",
+  "hints": []
+}

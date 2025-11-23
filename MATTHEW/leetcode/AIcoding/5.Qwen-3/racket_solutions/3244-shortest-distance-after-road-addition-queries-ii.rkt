@@ -1,0 +1,26 @@
+#lang racket
+
+(define (shortest-distance-after-road-addition-queries n queries)
+  (define parent (make-vector n))
+  (define (find x)
+    (if (not (= (vector-ref parent x) x))
+        (vector-set! parent x (find (vector-ref parent x)))
+        x))
+  (define (union x y)
+    (let ([x-root (find x)]
+          [y-root (find y)])
+      (when (not (= x-root y-root))
+        (vector-set! parent y-root x-root))))
+  (for ([i (in-range n)])
+    (vector-set! parent i i))
+  (define result '())
+  (for ([q queries])
+    (let ([u (car q)]
+          [v (cadr q)])
+      (union u v)
+      (define count 0)
+      (for ([i (in-range 1 n)])
+        (when (not (= (find 0) (find i)))
+          (set! count (+ count 1))))
+      (set! result (cons count result))))
+  (reverse result))

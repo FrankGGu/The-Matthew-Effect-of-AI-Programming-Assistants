@@ -1,0 +1,10 @@
+(define (crossroad-traffic cars)
+  (define (count-traffic-direction cars direction)
+    (length (filter (lambda (car) (equal? (car 'direction) direction)) cars)))
+  (define north (count-traffic-direction cars 'north))
+  (define south (count-traffic-direction cars 'south))
+  (define east (count-traffic-direction cars 'east))
+  (define west (count-traffic-direction cars 'west))
+  (list north south east west))
+
+(crossroad-traffic '((direction north) (direction south) (direction east) (direction west)))

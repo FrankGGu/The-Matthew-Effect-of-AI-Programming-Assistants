@@ -1,0 +1,18 @@
+(define (findKthCharacter s k)
+  (define (recurse str idx)
+    (if (= idx (string-length str))
+        (if (= (modulo (length str) 2) 0)
+            (string-ref str (sub1 (length str)))
+            (string-ref str (quotient (length str) 2)))
+        (let* ((left (string-ref str idx))
+               (right (string-ref str (sub1 (length str))))
+               (new-str (if (equal? left right)
+                            (string-append (string left) (string left))
+                            (string-append (string left) (string right)))))
+          (recurse new-str (add1 idx)))))
+  (recurse s 0))
+
+(define (solve s k)
+  (findKthCharacter s (sub1 k)))
+
+(solve "abcde" 3)

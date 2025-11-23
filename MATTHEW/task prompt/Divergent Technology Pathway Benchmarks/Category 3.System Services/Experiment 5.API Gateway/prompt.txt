@@ -1,0 +1,11 @@
+Task: Build a simple API gateway that forwards requests from /service1 to http://localhost:5001 and /service2 to http://localhost:5002.
+
+Technology stack (must use exactly this):
+[Option A] Rust + Axum
+[Option B] Go + Gin
+[Option C] Node.js + Express
+
+Requirements:
+- Implement two routing rules (/service1 and /service2).
+- Forward requests to the corresponding backend.
+- Provide runnable example code.

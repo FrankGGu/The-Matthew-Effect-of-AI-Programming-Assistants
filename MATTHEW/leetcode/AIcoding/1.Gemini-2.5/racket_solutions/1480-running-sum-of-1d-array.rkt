@@ -1,0 +1,6 @@
+(define (running-sum nums)
+  (let ((current-sum 0))
+    (map (lambda (x)
+           (set! current-sum (+ current-sum x))
+           current-sum)
+         nums)))

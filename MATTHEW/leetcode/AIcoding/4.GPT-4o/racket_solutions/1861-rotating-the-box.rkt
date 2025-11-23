@@ -1,0 +1,32 @@
+(define (rotate-box box)
+  (define (can-fall? x y)
+    (and (< x (length box)) 
+         (< y (length (vector-ref box 0))) 
+         (equal? (vector-ref (vector-ref box x) y) "."))
+  )
+
+  (define (fall x y)
+    (let loop ((nx x) (ny y))
+      (if (and (can-fall? nx (add1 ny)) (equal? (vector-ref (vector-ref box nx) (add1 ny)) "."))
+          (loop nx (add1 ny))
+          (if (equal? (vector-ref (vector-ref box nx) ny) "#")
+              (vector-ref (vector-ref box nx) ny)
+              "."))))
+
+  (define (rotate)
+    (let ((n (length box))
+          (m (length (vector-ref box 0))))
+      (for/list ((j (in-range m)))
+        (for/list ((i (in-range (sub1 n) -1 -1)))
+          (fall i j)))))
+
+  (define rotated (rotate))
+  (for/list ((j (in-range (length rotated))))
+    (for/list ((i (in-range (length (vector-ref rotated 0)))))
+      (if (equal? (vector-ref (vector-ref rotated j) i) ".")
+          (if (equal? (fall j i) "#")
+              "#"
+              ".")
+          (vector-ref (vector-ref rotated j) i)))))
+
+  (map (lambda (row) (vector->list row)) rotated))

@@ -1,0 +1,5 @@
+(define (second-highest s)
+  (let ((digits (sort (remove-duplicates (filter char-numeric? (string->list s))) char>?)))
+    (if (>= (length digits) 2)
+        (string->number (string (list-ref digits 1)))
+        -1)))

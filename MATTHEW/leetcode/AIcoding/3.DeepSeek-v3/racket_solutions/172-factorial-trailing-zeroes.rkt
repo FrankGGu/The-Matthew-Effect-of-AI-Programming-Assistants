@@ -1,0 +1,6 @@
+(define/contract (trailing-zeroes n)
+  (-> exact-integer? exact-integer?)
+  (let loop ([n n] [count 0])
+    (if (> n 0)
+        (loop (quotient n 5) (+ count (quotient n 5)))
+        count)))

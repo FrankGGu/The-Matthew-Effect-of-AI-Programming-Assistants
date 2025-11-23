@@ -1,0 +1,6 @@
+(define (max-subsequence nums k)
+  (define sorted-nums (sort nums >))
+  (define top-k (take sorted-nums k))
+  (define threshold (last top-k))
+  (define subsequence (filter (lambda (x) (>= x threshold)) nums))
+  (take (sort subsequence >) k))

@@ -1,0 +1,5 @@
+(define (string-matching arr)
+  (define (is-substring? s1 s2)
+    (and (not (= (string-length s1) (string-length s2)))
+         (string-contains? s2 s1)))
+  (filter (lambda (s) (ormap (lambda (t) (is-substring? s t)) arr)) arr))

@@ -1,0 +1,27 @@
+(define (k-similar-strings A B)
+  (define (swap s i j)
+    (string-append (substring s 0 i) (string (string-ref s j)) (substring s (+ i 1) j) (string (string-ref s i)) (substring s (+ j 1))))
+
+  (define (bfs A B)
+    (define (helper visited queue steps)
+      (if (null? queue)
+          -1
+          (let* ((current (car queue))
+                 (rest (cdr queue)))
+            (if (equal? current B)
+                steps
+                (let loop ((i 0) (new-queue '()))
+                  (if (>= i (string-length current))
+                      (helper visited rest (+ steps 1))
+                      (let ((char (string-ref current i)))
+                        (if (and (not (member current visited))
+                                 (not (equal? char (string-ref B i))))
+                            (for ((j (in-range (+ i 1) (string-length current))))
+                              (when (and (not (equal? (string-ref current j) (string-ref B i)))
+                                         (not (member (swap current i j) visited)))
+                                (set! new-queue (cons (swap current i j) new-queue))))
+                            (set! new-queue (cons current new-queue)))
+                        (loop (+ i 1) new-queue)))))))
+    (helper '() (list A) 0))
+
+  (bfs A B))

@@ -1,0 +1,12 @@
+(define/contract (subarray-sum nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([i 0] [count 0])
+    (if (>= i (length nums))
+        count
+        (let inner-loop ([j i] [sum 0])
+          (if (>= j (length nums))
+              (loop (+ i 1) count)
+              (let ([new-sum (+ sum (list-ref nums j))])
+                (if (= new-sum k)
+                    (inner-loop (+ j 1) (+ count 1) new-sum)
+                    (inner-loop (+ j 1) count new-sum))))))))

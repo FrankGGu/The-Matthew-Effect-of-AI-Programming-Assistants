@@ -1,0 +1,5 @@
+(define (construct-rectangle area)
+  (let loop ([w (inexact->exact (floor (sqrt area)))])
+    (if (= (remainder area w) 0)
+        (list (quotient area w) w)
+        (loop (- w 1)))))

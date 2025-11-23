@@ -1,0 +1,10 @@
+(define (findRestaurant list1 list2)
+  (define index-map (for/list ([i (in-range (length list1))])
+                      (cons (list-ref list1 i) i)))
+  (define common (for/list ([item index-map])
+                   (when (member (car item) list2)
+                     (cons (car item) (+ (cdr item) (index-of list2 (car item)))))))
+  (define min-sum (apply min (map cdr (filter identity common))))
+  (for/list ([item common]
+             #:when (= (cdr item) min-sum))
+    (car item)))

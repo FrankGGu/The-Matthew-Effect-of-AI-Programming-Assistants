@@ -1,0 +1,12 @@
+(define/contract (increasing-bst root)
+  (-> (or/c null? tree-node?) (or/c null? tree-node?))
+  (define dummy (tree-node 0))
+  (define current dummy)
+  (let inorder ([node root])
+    (when node
+      (inorder (tree-node-left node))
+      (set-tree-node-left! node null)
+      (set-tree-node-right! current node)
+      (set! current node)
+      (inorder (tree-node-right node))))
+  (tree-node-right dummy))

@@ -1,0 +1,20 @@
+(define (crack-safe n k)
+  (if (= n 1)
+      (list->string (for/list ([i (in-range k)]) (integer->char (+ i 48))))
+      (let* ([total (expt k n)]
+             [visited (make-hash)]
+             [result (make-string total)]
+             [ptr (- total 1)])
+        (define (dfs node)
+          (for ([i (in-range (- k 1) -1 -1)])
+          (let ([next (string-append (substring node 1) (string (integer->char (+ i 48))))])
+            (unless (hash-has-key? visited next)
+              (hash-set! visited next #t)
+              (set! ptr (- ptr 1))
+              (string-set! result ptr (integer->char (+ i 48)))
+              (dfs next))))
+        (let ([start (make-string n #\0)])
+          (hash-set! visited start #t)
+          (string-set! result ptr (integer->char 48))
+          (dfs start)
+          (substring result ptr))))

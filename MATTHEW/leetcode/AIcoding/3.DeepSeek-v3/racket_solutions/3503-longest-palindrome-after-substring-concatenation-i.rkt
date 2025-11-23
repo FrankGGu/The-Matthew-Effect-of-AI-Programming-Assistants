@@ -1,0 +1,11 @@
+(define/contract (longest-palindrome s)
+  (-> string? exact-integer?)
+  (define n (string-length s))
+  (define max-len 0)
+  (for* ([i (in-range n)]
+         [j (in-range i n)])
+    (define sub (substring s i (+ j 1)))
+    (define rev (list->string (reverse (string->list sub))))
+    (when (string=? sub rev)
+      (set! max-len (max max-len (string-length sub)))))
+  max-len)

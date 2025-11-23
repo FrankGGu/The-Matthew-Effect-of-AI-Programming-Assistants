@@ -1,0 +1,10 @@
+(define (concatenation-of-consecutive-binary-numbers n)
+  (define (binary-length x)
+    (floor (/ (log x) (log 2))))
+  (define (helper result i)
+    (if (> i n)
+        result
+        (let* ((bits (binary-length i))
+               (number (bitwise-ior (arithmetic-shift i bits) i)))
+          (helper (bitwise-ior (arithmetic-shift result bits) number) (+ i 1)))))
+  (helper 0 1))

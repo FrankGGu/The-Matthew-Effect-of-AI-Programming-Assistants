@@ -1,0 +1,8 @@
+(define (can-be-equal s1 s2)
+  (let ((count1 (make-hash))
+        (count2 (make-hash)))
+    (for ((c (in-string s1)))
+      (hash-update! count1 c add1 (lambda () 0)))
+    (for ((c (in-string s2)))
+      (hash-update! count2 c add1 (lambda () 0)))
+    (equal? count1 count2)))

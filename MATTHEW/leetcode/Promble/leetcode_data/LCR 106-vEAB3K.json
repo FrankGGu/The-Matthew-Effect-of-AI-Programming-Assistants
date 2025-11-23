@@ -1,0 +1,36 @@
+{
+  "id": "LCR 106",
+  "title": "判断二分图",
+  "titleSlug": "vEAB3K",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Graph"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool isBipartite(vector<vector<int>>& graph) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean isBipartite(int[][] graph) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def isBipartite(self, graph):\n        \"\"\"\n        :type graph: List[List[int]]\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def isBipartite(self, graph: List[List[int]]) -> bool:",
+    "c": "\n\nbool isBipartite(int** graph, int graphSize, int* graphColSize){\n\n}",
+    "csharp": "public class Solution {\n    public bool IsBipartite(int[][] graph) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} graph\n * @return {boolean}\n */\nvar isBipartite = function(graph) {\n\n};",
+    "typescript": "function isBipartite(graph: number[][]): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $graph\n     * @return Boolean\n     */\n    function isBipartite($graph) {\n\n    }\n}",
+    "swift": "class Solution {\n    func isBipartite(_ graph: [[Int]]) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun isBipartite(graph: Array<IntArray>): Boolean {\n\n    }\n}",
+    "golang": "func isBipartite(graph [][]int) bool {\n\n}",
+    "ruby": "# @param {Integer[][]} graph\n# @return {Boolean}\ndef is_bipartite(graph)\n\nend",
+    "scala": "object Solution {\n    def isBipartite(graph: Array[Array[Int]]): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn is_bipartite(graph: Vec<Vec<i32>>) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (is-bipartite graph)\n  (-> (listof (listof exact-integer?)) boolean?)\n\n  )",
+    "erlang": "-spec is_bipartite(Graph :: [[integer()]]) -> boolean().\nis_bipartite(Graph) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec is_bipartite(graph :: [[integer]]) :: boolean\n  def is_bipartite(graph) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[1,2,3],[0,2],[0,1,3],[0,2]]\n[[1,3],[0,2],[1,3],[0,2]]",
+  "hints": []
+}

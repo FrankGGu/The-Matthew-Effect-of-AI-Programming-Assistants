@@ -1,0 +1,32 @@
+Build a modern university course selection system using the following stack:
+- Frontend: SvelteKit with TypeScript
+- Backend: FastAPI with Python
+- ORM: SQLAlchemy with async support
+- Database: PostgreSQL (pre-configured)
+
+Database details:
+- Database URL: postgresql+asyncpg://postgres:university123@localhost:5432/university
+
+Key features to implement:
+1. User authentication and authorization
+2. Course catalog with advanced filtering
+3. Enrollment system with real-time capacity updates
+4. Student profile and schedule management
+5. Administrative functions for course management
+
+Technical requirements:
+- Use FastAPI with dependency injection
+- Implement asynchronous database operations
+- Create a SvelteKit application with proper routing
+- Use Svelte stores for state management
+- Style with Tailwind CSS
+- Include OpenAPI documentation
+
+Generate the complete project with:
+- FastAPI application structure with routers
+- SQLAlchemy models and database session management
+- Pydantic models for request/response validation
+- SvelteKit components and pages
+- Sample data initialization script
+
+Focus on modern Python practices and Svelte's reactivity system.

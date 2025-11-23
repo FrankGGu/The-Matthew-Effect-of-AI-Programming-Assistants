@@ -1,0 +1,38 @@
+(define (shortest-cycle find-num-nodes edges)
+  (define n find-num-nodes)
+  (define adj (make-vector (add1 n) '()))
+  (for-each (lambda (edge)
+              (let ((u (car edge)) (v (cadr edge)))
+                (vector-set! adj u (cons v (vector-ref adj u)))
+                (vector-set! adj v (cons u (vector-ref adj v)))))
+            edges)
+
+  (define (bfs start)
+    (define dist (make-vector (add1 n) #f))
+    (define parent (make-vector (add1 n) #f))
+    (vector-set! dist start 0)
+    (let loop ((q (list start)))
+      (if (null? q)
+          #f
+          (let ((u (car q)))
+            (for-each (lambda (v)
+                        (if (equal? (vector-ref dist v) #f)
+                            (begin
+                              (vector-set! dist v (+ 1 (vector-ref dist u)))
+                              (vector-set! parent v u)
+                              (loop (append (cdr q) (list v))))
+                            (and (not (equal? v (vector-ref parent u)))
+                                 (not (equal? u (vector-ref parent v)))
+                                 (return (+ (vector-ref dist u) (vector-ref dist v) 1)))))
+                      (vector-ref adj u))
+            (loop (cdr q))))))
+
+  (let loop ((i 1) (min-cycle #f))
+    (cond
+      ((> i n) min-cycle)
+      (else
+       (let ((cycle-len (bfs i)))
+         (loop (add1 i) (cond ((and (equal? min-cycle #f) cycle-len) cycle-len)
+                            ((and cycle-len (< cycle-len min-cycle)) cycle-len)
+                            (else min-cycle)))))))
+)

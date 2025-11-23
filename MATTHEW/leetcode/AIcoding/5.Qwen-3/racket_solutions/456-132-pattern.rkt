@@ -1,0 +1,16 @@
+#lang racket
+
+(define (find-132-pattern nums)
+  (define n (length nums))
+  (when (< n 3) #f)
+  (define stack '())
+  (define third -inf.0)
+  (for ([i (in-range (sub1 n) -1 -1)])
+    (when (< (list-ref nums i) third) #t)
+    (set! third (max third (list-ref nums i)))
+    (let loop ()
+      (when (and (not (null? stack)) (< (list-ref nums i) (car stack)))
+        (set! third (max third (car stack)))
+        (set! stack (cdr stack))
+        (loop))))
+  #f)

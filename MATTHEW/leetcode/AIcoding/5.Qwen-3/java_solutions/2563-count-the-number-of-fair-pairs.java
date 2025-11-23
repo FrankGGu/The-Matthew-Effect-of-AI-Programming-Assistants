@@ -1,0 +1,25 @@
+public class Solution {
+
+import java.util.*;
+
+public class Solution {
+    public int countFairPairs(int[] nums, int target) {
+        Arrays.sort(nums);
+        int count = 0;
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum < target) {
+                count += right - left;
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return count;
+    }
+}
+}

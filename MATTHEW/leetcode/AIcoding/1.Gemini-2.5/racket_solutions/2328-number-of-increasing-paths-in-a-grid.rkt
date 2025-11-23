@@ -1,0 +1,33 @@
+(define (count-paths grid)
+  (define m (length grid))
+  (define n (length (car grid)))
+  (define MOD 1000000007)
+
+  (define memo (make-vector m))
+  (for ([i (in-range m)])
+    (vector-set! memo i (make-vector n #f)))
+
+  (define (get-val r c)
+    (list-ref (list-ref grid r) c))
+
+  (define (dp r c)
+    (when (not (vector-ref (vector-ref memo r) c))
+      (let ([current-val (get-val r c)])
+        (let ([paths 1])
+          (define dr '(-1 1 0 0))
+          (define dc '(0 0 -1 1))
+          (for ([i (in-range 4)])
+            (let* ([nr (+ r (list-ref dr i))]
+                   [nc (+ c (list-ref dc i))])
+              (when (and (>= nr 0) (< nr m)
+                         (>= nc 0) (< nc n)
+                         (> (get-val nr nc) current-val))
+                (set! paths (modulo (+ paths (dp nr nc)) MOD)))))
+          (vector-set! (vector-ref memo r) c paths))))
+    (vector-ref (vector-ref memo r) c))
+
+  (let ([total-paths 0])
+    (for ([r (in-range m)])
+      (for ([c (in-range n)])
+        (set! total-paths (modulo (+ total-paths (dp r c)) MOD))))
+    total-paths))

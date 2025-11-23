@@ -1,0 +1,23 @@
+(define (maxFreeTime meetings)
+  (define sorted-meetings (sort meetings (lambda (a b) (< (car a) (car b)))))
+  (define (merge-intervals intervals)
+    (foldl
+     (lambda (acc interval)
+       (if (null? acc)
+           (list interval)
+           (let ((last (car (last acc))))
+             (if (< (car last) (cadr interval))
+                 (append acc (list interval))
+                 (list (list (car last) (max (cadr last) (cadr interval))))))))
+     '() intervals))
+  (define merged (merge-intervals sorted-meetings))
+  (for/fold ([free-time '()]) ([i (in-range (sub1 (length merged)))])
+    (let* ([end (cadr (list-ref merged i))]
+           [start (car (list-ref merged (add1 i)))])
+      (if (< end start)
+          (cons (list end start) free-time)
+          free-time)))
+  (reverse free-time))
+
+(define (findFreeTime schedule)
+  (maxFreeTime schedule))

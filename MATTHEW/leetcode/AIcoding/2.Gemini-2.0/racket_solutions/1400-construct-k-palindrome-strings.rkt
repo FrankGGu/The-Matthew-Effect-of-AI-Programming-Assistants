@@ -1,0 +1,6 @@
+(define (can-construct k s)
+  (define counts (make-hash))
+  (for ([c (string->list s)])
+    (hash-update! counts c (λ (v) (+ v 1)) 0))
+  (define odd-count (length (filter (λ (v) (odd? v)) (hash-values counts))))
+  (and (<= odd-count k) (<= k (string-length s))))

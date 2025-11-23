@@ -1,0 +1,11 @@
+(define (smallest-range-ii nums k)
+  (let* ((nums (sort nums <))
+         (n (length nums))
+         (min-range (apply min (map (lambda (x) (- x (first nums))) nums)))
+         (max-range (apply max (map (lambda (x) (- (last nums) x)) nums)))
+         (res (+ (car nums) (last nums))))
+    (for ([i (in-range n)])
+      (let ([a (if (> i 0) (list-ref nums (sub1 i)) -inf.0)]
+            [b (if (< i (sub1 n)) (list-ref nums (add1 i)) +inf.0)])
+        (set! res (min res (max (- (list-ref nums i) a) (- b (list-ref nums i))))))
+    res))

@@ -1,0 +1,14 @@
+(define/contract (find-target-sum-ways nums target)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([i 0] [sum 0] [memo (make-hash)])
+    (cond
+      [(= i (length nums))
+       (if (= sum target) 1 0)]
+      [else
+       (let ([key (cons i sum)])
+         (if (hash-has-key? memo key)
+             (hash-ref memo key)
+             (let ([res (+ (loop (+ i 1) (+ sum (list-ref nums i)) memo)
+                           (loop (+ i 1) (- sum (list-ref nums i)) memo))])
+               (hash-set! memo key res)
+               res)))])))

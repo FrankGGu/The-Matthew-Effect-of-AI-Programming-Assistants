@@ -1,0 +1,32 @@
+{
+  "id": "LCP 74",
+  "title": "最强祝福力场",
+  "titleSlug": "xepqZ5",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int fieldOfGreatestBlessing(vector<vector<int>>& forceField) {\n\n    }\n};",
+    "java": "class Solution {\n    public int fieldOfGreatestBlessing(int[][] forceField) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def fieldOfGreatestBlessing(self, forceField):\n        \"\"\"\n        :type forceField: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def fieldOfGreatestBlessing(self, forceField: List[List[int]]) -> int:",
+    "c": "int fieldOfGreatestBlessing(int** forceField, int forceFieldSize, int* forceFieldColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int FieldOfGreatestBlessing(int[][] forceField) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} forceField\n * @return {number}\n */\nvar fieldOfGreatestBlessing = function(forceField) {\n\n};",
+    "typescript": "function fieldOfGreatestBlessing(forceField: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $forceField\n     * @return Integer\n     */\n    function fieldOfGreatestBlessing($forceField) {\n\n    }\n}",
+    "swift": "class Solution {\n    func fieldOfGreatestBlessing(_ forceField: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun fieldOfGreatestBlessing(forceField: Array<IntArray>): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int fieldOfGreatestBlessing(List<List<int>> forceField) {\n\n  }\n}",
+    "golang": "func fieldOfGreatestBlessing(forceField [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} force_field\n# @return {Integer}\ndef field_of_greatest_blessing(force_field)\n\nend",
+    "scala": "object Solution {\n    def fieldOfGreatestBlessing(forceField: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn field_of_greatest_blessing(force_field: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (field-of-greatest-blessing forceField)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec field_of_greatest_blessing(ForceField :: [[integer()]]) -> integer().\nfield_of_greatest_blessing(ForceField) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec field_of_greatest_blessing(force_field :: [[integer]]) :: integer\n  def field_of_greatest_blessing(force_field) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[0,0,1],[1,0,1]]\n[[4,4,6],[7,5,3],[1,6,2],[5,6,3]]",
+  "hints": []
+}

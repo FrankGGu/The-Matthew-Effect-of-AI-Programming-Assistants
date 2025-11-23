@@ -1,0 +1,6 @@
+(define (count-elements nums)
+  (define min-val (apply min nums))
+  (define max-val (apply max nums))
+  (define count 0)
+  (for-each (lambda (x) (when (and (< x max-val) (> x min-val)) (set! count (+ count 1)))) nums)
+  count)

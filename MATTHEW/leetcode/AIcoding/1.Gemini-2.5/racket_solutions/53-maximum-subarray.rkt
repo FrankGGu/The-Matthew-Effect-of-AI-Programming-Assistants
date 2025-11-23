@@ -1,0 +1,11 @@
+(define (max-subarray nums)
+  (let ((initial-max-so-far (car nums))
+        (initial-current-max (car nums)))
+    (car (foldl
+          (lambda (n acc)
+            (let ((max-so-far (car acc))
+                  (current-max (cadr acc)))
+              (let ((new-current-max (max n (+ current-max n))))
+                (list (max max-so-far new-current-max) new-current-max))))
+          (list initial-max-so-far initial-current-max)
+          (cdr nums)))))

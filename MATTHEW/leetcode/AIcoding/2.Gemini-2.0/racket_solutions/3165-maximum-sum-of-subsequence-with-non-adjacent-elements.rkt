@@ -1,0 +1,12 @@
+(define (rob nums)
+  (define n (length nums))
+  (if (zero? n)
+      0
+      (if (= n 1)
+          (list-ref nums 0)
+          (let loop ((i 2) (include (list-ref nums 0)) (exclude 0))
+            (if (= i n)
+                (max include exclude)
+                (loop (+ i 1)
+                      (+ exclude (list-ref nums (- i 1)))
+                      (max include exclude)))))))

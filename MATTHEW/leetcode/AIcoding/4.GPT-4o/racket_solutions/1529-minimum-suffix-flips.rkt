@@ -1,0 +1,13 @@
+(define (min-suffix-flips s)
+  (define (flip s)
+    (map (lambda (c) (if (equal? c #\0) #\1 #\0)) s))
+  (define n (length s))
+  (define count 0)
+  (define current s)
+  (for ((i (in-range (sub1 n) -1 -1)))
+    (when (equal? (list-ref current i) #\1)
+      (set! current (flip (take current (+ i 1)))
+      (set! count (+ count 1))))
+  count))
+
+(min-suffix-flips "00110")

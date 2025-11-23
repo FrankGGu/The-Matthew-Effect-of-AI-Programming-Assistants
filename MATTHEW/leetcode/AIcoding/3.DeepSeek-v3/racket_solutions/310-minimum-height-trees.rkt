@@ -1,0 +1,27 @@
+(define (findMinHeightTrees n edges)
+  (if (= n 1)
+      '(0)
+      (let* ([adj (make-vector n '())]
+             [degree (make-vector n 0)])
+        (for ([edge edges])
+          (let ([u (car edge)]
+                [v (cadr edge)])
+            (vector-set! adj u (cons v (vector-ref adj u)))
+            (vector-set! adj v (cons u (vector-ref adj v)))
+            (vector-set! degree u (add1 (vector-ref degree u)))
+            (vector-set! degree v (add1 (vector-ref degree v))))
+        (let ([leaves '()])
+          (for ([i (in-range n)])
+            (when (= (vector-ref degree i) 1)
+              (set! leaves (cons i leaves))))
+        (let loop ([remaining-nodes n]
+                   [current-leaves leaves])
+          (if (<= remaining-nodes 2)
+              current-leaves
+              (let ([new-leaves '()])
+                (for ([leaf current-leaves])
+                  (for ([neighbor (vector-ref adj leaf)])
+                    (vector-set! degree neighbor (sub1 (vector-ref degree neighbor)))
+                    (when (= (vector-ref degree neighbor) 1)
+                      (set! new-leaves (cons neighbor new-leaves)))))
+                (loop (- remaining-nodes (length current-leaves)) new-leaves)))))))

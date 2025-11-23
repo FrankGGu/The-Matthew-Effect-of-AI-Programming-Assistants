@@ -1,0 +1,31 @@
+{
+  "id": "LCP 19",
+  "title": "秋叶收藏集",
+  "titleSlug": "UlBDOe",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minimumOperations(string leaves) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minimumOperations(String leaves) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minimumOperations(self, leaves):\n        \"\"\"\n        :type leaves: str\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minimumOperations(self, leaves: str) -> int:",
+    "c": "\n\nint minimumOperations(char* leaves){\n\n}",
+    "csharp": "public class Solution {\n    public int MinimumOperations(string leaves) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} leaves\n * @return {number}\n */\nvar minimumOperations = function(leaves) {\n\n};",
+    "typescript": "function minimumOperations(leaves: string): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $leaves\n     * @return Integer\n     */\n    function minimumOperations($leaves) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minimumOperations(_ leaves: String) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minimumOperations(leaves: String): Int {\n\n    }\n}",
+    "golang": "func minimumOperations(leaves string) int {\n\n}",
+    "ruby": "# @param {String} leaves\n# @return {Integer}\ndef minimum_operations(leaves)\n\nend",
+    "scala": "object Solution {\n    def minimumOperations(leaves: String): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn minimum_operations(leaves: String) -> i32 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"rrryyyrryyyrr\"\n\"ryr\"",
+  "hints": []
+}

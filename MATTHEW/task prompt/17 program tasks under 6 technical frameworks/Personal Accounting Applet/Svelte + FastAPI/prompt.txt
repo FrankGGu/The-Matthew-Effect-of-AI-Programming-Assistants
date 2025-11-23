@@ -1,0 +1,41 @@
+Create a modern personal finance application with this tech stack:
+
+**Technology Stack:**
+- Frontend: SvelteKit
+- Backend: FastAPI
+- ORM: SQLAlchemy with async support
+- Database: PostgreSQL (Docker)
+
+**Database Schema:**
+Use existing PostgreSQL tables:
+- transactions (id, amount, type, category, description, transaction_date, created_at)
+- categories (id, name, type)
+
+**Features:**
+1. Add transactions (income/expense) with form validation
+2. View transactions filtered by month
+3. Monthly summary with income/expense comparison
+4. Category spending breakdown
+
+**API Endpoints:**
+- GET /api/transactions?month=2025-08 → Get transactions
+- POST /api/transactions → Create transaction
+- GET /api/summary?month=2025-08 → Get monthly summary
+- GET /api/categories → Get categories
+
+**Frontend Requirements:**
+- Use SvelteKit with SSR
+- Implement Svelte stores for state management
+- Use Tailwind CSS for styling
+- Add form validation with Svelte forms lib
+
+**Backend Requirements:**
+- Use FastAPI with async endpoints
+- Implement SQLAlchemy with async mode
+- Add Pydantic models for request/response validation
+- Include comprehensive error handling
+
+**Database Connection:**
+- SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://postgres:financepass@localhost:5432/personal_finance"
+
+Generate the complete application with modern Python and JavaScript practices.

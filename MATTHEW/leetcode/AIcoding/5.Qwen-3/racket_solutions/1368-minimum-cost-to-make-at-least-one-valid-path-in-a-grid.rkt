@@ -1,0 +1,50 @@
+#lang racket
+
+(define (minimum-cost grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define directions (list (cons 0 1) (cons 1 0) (cons 0 -1) (cons -1 0)))
+  (define visited (make-hash))
+  (define pq (priority-queue 'min))
+  (priority-queue-add! pq (cons 0 (cons 0 0)) #t)
+  (define (in-bounds r c)
+    (and (>= r 0) (< r rows) (>= c 0) (< c cols)))
+  (define (get-cost r c)
+    (hash-ref visited (cons r c) #f))
+  (define (set-cost r c cost)
+    (hash-set! visited (cons r c) cost))
+  (define (get-direction r c)
+    (let ([val (list-ref (list-ref grid r) c)])
+      (cond [(= val 1) 0]
+            [(= val 2) 1]
+            [(= val 3) 2]
+            [(= val 4) 3]
+            [else 0])))
+  (define (neighbors r c)
+    (map (lambda (d)
+           (let ([dr (car d)] [dc (cdr d)])
+             (cons (+ r dr) (+ c dc))))
+         directions))
+  (define (process r c cost)
+    (when (not (get-cost r c))
+      (set-cost r c cost)
+      (priority-queue-add! pq (cons cost (cons r c)) #t)))
+  (let loop ()
+    (when (not (priority-queue-empty? pq))
+      (let* ([current (priority-queue-remove! pq)]
+             [cost (car current)]
+             [r (car (cdr current))]
+             [c (cdr (cdr current))])
+        (when (and (= r (sub1 rows)) (= c (sub1 cols)))
+          (display cost)
+          (newline)
+          (exit))
+        (for-each (lambda (n)
+                    (let ([nr (car n)] [nc (cdr n)])
+                      (when (in-bounds nr nc)
+                        (let ([new-cost (+ cost (if (= (list-ref (list-ref grid r) c) 1) 0 1))])
+                          (when (or (not (get-cost nr nc)) (< new-cost (get-cost nr nc)))
+                            (process nr nc new-cost))))))
+                  (neighbors r c)))
+      (loop))))
+(minimum-cost '((1 1 1 0 1)(1 1 1 0 1)(1 1 1 0 1)(0 0 0 0 0)(1 1 1 1 1)))

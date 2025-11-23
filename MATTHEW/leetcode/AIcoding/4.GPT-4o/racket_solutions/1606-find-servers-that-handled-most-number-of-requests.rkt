@@ -1,0 +1,31 @@
+(define (busiestServers k arrival times load)
+  (define n (length load))
+  (define servers (make-vector k 0))
+  (define active-requests (make-vector k '()))
+
+  (define (process-arrivals arrival-index)
+    (when (< arrival-index (length arrival))
+      (let* ((current-time (vector-ref arrival arrival-index))
+             (end-time (apply max (map (lambda (s) (if (null? (vector-ref active-requests s)) 0 (car (vector-ref active-requests s)))) (vector->list (vector-range 0 k)))))
+             (available-servers (filter (lambda (s) (and (< (if (null? (vector-ref active-requests s)) 0 (car (vector-ref active-requests s))) current-time))) (vector->list (vector-range 0 k)))))
+        (for-each (lambda (s)
+                    (vector-set! active-requests s (cons (+ current-time (vector-ref load arrival-index)) (vector-ref active-requests s)))
+                    (vector-set! servers s (+ 1 (vector-ref servers s))))
+                  available-servers)
+        (process-arrivals (+ arrival-index 1)))))
+
+  (define (finish-requests)
+    (for-each (lambda (s)
+                (when (not (null? (vector-ref active-requests s)))
+                  (set! (vector-ref active-requests s) (filter (lambda (end) (> end (current-time))) (vector-ref active-requests s))))))
+              (vector->list (vector-range 0 k))))
+
+  (let loop ((current-time 0))
+    (if (< current-time (apply max arrival))
+        (begin
+          (process-arrivals 0)
+          (finish-requests)
+          (loop (+ current-time 1)))))
+
+  (define max-requests (apply max (vector->list servers)))
+  (filter (lambda (s) (= (vector-ref servers s) max-requests)) (vector->list (vector-range 0 k))))

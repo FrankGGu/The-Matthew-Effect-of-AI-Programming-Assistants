@@ -1,0 +1,16 @@
+(define (longestSquareStreak nums)
+  (define squares (for/list ([i (in-range 1 (add1 (floor (sqrt (apply max nums)))))])
+                    (* i i)))
+  (define square-set (set (map (lambda (x) (make-immutable x)) squares)))
+  (define (streak-length n)
+    (define (helper x length)
+      (if (set-member? square-set x)
+          (helper (+ x 1) (+ length 1))
+          length))
+    (helper n 0))
+  (define lengths (map streak-length nums))
+  (if (null? lengths)
+      0
+      (apply max lengths)))
+
+(longestSquareStreak '(4 1 3 2 9 16 25))

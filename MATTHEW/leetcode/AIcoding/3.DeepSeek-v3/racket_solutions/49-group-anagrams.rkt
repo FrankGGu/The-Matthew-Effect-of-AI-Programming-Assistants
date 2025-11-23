@@ -1,0 +1,7 @@
+(define/contract (group-anagrams strs)
+  (-> (listof string?) (listof (listof string?)))
+  (define ht (make-hash))
+  (for ([s (in-list strs)])
+    (define key (list->string (sort (string->list s) char<?)))
+    (hash-set! ht key (cons s (hash-ref ht key '()))))
+  (hash-values ht))

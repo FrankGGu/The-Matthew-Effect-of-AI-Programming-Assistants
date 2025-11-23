@@ -1,0 +1,30 @@
+#lang racket
+
+(define-struct ListNode (val next))
+
+(define (removeZeroSumSublists head)
+  (define dummy (ListNode 0 head))
+  (define prefix-sum (hash))
+  (define (loop node sum)
+    (if (null? node)
+        '()
+        (let* ((new-sum (+ sum (ListNode-val node)))
+               (next-node (loop (ListNode-next node) new-sum)))
+          (hash-set! prefix-sum new-sum node)
+          (if (hash-has-key? prefix-sum new-sum)
+              (begin
+                (set! next-node (hash-ref prefix-sum new-sum))
+                (set! next-node (ListNode-next next-node)))
+              (cons node next-node)))))
+  (let ((result (loop head 0)))
+    (if (null? result)
+        '()
+        (let loop2 ((nodes result) (prev dummy))
+          (if (null? nodes)
+              (ListNode-next prev)
+              (let ((node (car nodes)))
+                (set! (ListNode-next prev) node)
+                (loop2 (cdr nodes) node)))))))
+
+(define (removeZeroSumSublists-head head)
+  (removeZeroSumSublists head))

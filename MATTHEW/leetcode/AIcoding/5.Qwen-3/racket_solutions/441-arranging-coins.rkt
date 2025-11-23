@@ -1,0 +1,10 @@
+(define (arrange-coins n)
+  (define (helper low high)
+    (let ((mid (quotient (+ low high) 2)))
+      (if (> low high)
+          low
+          (let ((sum (* mid (+ mid 1))))
+            (if (> sum (* 2 n))
+                (helper low (- mid 1))
+                (helper (+ mid 1) high)))))))
+  (helper 1 (quotient n 2)))

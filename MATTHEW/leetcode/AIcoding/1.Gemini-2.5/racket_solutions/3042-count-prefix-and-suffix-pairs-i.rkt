@@ -1,0 +1,12 @@
+(define (count-prefix-and-suffix-pairs words)
+  (let ([n (length words)])
+    (for/fold ([total-count 0])
+              ([i (in-range 0 n)])
+      (for/fold ([current-i-count total-count])
+                ([j (in-range (add1 i) n)])
+        (let ([s1 (list-ref words i)]
+              [s2 (list-ref words j)])
+          (if (and (string-prefix? s1 s2)
+                   (string-suffix? s1 s2))
+              (add1 current-i-count)
+              current-i-count))))))

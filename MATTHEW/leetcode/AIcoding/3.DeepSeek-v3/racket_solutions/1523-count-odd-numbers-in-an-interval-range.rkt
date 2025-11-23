@@ -1,0 +1,6 @@
+(define (count-odds low high)
+  (quotient (+ (if (odd? high) 1 0) 
+             (if (odd? low) 1 0) 
+             (+ high 1) 
+             (- low)) 
+  2))

@@ -1,0 +1,23 @@
+(define (valid-partition nums)
+  (let* ((n (length nums))
+         (nums-vec (list->vector nums))
+         (dp (make-vector (+ n 1) #f)))
+    (vector-set! dp 0 #t)
+
+    (for ([i (in-range 1 (+ n 1))])
+      (when (>= i 2)
+        (when (and (vector-ref dp (- i 2))
+                   (= (vector-ref nums-vec (- i 1)) (vector-ref nums-vec (- i 2))))
+          (vector-set! dp i #t)))
+
+      (when (>= i 3)
+        (when (vector-ref dp (- i 3))
+          (let ((val1 (vector-ref nums-vec (- i 1)))
+                (val2 (vector-ref nums-vec (- i 2)))
+                (val3 (vector-ref nums-vec (- i 3))))
+            (when (and (= val1 val2) (= val2 val3))
+              (vector-set! dp i #t))
+            (when (and (= val1 (+ val2 1)) (= val2 (+ val3 1)))
+              (vector-set! dp i #t))))))
+
+    (vector-ref dp n)))

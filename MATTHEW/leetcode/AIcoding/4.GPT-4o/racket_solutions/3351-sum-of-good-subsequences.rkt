@@ -1,0 +1,18 @@
+(define (sum-of-good-subsequences nums)
+  (define mod 1000000007)
+  (define (power a b)
+    (if (= b 0)
+        1
+        (modulo (* a (power a (- b 1))) mod)))
+  (define max-num (apply max nums))
+  (define freq (make-vector (+ max-num 1) 0))
+  (for-each (lambda (x) (vector-set! freq x (+ (vector-ref freq x) 1))) nums)
+  (define total 0)
+  (for ((i (in-range 1 (+ max-num 1))))
+    (let ((count (vector-ref freq i)))
+      (when (> count 0)
+        (set! total (modulo (+ total (* i (power 2 count))) mod)))))
+  total)
+
+(define (sum-of-good-subsequences-main nums)
+  (sum-of-good-subsequences nums))

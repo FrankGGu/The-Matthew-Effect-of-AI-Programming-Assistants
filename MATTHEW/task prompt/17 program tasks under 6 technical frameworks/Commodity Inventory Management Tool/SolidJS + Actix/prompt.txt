@@ -1,0 +1,59 @@
+Build an inventory system using emerging technologies:
+- Frontend: SolidJS with TypeScript
+- Backend: Actix Web with Rust
+- ORM: SeaORM with PostgreSQL
+- Build: Trunk for frontend
+
+**Database Connection:**
+- DATABASE_URL=postgresql://admin:admin123@localhost:5432/inventory_db
+
+**Required Features:**
+1. Memory-safe implementation
+2. High-performance endpoints
+3. Type-safe frontend-backend communication
+4. Minimal resource usage
+5. Strong error handling
+
+**Technical Specifications:**
+Backend:
+- Actix Web with async/await
+- SeaORM for database operations
+- Serde for serialization/deserialization
+- JWT authentication
+- CORS middleware
+
+Frontend:
+- SolidJS with TypeScript
+- Solid Router for navigation
+- TanStack Query for server state
+- Minimal CSS framework
+
+**Code Structure:**
+- /src/models (SeaORM entities)
+- /src/handlers (HTTP handlers)
+- /src/middleware (custom middleware)
+- /frontend (SolidJS application)
+- /migrations (SeaORM migrations)
+
+**Entity Structure:**
+```rust
+#[derive(Clone, Debug, PartialEq, DeriveEntityModel, Serialize, Deserialize)]
+#[sea_orm(table_name = "products")]
+pub struct Model {
+    #[sea_orm(primary_key)]
+    pub id: i32,
+    pub name: String,
+    pub specification: Option<String>,
+    // ... other fields
+}
+Deliverables:
+
+Complete Rust workspace with Cargo.toml
+
+SolidJS application with TypeScript
+
+Database migration files
+
+Docker setup
+
+Performance benchmarks

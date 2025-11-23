@@ -1,0 +1,32 @@
+{
+  "id": "LCP 81",
+  "title": "与非的谜题",
+  "titleSlug": "ryfUiz",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int getNandResult(int k, vector<int>& arr, vector<vector<int>>& operations) {\n\n    }\n};",
+    "java": "class Solution {\n    public int getNandResult(int k, int[] arr, int[][] operations) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def getNandResult(self, k, arr, operations):\n        \"\"\"\n        :type k: int\n        :type arr: List[int]\n        :type operations: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def getNandResult(self, k: int, arr: List[int], operations: List[List[int]]) -> int:",
+    "c": "int getNandResult(int k, int* arr, int arrSize, int** operations, int operationsSize, int* operationsColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int GetNandResult(int k, int[] arr, int[][] operations) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} k\n * @param {number[]} arr\n * @param {number[][]} operations\n * @return {number}\n */\nvar getNandResult = function(k, arr, operations) {\n\n};",
+    "typescript": "function getNandResult(k: number, arr: number[], operations: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $k\n     * @param Integer[] $arr\n     * @param Integer[][] $operations\n     * @return Integer\n     */\n    function getNandResult($k, $arr, $operations) {\n\n    }\n}",
+    "swift": "class Solution {\n    func getNandResult(_ k: Int, _ arr: [Int], _ operations: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun getNandResult(k: Int, arr: IntArray, operations: Array<IntArray>): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int getNandResult(int k, List<int> arr, List<List<int>> operations) {\n\n  }\n}",
+    "golang": "func getNandResult(k int, arr []int, operations [][]int) int {\n\n}",
+    "ruby": "# @param {Integer} k\n# @param {Integer[]} arr\n# @param {Integer[][]} operations\n# @return {Integer}\ndef get_nand_result(k, arr, operations)\n\nend",
+    "scala": "object Solution {\n    def getNandResult(k: Int, arr: Array[Int], operations: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn get_nand_result(k: i32, arr: Vec<i32>, operations: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (get-nand-result k arr operations)\n  (-> exact-integer? (listof exact-integer?) (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec get_nand_result(K :: integer(), Arr :: [integer()], Operations :: [[integer()]]) -> integer().\nget_nand_result(K, Arr, Operations) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec get_nand_result(k :: integer, arr :: [integer], operations :: [[integer]]) :: integer\n  def get_nand_result(k, arr, operations) do\n\n  end\nend"
+  },
+  "exampleTestcases": "3\n[1,2]\n[[1,2,3],[0,0,3],[1,2,2]]\n4\n[4,6,4,7,10,9,11]\n[[1,5,7],[1,7,14],[0,6,7],[1,6,5]]",
+  "hints": []
+}

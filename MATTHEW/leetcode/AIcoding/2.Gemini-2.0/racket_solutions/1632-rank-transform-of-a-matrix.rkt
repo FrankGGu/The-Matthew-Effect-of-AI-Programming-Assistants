@@ -1,0 +1,71 @@
+(define (matrix-rank-transform matrix)
+  (let* ((m (length matrix))
+         (n (length (car matrix)))
+         (adj (make-vector (+ m n) '()))
+         (rank (make-vector (+ m n) 0))
+         (find (lambda (x parent)
+                 (if (equal? (vector-ref parent x) x)
+                     x
+                     (let ((root (find (vector-ref parent x) parent)))
+                       (vector-set! parent x root)
+                       root))))
+         (union! (lambda (x y parent)
+                   (let ((rootx (find x parent))
+                         (rooty (find y parent)))
+                     (if (not (equal? rootx rooty))
+                         (vector-set! parent rootx rooty))))))
+
+    (for* ((j (in-range n)))
+      (let ((values (make-hash)))
+        (for* ((i (in-range m)))
+          (let ((val (list-ref (list-ref matrix i) j)))
+            (hash-update! values val (lambda (v) (append v (list (+ i m)))) (list (+ i m))))))
+
+      (for* ((val (in-list (sort (hash-keys values) <))))
+        (let* ((indices (hash-ref values val))
+               (parent (make-vector (+ m n) 0)))
+          (for* ((i (in-range (+ m n)))) (vector-set! parent i i))
+
+          (for* ((idx indices))
+            (union! j idx parent))
+
+          (let ((group-rank (make-hash)))
+            (for* ((idx indices))
+              (let ((root (find idx parent)))
+                (hash-update! group-rank root (lambda (v) (max v (vector-ref rank root))) 0)))
+
+            (let ((new-rank (apply max (hash-values group-rank))))
+              (for* ((idx indices))
+                (let ((root (find idx parent)))
+                  (vector-set! rank root (+ new-rank 1)))))))))
+
+    (for* ((i (in-range m)))
+      (let ((values (make-hash)))
+        (for* ((j (in-range n)))
+          (let ((val (list-ref (list-ref matrix i) j)))
+            (hash-update! values val (lambda (v) (append v (list j))) (list j)))))
+
+      (for* ((val (in-list (sort (hash-keys values) <))))
+        (let* ((indices (hash-ref values val))
+               (parent (make-vector (+ m n) 0)))
+          (for* ((j (in-range (+ m n)))) (vector-set! parent j j))
+
+          (for* ((idx indices))
+            (union! i idx parent))
+
+          (let ((group-rank (make-hash)))
+            (for* ((idx indices))
+              (let ((root (find idx parent)))
+                (hash-update! group-rank root (lambda (v) (max v (vector-ref rank root))) 0)))
+
+            (let ((new-rank (apply max (hash-values group-rank))))
+              (for* ((idx indices))
+                (let ((root (find idx parent)))
+                  (vector-set! rank root (+ new-rank 1)))))))))
+
+    (for* ((i (in-range m)))
+      (for* ((j (in-range n)))
+        (let ((max-rank (max (vector-ref rank i) (vector-ref rank (+ m j)))))
+          (set! matrix (list-set matrix i (list-set (list-ref matrix i) j max-rank)))))
+
+    matrix))

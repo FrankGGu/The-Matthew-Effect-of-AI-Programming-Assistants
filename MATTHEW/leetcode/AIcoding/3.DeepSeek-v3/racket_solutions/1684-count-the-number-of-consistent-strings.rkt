@@ -1,0 +1,6 @@
+(define (count-consistent-strings allowed words)
+  (define allowed-set (list->set (string->list allowed)))
+  (define (consistent? word)
+    (for/and ([c (string->list word)])
+      (set-member? allowed-set c)))
+  (count consistent? words))

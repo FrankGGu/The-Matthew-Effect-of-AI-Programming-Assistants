@@ -1,0 +1,11 @@
+(define (areAlmostEquivalent s1 s2)
+  (define (count-characters s)
+    (foldl (λ (c acc) (hash-set! acc c (+ 1 (hash-ref acc c 0)))) (make-hash) s))
+  (define count1 (count-characters s1))
+  (define count2 (count-characters s2))
+  (define diff (foldl (λ (k acc) (+ acc (abs (- (hash-ref count1 k 0) (hash-ref count2 k 0))))) 0 (hash-keys count1)))
+  (define diff2 (foldl (λ (k acc) (+ acc (abs (- (hash-ref count2 k 0) (hash-ref count1 k 0))))) diff (hash-keys count2)))
+  (<= diff2 2))
+
+(define (checkAlmostEquivalent s1 s2)
+  (areAlmostEquivalent s1 s2))

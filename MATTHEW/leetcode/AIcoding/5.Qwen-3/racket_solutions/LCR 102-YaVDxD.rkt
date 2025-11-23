@@ -1,0 +1,6 @@
+(define (find-target-sum-ways nums target)
+  (define (helper index sum)
+    (cond ((= index (length nums)) (if (= sum target) 1 0))
+          (else (+ (helper (+ index 1) (+ sum (list-ref nums index)))
+                   (helper (+ index 1) (- sum (list-ref nums index)))))))
+  (helper 0 0))

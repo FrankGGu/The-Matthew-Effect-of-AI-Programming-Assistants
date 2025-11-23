@@ -1,0 +1,10 @@
+(define (permute nums)
+  (define (helper current-permutation remaining-nums)
+    (if (empty? remaining-nums)
+        (list current-permutation)
+        (apply append
+               (map (lambda (num)
+                      (helper (append current-permutation (list num))
+                              (remove num remaining-nums)))
+                    remaining-nums))))
+  (helper '() nums))

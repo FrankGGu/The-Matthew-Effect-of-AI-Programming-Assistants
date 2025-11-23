@@ -1,0 +1,36 @@
+{
+  "id": "LCR 190",
+  "title": "加密运算",
+  "titleSlug": "bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int encryptionCalculate(int dataA, int dataB) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int encryptionCalculate(int dataA, int dataB) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def encryptionCalculate(self, dataA, dataB):\n        \"\"\"\n        :type dataA: int\n        :type dataB: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def encryptionCalculate(self, dataA: int, dataB: int) -> int:\n        ",
+    "c": "int encryptionCalculate(int dataA, int dataB) {\n    \n}",
+    "csharp": "public class Solution {\n    public int EncryptionCalculate(int dataA, int dataB) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} dataA\n * @param {number} dataB\n * @return {number}\n */\nvar encryptionCalculate = function(dataA, dataB) {\n    \n};",
+    "typescript": "function encryptionCalculate(dataA: number, dataB: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $dataA\n     * @param Integer $dataB\n     * @return Integer\n     */\n    function encryptionCalculate($dataA, $dataB) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func encryptionCalculate(_ dataA: Int, _ dataB: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun encryptionCalculate(dataA: Int, dataB: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int encryptionCalculate(int dataA, int dataB) {\n    \n  }\n}",
+    "golang": "func encryptionCalculate(dataA int, dataB int) int {\n    \n}",
+    "ruby": "# @param {Integer} data_a\n# @param {Integer} data_b\n# @return {Integer}\ndef encryption_calculate(data_a, data_b)\n    \nend",
+    "scala": "object Solution {\n    def encryptionCalculate(dataA: Int, dataB: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn encryption_calculate(data_a: i32, data_b: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (encryption-calculate dataA dataB)\n  (-> exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec encryption_calculate(DataA :: integer(), DataB :: integer()) -> integer().\nencryption_calculate(DataA, DataB) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec encryption_calculate(data_a :: integer, data_b :: integer) :: integer\n  def encryption_calculate(data_a, data_b) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func encryptionCalculate(dataA: Int64, dataB: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "5\n-1",
+  "hints": []
+}

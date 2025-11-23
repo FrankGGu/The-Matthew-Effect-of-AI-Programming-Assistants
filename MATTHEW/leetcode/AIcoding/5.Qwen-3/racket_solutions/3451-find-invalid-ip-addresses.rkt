@@ -1,0 +1,50 @@
+#lang racket
+
+(define (is-valid? s)
+  (define len (string-length s))
+  (cond [(= len 0) #f]
+        [(and (>= len 4) (<= len 12)) #t]
+        [else #f]))
+
+(define (split-ip s)
+  (define len (string-length s))
+  (for/fold ([res '()])
+            ([i (in-range 1 (min 4 (+ len 1)))])
+    (define part1 (substring s 0 i))
+    (when (and (is-valid? part1) (string->number part1 #f))
+      (define num1 (string->number part1))
+      (when (and (<= num1 255) (or (= (string-length part1) 1) (not (char=? (string-ref part1 0) #\0))))
+        (for/fold ([res res])
+                  ([j (in-range (add1 i) (min (+ i 4) (+ len 1)))])
+          (define part2 (substring s i j))
+          (when (and (is-valid? part2) (string->number part2 #f))
+            (define num2 (string->number part2))
+            (when (and (<= num2 255) (or (= (string-length part2) 1) (not (char=? (string-ref part2 0) #\0))))
+              (for/fold ([res res])
+                        ([k (in-range (add1 j) (min (+ j 4) (+ len 1)))])
+                (define part3 (substring s j k))
+                (when (and (is-valid? part3) (string->number part3 #f))
+                  (define num3 (string->number part3))
+                  (when (and (<= num3 255) (or (= (string-length part3) 1) (not (char=? (string-ref part3 0) #\0))))
+                    (define part4 (substring s k len))
+                    (when (and (is-valid? part4) (string->number part4 #f))
+                      (define num4 (string->number part4))
+                      (when (and (<= num4 255) (or (= (string-length part4) 1) (not (char=? (string-ref part4 0) #\0))))
+                        (set! res (cons (string-append part1 "." part2 "." part3 "." part4) res))))))))))
+    res))
+
+(define (valid-ips s)
+  (if (is-valid? s)
+      (split-ip s)
+      '()))
+
+(define (invalid-ips ips)
+  (for/list ([ip ips])
+    (if (null? (valid-ips ip)) ip "")))
+
+(define (main)
+  (define input (current-command-line-arguments))
+  (define ips (string-split (car input) "\n"))
+  (for-each (lambda (ip) (printf "~a\n" ip)) (invalid-ips ips)))
+
+(main)

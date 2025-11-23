@@ -1,0 +1,15 @@
+(define (string-matching words)
+  (let loop ([result '()] [i 0])
+    (if (= i (length words))
+        result
+        (let ([word-i (list-ref words i)])
+          (let loop2 ([j 0])
+            (if (= j (length words))
+                (loop result (+ i 1))
+                (let ([word-j (list-ref words j)])
+                  (if (and (!= i j) (string-contains? word-j word-i))
+                      (loop (if (member word-i result equal?)
+                                result
+                                (cons word-i result))
+                            (+ i 1))
+                      (loop2 (+ j 1))))))))))

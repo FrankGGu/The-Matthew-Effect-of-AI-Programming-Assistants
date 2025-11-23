@@ -1,0 +1,16 @@
+(define (max-distinct-elements nums k)
+  (let* ((counts (hash))
+         (n (length nums)))
+    (for-each (lambda (num)
+                (hash-update! counts num (lambda (v) (+ v 1)) 1))
+              nums)
+    (let* ((freqs (sort (hash-values counts) <))
+           (distinct-count (hash-count counts)))
+      (let loop ((freqs freqs) (k k) (distinct-count distinct-count))
+        (cond
+          ((null? freqs) distinct-count)
+          ((= k 0) distinct-count)
+          ((<= (car freqs) k)
+           (loop (cdr freqs) (- k (car freqs)) (- distinct-count 1)))
+          (else
+           (+ distinct-count k)))))))

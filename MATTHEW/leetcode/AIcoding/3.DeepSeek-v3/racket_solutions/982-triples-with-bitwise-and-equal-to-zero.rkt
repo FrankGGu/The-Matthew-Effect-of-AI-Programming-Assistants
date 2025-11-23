@@ -1,0 +1,10 @@
+(define/contract (count-triplets nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([n (length nums)]
+        [count 0])
+    (for ([i (in-range n)])
+      (for ([j (in-range n)])
+        (for ([k (in-range n)])
+          (when (zero? (bitwise-and (list-ref nums i) (list-ref nums j) (list-ref nums k)))
+            (set! count (add1 count))))
+    count))

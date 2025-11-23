@@ -1,0 +1,20 @@
+(define (num-submatrix-sum-target grid target)
+  (define rows (vector-length grid))
+  (define cols (vector-length (vector-ref grid 0)))
+  (define total-count 0)
+
+  (for ([r1 (in-range rows)])
+    (define col-sums (make-vector cols 0))
+    (for ([r2 (in-range r1 rows)])
+      (for ([c (in-range cols)])
+        (vector-set! col-sums c (+ (vector-ref col-sums c) (vector-ref (vector-ref grid r2) c))))
+
+      (define prefix-sum-map (make-hash))
+      (hash-set! prefix-sum-map 0 1)
+      (define current-sum 0)
+      (for ([val (in-vector col-sums)])
+        (set! current-sum (+ current-sum val))
+        (set! total-count (+ total-count (hash-ref prefix-sum-map (- current-sum target) 0)))
+        (hash-set! prefix-sum-map current-sum (+ (hash-ref prefix-sum-map current-sum 0) 1))))))
+
+  total-count)

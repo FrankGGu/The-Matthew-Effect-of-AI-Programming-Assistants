@@ -1,0 +1,38 @@
+Create a complete e-commerce system using Vue 3 for frontend and Spring Boot with Hibernate for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, phone, address, created_at
+- products: id, name, description, price, category, stock_quantity, image_url, is_active, created_at
+- orders: id, user_id, total_amount, status, shipping_address, payment_status, created_at, updated_at
+- order_items: id, order_id, product_id, quantity, unit_price
+- reviews: id, product_id, user_id, rating, comment, created_at
+
+Requirements:
+1. User Management:
+   - User registration and login (JWT authentication)
+   - User profile management
+   - Address management system
+
+2. Product Management:
+   - CRUD operations for products
+   - Product search and categorization
+   - Filter products by category, price range, availability
+
+3. Order Management:
+   - Create, view, update, cancel orders
+   - Shopping cart management
+   - Order status tracking (PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED)
+   - Inventory management and stock updates
+
+Technical Specifications:
+- Frontend: Vue 3 with Composition API, Vue Router for navigation, Pinia for state management
+- Backend: Spring Boot with Spring Security for JWT authentication, Hibernate for ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:ecopass@localhost:5432/ecommerce
+- API: RESTful design with proper HTTP status codes
+
+Generate complete, runnable code including:
+- Spring Boot application with controllers, services, and repositories
+- Vue 3 components for all features
+- Proper error handling and validation
+- Database configuration and entity classes
+- Installation and setup instructions

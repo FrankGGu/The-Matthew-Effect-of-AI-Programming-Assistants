@@ -1,0 +1,6 @@
+(define (decode encoded first)
+  (let ((result (list first)))
+    (for-each (lambda (e)
+                (set! result (append result (list (bitwise-xor (last result) e)))))
+              encoded)
+    result))

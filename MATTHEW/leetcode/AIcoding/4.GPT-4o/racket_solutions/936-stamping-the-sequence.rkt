@@ -1,0 +1,30 @@
+(define (moves-to-stamp stampSeq targetSeq)
+  (define n (string-length targetSeq))
+  (define m (string-length stampSeq))
+  (define can-stamp? (lambda (start)
+                      (for/or ([i (in-range m)])
+                        (and (= (string-ref targetSeq (+ start i)) #\?) 
+                             (not (= (string-ref stampSeq i) #\?))))))
+
+  (define stamp (lambda (start)
+                  (for ([i (in-range m)])
+                    (when (not (= (string-ref stampSeq i) #\?))
+                      (set! targetSeq (string-set! targetSeq (+ start i) #\?)))))
+
+  (define result '())
+  (define stamped #f)
+
+  (for-loop ()
+    (lambda ()
+      (when (or stamped (for/or ([i (in-range (- n m))])
+                         (if (can-stamp? i)
+                             (begin
+                               (stamp i)
+                               (set! stamped #t)
+                               (set! result (cons i result))
+                             #f))))
+        (set! stamped #f)))
+
+  (if (string= targetSeq (make-string n #\?))
+      (reverse result)
+      '()))

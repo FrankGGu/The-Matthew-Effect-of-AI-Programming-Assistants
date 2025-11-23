@@ -1,0 +1,16 @@
+(define/contract (min-operations grid)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let* ([rows (length grid)]
+         [cols (length (car grid))]
+         [dp (make-vector rows (make-vector cols 0))])
+    (for ([i (in-range rows)])
+      (for ([j (in-range cols)])
+        (when (= i 0)
+          (vector-set! (vector-ref dp i) j 0))
+        (when (> i 0)
+          (let ([current (vector-ref (vector-ref dp (sub1 i)) j)])
+            (when (not (= (list-ref (vector-ref grid i) j) (list-ref (vector-ref grid (sub1 i)) j)))
+              (set! current (+ current 1)))
+            (vector-set! (vector-ref dp i) j current))))
+    (apply min (vector->list (vector-ref dp (sub1 rows)))))
+  )

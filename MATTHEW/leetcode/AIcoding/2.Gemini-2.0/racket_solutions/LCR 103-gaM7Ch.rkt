@@ -1,0 +1,12 @@
+(define (coin-change coins amount)
+  (define dp (make-vector (+ amount 1) (+ 1 amount)))
+  (vector-set! dp 0 0)
+  (for ([i (in-range 1 (+ amount 1))])
+    (vector-set! dp i (+ amount 1)))
+  (for ([coin (in-list coins)])
+    (for ([i (in-range coin (+ amount 1))])
+      (vector-set! dp i (min (vector-ref dp i) (+ 1 (vector-ref dp (- i coin)))))))
+  (let ([result (vector-ref dp amount)])
+    (if (= result (+ amount 1))
+        -1
+        result)))

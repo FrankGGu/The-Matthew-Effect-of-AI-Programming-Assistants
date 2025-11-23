@@ -1,0 +1,37 @@
+{
+  "id": "LCR 179",
+  "title": "查找总价格为目标值的两个商品",
+  "titleSlug": "he-wei-sde-liang-ge-shu-zi-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& price, int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] twoSum(int[] price, int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def twoSum(self, price, target):\n        \"\"\"\n        :type price: List[int]\n        :type target: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def twoSum(self, price: List[int], target: int) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* twoSum(int* price, int priceSize, int target, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] TwoSum(int[] price, int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} price\n * @param {number} target\n * @return {number[]}\n */\nvar twoSum = function(price, target) {\n    \n};",
+    "typescript": "function twoSum(price: number[], target: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $price\n     * @param Integer $target\n     * @return Integer[]\n     */\n    function twoSum($price, $target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func twoSum(_ price: [Int], _ target: Int) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun twoSum(price: IntArray, target: Int): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> twoSum(List<int> price, int target) {\n    \n  }\n}",
+    "golang": "func twoSum(price []int, target int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} price\n# @param {Integer} target\n# @return {Integer[]}\ndef two_sum(price, target)\n    \nend",
+    "scala": "object Solution {\n    def twoSum(price: Array[Int], target: Int): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn two_sum(price: Vec<i32>, target: i32) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (two-sum price target)\n  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))\n  )",
+    "erlang": "-spec two_sum(Price :: [integer()], Target :: integer()) -> [integer()].\ntwo_sum(Price, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec two_sum(price :: [integer], target :: integer) :: [integer]\n  def two_sum(price, target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func twoSum(price: Array<Int64>, target: Int64): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[3, 9, 12, 15]\n18\n[8, 21, 27, 34, 52, 66]\n61",
+  "hints": []
+}

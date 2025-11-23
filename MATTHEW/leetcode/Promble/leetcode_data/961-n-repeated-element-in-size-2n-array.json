@@ -1,0 +1,36 @@
+{
+  "id": "961",
+  "title": "N-Repeated Element in Size 2N Array",
+  "titleSlug": "n-repeated-element-in-size-2n-array",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "content": "<p>You are given an integer array <code>nums</code> with the following properties:</p>\n\n<ul>\n\t<li><code>nums.length == 2 * n</code>.</li>\n\t<li><code>nums</code> contains <code>n + 1</code> <strong>unique</strong> elements.</li>\n\t<li>Exactly one element of <code>nums</code> is repeated <code>n</code> times.</li>\n</ul>\n\n<p>Return <em>the element that is repeated </em><code>n</code><em> times</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3,3]\n<strong>Output:</strong> 3\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [2,1,2,5,3,2]\n<strong>Output:</strong> 2\n</pre><p><strong class=\"example\">Example 3:</strong></p>\n<pre><strong>Input:</strong> nums = [5,1,5,2,5,3,5,4]\n<strong>Output:</strong> 5\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= n &lt;= 5000</code></li>\n\t<li><code>nums.length == 2 * n</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>nums</code> contains <code>n + 1</code> <strong>unique</strong> elements and one of them is repeated exactly <code>n</code> times.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int repeatedNTimes(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int repeatedNTimes(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def repeatedNTimes(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def repeatedNTimes(self, nums: List[int]) -> int:\n        ",
+    "c": "int repeatedNTimes(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int RepeatedNTimes(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar repeatedNTimes = function(nums) {\n    \n};",
+    "typescript": "function repeatedNTimes(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function repeatedNTimes($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func repeatedNTimes(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun repeatedNTimes(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int repeatedNTimes(List<int> nums) {\n    \n  }\n}",
+    "golang": "func repeatedNTimes(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef repeated_n_times(nums)\n    \nend",
+    "scala": "object Solution {\n    def repeatedNTimes(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn repeated_n_times(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (repeated-n-times nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec repeated_n_times(Nums :: [integer()]) -> integer().\nrepeated_n_times(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec repeated_n_times(nums :: [integer]) :: integer\n  def repeated_n_times(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func repeatedNTimes(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,3]\n[2,1,2,5,3,2]\n[5,1,5,2,5,3,5,4]",
+  "hints": []
+}

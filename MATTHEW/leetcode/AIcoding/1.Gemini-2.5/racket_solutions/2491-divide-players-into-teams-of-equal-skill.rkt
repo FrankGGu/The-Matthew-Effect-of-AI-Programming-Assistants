@@ -1,0 +1,21 @@
+(require racket/vector)
+
+(define (divide-players skill)
+  (let* ((n (length skill))
+         (skills-vec (list->vector skill))
+         (sorted-skills-vec (vector-sort < skills-vec)))
+    (let loop ((left 0)
+               (right (- n 1))
+               (total-chemistry 0)
+               (target-sum -1))
+      (if (>= left right)
+          total-chemistry
+          (let* ((s-left (vector-ref sorted-skills-vec left))
+                 (s-right (vector-ref sorted-skills-vec right))
+                 (current-team-sum (+ s-left s-right)))
+            (if (and (not (= target-sum -1)) (not (= current-team-sum target-sum)))
+                -1
+                (loop (+ left 1)
+                      (- right 1)
+                      (+ total-chemistry (* s-left s-right))
+                      (if (= target-sum -1) current-team-sum target-sum))))))))

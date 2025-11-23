@@ -1,0 +1,15 @@
+(define (di-string-match s)
+  (let* ((n (string-length s))
+         (perm (make-vector (+ n 1)))
+         (low 0)
+         (high n)))
+    (for ((i (in-range n)))
+      (if (char=? (string-ref s i) #\I)
+          (begin
+            (vector-set! perm i low)
+            (set! low (+ low 1)))
+          (begin
+            (vector-set! perm i high)
+            (set! high (- high 1)))))
+    (vector-set! perm n low)
+    (vector->list perm)))

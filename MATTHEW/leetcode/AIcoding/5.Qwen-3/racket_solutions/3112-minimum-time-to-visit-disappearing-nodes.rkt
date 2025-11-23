@@ -1,0 +1,20 @@
+#lang racket
+
+(define (minimum-time-to-visit-disappearing-nodes n edges source time)
+  (define graph (make-hash))
+  (for-each (lambda (e)
+              (let ([u (car e)] [v (cadr e)])
+                (hash-update! graph u (λ (lst) (cons v lst)) '())
+                (hash-update! graph v (λ (lst) (cons u lst)) '())))
+            edges)
+  (define visited (make-hash))
+  (define (dfs node t)
+    (cond [(hash-has-key? visited node) (if (> t (hash-ref visited node)) (hash-set! visited node t) #f)]
+          [else (hash-set! visited node t) #t])
+    (when (and (hash-has-key? graph node) (< t time))
+      (for-each (lambda (nei)
+                  (when (dfs nei (+ t 1))
+                    (dfs nei (+ t 1))))
+                (hash-ref graph node))))
+  (dfs source 0)
+  (apply max (hash-values visited)))

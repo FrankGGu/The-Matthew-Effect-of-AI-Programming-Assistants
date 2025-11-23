@@ -1,0 +1,44 @@
+Create a Django-based personal finance tracker with the following specifications:
+
+**Technology Stack:**
+- Backend: Django 4.x with Django REST Framework
+- Frontend: Django Templates with HTMX for interactivity
+- ORM: Django ORM
+- Database: PostgreSQL (already set up in Docker)
+
+**Database Models:**
+Use these existing tables:
+- transactions (id, amount, type, category, description, transaction_date, created_at)
+- categories (id, name, type)
+
+**Features to Implement:**
+1. Add new transactions (income/expense)
+2. View transactions with month/year filtering
+3. Monthly summary dashboard
+4. Category-based spending visualization
+
+**API/Views:**
+- API endpoint for transactions (GET, POST)
+- View for monthly summary
+- Template views for all UI pages
+
+**Frontend Requirements:**
+- Use Django template language
+- Implement HTMX for dynamic content loading
+- Use Bootstrap for styling
+- Include form validation
+
+**URL Structure:**
+- / → Dashboard with monthly summary
+- /transactions/ → List and add transactions
+- /api/transactions/ → REST API endpoint
+
+**Database Configuration:**
+- ENGINE: django.db.backends.postgresql
+- NAME: personal_finance
+- USER: postgres
+- PASSWORD: financepass
+- HOST: localhost
+- PORT: 5432
+
+Generate the complete Django project with all necessary models, views, templates, and URLs.

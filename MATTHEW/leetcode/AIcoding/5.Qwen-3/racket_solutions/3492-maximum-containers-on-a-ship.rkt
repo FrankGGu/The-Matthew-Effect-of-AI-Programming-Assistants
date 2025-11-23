@@ -1,0 +1,13 @@
+(define (max-container-area height)
+  (define (area i j)
+    (* (- j i) (min (list-ref height i) (list-ref height j))))
+  (define (helper left right max-area)
+    (if (> left right)
+        max-area
+        (let ((current-area (area left right)))
+          (if (> current-area max-area)
+              (helper (+ left 1) right current-area)
+              (if (< (list-ref height left) (list-ref height right))
+                  (helper (+ left 1) right max-area)
+                  (helper left (- right 1) max-area))))))
+  (helper 0 (- (length height) 1) 0))

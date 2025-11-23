@@ -1,0 +1,33 @@
+(define (lucky-numbers matrix)
+  (let* ((rows (length matrix))
+         (cols (length (car matrix)))
+         (min-rows (make-vector rows #f))
+         (max-cols (make-vector cols #f))
+         (result '()))
+    (for ([i (in-range rows)])
+      (let loop ([j 0] [min-val (list (vector-ref (car matrix) 0) 0)])
+        (if (= j cols)
+            (vector-set! min-rows i min-val)
+            (let ([curr-val (vector-ref (list-ref matrix i) j)])
+              (if (< curr-val (car min-val))
+                  (loop (+ j 1) (list curr-val j))
+                  (loop (+ j 1) min-val))))))
+    (for ([j (in-range cols)])
+      (let loop ([i 0] [max-val (list (vector-ref (car matrix) j) 0)])
+        (if (= i rows)
+            (vector-set! max-cols j max-val)
+            (let ([curr-val (vector-ref (list-ref matrix i) j)])
+              (if (> curr-val (car max-val))
+                  (loop (+ i 1) (list curr-val i))
+                  (loop (+ i 1) max-val))))))
+
+    (for ([i (in-range rows)])
+      (let* ([min-row (vector-ref min-rows i)]
+             [min-val (car min-row)]
+             [col-index (cadr min-row)])
+        (let ([max-col (vector-ref max-cols col-index)]
+              [max-val (car max-col)]
+              [row-index (cadr max-col)])
+          (if (= i row-index)
+              (set! result (cons min-val result))))))
+    result))

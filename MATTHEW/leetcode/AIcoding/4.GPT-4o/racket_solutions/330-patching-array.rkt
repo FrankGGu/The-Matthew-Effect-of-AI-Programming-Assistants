@@ -1,0 +1,15 @@
+(define (minPatches nums n)
+  (define (helper nums n max-nums patches)
+    (if (>= max-nums n)
+        patches
+        (if (null? nums)
+            (+ patches 1)
+            (let* ((next (car nums))
+                   (current-max max-nums))
+              (if (< next current-max)
+                  (helper (cdr nums) n (+ current-max next) patches)
+                  (helper nums n (+ current-max current-max) (+ patches 1)))))))
+  (helper nums n 1 0))
+
+(define (minPatches nums n)
+  (helper nums n 1 0))

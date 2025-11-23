@@ -1,0 +1,5 @@
+(define (mice-and-cheese reward1 reward2 k)
+  (let* ((n (length reward1))
+         (diffs (map - reward1 reward2))
+         (sorted-diffs (sort diffs >)))
+    (+ (apply + reward2) (apply + (take sorted-diffs k)))))

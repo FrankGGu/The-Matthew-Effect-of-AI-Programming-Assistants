@@ -1,0 +1,7 @@
+(define/contract (min-booths demands)
+  (-> (listof string?) exact-integer?)
+  (let ([counts (make-hash)])
+    (for ([day demands])
+      (for ([ch (string->list day)])
+        (hash-update! counts ch add1 (λ () 0))))
+    (apply max (hash-values counts))))

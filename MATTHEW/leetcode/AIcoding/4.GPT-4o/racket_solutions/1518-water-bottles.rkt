@@ -1,0 +1,8 @@
+(define (numWaterBottles numBottles numExchange)
+  (define (helper bottles total)
+    (if (< bottles numExchange)
+        (+ total bottles)
+        (let ((new-bottles (quotient bottles numExchange))
+              (remaining-bottles (remainder bottles numExchange)))
+          (helper (+ new-bottles remaining-bottles) (+ total bottles)))))
+  (helper numBottles 0))

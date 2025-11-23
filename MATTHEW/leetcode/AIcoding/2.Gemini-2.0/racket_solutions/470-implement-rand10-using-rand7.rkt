@@ -1,0 +1,8 @@
+(define (rand10)
+  (let loop ()
+    (let ((r1 (- (rand7) 1))
+          (r2 (- (rand7) 1)))
+      (let ((idx (+ (* r1 7) r2)))
+        (if (< idx 40)
+            (modulo (+ idx 1) 10)
+            (loop))))))

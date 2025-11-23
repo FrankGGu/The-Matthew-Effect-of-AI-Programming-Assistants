@@ -1,0 +1,5 @@
+(define (count-odds low high)
+  (let ((n (+ 1 (- high low))))
+    (if (even? n)
+        (/ n 2)
+        (+ 1 (/ (- n 1) 2)))))

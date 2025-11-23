@@ -1,0 +1,16 @@
+(define/contract (minimum-cost sentence k)
+  (-> string? exact-integer? exact-integer?)
+  (let* ([words (string-split sentence)]
+         [n (length words)]
+         [dp (make-vector (add1 n) +inf.0)])
+    (vector-set! dp 0 0)
+    (for ([i (in-range 1 (add1 n))])
+      (let ([current-length 0])
+        (for ([j (in-range i 0 -1)])
+          (set! current-length (+ current-length (string-length (list-ref words (sub1 j)))))
+          (when (> current-length k)
+            (break))
+          (vector-set! dp i (min (vector-ref dp i)
+                                 (+ (vector-ref dp (sub1 j))
+                                 (expt (- k current-length) 2))))))
+    (vector-ref dp n)))

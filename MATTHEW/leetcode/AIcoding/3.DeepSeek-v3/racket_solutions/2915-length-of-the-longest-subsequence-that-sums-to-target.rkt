@@ -1,0 +1,11 @@
+(define/contract (length-of-longest-subsequence nums target)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([dp (make-hash '((0 . 0)))])
+    (for ([num (in-list nums)])
+      (for ([sum (in-list (hash-keys dp))])
+        (let ([new-sum (+ sum num)])
+          (when (<= new-sum target)
+            (hash-update! dp new-sum 
+                          (lambda (v) (max v (+ (hash-ref dp sum) 1)))
+                          (lambda () 0))))))
+    (hash-ref dp target -1)))

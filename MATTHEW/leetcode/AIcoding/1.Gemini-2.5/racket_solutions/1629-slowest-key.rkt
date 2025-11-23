@@ -1,0 +1,26 @@
+(define (slowest-key keyTimes)
+  (let* ((first-pair (car keyTimes))
+         (first-release-time (car first-pair))
+         (first-key-index (cadr first-pair))
+         (initial-max-duration first-release-time)
+         (initial-slowest-key-char (integer->char (+ (char->integer #\a) first-key-index)))
+         (initial-prev-time first-release-time))
+
+    (for/fold ((max-duration initial-max-duration)
+               (slowest-key-char initial-slowest-key-char)
+               (prev-time initial-prev-time))
+              ((key-time-pair (cdr keyTimes)))
+      (let* ((current-release-time (car key-time-pair))
+             (current-key-index (cadr key-time-pair))
+             (current-duration (- current-release-time prev-time))
+             (current-key-char (integer->char (+ (char->integer #\a) current-key-index))))
+
+        (cond
+          ((> current-duration max-duration)
+           (values current-duration current-key-char current-release-time))
+          ((= current-duration max-duration)
+           (if (char>? current-key-char slowest-key-char)
+               (values max-duration current-key-char current-release-time)
+               (values max-duration slowest-key-char current-release-time)))
+          (else
+           (values max-duration slowest-key-char current-release-time)))))))

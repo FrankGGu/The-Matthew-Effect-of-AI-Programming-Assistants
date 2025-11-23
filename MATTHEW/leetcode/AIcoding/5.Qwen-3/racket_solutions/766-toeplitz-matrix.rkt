@@ -1,0 +1,8 @@
+(define (is-toeplitz-matrix matrix)
+  (define rows (length matrix))
+  (define cols (length (car matrix)))
+  (for/and ((i (in-range rows)))
+    (for/and ((j (in-range cols)))
+      (or (= i 0)
+          (= j 0)
+          (= (list-ref (list-ref matrix (- i 1)) (- j 1)) (list-ref (list-ref matrix i) j)))))

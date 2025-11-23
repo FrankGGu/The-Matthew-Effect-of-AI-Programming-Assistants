@@ -1,0 +1,11 @@
+(define (replace-words dictionary sentence)
+  (define (find-root word)
+    (for/fold ([root word]) ([prefix dictionary])
+      (if (string-prefix? prefix word)
+          (if (< (string-length prefix) (string-length root))
+              prefix
+              root)
+          root)))
+  (define words (string-split sentence))
+  (define replaced-words (map find-root words))
+  (string-join replaced-words " "))

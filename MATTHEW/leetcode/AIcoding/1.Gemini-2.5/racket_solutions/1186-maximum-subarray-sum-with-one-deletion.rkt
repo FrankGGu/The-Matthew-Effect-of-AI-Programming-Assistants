@@ -1,0 +1,13 @@
+(define (maximum-subarray-sum-with-one-deletion arr)
+  (let* ((n (vector-length arr)))
+    (let loop ((i 1)
+               (dp0-current (vector-ref arr 0))
+               (dp1-current 0)
+               (max-overall (max (vector-ref arr 0) 0)))
+      (if (>= i n)
+          max-overall
+          (let* ((val (vector-ref arr i))
+                 (next-dp1 (max (+ dp1-current val) dp0-current))
+                 (next-dp0 (max val (+ dp0-current val)))
+                 (next-max-overall (max max-overall next-dp0 next-dp1)))
+            (loop (+ i 1) next-dp0 next-dp1 next-max-overall))))))

@@ -1,0 +1,20 @@
+(define (num-decodings s)
+  (let* ((n (string-length s))
+         (dp (make-vector (+ n 1) 0)))
+    (vector-set! dp 0 1)
+
+    (for ([i (in-range 1 (+ n 1))])
+      (let* ((char1 (string-ref s (sub1 i)))
+             (digit1 (- (char->integer char1) (char->integer #\0))))
+
+        (when (and (>= digit1 1) (<= digit1 9))
+          (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (sub1 i)))))
+
+        (when (>= i 2)
+          (let* ((char2 (string-ref s (sub2 i)))
+                 (digit2 (- (char->integer char2) (char->integer #\0))))
+            (when (and (>= digit2 1) (<= digit2 9))
+              (let ((num (+ (* digit2 10) digit1)))
+                (when (and (>= num 10) (<= num 26))
+                  (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (sub2 i)))))))))))
+    (vector-ref dp n)))

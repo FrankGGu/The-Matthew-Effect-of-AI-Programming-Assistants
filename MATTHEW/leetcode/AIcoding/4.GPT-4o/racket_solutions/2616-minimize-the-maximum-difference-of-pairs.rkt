@@ -1,0 +1,23 @@
+(define (minimizeMax nums p)
+  (define (can-pair-with-max-diff max-diff)
+    (define paired 0)
+    (define i 0)
+    (define n (length nums))
+    (define sorted-nums (sort nums <))
+    (while (< i (- n 1))
+      (when (<= (- (list-ref sorted-nums (+ i 1)) (list-ref sorted-nums i)) max-diff)
+        (set! paired (+ paired 1))
+        (set! i (+ i 2)))
+      (set! i (+ i 1)))
+    (>= paired p))
+
+  (define (binary-search left right)
+    (if (= left right)
+        left
+        (let ((mid (quotient (+ left right) 2)))
+          (if (can-pair-with-max-diff mid)
+              (binary-search left mid)
+              (binary-search (+ mid 1) right)))))
+
+  (binary-search 0 (- (apply max nums) (apply min nums)))
+)

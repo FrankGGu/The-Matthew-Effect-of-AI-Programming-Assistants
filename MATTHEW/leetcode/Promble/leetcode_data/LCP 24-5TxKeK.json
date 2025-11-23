@@ -1,0 +1,32 @@
+{
+  "id": "LCP 24",
+  "title": "数字游戏",
+  "titleSlug": "5TxKeK",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> numsGame(vector<int>& nums) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[] numsGame(int[] nums) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def numsGame(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: List[int]\n        \"\"\"",
+    "python3": "class Solution:\n    def numsGame(self, nums: List[int]) -> List[int]:",
+    "c": "\n\n/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* numsGame(int* nums, int numsSize, int* returnSize){\n\n}",
+    "csharp": "public class Solution {\n    public int[] NumsGame(int[] nums) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number[]}\n */\nvar numsGame = function(nums) {\n\n};",
+    "typescript": "function numsGame(nums: number[]): number[] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer[]\n     */\n    function numsGame($nums) {\n\n    }\n}",
+    "swift": "class Solution {\n    func numsGame(_ nums: [Int]) -> [Int] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun numsGame(nums: IntArray): IntArray {\n\n    }\n}",
+    "golang": "func numsGame(nums []int) []int {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer[]}\ndef nums_game(nums)\n\nend",
+    "scala": "object Solution {\n    def numsGame(nums: Array[Int]): Array[Int] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn nums_game(nums: Vec<i32>) -> Vec<i32> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[3,4,5,1,6,7]\n[1,2,3,4,5]\n[1,1,1,2,3,4]",
+  "hints": []
+}

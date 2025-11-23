@@ -1,0 +1,54 @@
+You are a senior full-stack developer. Create a gym membership system using Django REST Framework backend with Django templates frontend.
+
+**TECHNOLOGY STACK:**
+- Backend: Django 4.x with Django REST Framework
+- Database: PostgreSQL with Django ORM
+- Frontend: Django templates with HTMX for interactivity
+- Styling: Bootstrap 5
+
+**DATABASE CONNECTION:**
+- Already configured with PostgreSQL: gym_management database
+- Username: postgres, Password: gymsecret
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - Admin interface for managing plans
+   - Plan listing page for members
+
+2. **Member Management**
+   - Member registration and profile management
+   - Member directory with admin controls
+
+3. **Membership Card System**
+   - Card issuance and management
+   - Status tracking and expiration handling
+
+4. **Check-in System**
+   - Check-in form with validation
+   - Check-in history and reports
+
+5. **Payment Processing**
+   - Payment recording and history
+   - Payment reports and summaries
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use Django ORM for all database operations
+- Implement REST API with Django REST Framework
+- Create Django models for all database tables
+- Use Django authentication system with appropriate permissions
+- Implement class-based views for API endpoints
+- Use Django templates with HTMX for dynamic frontend
+- Add form validation with Django forms
+- Implement proper error handling
+- Use Bootstrap 5 for responsive UI design
+
+**CODE STRUCTURE:**
+- Django models for all database entities
+- Serializers for API data transformation
+- Viewsets for API endpoints
+- URL routing configuration
+- Templates for all frontend pages
+- Static files for CSS and JavaScript
+
+Generate the complete Django project with all necessary apps, models, views, templates, and configuration.

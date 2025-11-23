@@ -1,0 +1,17 @@
+(require racket/base)
+
+(define (number-of-subarrays-with-gcd-equal-to-k nums k)
+  (let* ([n (vector-length nums)]
+         [count 0])
+    (for ([i (in-range n)])
+      (let ([current-gcd 0])
+        (for ([j (in-range i n)])
+          (let ([num-j (vector-ref nums j)])
+            (when (not (zero? (remainder num-j k)))
+              (break))
+            (set! current-gcd (gcd current-gcd num-j))
+            (when (= current-gcd k)
+              (set! count (+ count 1)))
+            (when (< current-gcd k)
+              (break))))))
+    count))

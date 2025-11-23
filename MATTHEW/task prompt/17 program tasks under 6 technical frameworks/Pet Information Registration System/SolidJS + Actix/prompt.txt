@@ -1,0 +1,43 @@
+Create a Pet Information Registration System using the emerging Rust stack: SolidJS frontend with Actix Web backend and SeaORM.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (Actix Web):**
+1. Implement REST API using Actix Web framework
+2. Use SeaORM as the async ORM with entity definitions
+3. Create handlers for all CRUD operations
+4. Add proper validation and error handling
+5. Implement CORS middleware
+6. Include proper logging
+7. Use Rust's strong typing for safety
+
+**Frontend Requirements (SolidJS):**
+1. Create highly performant UI using SolidJS
+2. Implement components for:
+   - Pet list with search
+   - Pet form (add/edit)
+   - Vaccination records
+   - Vaccination form
+3. Use Solid Router for navigation
+4. Utilize Solid's fine-grained reactivity
+5. Implement form validation
+6. Focus on performance and minimal bundle size
+
+**API Endpoints:**
+- GET /api/pets - List pets
+- POST /api/pets - Create pet
+- GET /api/pets/{id} - Get pet details
+- PUT /api/pets/{id} - Update pet
+- DELETE /api/pets/{id} - Delete pet
+- GET /api/pets/{id}/vaccinations - Get pet's vaccinations
+- POST /api/vaccinations - Add vaccination
+- PUT /api/vaccinations/{id} - Update vaccination
+- DELETE /api/vaccinations/{id} - Delete vaccination
+
+**Database Connection:**
+- Database URL: "postgres://postgres:petpassword@localhost:5432/pet_registry"
+
+Generate complete code with proper project structure, Cargo.toml dependencies, and all configurations needed for a high-performance, memory-safe application.

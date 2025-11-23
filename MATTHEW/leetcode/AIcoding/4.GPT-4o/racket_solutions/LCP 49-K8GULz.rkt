@@ -1,0 +1,21 @@
+(define (canCompleteCircuit gas cost)
+  (define n (length gas))
+  (define (helper start)
+    (define (loop idx total-gas total-cost)
+      (if (= idx n)
+          (if (>= total-gas total-cost) start -1)
+          (let ((new-gas (+ total-gas (list-ref gas idx)))
+                (new-cost (+ total-cost (list-ref cost idx))))
+            (if (>= new-gas new-cost)
+                (loop (+ idx 1) new-gas new-cost)
+                (if (= idx start)
+                    -1
+                    (loop (modulo (+ idx 1) n) 0 0))))))
+    (loop start 0 0))
+  (let loop ((i 0))
+    (if (= i n)
+        -1
+        (let ((result (helper i)))
+          (if (>= result 0)
+              result
+              (loop (+ i 1)))))))

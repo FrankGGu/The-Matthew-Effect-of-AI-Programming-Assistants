@@ -1,0 +1,46 @@
+#lang racket
+
+(define (number-of-ways-to-arrive-at-destination n edges time)
+  (define graph (make-hash))
+  (for ([edge edges])
+    (define u (car edge))
+    (define v (cadr edge))
+    (define t (caddr edge))
+    (hash-set! graph u (cons (cons v t) (hash-ref graph u '()))))
+
+  (define dist (make-hash))
+  (for ([i (in-range n)])
+    (hash-set! dist i +inf.0))
+  (hash-set! dist 0 0)
+
+  (define pq (list (cons 0 0)))
+  (set! pq (sort pq (lambda (a b) (< (car a) (car b)))))
+
+  (define ways (make-hash))
+  (for ([i (in-range n)])
+    (hash-set! ways i 0))
+  (hash-set! ways 0 1)
+
+  (let loop ()
+    (when (not (null? pq))
+      (define current (car pq))
+      (set! pq (cdr pq))
+      (define d (car current))
+      (define u (cdr current))
+      (when (< d (hash-ref dist u))
+        (loop))
+      (for ([neighbor (hash-ref graph u '())])
+        (define v (car neighbor))
+        (define t (cdr neighbor))
+        (define new-d (+ d t))
+        (if (< new-d (hash-ref dist v))
+            (begin
+              (hash-set! dist v new-d)
+              (hash-set! ways v (hash-ref ways u))
+              (set! pq (cons (cons new-d v) pq))
+              (set! pq (sort pq (lambda (a b) (< (car a) (car b))))))
+            (when (= new-d (hash-ref dist v))
+              (hash-set! ways v (+ (hash-ref ways v) (hash-ref ways u))))))
+      (loop)))
+
+  (hash-ref ways (sub1 n)))

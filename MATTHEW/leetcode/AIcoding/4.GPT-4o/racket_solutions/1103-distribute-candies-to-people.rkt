@@ -1,0 +1,12 @@
+(define (distributeCandies candies num_people)
+  (define (helper candies num_people index)
+    (if (<= candies 0)
+        (vector->list (vector (for/list ([i (in-range num_people)])
+                               (if (< i index)
+                                   (vector-ref result i)
+                                   (vector-ref result i)))))
+        (begin
+          (vector-set! result index (+ (vector-ref result index) (min candies (+ index 1))))
+          (helper (- candies (+ index 1)) num_people (modulo (+ index 1) num_people))))
+  (define result (make-vector num_people 0))
+  (helper candies num_people 0))

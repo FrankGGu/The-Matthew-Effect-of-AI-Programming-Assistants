@@ -1,0 +1,12 @@
+(define (delete-middle-node head)
+  (if (or (null? head) (null? (cdr head)))
+      head
+      (let ((slow head)
+            (fast head))
+        (let loop ()
+          (when (and (not (null? (cdr fast))) (not (null? (cdr (cdr fast)))))
+            (set! slow (cdr slow))
+            (set! fast (cdr (cdr fast)))
+            (loop)))
+        (set-cdr! slow (cddr slow))
+        head)))

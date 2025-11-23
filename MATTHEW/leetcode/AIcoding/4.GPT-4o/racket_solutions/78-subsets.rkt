@@ -1,0 +1,10 @@
+(define (subsets nums)
+  (define (helper current index)
+    (if (= index (length nums))
+        (list current)
+        (append (helper current (+ index 1))
+                (helper (cons (list-ref nums index) current) (+ index 1)))))
+  (helper '() 0))
+
+(define (subsetsWrapper nums)
+  (map (lambda (x) (reverse x)) (subsets nums)))

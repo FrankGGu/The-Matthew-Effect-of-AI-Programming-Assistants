@@ -1,0 +1,35 @@
+Develop a meeting room booking system using React 18 for frontend and Express.js with Prisma for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, department, created_at
+- meeting_rooms: id, name, location, capacity, amenities, is_active, created_at
+- bookings: id, room_id, user_id, title, description, start_time, end_time, status, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - User authentication with JWT
+   - Profile management
+   - Department filtering
+
+2. Meeting Room Management:
+   - Full CRUD operations for rooms
+   - Real-time availability checking
+   - Advanced filtering options
+
+3. Booking Management:
+   - Create, view, edit, delete bookings
+   - Time conflict detection
+   - Status management with workflow
+
+Technical Specifications:
+- Frontend: React 18 with functional components and hooks, React Router for navigation
+- Backend: Express.js with JWT authentication, Prisma as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:meetingpass@localhost:5432/meeting_booking
+- API: RESTful endpoints with proper error handling
+
+Generate complete, runnable code including:
+- Express.js server with routes, middleware, and controllers
+- React components with modern hooks
+- Prisma schema and migrations
+- Authentication system
+- Setup and deployment instructions

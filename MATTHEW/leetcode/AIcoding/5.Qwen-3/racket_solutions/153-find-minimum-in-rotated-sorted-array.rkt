@@ -1,0 +1,8 @@
+(define (find-min nums)
+  (let loop ([left 0] [right (sub1 (length nums))])
+    (if (<= left right)
+        (let ([mid (quotient (+ left right) 2)])
+          (if (> (list-ref nums mid) (list-ref nums right))
+              (loop (add1 mid) right)
+              (loop left (sub1 mid))))
+        (list-ref nums left))))

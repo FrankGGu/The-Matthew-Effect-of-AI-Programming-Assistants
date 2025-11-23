@@ -1,0 +1,18 @@
+(define (least-bricks wall)
+  (define (count-edges)
+    (let ((edge-count (make-hash)))
+      (for-each
+       (lambda (row)
+         (let loop ((pos 0) (i 0))
+           (when (< i (length row))
+             (let ((brick (list-ref row i)))
+               (set! pos (+ pos brick))
+               (when (< pos (apply + row))
+                 (hash-update! edge-count pos add1 0))
+               (loop pos (+ i 1)))))
+       wall)
+      (hash-values edge-count)))
+  (let ((edges (count-edges)))
+    (if (null? edges)
+        0
+        (apply max edges))))

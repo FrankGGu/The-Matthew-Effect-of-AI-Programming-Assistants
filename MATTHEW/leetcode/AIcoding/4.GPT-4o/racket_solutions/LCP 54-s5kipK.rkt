@@ -1,0 +1,12 @@
+(define (maximumScore a b c)
+  (define scores (list a b c))
+  (define sorted-scores (sort scores >))
+  (define x (car sorted-scores))
+  (define y (cadr sorted-scores))
+  (define z (caddr sorted-scores))
+  (if (>= y 1)
+      (+ 1 (maximumScore (- x 1) (- y 1) z))
+      0)))
+
+(define (maximumScoreWrapper a b c)
+  (maximumScore a b c))

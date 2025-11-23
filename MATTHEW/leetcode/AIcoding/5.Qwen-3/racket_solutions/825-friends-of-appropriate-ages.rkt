@@ -1,0 +1,5 @@
+(define (num-friends ages)
+  (define (count x)
+    (for/sum ([a (in-list ages)])
+      (if (and (<= 0.5 (* x a)) (< x a)) 1 0)))
+  (for/sum ([x (in-list ages)]) (count x)))

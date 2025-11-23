@@ -1,0 +1,11 @@
+(define (min-pair-removal nums)
+  (define (count-freq lst)
+    (foldl (lambda (x acc) (hash-update! acc x (lambda (v) (+ v 1)) 0)) (hash) lst))
+  (define (pair-count freq)
+    (foldl (lambda (x acc) (+ acc (quotient (hash-ref freq x) 2))) 0 (hash-keys freq)))
+  (define (calculate-removals freq)
+    (let ((total (apply + (hash-values freq))))
+      (- total (pair-count freq))))
+  (calculate-removals (count-freq nums)))
+
+(min-pair-removal '(1 3 2 1 3 2))

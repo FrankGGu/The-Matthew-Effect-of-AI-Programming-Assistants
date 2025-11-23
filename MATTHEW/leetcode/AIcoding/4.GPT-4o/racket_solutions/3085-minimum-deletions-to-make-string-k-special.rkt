@@ -1,0 +1,12 @@
+(define (minimum-deletions s k)
+  (define n (string-length s))
+  (define char-count (make-vector 26 0))
+  (for ((c (in-string s)))
+    (vector-set! char-count (- (char->integer c) (char->integer #\a)) 
+                  (+ 1 (vector-ref char-count (- (char->integer c) (char->integer #\a))))))
+  (define freq (vector->list char-count))
+  (define sorted-freq (sort freq >))
+  (define total-deletions (apply + (drop sorted-freq k)))
+  total-deletions))
+
+(minimum-deletions "aabbcc" 2)

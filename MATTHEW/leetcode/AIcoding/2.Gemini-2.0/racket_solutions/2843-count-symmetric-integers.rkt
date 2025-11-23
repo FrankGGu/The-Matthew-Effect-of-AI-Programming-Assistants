@@ -1,0 +1,11 @@
+(define (count-symmetric-integers low high)
+  (let loop ([n low] [count 0])
+    (if (> n high)
+        count
+        (let ([s (number->string n)])
+          (if (and (equal? (string-length s) (string->number (string-length s)))
+                   (even? (string-length s))
+                   (equal? (apply + (map string->number (string->list (substring s 0 (/ (string-length s) 2)))))
+                           (apply + (map string->number (string->list (substring s (/ (string-length s) 2) (string-length s)))))))
+              (loop (+ n 1) (+ count 1))
+              (loop (+ n 1) count))))))

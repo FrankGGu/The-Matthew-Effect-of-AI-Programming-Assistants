@@ -1,0 +1,44 @@
+impl Solution {
+
+use std::collections::VecDeque;
+
+struct Solution {}
+
+impl Solution {
+    pub fn eval_rpn(tokens: Vec<String>) -> i32 {
+        let mut stack = Vec::new();
+
+        for token in tokens {
+            match token.as_str() {
+                "+" => {
+                    let b = stack.pop().unwrap();
+                    let a = stack.pop().unwrap();
+                    stack.push(a + b);
+                },
+                "-" => {
+                    let b = stack.pop().unwrap();
+                    let a = stack.pop().unwrap();
+                    stack.push(a - b);
+                },
+                "*" => {
+                    let b = stack.pop().unwrap();
+                    let a = stack.pop().unwrap();
+                    stack.push(a * b);
+                },
+                "/" => {
+                    let b = stack.pop().unwrap();
+                    let a = stack.pop().unwrap();
+                    stack.push(a / b);
+                },
+                _ => {
+                    if let Ok(num) = token.parse::<i32>() {
+                        stack.push(num);
+                    }
+                }
+            }
+        }
+
+        stack.pop().unwrap()
+    }
+}
+}

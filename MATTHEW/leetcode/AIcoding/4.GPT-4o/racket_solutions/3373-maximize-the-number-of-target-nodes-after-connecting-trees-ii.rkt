@@ -1,0 +1,27 @@
+(define (maximize-number-of-target-nodes edges)
+  (define n (length edges))
+  (define graph (make-vector n '()))
+  (for-each (lambda (edge)
+              (let ((u (car edge))
+                    (v (cadr edge)))
+                (vector-set! graph u (cons v (vector-ref graph u)))
+                (vector-set! graph v (cons u (vector-ref graph v)))))
+            edges)
+  (define (dfs node visited)
+    (if (vector-ref visited node)
+        0
+        (begin
+          (vector-set! visited node #t)
+          (define count 1)
+          (for-each (lambda (neighbor)
+                      (set! count (+ count (dfs neighbor visited))))
+                    (vector-ref graph node))
+          count)))
+  (define visited (make-vector n #f))
+  (define total-target-nodes (for/sum ((i (in-range n)))
+                                 (if (vector-ref visited i)
+                                     0
+                                     (dfs i visited))))
+  total-target-nodes)
+
+(maximize-number-of-target-nodes [[0 1] [1 2] [2 3]])

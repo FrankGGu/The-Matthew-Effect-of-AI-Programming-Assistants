@@ -1,0 +1,6 @@
+(define (length-of-last-word s)
+  (define (helper lst count)
+    (cond ((null? lst) count)
+          ((equal? (car lst) #\space) (helper (cdr lst) 0))
+          (else (helper (cdr lst) (+ count 1)))))
+  (helper (string->list s) 0))

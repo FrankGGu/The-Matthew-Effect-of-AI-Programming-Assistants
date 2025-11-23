@@ -1,0 +1,45 @@
+(define (shortest-distance-after-road-addition-queries n edges queries)
+  (define adj (make-vector n (list)))
+  (for ([edge edges])
+    (let ([u (car edge)] [v (cadr edge)] [w (caddr edge)])
+      (set-vector! adj u (cons (list v w) (vector-ref adj u)))
+      (set-vector! adj v (cons (list u w) (vector-ref adj v)))))
+
+  (define (dijkstra start)
+    (define dist (make-vector n #inf.0))
+    (vector-set! dist start 0.0)
+    (define pq (make-heap < #:key (lambda (x) (vector-ref dist (car x)))))
+    (heap-add! pq (list start 0.0))
+
+    (while (not (heap-empty? pq))
+      (let* ([u (car (heap-remove-min! pq))])
+        (for ([neighbor (vector-ref adj u)])
+          (let ([v (car neighbor)] [w (cadr neighbor)])
+            (when (> (+ (vector-ref dist u) w) (vector-ref dist v))
+                (continue))
+            (when (< (+ (vector-ref dist u) w) (vector-ref dist v))
+              (vector-set! dist v (+ (vector-ref dist u) w))
+              (heap-add! pq (list v (vector-ref dist v))))))))
+    dist)
+
+  (define dist-matrix (make-vector n (list)))
+  (for ([i (range n)])
+    (vector-set! dist-matrix i (dijkstra i)))
+
+  (define result (list))
+  (for ([query queries])
+    (let ([u (car query)] [v (cadr query)] [w (caddr query)])
+      (for ([i (range n)])
+        (for ([j (range n)])
+          (let ([old-dist (vector-ref (vector-ref dist-matrix i) j)]
+                [new-dist (min old-dist
+                             (+ (vector-ref (vector-ref dist-matrix i) u) w (vector-ref (vector-ref dist-matrix v) j))
+                             (+ (vector-ref (vector-ref dist-matrix i) v) w (vector-ref (vector-ref dist-matrix u) j)))])
+            (vector-set! (vector-ref dist-matrix i) j new-dist))))
+
+      (define total-dist (for/sum ([i (range n)])
+                           (for/sum ([j (range i n)])
+                             (vector-ref (vector-ref dist-matrix i) j))))
+      (set! result (append result (list total-dist)))))
+
+  result)

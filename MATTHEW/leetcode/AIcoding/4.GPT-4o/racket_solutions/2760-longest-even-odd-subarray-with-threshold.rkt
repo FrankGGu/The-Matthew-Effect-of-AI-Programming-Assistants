@@ -1,0 +1,18 @@
+(define (longest-even-odd-threshold arr threshold)
+  (define (is-even? n) (= (mod n 2) 0))
+  (define (helper idx len max-len)
+    (if (>= idx (length arr))
+        max-len
+        (let* ((current (list-ref arr idx))
+               (prev (if (> idx 0) (list-ref arr (- idx 1)) #f))
+               (is-current-even (is-even? current))
+               (is-prev-even (is-even? prev)))
+          (if (and (<= current threshold)
+                   (or (not prev)
+                       (not (= (is-current-even is-prev-even) (is-current-even is-current-even)))))
+              (helper (+ idx 1) (+ len 1) (max max-len (+ len 1))
+              (helper (+ idx 1) 0 max-len)))))
+  (helper 0 0 0))
+
+(define (longestEvenOdd arr threshold)
+  (longest-even-odd-threshold arr threshold))

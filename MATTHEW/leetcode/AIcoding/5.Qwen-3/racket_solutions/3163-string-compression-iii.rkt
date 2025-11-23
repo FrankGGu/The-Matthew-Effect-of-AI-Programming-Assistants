@@ -1,0 +1,12 @@
+(define (compressed-string s)
+  (define (helper i res)
+    (if (= i (string-length s))
+        res
+        (let* ((current (string-ref s i))
+               (count 1)
+               (j (+ i 1)))
+          (while (and (< j (string-length s)) (char=? (string-ref s j) current))
+            (set! count (+ count 1))
+            (set! j (+ j 1)))
+          (helper j (string-append res (string current) (number->string count))))))
+  (helper 0 ""))

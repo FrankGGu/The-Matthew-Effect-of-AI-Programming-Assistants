@@ -1,0 +1,15 @@
+(define (queue-time customers n)
+  (let ((workers (make-vector n 0)))
+    (for-each
+     (lambda (time)
+       (let ((min-time (vector-ref workers 0))
+             (min-index 0))
+         (for-each
+          (lambda (i)
+            (when (< (vector-ref workers i) min-time)
+              (set! min-time (vector-ref workers i))
+              (set! min-index i)))
+          (range n))
+         (vector-set! workers min-index (+ (vector-ref workers min-index) time))))
+     customers)
+    (apply max (vector->list workers))))

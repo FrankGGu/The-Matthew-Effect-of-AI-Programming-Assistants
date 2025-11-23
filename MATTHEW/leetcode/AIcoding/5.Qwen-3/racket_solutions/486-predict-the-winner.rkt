@@ -1,0 +1,8 @@
+(define (predict-the-winner nums)
+  (define (helper start end)
+    (if (>= start end)
+        (list (list (list nums start) (list nums end)))
+        (let* ((pick-first (- (nums start) (helper (+ start 1) end)))
+               (pick-last (- (nums end) (helper start (- end 1)))))
+          (max pick-first pick-last))))
+  (>= (helper 0 (- (length nums) 1)) 0))

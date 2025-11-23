@@ -1,0 +1,12 @@
+(define (find-tilt root)
+  (letrec ((tilt-sum (box 0))
+           (node-sum (lambda (node)
+                       (if (null? node)
+                           0
+                           (let* ((left-sum (node-sum (car node)))
+                                  (right-sum (node-sum (cdr node)))
+                                  (current-tilt (abs (- left-sum right-sum))))
+                             (box-set! tilt-sum (+ (unbox tilt-sum) current-tilt))
+                             (+ (car (cddr node)) left-sum right-sum))))))
+    (node-sum root)
+    (unbox tilt-sum)))

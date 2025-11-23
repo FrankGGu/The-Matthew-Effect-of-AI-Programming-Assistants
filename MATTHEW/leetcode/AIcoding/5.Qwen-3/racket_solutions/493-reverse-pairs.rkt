@@ -1,0 +1,35 @@
+#lang racket
+
+(define (reverse-pairs nums)
+  (define (merge-sort arr start end)
+    (if (> start end)
+        0
+        (let ((mid (quotient (+ start end) 2)))
+          (let ((count (merge-sort arr start mid)))
+            (set! count (+ count (merge-sort arr (+ mid 1) end)))
+            (let ((i start) (j (+ mid 1)) (k 0) (temp (make-vector (- end start + 1) 0)))
+              (while (and (<= i mid) (<= j end))
+                (if (<= (vector-ref arr i) (vector-ref arr j))
+                    (begin
+                      (vector-set! temp k (vector-ref arr i))
+                      (set! i (+ i 1)))
+                    (begin
+                      (vector-set! temp k (vector-ref arr j))
+                      (set! count (+ count (- mid i + 1)))
+                      (set! j (+ j 1))))
+                (set! k (+ k 1)))
+              (while (<= i mid)
+                (vector-set! temp k (vector-ref arr i))
+                (set! i (+ i 1))
+                (set! k (+ k 1)))
+              (while (<= j end)
+                (vector-set! temp k (vector-ref arr j))
+                (set! j (+ j 1))
+                (set! k (+ k 1)))
+              (let ((l 0))
+                (while (< l (- end start + 1))
+                  (vector-set! arr (+ start l) (vector-ref temp l))
+                  (set! l (+ l 1))))
+              count)))))
+
+  (merge-sort nums 0 (- (vector-length nums) 1)))

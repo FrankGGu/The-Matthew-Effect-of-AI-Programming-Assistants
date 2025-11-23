@@ -1,0 +1,18 @@
+(define (get-warehouse-stock products)
+  (foldl (lambda (product acc)
+            (define id (car product))
+            (define quantity (cadr product))
+            (define current (hash-ref acc id 0))
+            (hash-set! acc id (+ current quantity)))
+            acc)
+          (hash)
+          products))
+
+(define (get-warehouse-stock-sorted products)
+  (define stock (get-warehouse-stock products))
+  (hash->list stock))
+
+(define (get-warehouse-stock-sorted-unique products)
+  (define stock (get-warehouse-stock-sorted products))
+  (define unique-ids (map car stock))
+  (sort unique-ids <))

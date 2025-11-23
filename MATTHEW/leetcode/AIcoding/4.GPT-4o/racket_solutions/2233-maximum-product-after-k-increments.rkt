@@ -1,0 +1,13 @@
+(define (maximum-product nums k)
+  (define (modulo-product lst)
+    (apply * (map (lambda (x) (mod x (expt 10 9))) lst)))
+  (define sorted-nums (sort nums <))
+  (define increment (λ (lst) 
+                     (if (null? lst) '()
+                         (cons (+ 1 (car lst)) (cdr lst)))))
+  (define max-product 1)
+  (for ((i (in-range k)))
+    (set! sorted-nums (increment sorted-nums)))
+  (modulo-product sorted-nums))
+
+(maximum-product '(1 2 3) 3)

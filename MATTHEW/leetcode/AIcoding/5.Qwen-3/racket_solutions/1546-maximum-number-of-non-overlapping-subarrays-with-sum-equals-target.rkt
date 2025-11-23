@@ -1,0 +1,17 @@
+(define (max-number-of-non-overlapping-subarrays-with-sum-equals-target nums target)
+  (let ([n (length nums)])
+    (let ([prefix-sum (make-vector n 0)]
+          [sum-set (set)])
+      (vector-set! prefix-sum 0 (car nums))
+      (for ([i (in-range 1 n)])
+        (vector-set! prefix-sum i (+ (vector-ref prefix-sum (- i 1)) (list-ref nums i))))
+      (let ([result 0]
+            [current-sum 0])
+        (for ([i (in-range n)])
+          (set-add! sum-set current-sum)
+          (when (set-member? sum-set (- (vector-ref prefix-sum i) target))
+            (set! result (+ result 1))
+            (set! current-sum 0)
+            (set-clear! sum-set))
+          (set! current-sum (+ current-sum (list-ref nums i))))
+        result))))

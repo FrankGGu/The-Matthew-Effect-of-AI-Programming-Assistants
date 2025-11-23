@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Solution {
+    public int shortestSubarray(int[] nums, int K) {
+        int n = nums.length;
+        long[] prefixSum = new long[n + 1];
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i];
+        }
+
+        Deque<Integer> deque = new ArrayDeque<>();
+        int minLength = Integer.MAX_VALUE;
+
+        for (int i = 0; i <= n; i++) {
+            while (!deque.isEmpty() && prefixSum[i] - prefixSum[deque.peekFirst()] >= K) {
+                minLength = Math.min(minLength, i - deque.pollFirst());
+            }
+            while (!deque.isEmpty() && prefixSum[i] <= prefixSum[deque.peekLast()]) {
+                deque.pollLast();
+            }
+            deque.addLast(i);
+        }
+
+        return minLength == Integer.MAX_VALUE ? -1 : minLength;
+    }
+}

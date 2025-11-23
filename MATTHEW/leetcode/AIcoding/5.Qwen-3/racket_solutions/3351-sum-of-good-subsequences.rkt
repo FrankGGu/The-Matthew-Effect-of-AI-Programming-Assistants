@@ -1,0 +1,18 @@
+#lang racket
+
+(define (solve s)
+  (define dp (make-hash))
+  (define (get k)
+    (hash-ref dp k 0))
+  (define (put k v)
+    (hash-set! dp k v))
+  (define (mod x)
+    (modulo x 1000000007))
+  (define res 0)
+  (for ([c s])
+    (define prev (get c))
+    (define new-val (mod (+ (get #\_) prev 1)))
+    (put c new-val)
+    (set! res (mod (+ res new-val))))
+  (put #\_ (mod (+ (get #\_) res)))
+  (get #\_))

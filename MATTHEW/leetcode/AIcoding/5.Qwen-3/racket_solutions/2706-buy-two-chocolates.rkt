@@ -1,0 +1,5 @@
+(define (buy-two-chocolates prices)
+  (let* ((sorted (sort prices <))
+         (min1 (car sorted))
+         (min2 (cadr sorted)))
+    (+ min1 min2)))

@@ -1,0 +1,12 @@
+(define (top-k-frequent nums k)
+  (let* ((counts (make-hash))
+         (n (length nums)))
+    (for-each (lambda (num)
+                (hash-update! counts num (lambda (v) (+ v 1)) 1))
+              nums)
+    (let ((heap (make-heap < #:key (lambda (x) (hash-ref counts x)))))
+      (hash-for-each counts (lambda (key val) (heap-add! heap key)))
+      (let loop ((result '()) (i 0))
+        (if (= i k)
+            result
+            (loop (cons (heap-remove-min! heap) result) (+ i 1)))))))

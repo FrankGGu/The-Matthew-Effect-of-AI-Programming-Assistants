@@ -1,0 +1,26 @@
+(define/contract (color-the-array n queries)
+  (-> exact-integer? (listof (listof exact-integer?)) (listof exact-integer?))
+  (let ([arr (make-vector n 0)]
+        [res '()]
+        [count 0])
+    (for ([query (in-list queries)]
+          [i (in-naturals)])
+      (let ([idx (first query)]
+            [color (second query)])
+        (when (< idx n)
+          (let ([old-color (vector-ref arr idx)])
+            (when (>= idx 1)
+              (let ([left (vector-ref arr (- idx 1))])
+                (when (and (not (= old-color 0)) (= left old-color))
+                  (set! count (- count 1)))
+                (when (and (not (= color 0)) (= left color))
+                  (set! count (+ count 1)))))
+            (when (< idx (- n 1))
+              (let ([right (vector-ref arr (+ idx 1))])
+                (when (and (not (= old-color 0)) (= right old-color))
+                  (set! count (- count 1)))
+                (when (and (not (= color 0)) (= right color))
+                  (set! count (+ count 1)))))
+            (vector-set! arr idx color)
+            (set! res (cons count res)))))
+    (reverse res)))

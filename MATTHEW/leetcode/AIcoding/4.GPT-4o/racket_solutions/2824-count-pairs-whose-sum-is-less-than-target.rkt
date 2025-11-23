@@ -1,0 +1,10 @@
+(define (countPairs nums target)
+  (define sorted (sort nums <))
+  (define (count i j count)
+    (cond
+      ((>= i j) count)
+      ((< (+ (list-ref sorted i) (list-ref sorted j)) target)
+       (count (+ i 1) j (+ count (- j i)))
+       )
+      (else (count i (- j 1) count))))
+  (count 0 (sub1 (length sorted)) 0))

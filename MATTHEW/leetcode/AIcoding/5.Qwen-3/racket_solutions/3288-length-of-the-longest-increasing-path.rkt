@@ -1,0 +1,29 @@
+(define (longest-increasing-path matrix)
+  (define rows (length matrix))
+  (define cols (if (> rows 0) (length (car matrix)) 0))
+  (define dp (make-vector rows (make-vector cols -1)))
+  (define directions (list (cons 0 1) (cons 1 0) (cons 0 -1) (cons -1 0)))
+
+  (define (dfs i j)
+    (if (= (vector-ref (vector-ref dp i) j) -1)
+        (let ([max-path 1])
+          (for-each
+           (lambda (d)
+             (let* ([ni (+ i (car d))]
+                    [nj (+ j (cdr d))])
+               (when (and (>= ni 0) (< ni rows) (>= nj 0) (< nj cols))
+                 (when (> (vector-ref (vector-ref matrix ni) nj) (vector-ref (vector-ref matrix i) j))
+                   (set! max-path (max max-path (+ (dfs ni nj) 1)))))))
+           directions)
+          (vector-set! (vector-ref dp i) j max-path))
+        (vector-ref (vector-ref dp i) j))
+    (vector-ref (vector-ref dp i) j))
+
+  (define (main)
+    (let ([max-length 0])
+      (for ([i (in-range rows)])
+        (for ([j (in-range cols)])
+          (set! max-length (max max-length (dfs i j)))))
+      max-length))
+
+  (main))

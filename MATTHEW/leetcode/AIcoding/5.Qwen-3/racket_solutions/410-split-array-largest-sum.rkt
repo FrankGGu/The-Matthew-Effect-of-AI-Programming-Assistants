@@ -1,0 +1,18 @@
+(define (split-array-largest-sum nums m)
+  (define (can-split? nums m max-sum)
+    (let loop ((count 1) (current-sum 0))
+      (cond ((null? nums) #t)
+            ((> (+ current-sum (car nums)) max-sum)
+             (loop (+ count 1) (car nums)))
+            (else
+             (loop count (+ current-sum (car nums)))))))
+
+  (let ((left (apply max nums))
+        (right (apply + nums)))
+    (let loop ((l left) (r right))
+      (if (<= l r)
+          (let ((mid (quotient (+ l r) 2)))
+            (if (can-split? nums m mid)
+                (loop l (- mid 1))
+                (loop (+ mid 1) r)))
+          l))))

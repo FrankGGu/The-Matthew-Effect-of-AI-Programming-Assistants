@@ -1,0 +1,7 @@
+(define (movement-of-robots nums s)
+  (let* ((n (length nums))
+         (moves (string->number s))
+         (positions (sort nums <))
+         (new-positions (map (lambda (pos) (modulo (+ pos moves) 1000000007)) positions))
+         (total-distance (foldl + 0 (map (lambda (a b) (abs (- a b))) new-positions positions))))
+    (modulo total-distance 1000000007)))

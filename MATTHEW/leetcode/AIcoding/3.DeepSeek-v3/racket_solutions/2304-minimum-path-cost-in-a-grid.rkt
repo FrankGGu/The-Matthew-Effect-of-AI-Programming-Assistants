@@ -1,0 +1,17 @@
+(define/contract (min-path-cost grid edges)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)) exact-integer?)
+  (let* ([m (length grid)]
+         [n (length (car grid))]
+         [dp (make-vector m (make-vector n 0))])
+    (for ([i (in-range m)])
+      (for ([j (in-range n)])
+        (if (= i 0)
+            (vector-set! (vector-ref dp i) j (list-ref (list-ref grid i) j))
+            (let ([min-cost +inf.0])
+              (for ([k (in-range n)])
+                (let ([cost (+ (vector-ref (vector-ref dp (- i 1)) k)
+                               (list-ref (list-ref edges k) j))])
+                  (when (< cost min-cost)
+                    (set! min-cost cost))))
+              (vector-set! (vector-ref dp i) j (+ min-cost (list-ref (list-ref grid i) j))))))))
+    (apply min (vector->list (vector-ref dp (- m 1))))))

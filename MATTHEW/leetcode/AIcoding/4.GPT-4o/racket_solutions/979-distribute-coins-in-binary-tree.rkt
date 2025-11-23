@@ -1,0 +1,12 @@
+(define (distribute-coins root)
+  (define (helper node)
+    (if (null? node)
+        0
+        (let* ((left (helper (car node)))
+               (right (helper (cadr node)))
+               (curr-coins (+ left right (- (caddr node) 1))))
+          (set! moves (+ moves (abs curr-coins))
+          curr-coins)))
+  (define moves 0)
+  (helper root)
+  moves)

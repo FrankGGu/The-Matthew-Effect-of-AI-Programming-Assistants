@@ -1,0 +1,17 @@
+(define (duplicate-zeros arr)
+  (let* ([n (vector-length arr)]
+         [zeros (for/sum ([i (in-range n)])
+                    (if (= (vector-ref arr i) 0) 1 0))]
+         [new-n (+ n zeros)])
+    (for/list ([i (in-range (- n 1) -1 -1)])
+      (let ([j (+ i zeros)])
+        (when (>= j n)
+          (set! zeros (- zeros 1))
+          (set! j (+ i zeros)))
+        (when (>= j n)
+          (continue))
+        (vector-set! arr j (vector-ref arr i))
+        (when (and (= (vector-ref arr i) 0) (< (+ i zeros) n))
+          (set! zeros (- zeros 1))
+          (vector-set! arr (+ i zeros) 0))))
+    (void)))

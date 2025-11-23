@@ -1,0 +1,5 @@
+(define (count-bits n)
+  (let loop ((i 0) (result '()))
+    (if (> i n)
+        (reverse result)
+        (loop (+ i 1) (cons (bit-count i) result)))))

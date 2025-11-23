@@ -1,0 +1,21 @@
+(define (minSwapsCouples row)
+  (let ([n (length row)]
+        [pos (make-hash)])
+    (for ([i (in-range n)])
+      (hash-set! pos (list-ref row i) i))
+    (let loop ([i 0] [swaps 0])
+      (if (>= i n)
+          swaps
+          (let ([x (list-ref row i)]
+                [y (if (even? (list-ref row i)) 
+                       (add1 (list-ref row i)) 
+                       (sub1 (list-ref row i)))])
+            (if (equal? (list-ref row (add1 i)) y)
+                (loop (+ i 2) swaps)
+                (let ([y-pos (hash-ref pos y)])
+                  (let ([tmp (list-ref row (add1 i))])
+                    (list-set! row (add1 i) y)
+                    (list-set! row y-pos tmp)
+                    (hash-set! pos y (add1 i))
+                    (hash-set! pos tmp y-pos)
+                    (loop (+ i 2) (add1 swaps)))))))))

@@ -1,0 +1,5 @@
+(define (trimMean arr)
+  (define n (quotient (length arr) 20))
+  (define sorted-arr (sort arr <))
+  (define trimmed-arr (sublist sorted-arr n (- (length sorted-arr) n)))
+  (/ (apply + trimmed-arr) (length trimmed-arr)))

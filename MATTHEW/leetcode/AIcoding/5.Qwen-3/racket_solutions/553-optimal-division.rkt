@@ -1,0 +1,6 @@
+(define (optimal-division nums)
+  (if (= (length nums) 1)
+      (car nums)
+      (if (= (length nums) 2)
+          (string-append (number->string (car nums)) "/" (number->string (cadr nums)))
+          (string-append (number->string (car nums)) "/(" (string-join (map number->string (cdr nums)) "/") ")"))))

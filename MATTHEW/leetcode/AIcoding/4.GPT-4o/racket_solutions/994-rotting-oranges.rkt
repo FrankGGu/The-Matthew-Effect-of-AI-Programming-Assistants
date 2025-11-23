@@ -1,0 +1,37 @@
+(define (orangesRotting grid)
+  (define (valid? x y)
+    (and (>= x 0) (< x (length grid)) (>= y 0) (< y (length (vector-ref grid x)))))
+
+  (define (bfs rotten)
+    (define directions '((1 0) (-1 0) (0 1) (0 -1)))
+    (define minutes 0)
+
+    (let loop ((rotten rotten) (fresh 0))
+      (for-each (lambda (x)
+                  (for-each (lambda (d)
+                              (let ((nx (+ (car x) (car d)))
+                                    (ny (+ (cadr x) (cadr d))))
+                                (when (valid? nx ny)
+                                  (when (= (vector-ref (vector-ref grid nx) ny) 1)
+                                    (vector-set! (vector-ref grid nx) ny 2)
+                                    (set! fresh (+ fresh 1))))))
+                            directions))
+                rotten)
+      (if (null? rotten)
+          (if (= fresh 0) minutes -1)
+          (loop (filter (lambda (x) (not (= (vector-ref (vector-ref grid (car x)) (cadr x)) 2))) rotten)
+                       fresh)
+          (set! minutes (+ minutes 1)))))
+
+  (define rotten '())
+  (define fresh 0)
+
+  (for* ((i (in-range (length grid)))
+         (j (in-range (length (vector-ref grid i)))))
+    (cond
+      ((= (vector-ref (vector-ref grid i) j) 2)
+       (set! rotten (cons (list i j) rotten)))
+      ((= (vector-ref (vector-ref grid i) j) 1)
+       (set! fresh (+ fresh 1)))))
+
+  (if (= fresh 0) 0 (bfs rotten)))

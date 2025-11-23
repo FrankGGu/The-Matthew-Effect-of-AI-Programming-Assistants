@@ -1,0 +1,36 @@
+#lang racket
+
+(define (valid-emails emails)
+  (filter valid-email? emails))
+
+(define (valid-email? email)
+  (let* ((parts (string-split email "@"))
+         (local (car parts))
+    (and (= (length parts) 2)
+         (let ((domain (cadr parts)))
+           (and (non-empty-string? local)
+                (non-empty-string? domain)
+                (valid-local? local)
+                (valid-domain? domain))))))
+
+(define (non-empty-string? s)
+  (not (string=? s "")))
+
+(define (valid-local? local)
+  (and (not (string-contains? local ".."))
+       (let ((chars (string->list local)))
+         (andmap (lambda (c)
+                  (or (char-alphabetic? c)
+                      (char-numeric? c)
+                      (member c '(#\. #\! #\# #\$ #\% #\& #\' #\* #\+ #\- #\/ #\= #\? #\^ #\` #\{ #\| #\} #\~))))
+                chars))))
+
+(define (valid-domain? domain)
+  (and (not (string-contains? domain ".."))
+       (let ((parts (string-split domain ".")))
+         (and (>= (length parts) 2)
+              (andmap (lambda (part)
+                       (and (non-empty-string? part)
+                            (let ((chars (string->list part)))
+                              (andmap char-alphabetic? chars))))
+                     parts)))))

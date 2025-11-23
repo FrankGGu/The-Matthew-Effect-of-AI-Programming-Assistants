@@ -1,0 +1,6 @@
+(define (find-winning-player n k)
+  (define (game players)
+    (if (= (length players) 1)
+        (car players)
+        (game (filter (lambda (x) (not (= (modulo (index-of players x) k) 0))) players))))
+  (game (range 1 (+ n 1))))

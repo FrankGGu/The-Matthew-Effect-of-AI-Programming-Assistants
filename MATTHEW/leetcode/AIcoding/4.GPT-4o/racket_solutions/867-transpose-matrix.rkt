@@ -1,0 +1,5 @@
+(define (transpose matrix)
+  (if (null? matrix)
+      '()
+      (map (lambda (i) (map (lambda (row) (list-ref row i)) matrix))
+           (range (length (car matrix))))))

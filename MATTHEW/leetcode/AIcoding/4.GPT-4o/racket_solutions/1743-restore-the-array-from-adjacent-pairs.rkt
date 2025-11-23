@@ -1,0 +1,18 @@
+(define (restoreArray adjacentPairs)
+  (define graph (make-hash))
+  (for-each (lambda (pair)
+              (hash-set! graph (first pair) (hash-ref graph (first pair) '()) (second pair))
+              (hash-set! graph (second pair) (hash-ref graph (second pair) '()) (first pair)))
+            adjacentPairs)
+
+  (define (dfs node visited)
+    (set! visited (set-add visited node))
+    (define result (list node))
+    (for-each (lambda (neighbor)
+                (unless (set-member? visited neighbor)
+                  (set! result (append result (dfs neighbor visited)))))
+              (hash-ref graph node '()))
+    result)
+
+  (dfs (first (first adjacentPairs)) (set))
+)

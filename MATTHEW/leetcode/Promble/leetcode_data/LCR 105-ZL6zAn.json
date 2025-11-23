@@ -1,0 +1,37 @@
+{
+  "id": "LCR 105",
+  "title": "岛屿的最大面积",
+  "titleSlug": "ZL6zAn",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Array",
+    "Matrix"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxAreaOfIsland(vector<vector<int>>& grid) {\n\n    }\n};",
+    "java": "class Solution {\n    public int maxAreaOfIsland(int[][] grid) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def maxAreaOfIsland(self, grid):\n        \"\"\"\n        :type grid: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:",
+    "c": "\n\nint maxAreaOfIsland(int** grid, int gridSize, int* gridColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MaxAreaOfIsland(int[][] grid) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} grid\n * @return {number}\n */\nvar maxAreaOfIsland = function(grid) {\n\n};",
+    "typescript": "function maxAreaOfIsland(grid: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $grid\n     * @return Integer\n     */\n    function maxAreaOfIsland($grid) {\n\n    }\n}",
+    "swift": "class Solution {\n    func maxAreaOfIsland(_ grid: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun maxAreaOfIsland(grid: Array<IntArray>): Int {\n\n    }\n}",
+    "golang": "func maxAreaOfIsland(grid [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} grid\n# @return {Integer}\ndef max_area_of_island(grid)\n\nend",
+    "scala": "object Solution {\n    def maxAreaOfIsland(grid: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_area_of_island(grid: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (max-area-of-island grid)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec max_area_of_island(Grid :: [[integer()]]) -> integer().\nmax_area_of_island(Grid) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_area_of_island(grid :: [[integer]]) :: integer\n  def max_area_of_island(grid) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]\n[[0,0,0,0,0,0,0,0]]",
+  "hints": []
+}

@@ -1,0 +1,5 @@
+(define (add-binary a b)
+  (let* ((num-a (string->number a 2))
+         (num-b (string->number b 2))
+         (sum (+ num-a num-b)))
+    (number->string sum 2)))

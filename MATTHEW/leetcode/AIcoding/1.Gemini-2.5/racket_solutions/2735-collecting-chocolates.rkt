@@ -1,0 +1,12 @@
+(define (collect-chocolates chocolates x)
+  (let* ((n (length chocolates))
+         (chocolates-vec (list->vector chocolates))
+         (min-total-cost (expt 10 18)))
+    (for/fold ((current-min-total-cost min-total-cost))
+              ((k (range n)))
+      (let* ((rotation-cost (* k x))
+             (collection-cost
+               (for/fold ((sum 0))
+                         ((i (range n)))
+                 (+ sum (vector-ref chocolates-vec (modulo (+ i k) n))))))
+        (min current-min-total-cost (+ rotation-cost collection-cost))))))

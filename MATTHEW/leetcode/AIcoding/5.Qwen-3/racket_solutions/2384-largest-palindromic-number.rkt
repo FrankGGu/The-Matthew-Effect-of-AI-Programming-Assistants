@@ -1,0 +1,31 @@
+#lang racket
+
+(define (largest-palindromic-number num)
+  (define counts (make-hash))
+  (for-each (lambda (c) (hash-set! counts c (+ (hash-ref counts c 0) 1))) (string->list num))
+  (define odd-char #f)
+  (define result '())
+  (for ([c (in-range 97 123)])
+    (define ch (integer->char c))
+    (define cnt (hash-ref counts ch 0))
+    (when (> cnt 0)
+      (define half (quotient cnt 2))
+      (when (> half 0)
+        (set! result (append (make-list half ch) result))
+        (when (odd? cnt)
+          (set! odd-char ch))))
+      (when (and (= cnt 1) (not odd-char))
+        (set! odd-char ch))))
+  (if (null? result)
+      (if odd-char (string (char->digit odd-char)) "0")
+      (let ([mid (if odd-char (string (char->digit odd-char)) "")])
+        (string-append (list->string result) mid (list->string (reverse result))))))
+
+(define (char->digit c)
+  (- (char->integer c) (char->integer #\0)))
+
+(define (main)
+  (define input (read-line))
+  (displayln (largest-palindromic-number input)))
+
+(main)

@@ -1,0 +1,17 @@
+(define (get-unique-names names)
+  (define (make-unique name count)
+    (let ((new-name (string-append name (if (= count 0) "" (string-append "(" (number->string count) ")")))))
+      (if (member new-name names)
+          (make-unique name (+ count 1))
+          new-name)))
+
+  (define unique-names '())
+  (for-each (lambda (name)
+              (let ((count 0)
+                    (unique-name name))
+                (set! unique-name (make-unique name count))
+                (set! unique-names (cons unique-name unique-names))))
+            names)
+  (reverse unique-names))
+
+(get-unique-names '("doc" "doc" "image" "doc(1)" "doc"))

@@ -1,0 +1,35 @@
+{
+  "id": "LCP 58",
+  "title": "积木拼接",
+  "titleSlug": "De4qBB",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Backtracking",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool composeCube(vector<vector<string>>& shapes) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean composeCube(String[][] shapes) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def composeCube(self, shapes):\n        \"\"\"\n        :type shapes: List[List[str]]\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def composeCube(self, shapes: List[List[str]]) -> bool:",
+    "c": "\n\nbool composeCube(char*** shapes, int shapesSize, int* shapesColSize){\n\n}",
+    "csharp": "public class Solution {\n    public bool ComposeCube(string[][] shapes) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[][]} shapes\n * @return {boolean}\n */\nvar composeCube = function(shapes) {\n\n};",
+    "typescript": "function composeCube(shapes: string[][]): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[][] $shapes\n     * @return Boolean\n     */\n    function composeCube($shapes) {\n\n    }\n}",
+    "swift": "class Solution {\n    func composeCube(_ shapes: [[String]]) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun composeCube(shapes: Array<Array<String>>): Boolean {\n\n    }\n}",
+    "golang": "func composeCube(shapes [][]string) bool {\n\n}",
+    "ruby": "# @param {String[][]} shapes\n# @return {Boolean}\ndef compose_cube(shapes)\n\nend",
+    "scala": "object Solution {\n    def composeCube(shapes: Array[Array[String]]): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn compose_cube(shapes: Vec<Vec<String>>) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (compose-cube shapes)\n  (-> (listof (listof string?)) boolean?)\n\n  )",
+    "erlang": "-spec compose_cube(Shapes :: [[unicode:unicode_binary()]]) -> boolean().\ncompose_cube(Shapes) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec compose_cube(shapes :: [[String.t]]) :: boolean\n  def compose_cube(shapes) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[\"000\",\"110\",\"000\"],[\"110\",\"011\",\"000\"],[\"110\",\"011\",\"110\"],[\"000\",\"010\",\"111\"],[\"011\",\"111\",\"011\"],[\"011\",\"010\",\"000\"]]\n[[\"101\",\"111\",\"000\"],[\"000\",\"010\",\"111\"],[\"010\",\"011\",\"000\"],[\"010\",\"111\",\"010\"],[\"101\",\"111\",\"010\"],[\"000\",\"010\",\"011\"]]",
+  "hints": []
+}

@@ -1,0 +1,12 @@
+(define (min-additions s)
+  (define (helper i count)
+    (if (= i (string-length s))
+        count
+        (let ((c (string-ref s i)))
+          (if (char=? c #\{)
+              (helper (+ i 1) count)
+              (let ((next-i (+ i 1)))
+                (if (and (< next-i (string-length s)) (char=? (string-ref s next-i) #\}))
+                    (helper (+ next-i 1) count)
+                    (helper (+ next-i 1) (+ count 1))))))))
+  (helper 0 0))

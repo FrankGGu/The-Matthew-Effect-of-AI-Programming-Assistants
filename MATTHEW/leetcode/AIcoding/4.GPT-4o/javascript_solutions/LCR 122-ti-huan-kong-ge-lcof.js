@@ -1,0 +1,17 @@
+var sumNumbers = function(root) {
+    let totalSum = 0;
+
+    const dfs = (node, currentNumber) => {
+        if (!node) return;
+        currentNumber = currentNumber * 10 + node.val;
+        if (!node.left && !node.right) {
+            totalSum += currentNumber;
+        } else {
+            dfs(node.left, currentNumber);
+            dfs(node.right, currentNumber);
+        }
+    };
+
+    dfs(root, 0);
+    return totalSum;
+};

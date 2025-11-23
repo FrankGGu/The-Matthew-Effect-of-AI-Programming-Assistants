@@ -1,0 +1,23 @@
+(define (minimumCostII s t changes)
+  (define n (string-length s))
+  (define m (string-length t))
+  (define costs (make-hash))
+  (for ([change changes])
+    (hash-set! costs (list (list-ref change 0) (list-ref change 1)) (list-ref change 2)))
+  (define dp (make-vector (+ n 1) #inf.0))
+  (vector-set! dp 0 0)
+
+  (for ([i (range 1 (+ n 1))])
+    (vector-set! dp i (vector-ref dp (- i 1)))
+    (for ([j (range 1 (+ m 1))])
+      (define sub-s (substring s (- i j) i))
+      (define sub-t (substring t (- j 0) j))
+      (when (equal? sub-s sub-t)
+        (vector-set! dp i (min (vector-ref dp i) (vector-ref dp (- i j))))))
+      (define cost (hash-ref costs (list sub-s sub-t) #f))
+      (when cost
+        (vector-set! dp i (min (vector-ref dp i) (+ (vector-ref dp (- i (string-length sub-s))) cost)))))
+    )
+  (if (equal? (vector-ref dp n) #inf.0)
+      -1
+      (vector-ref dp n)))

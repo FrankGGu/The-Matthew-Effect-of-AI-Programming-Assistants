@@ -1,0 +1,5 @@
+(define (flipgame fronts backs)
+  (define same (for/set ([f fronts] [b backs] #:when (= f b)) f)
+  (define candidates (for/list ([f fronts] [b backs] #:unless (= f b)) (list f b)))
+  (define possible (filter (lambda (x) (not (set-member? same x))) (append-map (lambda (p) p) candidates))
+  (if (null? possible) 0 (apply min possible)))

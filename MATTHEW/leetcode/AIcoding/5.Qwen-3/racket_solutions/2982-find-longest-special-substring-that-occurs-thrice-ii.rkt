@@ -1,0 +1,21 @@
+#lang racket
+
+(define (maximum-length s)
+  (define n (string-length s))
+  (define cnt (make-hash))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (define substr (substring s i (add1 j)))
+      (define len (string-length substr))
+      (when (and (char=? (string-ref substr 0) (string-ref substr (sub1 len)))
+                 (let loop ([k 1])
+                   (if (>= k (sub1 len))
+                       #t
+                       (and (char=? (string-ref substr k) (string-ref substr (sub1 len)))
+                            (loop (add1 k))))))
+        (hash-update! cnt substr add1 0))))
+  (define max-len 0)
+  (for ([k (in-hash-keys cnt)])
+    (when (>= (hash-ref cnt k) 3)
+      (set! max-len (max max-len (string-length k)))))
+  max-len)

@@ -1,0 +1,12 @@
+(define/contract (stone-game-viii stones)
+  (-> (listof exact-integer?) exact-integer?)
+  (let* ([n (length stones)]
+         [prefix (make-vector n 0)])
+    (vector-set! prefix 0 (list-ref stones 0))
+    (for ([i (in-range 1 n)])
+      (vector-set! prefix i (+ (vector-ref prefix (- i 1)) (list-ref stones i))))
+    (let ([dp (make-vector n 0)])
+      (vector-set! dp (- n 1) (vector-ref prefix (- n 1)))
+    (for ([i (in-range (- n 2) -1 -1)])
+      (vector-set! dp i (max (vector-ref dp (+ i 1)) (- (vector-ref prefix i) (vector-ref dp (+ i 1))))))
+    (vector-ref dp 1)))

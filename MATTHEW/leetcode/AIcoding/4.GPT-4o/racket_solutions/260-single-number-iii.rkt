@@ -1,0 +1,17 @@
+(define (single-number nums)
+  (define (xor-list lst)
+    (foldl (lambda (x acc) (lxor x acc)) 0 lst))
+  (define xor-all (xor-list nums))
+  (define (find-rightmost-set-bit n)
+    (if (= n 0) 0
+        (if (and (even? n) (not (= n 0)))
+            (find-rightmost-set-bit (/ n 2))
+            n)))
+  (define rightmost-set-bit (find-rightmost-set-bit xor-all))
+  (define (partition nums bit)
+    (filter (lambda (x) (and (not (zero? (bitwise-and x bit))))) nums))
+  (define group1 (partition nums rightmost-set-bit))
+  (define group2 (filter (lambda (x) (zero? (bitwise-and x rightmost-set-bit))) nums))
+  (list (xor-list group1) (xor-list group2)))
+
+(single-number '(1 2 1 3 2 5))

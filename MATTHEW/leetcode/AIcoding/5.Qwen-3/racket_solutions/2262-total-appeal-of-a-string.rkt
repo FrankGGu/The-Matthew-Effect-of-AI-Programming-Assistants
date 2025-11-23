@@ -1,0 +1,11 @@
+(define (appeal-string s)
+  (define (helper i last-occurrence total)
+    (if (= i (string-length s))
+        total
+        (let* ((c (string-ref s i))
+               (prev (hash-ref last-occurrence c -1))
+               (contribution (- i prev)))
+          (helper (+ i 1)
+                  (hash-set last-occurrence c i)
+                  (+ total contribution)))))
+  (helper 0 (make-hash) 0))

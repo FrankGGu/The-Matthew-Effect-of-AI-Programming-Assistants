@@ -1,0 +1,11 @@
+(define (maximum-units box-types truck-size)
+  (define sorted-box-types (sort box-types (lambda (a b) (> (second a) (second b)))))
+  (define (helper boxes size units)
+    (if (or (null? boxes) (= size 0))
+        units
+        (let* ((current-box (car boxes))
+               (num-boxes (min (car current-box) size))
+               (new-size (- size num-boxes))
+               (new-units (+ units (* num-boxes (second current-box)))))
+          (helper (cdr boxes) new-size new-units))))
+  (helper sorted-box-types truck-size 0))

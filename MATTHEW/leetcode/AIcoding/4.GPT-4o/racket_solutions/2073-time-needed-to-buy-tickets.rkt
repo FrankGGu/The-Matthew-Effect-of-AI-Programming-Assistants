@@ -1,0 +1,8 @@
+(define (timeNeededToBuy tickets k)
+  (let loop ((i 0) (time 0))
+    (if (< i (length tickets))
+        (let* ((current (list-ref tickets i))
+               (to-buy (if (= i k) (- current 1) current)))
+               (needed-time (+ time to-buy)))
+          (loop (+ i 1) needed-time))
+        time)))

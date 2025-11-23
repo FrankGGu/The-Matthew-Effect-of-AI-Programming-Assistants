@@ -1,0 +1,13 @@
+(define (super-egg-drop k n)
+  (define dp (make-vector (+ k 1) (make-vector (+ n 1) 0)))
+  (for ([i (in-range 1 (+ k 1))])
+    (vector-set! (vector-ref dp i) 0 0)
+    (for ([j (in-range 1 (+ n 1))])
+      (vector-set! (vector-ref dp i) j (+ (vector-ref (vector-ref dp (- i 1)) (- j 1)) 1))))
+  (let loop ([low 1] [high n])
+    (if (= low high)
+        low
+        (let ([mid (quotient (+ low high) 2)])
+          (if (<= (vector-ref (vector-ref dp k) mid) n)
+              (loop (+ mid 1) high)
+              (loop low (- mid 1)))))))

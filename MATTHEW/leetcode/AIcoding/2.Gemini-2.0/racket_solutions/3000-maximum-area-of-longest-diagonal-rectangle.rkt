@@ -1,0 +1,11 @@
+(define (area (rectangles))
+  (let loop ((rectangles rectangles) (max-diag 0) (max-area 0))
+    (if (null? rectangles)
+        max-area
+        (let ((l (car (car rectangles))) (w (car (cdr (car rectangles)))))
+          (let ((diag (sqrt (+ (* l l) (* w w)))))
+            (if (> diag max-diag)
+                (loop (cdr rectangles) diag (* l w))
+                (if (= diag max-diag)
+                    (loop (cdr rectangles) max-diag (max max-area (* l w)))
+                    (loop (cdr rectangles) max-diag max-area))))))))

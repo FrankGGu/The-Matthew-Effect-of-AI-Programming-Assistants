@@ -1,0 +1,43 @@
+{
+  "id": "1147",
+  "title": "Longest Chunked Palindrome Decomposition",
+  "titleSlug": "longest-chunked-palindrome-decomposition",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Two Pointers",
+    "String",
+    "Dynamic Programming",
+    "Hash Function",
+    "Rolling Hash"
+  ],
+  "content": "<p>You are given a string <code>text</code>. You should split it to k substrings <code>(subtext<sub>1</sub>, subtext<sub>2</sub>, ..., subtext<sub>k</sub>)</code> such that:</p>\n\n<ul>\n\t<li><code>subtext<sub>i</sub></code> is a <strong>non-empty</strong> string.</li>\n\t<li>The concatenation of all the substrings is equal to <code>text</code> (i.e., <code>subtext<sub>1</sub> + subtext<sub>2</sub> + ... + subtext<sub>k</sub> == text</code>).</li>\n\t<li><code>subtext<sub>i</sub> == subtext<sub>k - i + 1</sub></code> for all valid values of <code>i</code> (i.e., <code>1 &lt;= i &lt;= k</code>).</li>\n</ul>\n\n<p>Return the largest possible value of <code>k</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> text = &quot;ghiabcdefhelloadamhelloabcdefghi&quot;\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> We can split the string on &quot;(ghi)(abcdef)(hello)(adam)(hello)(abcdef)(ghi)&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> text = &quot;merchant&quot;\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> We can split the string on &quot;(merchant)&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> text = &quot;antaprezatepzapreanta&quot;\n<strong>Output:</strong> 11\n<strong>Explanation:</strong> We can split the string on &quot;(a)(nt)(a)(pre)(za)(tep)(za)(pre)(a)(nt)(a)&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= text.length &lt;= 1000</code></li>\n\t<li><code>text</code> consists only of lowercase English characters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int longestDecomposition(string text) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int longestDecomposition(String text) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def longestDecomposition(self, text):\n        \"\"\"\n        :type text: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def longestDecomposition(self, text: str) -> int:\n        ",
+    "c": "int longestDecomposition(char* text) {\n    \n}",
+    "csharp": "public class Solution {\n    public int LongestDecomposition(string text) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} text\n * @return {number}\n */\nvar longestDecomposition = function(text) {\n    \n};",
+    "typescript": "function longestDecomposition(text: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $text\n     * @return Integer\n     */\n    function longestDecomposition($text) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func longestDecomposition(_ text: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun longestDecomposition(text: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int longestDecomposition(String text) {\n    \n  }\n}",
+    "golang": "func longestDecomposition(text string) int {\n    \n}",
+    "ruby": "# @param {String} text\n# @return {Integer}\ndef longest_decomposition(text)\n    \nend",
+    "scala": "object Solution {\n    def longestDecomposition(text: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn longest_decomposition(text: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (longest-decomposition text)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec longest_decomposition(Text :: unicode:unicode_binary()) -> integer().\nlongest_decomposition(Text) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec longest_decomposition(text :: String.t) :: integer\n  def longest_decomposition(text) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func longestDecomposition(text: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"ghiabcdefhelloadamhelloabcdefghi\"\n\"merchant\"\n\"antaprezatepzapreanta\"",
+  "hints": [
+    "Using a rolling hash, we can quickly check whether two strings are equal.",
+    "Use that as the basis of a dp."
+  ]
+}

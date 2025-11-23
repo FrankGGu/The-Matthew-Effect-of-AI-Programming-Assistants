@@ -1,0 +1,32 @@
+{
+  "id": "LCP 40",
+  "title": "心算挑战",
+  "titleSlug": "uOAnQW",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Sorting"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maximumScore(vector<int>& cards, int cnt) {\n\n    }\n};",
+    "java": "class Solution {\n    public int maximumScore(int[] cards, int cnt) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def maximumScore(self, cards, cnt):\n        \"\"\"\n        :type cards: List[int]\n        :type cnt: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def maximumScore(self, cards: List[int], cnt: int) -> int:",
+    "c": "int maximumScore(int* cards, int cardsSize, int cnt) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaximumScore(int[] cards, int cnt) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} cards\n * @param {number} cnt\n * @return {number}\n */\nvar maximumScore = function(cards, cnt) {\n\n};",
+    "typescript": "function maximumScore(cards: number[], cnt: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $cards\n     * @param Integer $cnt\n     * @return Integer\n     */\n    function maximumScore($cards, $cnt) {\n\n    }\n}",
+    "swift": "class Solution {\n    func maximumScore(_ cards: [Int], _ cnt: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun maximumScore(cards: IntArray, cnt: Int): Int {\n\n    }\n}",
+    "golang": "func maximumScore(cards []int, cnt int) int {\n\n}",
+    "ruby": "# @param {Integer[]} cards\n# @param {Integer} cnt\n# @return {Integer}\ndef maximum_score(cards, cnt)\n\nend",
+    "scala": "object Solution {\n    def maximumScore(cards: Array[Int], cnt: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn maximum_score(cards: Vec<i32>, cnt: i32) -> i32 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,8,9]\n3\n[3,3,1]\n1",
+  "hints": []
+}

@@ -1,0 +1,10 @@
+(define (minOperations nums)
+  (define total-sum (/ (apply + nums) 2))
+  (define (helper nums target)
+    (define sorted (sort > nums))
+    (define (loop nums count current-sum)
+      (if (or (null? nums) (<= current-sum target))
+          count
+          (loop (cdr nums) (add1 count) (+ current-sum (/ (car nums) 2)))))
+    (loop sorted 0 0))
+  (helper nums total-sum))

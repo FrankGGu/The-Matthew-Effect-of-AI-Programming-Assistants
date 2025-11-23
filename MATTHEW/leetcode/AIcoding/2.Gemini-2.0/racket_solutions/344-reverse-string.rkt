@@ -1,0 +1,6 @@
+(define (reverse-string s)
+  (define n (string-length s))
+  (define result (make-string n))
+  (for ([i (in-range n)])
+    (string-set! result i (string-ref s (- n i 1))))
+  result)

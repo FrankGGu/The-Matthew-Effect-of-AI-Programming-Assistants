@@ -1,0 +1,21 @@
+(define (min-operations-make-similar nums target)
+  (define nums-even (filter (lambda (x) (= (modulo x 2) 0)) nums))
+  (define nums-odd (filter (lambda (x) (= (modulo x 2) 1)) nums))
+  (define target-even (filter (lambda (x) (= (modulo x 2) 0)) target))
+  (define target-odd (filter (lambda (x) (= (modulo x 2) 1)) target))
+
+  (define sorted-nums-even (sort nums-even <))
+  (define sorted-nums-odd (sort nums-odd <))
+  (define sorted-target-even (sort target-even <))
+  (define sorted-target-odd (sort target-odd <))
+
+  (define (calculate-ops list1 list2)
+    (let loop ((l1 list1) (l2 list2) (total-diff 0))
+      (if (empty? l1)
+          (/ total-diff 4)
+          (loop (rest l1)
+                (rest l2)
+                (+ total-diff (abs (- (first l1) (first l2))))))))
+
+  (+ (calculate-ops sorted-nums-even sorted-target-even)
+     (calculate-ops sorted-nums-odd sorted-target-odd)))

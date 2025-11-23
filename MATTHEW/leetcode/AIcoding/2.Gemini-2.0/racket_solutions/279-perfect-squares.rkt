@@ -1,0 +1,8 @@
+(define (numSquares n)
+  (define dp (make-vector (+ n 1) (+ n 1)))
+  (vector-set! dp 0 0)
+  (for ([i (in-range 1 (+ n 1))])
+    (vector-set! dp i (+ n 1))
+    (for ([j (in-range 1 (+ (floor (sqrt i)) 1))])
+      (vector-set! dp i (min (vector-ref dp i) (+ 1 (vector-ref dp (- i (* j j))))))))
+  (vector-ref dp n))

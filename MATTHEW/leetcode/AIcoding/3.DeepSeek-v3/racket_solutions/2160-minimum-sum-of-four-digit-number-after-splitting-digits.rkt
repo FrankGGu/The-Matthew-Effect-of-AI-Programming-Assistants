@@ -1,0 +1,8 @@
+(define (minimum-sum num)
+  (let* ((digits (list (quotient num 1000)
+                       (quotient (remainder num 1000) 100)
+                       (quotient (remainder num 100) 10)
+                       (remainder num 10)))
+         (sorted (sort digits <))
+    (+ (* (first sorted) 10) (third sorted)
+       (* (second sorted) 10) (fourth sorted))))

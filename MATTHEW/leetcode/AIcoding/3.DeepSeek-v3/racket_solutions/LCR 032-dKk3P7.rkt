@@ -1,0 +1,5 @@
+(define/contract (is-anagram s t)
+  (-> string? string? boolean?)
+  (let ((s-sorted (sort (string->list s) char<?))
+        (t-sorted (sort (string->list t) char<?)))
+    (equal? s-sorted t-sorted)))

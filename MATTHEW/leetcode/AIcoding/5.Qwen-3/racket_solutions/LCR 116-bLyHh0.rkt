@@ -1,0 +1,21 @@
+(define (find-circle-num matrix)
+  (define n (length matrix))
+  (define visited (make-vector n #f))
+
+  (define (dfs i)
+    (when (not (vector-ref visited i))
+      (vector-set! visited i #t)
+      (for-each (lambda (j) (when (and (not (vector-ref visited j)) (= (list-ref (list-ref matrix i) j) 1))
+                             (dfs j)))
+                (range n))))
+
+  (define count 0)
+  (for-each (lambda (i)
+              (when (not (vector-ref visited i))
+                (set! count (+ count 1))
+                (dfs i)))
+            (range n))
+  count)
+
+(define (num-of-provinces matrix)
+  (find-circle-num matrix))

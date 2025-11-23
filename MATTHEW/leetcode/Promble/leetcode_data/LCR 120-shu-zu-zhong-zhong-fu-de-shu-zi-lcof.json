@@ -1,0 +1,37 @@
+{
+  "id": "LCR 120",
+  "title": "寻找文件副本",
+  "titleSlug": "shu-zu-zhong-zhong-fu-de-shu-zi-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findRepeatDocument(vector<int>& documents) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int findRepeatDocument(int[] documents) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def findRepeatDocument(self, documents):\n        \"\"\"\n        :type documents: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def findRepeatDocument(self, documents: List[int]) -> int:\n        ",
+    "c": "int findRepeatDocument(int* documents, int documentsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int FindRepeatDocument(int[] documents) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} documents\n * @return {number}\n */\nvar findRepeatDocument = function(documents) {\n    \n};",
+    "typescript": "function findRepeatDocument(documents: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $documents\n     * @return Integer\n     */\n    function findRepeatDocument($documents) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func findRepeatDocument(_ documents: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun findRepeatDocument(documents: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int findRepeatDocument(List<int> documents) {\n    \n  }\n}",
+    "golang": "func findRepeatDocument(documents []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} documents\n# @return {Integer}\ndef find_repeat_document(documents)\n    \nend",
+    "scala": "object Solution {\n    def findRepeatDocument(documents: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_repeat_document(documents: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (find-repeat-document documents)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec find_repeat_document(Documents :: [integer()]) -> integer().\nfind_repeat_document(Documents) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_repeat_document(documents :: [integer]) :: integer\n  def find_repeat_document(documents) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func findRepeatDocument(documents: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2, 5, 3, 0, 5, 0]",
+  "hints": []
+}

@@ -1,0 +1,12 @@
+(define (subarray-sum nums k)
+  (define counts (hash))
+  (hash-set! counts 0 1)
+  (define (helper prefix-sum count)
+    (if (null? nums)
+        count
+        (let* ((new-prefix-sum (+ prefix-sum (car nums)))
+               (required (- new-prefix-sum k))
+               (num-count (hash-ref counts required 0)))
+          (hash-set! counts new-prefix-sum (+ (hash-ref counts new-prefix-sum 0) 1))
+          (helper (cdr nums) (+ count num-count)))))
+  (helper nums 0))

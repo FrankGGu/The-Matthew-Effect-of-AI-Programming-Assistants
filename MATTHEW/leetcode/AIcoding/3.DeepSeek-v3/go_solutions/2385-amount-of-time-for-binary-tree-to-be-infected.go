@@ -1,0 +1,51 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func amountOfTime(root *TreeNode, start int) int {
+    graph := make(map[int][]int)
+    buildGraph(root, graph)
+
+    visited := make(map[int]bool)
+    queue := []int{start}
+    visited[start] = true
+    time := 0
+
+    for len(queue) > 0 {
+        size := len(queue)
+        for i := 0; i < size; i++ {
+            node := queue[0]
+            queue = queue[1:]
+            for _, neighbor := range graph[node] {
+                if !visited[neighbor] {
+                    visited[neighbor] = true
+                    queue = append(queue, neighbor)
+                }
+            }
+        }
+        if len(queue) > 0 {
+            time++
+        }
+    }
+    return time
+}
+
+func buildGraph(node *TreeNode, graph map[int][]int) {
+    if node == nil {
+        return
+    }
+    if node.Left != nil {
+        graph[node.Val] = append(graph[node.Val], node.Left.Val)
+        graph[node.Left.Val] = append(graph[node.Left.Val], node.Val)
+        buildGraph(node.Left, graph)
+    }
+    if node.Right != nil {
+        graph[node.Val] = append(graph[node.Val], node.Right.Val)
+        graph[node.Right.Val] = append(graph[node.Right.Val], node.Val)
+        buildGraph(node.Right, graph)
+    }
+}

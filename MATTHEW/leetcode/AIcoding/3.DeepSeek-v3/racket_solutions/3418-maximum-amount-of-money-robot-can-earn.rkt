@@ -1,0 +1,15 @@
+(define/contract (max-earning grid)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let ([m (length grid)]
+        [n (if (null? grid) 0 (length (car grid)))])
+    (define dp (make-vector m (make-vector n 0)))
+    (for ([i (in-range m)])
+      (for ([j (in-range n)])
+        (vector-set! (vector-ref dp i) j 
+          (max (if (> i 0) (vector-ref (vector-ref dp (- i 1)) j) 0)
+               (if (> j 0) (vector-ref (vector-ref dp i) (- j 1)) 0)
+               (+ (list-ref (list-ref grid i) j)
+                  (if (and (> i 0) (> j 0)) 
+                      (vector-ref (vector-ref dp (- i 1)) (- j 1)) 
+                      0)))))
+    (vector-ref (vector-ref dp (- m 1)) (- n 1))))

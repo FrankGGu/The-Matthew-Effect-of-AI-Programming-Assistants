@@ -1,0 +1,13 @@
+(define/contract (candy ratings)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([n (length ratings)])
+    (if (zero? n)
+        0
+        (let ([candies (make-vector n 1)])
+          (for ([i (in-range 1 n)])
+            (when (> (list-ref ratings i) (list-ref ratings (sub1 i)))
+              (vector-set! candies i (add1 (vector-ref candies (sub1 i)))))
+          (for ([i (in-range (- n 2) -1 -1)])
+            (when (> (list-ref ratings i) (list-ref ratings (add1 i)))
+              (vector-set! candies i (max (vector-ref candies i) (add1 (vector-ref candies (add1 i))))))
+          (apply + (vector->list candies))))))

@@ -1,0 +1,13 @@
+(define (numRabbits answers)
+  (let ((counts (make-hash)))
+    (for-each (lambda (x)
+                (hash-update! counts x (lambda (v) (+ v 1)) 1))
+              answers)
+    (let loop ((ks (hash-keys counts)) (total 0))
+      (if (null? ks)
+          total
+          (let* ((k (car ks))
+                 (v (hash-ref counts k))
+                 (group-size (+ k 1))
+                 (num-groups (ceiling (/ v group-size))))
+            (loop (cdr ks) (+ total (* num-groups group-size))))))))

@@ -1,0 +1,18 @@
+#lang racket
+
+(define (minVisitedCells grid)
+  (define n (length grid))
+  (define m (length (first grid)))
+  (define dp (make-vector n (make-vector m +inf.)))
+  (vector-set! dp 0 0)
+  (for ([i (in-range n)]))
+    (for ([j (in-range m)])
+      (define current (vector-ref dp i j))
+      (when (and (not (= current +inf.)) (not (= i n -1)) (not (= j m -1)))
+        (for ([x (in-range (+ i 1) n)])
+          (when (< (vector-ref grid x j) (vector-ref grid i j))
+            (vector-set! dp x (min (vector-ref dp x) (+ current 1)))))
+        (for ([y (in-range (+ j 1) m)])
+          (when (< (vector-ref grid i y) (vector-ref grid i j))
+            (vector-set! dp i (min (vector-ref dp i) (+ current 1))))))))
+  (if (= (vector-ref dp (- n 1) (- m 1)) +inf.) -1 (vector-ref dp (- n 1) (- m 1))))

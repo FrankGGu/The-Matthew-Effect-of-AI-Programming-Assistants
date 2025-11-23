@@ -1,0 +1,11 @@
+(define (count-digit-one n)
+  (define (count-ones n)
+    (if (<= n 0)
+        0
+        (+ (count-ones (quotient n 10))
+           (if (> (remainder n 10) 1)
+               (expt 10 (floor (log (quotient n 10) 10)))
+               (if (= (remainder n 10) 1)
+                   (+ (remainder n 10) (expt 10 (floor (log (quotient n 10) 10))))
+                   0)))))
+  (count-ones n))

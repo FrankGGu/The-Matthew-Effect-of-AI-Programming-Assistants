@@ -1,0 +1,15 @@
+#lang racket
+
+(define (subdomainVisits cpdomains)
+  (define counts (make-hash))
+  (for-each (lambda (entry)
+              (define parts (string-split entry " "))
+              (define count (string->number (first parts)))
+              (define domain (second parts))
+              (for-each (lambda (sub)
+                          (hash-update! counts sub (lambda (v) (+ v count)) count))
+                          (set! domain (substring domain (string-index domain #\. (string-length domain)))))
+                        (in-list (string-split domain "."))))
+            cpdomains)
+  (for/list ([k (in-hash-keys counts)])
+    (string-append (number->string (hash-ref counts k)) " " k)))

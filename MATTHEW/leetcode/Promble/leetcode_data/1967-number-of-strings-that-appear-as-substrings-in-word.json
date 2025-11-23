@@ -1,0 +1,39 @@
+{
+  "id": "1967",
+  "title": "Number of Strings That Appear as Substrings in Word",
+  "titleSlug": "number-of-strings-that-appear-as-substrings-in-word",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "String"
+  ],
+  "content": "<p>Given an array of strings <code>patterns</code> and a string <code>word</code>, return <em>the <strong>number</strong> of strings in </em><code>patterns</code><em> that exist as a <strong>substring</strong> in </em><code>word</code>.</p>\n\n<p>A <strong>substring</strong> is a contiguous sequence of characters within a string.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> patterns = [&quot;a&quot;,&quot;abc&quot;,&quot;bc&quot;,&quot;d&quot;], word = &quot;abc&quot;\n<strong>Output:</strong> 3\n<strong>Explanation:</strong>\n- &quot;a&quot; appears as a substring in &quot;<u>a</u>bc&quot;.\n- &quot;abc&quot; appears as a substring in &quot;<u>abc</u>&quot;.\n- &quot;bc&quot; appears as a substring in &quot;a<u>bc</u>&quot;.\n- &quot;d&quot; does not appear as a substring in &quot;abc&quot;.\n3 of the strings in patterns appear as a substring in word.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> patterns = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;], word = &quot;aaaaabbbbb&quot;\n<strong>Output:</strong> 2\n<strong>Explanation:</strong>\n- &quot;a&quot; appears as a substring in &quot;a<u>a</u>aaabbbbb&quot;.\n- &quot;b&quot; appears as a substring in &quot;aaaaabbbb<u>b</u>&quot;.\n- &quot;c&quot; does not appear as a substring in &quot;aaaaabbbbb&quot;.\n2 of the strings in patterns appear as a substring in word.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> patterns = [&quot;a&quot;,&quot;a&quot;,&quot;a&quot;], word = &quot;ab&quot;\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Each of the patterns appears as a substring in word &quot;<u>a</u>b&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= patterns.length &lt;= 100</code></li>\n\t<li><code>1 &lt;= patterns[i].length &lt;= 100</code></li>\n\t<li><code>1 &lt;= word.length &lt;= 100</code></li>\n\t<li><code>patterns[i]</code> and <code>word</code> consist of lowercase English letters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int numOfStrings(vector<string>& patterns, string word) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int numOfStrings(String[] patterns, String word) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def numOfStrings(self, patterns, word):\n        \"\"\"\n        :type patterns: List[str]\n        :type word: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def numOfStrings(self, patterns: List[str], word: str) -> int:\n        ",
+    "c": "int numOfStrings(char** patterns, int patternsSize, char* word) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NumOfStrings(string[] patterns, string word) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string[]} patterns\n * @param {string} word\n * @return {number}\n */\nvar numOfStrings = function(patterns, word) {\n    \n};",
+    "typescript": "function numOfStrings(patterns: string[], word: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $patterns\n     * @param String $word\n     * @return Integer\n     */\n    function numOfStrings($patterns, $word) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func numOfStrings(_ patterns: [String], _ word: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun numOfStrings(patterns: Array<String>, word: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int numOfStrings(List<String> patterns, String word) {\n    \n  }\n}",
+    "golang": "func numOfStrings(patterns []string, word string) int {\n    \n}",
+    "ruby": "# @param {String[]} patterns\n# @param {String} word\n# @return {Integer}\ndef num_of_strings(patterns, word)\n    \nend",
+    "scala": "object Solution {\n    def numOfStrings(patterns: Array[String], word: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn num_of_strings(patterns: Vec<String>, word: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (num-of-strings patterns word)\n  (-> (listof string?) string? exact-integer?)\n  )",
+    "erlang": "-spec num_of_strings(Patterns :: [unicode:unicode_binary()], Word :: unicode:unicode_binary()) -> integer().\nnum_of_strings(Patterns, Word) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec num_of_strings(patterns :: [String.t], word :: String.t) :: integer\n  def num_of_strings(patterns, word) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func numOfStrings(patterns: Array<String>, word: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[\"a\",\"abc\",\"bc\",\"d\"]\n\"abc\"\n[\"a\",\"b\",\"c\"]\n\"aaaaabbbbb\"\n[\"a\",\"a\",\"a\"]\n\"ab\"",
+  "hints": [
+    "Deal with each of the patterns individually.",
+    "Use the built-in function in the language you are using to find if the pattern exists as a substring in <code>word</code>."
+  ]
+}

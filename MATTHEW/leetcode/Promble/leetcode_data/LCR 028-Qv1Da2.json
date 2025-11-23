@@ -1,0 +1,30 @@
+{
+  "id": "LCR 028",
+  "title": "扁平化多级双向链表",
+  "titleSlug": "Qv1Da2",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Linked List",
+    "Doubly-Linked List"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "/*\n// Definition for a Node.\nclass Node {\npublic:\n    int val;\n    Node* prev;\n    Node* next;\n    Node* child;\n};\n*/\n\nclass Solution {\npublic:\n    Node* flatten(Node* head) {\n        \n    }\n};",
+    "java": "/*\n// Definition for a Node.\nclass Node {\n    public int val;\n    public Node prev;\n    public Node next;\n    public Node child;\n};\n*/\n\nclass Solution {\n    public Node flatten(Node head) {\n        \n    }\n}",
+    "python": "\"\"\"\n# Definition for a Node.\nclass Node(object):\n    def __init__(self, val, prev, next, child):\n        self.val = val\n        self.prev = prev\n        self.next = next\n        self.child = child\n\"\"\"\n\nclass Solution(object):\n    def flatten(self, head):\n        \"\"\"\n        :type head: Node\n        :rtype: Node\n        \"\"\"\n        ",
+    "python3": "\"\"\"\n# Definition for a Node.\nclass Node:\n    def __init__(self, val, prev, next, child):\n        self.val = val\n        self.prev = prev\n        self.next = next\n        self.child = child\n\"\"\"\n\nclass Solution:\n    def flatten(self, head: 'Node') -> 'Node':\n        ",
+    "csharp": "/*\n// Definition for a Node.\npublic class Node {\n    public int val;\n    public Node prev;\n    public Node next;\n    public Node child;\n}\n*/\n\npublic class Solution {\n    public Node Flatten(Node head) {\n        \n    }\n}",
+    "javascript": "/**\n * // Definition for a Node.\n * function Node(val,prev,next,child) {\n *    this.val = val;\n *    this.prev = prev;\n *    this.next = next;\n *    this.child = child;\n * };\n */\n\n/**\n * @param {Node} head\n * @return {Node}\n */\nvar flatten = function(head) {\n    \n};",
+    "typescript": "/**\n * Definition for node.\n * class Node {\n *     val: number\n *     prev: Node | null\n *     next: Node | null\n *     child: Node | null\n *     constructor(val?: number, prev? : Node, next? : Node, child? : Node) {\n *         this.val = (val===undefined ? 0 : val);\n *         this.prev = (prev===undefined ? null : prev);\n *         this.next = (next===undefined ? null : next);\n *         this.child = (child===undefined ? null : child);\n *     }\n * }\n */\n\nfunction flatten(head: Node | null): Node | null {\n\n};",
+    "php": "/**\n * Definition for a Node.\n * class Node {\n *     public $val = null;\n *     public $prev = null;\n *     public $next = null;\n *     public $child = null;\n *     function __construct($val = 0) {\n *         $this->val = $val;\n *         $this->prev = null;\n *         $this->next = null;\n *         $this->child = null;\n *     }\n * }\n */\n\nclass Solution {\n    /**\n     * @param Node $head\n     * @return Node\n     */\n    function flatten($head) {\n        \n    }\n}",
+    "swift": "/**\n * Definition for a Node.\n * public class Node {\n *     public var val: Int\n *     public var prev: Node?\n *     public var next: Node?\n *     public var child: Node?\n *     public init(_ val: Int) {\n *         self.val = val\n *         self.prev = nil\n *         self.next = nil\n *         self.child  = nil\n *     }\n * }\n */\n\nclass Solution {\n    func flatten(_ head: Node?) -> Node? {\n        \n    }\n}",
+    "kotlin": "/**\n * Definition for a Node.\n * class Node(var `val`: Int) {\n *     var prev: Node? = null\n *     var next: Node? = null\n *     var child: Node? = null\n * }\n */\n\nclass Solution {\n    fun flatten(root: Node?): Node? {\n        \n    }\n}",
+    "golang": "/**\n * Definition for a Node.\n * type Node struct {\n *     Val int\n *     Prev *Node\n *     Next *Node\n *     Child *Node\n * }\n */\n\nfunc flatten(root *Node) *Node {\n    \n}",
+    "ruby": "# Definition for a Node.\n# class Node\n#     attr_accessor :val, :prev, :next, :child\n#     def initialize(val=nil, prev=nil, next_=nil, child=nil)\n#         @val = val\n#         @prev = prev\n#         @next = next_\n#         @child = child\n#     end\n# end\n\n# @param {Node} root\n# @return {Node}\ndef flatten(root)\n    \nend",
+    "scala": "/**\n * Definition for a Node.\n * class Node(var _value: Int) {\n *   var value: Int = _value\n *   var prev: Node = null\n *   var next: Node = null\n *   var child: Node = null\n * }\n */\n\nobject Solution {\n    def flatten(head: Node): Node = {\n    \t\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]\n[1,2,null,3]\n[]",
+  "hints": []
+}

@@ -1,0 +1,7 @@
+(define (integerBreak n)
+  (if (<= n 3)
+      (- n 1)
+      (let loop ((n n) (result 1))
+        (if (>= n 4)
+            (loop (- n 3) (* result 3))
+            (* result n)))))

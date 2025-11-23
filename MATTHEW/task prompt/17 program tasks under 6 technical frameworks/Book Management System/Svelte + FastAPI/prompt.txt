@@ -1,0 +1,36 @@
+Create a complete book management system using Vue 3 for frontend and Spring Boot with Hibernate for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, role, membership_type, created_at
+- books: id, title, author, isbn, publisher, publication_date, genre, total_copies, available_copies, location, is_available, created_at
+- borrow_records: id, book_id, user_id, borrow_date, due_date, return_date, status, fine_amount, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - User registration and login (JWT authentication)
+   - Role management (student, teacher, librarian, admin)
+   - Membership type handling
+
+2. Book Management:
+   - CRUD operations for books
+   - Book availability checking
+   - Filter books by title, author, genre, availability
+
+3. Borrowing Management:
+   - Create, view, update, return books
+   - Check availability before borrowing
+   - Borrowing status tracking (BORROWED, RETURNED, OVERDUE, LOST)
+   - Automatic fine calculation for overdue books
+
+Technical Specifications:
+- Frontend: Vue 3 with Composition API, Vue Router for navigation, Pinia for state management
+- Backend: Spring Boot with Spring Security for JWT authentication, Hibernate for ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:bookpass@localhost:5432/book_management
+- API: RESTful design with proper HTTP status codes
+
+Generate complete, runnable code including:
+- Spring Boot application with controllers, services, and repositories
+- Vue 3 components for all features
+- Proper error handling and validation
+- Database configuration and entity classes
+- Installation and setup instructions

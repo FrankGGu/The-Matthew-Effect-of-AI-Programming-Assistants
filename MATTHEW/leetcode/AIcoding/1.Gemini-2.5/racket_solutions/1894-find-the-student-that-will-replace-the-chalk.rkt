@@ -1,0 +1,8 @@
+(define (chalk-replacer chalk k)
+  (let* ((n (vector-length chalk))
+         (sum-chalk (for/sum ((c (in-vector chalk))) c))
+         (remaining-k (modulo k sum-chalk)))
+    (let loop ((idx 0) (current-k remaining-k))
+      (if (>= current-k (vector-ref chalk idx))
+          (loop (+ idx 1) (- current-k (vector-ref chalk idx)))
+          idx))))

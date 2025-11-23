@@ -1,0 +1,10 @@
+(define (complex-number-multiply a b)
+  (let* ((a-parts (map string->number (string-split a #\+)))
+         (b-parts (map string->number (string-split b #\+)))
+         (a-real (car a-parts))
+         (a-imag (cadr a-parts))
+         (b-real (car b-parts))
+         (b-imag (cadr b-parts)))
+    (string-append (number->string (- (* a-real b-real) (* a-imag b-imag)))
+                   "+" 
+                   (number->string (+ (* a-real b-imag) (* a-imag b-real))))))

@@ -1,0 +1,15 @@
+(define (maxProfitAssignment difficulty profit worker)
+  (let* ((jobs (sort (map list difficulty profit) < #:key car))
+         (workers (sort worker <))
+         (n (length jobs))
+         (m (length workers)))
+    (let loop ((i 0) (j 0) (max-profit 0) (total-profit 0))
+      (cond
+        ((= j m) total-profit)
+        ((= i n) total-profit)
+        (else
+         (if (<= (car (list-ref jobs i)) (list-ref workers j))
+             (if (> (cadr (list-ref jobs i)) max-profit)
+                 (loop i (+ j 1) (cadr (list-ref jobs i)) (+ total-profit (cadr (list-ref jobs i))))
+                 (loop i (+ j 1) max-profit (+ total-profit max-profit)))
+             (loop (+ i 1) j max-profit total-profit)))))))

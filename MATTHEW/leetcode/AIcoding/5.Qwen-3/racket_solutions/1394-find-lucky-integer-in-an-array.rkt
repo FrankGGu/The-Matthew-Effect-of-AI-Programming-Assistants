@@ -1,0 +1,7 @@
+(define (find-lucky nums)
+  (define freq (make-hash))
+  (for-each (lambda (n) (hash-set! freq n (+ 1 (hash-ref freq n 0)))) nums)
+  (let loop ((nums nums))
+    (cond ((null? nums) #f)
+          ((and (= (hash-ref freq (car nums)) (car nums)) (not (= (car nums) 0))) (car nums))
+          (else (loop (cdr nums))))))

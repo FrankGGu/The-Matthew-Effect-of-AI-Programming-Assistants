@@ -1,0 +1,34 @@
+Create a complete quick pickup code management system using Vue 3 frontend and Spring Boot backend with Hibernate ORM. Use PostgreSQL database with the following schema:
+
+Database schema:
+- pickup_locations (id, name, address, is_active, created_at)
+- pickup_items (id, name, description, price, is_available, created_at)
+- pickup_orders (id, customer_name, customer_phone, pickup_code, location_id, status, created_at, updated_at, expected_ready_time, actual_pickup_time)
+- order_items (id, order_id, item_id, quantity, special_instructions)
+- pickup_audit_log (id, order_id, action, performed_at, performed_by)
+
+Required features:
+1. Frontend Vue 3 application with Composition API and Vue Router
+2. Spring Boot backend with RESTful APIs
+3. Hibernate ORM for database operations
+4. JWT authentication for API security
+5. Generate unique 6-character pickup codes (alphanumeric)
+6. Order management with status updates (PENDING, READY, PICKED_UP, CANCELLED)
+7. Real-time order status tracking
+8. Admin dashboard for viewing all orders
+9. Customer interface for order creation and status checking
+
+Implementation requirements:
+- Use Spring Data JPA with Hibernate
+- Implement proper error handling and validation
+- Include unit tests for critical components
+- Use Vuex for state management
+- Create responsive UI with Tailwind CSS or similar
+- Generate complete, runnable code with proper documentation
+
+Generate the complete project structure including:
+- Vue frontend with all components
+- Spring Boot application with entities, repositories, services, and controllers
+- Database configuration
+- API documentation (OpenAPI/Swagger)
+- Docker configuration for easy deployment

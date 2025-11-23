@@ -1,0 +1,10 @@
+(define (can-break ice-array k)
+  (let* ([n (length ice-array)]
+         [dp (make-vector (add1 n) #f)])
+    (vector-set! dp 0 #t)
+    (for ([i (range 1 (add1 n))])
+      (for ([j (range 1 (add1 (min i k)))])
+        (when (and (vector-ref dp (- i j)) (>= (vector-ref ice-array (- i 1)) j))
+          (vector-set! dp i #t)
+          (break))))
+    (vector-ref dp n)))

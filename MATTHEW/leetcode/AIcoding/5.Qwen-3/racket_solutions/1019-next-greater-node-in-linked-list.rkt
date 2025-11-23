@@ -1,0 +1,18 @@
+#lang racket
+
+(define (next-greater-node head)
+  (define lst (let loop ([h head] [acc '()])
+                (if (null? h)
+                    (reverse acc)
+                    (loop (cdr h) (cons (car h) acc)))))
+  (define n (length lst))
+  (define res (make-vector n 0))
+  (define stack '())
+  (for ([i (in-range n)])
+    (let loop ()
+      (when (and (not (null? stack)) (< (list-ref lst (car stack)) (list-ref lst i)))
+        (vector-set! res (car stack) (list-ref lst i))
+        (set! stack (cdr stack))
+        (loop)))
+    (set! stack (cons i stack)))
+  (vector->list res))

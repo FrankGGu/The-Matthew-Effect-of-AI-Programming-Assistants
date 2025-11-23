@@ -1,0 +1,5 @@
+(define (length-of-last-word s)
+  (define trimmed-s (string-trim s))
+  (define words (regexp-split #rx" +" trimmed-s))
+  (define last-word (last words))
+  (string-length last-word))

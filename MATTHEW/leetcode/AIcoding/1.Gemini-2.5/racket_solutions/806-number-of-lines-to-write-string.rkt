@@ -1,0 +1,18 @@
+(define (number-of-lines widths s)
+  (let loop ((lines 1)
+             (current-line-width 0)
+             (chars (string->list s)))
+    (if (empty? chars)
+        (list lines current-line-width)
+        (let* ((char (car chars))
+               (char-code (char->integer char))
+               (a-code (char->integer #\a))
+               (width-index (- char-code a-code))
+               (char-width (vector-ref widths width-index)))
+          (if (> (+ current-line-width char-width) 100)
+              (loop (+ lines 1)
+                    char-width
+                    (cdr chars))
+              (loop lines
+                    (+ current-line-width char-width)
+                    (cdr chars)))))))

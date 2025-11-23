@@ -1,0 +1,17 @@
+(define (get-max-gold grid)
+  (define (dfs i j visited)
+    (if (or (< i 0) (>= i (length grid)) (< j 0) (>= j (length (car grid))) (member (list i j) visited))
+        0
+        (let* ((current (list-ref (list-ref grid i) j))
+               (new-visited (cons (list i j) visited))
+               (up (dfs (- i 1) j new-visited))
+               (down (dfs (+ i 1) j new-visited))
+               (left (dfs i (- j 1) new-visited))
+               (right (dfs i (+ j 1) new-visited)))
+          (max current (+ up down left right)))))
+  (define (helper i j)
+    (if (>= i (length grid))
+        0
+        (let ((max-val (dfs i j '())))
+          (max max-val (helper (+ i 1) j)))))
+  (helper 0 0))

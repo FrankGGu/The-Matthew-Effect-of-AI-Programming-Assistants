@@ -1,0 +1,21 @@
+#lang racket
+
+(define (count-fair-pairs nums lower upper)
+  (define n (length nums))
+  (define sorted (sort nums <))
+  (define result 0)
+  (define (binary-search target left)
+    (let loop ([l left] [r (- n 1)])
+      (if (> l r)
+          r
+          (let ([m (quotient (+ l r) 2)])
+            (if (< (list-ref sorted m) target)
+                (loop (+ m 1) r)
+                (loop l (- m 1)))))))
+  (for ([i (in-range n)])
+    (let ([x (list-ref nums i)])
+      (let ([left (binary-search (+ x lower) 0)])
+        (let ([right (binary-search (+ x upper) 0)])
+          (when (<= left right)
+            (set! result (+ result (- right left)))))))
+  result)

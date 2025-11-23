@@ -1,0 +1,5 @@
+(define (preorder root)
+  (if (null? root)
+      '()
+      (append (list (hash-ref root 'val))
+              (apply append (map preorder (hash-ref root 'children))))))

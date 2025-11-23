@@ -1,0 +1,10 @@
+(define (sort-sentence sentence)
+  (define words (string-split sentence))
+  (define sorted-words
+    (map (lambda (word)
+           (let* ((len (string-length word))
+                  (index (string->number (substring word (- len 1)))))
+             (cons index (substring word 0 (- len 1)))))
+         words))
+  (define sorted (sort sorted-words (lambda (a b) (< (car a) (car b)))))
+  (string-join (map cadr sorted) " "))

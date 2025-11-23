@@ -1,0 +1,28 @@
+#lang racket
+
+(define (maxPointsInsideSquare points s)
+  (define (distance x y)
+    (max (abs x) (abs y)))
+  (define tags (make-hash))
+  (define (add-tag tag d)
+    (hash-update! tags tag (lambda (lst) (cons d lst)) '()))
+  (for ([point points] [tag s])
+    (define d (distance (car point) (cdr point)))
+    (add-tag tag d))
+  (define sorted-tags
+    (sort (hash-map tags (lambda (k v) (cons k (sort v <)))) 
+          (lambda (a b) (< (car (cdr a)) (car (cdr b))))))
+  (define used-tags (mutable-set))
+  (define max-d 0)
+  (define count 0)
+  (for ([tag-d sorted-tags])
+    (define tag (car tag-d))
+    (define d (car (cdr tag-d)))
+    (if (set-member? used-tags tag)
+        (set! max-d d)
+        (begin
+          (set-add! used-tags tag)
+          (set! count (+ count 1))
+    )
+  )
+  (if (zero? max-d) count (min count (length (filter (lambda (x) (<= x max-d)) (flatten (map cdr sorted-tags))))))

@@ -1,0 +1,43 @@
+#lang racket
+
+(define (number-of-stable-arrays zero one limit)
+  (define mod 1000000007)
+  (define dp (make-vector (+ zero 1) (make-vector (+ one 1) (make-vector 3 0))))
+  (vector-set! (vector-ref dp 0) 0 (vector 1 1 1))
+
+  (for ([i (in-range (+ zero 1))])
+    (for ([j (in-range (+ one 1))])
+      (when (or (> i 0) (> j 0))
+        (define val0 0)
+        (define val1 0)
+        (define val2 0)
+        (if (> i 0)
+            (begin
+              (set! val0 (vector-ref (vector-ref (vector-ref dp (- i 1)) j) 1))
+              (set! val0 (modulo (+ val0 (vector-ref (vector-ref (vector-ref dp (- i 1)) j) 2))) mod))
+            (set! val0 0))
+        (if (> j 0)
+            (begin
+              (set! val1 (vector-ref (vector-ref (vector-ref dp i) (- j 1)) 0))
+              (set! val1 (modulo (+ val1 (vector-ref (vector-ref (vector-ref dp i) (- j 1)) 2))) mod))
+              (when (>= j limit)
+                (set! val1 (modulo (- val1 (vector-ref (vector-ref (vector-ref dp i) (- j limit)) 0)) mod))
+                (when (< (modulo (- val1 0) mod) 0)
+                  (set! val1 (+ val1 mod))))
+            (set! val1 0))
+        (if (and (> i 0) (> j 0))
+            (begin
+              (set! val2 (vector-ref (vector-ref (vector-ref dp (- i 1)) (- j 1)) 0))
+              (set! val2 (modulo (+ val2 (vector-ref (vector-ref (vector-ref dp (- i 1)) (- j 1)) 1)) mod))
+              (when (>= i limit)
+                (set! val2 (modulo (- val2 (vector-ref (vector-ref (vector-ref dp (- i limit)) (- j 1)) 1)) mod))
+                (when (< (modulo (- val2 0) mod) 0)
+                  (set! val2 (+ val2 mod))))
+              (when (>= j limit)
+                (set! val2 (modulo (- val2 (vector-ref (vector-ref (vector-ref dp (- i 1)) (- j limit)) 0)) mod))
+                (when (< (modulo (- val2 0) mod) 0)
+                  (set! val2 (+ val2 mod)))))
+            (set! val2 0))
+        (vector-set! (vector-ref dp i) j (vector val0 val1 val2)))))
+
+  (modulo (apply + (vector->list (vector-ref (vector-ref dp zero) one))) mod)

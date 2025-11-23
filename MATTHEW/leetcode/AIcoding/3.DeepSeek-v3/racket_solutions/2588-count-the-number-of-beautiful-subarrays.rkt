@@ -1,0 +1,10 @@
+(define (beautiful-subarrays nums)
+  (let loop ((i 0) (prefix-xor 0) (count 0) (xor-count (make-hash)))
+    (if (>= i (length nums))
+        count
+        (let* ((current (list-ref nums i))
+               (prefix-xor (bitwise-xor prefix-xor current))
+               (target prefix-xor)
+               (found (hash-ref xor-count target 0)))
+          (hash-set! xor-count prefix-xor (add1 (hash-ref xor-count prefix-xor 0)))
+          (loop (add1 i) prefix-xor (+ count found) xor-count)))))

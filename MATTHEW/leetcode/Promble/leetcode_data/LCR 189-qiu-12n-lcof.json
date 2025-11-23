@@ -1,0 +1,37 @@
+{
+  "id": "LCR 189",
+  "title": "设计机械累加器",
+  "titleSlug": "qiu-12n-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Recursion",
+    "Brainteaser"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int mechanicalAccumulator(int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int mechanicalAccumulator(int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def mechanicalAccumulator(self, target):\n        \"\"\"\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def mechanicalAccumulator(self, target: int) -> int:\n        ",
+    "c": "int mechanicalAccumulator(int target) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MechanicalAccumulator(int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} target\n * @return {number}\n */\nvar mechanicalAccumulator = function(target) {\n    \n};",
+    "typescript": "function mechanicalAccumulator(target: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $target\n     * @return Integer\n     */\n    function mechanicalAccumulator($target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func mechanicalAccumulator(_ target: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun mechanicalAccumulator(target: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int mechanicalAccumulator(int target) {\n    \n  }\n}",
+    "golang": "func mechanicalAccumulator(target int) int {\n    \n}",
+    "ruby": "# @param {Integer} target\n# @return {Integer}\ndef mechanical_accumulator(target)\n    \nend",
+    "scala": "object Solution {\n    def mechanicalAccumulator(target: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn mechanical_accumulator(target: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (mechanical-accumulator target)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec mechanical_accumulator(Target :: integer()) -> integer().\nmechanical_accumulator(Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec mechanical_accumulator(target :: integer) :: integer\n  def mechanical_accumulator(target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func mechanicalAccumulator(target: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "5\n7",
+  "hints": []
+}

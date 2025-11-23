@@ -1,0 +1,25 @@
+(define (min-days bloom-day m k)
+  (define (enough? days)
+    (let ((count 0))
+      (for-each
+       (lambda (d)
+         (if (<= d days)
+             (set! count (+ count 1))
+             (set! count 0))
+         (when (= count k)
+           (set! count 0)
+           (set! m (- m 1))))
+       bloom-day)
+      (>= m 0)))
+
+  (if (> (* m k) (length bloom-day))
+      -1
+      (let ((low 1)
+            (high (apply max bloom-day)))
+        (let loop ((l low) (r high))
+          (if (> l r)
+              -1
+              (let ((mid (quotient (+ l r) 2)))
+                (if (enough? mid)
+                    (loop l (- mid 1))
+                    (loop (+ mid 1) r))))))))

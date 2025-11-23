@@ -1,0 +1,47 @@
+#lang racket
+
+(define (largest-plus-sign n)
+  (define grid (make-vector n))
+  (for ([i (in-range n)])
+    (vector-set! grid i (make-vector n 1)))
+  (define (max-1 x y)
+    (if (= x y) x (if (> x y) x y)))
+  (define (min-1 x y)
+    (if (= x y) x (if (< x y) x y)))
+  (define (get-value grid i j)
+    (vector-ref (vector-ref grid i) j))
+  (define (set-value! grid i j v)
+    (vector-set! (vector-ref grid i) j v))
+  (define (update grid i j dir val)
+    (cond [(= dir 0) (set-value! grid i j (max-1 (get-value grid i j) val))]
+          [(= dir 1) (set-value! grid i j (max-1 (get-value grid i j) val))]
+          [(= dir 2) (set-value! grid i j (max-1 (get-value grid i j) val))]
+          [(= dir 3) (set-value! grid i j (max-1 (get-value grid i j) val))]))
+  (define (fill grid i j dir)
+    (cond [(= dir 0) (when (and (>= i 0) (<= i (- n 1)) (>= j 0) (<= j (- n 1)))
+                      (let ([val (get-value grid i j)])
+                        (update grid i j 0 val)
+                        (fill grid (- i 1) j 0)))]
+          [(= dir 1) (when (and (>= i 0) (<= i (- n 1)) (>= j 0) (<= j (- n 1)))
+                      (let ([val (get-value grid i j)])
+                        (update grid i j 1 val)
+                        (fill grid i (- j 1) 1)))]
+          [(= dir 2) (when (and (>= i 0) (<= i (- n 1)) (>= j 0) (<= j (- n 1)))
+                      (let ([val (get-value grid i j)])
+                        (update grid i j 2 val)
+                        (fill grid (+ i 1) j 2)))]
+          [(= dir 3) (when (and (>= i 0) (<= i (- n 1)) (>= j 0) (<= j (- n 1)))
+                      (let ([val (get-value grid i j)])
+                        (update grid i j 3 val)
+                        (fill grid i (+ j 1) 3))])))
+  (for ([i (in-range n)])
+    (for ([j (in-range n)])
+      (fill grid i j 0)
+      (fill grid i j 1)
+      (fill grid i j 2)
+      (fill grid i j 3)))
+  (define max-size 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range n)])
+      (set! max-size (max-1 max-size (min-1 (get-value grid i j) (get-value grid i j) (get-value grid i j) (get-value grid i j)))))
+  max-size)

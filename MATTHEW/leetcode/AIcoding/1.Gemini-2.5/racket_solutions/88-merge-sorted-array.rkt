@@ -1,0 +1,15 @@
+(define (merge nums1 m nums2 n)
+  (let loop ((p1 (- m 1))
+             (p2 (- n 1))
+             (p  (- (+ m n) 1)))
+    (cond
+      ((< p2 0) #t)
+      ((< p1 0)
+       (vector-set! nums1 p (vector-ref nums2 p2))
+       (loop p1 (- p2 1) (- p 1)))
+      ((> (vector-ref nums1 p1) (vector-ref nums2 p2))
+       (vector-set! nums1 p (vector-ref nums1 p1))
+       (loop (- p1 1) p2 (- p 1)))
+      (else
+       (vector-set! nums1 p (vector-ref nums2 p2))
+       (loop p1 (- p2 1) (- p 1))))))

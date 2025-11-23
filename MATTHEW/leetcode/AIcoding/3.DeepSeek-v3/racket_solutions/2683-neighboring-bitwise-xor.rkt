@@ -1,0 +1,7 @@
+(define/contract (does-valid-array-exist derived)
+  (-> (listof exact-integer?) boolean?)
+  (let loop ([prev 0] [rest derived])
+    (if (null? rest)
+        (= prev 0)
+        (let ([current (bitwise-xor prev (car rest))])
+          (loop current (cdr rest))))))

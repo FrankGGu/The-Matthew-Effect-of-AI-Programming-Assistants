@@ -1,0 +1,12 @@
+(define (largest-perimeter A)
+  (let* ((sorted-A (sort A >))
+         (len (length sorted-A)))
+    (let loop ((i 0))
+      (if (>= i (- len 2))
+          0
+          (let ((a (list-ref sorted-A i))
+                (b (list-ref sorted-A (+ i 1)))
+                (c (list-ref sorted-A (+ i 2))))
+            (if (> a (+ b c))
+                (loop (+ i 1))
+                (+ a b c)))))))

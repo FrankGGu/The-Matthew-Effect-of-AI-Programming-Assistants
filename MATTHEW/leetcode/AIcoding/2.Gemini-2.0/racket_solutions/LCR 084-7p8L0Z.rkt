@@ -1,0 +1,12 @@
+(define (permuteUnique nums)
+  (define (helper current remaining used result)
+    (if (null? remaining)
+        (cons current result)
+        (let loop ([remaining remaining] [used used] [result result])
+          (if (null? remaining)
+              result
+              (let ([first (car remaining)])
+                (if (member first used)
+                    (loop (cdr remaining) used result)
+                    (loop (cdr remaining) (cons first used) (helper (append current (list first)) (remove first remaining #:count 1) '() result))))))))
+  (helper '() (sort nums <) '() '()))

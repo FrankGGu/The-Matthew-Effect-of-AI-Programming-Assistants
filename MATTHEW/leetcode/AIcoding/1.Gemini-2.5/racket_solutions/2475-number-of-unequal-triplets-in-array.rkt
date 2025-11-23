@@ -1,0 +1,13 @@
+(define (unequal-triplets nums)
+  (let* ((n (length nums))
+         (arr (list->vector nums))
+         (count 0))
+    (for ([i (in-range n)])
+      (for ([j (in-range (+ i 1) n)])
+        (for ([k (in-range (+ j 1) n)])
+          (when (and
+                 (not (= (vector-ref arr i) (vector-ref arr j)))
+                 (not (= (vector-ref arr j) (vector-ref arr k)))
+                 (not (= (vector-ref arr i) (vector-ref arr k))))
+            (set! count (+ count 1))))))
+    count))

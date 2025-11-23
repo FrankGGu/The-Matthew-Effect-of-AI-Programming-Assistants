@@ -1,0 +1,21 @@
+(define (number-of-ways s)
+  (let* ((n (string-length s))
+         (total-zeros (for/sum ([c (in-string s)])
+                        (if (char=? c #\0) 1 0)))
+         (total-ones (- n total-zeros)))
+    (let loop ((idx 0)
+               (current-zeros 0)
+               (current-ones 0)
+               (ans 0))
+      (if (= idx n)
+          ans
+          (let ((char-at-idx (string-ref s idx)))
+            (if (char=? char-at-idx #\1)
+                (loop (+ idx 1)
+                      current-zeros
+                      (+ current-ones 1)
+                      (+ ans (* current-zeros (- total-zeros current-zeros))))
+                (loop (+ idx 1)
+                      (+ current-zeros 1)
+                      current-ones
+                      (+ ans (* current-ones (- total-ones current-ones))))))))))

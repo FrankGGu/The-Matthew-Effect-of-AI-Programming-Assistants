@@ -1,0 +1,20 @@
+(define (maxEnergyBoost drinks)
+  (define (helper drinks)
+    (if (null? drinks)
+        0
+        (max (+ (car drinks) (helper (cdr drinks)))
+             (helper (cdr drinks)))))
+  (helper drinks))
+
+(define (maxTwoDrinks drinks)
+  (if (< (length drinks) 2)
+      (maxEnergyBoost drinks)
+      (let loop ([i 0] [j 0] [n (length drinks)])
+        (if (< i n)
+            (let loop2 ([k (+ i 1)] [max-sum 0])
+              (if (< k n)
+                  (loop2 (+ k 1) (max max-sum (+ (list-ref drinks i) (list-ref drinks k))))
+                  (loop (+ i 1) max-sum)))
+            j)))))
+
+(maxTwoDrinks '(1 3 5 2 8))

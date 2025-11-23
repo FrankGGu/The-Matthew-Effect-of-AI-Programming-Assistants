@@ -1,0 +1,13 @@
+(define (distinct-echo-substrings text)
+  (define (is-echo-substring? start len)
+    (let ((first-half (substring text start (+ start len)))
+          (second-half (substring text (+ start len) (+ start (* 2 len)))))
+      (string=? first-half second-half)))
+
+  (let ((n (string-length text)))
+    (define echo-substrings (make-hash))
+    (for* ((len (in-range 1 (/ n 2)))
+           (start (in-range 0 (- n (* 2 len) -1))))
+      (when (is-echo-substring? start len)
+        (hash-set! echo-substrings (substring text start (+ start (* 2 len))) #t)))
+    (hash-count echo-substrings)))

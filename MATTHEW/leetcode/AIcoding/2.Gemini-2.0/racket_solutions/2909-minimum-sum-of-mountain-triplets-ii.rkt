@@ -1,0 +1,30 @@
+(define (minimum-sum-of-mountain-triplets-ii nums)
+  (let* ((n (length nums))
+         (prefix-min (make-vector n #f))
+         (suffix-min (make-vector n #f))
+         (min-so-far #f))
+    (for ((i (in-range n)))
+      (if (or (not min-so-far) (< (list-ref nums i) min-so-far))
+          (begin
+            (vector-set! prefix-min i (list-ref nums i))
+            (set! min-so-far (list-ref nums i)))
+          (vector-set! prefix-min i min-so-far)))
+    (set! min-so-far #f)
+    (for ((i (in-range (- n 1) -1 -1)))
+      (if (or (not min-so-far) (< (list-ref nums i) min-so-far))
+          (begin
+            (vector-set! suffix-min i (list-ref nums i))
+            (set! min-so-far (list-ref nums i)))
+          (vector-set! suffix-min i min-so-far)))
+
+    (let loop ((i 1) (min-sum #f))
+      (cond
+        ((= i (- n 1)) min-sum)
+        (else
+         (let* ((left (vector-ref prefix-min (- i 1)))
+                (right (vector-ref suffix-min (+ i 1)))
+                (current (list-ref nums i)))
+           (if (and (< left current) (< right current))
+               (let ((sum (+ left current right)))
+                 (loop (+ i 1) (if (or (not min-sum) (< sum min-sum)) sum min-sum)))
+               (loop (+ i 1) min-sum))))))))

@@ -1,0 +1,13 @@
+(define/contract (largest-sum-of-averages nums k)
+  (-> (listof exact-integer?) exact-integer? flonum?)
+  (let* ([n (length nums)]
+         [prefix (make-vector (add1 n) 0.0)])
+    (for ([i (in-range 1 (add1 n))])
+      (vector-set! prefix i (+ (vector-ref prefix (sub1 i)) (exact->inexact (list-ref nums (sub1 i))))))
+    (let loop ([k k] [n n])
+      (if (= k 1)
+          (/ (vector-ref prefix n) n)
+          (let ([max-sum 0.0])
+            (for ([i (in-range k n)])
+              (set! max-sum (max max-sum (+ (loop (sub1 k) i) (/ (- (vector-ref prefix n) (vector-ref prefix i)) (- n i))))))
+            max-sum)))))

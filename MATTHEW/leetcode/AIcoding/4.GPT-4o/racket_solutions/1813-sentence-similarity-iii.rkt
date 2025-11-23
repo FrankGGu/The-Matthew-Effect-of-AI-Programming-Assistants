@@ -1,0 +1,13 @@
+(define (are-sentences-similar sentence1 sentence2 words1 words2)
+  (let* ((n1 (length sentence1))
+         (n2 (length sentence2))
+         (w1 (length words1))
+         (w2 (length words2)))
+    (cond
+      ((= n1 n2) (equal? sentence1 sentence2))
+      ((> n1 n2) (and (equal? (take sentence1 w1) words1)
+                     (equal? (drop sentence1 (- n1 w1)) (take sentence2 (- n2 w2)))
+                     (equal? (drop sentence2 (- n2 w2)) words2)))
+      (else (and (equal? (take sentence2 w2) words2)
+                 (equal? (drop sentence2 (- n2 w2)) (take sentence1 (- n1 w1)))
+                 (equal? (drop sentence1 (- n1 w1)) words1)))))))

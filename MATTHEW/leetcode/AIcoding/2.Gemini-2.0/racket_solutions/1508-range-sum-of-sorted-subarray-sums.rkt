@@ -1,0 +1,8 @@
+(define (range-sum nums n left right)
+  (let* ((sub-sums (sort (flatten (for/list ((i (in-range n)))
+                                     (for/list ((j (in-range i n)))
+                                       (list (apply + (list-ref (list->vector nums) (in-range i j))))))) <))
+         (mod (+ 10 (expt 9 7))))
+    (let loop ((i 0) (sum 0))
+      (cond ((= i (- right left 1)) (modulo sum mod))
+            (else (loop (+ i 1) (modulo (+ sum (list-ref sub-sums (+ left i -1))) mod)))))))

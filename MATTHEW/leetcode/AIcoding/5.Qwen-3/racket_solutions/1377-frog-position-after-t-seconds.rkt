@@ -1,0 +1,22 @@
+#lang racket
+
+(define (frog-position-after-t-seconds n edges time)
+  (define graph (make-hash))
+  (for-each
+   (lambda (edge)
+     (let ([u (car edge)] [v (cadr edge)])
+       (hash-update! graph u (lambda (lst) (cons v lst)) '())
+       (hash-update! graph v (lambda (lst) (cons u lst)) '())))
+   edges)
+  (define (dfs pos time path)
+    (if (or (= time 0) (null? (hash-ref graph pos)))
+        (if (null? (hash-ref graph pos)) pos (if (= time 0) pos #f))
+        (let ([children (filter (lambda (x) (not (equal? x path))) (hash-ref graph pos))])
+          (if (null? children)
+              (if (= time 0) pos #f)
+              (let ([next-time (- time 1)])
+                (if (> (length children) 1)
+                    (if (= next-time 0) pos #f)
+                    (dfs (car children) next-time pos))))))
+  )
+  (dfs 1 time '()))

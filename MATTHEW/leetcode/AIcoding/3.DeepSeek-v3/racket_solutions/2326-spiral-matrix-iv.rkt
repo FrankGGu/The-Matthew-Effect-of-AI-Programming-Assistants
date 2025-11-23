@@ -1,0 +1,20 @@
+(define/contract (spiral-matrix-ii m n head)
+  (-> exact-integer? exact-integer? (listof exact-integer?) (listof (listof exact-integer?)))
+  (define mat (build-vector m (lambda (_) (make-vector n -1))))
+  (define dirs '((0 1) (1 0) (0 -1) (-1 0)))
+  (define (valid? i j) (and (>= i 0) (< i m) (>= j 0) (< j n)))
+  (let loop ([i 0] [j 0] [d 0] [lst head])
+    (if (or (null? lst) (not (valid? i j)) (not (= (vector-ref (vector-ref mat i) j) -1)))
+        (vector->list (vector-map vector->list mat))
+        (let ([val (car lst)]
+              [rest (cdr lst)])
+          (vector-set! (vector-ref mat i) j val)
+          (let ([ni (+ i (car (list-ref dirs d)))]
+                [nj (+ j (cadr (list-ref dirs d)))])
+            (if (and (valid? ni nj) (= (vector-ref (vector-ref mat ni) nj) -1))
+                (loop ni nj d rest)
+                (let ([nd (modulo (add1 d) 4)])
+                  (loop (+ i (car (list-ref dirs nd)))
+                        (+ j (cadr (list-ref dirs nd)))
+                        nd
+                        rest))))))))

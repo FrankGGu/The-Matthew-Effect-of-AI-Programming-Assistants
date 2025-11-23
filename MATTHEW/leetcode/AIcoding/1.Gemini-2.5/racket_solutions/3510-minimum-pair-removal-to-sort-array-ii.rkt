@@ -1,0 +1,27 @@
+#lang racket
+
+(define (bisect-left vec end-idx val)
+  (let loop ((low 0)
+             (high end-idx))
+    (if (< low high)
+        (let ((mid (+ low (quotient (- high low) 2))))
+          (if (< (vector-ref vec mid) val)
+              (loop (+ mid 1) high)
+              (loop low mid)))
+        low)))
+
+(define (minimum-pair-removal-to-sort-array-ii nums)
+  (if (empty? nums)
+      0
+      (let* ((n (length nums))
+             (tails (make-vector n)))
+        (let loop ((remaining-nums nums)
+                   (len 0))
+          (if (empty? remaining-nums)
+              (- n len)
+              (let* ((x (car remaining-nums))
+                     (idx (bisect-left tails len x)))
+                (vector-set! tails idx x)
+                (if (= idx len)
+                    (loop (cdr remaining-nums) (+ len 1))
+                    (loop (cdr remaining-nums) len))))))))

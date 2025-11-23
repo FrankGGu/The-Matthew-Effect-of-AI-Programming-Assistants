@@ -1,0 +1,18 @@
+#lang racket
+
+(define (sum-subarray-lengths nums)
+  (define n (length nums))
+  (define res 0)
+  (for ([i (in-range n)])
+    (define v (list-ref nums i))
+    (define j i)
+    (define s 0)
+    (define k 0)
+    (let loop ()
+      (when (< j n)
+        (set! s (+ s (list-ref nums j)))
+        (set! k (+ k 1))
+        (set! res (+ res s))
+        (set! j (+ j 1))
+        (loop))))
+  res)

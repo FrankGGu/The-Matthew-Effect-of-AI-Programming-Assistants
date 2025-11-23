@@ -1,0 +1,10 @@
+(define/contract (min-operations nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([nums nums] [prev (car nums)] [res 0])
+    (if (null? (cdr nums))
+        res
+        (let ([current (cadr nums)])
+          (if (> current prev)
+              (loop (cdr nums) current res)
+              (let ([new-current (add1 prev)])
+                (loop (cdr nums) new-current (+ res (- new-current current))))))))

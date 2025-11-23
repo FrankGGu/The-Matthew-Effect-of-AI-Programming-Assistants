@@ -1,0 +1,12 @@
+(define (max-increase-keeping-skyline grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define row-max (build-list rows (lambda (i) (apply max (list-ref grid i)))))
+  (define col-max (build-list cols (lambda (j) (apply max (map (lambda (i) (list-ref (list-ref grid i) j)) (range rows)))))
+  (define (helper i j)
+    (min (list-ref row-max i) (list-ref col-max j)))
+  (define (process i j)
+    (if (>= i rows)
+        0
+        (+ (- (helper i j) (list-ref (list-ref grid i) j)) (process (add1 i) 0))))
+  (process 0 0))

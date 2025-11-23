@@ -1,0 +1,10 @@
+(define (num-identical-pairs nums)
+  (let loop ([i 0] [count 0])
+    (if (= i (length nums))
+        count
+        (let loop2 ([j (+ i 1)])
+          (if (= j (length nums))
+              (loop (+ i 1) count)
+              (if (equal? (list-ref nums i) (list-ref nums j))
+                  (loop2 (+ j 1) (+ count 1))
+                  (loop2 (+ j 1) count)))))))

@@ -1,0 +1,51 @@
+Create a Birthday Reminder full-stack application with the following technology stack:
+- Frontend: Django Templates with HTMX for interactivity
+- Backend: Django with Django REST Framework for API endpoints
+- Database: PostgreSQL with Django ORM
+- Styling: Bootstrap 5
+
+Database schema (already implemented in PostgreSQL):
+- contacts (id, name, email, phone, birthday, notes, created_at, updated_at)
+- settings (id, days_before_reminder, notification_method, created_at)
+
+Core functionality required:
+1. Contact Management:
+   - Add new contacts with birthday (name, email, phone, birthday, notes)
+   - Edit existing contacts
+   - Delete contacts
+   - View all contacts in a list
+
+2. Birthday Display:
+   - Show upcoming birthdays (next 30 days) on dashboard
+   - Filter birthdays by month with a month selector
+   - Highlight today's birthdays
+
+3. Settings:
+   - Configure days before reminder (default 7)
+   - Set notification method (email, sms, both)
+
+Technical requirements:
+- Use Django's class-based views or function-based views
+- Implement Django Forms for contact creation and editing
+- Use Django REST Framework for API endpoints
+- Add HTMX for interactive features without full page reloads
+- Implement proper error handling with user feedback
+- Add input validation on both frontend and backend
+- Use Bootstrap 5 for responsive design
+
+API endpoints needed:
+- GET /api/contacts - list all contacts
+- POST /api/contacts - create new contact
+- PUT /api/contacts/<id> - update contact
+- DELETE /api/contacts/<id> - delete contact
+- GET /api/contacts/upcoming - get upcoming birthdays
+- GET /api/contacts/month/<month> - get birthdays by month (1-12)
+- GET /api/settings - get current settings
+- PUT /api/settings - update settings
+
+Please generate the complete project structure with all necessary files including:
+- Django project and app structure
+- Models, views, URLs, and templates
+- Django REST Framework serializers and views
+- Proper configuration files
+- Docker setup if possible

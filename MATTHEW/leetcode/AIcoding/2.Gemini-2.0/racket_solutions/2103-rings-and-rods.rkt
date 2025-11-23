@@ -1,0 +1,12 @@
+(define (count-points rings)
+  (let* ((rods (make-vector 10 #f))
+         (n (string-length rings)))
+    (for ((i (in-range 0 n 2)))
+      (let ((color (string-ref rings i))
+            (rod-index (string->number (string (string-ref rings (+ i 1))))))
+        (vector-set! rods rod-index
+                     (if (vector-ref rods rod-index)
+                         (set-add (vector-ref rods rod-index) color)
+                         (set color)))))
+    (length (filter (lambda (s) (and s (set-member? 'R s) (set-member? 'G s) (set-member? 'B s)))
+                    (vector->list rods)))))

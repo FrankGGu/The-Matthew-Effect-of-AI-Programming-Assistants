@@ -1,0 +1,10 @@
+(define/contract (zero-array nums k)
+  (-> (listof exact-integer?) exact-integer? boolean?)
+  (let loop ([nums nums] [k k])
+    (if (null? nums)
+        #t
+        (let ([n (car nums)])
+          (if (>= n k)
+              (loop (cdr nums) k)
+              (and (<= (- k n) (length (cdr nums)))
+                   (loop (cdr nums) (- k n))))))))

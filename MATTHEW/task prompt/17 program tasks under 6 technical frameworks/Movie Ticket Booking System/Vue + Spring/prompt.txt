@@ -1,0 +1,46 @@
+Create a complete movie ticket booking system using Java Enterprise stack:
+
+**Technology Stack:**
+- Frontend: Vue 3 with Composition API
+- Backend: Spring Boot 3.x
+- ORM: Hibernate with JPA
+- Database: PostgreSQL (already configured below)
+
+**Database Connection:**
+- URL: jdbc:postgresql://localhost:5432/movie_booking
+- Username: postgres
+- Password: moviepass
+- Tables: Already created with movies, theaters, screenings, seats, orders, tickets
+
+**Core Features:**
+1. Movie Schedule Display Page
+   - Show all upcoming screenings with movie details, theater, time
+   - Filter by date and movie
+   - Show available seats count for each screening
+
+2. Seat Selection Page
+   - Visual seat map for selected screening
+   - Real-time seat availability (green=available, red=taken)
+   - Select multiple seats
+   - Show total price
+
+3. Order Generation
+   - Customer information form (name, email)
+   - Order confirmation page
+   - Order summary with tickets
+
+**Technical Requirements:**
+- Use Spring Data JPA repositories
+- Implement proper DTO pattern
+- Add validation annotations
+- Use Spring Security for basic protection
+- Vue frontend with Vue Router and Axios
+- Responsive design with Tailwind CSS
+
+**File Structure:**
+- Backend: Entity classes, Controllers, Services, Repositories
+- Frontend: Vue components, router, services
+
+**Output:**
+- Complete runnable code
+- README with setup instructions

@@ -1,0 +1,8 @@
+(define (split-num num)
+  (let* ((digits (sort (string->list (number->string num)) char<?))
+    (let loop ((a 0) (b 0) (i 0))
+      (if (>= i (length digits))
+          (+ a b)
+          (if (even? i)
+              (loop (+ (* a 10) (- (char->integer (list-ref digits i)) 48)) b (+ i 1))
+              (loop a (+ (* b 10) (- (char->integer (list-ref digits i)) 48)) (+ i 1)))))))

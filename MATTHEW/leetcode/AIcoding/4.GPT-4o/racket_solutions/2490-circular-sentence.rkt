@@ -1,0 +1,7 @@
+(define (circular-sentence sentence)
+  (let* ((words (string-split sentence))
+         (n (length words)))
+    (and (= (string-ref (car words) 0) (string-ref (last words) (- (length (last words)) 1)))
+         (for/all ([i (in-range n)])
+           (= (string-ref (list-ref words i) (- (length (list-ref words i)) 1))
+              (string-ref (list-ref words (modulo (+ i 1) n) ) 0))))))

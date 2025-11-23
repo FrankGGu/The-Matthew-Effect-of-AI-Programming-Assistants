@@ -1,0 +1,7 @@
+(define (minimum-cost-to-convert s t cost)
+  (define n (string-length s))
+  (define total-cost 0)
+  (for ([i (in-range n)])
+    (when (not (= (string-ref s i) (string-ref t i)))
+      (set! total-cost (+ total-cost (list-ref cost i)))))
+  total-cost)

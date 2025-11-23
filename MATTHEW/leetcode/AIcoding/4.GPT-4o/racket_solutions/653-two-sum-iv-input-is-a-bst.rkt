@@ -1,0 +1,15 @@
+(define (find-target root k)
+  (define (inorder-traversal node)
+    (if (null? node)
+        '()
+        (append (inorder-traversal (car node)) (list (cadr node)) (inorder-traversal (caddr node)))))
+
+  (define nums (inorder-traversal root))
+  (define (two-sum nums k)
+    (let loop ((left 0) (right (sub1 (length nums))))
+      (cond ((>= left right) #f)
+            ((= (+ (list-ref nums left) (list-ref nums right)) k) #t)
+            ((< (+ (list-ref nums left) (list-ref nums right)) k) (loop (add1 left) right))
+            (else (loop left (sub1 right))))))
+
+  (two-sum nums k))

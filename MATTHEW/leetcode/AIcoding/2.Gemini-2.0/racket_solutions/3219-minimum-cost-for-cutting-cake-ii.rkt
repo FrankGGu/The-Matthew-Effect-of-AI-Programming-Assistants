@@ -1,0 +1,25 @@
+(define (min-cost-cake cuts n h-cuts v-cuts)
+  (define h (sort h-cuts <))
+  (define v (sort v-cuts <))
+  (define (cost-recursive h-start h-end v-start v-end)
+    (if (and (= h-start h-end) (= v-start v-end))
+        0
+        (let* ((h-cost (if (= h-start h-end)
+                           +inf.0
+                           (let ((h-min +inf.0))
+                             (for/fold ((min h-min)) ((i (in-range h-start h-end)))
+                               (let ((curr-cost (+ (* (- (list-ref v (add1 v-end)) (list-ref v v-start)))
+                                                    (+ (cost-recursive h-start i v-start v-end)
+                                                       (cost-recursive (add1 i) h-end v-start v-end))))
+                                 (min min curr-cost))))))
+               (v-cost (if (= v-start v-end)
+                           +inf.0
+                           (let ((v-min +inf.0))
+                             (for/fold ((min v-min)) ((i (in-range v-start v-end)))
+                               (let ((curr-cost (+ (* (- (list-ref h (add1 h-end)) (list-ref h h-start)))
+                                                    (+ (cost-recursive h-start h-end v-start i)
+                                                       (cost-recursive h-start h-end (add1 i) v-end))))
+                                 (min min curr-cost)))))))
+          (min h-cost v-cost))))
+
+  (cost-recursive 0 (- (length h) 2) 0 (- (length v) 2)))

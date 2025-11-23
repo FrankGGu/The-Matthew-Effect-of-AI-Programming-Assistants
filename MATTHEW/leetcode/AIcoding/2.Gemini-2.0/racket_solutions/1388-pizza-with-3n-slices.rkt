@@ -1,0 +1,10 @@
+(define (max-size-slices slices)
+  (define n (quotient (length slices) 3))
+  (define (solve arr k)
+    (letrec ((dp (make-vector (+ (length arr) 1) (make-vector (+ k 1) 0))))
+      (for* ([i (in-range 1 (+ (length arr) 1))]
+             [j (in-range 1 (+ k 1))])
+        (vector-set! (vector-ref dp i) j (max (vector-ref (vector-ref dp (- i 1)) j)
+                                              (+ (list-ref arr (- i 1)) (vector-ref (vector-ref dp (- i 2)) (- j 1))))))
+      (vector-ref (vector-ref dp (length arr)) k)))
+  (max (solve (drop-right slices 1) n) (solve (drop slices 1) n)))

@@ -1,0 +1,20 @@
+(define (count-routes location start finish fuel locations)
+  (define n (vector-length locations))
+  (define memo (make-hash))
+
+  (define (dp current-location current-fuel)
+    (let ((key (cons current-location current-fuel)))
+      (if (hash-has-key? memo key)
+          (hash-ref memo key)
+          (let* ((result
+                   (let ((count (if (= current-location finish) 1 0)))
+                     (for/fold ((total count)) ((i (in-range n)))
+                       (if (and (!= i current-location)
+                                (> current-fuel (abs (- (vector-ref locations current-location) (vector-ref locations i)))))
+                           (+ total (dp i (- current-fuel (abs (- (vector-ref locations current-location) (vector-ref locations i))))))
+                           total))))
+                 (mod-result (modulo result 1000000007)))
+            (hash-set! memo key mod-result)
+            mod-result)))))
+
+  (dp start fuel))

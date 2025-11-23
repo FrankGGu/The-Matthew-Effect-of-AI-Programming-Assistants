@@ -1,0 +1,20 @@
+(define (permute-unique nums)
+  (define n (length nums))
+  (define sorted-nums (sort nums <))
+  (define result '())
+
+  (define (backtrack current-permutation used-vec)
+    (if (= (length current-permutation) n)
+        (set! result (cons (reverse current-permutation) result))
+        (for ([i (in-range n)])
+          (when (not (vector-ref used-vec i))
+            (when (or (= i 0)
+                      (not (= (list-ref sorted-nums i) (list-ref sorted-nums (- i 1))))
+                      (vector-ref used-vec (- i 1)))
+
+              (vector-set! used-vec i #t)
+              (backtrack (cons (list-ref sorted-nums i) current-permutation) used-vec)
+              (vector-set! used-vec i #f))))))
+
+  (backtrack '() (make-vector n #f))
+  result)

@@ -1,0 +1,10 @@
+(define (longest-consecutive nums)
+  (let* ([num-set (set nums)]
+         [max-length 0])
+    (for ([num (in-list nums)])
+      (when (not (set-member? num-set (- num 1)))
+        (let loop ([current num] [length 1])
+          (if (set-member? num-set (+ current 1))
+              (loop (+ current 1) (+ length 1))
+              (set! max-length (max max-length length))))))
+    max-length))

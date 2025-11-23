@@ -1,0 +1,13 @@
+(define (maxValue n x)
+  (define (insert digit num)
+    (if (or (null? num) (empty? num))
+        (string-append (string digit) "")
+        (let* ((prefix (substring num 0 1))
+               (rest (substring num 1)))
+          (if (or (and (>= digit (string->number prefix)) (string-append (string digit) "") (empty? rest)))
+              (string-append (string digit) num)
+              (string-append prefix (insert digit rest))))))
+
+  (if (equal? (string->number (substring n 0 1)) 0)
+      (insert x n)
+      (insert x n)))

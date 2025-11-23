@@ -1,0 +1,21 @@
+(define (restore-ip-addresses s)
+  (define (is-valid part)
+    (or (and (not (string=? part "0")) (string->number part) (<= (string->number part) 255))
+        (string=? part "0")))
+
+  (define (backtrack start path)
+    (if (= (length path) 4)
+        (if (= start (string-length s))
+            (list (string-join path "."))
+            '())
+        (for/list ([i (in-range start (min (+ start 3) (string-length s)))])
+          (let ([part (substring s start (add1 i))])
+            (if (is-valid part)
+                (backtrack (add1 i) (cons part path))
+                '())))))
+
+  (define results (backtrack 0 '()))
+  (map (λ (ip) (string-join (reverse ip) ".")) results))
+
+(define (restore-ip-addresses-main s)
+  (restore-ip-addresses s))

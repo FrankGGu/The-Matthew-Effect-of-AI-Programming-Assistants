@@ -1,0 +1,18 @@
+(define/contract (find-original-typed-string s t)
+  (-> string? string? string?)
+  (let* ((s-chars (string->list s))
+         (t-chars (string->list t))
+         (n (length s-chars))
+         (m (length t-chars))
+         (result '()))
+    (let loop ((s-idx (- n 1)) (t-idx (- m 1)))
+      (cond
+        ((< t-idx 0)
+         (string-reverse (list->string result)))
+        ((< s-idx 0)
+         (string-reverse (list->string result)))
+        ((char=? (list-ref s-chars s-idx) (list-ref t-chars t-idx))
+         (loop (- s-idx 1) (- t-idx 1)))
+        (else
+         (set! result (cons (list-ref s-chars s-idx) result))
+         (loop (- s-idx 1) t-idx))))))

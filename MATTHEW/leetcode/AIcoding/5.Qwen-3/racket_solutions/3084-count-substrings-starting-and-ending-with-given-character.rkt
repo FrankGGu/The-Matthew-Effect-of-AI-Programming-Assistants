@@ -1,0 +1,7 @@
+(define (substrings-which-start-and-end-with s c)
+  (define len (string-length s))
+  (define count 0)
+  (for ([i (in-range len)])
+    (when (= (string-ref s i) c)
+      (set! count (+ count (- len i)))))
+  count)

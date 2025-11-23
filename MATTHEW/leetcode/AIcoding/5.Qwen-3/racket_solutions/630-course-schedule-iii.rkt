@@ -1,0 +1,25 @@
+#lang racket
+
+(define (schedule-course courses)
+  (define (cmp a b)
+    (< (car a) (car b)))
+  (define sorted-courses (sort courses cmp))
+  (define (helper remaining time)
+    (if (null? remaining)
+        (length time)
+        (let* ((course (car remaining))
+               (duration (cadr course))
+               (deadline (car course)))
+          (if (<= (+ (car time) duration) deadline)
+              (helper (cdr remaining) (cons duration time))
+              (let ((min-duration (apply min time)))
+                (if (>= min-duration duration)
+                    (helper (cdr remaining) (cons duration (remove min-duration time)))
+                    (helper (cdr remaining) time)))))))
+  (helper sorted-courses '()))
+
+(define (main)
+  (define input '((100 200) (200 1300) (1000 1250) (2000 3200) (200 2100) (50 100)))
+  (displayln (schedule-course input)))
+
+(main)

@@ -1,0 +1,12 @@
+(define (maximum-gain s x y)
+  (define (helper s a b score)
+    (if (or (null? s) (null? (cdr s)))
+        score
+        (let ((first (car s))
+              (second (cadr s)))
+          (if (and (char=? first a) (char=? second b))
+              (helper (append (cddr s) (list first second)) a b (+ score (max x y)))
+              (helper (cdr s) a b score)))))
+  (let ((ab-score (helper (string->list s) #\a #\b 0))
+    (let ((ba-score (helper (string->list s) #\b #\a 0)))
+    (max ab-score ba-score)))

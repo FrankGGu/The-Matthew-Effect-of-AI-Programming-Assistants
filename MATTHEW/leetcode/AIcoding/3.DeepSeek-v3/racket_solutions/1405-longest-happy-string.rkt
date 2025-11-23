@@ -1,0 +1,31 @@
+(define/contract (longest-happy-string a b c)
+  (-> exact-integer? exact-integer? exact-integer? string?)
+  (define pq (make-priority-queue (lambda (x y) (> (car x) (car y)))))
+  (when (> a 0) (priority-queue-push! pq (cons a #\a)))
+  (when (> b 0) (priority-queue-push! pq (cons b #\b)))
+  (when (> c 0) (priority-queue-push! pq (cons c #\c)))
+  (define res '())
+  (let loop ()
+    (if (priority-queue-empty? pq)
+        (list->string (reverse res))
+        (let* ([top1 (priority-queue-pop! pq)]
+               [cnt1 (car top1)]
+               [char1 (cdr top1)])
+          (if (or (< (length res) 2)
+                  (not (equal? char1 (car res)))
+                  (not (equal? char1 (cadr res))))
+              (begin
+                (set! res (cons char1 res))
+                (when (> cnt1 1)
+                  (priority-queue-push! pq (cons (sub1 cnt1) char1)))
+                (loop))
+              (if (priority-queue-empty? pq)
+                  (list->string (reverse res))
+                  (let* ([top2 (priority-queue-pop! pq)]
+                         [cnt2 (car top2)]
+                         [char2 (cdr top2)])
+                    (set! res (cons char2 res))
+                    (when (> cnt2 1)
+                      (priority-queue-push! pq (cons (sub1 cnt2) char2)))
+                    (priority-queue-push! pq top1)
+                    (loop))))))))

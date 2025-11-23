@@ -1,0 +1,8 @@
+(define (halvesAreAlike s)
+  (define vowels (set '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U)))
+  (define mid (/ (string-length s) 2))
+  (define left (substring s 0 mid))
+  (define right (substring s mid))
+  (define (count-vowels str)
+    (foldl (lambda (c acc) (if (set-member? vowels c) (+ acc 1) acc)) 0 str))
+  (= (count-vowels left) (count-vowels right)))

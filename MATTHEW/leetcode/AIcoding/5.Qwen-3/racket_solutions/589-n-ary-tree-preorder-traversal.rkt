@@ -1,0 +1,5 @@
+(define (preorder root)
+  (if (not root)
+      '()
+      (append (list (node-val root))
+              (apply append (map preorder (node-children root))))))

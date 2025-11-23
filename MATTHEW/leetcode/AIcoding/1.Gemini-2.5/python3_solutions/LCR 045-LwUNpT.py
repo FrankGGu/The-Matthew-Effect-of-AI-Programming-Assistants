@@ -1,0 +1,22 @@
+from collections import deque
+
+class Solution:
+    def findBottomLeftValue(self, root: TreeNode) -> int:
+        queue = deque([root])
+        leftmost_value = 0
+
+        while queue:
+            level_size = len(queue)
+
+            for i in range(level_size):
+                node = queue.popleft()
+
+                if i == 0:
+                    leftmost_value = node.val
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+        return leftmost_value

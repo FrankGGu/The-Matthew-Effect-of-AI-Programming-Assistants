@@ -1,0 +1,8 @@
+(define (rename-columns table new-names)
+  (map (lambda (row)
+         (map (lambda (name)
+                (if (assoc name new-names)
+                    (cdr (assoc name new-names))
+                    name))
+              row))
+       table))

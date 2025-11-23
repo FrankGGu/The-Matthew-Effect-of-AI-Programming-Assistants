@@ -1,0 +1,41 @@
+Create a Class Roll Call System using the emerging tech stack of SolidJS frontend and Actix Web backend with SeaORM. Focus on performance, safety, and modern development practices.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Frontend Requirements (SolidJS):**
+- High-performance reactive UI
+- Student management interface
+- Attendance recording with date selection
+- Reporting features
+- Modern, fast user experience
+
+**Backend Requirements (Actix Web):**
+- High-performance Actix Web server
+- SeaORM for database operations
+- Async/await throughout
+- Proper error handling
+- Rust best practices
+
+**Key Features:**
+- Manage student records
+- Record attendance with present/absent status
+- View attendance by date and student
+- Prevent duplicate records
+
+**Database Connection:**
+Use SeaORM with PostgreSQL: postgresql://localhost:5432/rollcall_db
+
+**Code Structure:**
+- Rust with modern practices
+- Async/await where appropriate
+- Proper error handling
+- Performance-optimized code
+
+**Deliverables:**
+- Complete Rust project with Cargo.toml
+- Frontend build configuration
+- SeaORM entities and migrations
+- Performance benchmarks in README

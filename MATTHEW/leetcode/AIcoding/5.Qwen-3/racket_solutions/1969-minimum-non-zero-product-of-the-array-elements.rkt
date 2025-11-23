@@ -1,0 +1,11 @@
+(define (min-non-zero-product a)
+  (define MOD (expt 10 9))
+  (define (pow x y)
+    (cond ((= y 0) 1)
+          ((even? y) (let ([p (pow x (/ y 2))]) (modulo (* p p) MOD)))
+          (else (modulo (* x (pow x (- y 1))) MOD))))
+  (define (solve n m)
+    (if (= m 0)
+        1
+        (modulo (* (pow (modulo (- n 1) MOD) m) (solve (- n 1) (- m 1))) MOD)))
+  (solve a (quotient a 2)))

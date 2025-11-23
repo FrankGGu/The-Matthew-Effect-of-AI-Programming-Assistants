@@ -1,0 +1,12 @@
+(define (min-cost-to-reach-every-position cost)
+  (define n (length cost))
+  (define dp (make-vector n most-positive-fixnum))
+  (vector-set! dp 0 0)
+  (define (min a b) (if (< a b) a b))
+  (for ([i (in-range n)])
+    (for ([j (in-range (max 0 (- i 1)) (min n (+ i 2)))])
+      (vector-set! dp i (min (vector-ref dp i) (+ (vector-ref dp j) (vector-ref cost i))))))
+  (vector-ref dp (- n 1)))
+
+(define (minCost cost)
+  (min-cost-to-reach-every-position cost))

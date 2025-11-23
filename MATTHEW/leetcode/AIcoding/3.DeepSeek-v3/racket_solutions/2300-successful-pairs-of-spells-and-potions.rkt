@@ -1,0 +1,16 @@
+(define/contract (successful-pairs spells potions success)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (define sorted-potions (sort potions <))
+  (define (binary-search target)
+    (let loop ([low 0]
+               [high (sub1 (length sorted-potions))])
+      (if (> low high)
+          low
+          (let ([mid (quotient (+ low high) 2)])
+            (if (< (list-ref sorted-potions mid) target)
+                (loop (add1 mid) high)
+                (loop low (sub1 mid)))))))
+  (for/list ([spell (in-list spells)])
+    (define target (ceiling (/ success spell)))
+    (define idx (binary-search target))
+    (- (length sorted-potions) idx)))

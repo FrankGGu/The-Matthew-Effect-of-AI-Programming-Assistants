@@ -1,0 +1,10 @@
+(define (min-additions s)
+  (let loop ((i 0) (a 0) (b 0) (c 0))
+    (if (>= i (string-length s))
+        (+ a b c)
+        (let ((ch (string-ref s i)))
+          (cond
+            ((char=? ch #\a) (loop (+ i 1) a (add1 b) (add1 c)))
+            ((char=? ch #\b) (loop (+ i 1) (if (> a 0) (- a 1) a) b (add1 c)))
+            ((char=? ch #\c) (loop (+ i 1) (if (> a 0) (- a 1) a) (if (> b 0) (- b 1) b) c))
+            (else (loop (+ i 1) a b c)))))))

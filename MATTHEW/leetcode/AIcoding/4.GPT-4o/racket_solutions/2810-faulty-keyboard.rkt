@@ -1,0 +1,8 @@
+(define (finalString s)
+  (define (process str)
+    (foldl (lambda (char acc)
+             (if (equal? char #\b)
+                 (if (null? acc) '() (cdr acc))
+                 (cons char acc)))
+           '() str))
+  (list->string (reverse (process (string->list s)))))

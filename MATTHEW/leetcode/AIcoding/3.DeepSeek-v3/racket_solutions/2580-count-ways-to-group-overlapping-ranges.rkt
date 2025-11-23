@@ -1,0 +1,13 @@
+(define/contract (count-ways ranges)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define sorted-ranges (sort ranges (lambda (a b) (< (car a) (car b)))))
+  (define merged '())
+  (define current-interval (car sorted-ranges))
+  (for ([interval (in-list (cdr sorted-ranges))])
+    (if (<= (car interval) (cadr current-interval))
+        (set! current-interval (list (car current-interval) (max (cadr current-interval) (cadr interval))))
+        (begin
+          (set! merged (cons current-interval merged))
+          (set! current-interval interval))))
+  (set! merged (cons current-interval merged))
+  (modulo (expt 2 (length merged)) 1000000007))

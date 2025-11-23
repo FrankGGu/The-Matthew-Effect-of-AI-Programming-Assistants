@@ -1,0 +1,32 @@
+(define/contract (sequence-reconstruction org seqs)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)) boolean?)
+  (let* ([n (length org)]
+         [graph (make-hash)]
+         [in-degree (make-hash)]
+         [org-set (list->set org)])
+    (for ([i (in-range 1 (add1 n))])
+      (hash-set! in-degree i 0))
+    (for ([seq seqs])
+      (for ([num seq])
+        (unless (set-member? org-set num)
+          (return #f)))
+      (for ([i (in-range 0 (sub1 (length seq)))])
+        (let ([u (list-ref seq i)]
+              [v (list-ref seq (add1 i))])
+          (hash-update! graph u (lambda (lst) (cons v lst)) '())
+          (hash-update! in-degree v add1 1))))
+    (let ([q (make-queue)]
+          [res '()])
+      (for ([(k v) in-degree])
+        (when (zero? v)
+          (enqueue! q k)))
+      (while (not (queue-empty? q))
+        (when (> (queue-length q) 1)
+          (return #f))
+        (let ([u (dequeue! q)])
+          (set! res (cons u res))
+          (for ([v (hash-ref graph u '())])
+            (hash-update! in-degree v sub1 1)
+            (when (zero? (hash-ref in-degree v))
+              (enqueue! q v)))))
+      (equal? (reverse res) org))))

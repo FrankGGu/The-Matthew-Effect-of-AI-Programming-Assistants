@@ -1,0 +1,10 @@
+(define (num-subarrays-with-bounded-maximum nums left right)
+  (define (count less-than)
+    (let loop ([i 0] [prev -1] [res 0])
+      (if (= i (length nums))
+          res
+          (let ([n (list-ref nums i)])
+            (if (< n less-than)
+                (loop (+ i 1) prev (+ res (- i prev)))
+                (loop (+ i 1) i res))))))
+  (- (count (+ right 1)) (count left)))

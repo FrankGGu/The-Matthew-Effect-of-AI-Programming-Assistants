@@ -1,0 +1,21 @@
+(define/contract (find-anagrams s p)
+  (-> string? string? (listof exact-integer?))
+  (let* ([len-s (string-length s)]
+         [len-p (string-length p)]
+         [result '()])
+    (when (>= len-s len-p)
+      (let ([count-p (make-vector 26 0)]
+            [count-window (make-vector 26 0)])
+        (for ([i (in-range len-p)])
+          (vector-set! count-p (- (char->integer (string-ref p i)) (char->integer #\a)) 1)
+          (vector-set! count-window (- (char->integer (string-ref s i)) (char->integer #\a)) 1)
+        (when (equal? count-p count-window)
+          (set! result (cons 0 result)))
+        (for ([i (in-range len-p len-s)])
+          (vector-set! count-window (- (char->integer (string-ref s (- i len-p))) (char->integer #\a)) 
+                       (- (vector-ref count-window (- (char->integer (string-ref s (- i len-p))) (char->integer #\a))) 1))
+          (vector-set! count-window (- (char->integer (string-ref s i)) (char->integer #\a)) 
+                       (+ (vector-ref count-window (- (char->integer (string-ref s i)) (char->integer #\a))) 1))
+          (when (equal? count-p count-window)
+            (set! result (cons (- i (- len-p 1)) result))))))
+    (reverse result)))

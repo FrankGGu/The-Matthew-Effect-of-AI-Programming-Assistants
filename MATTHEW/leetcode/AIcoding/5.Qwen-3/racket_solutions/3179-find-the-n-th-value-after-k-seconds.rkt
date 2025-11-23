@@ -1,0 +1,7 @@
+(define (solve k n)
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range k)])
+    (for ([j (in-range n 0 -1)])
+      (vector-set! dp j (+ (vector-ref dp j) (vector-ref dp (sub1 j))))))
+  (vector-ref dp (sub1 n)))

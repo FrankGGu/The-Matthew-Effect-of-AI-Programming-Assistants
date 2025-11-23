@@ -1,0 +1,18 @@
+(define (sort-jumbled-numbers mapping nums)
+  (define (jumble-number num mapping)
+    (if (= num 0)
+        (list-ref mapping 0)
+        (let loop ((n num) (jumbled-val 0) (power-of-10 1))
+          (if (= n 0)
+              jumbled-val
+              (let* ((digit (modulo n 10))
+                     (mapped-digit (list-ref mapping digit)))
+                (loop (quotient n 10)
+                      (+ jumbled-val (* mapped-digit power-of-10))
+                      (* power-of-10 10)))))))
+
+  (let* ((jumbled-pairs (map (lambda (original-num)
+                               (list (jumble-number original-num mapping) original-num))
+                             nums))
+         (sorted-pairs (sort jumbled-pairs (lambda (a b) (< (car a) (car b))))))
+    (map cadr sorted-pairs)))

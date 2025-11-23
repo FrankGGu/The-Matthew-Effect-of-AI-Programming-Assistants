@@ -1,0 +1,11 @@
+(define/contract (find-longest-chain pairs)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define sorted-pairs (sort pairs (lambda (a b) (< (cadr a) (cadr b)))))
+  (define (iter prev count remaining)
+    (if (null? remaining)
+        count
+        (let ([current (car remaining)])
+          (if (> (car current) prev)
+              (iter (cadr current) (+ count 1) (cdr remaining))
+              (iter prev count (cdr remaining))))))
+  (iter (sub1 (expt -10 4)) 0 sorted-pairs))

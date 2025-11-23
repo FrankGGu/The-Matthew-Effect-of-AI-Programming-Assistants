@@ -1,0 +1,15 @@
+(define (solve artifacts dynasties)
+  (map (lambda (artifact)
+         (let* ((artifact-id (car artifact))
+                (artifact-year (cadr artifact))
+                (found-dynasty (find-dynasty artifact-year dynasties)))
+           (list artifact-id found-dynasty)))
+       artifacts))
+
+(define (find-dynasty year dynasties)
+  (or (for/first ([d dynasties]
+                  #:when (let* ((start-year (cadr d))
+                                 (end-year (caddr d)))
+                            (and (>= year start-year) (<= year end-year))))
+        (car d))
+      "Unknown"))

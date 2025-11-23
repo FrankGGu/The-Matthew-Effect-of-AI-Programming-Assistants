@@ -1,0 +1,12 @@
+(define (electric-trip n stations)
+  (define (helper i total)
+    (if (= i n)
+        0
+        (let ((next (modulo (+ i 1) n)))
+          (if (>= total (car stations))
+              (helper next (- total (car stations)))
+              (let ((new-total (+ total (cadr stations))))
+                (if (>= new-total (car stations))
+                    (helper next (- new-total (car stations)))
+                    (helper next new-total))))))
+  (helper 0 0))

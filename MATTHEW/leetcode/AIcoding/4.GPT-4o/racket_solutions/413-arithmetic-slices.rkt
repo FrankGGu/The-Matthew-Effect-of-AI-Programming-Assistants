@@ -1,0 +1,12 @@
+(define (number-of-arithmetic-slices nums)
+  (define n (length nums))
+  (define count 0)
+  (define current 0)
+  (for ([i (in-range 2 n)])
+    (if (= (- (list-ref nums i) (list-ref nums (- i 1))) 
+           (- (list-ref nums (- i 1)) (list-ref nums (- i 2))))
+        (begin
+          (set! current (+ current 1))
+          (set! count (+ count current)))
+        (set! current 0)))
+  count)

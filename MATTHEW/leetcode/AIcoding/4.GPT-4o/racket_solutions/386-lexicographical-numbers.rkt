@@ -1,0 +1,13 @@
+(define (lexicalOrder n)
+  (define (dfs cur)
+    (when (<= cur n)
+      (set! result (append result (list cur)))
+      (for ([i (in-range 10)])
+        (dfs (+ (* cur 10) i))))
+  (define result '())
+  (for ([i (in-range 1 10)])
+    (dfs i))
+  (filter (lambda (x) (<= x n)) result))
+
+(define (findLexicalOrder n)
+  (lexicalOrder n))

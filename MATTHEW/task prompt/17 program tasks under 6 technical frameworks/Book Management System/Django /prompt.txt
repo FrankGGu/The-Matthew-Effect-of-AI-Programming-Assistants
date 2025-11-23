@@ -1,0 +1,36 @@
+Create a book management system using Django REST Framework for backend and a modern JavaScript framework for frontend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, role, membership_type, created_at
+- books: id, title, author, isbn, publisher, publication_date, genre, total_copies, available_copies, location, is_available, created_at
+- borrow_records: id, book_id, user_id, borrow_date, due_date, return_date, status, fine_amount, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - Django authentication system
+   - User roles (student, teacher, librarian, admin)
+   - Membership type management
+
+2. Book Management:
+   - CRUD operations through Django admin and API
+   - Book search and filtering by various criteria
+   - Inventory management with copy tracking
+
+3. Borrowing Management:
+   - Create, view, update borrow records via API
+   - Due date tracking and overdue calculations
+   - Fine calculation system
+   - Status management with appropriate transitions
+
+Technical Specifications:
+- Backend: Django with Django REST Framework, Django ORM
+- Frontend: Use a modern JavaScript framework (specify which one)
+- Database: PostgreSQL with connection string: postgresql://postgres:bookpass@localhost:5432/book_management
+- API: RESTful design with token authentication
+
+Generate complete, runnable code including:
+- Django models, serializers, views, and URLs
+- Frontend components and API integration
+- Authentication system
+- Database migrations
+- Setup and running instructions

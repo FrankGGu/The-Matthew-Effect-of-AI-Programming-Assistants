@@ -1,0 +1,5 @@
+(define (lowest-common-ancestor root p q)
+  (cond ((and (<= (car root) (car p)) (>= (car root) (car q))) root)
+        ((and (<= (car root) (car q)) (>= (car root) (car p))) root)
+        ((> (car p) (car root)) (lowest-common-ancestor (cadr root) p q))
+        (else (lowest-common-ancestor (caddr root) p q))))

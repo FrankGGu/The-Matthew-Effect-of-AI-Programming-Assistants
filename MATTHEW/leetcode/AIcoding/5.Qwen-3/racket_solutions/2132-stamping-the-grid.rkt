@@ -1,0 +1,75 @@
+(define (possible-to-stamp grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define stamp-size 2)
+  (define visited (make-vector rows (make-vector cols #f)))
+
+  (define (is-valid x y)
+    (and (<= 0 x (- rows 1))
+         (<= 0 y (- cols 1))))
+
+  (define (mark x y)
+    (when (is-valid x y)
+      (vector-set! (vector-ref visited x) y #t)))
+
+  (define (check x y)
+    (and (is-valid x y)
+         (not (vector-ref (vector-ref visited x) y))))
+
+  (define (dfs x y)
+    (when (and (is-valid x y) (equal? (vector-ref (vector-ref grid x) y) #\1) (not (vector-ref (vector-ref visited x) y)))
+      (mark x y)
+      (dfs (+ x 1) y)
+      (dfs (- x 1) y)
+      (dfs x (+ y 1))
+      (dfs x (- y 1))))
+
+  (for ([i rows])
+    (for ([j cols])
+      (when (and (equal? (vector-ref (vector-ref grid i) j) #\1) (not (vector-ref (vector-ref visited i) j)))
+        (dfs i j))))
+
+  (define (check-stamp x y)
+    (and (is-valid x y)
+         (is-valid (+ x 1) y)
+         (is-valid x (+ y 1))
+         (is-valid (+ x 1) (+ y 1))
+         (equal? (vector-ref (vector-ref grid x) y) #\1)
+         (equal? (vector-ref (vector-ref grid (+ x 1)) y) #\1)
+         (equal? (vector-ref (vector-ref grid x) (+ y 1)) #\1)
+         (equal? (vector-ref (vector-ref grid (+ x 1)) (+ y 1)) #\1)))
+
+  (define (stamp x y)
+    (when (check-stamp x y)
+      (mark x y)
+      (mark (+ x 1) y)
+      (mark x (+ y 1))
+      (mark (+ x 1) (+ y 1))))
+
+  (for ([i rows])
+    (for ([j cols])
+      (when (check i j)
+        (stamp i j))))
+
+  (for/and ([i rows])
+    (for/and ([j cols])
+      (vector-ref (vector-ref visited i) j)))
+
+  (define (is-visited x y)
+    (vector-ref (vector-ref visited x) y))
+
+  (for/and ([i rows])
+    (for/and ([j cols])
+      (or (is-visited i j) (equal? (vector-ref (vector-ref grid i) j) #\0))))
+
+  (define (count-ones)
+    (for/sum ([i rows])
+      (for/sum ([j cols])
+        (if (equal? (vector-ref (vector-ref grid i) j) #\1) 1 0))))
+
+  (define (count-marked)
+    (for/sum ([i rows])
+      (for/sum ([j cols])
+        (if (vector-ref (vector-ref visited i) j) 1 0))))
+
+  (>= (count-marked) (count-ones)))

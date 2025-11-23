@@ -1,0 +1,15 @@
+(define (maximum-triplet-value nums)
+  (let ([n (length nums)])
+    (if (< n 3)
+        0
+        (let loop ([i 0] [max-val 0])
+          (if (>= i (- n 2))
+              max-val
+              (let inner-loop ([j (+ i 1)])
+                (if (>= j (- n 1))
+                    (loop (+ i 1) max-val)
+                    (let inner-inner-loop ([k (+ j 1)])
+                      (if (>= k n)
+                          (inner-loop (+ j 1))
+                          (inner-inner-loop (+ k 1)
+                                             (set! max-val (max max-val (* (- (list-ref nums i) (list-ref nums j)) (list-ref nums k))))))))))))))

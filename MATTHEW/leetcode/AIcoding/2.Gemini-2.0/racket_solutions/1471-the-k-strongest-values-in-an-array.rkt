@@ -1,0 +1,12 @@
+(define (kth-smallest arr k)
+  (list-ref (sort arr <) k))
+
+(define (strongest-values arr k)
+  (let* ((n (length arr))
+         (m (kth-smallest arr (floor (/ n 2))))
+         (stronger (lambda (x y)
+                     (if (= (abs (- x m)) (abs (- y m)))
+                         (> x y)
+                         (> (abs (- x m)) (abs (- y m))))))
+         (sorted-arr (sort arr stronger)))
+    (take sorted-arr k)))

@@ -1,0 +1,23 @@
+(define (num-secure-points n edges)
+  (define graph (make-hash))
+  (for-each
+   (lambda (edge)
+     (let ([u (car edge)] [v (cadr edge)])
+       (hash-update! graph u (lambda (lst) (cons v lst)) '())
+       (hash-update! graph v (lambda (lst) (cons u lst)) '())))
+  (define visited (make-hash))
+  (define (dfs node parent)
+    (let ([count 0])
+      (for-each
+       (lambda (neighbor)
+         (when (not (= neighbor parent))
+           (set! count (+ count (dfs neighbor node)))))
+      (if (= count 0) 1 (if (> count 1) 0 1))))
+  (define result 0)
+  (for-each
+   (lambda (node)
+     (when (not (hash-has-key? visited node))
+       (let ([res (dfs node -1)])
+         (set! result (+ result res)))))
+   (range 1 (add1 n)))
+  result)

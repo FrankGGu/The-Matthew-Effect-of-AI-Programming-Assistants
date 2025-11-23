@@ -1,0 +1,15 @@
+(define/contract (maximum-score nums multipliers)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer?)
+  (let* ([n (length nums)]
+         [m (length multipliers)]
+         [dp (make-vector (add1 m) (make-vector (add1 m) 0))])
+    (for ([k (in-range (sub1 m) -1 -1)])
+      (for ([left (in-range k -1 -1)])
+        (let ([right (- n 1 (- k left))])
+          (vector-set! (vector-ref dp left) 
+                       (- m k)
+                       (max (+ (* (list-ref multipliers k) (list-ref nums left))
+                               (vector-ref (vector-ref dp (add1 left)) (- m (add1 k))))
+                            (+ (* (list-ref multipliers k) (list-ref nums right))
+                               (vector-ref (vector-ref dp left) (- m (add1 k))))))))))
+    (vector-ref (vector-ref dp 0) m)))

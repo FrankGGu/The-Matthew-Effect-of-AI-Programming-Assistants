@@ -1,0 +1,32 @@
+(define (minOperations arr k)
+  (define (length-of-lis seq)
+    (define lis '())
+    (for-each (lambda (x)
+                (define pos (binary-search lis x))
+                (if (< pos (length lis))
+                    (vector-set! lis pos x)
+                    (vector-push! lis x)))
+              seq)
+    (length lis))
+
+  (define (binary-search lst x)
+    (define (bs-helper low high)
+      (if (>= low high) low
+          (define mid (quotient (+ low high) 2))
+          (if (<= (vector-ref lst mid) x)
+              (bs-helper (+ mid 1) high)
+              (bs-helper low mid))))
+    (bs-helper 0 (length lst)))
+
+  (define (group-operations group)
+    (- (length group) (length-of-lis group)))
+
+  (define total-operations 0)
+  (define n (length arr))
+  (for ([i (in-range n)])
+    (when (zero? (modulo i k))
+      (define group (map (lambda (j) (vector-ref arr j)) (in-range i n k)))
+      (set! total-operations (+ total-operations (group-operations group)))))
+  total-operations)
+
+(minOperations #(5 4 3 2 1) 1)

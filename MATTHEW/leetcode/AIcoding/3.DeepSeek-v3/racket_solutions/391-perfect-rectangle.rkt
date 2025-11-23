@@ -1,0 +1,23 @@
+(define/contract (is-rectangle-cover rectangles)
+  (-> (listof (listof exact-integer?)) boolean?)
+  (let ([min-x +inf.0] [min-y +inf.0] [max-x -inf.0] [max-y -inf.0]
+        [area 0] [corners (make-hash)])
+    (for ([rect rectangles])
+      (let ([x1 (first rect)] [y1 (second rect)]
+            [x2 (third rect)] [y2 (fourth rect)])
+        (set! min-x (min min-x x1))
+        (set! min-y (min min-y y1))
+        (set! max-x (max max-x x2))
+        (set! max-y (max max-y y2))
+        (set! area (+ area (* (- x2 x1) (- y2 y1))))
+        (for ([corner (list (cons x1 y1) (cons x1 y2) (cons x2 y1) (cons x2 y2))])
+          (hash-update! corners corner (lambda (v) (bitwise-xor v 1)) 0))))
+    (let ([expected-area (* (- max-x min-x) (- max-y min-y))])
+      (if (not (= area expected-area))
+          #f
+          (let ([outer-corners (list (cons min-x min-y) (cons min-x max-y) (cons max-x min-y) (cons max-x max-y))])
+            (and (for/and ([corner outer-corners])
+                   (= (hash-ref corners corner 0) 1))
+                 (for/and ([(corner cnt) (in-hash corners)])
+                   (or (member corner outer-corners)
+                       (= cnt 2) (= cnt 4)))))))))

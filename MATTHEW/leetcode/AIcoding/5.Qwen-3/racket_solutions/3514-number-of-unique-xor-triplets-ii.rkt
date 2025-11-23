@@ -1,0 +1,15 @@
+#lang racket
+
+(define (count-triplets nums)
+  (define n (length nums))
+  (define freq (make-hash))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (define xor-val (bitwise-xor (list-ref nums i) (list-ref nums j)))
+      (hash-update! freq xor-val add1 0)))
+  (define result 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (define xor-val (bitwise-xor (list-ref nums i) (list-ref nums j)))
+      (set! result (+ result (hash-ref freq xor-val 0)))))
+  result)

@@ -1,0 +1,17 @@
+(define (make-random-pick-with-weight w)
+  (let* ((n (length w))
+         (prefix-sums (make-vector n 0)))
+    (vector-set! prefix-sums 0 (vector-ref w 0))
+    (for ((i (in-range 1 n)))
+      (vector-set! prefix-sums i (+ (vector-ref prefix-sums (- i 1)) (vector-ref w i))))
+    (define (pick-index)
+      (let* ((target (+ 1 (random (vector-ref prefix-sums (- n 1))))))
+        (let loop ((low 0) (high (- n 1)))
+          (if (> low high)
+              low
+              (let ((mid (floor (/ (+ low high) 2))))
+                (cond
+                  ((< (vector-ref prefix-sums mid) target) (loop (+ mid 1) high))
+                  ((> (vector-ref prefix-sums mid) target) (loop low (- mid 1)))
+                  (else mid)))))))
+    (lambda () (pick-index))))

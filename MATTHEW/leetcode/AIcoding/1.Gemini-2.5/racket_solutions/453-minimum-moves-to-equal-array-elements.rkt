@@ -1,0 +1,5 @@
+(define (min-moves nums)
+  (let* ((min-val (apply min nums))
+         (total-sum (apply + nums))
+         (n (length nums)))
+    (- total-sum (* n min-val))))

@@ -1,0 +1,10 @@
+(define/contract (to-hex num)
+  (-> exact-integer? string?)
+  (if (zero? num)
+      "0"
+      (let loop ([n (if (negative? num) (+ (expt 2 32) num) num)] [res '()])
+        (if (zero? n)
+            (list->string res)
+            (let ([digit (modulo n 16)])
+              (loop (arithmetic-shift n -4)
+                    (cons (string-ref "0123456789abcdef" digit) res)))))))

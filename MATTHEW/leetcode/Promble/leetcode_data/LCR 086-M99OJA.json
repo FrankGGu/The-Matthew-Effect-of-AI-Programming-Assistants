@@ -1,0 +1,33 @@
+{
+  "id": "LCR 086",
+  "title": "分割回文串",
+  "titleSlug": "M99OJA",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Hash Table"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<string>> partition(string s) {\n\n    }\n};",
+    "java": "class Solution {\n    public String[][] partition(String s) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def partition(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: List[List[str]]\n        \"\"\"",
+    "python3": "class Solution:\n    def partition(self, s: str) -> List[List[str]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nchar*** partition(char* s, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public string[][] Partition(string s) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {string[][]}\n */\nvar partition = function(s) {\n\n};",
+    "typescript": "function partition(s: string): string[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return String[][]\n     */\n    function partition($s) {\n\n    }\n}",
+    "swift": "class Solution {\n    func partition(_ s: String) -> [[String]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun partition(s: String): Array<Array<String>> {\n\n    }\n}",
+    "golang": "func partition(s string) [][]string {\n\n}",
+    "ruby": "# @param {String} s\n# @return {String[][]}\ndef partition(s)\n\nend",
+    "scala": "object Solution {\n    def partition(s: String): Array[Array[String]] = {\n\n    }\n}",
+    "racket": "(define/contract (partition s)\n  (-> string? (listof (listof string?)))\n\n  )"
+  },
+  "exampleTestcases": "\"google\"\n\"aab\"\n\"a\"",
+  "hints": []
+}

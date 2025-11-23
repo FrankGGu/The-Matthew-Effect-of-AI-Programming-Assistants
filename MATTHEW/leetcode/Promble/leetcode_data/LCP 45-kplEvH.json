@@ -1,0 +1,36 @@
+{
+  "id": "LCP 45",
+  "title": "自行车炫技赛场",
+  "titleSlug": "kplEvH",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Memoization",
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> bicycleYard(vector<int>& position, vector<vector<int>>& terrain, vector<vector<int>>& obstacle) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[][] bicycleYard(int[] position, int[][] terrain, int[][] obstacle) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def bicycleYard(self, position, terrain, obstacle):\n        \"\"\"\n        :type position: List[int]\n        :type terrain: List[List[int]]\n        :type obstacle: List[List[int]]\n        :rtype: List[List[int]]\n        \"\"\"",
+    "python3": "class Solution:\n    def bicycleYard(self, position: List[int], terrain: List[List[int]], obstacle: List[List[int]]) -> List[List[int]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** bicycleYard(int* position, int positionSize, int** terrain, int terrainSize, int* terrainColSize, int** obstacle, int obstacleSize, int* obstacleColSize, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public int[][] BicycleYard(int[] position, int[][] terrain, int[][] obstacle) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} position\n * @param {number[][]} terrain\n * @param {number[][]} obstacle\n * @return {number[][]}\n */\nvar bicycleYard = function(position, terrain, obstacle) {\n\n};",
+    "typescript": "function bicycleYard(position: number[], terrain: number[][], obstacle: number[][]): number[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $position\n     * @param Integer[][] $terrain\n     * @param Integer[][] $obstacle\n     * @return Integer[][]\n     */\n    function bicycleYard($position, $terrain, $obstacle) {\n\n    }\n}",
+    "swift": "class Solution {\n    func bicycleYard(_ position: [Int], _ terrain: [[Int]], _ obstacle: [[Int]]) -> [[Int]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun bicycleYard(position: IntArray, terrain: Array<IntArray>, obstacle: Array<IntArray>): Array<IntArray> {\n\n    }\n}",
+    "golang": "func bicycleYard(position []int, terrain [][]int, obstacle [][]int) [][]int {\n\n}",
+    "ruby": "# @param {Integer[]} position\n# @param {Integer[][]} terrain\n# @param {Integer[][]} obstacle\n# @return {Integer[][]}\ndef bicycle_yard(position, terrain, obstacle)\n\nend",
+    "scala": "object Solution {\n    def bicycleYard(position: Array[Int], terrain: Array[Array[Int]], obstacle: Array[Array[Int]]): Array[Array[Int]] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn bicycle_yard(position: Vec<i32>, terrain: Vec<Vec<i32>>, obstacle: Vec<Vec<i32>>) -> Vec<Vec<i32>> {\n\n    }\n}",
+    "racket": "(define/contract (bicycle-yard position terrain obstacle)\n  (-> (listof exact-integer?) (listof (listof exact-integer?)) (listof (listof exact-integer?)) (listof (listof exact-integer?)))\n\n  )"
+  },
+  "exampleTestcases": "[0,0]\n[[0,0],[0,0]]\n[[0,0],[0,0]]\n[1,1]\n[[5,0],[0,6]]\n[[0,6],[7,0]]",
+  "hints": []
+}

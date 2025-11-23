@@ -1,0 +1,8 @@
+(define (count-bad-pairs nums)
+  (let* ((n (length nums))
+         (bad-count 0))
+    (for* ((i (in-range n))
+           (j (in-range (+ i 1) n)))
+      (when (not (= (- (list-ref nums i) (list-ref nums j)) (- i j)))
+        (set! bad-count (+ bad-count 1))))
+    bad-count))

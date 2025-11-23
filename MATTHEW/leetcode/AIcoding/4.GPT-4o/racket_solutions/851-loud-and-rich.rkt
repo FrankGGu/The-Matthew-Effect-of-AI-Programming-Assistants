@@ -1,0 +1,30 @@
+(define (loudAndRich richer quiet)
+  (define n (length quiet))
+  (define graph (make-vector n '()))
+  (define indegree (make-vector n 0))
+
+  (for ([i (in-range n)])
+    (for ([j (in-range n)])
+      (when (> (vector-ref (vector-ref richer i) j) 0)
+        (vector-set! graph j (cons i (vector-ref graph j)))
+        (vector-set! indegree i (+ 1 (vector-ref indegree i))))))
+
+  (define result (make-vector n 0))
+  (define queue (make-queue))
+
+  (for ([i (in-range n)])
+    (when (= (vector-ref indegree i) 0)
+      (enqueue queue i)))
+
+  (define (bfs)
+    (when (not (empty? queue))
+      (define node (dequeue queue))
+      (set! result (vector-set! result node (if (= 0 (vector-ref result node)) (vector-ref quiet node) (min (vector-ref result node) (vector-ref quiet node)))))
+      (for ([neighbor (in-list (vector-ref graph node))])
+        (vector-set! indegree neighbor (- (vector-ref indegree neighbor) 1))
+        (when (= (vector-ref indegree neighbor) 0)
+          (enqueue queue neighbor)))
+      (bfs)))
+
+  (bfs)
+  (vector->list result))

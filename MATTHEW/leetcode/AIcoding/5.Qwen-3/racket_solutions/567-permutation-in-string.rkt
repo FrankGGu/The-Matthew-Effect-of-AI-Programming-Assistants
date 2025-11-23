@@ -1,0 +1,18 @@
+#lang racket
+
+(define (check-inclusion s1 s2)
+  (define len1 (string-length s1))
+  (define len2 (string-length s2))
+  (when (> len1 len2) #f)
+  (define cnt (make-vector 26 0))
+  (for ([c (in-string s1)])
+    (vector-set! cnt (- (char->integer c) 97) (+ (vector-ref cnt (- (char->integer c) 97)) 1)))
+  (define window (make-vector 26 0))
+  (for ([i (in-range len1)])
+    (vector-set! window (- (char->integer (string-ref s2 i)) 97) (+ (vector-ref window (- (char->integer (string-ref s2 i)) 97)) 1)))
+  (when (equal? cnt window) #t)
+  (for ([i (in-range len1 len2)])
+    (vector-set! window (- (char->integer (string-ref s2 (- i 1))) 97) (- (vector-ref window (- (char->integer (string-ref s2 (- i 1))) 97)) 1))
+    (vector-set! window (- (char->integer (string-ref s2 i)) 97) (+ (vector-ref window (- (char->integer (string-ref s2 i)) 97)) 1))
+    (when (equal? cnt window) #t))
+  #f)

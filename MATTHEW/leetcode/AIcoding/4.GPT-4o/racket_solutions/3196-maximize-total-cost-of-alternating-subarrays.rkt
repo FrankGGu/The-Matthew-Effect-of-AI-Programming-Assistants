@@ -1,0 +1,13 @@
+(define (maxAlternatingSum nums)
+  (define n (length nums))
+  (define dp (make-vector n 0))
+  (vector-set! dp 0 (vector-ref nums 0))
+  (for ([i (in-range 1 n)])
+    (vector-set! dp i (max (vector-ref dp (- i 1)) 
+                            (if (>= i 2) 
+                                (+ (vector-ref dp (- i 2)) 
+                                   (vector-ref nums i)) 
+                                (vector-ref nums i)))))
+  (apply max (vector->list dp)))
+
+(maxAlternatingSum '(1 2 3 4 5))

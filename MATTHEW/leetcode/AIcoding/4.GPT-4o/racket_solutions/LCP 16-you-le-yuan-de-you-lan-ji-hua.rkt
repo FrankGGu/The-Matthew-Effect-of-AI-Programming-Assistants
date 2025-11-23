@@ -1,0 +1,10 @@
+(define (maxEnjoyment enjoyment cost budget)
+  (define n (length enjoyment))
+  (define dp (make-vector (+ budget 1) 0))
+  (for ([i (in-range n)])
+    (for ([j (in-range budget (cost i) -1)])
+      (vector-set! dp j (max (vector-ref dp j) (+ (vector-ref dp (- j (cost i))) (enjoyment i))))))
+  (vector-ref dp budget))
+
+(define (maxEnjoymentWrapper enjoyment cost budget)
+  (maxEnjoyment enjoyment cost budget))

@@ -1,0 +1,15 @@
+#lang racket
+
+(define/contract (interchangeable-rectangles rectangles)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define gcd-map (make-hash))
+  (for ([rect rectangles])
+    (define w (first rect))
+    (define h (second rect))
+    (define g (gcd w h))
+    (define key (cons (quotient w g) (quotient h g)))
+    (hash-update! gcd-map key add1 0))
+  (define result 0)
+  (for ([(key count) (in-hash gcd-map)])
+    (set! result (+ result (quotient (* count (- count 1)) 2))))
+  result)

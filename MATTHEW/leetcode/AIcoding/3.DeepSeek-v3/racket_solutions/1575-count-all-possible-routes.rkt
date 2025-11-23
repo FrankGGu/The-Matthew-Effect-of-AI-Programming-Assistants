@@ -1,0 +1,16 @@
+(define/contract (count-routes locations start finish fuel)
+  (-> (listof exact-integer?) exact-integer? exact-integer? exact-integer? exact-integer?)
+  (define n (length locations))
+  (define memo (make-hash))
+  (define (dfs pos remaining-fuel)
+    (define key (cons pos remaining-fuel))
+    (hash-ref! memo key
+               (lambda ()
+                 (let ([total (if (= pos finish) 1 0)])
+                   (for ([next (in-range n)]
+                         #:unless (= next pos))
+                     (define cost (abs (- (list-ref locations pos) (list-ref locations next))))
+                     (when (<= cost remaining-fuel)
+                       (set! total (modulo (+ total (dfs next (- remaining-fuel cost))) 1000000007))))
+                   total))))
+  (dfs start fuel))

@@ -1,0 +1,35 @@
+{
+  "id": "LCR 093",
+  "title": "最长的斐波那契子序列的长度",
+  "titleSlug": "Q91FMA",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int lenLongestFibSubseq(vector<int>& arr) {\n\n    }\n};",
+    "java": "class Solution {\n    public int lenLongestFibSubseq(int[] arr) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def lenLongestFibSubseq(self, arr):\n        \"\"\"\n        :type arr: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def lenLongestFibSubseq(self, arr: List[int]) -> int:",
+    "c": "\n\nint lenLongestFibSubseq(int* arr, int arrSize){\n\n}",
+    "csharp": "public class Solution {\n    public int LenLongestFibSubseq(int[] arr) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} arr\n * @return {number}\n */\nvar lenLongestFibSubseq = function(arr) {\n\n};",
+    "typescript": "function lenLongestFibSubseq(arr: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $arr\n     * @return Integer\n     */\n    function lenLongestFibSubseq($arr) {\n\n    }\n}",
+    "swift": "class Solution {\n    func lenLongestFibSubseq(_ arr: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun lenLongestFibSubseq(arr: IntArray): Int {\n\n    }\n}",
+    "golang": "func lenLongestFibSubseq(arr []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} arr\n# @return {Integer}\ndef len_longest_fib_subseq(arr)\n\nend",
+    "scala": "object Solution {\n    def lenLongestFibSubseq(arr: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn len_longest_fib_subseq(arr: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (len-longest-fib-subseq arr)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec len_longest_fib_subseq(Arr :: [integer()]) -> integer().\nlen_longest_fib_subseq(Arr) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec len_longest_fib_subseq(arr :: [integer]) :: integer\n  def len_longest_fib_subseq(arr) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[1,2,3,4,5,6,7,8]",
+  "hints": []
+}

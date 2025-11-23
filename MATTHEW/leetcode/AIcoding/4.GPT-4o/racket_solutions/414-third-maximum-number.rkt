@@ -1,0 +1,6 @@
+(define (thirdMax nums)
+  (define unique-nums (remove-duplicates nums))
+  (define sorted-nums (sort unique-nums >))
+  (if (< (length sorted-nums) 3)
+      (first sorted-nums)
+      (third sorted-nums)))

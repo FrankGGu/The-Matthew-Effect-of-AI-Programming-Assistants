@@ -1,0 +1,5 @@
+(define (xor-game nums)
+  (define (xor-sum lst)
+    (foldl bitwise-xor 0 lst))
+  (define total-xor (xor-sum nums))
+  (= total-xor 0))

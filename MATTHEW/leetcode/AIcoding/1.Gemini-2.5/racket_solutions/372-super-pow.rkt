@@ -1,0 +1,25 @@
+(define MOD 1337)
+
+(define (pow-mod base exp mod)
+  (let loop ((base (remainder base mod))
+             (exp exp)
+             (res 1))
+    (cond
+      ((zero? exp) res)
+      ((odd? exp) (loop (remainder (* base base) mod)
+                         (quotient exp 2)
+                         (remainder (* res base) mod)))
+      (else (loop (remainder (* base base) mod)
+                   (quotient exp 2)
+                   res)))))
+
+(define (superPow a b)
+  (let loop ((b-list b)
+             (current-result 1))
+    (if (null? b-list)
+        current-result
+        (let* ((digit (car b-list))
+               (res-raised-to-10 (pow-mod current-result 10 MOD))
+               (a-raised-to-digit (pow-mod a digit MOD)))
+          (loop (cdr b-list)
+                (remainder (* res-raised-to-10 a-raised-to-digit) MOD))))))

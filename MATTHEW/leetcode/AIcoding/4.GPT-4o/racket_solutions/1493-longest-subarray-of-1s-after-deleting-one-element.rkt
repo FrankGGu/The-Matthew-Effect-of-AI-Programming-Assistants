@@ -1,0 +1,15 @@
+(define (longestSubarray nums)
+  (define (max-length nums k)
+    (define (helper start end count)
+      (if (< end (length nums))
+        (if (= (vector-ref nums end) 0)
+          (if (= count 0)
+            (helper (+ start 1) (+ end 1) 1)
+            (helper start (+ end 1) 0))
+          (helper start (+ end 1) count))
+        (- end start)))
+    (helper 0 0 0))
+
+  (max-length nums 1))
+
+(longestSubarray (vector 1 1 0 1 1))

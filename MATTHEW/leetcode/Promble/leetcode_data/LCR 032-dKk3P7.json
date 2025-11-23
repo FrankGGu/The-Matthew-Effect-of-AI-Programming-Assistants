@@ -1,0 +1,35 @@
+{
+  "id": "LCR 032",
+  "title": "有效的字母异位词",
+  "titleSlug": "dKk3P7",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool isAnagram(string s, string t) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean isAnagram(String s, String t) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def isAnagram(self, s, t):\n        \"\"\"\n        :type s: str\n        :type t: str\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:",
+    "c": "\n\nbool isAnagram(char * s, char * t){\n\n}",
+    "csharp": "public class Solution {\n    public bool IsAnagram(string s, string t) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @param {string} t\n * @return {boolean}\n */\nvar isAnagram = function(s, t) {\n\n};",
+    "typescript": "function isAnagram(s: string, t: string): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @param String $t\n     * @return Boolean\n     */\n    function isAnagram($s, $t) {\n\n    }\n}",
+    "swift": "class Solution {\n    func isAnagram(_ s: String, _ t: String) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun isAnagram(s: String, t: String): Boolean {\n\n    }\n}",
+    "golang": "func isAnagram(s string, t string) bool {\n\n}",
+    "ruby": "# @param {String} s\n# @param {String} t\n# @return {Boolean}\ndef is_anagram(s, t)\n\nend",
+    "scala": "object Solution {\n    def isAnagram(s: String, t: String): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn is_anagram(s: String, t: String) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (is-anagram s t)\n  (-> string? string? boolean?)\n\n  )",
+    "erlang": "-spec is_anagram(S :: unicode:unicode_binary(), T :: unicode:unicode_binary()) -> boolean().\nis_anagram(S, T) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec is_anagram(s :: String.t, t :: String.t) :: boolean\n  def is_anagram(s, t) do\n\n  end\nend"
+  },
+  "exampleTestcases": "\"anagram\"\n\"nagaram\"\n\"rat\"\n\"car\"\n\"a\"\n\"a\"",
+  "hints": []
+}

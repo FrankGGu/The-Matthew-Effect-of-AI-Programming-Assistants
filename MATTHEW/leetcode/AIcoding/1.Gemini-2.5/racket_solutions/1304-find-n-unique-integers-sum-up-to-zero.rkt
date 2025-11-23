@@ -1,0 +1,6 @@
+(define (sum-zero n)
+  (let ((half (floor (/ n 2))))
+    (let loop ((i 1) (acc (if (odd? n) '(0) '())))
+      (if (> i half)
+          (reverse acc)
+          (loop (add1 i) (cons (- i) (cons i acc)))))))

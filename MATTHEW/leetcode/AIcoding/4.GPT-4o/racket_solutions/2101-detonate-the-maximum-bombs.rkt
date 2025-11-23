@@ -1,0 +1,27 @@
+(define (maxDetonatedBombs bombs)
+  (define (distance bomb1 bomb2)
+    (let* ((x1 (car bomb1))
+           (y1 (cadr bomb1))
+           (x2 (car bomb2))
+           (y2 (cadr bomb2))
+           (r1 (caddr bomb1))
+           (r2 (caddr bomb2)))
+      (<= (+ (sqr (- x1 x2)) (sqr (- y1 y2))) (sqr r1))))
+
+  (define (dfs idx visited)
+    (if (member idx visited)
+        0
+        (begin
+          (set! visited (cons idx visited))
+          (define count 1)
+          (for-each (lambda (j)
+                      (when (distance (list-ref bombs idx) (list-ref bombs j))
+                        (set! count (+ count (dfs j visited)))))
+                    (range (length bombs)))
+          count)))
+
+  (define max-bombs 0)
+  (for-each (lambda (i)
+              (set! max-bombs (max max-bombs (dfs i '()))))
+            (range (length bombs)))
+  max-bombs)

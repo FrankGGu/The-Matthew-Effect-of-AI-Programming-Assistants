@@ -1,0 +1,28 @@
+(define (remove-invalid-parentheses s)
+  (define (is-valid str)
+    (let loop ((chars (string->list str))
+               (count 0))
+      (cond
+        ((null? chars) (= count 0))
+        ((char=? (car chars) #\() (loop (cdr chars) (+ count 1)))
+        ((char=? (car chars) #\)) (and (> count 0) (loop (cdr chars) (- count 1))))
+        (else (loop (cdr chars) count)))))
+
+  (define (dfs s left-rem right-rem path result)
+    (if (and (= left-rem 0) (= right-rem 0))
+        (when (is-valid path) (set! result (cons path result)))
+        (for ((i (in-range (string-length s))))
+          (when (or (and (= i 0) (not (char=? (string-ref s i) #\))) 
+                     (not (char=? (string-ref s i) #\() (char=? (string-ref s i) #\))))
+            (define new-path (string-append path (string (string-ref s i))))
+            (define new-left-rem (if (char=? (string-ref s i) #\() (+ left-rem 1) left-rem))
+            (define new-right-rem (if (char=? (string-ref s i) #\)) (+ right-rem 1) right-rem))
+            (dfs (substring s 0 i) new-left-rem new-right-rem new-path result))))
+
+  (define result '())
+  (define left-rem (count (lambda (c) (char=? c #\() s)))
+  (define right-rem (count (lambda (c) (char=? c #\)) s)))
+  (dfs s left-rem right-rem "" result)
+  (reverse result))
+
+(remove-invalid-parentheses "(()))())(")

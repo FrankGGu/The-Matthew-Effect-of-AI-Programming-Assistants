@@ -1,0 +1,17 @@
+#lang racket
+
+(define (find-good-indices arr k)
+  (define n (length arr))
+  (define good (make-vector n #f))
+  (define left (make-vector n 0))
+  (define right (make-vector n 0))
+  (for ([i (in-range 1 n)])
+    (when (= (vector-ref arr (- i 1)) (vector-ref arr i))
+      (vector-set! left i (+ (vector-ref left (- i 1)) 1))))
+  (for ([i (in-range (- n 2) -1 -1)])
+    (when (= (vector-ref arr (+ i 1)) (vector-ref arr i))
+      (vector-set! right i (+ (vector-ref right (+ i 1)) 1))))
+  (for ([i (in-range n)])
+    (when (and (>= (vector-ref left i) k) (>= (vector-ref right i) k))
+      (vector-set! good i #t)))
+  (for/list ([i (in-range n)] #:when (vector-ref good i)) i))

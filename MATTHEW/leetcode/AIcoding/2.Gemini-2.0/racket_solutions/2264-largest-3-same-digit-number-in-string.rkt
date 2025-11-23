@@ -1,0 +1,12 @@
+(define (largest-good-integer num)
+  (let loop ([i 0] [max-good ""])
+    (if (>= i (- (string-length num) 2))
+        max-good
+        (let ([sub (substring num i (+ i 3))])
+          (if (and (= (string-ref sub 0) (string-ref sub 1))
+                   (= (string-ref sub 1) (string-ref sub 2)))
+              (let ([current-good sub])
+                (if (string>? current-good max-good)
+                    (loop (+ i 1) current-good)
+                    (loop (+ i 1) max-good)))
+              (loop (+ i 1) max-good))))))

@@ -1,0 +1,6 @@
+(define (getCommon nums1 nums2)
+  (define set1 (set nums1))
+  (for ([num nums2])
+    (if (set-member? set1 num)
+        (return num)))
+  -1)

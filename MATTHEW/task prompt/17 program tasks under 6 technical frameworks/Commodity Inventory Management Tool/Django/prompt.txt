@@ -1,0 +1,46 @@
+Create a Django-based inventory management system using:
+- Backend: Django 4.2 with Django REST Framework
+- Frontend: Django Templates or React (your choice)
+- Database: PostgreSQL with Django ORM
+
+**Database Configuration:**
+- ENGINE: django.db.backends.postgresql
+- NAME: inventory_db
+- USER: admin
+- PASSWORD: admin123
+- HOST: localhost
+- PORT: 5432
+
+**Required Features:**
+1. Admin interface for product management
+2. REST API for all operations
+3. Inventory tracking with transaction history
+4. Stock level alerts
+5. CSV import/export functionality
+
+**Technical Specifications:**
+- Use Django Models for Products, Inventory, Transactions
+- Django REST Framework for API endpoints
+- Django Admin customization for inventory management
+- Authentication: Django Session or JWT
+- Frontend: Either Django templates with HTMX or separate React frontend
+
+**Models to Implement:**
+```python
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    specification = models.TextField()
+    sku = models.CharField(max_length=100, unique=True)
+    # ... other fields
+
+class Inventory(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    # ... other fields
+
+class Transaction(models.Model):
+    TRANSACTION_TYPES = [
+        ('INBOUND', 'Inbound'),
+        ('OUTBOUND', 'Outbound'),
+    ]
+    # ... fields

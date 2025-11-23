@@ -1,0 +1,11 @@
+Task: Build a simple in-memory key-value store with "put" and "get" endpoints.
+
+Technology stack (must use exactly this):
+[Option A] Go + Gin
+[Option B] Elixir + Phoenix
+[Option C] Rust + Actix Web
+
+Requirements:
+- Implement PUT /set?key=...&value=...
+- Implement GET /get?key=...
+- Store data in memory.

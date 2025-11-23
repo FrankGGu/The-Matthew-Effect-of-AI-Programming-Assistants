@@ -1,0 +1,10 @@
+(define (repeatedStringMatch A B)
+  (let* ((lenA (string-length A))
+         (lenB (string-length B))
+         (reps (ceiling (/ (exact->inexact lenB) lenA)))
+         (repeatedA (string-append (apply string-append (make-list reps A)))))
+    (if (string-contains repeatedA B)
+        reps
+        (if (string-contains (string-append repeatedA A) B)
+            (+ reps 1)
+            -1))))

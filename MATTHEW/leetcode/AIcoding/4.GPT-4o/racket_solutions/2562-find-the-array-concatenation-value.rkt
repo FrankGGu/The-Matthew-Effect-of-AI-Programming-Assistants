@@ -1,0 +1,6 @@
+(define (find-array-concatenation-value arr)
+  (define n (length arr))
+  (define sum 0)
+  (for ([i (in-range n)])
+    (set! sum (+ sum (* (list-ref arr i) (expt 10 (if (= i (- n 1)) 0 (length (number->string (list-ref arr (+ i 1))))))))))
+  sum)

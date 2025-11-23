@@ -1,0 +1,13 @@
+(define (distributeCandies candies numChildren)
+  (define total-candies (apply + candies))
+  (define n (length candies))
+  (define full-rounds (quotient total-candies numChildren))
+  (define leftover (modulo total-candies numChildren))
+  (define result (map (lambda (x) (+ x full-rounds)) candies))
+  (define (distribute-leftover result leftover)
+    (for ([i (in-range leftover)])
+      (set! (list-ref result i) (+ (list-ref result i) 1)))
+    result)
+  (distribute-leftover result leftover))
+
+(distributeCandies '(1 2 3 4 5) 3)

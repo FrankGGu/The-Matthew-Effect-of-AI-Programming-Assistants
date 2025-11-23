@@ -1,0 +1,18 @@
+#lang racket
+
+(define (shortest-subarray nums k)
+  (define n (length nums))
+  (define prefix (make-vector (+ n 1) 0))
+  (for ([i (in-range n)])
+    (vector-set! prefix (+ i 1) (+ (vector-ref prefix i) (vector-ref nums i))))
+  (define dq (list))
+  (define result +inf.0)
+  (for ([i (in-range n)])
+    (while (and (not (null? dq)) (> (vector-ref prefix i) (vector-ref prefix (car dq))))
+      (set! dq (cdr dq)))
+    (when (not (null? dq))
+      (set! result (min result (- i (car dq)))))
+    (while (and (not (null? dq)) (< (vector-ref prefix i) (vector-ref prefix (last dq))))
+      (set! dq (reverse (cdr (reverse dq)))))
+    (set! dq (append dq (list i))))
+  (if (inf.0? result) -1 result))

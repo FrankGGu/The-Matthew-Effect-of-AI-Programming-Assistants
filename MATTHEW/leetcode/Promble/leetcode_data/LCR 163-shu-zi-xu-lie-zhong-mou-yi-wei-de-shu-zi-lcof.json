@@ -1,0 +1,36 @@
+{
+  "id": "LCR 163",
+  "title": "找到第 k 位数字",
+  "titleSlug": "shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Binary Search"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findKthNumber(int k) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int findKthNumber(int k) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def findKthNumber(self, k):\n        \"\"\"\n        :type k: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def findKthNumber(self, k: int) -> int:\n        ",
+    "c": "int findKthNumber(int k) {\n    \n}",
+    "csharp": "public class Solution {\n    public int FindKthNumber(int k) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} k\n * @return {number}\n */\nvar findKthNumber = function(k) {\n    \n};",
+    "typescript": "function findKthNumber(k: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $k\n     * @return Integer\n     */\n    function findKthNumber($k) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func findKthNumber(_ k: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun findKthNumber(k: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int findKthNumber(int k) {\n    \n  }\n}",
+    "golang": "func findKthNumber(k int) int {\n    \n}",
+    "ruby": "# @param {Integer} k\n# @return {Integer}\ndef find_kth_number(k)\n    \nend",
+    "scala": "object Solution {\n    def findKthNumber(k: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_kth_number(k: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (find-kth-number k)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec find_kth_number(K :: integer()) -> integer().\nfind_kth_number(K) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_kth_number(k :: integer) :: integer\n  def find_kth_number(k) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func findKthNumber(k: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "5\n12",
+  "hints": []
+}

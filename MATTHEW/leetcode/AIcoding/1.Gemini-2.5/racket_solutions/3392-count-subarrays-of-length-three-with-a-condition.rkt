@@ -1,0 +1,12 @@
+(define (count-subarrays-of-length-three-with-a-condition nums)
+  (let* ((n (length nums)))
+    (if (< n 3)
+        0
+        (for/fold ((count 0))
+                  ((i (in-range (- n 2))))
+          (let* ((n1 (list-ref nums i))
+                 (n2 (list-ref nums (+ i 1)))
+                 (n3 (list-ref nums (+ i 2))))
+            (if (< (+ n1 n2 n3) 100)
+                (+ count 1)
+                count))))))

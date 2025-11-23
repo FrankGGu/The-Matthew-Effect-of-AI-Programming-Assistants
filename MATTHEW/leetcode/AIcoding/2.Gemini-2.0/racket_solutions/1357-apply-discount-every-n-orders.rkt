@@ -1,0 +1,8 @@
+(define (make-apply-discount n discount products prices)
+  (let ([order-count (box 0)])
+    (lambda (customer-id product-ids amount)
+      (box-set! order-count (+ 1 (unbox order-count)))
+      (let ([total-price (apply + (map (lambda (id amt) (* amt (list-ref products id))) product-ids amount))])
+        (if (= (remainder (unbox order-count) n) 0)
+            (real->decimal-string (* total-price (- 1 (/ discount 100.0))) #:precision 2)
+            (real->decimal-string total-price #:precision 2))))))

@@ -1,0 +1,12 @@
+(define (checkDistances s distance)
+  (define letters (make-vector 26 #f))
+  (define (char-index c) (- (char->integer c) (char->integer #\a)))
+
+  (for ([i (in-range (string-length s))])
+    (let ([index (char-index (string-ref s i))])
+      (if (vector-ref letters index)
+          (let ([prev (vector-ref letters index)])
+            (if (not (= (- i prev) (vector-ref distance index)))
+                (return #f)))
+          (vector-set! letters index i))))
+  #t)

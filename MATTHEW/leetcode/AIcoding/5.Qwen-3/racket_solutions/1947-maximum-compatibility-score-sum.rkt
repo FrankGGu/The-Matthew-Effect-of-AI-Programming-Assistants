@@ -1,0 +1,16 @@
+#lang racket
+
+(define (max-compatibility-score-sum students professors)
+  (define n (length students))
+  (define m (length professors))
+  (define (score s p)
+    (for/sum ([i (in-range (length s))])
+      (if (= (list-ref s i) (list-ref p i)) 1 0)))
+  (define (dfs idx used perm)
+    (if (= idx n)
+        (for/sum ([i (in-range n)])
+          (score (list-ref students i) (list-ref professors (list-ref perm i))))
+        (for/fold ([max 0]) ([j (in-range m)])
+          (if (and (not (member j used)) (<= (+ max (apply + (map (lambda (k) (if (<= k idx) (score (list-ref students k) (list-ref professors j)) 0)) (range idx))) (apply + (map (lambda (k) (score (list-ref students k) (list-ref professors j))) (range idx n)))) (let ([new-used (cons j used)]) (dfs (+ idx 1) new-used (append perm (list j)))))))
+    ))
+  (dfs 0 '() '()))

@@ -1,0 +1,13 @@
+(define (minimum-white-tiles tiles carpet-len)
+  (let ((n (string-length tiles)))
+    (let ((dp (make-vector (+ n 1) 0)))
+      (for ((i (in-range 1 (+ n 1))))
+        (let ((white (if (char=? (string-ref tiles (- i 1)) #\1) 1 0)))
+          (vector-set! dp i (+ (vector-ref dp (- i 1)) white))))
+      (letrec ((solve (lambda (i carpets)
+                         (cond
+                           ((= i (+ n 1)) 0)
+                           ((= carpets 0) (- (vector-ref dp n) (vector-ref dp (- i 1))))
+                           (else (min (+ (if (char=? (string-ref tiles (- i 1)) #\1) 1 0) (solve (+ i 1) carpets))
+                                      (solve (+ i carpet-len) (- carpets 1))))))))
+        (solve 1 carpet-len)))))

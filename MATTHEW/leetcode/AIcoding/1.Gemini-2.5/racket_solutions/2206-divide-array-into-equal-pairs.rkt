@@ -1,0 +1,6 @@
+(define (divide-array-into-equal-pairs nums)
+  (let ([counts (make-hash)])
+    (for-each (lambda (num)
+                (hash-set! counts num (+ (hash-ref counts num 0) 1)))
+              nums)
+    (andmap even? (hash-values counts))))

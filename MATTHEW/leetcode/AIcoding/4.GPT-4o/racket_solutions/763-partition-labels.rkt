@@ -1,0 +1,15 @@
+(define (partition-labels s)
+  (define last-index (make-vector 26))
+  (for ([i (in-range (string-length s))])
+    (vector-set! last-index (char->integer (string-ref s i)) i))
+  (define result '())
+  (define start 0)
+  (define end 0)
+
+  (for ([i (in-range (string-length s))])
+    (set! end (max end (vector-ref last-index (char->integer (string-ref s i)))))
+    (when (= i end)
+      (set! result (cons (add1 (- end start)) result))
+      (set! start (add1 end))))
+
+  (reverse result))

@@ -1,0 +1,23 @@
+(define (constructMatrix m n)
+  (if (and (= m 0) (= n 0))
+      '()
+      (let loop ((x 1) (y 1) (matrix (make-vector m (make-vector n 0))))
+        (if (> x m)
+            (vector->list matrix)
+            (begin
+              (vector-set! (vector-ref matrix (- x 1)) (- y 1) x)
+              (if (= y n)
+                  (loop (+ x 1) 1 matrix)
+                  (loop x (+ y 1) matrix)))))))
+
+(define (constructMatrix m n)
+  (if (and (= m 0) (= n 0))
+      '()
+      (let loop ((x 1) (y 1) (matrix (make-vector m (make-vector n 0))))
+        (if (> x m)
+            (vector->list matrix)
+            (begin
+              (vector-set! (vector-ref matrix (- x 1)) (- y 1) x)
+              (if (= y n)
+                  (loop (+ x 1) 1 matrix)
+                  (loop x (+ y 1) matrix)))))))

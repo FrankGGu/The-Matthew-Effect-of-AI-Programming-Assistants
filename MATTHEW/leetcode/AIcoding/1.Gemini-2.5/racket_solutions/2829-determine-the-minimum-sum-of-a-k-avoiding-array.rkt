@@ -1,0 +1,10 @@
+(define (minimum-sum n k)
+  (let* ((count-small (min n (quotient k 2)))
+         (sum-small (/ (* count-small (+ count-small 1)) 2))
+         (remaining-n (- n count-small)))
+    (if (zero? remaining-n)
+        sum-small
+        (let* ((start-large k)
+               (end-large (+ k remaining-n -1))
+               (sum-large (/ (* (+ start-large end-large) remaining-n) 2)))
+          (+ sum-small sum-large)))))

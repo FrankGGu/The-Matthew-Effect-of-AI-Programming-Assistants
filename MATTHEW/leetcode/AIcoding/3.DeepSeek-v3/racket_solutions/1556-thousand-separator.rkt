@@ -1,0 +1,10 @@
+(define/contract (thousand-separator n)
+  (-> exact-integer? string?)
+  (let* ((s (number->string n))
+         (len (string-length s))
+         (groups (ceiling (/ len 3))))
+    (string-join
+     (for/list ((i (in-range groups)))
+       (let ((start (max 0 (- len (* (add1 i) 3))))
+         (substring s start (min len (+ start 3)))))
+     ".")))

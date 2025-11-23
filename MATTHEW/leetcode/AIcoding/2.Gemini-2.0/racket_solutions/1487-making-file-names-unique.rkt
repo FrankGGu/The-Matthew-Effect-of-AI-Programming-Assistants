@@ -1,0 +1,15 @@
+(define (make-unique names)
+  (let ((seen (make-hash)))
+    (map (lambda (name)
+           (if (hash-has-key? seen name)
+               (let loop ((k 1))
+                 (let ((new-name (string-append name (number->string k))))
+                   (if (hash-has-key? seen new-name)
+                       (loop (+ k 1))
+                       (begin
+                         (hash-set! seen new-name #t)
+                         new-name))))
+               (begin
+                 (hash-set! seen name #t)
+                 name)))
+         names)))

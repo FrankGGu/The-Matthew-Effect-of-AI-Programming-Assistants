@@ -1,0 +1,22 @@
+(define (count-students-unable-to-eat-lunch students sandwiches)
+  (let* ((initial-count0 (let loop ((lst students) (c 0))
+                           (cond
+                             ((empty? lst) c)
+                             ((= (car lst) 0) (loop (cdr lst) (+ c 1)))
+                             (else (loop (cdr lst) c))))))
+         (initial-count1 (let loop ((lst students) (c 0))
+                           (cond
+                             ((empty? lst) c)
+                             ((= (car lst) 1) (loop (cdr lst) (+ c 1)))
+                             (else (loop (cdr lst) c))))))
+    (let loop ((sandwiches sandwiches) (count0 initial-count0) (count1 initial-count1))
+      (cond
+        ((empty? sandwiches) 0)
+        ((= (car sandwiches) 0)
+         (if (> count0 0)
+             (loop (cdr sandwiches) (- count0 1) count1)
+             (+ count0 count1)))
+        ((= (car sandwiches) 1)
+         (if (> count1 0)
+             (loop (cdr sandwiches) count0 (- count1 1))
+             (+ count0 count1)))))))

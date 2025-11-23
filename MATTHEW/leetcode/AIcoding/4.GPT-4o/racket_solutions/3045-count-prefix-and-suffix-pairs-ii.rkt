@@ -1,0 +1,13 @@
+(define (count-prefix-suffix-pairs words)
+  (define (helper word-set)
+    (for/fold ([count 0]) ([word words])
+      (for ([prefix (in-range (add1 (string-length word)))])
+        (for ([suffix (in-range (add1 (string-length word)))])
+          (when (and (member (substring word 0 prefix) word-set)
+                     (member (substring word suffix (string-length word)) word-set))
+            (set! count (+ count 1)))))))
+  (define word-set (set words))
+  (helper word-set))
+
+(define (count-pairs words)
+  (count-prefix-suffix-pairs words))

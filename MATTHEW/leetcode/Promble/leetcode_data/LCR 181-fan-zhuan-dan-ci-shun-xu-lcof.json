@@ -1,0 +1,36 @@
+{
+  "id": "LCR 181",
+  "title": "字符串中的单词反转",
+  "titleSlug": "fan-zhuan-dan-ci-shun-xu-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string reverseMessage(string message) {\n        \n    }\n};",
+    "java": "class Solution {\n    public String reverseMessage(String message) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def reverseMessage(self, message):\n        \"\"\"\n        :type message: str\n        :rtype: str\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def reverseMessage(self, message: str) -> str:\n        ",
+    "c": "char* reverseMessage(char* message) {\n    \n}",
+    "csharp": "public class Solution {\n    public string ReverseMessage(string message) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} message\n * @return {string}\n */\nvar reverseMessage = function(message) {\n    \n};",
+    "typescript": "function reverseMessage(message: string): string {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $message\n     * @return String\n     */\n    function reverseMessage($message) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func reverseMessage(_ message: String) -> String {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun reverseMessage(message: String): String {\n        \n    }\n}",
+    "dart": "class Solution {\n  String reverseMessage(String message) {\n    \n  }\n}",
+    "golang": "func reverseMessage(message string) string {\n    \n}",
+    "ruby": "# @param {String} message\n# @return {String}\ndef reverse_message(message)\n    \nend",
+    "scala": "object Solution {\n    def reverseMessage(message: String): String = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn reverse_message(message: String) -> String {\n        \n    }\n}",
+    "racket": "(define/contract (reverse-message message)\n  (-> string? string?)\n  )",
+    "erlang": "-spec reverse_message(Message :: unicode:unicode_binary()) -> unicode:unicode_binary().\nreverse_message(Message) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec reverse_message(message :: String.t) :: String.t\n  def reverse_message(message) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func reverseMessage(message: String): String {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"the sky is blue\"\n\"  hello world!  \"\n\"a good   example\"",
+  "hints": []
+}

@@ -1,0 +1,25 @@
+(define (count-beautiful-substrings s k)
+  (define (is-beautiful? substring)
+    (let loop ((chars (string->list substring))
+               (counts (make-vector 26 0)))
+      (if (null? chars)
+          (<= (vector->list counts) (make-vector 26 0))
+          (let* ((char (car chars))
+                 (index (- (char->integer char) (char->integer #\a))))
+            (vector-set! counts index (+ 1 (vector-ref counts index)))
+            (loop (cdr chars) counts)))))
+
+  (define (count-helper start end count)
+    (if (>= start (string-length s))
+        count
+        (if (>= end (string-length s))
+            (count-helper (+ start 1) (+ start 1) count)
+            (let ((substr (substring s start end)))
+              (if (is-beautiful? substr)
+                  (count-helper start (+ end 1) (+ count 1))
+                  (count-helper start (+ end 1) count))))))
+
+  (count-helper 0 0 0))
+
+(define (count-beautiful-substrings-ii s k)
+  (count-beautiful-substrings s k))

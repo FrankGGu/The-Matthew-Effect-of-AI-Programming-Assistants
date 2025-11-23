@@ -1,0 +1,33 @@
+(define/contract (generate-matrix n)
+  (-> exact-integer? (listof (listof exact-integer?)))
+  (let ([matrix (make-list n (make-list n 0))]
+        [num 1]
+        [top 0]
+        [bottom (- n 1)]
+        [left 0]
+        [right (- n 1)])
+    (define (update-matrix i j val)
+      (list-set matrix i (list-set (list-ref matrix i) j val)))
+    (let loop ()
+      (when (<= left right)
+        (for ([j (in-range left (+ right 1))])
+          (set! matrix (update-matrix top j num))
+          (set! num (+ num 1)))
+        (set! top (+ top 1))
+        (when (<= top bottom)
+          (for ([i (in-range top (+ bottom 1))])
+            (set! matrix (update-matrix i right num))
+            (set! num (+ num 1)))
+          (set! right (- right 1))
+          (when (<= left right)
+            (for ([j (in-range right (- left 1) -1)])
+              (set! matrix (update-matrix bottom j num))
+              (set! num (+ num 1)))
+            (set! bottom (- bottom 1))
+            (when (<= top bottom)
+              (for ([i (in-range bottom (- top 1) -1)])
+                (set! matrix (update-matrix i left num))
+                (set! num (+ num 1)))
+              (set! left (+ left 1))
+              (loop))))))
+    matrix))

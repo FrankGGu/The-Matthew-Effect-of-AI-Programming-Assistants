@@ -1,0 +1,20 @@
+(define (minimum-time trip-times total-trips)
+  (define (can-complete? current-time trip-times total-trips)
+    (let loop ((times trip-times) (completed-trips 0))
+      (if (or (null? times) (>= completed-trips total-trips))
+          (>= completed-trips total-trips)
+          (loop (cdr times)
+                (+ completed-trips (quotient current-time (car times)))))))
+
+  (let* ((min-bus-time (apply min trip-times))
+         (low 1)
+         (high (* min-bus-time total-trips))
+         (ans high))
+
+    (let loop ((l low) (h high) (current-ans ans))
+      (if (> l h)
+          current-ans
+          (let* ((mid (+ l (quotient (- h l) 2))))
+            (if (can-complete? mid trip-times total-trips)
+                (loop l (- mid 1) mid)
+                (loop (+ mid 1) h current-ans)))))))

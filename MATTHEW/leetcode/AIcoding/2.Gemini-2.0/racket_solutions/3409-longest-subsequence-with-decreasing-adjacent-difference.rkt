@@ -1,0 +1,11 @@
+(define (longest-subsequence-with-decreasing-adjacent-difference nums)
+  (define n (length nums))
+  (define (solve index prev diff)
+    (if (= index n)
+        0
+        (let ((take (if (or (null? prev) (< (- (list-ref prev 0)) (list-ref nums index) diff))
+                         (+ 1 (solve (+ index 1) (list nums index) (- (list-ref prev 0) (list-ref nums index))))
+                         0))
+              (skip (solve (+ index 1) prev diff)))
+          (max take skip))))
+  (solve 0 '() 0))

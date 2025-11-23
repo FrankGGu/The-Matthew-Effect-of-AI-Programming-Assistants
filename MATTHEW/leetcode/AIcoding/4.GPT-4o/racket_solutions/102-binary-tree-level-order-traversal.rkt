@@ -1,0 +1,10 @@
+(define (levelOrder root)
+  (define (helper level nodes)
+    (if (null? nodes)
+        '()
+        (cons (map (lambda (n) (if n (n 'val) '())) nodes)
+              (helper (+ level 1) (apply append (map (lambda (n) (if n (list (n 'left) (n 'right)) '())) nodes))))))
+  (helper 0 (if root (list root) '())))
+
+(define (binaryTreeLevelOrderTraversal root)
+  (levelOrder root))

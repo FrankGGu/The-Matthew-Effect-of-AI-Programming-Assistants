@@ -1,0 +1,15 @@
+(define (earliestBloomDay(plants, growTime))
+  (define n (length plants))
+  (define pairs (map list plants growTime))
+  (define sorted-pairs (sort pairs (lambda (a b) (> (second a) (second b)))))
+  (define (helper day max-bloom)
+    (if (null? sorted-pairs)
+        day
+        (let* ((plant (car sorted-pairs))
+               (bloom-day (+ day (first plant)))
+               (new-max-bloom (max max-bloom (+ bloom-day (second plant)))))
+          (helper (max bloom-day day) new-max-bloom))))
+  (helper 0 0))
+
+(define (earliestPossibleDayOfFullBloom plants growTime)
+  (earliestBloomDay plants growTime))

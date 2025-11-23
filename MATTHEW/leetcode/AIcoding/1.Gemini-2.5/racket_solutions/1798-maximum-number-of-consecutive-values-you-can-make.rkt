@@ -1,0 +1,10 @@
+(define (maximum-consecutive-values coins)
+  (let ([sorted-coins (sort coins <)])
+    (let loop ([current-reachable 0]
+               [remaining-coins sorted-coins])
+      (if (empty? remaining-coins)
+          (+ current-reachable 1)
+          (let ([coin (car remaining-coins)])
+            (if (<= coin (+ current-reachable 1))
+                (loop (+ current-reachable coin) (cdr remaining-coins))
+                (+ current-reachable 1)))))))

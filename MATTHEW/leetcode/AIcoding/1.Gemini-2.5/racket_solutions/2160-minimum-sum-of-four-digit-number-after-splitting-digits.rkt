@@ -1,0 +1,12 @@
+(define (minimum-sum num)
+  (let* ((digits-str (number->string num))
+         (digits-char-list (string->list digits-str))
+         (digits-int-list (map (lambda (c) (- (char->integer c) (char->integer #\0)))
+                               digits-char-list))
+         (sorted-digits (sort digits-int-list <)))
+    (let ((d0 (list-ref sorted-digits 0))
+          (d1 (list-ref sorted-digits 1))
+          (d2 (list-ref sorted-digits 2))
+          (d3 (list-ref sorted-digits 3)))
+      (+ (* 10 d0) d2
+         (* 10 d1) d3))))

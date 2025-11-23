@@ -1,0 +1,7 @@
+(define (is-rectangle-overlap rec1 rec2)
+  (let ((x1 (car rec1))
+        (y1 (cadr rec1))
+        (x2 (car rec2))
+        (y2 (cadr rec2)))
+    (and (> (min (cadr rec1) (cadr rec2)) (max (car rec1) (car rec2)))
+         (> (min (car rec1) (car rec2)) (max (cadr rec1) (cadr rec2))))))

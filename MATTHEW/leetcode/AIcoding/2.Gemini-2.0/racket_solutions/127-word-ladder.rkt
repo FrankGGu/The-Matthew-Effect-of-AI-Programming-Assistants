@@ -1,0 +1,36 @@
+(define (ladder-length begin-word end-word word-list)
+  (define word-set (set (append word-list (list begin-word))))
+  (if (not (set-member? word-set end-word))
+      0
+      (let loop ((queue (list (cons begin-word 1)))
+                 (visited (set begin-word)))
+        (cond
+          ((null? queue) 0)
+          (else
+           (let ((curr (car queue))
+                 (word (car curr))
+                 (level (cdr curr)))
+             (if (equal? word end-word)
+                 level
+                 (loop (append (cdr queue)
+                               (filter-map
+                                (lambda (neighbor)
+                                  (if (and (set-member? word-set neighbor)
+                                           (not (set-member? visited neighbor)))
+                                      (cons neighbor (+ level 1))
+                                      #f))
+                                (neighbors word word-set)))
+                       (set-add visited word))))))))
+
+  (define (neighbors word word-set)
+    (let ((result '()))
+      (for ((i (in-range (string-length word))))
+        (for ((c (in-range #\a #\z)))
+          (let* ((new-word (string-copy word))
+                 (char-to-replace (integer->char c)))
+            (string-set! new-word i char-to-replace)
+            (if (and (not (equal? new-word word))
+                     (set-member? word-set new-word))
+                (set! result (cons new-word result))))))
+      result))
+  )

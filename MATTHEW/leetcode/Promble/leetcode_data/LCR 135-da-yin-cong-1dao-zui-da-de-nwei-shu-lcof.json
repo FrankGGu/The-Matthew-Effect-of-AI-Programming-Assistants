@@ -1,0 +1,36 @@
+{
+  "id": "LCR 135",
+  "title": "报数",
+  "titleSlug": "da-yin-cong-1dao-zui-da-de-nwei-shu-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> countNumbers(int cnt) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] countNumbers(int cnt) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def countNumbers(self, cnt):\n        \"\"\"\n        :type cnt: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def countNumbers(self, cnt: int) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* countNumbers(int cnt, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] CountNumbers(int cnt) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} cnt\n * @return {number[]}\n */\nvar countNumbers = function(cnt) {\n    \n};",
+    "typescript": "function countNumbers(cnt: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $cnt\n     * @return Integer[]\n     */\n    function countNumbers($cnt) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func countNumbers(_ cnt: Int) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun countNumbers(cnt: Int): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> countNumbers(int cnt) {\n    \n  }\n}",
+    "golang": "func countNumbers(cnt int) []int {\n    \n}",
+    "ruby": "# @param {Integer} cnt\n# @return {Integer[]}\ndef count_numbers(cnt)\n    \nend",
+    "scala": "object Solution {\n    def countNumbers(cnt: Int): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn count_numbers(cnt: i32) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (count-numbers cnt)\n  (-> exact-integer? (listof exact-integer?))\n  )",
+    "erlang": "-spec count_numbers(Cnt :: integer()) -> [integer()].\ncount_numbers(Cnt) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec count_numbers(cnt :: integer) :: [integer]\n  def count_numbers(cnt) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func countNumbers(cnt: Int64): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "2",
+  "hints": []
+}

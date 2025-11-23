@@ -1,0 +1,40 @@
+{
+  "id": "1221",
+  "title": "Split a String in Balanced Strings",
+  "titleSlug": "split-a-string-in-balanced-strings",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "String",
+    "Counting"
+  ],
+  "content": "<p><strong>Balanced</strong> strings are those that have an equal quantity of <code>&#39;L&#39;</code> and <code>&#39;R&#39;</code> characters.</p>\n\n<p>Given a <strong>balanced</strong> string <code>s</code>, split it into some number of substrings such that:</p>\n\n<ul>\n\t<li>Each substring is balanced.</li>\n</ul>\n\n<p>Return <em>the <strong>maximum</strong> number of balanced strings you can obtain.</em></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;RLRRLLRLRL&quot;\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> s can be split into &quot;RL&quot;, &quot;RRLL&quot;, &quot;RL&quot;, &quot;RL&quot;, each substring contains same number of &#39;L&#39; and &#39;R&#39;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;RLRRRLLRLL&quot;\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> s can be split into &quot;RL&quot;, &quot;RRRLLRLL&quot;, each substring contains same number of &#39;L&#39; and &#39;R&#39;.\nNote that s cannot be split into &quot;RL&quot;, &quot;RR&quot;, &quot;RL&quot;, &quot;LR&quot;, &quot;LL&quot;, because the 2<sup>nd</sup> and 5<sup>th</sup> substrings are not balanced.</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;LLLLRRRR&quot;\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> s can be split into &quot;LLLLRRRR&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s[i]</code> is either <code>&#39;L&#39;</code> or <code>&#39;R&#39;</code>.</li>\n\t<li><code>s</code> is a <strong>balanced</strong> string.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int balancedStringSplit(string s) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int balancedStringSplit(String s) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def balancedStringSplit(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def balancedStringSplit(self, s: str) -> int:\n        ",
+    "c": "int balancedStringSplit(char* s) {\n    \n}",
+    "csharp": "public class Solution {\n    public int BalancedStringSplit(string s) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {number}\n */\nvar balancedStringSplit = function(s) {\n    \n};",
+    "typescript": "function balancedStringSplit(s: string): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return Integer\n     */\n    function balancedStringSplit($s) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func balancedStringSplit(_ s: String) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun balancedStringSplit(s: String): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int balancedStringSplit(String s) {\n    \n  }\n}",
+    "golang": "func balancedStringSplit(s string) int {\n    \n}",
+    "ruby": "# @param {String} s\n# @return {Integer}\ndef balanced_string_split(s)\n    \nend",
+    "scala": "object Solution {\n    def balancedStringSplit(s: String): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn balanced_string_split(s: String) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (balanced-string-split s)\n  (-> string? exact-integer?)\n  )",
+    "erlang": "-spec balanced_string_split(S :: unicode:unicode_binary()) -> integer().\nbalanced_string_split(S) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec balanced_string_split(s :: String.t) :: integer\n  def balanced_string_split(s) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func balancedStringSplit(s: String): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"RLRRLLRLRL\"\n\"RLRRRLLRLL\"\n\"LLLLRRRR\"",
+  "hints": [
+    "Loop from left to right maintaining a balance variable when it gets an L increase it by one otherwise decrease it by one.",
+    "Whenever the balance variable reaches zero then we increase the answer by one."
+  ]
+}

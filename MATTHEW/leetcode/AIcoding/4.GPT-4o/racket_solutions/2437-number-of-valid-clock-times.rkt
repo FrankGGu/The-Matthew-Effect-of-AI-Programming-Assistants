@@ -1,0 +1,22 @@
+(define (count-valid-clock-times time)
+  (let* ((h (string->number (substring time 0 2)))
+         (m (string->number (substring time 3 5)))
+         (valid-hours (if (and (>= h 0) (< h 24)) 1 0))
+         (valid-minutes (if (and (>= m 0) (< m 60)) 1 0)))
+    (* valid-hours valid-minutes)))
+
+(define (num-valid-clock-times time)
+  (let loop ((i 0) (count 0))
+    (if (= i 1440)
+        count
+        (let ((h (quotient i 60))
+              (m (remainder i 60)))
+          (let ((hour (if (and (>= h 0) (< h 24)) (number->string h) ""))
+                (minute (if (and (>= m 0) (< m 60)) (if (< m 10) (string-append "0" (number->string m)) (number->string m)) "")))
+                (t (string-append hour ":" minute)))
+            (if (equal? t time)
+                (loop (+ i 1) (+ count 1))
+                (loop (+ i 1) count))))))))
+
+(define (numValidClockTimes time)
+  (num-valid-clock-times time))

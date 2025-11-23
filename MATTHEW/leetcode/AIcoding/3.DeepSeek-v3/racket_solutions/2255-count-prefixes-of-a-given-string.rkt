@@ -1,0 +1,10 @@
+(define/contract (count-prefixes words s)
+  (-> (listof string?) string? exact-integer?)
+  (let loop ([words words] [count 0])
+    (if (null? words)
+        count
+        (let ([word (car words)])
+          (loop (cdr words)
+                (if (string-prefix? s word)
+                    (add1 count)
+                    count))))))

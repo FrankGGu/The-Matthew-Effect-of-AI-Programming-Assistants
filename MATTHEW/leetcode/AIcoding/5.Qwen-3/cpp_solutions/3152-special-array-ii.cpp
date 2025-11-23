@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<int> findSpecialInteger(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) return nums;
+
+        int count = 1;
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] == nums[i - 1]) {
+                ++count;
+                if (count > n / 2) return {nums[i]};
+            } else {
+                count = 1;
+            }
+        }
+        return {};
+    }
+};

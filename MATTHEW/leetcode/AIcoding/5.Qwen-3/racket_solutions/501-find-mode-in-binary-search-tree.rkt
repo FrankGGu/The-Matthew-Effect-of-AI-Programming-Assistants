@@ -1,0 +1,28 @@
+#lang racket
+
+(define (find-mode root)
+  (define count #f)
+  (define prev #f)
+  (define result '())
+  (define (traverse node)
+    (when node
+      (traverse (node-left node))
+      (when (and prev (equal? (node-val node) (node-val prev)))
+        (set! count (+ count 1)))
+      (when (or (not prev) (not (equal? (node-val node) (node-val prev))))
+        (set! count 1))
+      (when (= count (car result))
+        (set! result (cons (node-val node) result)))
+      (when (> count (car result))
+        (set! result (list (node-val node))))
+      (set! prev node)
+      (traverse (node-right node)))
+    (reverse result))
+  (if (not root)
+      '()
+      (begin
+        (set! count 0)
+        (set! prev #f)
+        (set! result (list 0))
+        (traverse root)
+        (reverse result))))

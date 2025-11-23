@@ -1,0 +1,10 @@
+(define (digitCount num)
+  (define digit-list (map (lambda (c) (char->integer c)) (string->list num)))
+  (define counts (make-vector 10 0))
+  (for-each (lambda (d) (vector-set! counts d (+ (vector-ref counts d) 1))) digit-list)
+  (for-each (lambda (i) (if (not (= (vector-ref counts i) (string->number (string-append (number->string i) ""))))
+                            (return #f))) (range 10))
+  #t)
+
+(define (checkDigitCount num)
+  (digitCount (number->string num)))

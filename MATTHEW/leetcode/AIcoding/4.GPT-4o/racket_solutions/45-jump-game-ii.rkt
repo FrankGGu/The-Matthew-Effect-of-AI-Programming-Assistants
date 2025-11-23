@@ -1,0 +1,12 @@
+(define (jump nums)
+  (define n (length nums))
+  (define jumps (make-vector n +inf.0))
+  (vector-set! jumps 0 0)
+  (for* ((i (in-range n)))
+    (for* ((j (in-range (min (+ i (vector-ref nums i)) (- n 1)))))
+           #:when (< j i))
+      (vector-set! jumps j (min (vector-ref jumps j) (+ 1 (vector-ref jumps i)))))
+    )
+  (vector-ref jumps (- n 1)))
+
+(jump '(2 3 1 1 4))

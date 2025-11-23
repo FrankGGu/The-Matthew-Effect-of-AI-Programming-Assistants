@@ -1,0 +1,24 @@
+var largestValues = function(root) {
+    if (!root) return [];
+    let result = [];
+    let queue = [root];
+
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let maxVal = -Infinity;
+
+        for (let i = 0; i < levelSize; i++) {
+            let node = queue.shift();
+            maxVal = Math.max(maxVal, node.val);
+
+            if (node.left) {
+                queue.push(node.left);
+            }
+            if (node.right) {
+                queue.push(node.right);
+            }
+        }
+        result.push(maxVal);
+    }
+    return result;
+};

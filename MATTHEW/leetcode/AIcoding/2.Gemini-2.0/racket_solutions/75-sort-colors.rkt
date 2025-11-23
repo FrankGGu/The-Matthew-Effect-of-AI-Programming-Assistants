@@ -1,0 +1,12 @@
+(define (sort-colors nums)
+  (let ((n (vector-length nums)))
+    (let loop ((i 0) (j 0) (k (- n 1)))
+      (cond
+        ((> j k) nums)
+        ((= (vector-ref nums j) 0)
+         (vector-swap! nums i j)
+         (loop (+ i 1) (+ i 1) k))
+        ((= (vector-ref nums j) 2)
+         (vector-swap! nums j k)
+         (loop i j (- k 1)))
+        (else (loop i (+ j 1) k))))))

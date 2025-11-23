@@ -1,0 +1,21 @@
+#lang racket
+
+(define (min-cost-to-hire-k-workers n quality wage rate k)
+  (define workers
+    (for/list ([i (in-range n)])
+      (list (list-ref rate i) (list-ref wage i))))
+  (set! workers (sort workers (lambda (a b) (< (car a) (car b)))))
+  (define pq (make-heap >))
+  (define total-quality 0)
+  (define min-cost +inf.0)
+  (for ([i (in-range n)])
+    (define ratio (caar workers))
+    (define wage (cadar workers))
+    (define q (cadr (list-ref workers i)))
+    (heap-add! pq q)
+    (set! total-quality (+ total-quality q))
+    (when (> (heap-size pq) k)
+      (set! total-quality (- total-quality (heap-remove! pq))))
+    (when (= (heap-size pq) k)
+      (set! min-cost (min min-cost (* ratio total-quality)))))
+  min-cost)

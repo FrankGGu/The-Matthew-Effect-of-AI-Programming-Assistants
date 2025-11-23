@@ -1,0 +1,11 @@
+(define (closestValue root target)
+  (define (helper node closest)
+    (if (null? node)
+        closest
+        (let ((current (node-value node)))
+          (if (< (abs (- current target)) (abs (- closest target)))
+              (set! closest current))
+          (if (< target current)
+              (helper (node-left node) closest)
+              (helper (node-right node) closest)))))
+  (helper root (node-value root)))

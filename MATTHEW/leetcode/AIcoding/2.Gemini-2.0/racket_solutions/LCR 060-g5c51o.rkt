@@ -1,0 +1,8 @@
+(define (top-k-frequent nums k)
+  (define freq-map (make-hash))
+  (for-each (lambda (num)
+              (hash-update! freq-map num (lambda (v) (+ v 1)) 1))
+            nums)
+  (define sorted-freqs (sort (hash-keys freq-map)
+                             (lambda (a b) (> (hash-ref freq-map a) (hash-ref freq-map b)))))
+  (take sorted-freqs k))

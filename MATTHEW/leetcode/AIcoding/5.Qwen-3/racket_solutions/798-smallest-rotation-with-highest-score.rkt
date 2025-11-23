@@ -1,0 +1,17 @@
+#lang racket
+
+(define (max-score nums)
+  (define n (length nums))
+  (define scores (make-vector n 0))
+  (for ([i (in-range n)])
+    (define a (vector-ref nums i))
+    (define left (if (> a 0) (- a 1) 0))
+    (define right (if (< a (- n 1)) a (- n 1)))
+    (vector-set! scores left (+ (vector-ref scores left) 1))
+    (vector-set! scores (add1 right) (- (vector-ref scores (add1 right)) 1)))
+  (define res 0)
+  (define current 0)
+  (for ([i (in-range n)])
+    (set! current (+ current (vector-ref scores i)))
+    (set! res (max res current)))
+  res)

@@ -1,0 +1,11 @@
+(define (count-characters words chars)
+  (define char-count (foldl (lambda (c acc) (hash-set! acc c (add1 (hash-ref acc c 0)))) (make-hash) chars))
+  (define (can-form? word)
+    (define word-count (foldl (lambda (c acc) (hash-set! acc c (add1 (hash-ref acc c 0)))) (make-hash) word))
+    (for/sum ([c (hash-keys word-count)])
+      (if (<= (hash-ref word-count c 0) (hash-ref char-count c 0)) 0 1)))
+  (define result (filter can-form? words))
+  (apply + (map string-length result)))
+
+(define (find-words-that-can-be-formed words chars)
+  (count-characters words chars))

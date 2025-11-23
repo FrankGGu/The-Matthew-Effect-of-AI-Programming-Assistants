@@ -1,0 +1,7 @@
+(define (combine n k)
+  (define (helper start path)
+    (if (= (length path) k)
+      (list path)
+      (for/list ([i (in-range start (+ n 1))])
+        (helper (+ i 1) (cons i path)))))
+  (reverse (helper 1 '())))

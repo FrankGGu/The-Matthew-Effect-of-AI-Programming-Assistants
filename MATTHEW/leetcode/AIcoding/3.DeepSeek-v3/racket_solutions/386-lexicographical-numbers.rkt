@@ -1,0 +1,11 @@
+(define/contract (lexical-order n)
+  (-> exact-integer? (listof exact-integer?))
+  (define (dfs current limit)
+    (if (> current limit)
+        '()
+        (cons current
+              (append (dfs (* current 10) limit)
+                    (if (zero? (modulo (add1 current) 10))
+                        '()
+                        (dfs (add1 current) limit))))))
+  (dfs 1 n))

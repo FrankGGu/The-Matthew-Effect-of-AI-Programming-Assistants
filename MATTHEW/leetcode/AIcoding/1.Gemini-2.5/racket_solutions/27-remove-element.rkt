@@ -1,0 +1,8 @@
+(define (remove-element nums val)
+  (let* ((n (vector-length nums))
+         (k 0))
+    (for ((i (in-range n)))
+      (when (!= (vector-ref nums i) val)
+        (vector-set! nums k (vector-ref nums i))
+        (set! k (+ k 1))))
+    k))

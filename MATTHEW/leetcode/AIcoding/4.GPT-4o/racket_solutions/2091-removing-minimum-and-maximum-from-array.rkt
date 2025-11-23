@@ -1,0 +1,10 @@
+(define (minimumDeletions nums)
+  (let* ((n (length nums))
+         (min-index (index-of nums (apply min nums)))
+         (max-index (index-of nums (apply max nums))))
+    (define (min a b) (if (< a b) a b))
+    (define (max a b) (if (> a b) a b))
+    (min (+ 1 (max min-index max-index))
+         (+ 1 (min (min min-index max-index) (- n (max min-index max-index)))))))
+
+(minimumDeletions '(1 3 2 4 5))

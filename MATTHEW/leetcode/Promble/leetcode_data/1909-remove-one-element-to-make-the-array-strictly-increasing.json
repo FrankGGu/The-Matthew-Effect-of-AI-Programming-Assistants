@@ -1,0 +1,38 @@
+{
+  "id": "1909",
+  "title": "Remove One Element to Make the Array Strictly Increasing",
+  "titleSlug": "remove-one-element-to-make-the-array-strictly-increasing",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array"
+  ],
+  "content": "<p>Given a <strong>0-indexed</strong> integer array <code>nums</code>, return <code>true</code> <em>if it can be made <strong>strictly increasing</strong> after removing <strong>exactly one</strong> element, or </em><code>false</code><em> otherwise. If the array is already strictly increasing, return </em><code>true</code>.</p>\n\n<p>The array <code>nums</code> is <strong>strictly increasing</strong> if <code>nums[i - 1] &lt; nums[i]</code> for each index <code>(1 &lt;= i &lt; nums.length).</code></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,<u>10</u>,5,7]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> By removing 10 at index 2 from nums, it becomes [1,2,5,7].\n[1,2,5,7] is strictly increasing, so return true.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,1,2]\n<strong>Output:</strong> false\n<strong>Explanation:</strong>\n[3,1,2] is the result of removing the element at index 0.\n[2,1,2] is the result of removing the element at index 1.\n[2,3,2] is the result of removing the element at index 2.\n[2,3,1] is the result of removing the element at index 3.\nNo resulting array is strictly increasing, so return false.</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,1,1]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> The result of removing any element is [1,1].\n[1,1] is not strictly increasing, so return false.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 1000</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool canBeIncreasing(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean canBeIncreasing(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def canBeIncreasing(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def canBeIncreasing(self, nums: List[int]) -> bool:\n        ",
+    "c": "bool canBeIncreasing(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool CanBeIncreasing(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {boolean}\n */\nvar canBeIncreasing = function(nums) {\n    \n};",
+    "typescript": "function canBeIncreasing(nums: number[]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Boolean\n     */\n    function canBeIncreasing($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func canBeIncreasing(_ nums: [Int]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun canBeIncreasing(nums: IntArray): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool canBeIncreasing(List<int> nums) {\n    \n  }\n}",
+    "golang": "func canBeIncreasing(nums []int) bool {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Boolean}\ndef can_be_increasing(nums)\n    \nend",
+    "scala": "object Solution {\n    def canBeIncreasing(nums: Array[Int]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn can_be_increasing(nums: Vec<i32>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (can-be-increasing nums)\n  (-> (listof exact-integer?) boolean?)\n  )",
+    "erlang": "-spec can_be_increasing(Nums :: [integer()]) -> boolean().\ncan_be_increasing(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec can_be_increasing(nums :: [integer]) :: boolean\n  def can_be_increasing(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func canBeIncreasing(nums: Array<Int64>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,10,5,7]\n[2,3,1,2]\n[1,1,1]",
+  "hints": [
+    "For each index i in nums remove this index.",
+    "If the array becomes sorted return true, otherwise revert to the original array and try different index."
+  ]
+}

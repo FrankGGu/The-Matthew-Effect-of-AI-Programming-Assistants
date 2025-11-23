@@ -1,0 +1,17 @@
+(define (min-time-to-type word)
+  (define (char-to-pos c)
+    (- (char->integer c) (char->integer #\a)))
+
+  (define (min-moves c1 c2)
+    (let* ((p1 (char-to-pos c1))
+           (p2 (char-to-pos c2))
+           (diff (abs (- p1 p2))))
+      (min diff (- 26 diff))))
+
+  (for/fold ((total-time 0)
+             (current-char #\a))
+            ((char-idx (in-range (string-length word))))
+    (let* ((target-char (string-ref word char-idx))
+           (move-time (min-moves current-char target-char)))
+      (values (+ total-time move-time 1)
+              target-char))))

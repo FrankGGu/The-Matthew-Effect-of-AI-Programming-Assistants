@@ -1,0 +1,13 @@
+(define (dailyTemperatures T)
+  (define n (length T))
+  (define res (make-vector n 0))
+  (define stack '())
+  (for ([i (in-range n)])
+    (begin
+      (while (and (not (null? stack))
+                  (> (vector-ref T i) (vector-ref T (car stack))))
+        (let ([j (car stack)])
+          (vector-set! res j (- i j))
+          (set! stack (cdr stack))))
+      (set! stack (cons i stack))))
+  (vector->list res))

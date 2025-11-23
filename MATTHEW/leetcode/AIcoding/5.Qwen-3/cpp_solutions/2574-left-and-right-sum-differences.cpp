@@ -1,0 +1,21 @@
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<int> leftRightDifference(int n, vector<int>& nums) {
+        vector<int> result(n);
+        int total = 0;
+        for (int num : nums) {
+            total += num;
+        }
+        int leftSum = 0;
+        for (int i = 0; i < n; ++i) {
+            int rightSum = total - leftSum - nums[i];
+            result[i] = abs(leftSum - rightSum);
+            leftSum += nums[i];
+        }
+        return result;
+    }
+};

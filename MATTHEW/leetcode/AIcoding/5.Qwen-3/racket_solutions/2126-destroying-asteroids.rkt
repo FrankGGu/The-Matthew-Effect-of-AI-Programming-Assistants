@@ -1,0 +1,6 @@
+(define (destroy-asteroids asteroids mass)
+  (define (loop asteroids mass)
+    (cond ((null? asteroids) #t)
+          ((< mass (car asteroids)) #f)
+          (else (loop (cdr asteroids) (+ mass (car asteroids))))))
+  (loop asteroids mass))

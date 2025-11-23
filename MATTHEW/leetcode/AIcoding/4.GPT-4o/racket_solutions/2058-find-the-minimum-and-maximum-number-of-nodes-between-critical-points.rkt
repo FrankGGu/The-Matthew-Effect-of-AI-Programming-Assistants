@@ -1,0 +1,22 @@
+(define (nodesBetweenCriticalPoints head)
+  (define (to-list node)
+    (if (null? node)
+        '()
+        (cons (node-value node) (to-list (node-next node)))))
+
+  (define values (to-list head))
+  (define critical-points '())
+
+  (for ((i (in-range 1 (- (length values) 1))))
+    (when (or (and (> (list-ref values (- i 1)) (list-ref values i))
+                   (> (list-ref values i) (list-ref values (+ i 1))))
+              (and (< (list-ref values (- i 1)) (list-ref values i))
+                   (< (list-ref values i) (list-ref values (+ i 1)))))
+      (set! critical-points (cons i critical-points))))
+
+  (define count (length critical-points))
+  (if (< count 2)
+      (list -1 -1)
+      (let ((min-distance (apply min (map - critical-points (cdr critical-points))))
+            (max-distance (- (car (reverse critical-points)) (car critical-points))))
+        (list min-distance max-distance))))

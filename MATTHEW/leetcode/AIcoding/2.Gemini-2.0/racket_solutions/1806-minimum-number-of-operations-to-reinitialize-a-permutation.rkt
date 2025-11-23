@@ -1,0 +1,20 @@
+(define (reinitialize-permutation n)
+  (define (apply-operation perm)
+    (let ((arr (make-vector n)))
+      (for/list ((i (in-range n)))
+        (let ((new-index (if (even? i)
+                            (/ i 2)
+                            (+ (/ (- n 1) 2) (/ (- i 1) 2)))))
+          (vector-set! arr new-index (vector-ref perm i))
+          (vector-ref perm i)))))
+
+  (define (is-original? perm)
+    (for/and ((i (in-range n)))
+      (= i (vector-ref perm i))))
+
+  (let loop ((perm (for/vector ((i (in-range n))) i))
+             (count 0))
+    (if (and (> count 0) (is-original? perm))
+        count
+        (loop (apply-operation perm) (+ count 1)))))
+)

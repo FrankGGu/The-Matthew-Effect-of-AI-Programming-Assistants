@@ -1,0 +1,12 @@
+(define (equal-strings s t u)
+  (define (count-matches a b)
+    (let loop ([i 0])
+      (if (or (>= i (string-length a)) (>= i (string-length b)) (not (= (string-ref a i) (string-ref b i))))
+          i
+          (loop (+ i 1)))))
+  (define len (min (string-length s) (string-length t) (string-length u)))
+  (define common-len (count-matches (substring s 0 len) (substring t 0 len)))
+  (define common-len2 (count-matches (substring s 0 common-len) (substring u 0 common-len)))
+  (if (= common-len2 common-len)
+      (string-append (substring s 0 common-len) (substring s common-len) (substring t common-len) (substring u common-len))
+      ""))

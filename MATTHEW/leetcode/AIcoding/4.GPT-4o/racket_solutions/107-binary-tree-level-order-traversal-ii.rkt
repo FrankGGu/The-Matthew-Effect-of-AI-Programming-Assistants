@@ -1,0 +1,11 @@
+(define (levelOrderBottom root)
+  (define (traverse node level result)
+    (if (null? node)
+        result
+        (let* ((result (if (< (length result) (+ level 1))
+                           (cons '() result)
+                           result))
+               (current-level (car result))
+               (next-result (traverse (left node) (+ level 1) result)))
+          (traverse (right node) (+ level 1) (cons (cons (value node) current-level) next-result)))))
+  (reverse (traverse root 0 '())))

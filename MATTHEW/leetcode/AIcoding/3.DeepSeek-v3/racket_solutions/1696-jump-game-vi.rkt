@@ -1,0 +1,16 @@
+(define/contract (max-result nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let* ([n (length nums)]
+         [dp (make-vector n -inf.0)]
+         [window (make-deque)])
+    (vector-set! dp 0 (first nums))
+    (deque-push-back! window 0)
+    (for ([i (in-range 1 n)])
+      (when (> (- i (deque-front window)) k)
+        (deque-pop-front! window))
+      (vector-set! dp i (+ (vector-ref dp (deque-front window)) (list-ref nums i)))
+      (while (and (not (deque-empty? window))
+                  (>= (vector-ref dp i) (vector-ref dp (deque-back window))))
+        (deque-pop-back! window))
+      (deque-push-back! window i))
+    (vector-ref dp (- n 1))))

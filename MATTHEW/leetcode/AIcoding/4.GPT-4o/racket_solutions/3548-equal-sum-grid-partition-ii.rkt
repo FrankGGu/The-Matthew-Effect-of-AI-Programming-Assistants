@@ -1,0 +1,17 @@
+(define (can-partition grid)
+  (define (sum lst) (apply + lst))
+  (define total-sum (sum (map sum grid)))
+  (define n (length grid))
+  (define m (length (first grid)))
+
+  (if (odd? total-sum) #f
+      (let ((target (/ total-sum 2))
+            (dp (make-vector (+ 1 target) #f)))
+        (vector-set! dp 0 #t)
+        (for ([i (in-range n)])
+          (for ([j (in-range m)])
+            (define current-value (vector-ref grid i j))
+            (for ([k (in-range target (sub1 current-value -1)) -1])
+              (when (vector-ref dp k)
+                (vector-set! dp (+ k current-value) #t)))))
+        (vector-ref dp target))))

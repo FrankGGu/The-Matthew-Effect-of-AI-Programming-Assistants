@@ -1,0 +1,16 @@
+#lang racket
+
+(define (count-subarrays nums k)
+  (define n (length nums))
+  (define max-val (apply max nums))
+  (define count (make-hash))
+  (define result 0)
+  (define prefix 0)
+  (hash-set! count 0 1)
+  (for ([i (in-range n)])
+    (when (= (list-ref nums i) max-val)
+      (set! prefix (add1 prefix)))
+    (when (>= prefix k)
+      (set! result (+ result (hash-ref count (- prefix k) 0))))
+    (hash-update! count prefix add1 0))
+  result)

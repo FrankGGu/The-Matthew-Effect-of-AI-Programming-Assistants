@@ -1,0 +1,12 @@
+(define (vowel-game s)
+  (define vowels (set '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U)))
+  (define (helper str index score)
+    (if (null? str)
+        (if (even? index) score (add1 score))
+        (let ((char (car str)))
+          (if (set-member? vowels char)
+              (helper (cdr str) (add1 index) (if (even? index) (add1 score) score))
+              (helper (cdr str) index score)))))
+  (helper (string->list s) 0 0))
+
+(vowel-game "YourInputStringHere")

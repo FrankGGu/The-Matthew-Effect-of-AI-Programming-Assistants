@@ -1,0 +1,25 @@
+(define (findLongestChain pairs)
+  (define sorted-pairs (sort pairs (lambda (a b) (< (second a) (second b)))))
+  (define (helper current end)
+    (if (null? current)
+        0
+        (let* ((pair (car current))
+               (next-end (second pair)))
+          (if (> (first pair) end)
+              (max (+ 1 (helper (cdr current) next-end)) (helper (cdr current) end))
+              (helper (cdr current) end)))))
+  (helper sorted-pairs -inf.0))
+
+(define (findLongestChain pairs)
+  (let ((sorted-pairs (sort pairs (lambda (a b) (< (second a) (second b))))))
+    (define (dp index prev-end)
+      (if (>= index (length sorted-pairs))
+          0
+          (let* ((current (list-ref sorted-pairs index))
+                 (next-end (second current)))
+            (if (> (first current) prev-end)
+                (max (+ 1 (dp (+ index 1) next-end)) (dp (+ index 1) prev-end))
+                (dp (+ index 1) prev-end)))))
+    (dp 0 -inf.0)))
+
+(findLongestChain '((1 2) (2 3) (3 4) (5 6)))

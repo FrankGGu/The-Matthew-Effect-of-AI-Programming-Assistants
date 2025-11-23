@@ -1,0 +1,6 @@
+(define (square-is-white coordinates)
+  (let* ((col-char (string-ref coordinates 0))
+         (row-char (string-ref coordinates 1))
+         (col-val (- (char->integer col-char) (char->integer #\a)))
+         (row-val (- (char->integer row-char) (char->integer #\1))))
+    (odd? (+ col-val row-val))))

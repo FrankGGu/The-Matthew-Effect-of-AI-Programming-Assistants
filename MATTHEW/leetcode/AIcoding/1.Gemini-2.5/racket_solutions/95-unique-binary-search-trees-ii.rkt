@@ -1,0 +1,18 @@
+(struct TreeNode (val left right))
+
+(define (generate-trees n)
+  (if (= n 0)
+      '()
+      (generate 1 n)))
+
+(define (generate start end)
+  (if (> start end)
+      (list null)
+      (let ((result '()))
+        (for ([i (range start (+ end 1))])
+          (let* ((left-subtrees (generate start (- i 1)))
+                 (right-subtrees (generate (+ i 1) end)))
+            (for ([l left-subtrees])
+              (for ([r right-subtrees])
+                (set! result (cons (TreeNode i l r) result))))))
+        (reverse result))))

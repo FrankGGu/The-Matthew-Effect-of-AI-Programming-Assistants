@@ -1,0 +1,25 @@
+(define (max-profit prices)
+  (let ((n (length prices)))
+    (if (< n 2)
+        0
+        (let ((dp1 (make-vector n 0))
+              (dp2 (make-vector n 0)))
+          (let loop1 ((i 1) (min-price (vector-ref prices 0)))
+            (if (= i n)
+                (void)
+                (begin
+                  (set! min-price (min min-price (vector-ref prices i)))
+                  (vector-set! dp1 i (max (vector-ref dp1 (- i 1)) (- (vector-ref prices i) min-price)))
+                  (loop1 (+ i 1) min-price))))
+          (let loop2 ((i (- n 2)) (max-price (vector-ref prices (- n 1))))
+            (if (< i 0)
+                (void)
+                (begin
+                  (set! max-price (max max-price (vector-ref prices i)))
+                  (vector-set! dp2 i (max (vector-ref dp2 (+ i 1)) (- max-price (vector-ref prices i))))
+                  (loop2 (- i 1) max-price))))
+          (let loop3 ((i 0) (max-profit 0))
+            (if (= i n)
+                max-profit
+                (let ((profit (+ (if (= i 0) 0 (vector-ref dp1 (- i 1))) (vector-ref dp2 i))))
+                  (loop3 (+ i 1) (max max-profit profit))))))))))

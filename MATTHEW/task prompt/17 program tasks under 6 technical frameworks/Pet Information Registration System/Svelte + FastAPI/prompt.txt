@@ -1,0 +1,42 @@
+Build a modern Pet Information Registration System using Svelte frontend with FastAPI backend and SQLAlchemy ORM.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (FastAPI):**
+1. Implement using FastAPI with automatic API documentation
+2. Use SQLAlchemy as ORM with proper model definitions
+3. Create Pydantic models for request/response validation
+4. Implement dependency injection for database sessions
+5. Add comprehensive error handling with HTTP exceptions
+6. Include CORS middleware
+7. Add request validation with proper error messages
+
+**Frontend Requirements (Svelte):**
+1. Create reactive UI using Svelte and SvelteKit
+2. Implement pages for:
+   - Pet list with search and filters
+   - Add/edit pet form
+   - Vaccination records for each pet
+   - Add vaccination form
+3. Use Svelte stores for state management
+4. Implement form validation with great UX
+5. Use Svelte's built-in transitions for smooth UI
+
+**API Endpoints:**
+- GET /pets - List all pets
+- POST /pets - Create new pet
+- GET /pets/{pet_id} - Get pet details
+- PUT /pets/{pet_id} - Update pet
+- DELETE /pets/{pet_id} - Delete pet
+- GET /pets/{pet_id}/vaccinations - Get pet's vaccinations
+- POST /vaccinations - Add vaccination record
+- PUT /vaccinations/{vaccination_id} - Update vaccination record
+- DELETE /vaccinations/{vaccination_id} - Delete vaccination record
+
+**Database Connection:**
+- SQLALCHEMY_DATABASE_URL = "postgresql://postgres:petpassword@localhost:5432/pet_registry"
+
+Generate complete code with proper project structure, requirements.txt, and all configurations needed for a modern, fast application with automatic API docs.

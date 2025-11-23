@@ -1,0 +1,41 @@
+{
+  "id": "LCR 152",
+  "title": "验证二叉搜索树的后序遍历序列",
+  "titleSlug": "er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Stack",
+    "Tree",
+    "Binary Search Tree",
+    "Recursion",
+    "Array",
+    "Binary Tree",
+    "Monotonic Stack"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool verifyTreeOrder(vector<int>& postorder) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean verifyTreeOrder(int[] postorder) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def verifyTreeOrder(self, postorder):\n        \"\"\"\n        :type postorder: List[int]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def verifyTreeOrder(self, postorder: List[int]) -> bool:\n        ",
+    "c": "bool verifyTreeOrder(int* postorder, int postorderSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool VerifyTreeOrder(int[] postorder) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} postorder\n * @return {boolean}\n */\nvar verifyTreeOrder = function(postorder) {\n    \n};",
+    "typescript": "function verifyTreeOrder(postorder: number[]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $postorder\n     * @return Boolean\n     */\n    function verifyTreeOrder($postorder) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func verifyTreeOrder(_ postorder: [Int]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun verifyTreeOrder(postorder: IntArray): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool verifyTreeOrder(List<int> postorder) {\n    \n  }\n}",
+    "golang": "func verifyTreeOrder(postorder []int) bool {\n    \n}",
+    "ruby": "# @param {Integer[]} postorder\n# @return {Boolean}\ndef verify_tree_order(postorder)\n    \nend",
+    "scala": "object Solution {\n    def verifyTreeOrder(postorder: Array[Int]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn verify_tree_order(postorder: Vec<i32>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (verify-tree-order postorder)\n  (-> (listof exact-integer?) boolean?)\n  )",
+    "erlang": "-spec verify_tree_order(Postorder :: [integer()]) -> boolean().\nverify_tree_order(Postorder) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec verify_tree_order(postorder :: [integer]) :: boolean\n  def verify_tree_order(postorder) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func verifyTreeOrder(postorder: Array<Int64>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[4,9,6,5,8]\n[4,6,5,9,8]",
+  "hints": []
+}

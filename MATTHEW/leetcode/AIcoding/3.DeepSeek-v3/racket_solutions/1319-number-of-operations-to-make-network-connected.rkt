@@ -1,0 +1,20 @@
+(define (make-connected n connections)
+  (if (< (length connections) (- n 1))
+      -1
+      (let ([parent (make-vector n -1)])
+      (define (find u)
+        (if (= (vector-ref parent u) -1)
+            u
+            (let ([res (find (vector-ref parent u))])
+              (vector-set! parent u res)
+              res)))
+      (define (union u v)
+        (let ([u-root (find u)]
+              [v-root (find v)])
+          (unless (equal? u-root v-root)
+            (vector-set! parent u-root v-root))))
+      (for ([conn connections])
+        (union (first conn) (second conn)))
+      (let ([components (for/sum ([i (in-range n)])
+                          (if (= (vector-ref parent i) -1) 1 0))])
+        (- components 1))))

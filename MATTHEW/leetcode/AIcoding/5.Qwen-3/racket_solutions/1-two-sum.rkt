@@ -1,0 +1,10 @@
+(define (two-sum nums target)
+  (define (helper i seen)
+    (if (= i (length nums))
+        #f
+        (let ((num (list-ref nums i)))
+          (let ((complement (- target num)))
+            (if (assoc complement seen)
+                (list (cdr (assoc complement seen)) i)
+                (helper (+ i 1) (cons (cons num i) seen)))))))
+  (helper 0 '()))

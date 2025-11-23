@@ -1,0 +1,5 @@
+(define (report-spam-message messages keywords)
+  (map (lambda (message)
+         (ormap (lambda (keyword) (string-contains? message keyword))
+                keywords))
+       messages))

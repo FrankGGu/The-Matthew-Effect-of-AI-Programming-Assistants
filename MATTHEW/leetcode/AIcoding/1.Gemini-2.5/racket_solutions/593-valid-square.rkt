@@ -1,0 +1,26 @@
+(define (valid-square p1 p2 p3 p4)
+  (define (dist-sq p-a p-b)
+    (define (sq x) (* x x))
+    (+ (sq (- (car p-a) (car p-b)))
+       (sq (- (cadr p-a) (cadr p-b)))))
+
+  (define distances
+    (list (dist-sq p1 p2)
+          (dist-sq p1 p3)
+          (dist-sq p1 p4)
+          (dist-sq p2 p3)
+          (dist-sq p2 p4)
+          (dist-sq p3 p4)))
+
+  (define sorted-distances (sort distances <))
+
+  (let ((s1 (list-ref sorted-distances 0))
+        (s2 (list-ref sorted-distances 1))
+        (s3 (list-ref sorted-distances 2))
+        (s4 (list-ref sorted-distances 3))
+        (d1 (list-ref sorted-distances 4))
+        (d2 (list-ref sorted-distances 5)))
+    (and (> s1 0)
+         (= s1 s2 s3 s4)
+         (= d1 d2)
+         (= d1 (* 2 s1)))))

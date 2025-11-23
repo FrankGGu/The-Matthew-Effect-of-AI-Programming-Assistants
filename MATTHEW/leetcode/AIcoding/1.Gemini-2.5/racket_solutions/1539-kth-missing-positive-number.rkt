@@ -1,0 +1,13 @@
+(define (find-kth-positive arr k)
+  (let loop ((current-positive 1)
+             (missing-count 0)
+             (arr-rest arr))
+    (cond
+      ((= missing-count k)
+       (- current-positive 1))
+      ((null? arr-rest)
+       (+ current-positive (- k missing-count) -1))
+      ((= current-positive (car arr-rest))
+       (loop (+ current-positive 1) missing-count (cdr arr-rest)))
+      ((< current-positive (car arr-rest))
+       (loop (+ current-positive 1) (+ missing-count 1) arr-rest)))))

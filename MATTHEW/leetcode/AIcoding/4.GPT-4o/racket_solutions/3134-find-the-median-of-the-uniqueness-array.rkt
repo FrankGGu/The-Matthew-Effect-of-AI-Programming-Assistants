@@ -1,0 +1,7 @@
+(define (findMedianUnique arr)
+  (define unique-arr (sort (remove-duplicates arr) <))
+  (define len (length unique-arr))
+  (if (even? len)
+      (/ (+ (list-ref unique-arr (/ len 2))
+            (list-ref unique-arr (- (/ len 2) 1))) 2.0)
+      (list-ref unique-arr (/ len 2))))

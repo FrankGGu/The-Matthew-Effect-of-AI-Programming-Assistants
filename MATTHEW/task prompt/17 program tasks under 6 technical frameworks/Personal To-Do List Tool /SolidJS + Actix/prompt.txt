@@ -1,0 +1,46 @@
+Create an emerging tech stack Personal To-Do List application with the following technology stack:
+- Frontend: SolidJS (reactive JavaScript library)
+- Backend: Actix Web with Rust
+- Database: PostgreSQL (already set up in Docker)
+- ORM: SeaORM
+
+Database connection details:
+- URL: postgresql://postgres:todosecret@localhost:5432/todo_db
+
+Application requirements:
+1. Frontend components (SolidJS):
+   - Highly reactive todo list interface
+   - Form for adding/editing todos
+   - Status controls with immediate feedback
+   - Date filtering options
+
+2. Backend API endpoints (Actix Web):
+   - GET /todos - Retrieve todos with query filtering
+   - POST /todos - Create new todo
+   - PUT /todos/{id} - Update todo
+   - DELETE /todos/{id} - Soft delete todo
+
+3. Data model (SeaORM):
+   - Define entity matching existing PostgreSQL todos table
+   - Use SeaORM's async capabilities
+   - Implement proper database operations
+
+4. Functionality:
+   - Add todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter by date using query parameters
+   - Highly reactive UI with SolidJS
+
+5. Implementation requirements:
+   - Use SeaORM for database operations
+   - Implement Actix Web with async handlers
+   - Use SolidJS's fine-grained reactivity
+   - Focus on performance and memory safety
+   - Modern CSS styling
+
+Generate the complete source code with:
+- Actix Web server setup
+- SolidJS component structure
+- SeaORM entities and database connection
+- Cargo.toml and package.json dependencies
+- Build instructions for both Rust and JavaScript

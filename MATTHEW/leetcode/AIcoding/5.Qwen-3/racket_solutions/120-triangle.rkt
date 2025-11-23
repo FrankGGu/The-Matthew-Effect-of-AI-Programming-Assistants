@@ -1,0 +1,7 @@
+(define (minimum-total triangle)
+  (define (dp i j)
+    (if (or (= i (- (length triangle) 1)) (= j (length (list-ref triangle i))))
+        (list-ref (list-ref triangle i) j)
+        (+ (list-ref (list-ref triangle i) j)
+           (min (dp (+ i 1) j) (dp (+ i 1) (+ j 1))))))
+  (dp 0 0))

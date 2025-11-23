@@ -1,0 +1,6 @@
+(define (maxCoins piles)
+  (let* ((sorted-piles (sort piles >))
+         (n (length piles))
+         (rounds (/ n 3)))
+    (for/sum ((i (in-range 0 rounds)))
+      (list-ref sorted-piles (+ 1 (* 2 i))))))

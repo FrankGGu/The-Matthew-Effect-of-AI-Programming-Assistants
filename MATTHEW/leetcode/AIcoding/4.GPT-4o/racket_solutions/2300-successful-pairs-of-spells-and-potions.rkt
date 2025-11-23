@@ -1,0 +1,16 @@
+(define (successfulPairs spells potions success)
+  (define (count-successful spell)
+    (length (filter (lambda (p) (>= (* spell p) success)) potions)))
+  (map count-successful spells))
+
+(define (successfulPairs spells potions success)
+  (define potions (sort potions <))
+  (define (count-successful spell)
+    (let loop ((low 0) (high (length potions)))
+      (if (>= low high)
+          high
+          (let ((mid (quotient (+ low high) 2)))
+            (if (>= (* spell (list-ref potions mid)) success)
+                (loop low mid)
+                (loop (+ mid 1) high))))))
+  (map count-successful spells))

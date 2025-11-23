@@ -1,0 +1,5 @@
+(define (maximum-product nums)
+  (let ([sorted-nums (sort nums <)])
+    (let ([n (length sorted-nums)])
+      (max (* (list-ref sorted-nums 0) (list-ref sorted-nums 1) (list-ref sorted-nums (- n 1)))
+           (* (list-ref sorted-nums (- n 3)) (list-ref sorted-nums (- n 2)) (list-ref sorted-nums (- n 1)))))))

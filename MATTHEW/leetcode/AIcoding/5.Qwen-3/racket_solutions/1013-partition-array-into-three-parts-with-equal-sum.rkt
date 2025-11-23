@@ -1,0 +1,13 @@
+(define (can-Partition-Arr nums)
+  (let ((total (apply + nums)))
+    (if (not (zero? (modulo total 3))) #f
+        (let ((target (/ total 3))
+              (sum 0)
+              (count 0))
+          (for-each (lambda (n)
+                      (set! sum (+ sum n))
+                      (when (= sum target)
+                        (set! count (+ count 1))
+                        (set! sum 0)))
+                    nums)
+          (= count 2)))))

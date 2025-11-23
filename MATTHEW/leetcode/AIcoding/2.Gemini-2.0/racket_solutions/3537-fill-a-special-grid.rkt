@@ -1,0 +1,15 @@
+(define (fill-grid n)
+  (let loop ((grid (make-vector n (make-vector n 0)))
+             (i 0)
+             (j 0)
+             (val 1))
+    (cond
+      ((= val (+ (* n n) 1)) grid)
+      ((< i 0) (loop grid 0 (add1 j) val))
+      ((= i n) (loop grid (- n 1) (add1 j) val))
+      ((< j 0) (loop grid (add1 i) 0 val))
+      ((= j n) (loop grid (add1 i) (- n 1) val))
+      ((not (= (vector-ref (vector-ref grid i) j) 0)) (loop grid (add1 i) j val))
+      (else
+       (vector-set! (vector-ref grid i) j val)
+       (loop grid (- i 1) (- j 1) (add1 val))))))

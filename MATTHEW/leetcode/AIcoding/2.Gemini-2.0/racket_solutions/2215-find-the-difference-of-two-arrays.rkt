@@ -1,0 +1,6 @@
+(define (find-difference nums1 nums2)
+  (define set1 (set nums1))
+  (define set2 (set nums2))
+  (define diff1 (list->set (filter (lambda (x) (not (set-member? set2 x))) nums1)))
+  (define diff2 (list->set (filter (lambda (x) (not (set-member? set1 x))) nums2)))
+  (list (set->list diff1) (set->list diff2)))

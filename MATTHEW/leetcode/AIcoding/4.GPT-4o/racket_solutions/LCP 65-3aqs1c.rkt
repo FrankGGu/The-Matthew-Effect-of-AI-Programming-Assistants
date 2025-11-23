@@ -1,0 +1,6 @@
+(define (comfortableHumidity A B)
+  (define (isComfortable h)
+    (and (<= h (+ A 5)) (>= h (- A 5))))
+  (define (countComfortableDays days)
+    (length (filter isComfortable days)))
+  (countComfortableDays B))

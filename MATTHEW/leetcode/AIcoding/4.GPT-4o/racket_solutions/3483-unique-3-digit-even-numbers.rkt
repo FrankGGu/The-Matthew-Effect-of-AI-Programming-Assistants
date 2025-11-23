@@ -1,0 +1,17 @@
+(define (find-even-numbers digits)
+  (define (unique-even-numbers)
+    (define (helper current used)
+      (if (= (length current) 3)
+          (if (and (even? (string->number (list-ref current 2))) 
+                   (not (member (string->number current) used)))
+              (list (string->number current))
+              '())
+          (apply append
+                 (for/list ((d (in-list digits)))
+                   (if (or (member d current) (and (= (length current) 2) (even? (string->number d))))
+                       '()
+                       (helper (string-append current d) (cons (string->number current) used))))))
+    (remove-duplicates (sort (helper "" '()) <)))
+  (unique-even-numbers))
+
+(find-even-numbers (list "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"))

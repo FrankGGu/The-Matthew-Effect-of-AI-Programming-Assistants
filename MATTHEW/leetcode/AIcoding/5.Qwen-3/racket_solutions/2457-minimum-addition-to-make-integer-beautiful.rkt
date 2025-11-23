@@ -1,0 +1,18 @@
+(define (make-beautiful n)
+  (define (digits x)
+    (if (= x 0)
+        '()
+        (cons (remainder x 10) (digits (quotient x 10)))))
+  (define (next-multiple x)
+    (let ((d (digits x)))
+      (if (null? d)
+          0
+          (let ((len (length d)))
+            (let loop ((i 0) (res 0))
+              (if (= i len)
+                  res
+                  (loop (+ i 1) (+ (* res 10) (if (= i (- len 1)) 0 (list-ref d i))))))))))
+  (let loop ((m (next-multiple n)))
+    (if (>= m n)
+        (- m n)
+        (loop (next-multiple m)))))

@@ -1,0 +1,11 @@
+(define (restore-matrix rowSum colSum)
+  (define n (length rowSum))
+  (define m (length colSum))
+  (define result (make-vector n (lambda () (make-vector m 0))))
+  (for ([i (in-range n)]
+        [j (in-range m)])
+    (define value (min (vector-ref rowSum i) (vector-ref colSum j)))
+    (vector-set! (vector-ref result i) j value)
+    (vector-set! rowSum i (- (vector-ref rowSum i) value))
+    (vector-set! colSum j (- (vector-ref colSum j) value)))
+  result)

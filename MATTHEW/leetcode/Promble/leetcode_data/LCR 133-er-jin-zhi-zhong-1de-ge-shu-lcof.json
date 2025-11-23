@@ -1,0 +1,25 @@
+{
+  "id": "LCR 133",
+  "title": "位 1 的个数",
+  "titleSlug": "er-jin-zhi-zhong-1de-ge-shu-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int hammingWeight(uint32_t n) {\n        \n    }\n};",
+    "java": "public class Solution {\n    // you need to treat n as an unsigned value\n    public int hammingWeight(int n) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def hammingWeight(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        ",
+    "c": "int hammingWeight(uint32_t n) {\n    \n}",
+    "csharp": "public class Solution {\n    public int HammingWeight(uint n) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n - a positive integer\n * @return {number}\n */\nvar hammingWeight = function(n) {\n    \n};",
+    "swift": "class Solution {\n    func hammingWeight(_ n: Int) -> Int {\n        \n    }\n}",
+    "golang": "func hammingWeight(num uint32) int {\n    \n}",
+    "ruby": "# @param {Integer} n, a positive integer\n# @return {Integer}\ndef hamming_weight(n)\n    \nend"
+  },
+  "exampleTestcases": "00000000000000000000000000001011\n00000000000000000000000010000000\n11111111111111111111111111111101",
+  "hints": []
+}

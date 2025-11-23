@@ -1,0 +1,16 @@
+(define (combination-sum2 candidates target)
+  (define (backtrack start path remaining)
+    (if (= remaining 0)
+        (list path)
+        (for/fold ([result '()])
+                  ([i (in-range start (length candidates))])
+          (let ([num (list-ref candidates i)])
+            (if (or (> num remaining) (and (> i start) (= num (list-ref candidates (- i 1)))))
+                result
+                (append result (backtrack (+ i 1) (append path (list num)) (- remaining num)))))))
+  (sort (backtrack 0 '() target) (lambda (a b) (and (<= (length a) (length b)) (equal? a b))))
+  (define (sort-helper lst)
+    (cond [(null? lst) '()]
+          [else (let ([min (argmin (lambda (x) x) lst)])
+                  (cons min (sort-helper (remove min lst))))]))
+  (sort-helper (map (lambda (x) (sort x <)) (backtrack 0 '() target))))

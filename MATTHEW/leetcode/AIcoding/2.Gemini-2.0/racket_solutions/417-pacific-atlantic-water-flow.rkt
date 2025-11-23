@@ -1,0 +1,46 @@
+(define (pacific-atlantic matrix)
+  (define (rows matrix) (length matrix))
+  (define (cols matrix) (if (null? matrix) 0 (length (car matrix))))
+
+  (define (is-valid? r c)
+    (and (>= r 0) (< r (rows matrix)) (>= c 0) (< c (cols matrix))))
+
+  (define (dfs r c visited)
+    (set! (list-ref (list-ref visited r) c) #t)
+    (for-each
+     (lambda (dr dc)
+       (let ((new-r (+ r dr)) (new-c (+ c dc)))
+         (when (and (is-valid? new-r new-c)
+                    (not (list-ref (list-ref visited new-r) new-c))
+                    (>= (list-ref (list-ref matrix new-r) new-c) (list-ref (list-ref matrix r) c)))
+           (dfs new-r new-c visited))))
+     '(-1 1 0 0) '(0 0 -1 1)))
+
+  (define (find-reachable)
+    (define pacific (make-vector (rows matrix) (make-vector (cols matrix) #f)))
+    (define atlantic (make-vector (rows matrix) (make-vector (cols matrix) #f)))
+
+    (for ((i (in-range (rows matrix))))
+      (dfs i 0 pacific))
+    (for ((j (in-range (cols matrix))))
+      (dfs 0 j pacific))
+
+    (for ((i (in-range (rows matrix))))
+      (dfs i (- (cols matrix) 1) atlantic))
+    (for ((j (in-range (cols matrix))))
+      (dfs (- (rows matrix) 1) j atlantic))
+
+    (list pacific atlantic))
+
+  (if (or (null? matrix) (null? (car matrix)))
+      '()
+      (let* ((reachable (find-reachable))
+             (pacific (car reachable))
+             (atlantic (cadr reachable))
+             (result '()))
+        (for ((i (in-range (rows matrix)))
+              (j (in-range (cols matrix))))
+          (when (and (vector-ref (vector-ref pacific i) j)
+                     (vector-ref (vector-ref atlantic i) j))
+            (set! result (cons (list i j) result))))
+        result)))

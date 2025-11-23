@@ -1,0 +1,10 @@
+(define (bstToGst root)
+  (define (traverse node acc)
+    (if (null? node)
+        acc
+        (let* ((new-acc (traverse (tree-node-right node) acc))
+               (new-val (+ (tree-node-val node) new-acc)))
+          (set-tree-node-val! node new-val)
+          new-val)))
+  (traverse root 0)
+  root)

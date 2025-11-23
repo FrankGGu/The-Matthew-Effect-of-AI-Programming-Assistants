@@ -1,0 +1,36 @@
+(define (count-fair-pairs nums lower upper)
+  (let* ((n (vector-length nums))
+         (sorted-nums (vector-copy nums)))
+    (vector-sort! sorted-nums <)
+
+    (define (lower-bound-idx vec target start-idx end-idx) ; end-idx is exclusive
+      (let loop ((low start-idx) (high end-idx))
+        (if (< low high)
+            (let ((mid (+ low (quotient (- high low) 2))))
+              (if (>= (vector-ref vec mid) target)
+                  (loop low mid)
+                  (loop (+ mid 1) high)))
+            low)))
+
+    (define (upper-bound-idx vec target start-idx end-idx) ; end-idx is exclusive
+      (let loop ((low start-idx) (high end-idx))
+        (if (< low high)
+            (let ((mid (+ low (quotient (- high low) 2))))
+              (if (> (vector-ref vec mid) target)
+                  (loop low mid)
+                  (loop (+ mid 1) high)))
+            low)))
+
+    (let loop ((i 0) (count 0))
+      (if (< i n)
+          (let* ((val-i (vector-ref sorted-nums i))
+                 (target-lower (- lower val-i))
+                 (target-upper (- upper val-i))
+                 (search-start-idx (+ i 1))
+                 (search-end-idx n))
+            (if (>= search-start-idx n)
+                count
+                (let* ((idx-lower (lower-bound-idx sorted-nums target-lower search-start-idx search-end-idx))
+                       (idx-upper (upper-bound-idx sorted-nums target-upper search-start-idx search-end-idx)))
+                  (loop (+ i 1) (+ count (- idx-upper idx-lower))))))
+          count))))

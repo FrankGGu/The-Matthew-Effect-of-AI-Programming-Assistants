@@ -1,0 +1,5 @@
+(define (max-repeating substring sequence)
+  (let loop ([count 0] [current sequence])
+    (if (string-contains? current substring)
+        (loop (+ 1 count) (string-replace current substring ""))
+        count)))

@@ -1,0 +1,41 @@
+{
+  "id": "765",
+  "title": "Couples Holding Hands",
+  "titleSlug": "couples-holding-hands",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Graph"
+  ],
+  "content": "<p>There are <code>n</code> couples sitting in <code>2n</code> seats arranged in a row and want to hold hands.</p>\n\n<p>The people and seats are represented by an integer array <code>row</code> where <code>row[i]</code> is the ID of the person sitting in the <code>i<sup>th</sup></code> seat. The couples are numbered in order, the first couple being <code>(0, 1)</code>, the second couple being <code>(2, 3)</code>, and so on with the last couple being <code>(2n - 2, 2n - 1)</code>.</p>\n\n<p>Return <em>the minimum number of swaps so that every couple is sitting side by side</em>. A swap consists of choosing any two people, then they stand up and switch seats.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> row = [0,2,1,3]\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> We only need to swap the second (row[1]) and third (row[2]) person.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> row = [3,2,0,1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> All couples are already seated side by side.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2n == row.length</code></li>\n\t<li><code>2 &lt;= n &lt;= 30</code></li>\n\t<li><code>n</code> is even.</li>\n\t<li><code>0 &lt;= row[i] &lt; 2n</code></li>\n\t<li>All the elements of <code>row</code> are <strong>unique</strong>.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minSwapsCouples(vector<int>& row) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int minSwapsCouples(int[] row) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def minSwapsCouples(self, row):\n        \"\"\"\n        :type row: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def minSwapsCouples(self, row: List[int]) -> int:\n        ",
+    "c": "int minSwapsCouples(int* row, int rowSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MinSwapsCouples(int[] row) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} row\n * @return {number}\n */\nvar minSwapsCouples = function(row) {\n    \n};",
+    "typescript": "function minSwapsCouples(row: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $row\n     * @return Integer\n     */\n    function minSwapsCouples($row) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func minSwapsCouples(_ row: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun minSwapsCouples(row: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int minSwapsCouples(List<int> row) {\n    \n  }\n}",
+    "golang": "func minSwapsCouples(row []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} row\n# @return {Integer}\ndef min_swaps_couples(row)\n    \nend",
+    "scala": "object Solution {\n    def minSwapsCouples(row: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_swaps_couples(row: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (min-swaps-couples row)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec min_swaps_couples(Row :: [integer()]) -> integer().\nmin_swaps_couples(Row) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_swaps_couples(row :: [integer]) :: integer\n  def min_swaps_couples(row) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func minSwapsCouples(row: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[0,2,1,3]\n[3,2,0,1]",
+  "hints": [
+    "Say there are N two-seat couches.  For each couple, draw an edge from the couch of one partner to the couch of the other partner."
+  ]
+}

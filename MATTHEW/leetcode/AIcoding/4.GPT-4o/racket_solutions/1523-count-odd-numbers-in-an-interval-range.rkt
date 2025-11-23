@@ -1,0 +1,10 @@
+(define (countOdds low high)
+  (if (odd? low)
+      (if (odd? high)
+          (/ (+ (- high low) 1) 2)
+          (/ (- high low) 2))
+      (if (odd? high)
+          (/ (- high low) 2)
+          (/ (- high low) 2))))
+
+(countOdds low high)

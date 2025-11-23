@@ -1,0 +1,15 @@
+(define (split-array-into-fibonacci s)
+  (define (backtrack start path)
+    (if (and (>= (length path) 3) (= start (string-length s)))
+        (list path)
+        (for/fold ([result '()]) ([end (in-range (+ start 1) (min (+ start 11) (string-length s)))])
+          (define num (string->number (substring s start end)))
+          (if (or (> num (expt 2 31)) (and (> (length path) 1) (not (= num (+ (car (last path)) (cadr (last path)))))))
+              result
+              (append result (backtrack end (cons num path)))))))
+  (define results (backtrack 0 '()))
+  (if (null? results)
+      '()
+      (first (map reverse results))))
+
+(split-array-into-fibonacci "123456579")

@@ -1,0 +1,6 @@
+(define (swapPairs head)
+  (define (swap a b)
+    (if (null? a)
+        '()
+        (cons (if (null? b) a (cons (second b) (cons (first a) (swap (cddr b) (cddr a))))) '())))
+  (swap head (cdr head)))

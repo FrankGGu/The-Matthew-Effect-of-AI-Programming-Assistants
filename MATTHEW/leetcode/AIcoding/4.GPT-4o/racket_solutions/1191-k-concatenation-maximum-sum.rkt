@@ -1,0 +1,20 @@
+(define (k-concatenation-maximum-sum arr k)
+  (define mod 1000000007)
+  (define (max-subarray-sum a)
+    (define max-so-far 0)
+    (define max-ending-here 0)
+    (for ([x a])
+      (set! max-ending-here (max 0 (+ max-ending-here x)))
+      (set! max-so-far (max max-so-far max-ending-here)))
+    max-so-far)
+
+  (define total-sum (apply + arr))
+  (define max-1 (max-subarray-sum arr))
+  (define max-2 (max-subarray-sum (append arr arr)))
+
+  (if (<= k 1)
+      (modulo max-1 mod)
+      (modulo (max max-1 (+ total-sum max-2)) mod)))
+
+(define (kConcatenationMaxSum arr k)
+  (k-concatenation-maximum-sum arr k))

@@ -1,0 +1,18 @@
+(define (sum-imbalance-numbers nums)
+  (let ((n (length nums)))
+    (let loop ((i 0) (total 0))
+      (if (= i n)
+          total
+          (let loop2 ((j i) (subarray '()) (imbalance 0) (min-val (list-ref nums i)) (max-val (list-ref nums i)) (seen (make-hash)))
+            (if (= j n)
+                (loop (+ i 1) total)
+                (let* ((num (list-ref nums j))
+                       (new-min (min min-val num))
+                       (new-max (max max-val num)))
+                  (hash-set! seen num #t)
+                  (let ((count 0))
+                    (for ((k (in-range new-min (+ new-max 1))))
+                      (unless (hash-has-key? seen k)
+                        (set! count (+ count 1))))
+
+                  (loop2 (+ j 1) (append subarray (list num)) (+ imbalance (if (> count 1) (- count 1) 0)) new-min new-max seen))))))))

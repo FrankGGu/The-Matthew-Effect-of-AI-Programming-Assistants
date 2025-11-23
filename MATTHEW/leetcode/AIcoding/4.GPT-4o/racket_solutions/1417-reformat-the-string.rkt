@@ -1,0 +1,21 @@
+(define (reformat s)
+  (define letters (filter char-alphabetic (string->list s)))
+  (define digits (filter char-numeric (string->list s)))
+  (define len-letters (length letters))
+  (define len-digits (length digits))
+  (define (helper l d)
+    (cond
+      ((= (abs (- len-letters len-digits)) 1) 
+       (if (> len-letters len-digits)
+           (apply string-append (interleave (map string letters) (map string digits)))
+           (apply string-append (interleave (map string digits) (map string letters)))))
+      ((= len-letters len-digits) 
+       (apply string-append (interleave (map string letters) (map string digits))))
+      (else ""))
+    )
+  (helper letters digits))
+
+(define (interleave lst1 lst2)
+  (if (null? lst1)
+      lst2
+      (cons (car lst1) (interleave lst2 (cdr lst1)))))

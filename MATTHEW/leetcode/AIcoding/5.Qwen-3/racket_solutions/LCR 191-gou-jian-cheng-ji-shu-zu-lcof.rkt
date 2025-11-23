@@ -1,0 +1,6 @@
+(define (count-words-by-frequency words)
+  (define freq (make-hash))
+  (for-each (lambda (word) (hash-set! freq word (+ 1 (hash-ref freq word 0)))) words)
+  (define counts (make-hash))
+  (for-each (lambda (v) (hash-set! counts v (+ 1 (hash-ref counts v 0)))) (hash-values freq))
+  (apply + (hash-values counts)))

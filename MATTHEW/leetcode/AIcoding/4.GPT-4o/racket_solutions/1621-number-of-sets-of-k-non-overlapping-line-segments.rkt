@@ -1,0 +1,15 @@
+(define (numberOfSets n k)
+  (define dp (make-vector (+ n 1) (make-vector (+ k 1) 0)))
+  (vector-set! dp 0 0 1)
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 1 (+ k 1))])
+      (for ([m (in-range 0 i)])
+        (vector-set! dp i j
+                      (+ (vector-ref dp i j)
+                         (vector-ref dp m (- j 1))))))
+      (vector-set! dp i j (modulo (vector-ref dp i j) 1000000007)))
+    )
+  (vector-ref dp n k))
+
+(define (numberOfSetsOfKNonOverlappingLineSegments n k)
+  (numberOfSets n k))

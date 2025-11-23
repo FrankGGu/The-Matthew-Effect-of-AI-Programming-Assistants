@@ -1,0 +1,33 @@
+(define (updateMatrix mat)
+  (define rows (length mat))
+  (define cols (length (car mat)))
+  (define (in-bounds? x y)
+    (and (>= x 0) (< x rows) (>= y 0) (< y cols)))
+  (define directions '((1 0) (-1 0) (0 1) (0 -1)))
+  (define queue (make-vector 0))
+  (define distances (map (lambda (row) (map (lambda (val) (if (= val 0) 0 +inf.0)) row)) mat))
+  (for ([i (in-range rows)] [j (in-range cols)])
+    (when (= (list-ref (list-ref mat i) j) 0)
+      (vector-set! queue (vector-length queue) (list i j))
+      (set! distances (list-set distances i (list-set (list-ref distances i) j 0)))))
+
+  (define (bfs)
+    (let loop ()
+      (if (zero? (vector-length queue)) 
+          (void)
+          (let* ([pos (vector-ref queue 0)]
+                 [x (car pos)]
+                 [y (cadr pos)])
+            (vector-set! queue 0 (vector-ref queue (- (vector-length queue) 1)))
+            (set! queue (vector-delete queue (sub1 (vector-length queue))))
+            (for ([dir directions])
+              (let ([new-x (+ x (car dir))]
+                    [new-y (+ y (cadr dir))])
+                (when (and (in-bounds? new-x new-y) 
+                           (< (list-ref (list-ref distances new-x) new-y) +inf.0))
+                  (set! distances (list-set distances new-x (list-set (list-ref distances new-x) new-y (+ 1 (list-ref (list-ref distances x) y)))))
+                  (vector-set! queue (vector-length queue) (list new-x new-y)))))
+            (loop)))))
+
+  (bfs)
+  distances)

@@ -1,0 +1,5 @@
+(define (find-the-added-integer-ii nums)
+  (define sum (apply + nums))
+  (define n (length nums))
+  (define expected-sum (/ (* n (+ n 1)) 2))
+  (- expected-sum sum))

@@ -1,0 +1,13 @@
+(define (minimum-replacements nums)
+  (define (helper n)
+    (define (ceil x y) (if (= (modulo x y) 0) (/ x y) (+ 1 (/ x y))))
+    (define (loop i count)
+      (if (< i 0)
+          count
+          (let* ((current (list-ref nums i))
+                 (next (if (= i 0) +inf.0 (list-ref nums (- i 1))))
+                 (needed (if (< current next) 1 (ceil current next)))
+                 (operations (if (< current next) 0 (- needed 1))))
+            (loop (- i 1) (+ count operations)))))
+    (loop (- (length nums) 1) 0))
+  (helper (length nums))

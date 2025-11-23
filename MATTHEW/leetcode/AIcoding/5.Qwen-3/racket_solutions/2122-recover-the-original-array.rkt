@@ -1,0 +1,40 @@
+#lang racket
+
+(define (recover-orig-array s)
+  (define (count-nums s)
+    (define nums '())
+    (define (parse i)
+      (cond [(= i (string-length s)) nums]
+            [(char=? (string-ref s i) #\#) (parse (+ i 1))]
+            [else
+             (define start i)
+             (define end i)
+             (when (char=? (string-ref s i) #\-)
+               (set! end (+ end 1))
+               (set! i (+ i 1)))
+             (while (and (< i (string-length s)) (char-numeric? (string-ref s i)))
+               (set! end (+ end 1))
+               (set! i (+ i 1)))
+             (set! nums (cons (string->number (substring s start end)) nums))
+             (parse end)]))
+    (parse 0))
+
+  (define nums (reverse (count-nums s)))
+  (define n (length nums))
+  (define result '())
+  (define (dfs idx path)
+    (when (= idx n)
+      (set! result path)
+      #t)
+    (when (not (null? path))
+      (define last (car path))
+      (when (and (>= idx 1) (<= (- (list-ref nums idx) last) 1000))
+        (dfs (+ idx 1) (cons (list-ref nums idx) path))))
+    (when (>= idx 1)
+      (define last (car path))
+      (when (and (<= (- (list-ref nums idx) last) 1000))
+        (dfs (+ idx 1) (cons (list-ref nums idx) path))))
+    #f)
+
+  (dfs 0 '())
+  (reverse result))

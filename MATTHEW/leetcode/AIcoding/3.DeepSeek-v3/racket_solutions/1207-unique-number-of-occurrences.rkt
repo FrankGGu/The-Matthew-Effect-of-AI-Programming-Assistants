@@ -1,0 +1,12 @@
+(define/contract (unique-occurrences arr)
+  (-> (listof exact-integer?) boolean?)
+  (let* ([freq (make-hash)]
+         [counts (make-hash)])
+    (for ([num arr])
+      (hash-update! freq num add1 0))
+    (for ([(k v) (in-hash freq)])
+      (if (hash-has-key? counts v)
+          (hash-set! counts v (+ (hash-ref counts v) 1))
+          (hash-set! counts v 1)))
+    (for/and ([(k v) (in-hash counts)])
+      (= v 1))))

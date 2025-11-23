@@ -1,0 +1,17 @@
+(define (minimize-difference A B C target)
+  (define (closest-sum a b c)
+    (let loop ((i 0) (j 0) (k 0) (best 1000000000))
+      (cond
+        ((or (>= i (length a)) (>= j (length b)) (>= k (length c)))
+         best)
+        (else
+         (let* ((sum (+ (list-ref a i) (list-ref b j) (list-ref c k)))
+                (diff (abs (- sum target)))
+                (new-best (min best diff)))
+           (if (< sum target)
+             (loop i j (+ k 1) new-best)
+             (loop (+ i 1) j k new-best)))))))
+  (define sorted-a (sort A <))
+  (define sorted-b (sort B <))
+  (define sorted-c (sort C <))
+  (closest-sum sorted-a sorted-b sorted-c target))

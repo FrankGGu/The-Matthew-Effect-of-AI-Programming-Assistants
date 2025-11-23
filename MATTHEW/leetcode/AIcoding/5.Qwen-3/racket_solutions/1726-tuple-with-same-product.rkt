@@ -1,0 +1,15 @@
+#lang racket
+
+(define (unique-integer-tuples nums)
+  (define n (length nums))
+  (define product-map (make-hash))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (when (not (= i j))
+        (define product (* (list-ref nums i) (list-ref nums j)))
+        (hash-update! product-map product (λ (v) (cons (cons i j) v)) '())))
+  (define result 0)
+  (for ([(product lst) (in-hash product-map)])
+    (when (> (length lst) 1)
+      (set! result (+ result (quotient (* (length lst) (- (length lst) 1)) 2)))))
+  result)

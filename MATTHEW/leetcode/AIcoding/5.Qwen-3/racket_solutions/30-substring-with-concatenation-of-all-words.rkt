@@ -1,0 +1,30 @@
+#lang racket
+
+(define (find-substring s words)
+  (define word-len (string-length (car words)))
+  (define num-words (length words))
+  (define total-len (* word-len num-words))
+  (define s-len (string-length s))
+  (define result '())
+  (define (get-counts words)
+    (for/fold ([counts (hash)]) ([word words])
+      (hash-update counts word add1 0)))
+  (define word-counts (get-counts words))
+  (define (check-substring start)
+    (define end (+ start total-len))
+    (when (> end s-len) #f)
+    (define substr (substring s start end))
+    (define (check-helper i counts)
+      (cond [(= i num-words) #t]
+            [else
+             (define word (substring substr (* i word-len) (* (+ i 1) word-len)))
+             (if (and (hash-has-key? counts word) (> (hash-ref counts word) 0))
+                 (begin
+                   (hash-update! counts word sub1)
+                   (check-helper (+ i 1) counts))
+                 #f)]))
+    (check-helper 0 (hash-copy word-counts)))
+  (for ([i (in-range (- s-len total-len))])
+    (when (check-substring i)
+      (set! result (cons i result))))
+  (reverse result))

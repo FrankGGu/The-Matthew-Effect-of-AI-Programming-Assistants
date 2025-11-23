@@ -1,0 +1,16 @@
+(define (equalFrequency word)
+  (define (count-frequencies s)
+    (define freq (make-hash))
+    (for ([c (in-string s)])
+      (hash-set! freq c (+ (hash-ref freq c 0) 1)))
+    (hash->list freq))
+
+  (define (can-remove-one freq)
+    (let ([counts (map cadr (sort (count-frequencies freq) <))])
+      (or (equal? (length counts) 1)
+          (and (equal? (length counts) 2)
+               (or (equal? (car counts) (cadr counts))
+                   (or (equal? (car counts) 1)
+                       (equal? (cadr counts) 1)))))))
+
+  (can-remove-one word))

@@ -1,0 +1,8 @@
+(define (projection-area grid)
+  (define (row-max row) (apply max row))
+  (define (col-max col) (apply max col))
+  (define rows (map row-max grid))
+  (define cols (map col-max (apply map list grid)))
+  (+ (length (filter (lambda (x) (> x 0)) (flatten grid)))
+     (apply + rows)
+     (apply + cols)))

@@ -1,0 +1,13 @@
+(define (minSteps s t)
+  (define (count-chars str)
+    (define counts (make-vector 26 0))
+    (for-each (lambda (ch)
+                (vector-set! counts (- (char->integer ch) (char->integer #\a)) (+ 1 (vector-ref counts (- (char->integer ch) (char->integer #\a))))))
+              str)
+    counts)
+  (define counts-s (count-chars s))
+  (define counts-t (count-chars t))
+  (define steps (for/fold ([total 0]) ([i 0] (in-range 26))
+                   (begin
+                     (set! total (+ total (abs (- (vector-ref counts-s i) (vector-ref counts-t i)))))))
+  steps))

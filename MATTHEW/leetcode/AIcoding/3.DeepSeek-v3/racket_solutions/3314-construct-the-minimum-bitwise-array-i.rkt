@@ -1,0 +1,7 @@
+(define/contract (minimum-array n)
+  (-> exact-integer? (listof exact-integer?))
+  (let loop ((i 0) (res '()))
+    (if (= i n)
+        (reverse res)
+        (loop (add1 i) (cons i res)))))
+)

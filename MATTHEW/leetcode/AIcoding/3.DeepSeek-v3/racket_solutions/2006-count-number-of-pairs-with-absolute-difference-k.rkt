@@ -1,0 +1,11 @@
+(define/contract (count-k-difference nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([i 0] [count 0])
+    (if (>= i (length nums))
+        count
+        (let loop2 ([j (add1 i)] [count count])
+          (if (>= j (length nums))
+              (loop (add1 i) count)
+              (if (= (abs (- (list-ref nums i) (list-ref nums j))) k)
+                  (loop2 (add1 j) (add1 count))
+                  (loop2 (add1 j) count)))))))

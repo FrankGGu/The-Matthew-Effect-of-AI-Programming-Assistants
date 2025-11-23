@@ -1,0 +1,23 @@
+(define (smallest-subsequence s k letter repetition)
+  (define n (string-length s))
+  (define stack '())
+  (define letter-count 0)
+  (for ([i (in-range n)])
+    (define c (string-ref s i))
+    (when (equal? c letter) (set! letter-count (+ letter-count 1)))
+
+    (while (and (not (null? stack))
+                (> (length stack) 0)
+                (char>? (car stack) c)
+                (> (- n i) (- k (length stack)))
+                (or (not (equal? (car stack) letter))
+                    (> letter-count repetition)))
+      (define popped (car stack))
+      (set! stack (cdr stack))
+      (when (equal? popped letter) (set! repetition (+ repetition 1))))
+
+    (when (< (length stack) k)
+      (push! stack c)
+      (when (equal? c letter) (set! repetition (- repetition 1)))))
+
+  (list->string (reverse stack)))

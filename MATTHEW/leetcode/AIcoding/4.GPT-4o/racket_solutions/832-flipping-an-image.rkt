@@ -1,0 +1,5 @@
+(define (flip-and-invert-image image)
+  (map (lambda (row)
+         (map (lambda (x) (if (= x 0) 1 0))
+              (reverse row)))
+       image))

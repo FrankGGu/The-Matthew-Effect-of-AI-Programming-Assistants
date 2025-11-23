@@ -1,0 +1,8 @@
+(define (employee-importance employees id)
+  (define (find-employee id)
+    (for/first ([e employees] #:when (= (car e) id)) e))
+  (define (get-importance e)
+    (let ([subordinates (caddr e)])
+      (+ (cadr e)
+         (for/sum ([s subordinates]) (get-importance (find-employee s))))))
+  (get-importance (find-employee id)))

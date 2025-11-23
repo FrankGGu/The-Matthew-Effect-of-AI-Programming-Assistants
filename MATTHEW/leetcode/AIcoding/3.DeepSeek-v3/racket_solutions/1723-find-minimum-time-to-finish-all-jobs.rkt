@@ -1,0 +1,16 @@
+(define/contract (minimum-time-required jobs k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (define n (length jobs))
+  (define workers (make-vector k 0))
+  (define min-time +inf.0)
+
+  (define (backtrack idx)
+    (if (= idx n)
+        (set! min-time (min min-time (apply max (vector->list workers))))
+        (for ([i (in-range k)])
+          (vector-set! workers i (+ (vector-ref workers i) (list-ref jobs idx)))
+          (backtrack (add1 idx))
+          (vector-set! workers i (- (vector-ref workers i) (list-ref jobs idx))))))
+
+  (backtrack 0)
+  (inexact->exact min-time))

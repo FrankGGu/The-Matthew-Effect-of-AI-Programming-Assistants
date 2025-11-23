@@ -1,0 +1,50 @@
+(provide solve)
+
+(define (solve n edges queries)
+  (define adj (make-vector (+ n 1) '()))
+  (for-each (lambda (edge)
+              (let ((u (car edge)) (v (cadr edge)) (w (caddr edge)))
+                (vector-set! adj u (cons (list v w) (vector-ref adj u)))
+                (vector-set! adj v (cons (list u w) (vector-ref adj v)))))
+            edges)
+
+  (define (dijkstra start)
+    (define dist (make-vector (+ n 1) +inf.0))
+    (vector-set! dist start 0.0)
+    (define pq (mutable-priority-queue <))
+    (mutable-priority-queue-add! pq (list 0.0 start))
+
+    (define (process)
+      (if (mutable-priority-queue-empty? pq)
+          #void
+          (let* ((current (mutable-priority-queue-remove! pq))
+                 (d (car current))
+                 (u (cadr current)))
+            (if (> d (vector-ref dist u))
+                (process)
+                (for-each (lambda (neighbor)
+                            (let ((v (car neighbor)) (w (cadr neighbor)))
+                              (let ((new-dist (+ d w)))
+                                (if (< new-dist (vector-ref dist v))
+                                    (begin
+                                      (vector-set! dist v new-dist)
+                                      (mutable-priority-queue-add! pq (list new-dist v)))))))
+                          (vector-ref adj u))
+            (process))))
+
+    (process)
+    dist)
+
+  (define (count-at-distance q)
+    (let loop ((i 1) (count 0))
+      (if (> i n)
+          count
+          (let ((min-dist +inf.0))
+            (for ((j (in-range 1 (+ n 1))))
+              (let ((distances (dijkstra j)))
+                (set! min-dist (min min-dist (vector-ref distances i)))))
+            (if (= min-dist q)
+                (loop (+ i 1) (+ count 1))
+                (loop (+ i 1) count)))))
+
+  (map count-at-distance queries))

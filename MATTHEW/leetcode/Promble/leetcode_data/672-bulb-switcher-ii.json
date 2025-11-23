@@ -1,0 +1,38 @@
+{
+  "id": "672",
+  "title": "Bulb Switcher II",
+  "titleSlug": "bulb-switcher-ii",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Math"
+  ],
+  "content": "<p>There is a room with <code>n</code> bulbs labeled from <code>1</code> to <code>n</code> that all are turned on initially, and <strong>four buttons</strong> on the wall. Each of the four buttons has a different functionality where:</p>\n\n<ul>\n\t<li><strong>Button 1:</strong> Flips the status of all the bulbs.</li>\n\t<li><strong>Button 2:</strong> Flips the status of all the bulbs with even labels (i.e., <code>2, 4, ...</code>).</li>\n\t<li><strong>Button 3:</strong> Flips the status of all the bulbs with odd labels (i.e., <code>1, 3, ...</code>).</li>\n\t<li><strong>Button 4:</strong> Flips the status of all the bulbs with a label <code>j = 3k + 1</code> where <code>k = 0, 1, 2, ...</code> (i.e., <code>1, 4, 7, 10, ...</code>).</li>\n</ul>\n\n<p>You must make <strong>exactly</strong> <code>presses</code> button presses in total. For each press, you may pick <strong>any</strong> of the four buttons to press.</p>\n\n<p>Given the two integers <code>n</code> and <code>presses</code>, return <em>the number of <strong>different possible statuses</strong> after performing all </em><code>presses</code><em> button presses</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 1, presses = 1\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> Status can be:\n- [off] by pressing button 1\n- [on] by pressing button 2\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 2, presses = 1\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Status can be:\n- [off, off] by pressing button 1\n- [on, off] by pressing button 2\n- [off, on] by pressing button 3\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3, presses = 1\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Status can be:\n- [off, off, off] by pressing button 1\n- [off, on, off] by pressing button 2\n- [on, off, on] by pressing button 3\n- [off, on, on] by pressing button 4\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 1000</code></li>\n\t<li><code>0 &lt;= presses &lt;= 1000</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int flipLights(int n, int presses) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int flipLights(int n, int presses) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def flipLights(self, n, presses):\n        \"\"\"\n        :type n: int\n        :type presses: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def flipLights(self, n: int, presses: int) -> int:\n        ",
+    "c": "int flipLights(int n, int presses) {\n    \n}",
+    "csharp": "public class Solution {\n    public int FlipLights(int n, int presses) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @param {number} presses\n * @return {number}\n */\nvar flipLights = function(n, presses) {\n    \n};",
+    "typescript": "function flipLights(n: number, presses: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @param Integer $presses\n     * @return Integer\n     */\n    function flipLights($n, $presses) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func flipLights(_ n: Int, _ presses: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun flipLights(n: Int, presses: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int flipLights(int n, int presses) {\n    \n  }\n}",
+    "golang": "func flipLights(n int, presses int) int {\n    \n}",
+    "ruby": "# @param {Integer} n\n# @param {Integer} presses\n# @return {Integer}\ndef flip_lights(n, presses)\n    \nend",
+    "scala": "object Solution {\n    def flipLights(n: Int, presses: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn flip_lights(n: i32, presses: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (flip-lights n presses)\n  (-> exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec flip_lights(N :: integer(), Presses :: integer()) -> integer().\nflip_lights(N, Presses) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec flip_lights(n :: integer, presses :: integer) :: integer\n  def flip_lights(n, presses) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func flipLights(n: Int64, presses: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "1\n1\n2\n1\n3\n1",
+  "hints": []
+}

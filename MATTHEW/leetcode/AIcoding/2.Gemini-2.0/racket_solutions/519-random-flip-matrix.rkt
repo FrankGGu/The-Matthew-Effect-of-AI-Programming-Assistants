@@ -1,0 +1,20 @@
+(define (make-random-flip-matrix n_rows n_cols)
+  (let* ([total (* n_rows n_cols)]
+         [available (box total)]
+         [mapping (make-hash)])
+    (define (reset)
+      (set-box! available total)
+      (hash-clear! mapping))
+    (define (flip)
+      (if (zero? (unbox available))
+          (void)
+          (let* ([i (random (unbox available))]
+                 [actual-index (hash-ref mapping i i)])
+            (define last-index (- (unbox available) 1))
+            (define last-actual (hash-ref mapping last-index last-index))
+            (hash-set! mapping i last-actual)
+            (hash-set! mapping last-index actual-index)
+            (set-box! available (- (unbox available) 1))
+            (list (quotient actual-index n_cols) (remainder actual-index n_cols)))))
+    (struct random-flip-matrix (reset flip))
+    (random-flip-matrix reset flip)))

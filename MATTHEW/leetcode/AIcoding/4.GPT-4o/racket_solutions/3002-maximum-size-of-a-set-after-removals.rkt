@@ -1,0 +1,23 @@
+(define (maximumSize nums)
+  (define (helper nums seen)
+    (if (null? nums)
+        (length seen)
+        (let* ((current (car nums))
+               (next-nums (cdr nums))
+               (new-seen (if (member current seen)
+                             seen
+                             (cons current seen))))
+          (max (helper next-nums seen)
+               (helper next-nums new-seen)))))
+  (helper (sort nums <) '()))
+
+(define (maximumSize nums)
+  (let ((seen '())
+        (count 0))
+    (for-each (lambda (x)
+                (if (not (member x seen))
+                    (begin
+                      (set! seen (cons x seen))
+                      (set! count (+ count 1)))))
+              nums)
+    count))

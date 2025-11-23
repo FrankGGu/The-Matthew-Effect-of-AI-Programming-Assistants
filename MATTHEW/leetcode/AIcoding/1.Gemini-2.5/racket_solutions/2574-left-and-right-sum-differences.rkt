@@ -1,0 +1,8 @@
+(define (left-right-sum-differences nums)
+  (define total-sum (apply + nums))
+  (define left-sum 0)
+  (for/list ((x (in-list nums)))
+    (define right-sum (- total-sum left-sum x))
+    (define diff (abs (- left-sum right-sum)))
+    (set! left-sum (+ left-sum x))
+    diff))

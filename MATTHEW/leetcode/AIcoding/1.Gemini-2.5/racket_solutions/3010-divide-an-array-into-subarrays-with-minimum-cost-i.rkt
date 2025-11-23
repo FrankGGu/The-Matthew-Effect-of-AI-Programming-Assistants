@@ -1,0 +1,7 @@
+(define (minimum-cost nums)
+  (let* ((first-element (car nums))
+         (rest-elements (cdr nums))
+         (sorted-rest (sort rest-elements <))
+         (min1 (car sorted-rest))
+         (min2 (cadr sorted-rest)))
+    (+ first-element min1 min2)))

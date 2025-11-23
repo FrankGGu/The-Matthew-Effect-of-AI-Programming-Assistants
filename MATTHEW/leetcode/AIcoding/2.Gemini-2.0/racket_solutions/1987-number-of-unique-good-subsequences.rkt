@@ -1,0 +1,18 @@
+(define (unique-good-subsequences s)
+  (define n (string-length s))
+  (define dp (make-vector (n + 1) 0))
+  (define last-one #f)
+  (vector-set! dp 0 1)
+
+  (for ([i (in-range 1 (add1 n))])
+    (let ([digit (string->number (substring s (sub1 i) i))])
+      (vector-set! dp i (modulo (* 2 (vector-ref dp (sub1 i))) 1000000007))
+      (when (and last-one last-one)
+        (vector-set! dp i (modulo (- (vector-ref dp i) (vector-ref dp last-one)) 1000000007))))
+    (when (= (string->number (substring s (sub1 i) i)) 1)
+      (set! last-one (sub1 i))))
+
+  (let ([result (vector-ref dp n)])
+    (when (string-contains? s "0")
+      (set! result (modulo (+ result 1) 1000000007)))
+    result))

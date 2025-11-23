@@ -1,0 +1,20 @@
+(define/contract (pancake-sort arr)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (define (flip lst k)
+    (append (reverse (take lst k)) (drop lst k)))
+  (define (helper lst res)
+    (if (null? lst)
+        res
+        (let* ([max-val (apply max lst)]
+               [max-idx (index-of lst max-val)]
+               [n (length lst)])
+          (if (= max-idx (sub1 n))
+              (helper (drop-right lst 1) res)
+              (let* ([new-lst (if (zero? max-idx)
+                                  (flip lst n)
+                                  (flip (flip lst (add1 max-idx)) n))])
+                (helper (drop-right new-lst 1)
+                        (append res (if (zero? max-idx)
+                                        (list n)
+                                        (list (add1 max-idx) n)))))))))
+  (helper arr '()))

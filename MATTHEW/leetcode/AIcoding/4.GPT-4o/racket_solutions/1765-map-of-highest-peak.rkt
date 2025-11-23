@@ -1,0 +1,28 @@
+(define (highestPeak isWater)
+  (define n (length isWater))
+  (define m (length (first isWater)))
+  (define heights (make-vector n (lambda () (make-vector m -1))))
+  (define queue (deque))
+
+  (for*/[i (in-range n)
+         j (in-range m)]
+    (when (= (vector-ref (vector-ref isWater i) j) 1)
+      (vector-set! (vector-ref heights i) j 0)
+      (deque-push-back queue (list i j))))
+
+  (define directions '((0 1) (1 0) (0 -1) (-1 0)))
+
+  (define (bfs)
+    (while (not (deque-empty? queue))
+      (define pos (deque-pop-front queue))
+      (define x (first pos))
+      (define y (second pos))
+      (for ([dir directions])
+        (define new-x (+ x (first dir)))
+        (define new-y (+ y (second dir)))
+        (when (and (>= new-x 0) (< new-x n) (>= new-y 0) (< new-y m)
+                   (= (vector-ref (vector-ref heights new-x) new-y -1)))
+          (vector-set! (vector-ref heights new-x) new-y (+ 1 (vector-ref (vector-ref heights x) y)))
+          (deque-push-back queue (list new-x new-y)))))
+  (bfs)
+  (vector->list heights))

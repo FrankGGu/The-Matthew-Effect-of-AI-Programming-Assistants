@@ -1,0 +1,17 @@
+(define (can-three-parts-equal-sum A)
+  (define total (apply + A))
+  (if (not (= (modulo total 3) 0))
+      #f
+      (let ((target (/ total 3)))
+        (define (helper arr target count)
+          (if (null? arr)
+              (= count 3)
+              (let loop ((sum 0) (lst arr))
+                (cond
+                  ((null? lst) #f)
+                  ((>= sum target) (if (= sum target)
+                                       (loop 0 (cdr lst))
+                                       #f))
+                  (else (loop (+ sum (car lst)) (cdr lst))))))
+          (helper A target 0))))
+  (helper A target 0))

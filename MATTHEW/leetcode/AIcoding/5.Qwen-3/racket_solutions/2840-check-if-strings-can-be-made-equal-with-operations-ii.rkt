@@ -1,0 +1,10 @@
+(define (can-convert s t)
+  (define (count-chars str)
+    (for/fold ([cnt (hash)]) ([c str])
+      (hash-update cnt c add1 0)))
+  (define s-count (count-chars s))
+  (define t-count (count-chars t))
+  (and (equal? (hash-keys s-count) (hash-keys t-count))
+       (let ([s-vals (sort (hash-values s-count) <)]
+             [t-vals (sort (hash-values t-count) <)])
+         (equal? s-vals t-vals))))

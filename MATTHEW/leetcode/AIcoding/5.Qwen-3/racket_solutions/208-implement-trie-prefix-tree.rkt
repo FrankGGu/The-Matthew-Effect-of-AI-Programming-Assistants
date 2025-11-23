@@ -1,0 +1,40 @@
+#lang racket
+
+(define-struct trie-node (children is-end))
+
+(define (make-trie)
+  (make-trie-node (make-hash) #f))
+
+(define (insert root word)
+  (define (helper node idx)
+    (if (= idx (string-length word))
+        (begin
+          (set-trie-node-is-end! node #t)
+          root)
+        (let ([c (string-ref word idx)])
+          (if (hash-has-key? (trie-node-children node) c)
+              (helper (hash-ref (trie-node-children node) c) (+ idx 1))
+              (let ([new-node (make-trie-node (make-hash) #f)])
+                (hash-set! (trie-node-children node) c new-node)
+                (helper new-node (+ idx 1)))))))
+  (helper root 0))
+
+(define (search root word)
+  (define (helper node idx)
+    (if (= idx (string-length word))
+        (trie-node-is-end? node)
+        (let ([c (string-ref word idx)])
+          (if (hash-has-key? (trie-node-children node) c)
+              (helper (hash-ref (trie-node-children node) c) (+ idx 1))
+              #f))))
+  (helper root 0))
+
+(define (starts-with root prefix)
+  (define (helper node idx)
+    (if (= idx (string-length prefix))
+        #t
+        (let ([c (string-ref prefix idx)])
+          (if (hash-has-key? (trie-node-children node) c)
+              (helper (hash-ref (trie-node-children node) c) (+ idx 1))
+              #f))))
+  (helper root 0))

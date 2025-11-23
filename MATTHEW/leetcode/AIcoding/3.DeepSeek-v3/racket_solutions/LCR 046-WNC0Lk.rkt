@@ -1,0 +1,12 @@
+(define/contract (right-side-view root)
+  (-> (or/c null? tree-node?) (listof exact-integer?))
+  (define result '())
+  (define (dfs node depth)
+    (when node
+      (if (= depth (length result))
+          (set! result (append result (list (tree-node-val node))))
+          (void))
+      (dfs (tree-node-right node) (+ depth 1))
+      (dfs (tree-node-left node) (+ depth 1))))
+  (dfs root 0)
+  result)

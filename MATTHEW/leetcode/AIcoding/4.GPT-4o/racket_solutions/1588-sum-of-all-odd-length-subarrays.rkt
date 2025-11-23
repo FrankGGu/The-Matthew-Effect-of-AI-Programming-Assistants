@@ -1,0 +1,10 @@
+(define (sumOddLengthSubarrays arr)
+  (define (odd-length-sum n)
+    (if (<= n 0) 0
+        (let ([count (quotient (* (+ n 1) 2) 2)])
+          (+ (if (odd? n) (* count n) 0)
+             (odd-length-sum (- n 1)))))
+  (define total-sum 0)
+  (for ([i (in-range (length arr))])
+    (set! total-sum (+ total-sum (* (list-ref arr i) (odd-length-sum (+ 1 (- (length arr) i)))))))
+  total-sum)

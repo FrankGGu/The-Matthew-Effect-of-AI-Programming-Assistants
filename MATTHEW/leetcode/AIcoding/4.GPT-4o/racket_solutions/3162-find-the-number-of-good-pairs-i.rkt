@@ -1,0 +1,12 @@
+(define (numIdenticalPairs nums)
+  (define (count-pairs count)
+    (if (= count 0)
+        0
+        (+ count (count-pairs (- count 1)))))
+  (define counts (make-vector 101 0))
+  (for-each (lambda (num) (vector-set! counts num (+ 1 (vector-ref counts num)))) nums)
+  (define total-pairs 0)
+  (for ([i (in-range 101)])
+    (define count (vector-ref counts i))
+    (set! total-pairs (+ total-pairs (count-pairs count))))
+  total-pairs)

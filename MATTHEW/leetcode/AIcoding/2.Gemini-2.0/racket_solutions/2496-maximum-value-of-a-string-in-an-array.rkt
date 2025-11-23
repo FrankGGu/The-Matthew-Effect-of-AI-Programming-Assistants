@@ -1,0 +1,6 @@
+(define (maximum-value strs)
+  (define (string->value s)
+    (if (string-contains? s (regexp "[a-z]"))
+        (string-length s)
+        (string->number s)))
+  (apply max (map string->value strs)))

@@ -1,0 +1,6 @@
+(define (numOfBurgers tomatoAmount cheeseAmount)
+  (let* ((x (/ (- cheeseAmount (* 2 tomatoAmount)) 2))
+         (y (- tomatoAmount x)))
+    (if (and (>= x 0) (>= y 0))
+        (list x y)
+        '())))

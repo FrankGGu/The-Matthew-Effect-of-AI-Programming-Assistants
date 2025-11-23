@@ -1,0 +1,18 @@
+(define (find-matrix nums)
+  (let* ([counts (make-hash)]
+         [max-count 0])
+    (for ([num nums])
+      (hash-update! counts num (λ (v) (+ v 1)) 1)
+      (set! max-count (max max-count (hash-ref counts num))))
+    (let ([result (make-vector max-count '())])
+      (for ([num nums])
+        (let loop ([i 0])
+          (if (empty? (vector-ref result i))
+              (begin
+                (vector-set! result i (list num))
+                (hash-update! counts num (λ (v) (- v 1)))
+                (void))
+              (if (not (member num (vector-ref result i)))
+                  (loop (+ i 1))
+                  (loop (+ i 1))))))
+      (vector->list result))))

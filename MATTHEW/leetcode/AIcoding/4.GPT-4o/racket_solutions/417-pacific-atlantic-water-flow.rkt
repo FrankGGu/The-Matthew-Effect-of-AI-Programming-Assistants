@@ -1,0 +1,38 @@
+(define (pacific-atlantic heights)
+  (define (in-bounds? x y)
+    (and (>= x 0) (< x (length heights)) (>= y 0) (< y (length (first heights)))))
+
+  (define (dfs ocean visited x y)
+    (when (not (hash-ref visited (list x y) #f))
+      (hash-set! visited (list x y) #t)
+      (for-each (lambda (dir)
+                  (let ((nx (+ x (first dir)))
+                        (ny (+ y (second dir))))
+                    (when (and (in-bounds? nx ny)
+                               (>= (list-ref (list-ref heights x) y) (list-ref (list-ref heights nx) ny)))
+                      (dfs ocean visited nx ny))))
+                '((0 1) (1 0) (0 -1) (-1 0))))
+
+  (define pacific-visited (make-hash))
+  (define atlantic-visited (make-hash))
+
+  (for-each (lambda (i)
+              (dfs 'pacific pacific-visited i 0)
+              (dfs 'atlantic atlantic-visited i (- (length (first heights)) 1)))
+            (range (length heights)))
+
+  (for-each (lambda (j)
+              (dfs 'pacific pacific-visited 0 j)
+              (dfs 'atlantic atlantic-visited (- (length heights) 1) j))
+            (range (length (first heights))))
+
+  (define result '())
+  (for-each (lambda (x)
+              (for-each (lambda (y)
+                          (when (and (hash-ref pacific-visited (list x y) #f)
+                                     (hash-ref atlantic-visited (list x y) #f))
+                            (set! result (cons (list x y) result))))
+                        (range (length (first heights)))))
+            (range (length heights)))
+
+  (reverse result))

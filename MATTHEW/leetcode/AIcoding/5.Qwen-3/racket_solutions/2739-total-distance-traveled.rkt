@@ -1,0 +1,7 @@
+(define (distance-traveled main-rod-length rod-1 rod-2)
+  (let* ((min-length (min rod-1 rod-2))
+         (max-length (max rod-1 rod-2))
+         (total (if (<= main-rod-length (+ min-length max-length))
+                    (+ (* 2 min-length) (- main-rod-length min-length))
+                    (+ (* 2 main-rod-length) (* 2 (max 0 (- min-length main-rod-length)))))))
+    total))

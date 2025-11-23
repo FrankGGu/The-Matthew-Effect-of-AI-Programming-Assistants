@@ -1,0 +1,21 @@
+(define (waysToPartition nums k)
+  (let* ((n (length nums))
+         (prefix-sums (make-vector (add1 n) 0))
+         (total-sum (for/sum ((i (in-range n)))
+                      (vector-ref nums i))))
+    (for ((i (in-range n)))
+      (vector-set! prefix-sums (add1 i) (+ (vector-ref prefix-sums i) (vector-ref nums i))))
+    (let loop ((i 0)
+               (count 0)
+               (freq (make-hash)))
+      (cond
+        ((= i n) count)
+        (else
+         (let* ((diff (- k (vector-ref nums i)))
+                (expected (+ (vector-ref prefix-sums i) diff))
+                (right-sum (- total-sum (vector-ref prefix-sums i)))
+                (new-count (if (= expected right-sum) 1 0))
+                (current-freq (hash-ref freq diff 0)))
+
+           (hash-set! freq diff (add1 current-freq))
+           (loop (add1 i) (+ count new-count) freq)))))))

@@ -1,0 +1,38 @@
+{
+  "id": "1342",
+  "title": "Number of Steps to Reduce a Number to Zero",
+  "titleSlug": "number-of-steps-to-reduce-a-number-to-zero",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Math"
+  ],
+  "content": "<p>Given an integer <code>num</code>, return <em>the number of steps to reduce it to zero</em>.</p>\n\n<p>In one step, if the current number is even, you have to divide it by <code>2</code>, otherwise, you have to subtract <code>1</code> from it.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 14\n<strong>Output:</strong> 6\n<strong>Explanation:</strong>&nbsp;\nStep 1) 14 is even; divide by 2 and obtain 7.&nbsp;\nStep 2) 7 is odd; subtract 1 and obtain 6.\nStep 3) 6 is even; divide by 2 and obtain 3.&nbsp;\nStep 4) 3 is odd; subtract 1 and obtain 2.&nbsp;\nStep 5) 2 is even; divide by 2 and obtain 1.&nbsp;\nStep 6) 1 is odd; subtract 1 and obtain 0.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 8\n<strong>Output:</strong> 4\n<strong>Explanation:</strong>&nbsp;\nStep 1) 8 is even; divide by 2 and obtain 4.&nbsp;\nStep 2) 4 is even; divide by 2 and obtain 2.&nbsp;\nStep 3) 2 is even; divide by 2 and obtain 1.&nbsp;\nStep 4) 1 is odd; subtract 1 and obtain 0.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 123\n<strong>Output:</strong> 12\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= num &lt;= 10<sup>6</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int numberOfSteps(int num) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int numberOfSteps(int num) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def numberOfSteps(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def numberOfSteps(self, num: int) -> int:\n        ",
+    "c": "int numberOfSteps(int num) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NumberOfSteps(int num) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @return {number}\n */\nvar numberOfSteps = function(num) {\n    \n};",
+    "typescript": "function numberOfSteps(num: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @return Integer\n     */\n    function numberOfSteps($num) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func numberOfSteps(_ num: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun numberOfSteps(num: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int numberOfSteps(int num) {\n    \n  }\n}",
+    "golang": "func numberOfSteps(num int) int {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @return {Integer}\ndef number_of_steps(num)\n    \nend",
+    "scala": "object Solution {\n    def numberOfSteps(num: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn number_of_steps(num: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (number-of-steps num)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec number_of_steps(Num :: integer()) -> integer().\nnumber_of_steps(Num) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec number_of_steps(num :: integer) :: integer\n  def number_of_steps(num) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func numberOfSteps(num: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "14\n8\n123",
+  "hints": [
+    "Simulate the process to get the final answer."
+  ]
+}

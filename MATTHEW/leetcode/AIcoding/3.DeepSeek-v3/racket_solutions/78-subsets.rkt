@@ -1,0 +1,8 @@
+(define/contract (subsets nums)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)))
+  (define (helper nums)
+    (if (null? nums)
+        '(())
+        (let ([rest (helper (cdr nums))])
+          (append rest (map (lambda (x) (cons (car nums) x)) rest)))))
+  (helper nums))

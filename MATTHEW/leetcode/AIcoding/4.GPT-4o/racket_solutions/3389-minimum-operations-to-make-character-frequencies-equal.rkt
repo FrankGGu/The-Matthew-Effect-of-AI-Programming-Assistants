@@ -1,0 +1,10 @@
+(define (minOperations s)
+  (define freq (make-hash))
+  (for-each (lambda (c) (hash-update! freq c (lambda (x) (add1 x)) 0)) s)
+  (define freqs (hash->list freq))
+  (define min-ops (lambda (target)
+                    (apply + (map (lambda (x) (if (< x target) (- target x) 0)) (map second freqs)))))
+  (define targets (range 1 (+ 1 (apply max (map second freqs)))))
+  (apply min (map min-ops targets)))
+
+(minOperations "aabbcc")

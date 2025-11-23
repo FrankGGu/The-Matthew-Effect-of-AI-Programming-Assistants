@@ -1,0 +1,8 @@
+(define (kth-largest-integer nums k)
+  (define min-heap (make-heap < #:immutable #t))
+  (for-each (lambda (num-str)
+              (heap-add! min-heap num-str))
+            nums)
+  (for ([i (in-range (- (heap-count min-heap) k))])
+    (heap-remove-min! min-heap))
+  (heap-min min-heap))

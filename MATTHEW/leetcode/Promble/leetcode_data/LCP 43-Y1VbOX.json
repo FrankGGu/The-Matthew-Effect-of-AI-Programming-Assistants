@@ -1,0 +1,35 @@
+{
+  "id": "LCP 43",
+  "title": "十字路口的交通",
+  "titleSlug": "Y1VbOX",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "String",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int trafficCommand(vector<string>& directions) {\n\n    }\n};",
+    "java": "class Solution {\n    public int trafficCommand(String[] directions) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def trafficCommand(self, directions):\n        \"\"\"\n        :type directions: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def trafficCommand(self, directions: List[str]) -> int:",
+    "c": "\n\nint trafficCommand(char** directions, int directionsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int TrafficCommand(string[] directions) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} directions\n * @return {number}\n */\nvar trafficCommand = function(directions) {\n\n};",
+    "typescript": "function trafficCommand(directions: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $directions\n     * @return Integer\n     */\n    function trafficCommand($directions) {\n\n    }\n}",
+    "swift": "class Solution {\n    func trafficCommand(_ directions: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun trafficCommand(directions: Array<String>): Int {\n\n    }\n}",
+    "golang": "func trafficCommand(directions []string) int {\n\n}",
+    "ruby": "# @param {String[]} directions\n# @return {Integer}\ndef traffic_command(directions)\n\nend",
+    "scala": "object Solution {\n    def trafficCommand(directions: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn traffic_command(directions: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (traffic-command directions)\n  (-> (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec traffic_command(Directions :: [unicode:unicode_binary()]) -> integer().\ntraffic_command(Directions) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec traffic_command(directions :: [String.t]) :: integer\n  def traffic_command(directions) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"W\",\"N\",\"ES\",\"W\"]\n[\"NS\",\"WE\",\"SE\",\"EW\"]",
+  "hints": []
+}

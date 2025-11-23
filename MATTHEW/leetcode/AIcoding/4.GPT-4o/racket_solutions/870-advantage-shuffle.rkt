@@ -1,0 +1,15 @@
+(define (advantageShuffle A B)
+  (define sorted-A (sort A <))
+  (define sorted-B (sort B <))
+  (define n (length A))
+  (define result (make-vector n))
+  (define j 0)
+  (for ([i (in-range n)])
+    (if (< (vector-ref sorted-A j) (vector-ref sorted-B i))
+        (begin
+          (vector-set! result i (vector-ref sorted-A j))
+          (set! j (+ j 1)))
+        (begin
+          (vector-set! result i (vector-ref sorted-A (- n 1 j)))
+          (set! j (add1 j)))))
+  (vector->list result))

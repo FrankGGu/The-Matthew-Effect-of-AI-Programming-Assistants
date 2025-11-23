@@ -1,0 +1,17 @@
+(define (can-partition grid)
+  (define (sum lst) (foldl + 0 lst))
+  (define total-sum (sum (map sum grid)))
+  (define n (length grid))
+  (define m (length (first grid)))
+  (define target (/ total-sum 2))
+
+  (if (not (= (modulo total-sum 2) 0))
+      #f
+      (define dp (make-vector (+ 1 target) #f))
+      (vector-set! dp 0 #t)
+      (for ([i (in-range n)])
+        (for ([j (in-range m)])
+          (for ([t (in-range target (sub1 -1))])
+            (when (and (vector-ref dp t) (>= t (vector-ref grid i j)))
+              (vector-set! dp t #t)))))
+      (vector-ref dp target)))

@@ -1,0 +1,38 @@
+{
+  "id": "1014",
+  "title": "Best Sightseeing Pair",
+  "titleSlug": "best-sightseeing-pair",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "<p>You are given an integer array <code>values</code> where values[i] represents the value of the <code>i<sup>th</sup></code> sightseeing spot. Two sightseeing spots <code>i</code> and <code>j</code> have a <strong>distance</strong> <code>j - i</code> between them.</p>\n\n<p>The score of a pair (<code>i &lt; j</code>) of sightseeing spots is <code>values[i] + values[j] + i - j</code>: the sum of the values of the sightseeing spots, minus the distance between them.</p>\n\n<p>Return <em>the maximum score of a pair of sightseeing spots</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> values = [8,1,5,2,6]\n<strong>Output:</strong> 11\n<strong>Explanation:</strong> i = 0, j = 2, values[i] + values[j] + i - j = 8 + 5 + 0 - 2 = 11\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> values = [1,2]\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= values.length &lt;= 5 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= values[i] &lt;= 1000</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxScoreSightseeingPair(vector<int>& values) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxScoreSightseeingPair(int[] values) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxScoreSightseeingPair(self, values):\n        \"\"\"\n        :type values: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxScoreSightseeingPair(self, values: List[int]) -> int:\n        ",
+    "c": "int maxScoreSightseeingPair(int* values, int valuesSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxScoreSightseeingPair(int[] values) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} values\n * @return {number}\n */\nvar maxScoreSightseeingPair = function(values) {\n    \n};",
+    "typescript": "function maxScoreSightseeingPair(values: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $values\n     * @return Integer\n     */\n    function maxScoreSightseeingPair($values) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxScoreSightseeingPair(_ values: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxScoreSightseeingPair(values: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxScoreSightseeingPair(List<int> values) {\n    \n  }\n}",
+    "golang": "func maxScoreSightseeingPair(values []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} values\n# @return {Integer}\ndef max_score_sightseeing_pair(values)\n    \nend",
+    "scala": "object Solution {\n    def maxScoreSightseeingPair(values: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_score_sightseeing_pair(values: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-score-sightseeing-pair values)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec max_score_sightseeing_pair(Values :: [integer()]) -> integer().\nmax_score_sightseeing_pair(Values) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_score_sightseeing_pair(values :: [integer]) :: integer\n  def max_score_sightseeing_pair(values) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxScoreSightseeingPair(values: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[8,1,5,2,6]\n[1,2]",
+  "hints": [
+    "Can you tell the best sightseeing spot in one pass (ie. as you iterate over the input?)  What should we store or keep track of as we iterate to do this?"
+  ]
+}

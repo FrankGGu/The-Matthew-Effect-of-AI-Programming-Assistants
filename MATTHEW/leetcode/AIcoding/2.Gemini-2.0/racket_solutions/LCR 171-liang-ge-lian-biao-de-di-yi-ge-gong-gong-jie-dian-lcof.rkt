@@ -1,0 +1,32 @@
+(define (training-plan n relations time start end)
+  (define adj (make-hash))
+  (for ([r relations])
+    (let ([u (car r)] [v (cadr r)])
+      (hash-update! adj u (lambda (x) (cons v x)) '())))
+
+  (define in-degree (make-vector (add1 n) 0))
+  (for ([r relations])
+    (let ([v (cadr r)])
+      (vector-set! in-degree v (add1 (vector-ref in-degree v)))))
+
+  (define q (list))
+  (for ([i (range 1 (add1 n))])
+    (when (= (vector-ref in-degree i) 0)
+      (set! q (append q (list i)))))
+
+  (define dist (make-vector (add1 n) 0))
+  (vector-set! dist start time[start])
+
+  (define (process-queue q)
+    (if (null? q)
+        (vector-ref dist end)
+        (let ([u (car q)] [rest-q (cdr q)])
+          (let ([neighbors (hash-ref adj u '())])
+            (for ([v neighbors])
+              (vector-set! in-degree v (sub1 (vector-ref in-degree v)))
+              (vector-set! dist v (max (vector-ref dist v) (+ (vector-ref dist u) time[v])))
+              (when (= (vector-ref in-degree v) 0)
+                (set! rest-q (append rest-q (list v))))))
+          (process-queue rest-q))))
+
+  (process-queue q))

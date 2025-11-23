@@ -1,0 +1,21 @@
+(define/contract (num-submat mat)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define m (length mat))
+  (define n (if (zero? m) 0 (length (car mat))))
+  (define dp (make-vector m (make-vector n 0)))
+  (define result 0)
+
+  (for ([i (in-range m)])
+    (for ([j (in-range n)])
+      (if (zero? (list-ref (list-ref mat i) j))
+          (vector-set! (vector-ref dp i) j 0)
+          (begin
+            (vector-set! (vector-ref dp i) j 
+                         (if (zero? j) 1 (add1 (vector-ref (vector-ref dp i) (sub1 j)))))
+            (let loop ([k i] [min-width (vector-ref (vector-ref dp i) j)])
+              (when (>= k 0)
+                (set! min-width (min min-width (vector-ref (vector-ref dp k) j)))
+                (when (positive? min-width)
+                  (set! result (+ result min-width))
+                  (loop (sub1 k) min-width))))))))
+  result)

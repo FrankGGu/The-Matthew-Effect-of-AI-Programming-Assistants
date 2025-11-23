@@ -1,0 +1,5 @@
+(define (max-weeks status)
+  (let* ((total-time (apply + status))
+         (n (length status))
+         (max-work (if (<= n 2) total-time (min total-time (* 2 (- n 1))))))
+    max-work))

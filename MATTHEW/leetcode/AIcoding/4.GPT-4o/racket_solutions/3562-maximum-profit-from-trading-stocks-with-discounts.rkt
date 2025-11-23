@@ -1,0 +1,13 @@
+(define (maxProfit prices discounts)
+  (let* ((n (length prices))
+         (dp (make-vector (+ n 1) 0)))
+    (for ([i (in-range 1 (+ n 1))])
+      (let* ((max-so-far 0))
+        (for ([j (in-range i)])
+          (set! max-so-far (max max-so-far (- (vector-ref dp j) (vector-ref prices (- i 1)) (if (zero? (vector-ref discounts (- i 1))) 0 (vector-ref discounts (- i 1)))))))
+          (vector-set! dp i (max (vector-ref dp i) max-so-far)))
+        (vector-set! dp i (max (vector-ref dp i) (vector-ref dp (- i 1))))))
+    (vector-ref dp n)))
+
+(define (maxProfitWrapper prices discounts)
+  (maxProfit prices discounts))

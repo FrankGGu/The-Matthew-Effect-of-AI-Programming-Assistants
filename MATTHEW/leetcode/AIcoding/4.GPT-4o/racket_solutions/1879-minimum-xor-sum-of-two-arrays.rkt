@@ -1,0 +1,15 @@
+(define (minimum-xor-sum arr1 arr2)
+  (define n (length arr1))
+  (define (dp mask)
+    (if (= mask (expt 2 n))
+        0
+        (let ([i (count (lambda (b) (= (bitwise-and mask (expt 2 b)) 0)) (range n))])
+              [min-sum +inf.])
+          (for ([j (in-range n)])
+            (when (zero? (bitwise-and mask (expt 2 j)))
+              (set! min-sum (min min-sum (+ (bitwise-xor (list-ref arr1 i) (list-ref arr2 j)) (dp (bitwise-ior mask (expt 2 j))))))))
+          min-sum)))
+  (dp 0))
+
+(define (minimumXORSum arr1 arr2)
+  (minimum-xor-sum arr1 arr2))

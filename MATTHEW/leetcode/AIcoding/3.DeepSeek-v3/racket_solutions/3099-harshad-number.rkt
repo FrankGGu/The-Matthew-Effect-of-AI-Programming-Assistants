@@ -1,0 +1,6 @@
+(define/contract (sum-of-the-digits-of-harshad-number x)
+  (-> exact-integer? boolean?)
+  (let loop ([n x] [sum 0])
+    (if (zero? n)
+        (and (not (zero? x)) (zero? (remainder x sum)))
+        (loop (quotient n 10) (+ sum (remainder n 10))))))

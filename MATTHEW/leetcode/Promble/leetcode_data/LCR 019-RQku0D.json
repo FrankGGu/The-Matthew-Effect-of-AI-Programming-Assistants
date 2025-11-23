@@ -1,0 +1,35 @@
+{
+  "id": "LCR 019",
+  "title": "验证回文串 II",
+  "titleSlug": "RQku0D",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool validPalindrome(string s) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean validPalindrome(String s) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def validPalindrome(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def validPalindrome(self, s: str) -> bool:",
+    "c": "\n\nbool validPalindrome(char * s){\n\n}",
+    "csharp": "public class Solution {\n    public bool ValidPalindrome(string s) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {boolean}\n */\nvar validPalindrome = function(s) {\n\n};",
+    "typescript": "function validPalindrome(s: string): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return Boolean\n     */\n    function validPalindrome($s) {\n\n    }\n}",
+    "swift": "class Solution {\n    func validPalindrome(_ s: String) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun validPalindrome(s: String): Boolean {\n\n    }\n}",
+    "golang": "func validPalindrome(s string) bool {\n\n}",
+    "ruby": "# @param {String} s\n# @return {Boolean}\ndef valid_palindrome(s)\n\nend",
+    "scala": "object Solution {\n    def validPalindrome(s: String): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn valid_palindrome(s: String) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (valid-palindrome s)\n  (-> string? boolean?)\n\n  )",
+    "erlang": "-spec valid_palindrome(S :: unicode:unicode_binary()) -> boolean().\nvalid_palindrome(S) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec valid_palindrome(s :: String.t) :: boolean\n  def valid_palindrome(s) do\n\n  end\nend"
+  },
+  "exampleTestcases": "\"aba\"\n\"abca\"\n\"abc\"",
+  "hints": []
+}

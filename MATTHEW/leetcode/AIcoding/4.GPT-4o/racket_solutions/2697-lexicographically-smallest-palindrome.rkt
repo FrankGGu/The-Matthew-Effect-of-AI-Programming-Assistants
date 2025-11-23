@@ -1,0 +1,8 @@
+(define (makeSmallestPalindrome s)
+  (define len (string-length s))
+  (define result (make-string len #\0))
+  (for ([i (in-range (quotient len 2))])
+    (let ([ch (min (string-ref s i) (string-ref s (- len i 1)))])
+      (string-set! result i ch)
+      (string-set! result (- len i 1) ch)))
+  result)

@@ -1,0 +1,6 @@
+(define/contract (sum-of-three num)
+  (-> exact-integer? (listof exact-integer?))
+  (if (zero? (modulo num 3))
+      (let ((x (quotient num 3)))
+        (list (- x 1) x (+ x 1)))
+      '()))

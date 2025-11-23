@@ -1,0 +1,22 @@
+#lang racket
+
+(define (job-scheduling jobs)
+  (define (cmp a b) (< (car a) (car b)))
+  (define sorted-jobs (sort jobs cmp))
+  (define n (length sorted-jobs))
+  (define dp (make-vector n 0))
+  (define (find-last-not-conflicting i)
+    (let loop ([l 0] [r (- i 1)])
+      (if (> l r)
+          -1
+          (let ([mid (quotient (+ l r) 2)])
+            (if (<= (list-ref (list-ref sorted-jobs mid) 1) (list-ref (list-ref sorted-jobs i) 0))
+                (let ([res (loop (+ mid 1) r)])
+                  (if (= res -1) mid res))
+                (loop l (- mid 1)))))))
+  (for ([i (in-range n)])
+    (vector-set! dp i (list-ref (list-ref sorted-jobs i) 2))
+    (let ([j (find-last-not-conflicting i)])
+      (when (>= j 0)
+        (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp j))))))
+  (apply max (vector->list dp)))

@@ -1,0 +1,5 @@
+(define/contract (flip-and-invert-image image)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)))
+  (for/list ([row image])
+    (for/list ([pixel (reverse row)])
+      (if (= pixel 0) 1 0))))

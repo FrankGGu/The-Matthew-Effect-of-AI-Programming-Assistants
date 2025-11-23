@@ -1,0 +1,17 @@
+(define (search-matrix matrix target)
+  (define rows (length matrix))
+  (define cols (if (> rows 0) (length (car matrix)) 0))
+  (define (get idx)
+    (let ((row (quotient idx cols))
+          (col (remainder idx cols)))
+      (list-ref (list-ref matrix row) col)))
+  (define (binary-search left right)
+    (if (> left right)
+        #f
+        (let ((mid (quotient (+ left right) 2)))
+          (cond ((= (get mid) target) #t)
+                ((< (get mid) target) (binary-search (+ mid 1) right))
+                (else (binary-search left (- mid 1)))))))
+  (if (or (= rows 0) (= cols 0))
+      #f
+      (binary-search 0 (- (* rows cols) 1))))

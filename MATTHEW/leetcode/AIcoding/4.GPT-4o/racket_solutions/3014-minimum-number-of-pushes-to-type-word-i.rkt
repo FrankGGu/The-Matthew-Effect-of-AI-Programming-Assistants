@@ -1,0 +1,12 @@
+(define (minPushes keyboard word)
+  (define (char-to-index c)
+    (- (char->integer c) (char->integer #\a)))
+  (define keyboard-set (for/list ([c (in-string keyboard)]) (char-to-index c)))
+  (define word-set (for/list ([c (in-string word)]) (char-to-index c)))
+  (define (pushes required current)
+    (if (null? required)
+        0
+        (if (member (car required) current)
+            (pushes (cdr required) current)
+            (+ 1 (pushes (cdr required) (cons (car required) current))))))
+  (pushes word-set '()))

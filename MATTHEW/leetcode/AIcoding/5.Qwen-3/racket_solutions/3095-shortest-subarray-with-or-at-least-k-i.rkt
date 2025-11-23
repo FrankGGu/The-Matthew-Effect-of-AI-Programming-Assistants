@@ -1,0 +1,12 @@
+(define/contract (subarray-or nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([i 0] [res +inf.0])
+    (if (= i (length nums))
+        res
+        (let loop2 ([j i] [or-val 0])
+          (if (= j (length nums))
+              (loop (+ i 1) res)
+              (let ([new-or (bitwise-ior or-val (list-ref nums j))])
+                (if (>= new-or k)
+                    (loop (+ i 1) (min res (- j i 1)))
+                    (loop2 (+ j 1) new-or))))))))

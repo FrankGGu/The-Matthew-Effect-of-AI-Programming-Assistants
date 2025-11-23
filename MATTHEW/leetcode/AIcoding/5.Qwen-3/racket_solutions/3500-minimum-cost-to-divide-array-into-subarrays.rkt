@@ -1,0 +1,18 @@
+(define (split-array nums m)
+  (define (can-split? max-sum)
+    (let loop ((current-sum 0) (subarrays 1))
+      (cond ((= subarrays m) #t)
+            ((> current-sum max-sum) #f)
+            (else
+             (let ((next-sum (+ current-sum (car nums))))
+               (if (> next-sum max-sum)
+                   (loop (car nums) (+ subarrays 1))
+                   (loop next-sum subarrays)))))))
+  (let ((low (apply max nums)) (high (apply + nums)))
+    (let loop ((low low) (high high))
+      (if (= low high)
+          low
+          (let ((mid (quotient (+ low high) 2)))
+            (if (can-split? mid)
+                (loop low mid)
+                (loop (+ mid 1) high)))))))

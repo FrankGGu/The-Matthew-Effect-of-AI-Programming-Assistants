@@ -1,0 +1,7 @@
+(define (min-flips s)
+  (define (count-flips s target)
+    (for/sum ([c s])
+      (if (= c target) 0 1)))
+  (let ([n (string-length s)])
+    (min (count-flips s #\0)
+         (count-flips s #\1))))

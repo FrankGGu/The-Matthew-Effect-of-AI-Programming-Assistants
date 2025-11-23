@@ -1,0 +1,8 @@
+(define (filter-restaurants restaurants vegan-friendly max-price max-distance)
+  (filter (lambda (restaurant)
+            (and (or (not vegan-friendly) (<= (cadr restaurant) 1))
+                 (<= (caddr restaurant) max-price)
+                 (<= (cadddr restaurant) max-distance)))
+          (sort restaurants (lambda (a b) (or (> (car a) (car b)) 
+                                               (and (= (car a) (car b)) 
+                                                    (< (cadr a) (cadr b))))))))

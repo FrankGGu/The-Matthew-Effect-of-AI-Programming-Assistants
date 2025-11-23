@@ -1,0 +1,68 @@
+(define (make-dinner-plate-stacks capacity)
+  (let ([stacks (make-vector 0)]
+        [min-heap (mutable-heap)])
+    (define (push val)
+      (if (heap-empty? min-heap)
+          (let ([new-stack (list val)])
+            (vector-resize! stacks (vector-length stacks) 1)
+            (vector-set! stacks (vector-length stacks) new-stack)
+            (heap-add! min-heap (vector-length stacks) (vector-length stacks)))
+          (let ([idx (heap-min-key min-heap)])
+            (let ([stack (vector-ref stacks (- idx 1))])
+              (if (< (length stack) capacity)
+                  (begin
+                    (set! stack (cons val stack))
+                    (vector-set! stacks (- idx 1) stack)
+                    (if (= (length stack) capacity)
+                        (heap-remove-min! min-heap))
+                    #t)
+                  (begin
+                    (heap-remove-min! min-heap)
+                    (push val)))))))
+    (define (pop)
+      (if (zero? (vector-length stacks))
+          -1
+          (let loop ([i (- (vector-length stacks) 1)])
+            (if (< i 0)
+                -1
+                (let ([stack (vector-ref stacks i)])
+                  (if (empty? stack)
+                      (begin
+                        (vector-resize! stacks i)
+                        (loop (- i 1)))
+                      (let ([val (car stack)])
+                        (vector-set! stacks i (cdr stack))
+                        (heap-add! min-heap (+ i 1) (+ i 1))
+                        val)))))))
+    (define (pop-at-stack index)
+      (if (or (>= index (vector-length stacks)) (zero? index))
+          -1
+          (let ([stack (vector-ref stacks (- index 1))])
+            (if (empty? stack)
+                -1
+                (let ([val (car stack)])
+                  (vector-set! stacks (- index 1) (cdr stack))
+                  (heap-add! min-heap index index)
+                  val)))))
+    (define (heap-empty? h) (heap-empty? min-heap))
+    (define (heap-min-key h) (heap-min-key min-heap))
+    (define (heap-remove-min! h) (heap-remove-min! min-heap))
+    (define (heap-add! h k v) (heap-add! min-heap k v))
+    (define (vector-length v) (vector-length stacks))
+    (define (vector-resize! v n) (set! stacks (vector-copy stacks 0 n)))
+    (define (vector-set! v i val) (vector-set! stacks i val))
+    (define (vector-ref v i) (vector-ref stacks i))
+    (define (empty? l) (null? l))
+    (define (car l) (car l))
+    (define (cdr l) (cdr l))
+    (define (cons a b) (cons a b))
+    (define (zero? n) (zero? n))
+    (define (make-vector n) (make-vector n))
+    (define (vector-copy v s e) (vector-copy v s e))
+    (lambda (op . args)
+      (case op
+        [(push) (push (car args))]
+        [(pop) (pop)]
+        [(popAtStack) (pop-at-stack (car args))]
+        [else (error "Invalid operation")])))
+  )

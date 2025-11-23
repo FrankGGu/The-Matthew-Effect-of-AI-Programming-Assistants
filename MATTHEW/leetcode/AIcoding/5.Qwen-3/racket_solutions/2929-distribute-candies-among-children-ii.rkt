@@ -1,0 +1,5 @@
+(define (distribute-candies n)
+  (let loop ((i 1) (total 0))
+    (if (>= total n)
+        (- i 1)
+        (loop (+ i 1) (+ total i)))))

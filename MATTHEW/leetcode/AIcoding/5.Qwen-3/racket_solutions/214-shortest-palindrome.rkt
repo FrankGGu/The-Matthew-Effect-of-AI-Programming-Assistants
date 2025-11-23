@@ -1,0 +1,23 @@
+(define (shortest-palindrome s)
+  (define (kmp-prefix s)
+    (let ((n (string-length s))
+          (lps (make-vector 0)))
+      (vector-set! lps 0 0)
+      (let loop ((i 1) (len 0))
+        (when (< i n)
+          (if (= (string-ref s i) (string-ref s len))
+              (begin
+                (vector-set! lps i (add1 len))
+                (loop (add1 i) (add1 len)))
+              (if (> len 0)
+                  (loop i (vector-ref lps (sub1 len)))
+                  (loop (add1 i) 0))))))
+      lps))
+
+  (define (reverse-string s)
+    (list->string (reverse (string->list s))))
+
+  (let* ((combined (string-append s "$" (reverse-string s)))
+         (lps (kmp-prefix combined))
+         (max-len (vector-ref lps (- (string-length combined) 1))))
+    (string-append (reverse-string (substring s max-len)) s)))

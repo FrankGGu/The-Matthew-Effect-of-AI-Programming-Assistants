@@ -1,0 +1,10 @@
+(define (putMarbles weights k)
+  (define sorted-weights (sort weights <))
+  (define max-sum (+ (list-ref sorted-weights (- (length sorted-weights) 1))
+                     (list-ref sorted-weights (- (length sorted-weights) k))))
+  (define min-sum (+ (list-ref sorted-weights 0)
+                     (list-ref sorted-weights (- k 1))))
+  (- max-sum min-sum))
+
+(define (putMarblesMain weights k)
+  (putMarbles weights k))

@@ -1,0 +1,17 @@
+(define (prev-permutation-with-one-swap nums)
+  (define n (vector-length nums))
+  (when (< n 2)
+    (vector-copy nums))
+  (let loop-i ((i (- n 2)))
+    (cond
+      ((< i 0)
+       (vector-copy nums))
+      ((> (vector-ref nums i) (vector-ref nums (+ i 1)))
+       (define result-vec (vector-copy nums))
+       (define val-i (vector-ref result-vec i))
+       (define val-i+1 (vector-ref result-vec (+ i 1)))
+       (vector-set! result-vec i val-i+1)
+       (vector-set! result-vec (+ i 1) val-i)
+       result-vec)
+      (else
+       (loop-i (- i 1))))))

@@ -1,0 +1,11 @@
+(define (waysToEarnPoints points)
+  (define dp (make-vector (+ 1 points) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 1 (+ 1 points))])
+    (for ([j (in-list '(3 5 10))])
+      (when (>= i j)
+        (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i j))))))
+  (vector-ref dp points))
+
+(define (numWays points)
+  (waysToEarnPoints points))

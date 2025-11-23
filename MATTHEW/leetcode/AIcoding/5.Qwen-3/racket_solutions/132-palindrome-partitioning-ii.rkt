@@ -1,0 +1,15 @@
+#lang racket
+
+(define (min-cut s)
+  (define n (string-length s))
+  (define dp (make-vector n #f))
+  (define is-pal (make-vector n (make-vector n #f)))
+  (for ([i (in-range n)])
+    (vector-set! dp i (- n i 1))
+    (for ([j (in-range i -1 -1)])
+      (when (and (= (string-ref s j) (string-ref s i)) (or (< j (+ i 1)) (vector-ref (vector-ref is-pal j) (+ j 1))))
+        (vector-set! (vector-ref is-pal j) i #t)
+        (if (= j 0)
+            (vector-set! dp i 0)
+            (vector-set! dp i (min (vector-ref dp i) (+ 1 (vector-ref dp (- j 1)))))))))
+  (vector-ref dp (- n 1)))

@@ -1,0 +1,23 @@
+(define/contract (valid-subarray-size nums threshold)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (define n (length nums))
+  (define left (make-vector n -1))
+  (define right (make-vector n n))
+  (define stack '())
+
+  (for ([i (in-range n)])
+    (while (and (not (null? stack)) (> (list-ref nums (car stack)) (list-ref nums i)))
+      (vector-set! right (car stack) i)
+      (set! stack (cdr stack)))
+    (if (not (null? stack))
+        (vector-set! left i (car stack))
+        (void))
+    (set! stack (cons i stack)))
+
+  (for ([i (in-range n)])
+    (define k (- (vector-ref right i) (vector-ref left i) 1))
+    (if (> (list-ref nums i) (/ threshold k))
+        (return k)
+        (void)))
+
+  -1)

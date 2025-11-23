@@ -1,0 +1,10 @@
+(define (divisor-substrings num k)
+  (let* ((s (number->string num))
+    (let loop ((i 0) (count 0))
+      (if (> (+ i k) (string-length s))
+          count
+          (let* ((sub (substring s i (+ i k)))
+                 (n (string->number sub)))
+            (if (and (not (zero? n)) (zero? (modulo num n)))
+                (loop (+ i 1) (+ count 1))
+                (loop (+ i 1) count)))))))

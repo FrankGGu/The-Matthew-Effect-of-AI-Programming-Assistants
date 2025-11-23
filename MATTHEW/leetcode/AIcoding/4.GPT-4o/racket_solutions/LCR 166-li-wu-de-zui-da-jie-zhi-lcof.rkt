@@ -1,0 +1,11 @@
+(define (numJewelsInStones J S)
+  (define jewel-set (string->list J))
+  (define stone-list (string->list S))
+  (define (count-jewels stones jewels)
+    (foldl (lambda (stone acc)
+             (if (member stone jewels)
+                 (+ acc 1)
+                 acc)) 0 stones))
+  (count-jewels stone-list jewel-set))
+
+(numJewelsInStones "aA" "aAAbbbb")

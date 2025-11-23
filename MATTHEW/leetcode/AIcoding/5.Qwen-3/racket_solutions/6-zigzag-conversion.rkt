@@ -1,0 +1,11 @@
+(define (convert s num-rows)
+  (if (or (= num-rows 1) (> num-rows (string-length s)))
+      s
+      (let ((rows (make-vector num-rows "")))
+        (let loop ((i 0) (direction 1) (current-row 0))
+          (when (< i (string-length s))
+            (vector-set! rows current-row (string-append (vector-ref rows current-row) (substring s i (+ i 1))))
+            (if (= direction 1)
+                (loop (+ i 1) 1 (+ current-row 1))
+                (loop (+ i 1) -1 (- current-row 1)))))
+        (apply string-append (vector->list rows))))

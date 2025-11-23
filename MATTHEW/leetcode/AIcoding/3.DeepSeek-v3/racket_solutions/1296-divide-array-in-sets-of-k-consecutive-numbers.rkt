@@ -1,0 +1,20 @@
+(define (is-possible-divide nums k)
+  (let ((n (length nums)))
+    (if (not (zero? (remainder n k))) #f
+        (let ((freq (make-hash)))
+          (for-each (lambda (num)
+                      (hash-update! freq num add1 0))
+                    nums)
+          (let loop ()
+            (if (hash-empty? freq) #t
+                (let* ((min-num (apply min (hash-keys freq)))
+                       (possible #t))
+                  (for ([i (in-range k)])
+                    (let ((current (+ min-num i)))
+                      (unless (hash-has-key? freq current)
+                        (set! possible #f))
+                      (when possible
+                        (hash-update! freq current sub1)
+                        (when (zero? (hash-ref freq current))
+                          (hash-remove! freq current)))))
+                  (and possible (loop)))))))))

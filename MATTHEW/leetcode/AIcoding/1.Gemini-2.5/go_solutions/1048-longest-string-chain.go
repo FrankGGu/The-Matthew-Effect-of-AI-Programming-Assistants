@@ -1,0 +1,35 @@
+package main
+
+import (
+	"sort"
+)
+
+func longestStrChain(words []string) int {
+	sort.Slice(words, func(i, j int) bool {
+		return len(words[i]) < len(words[j])
+	})
+
+	dp := make(map[string]int)
+	maxChainLength := 0
+
+	for _, word := range words {
+		dp[word] = 1
+
+		for i := 0; i < len(word); i++ {
+			predecessor := word[:i] + word[i+1:]
+			if val, ok := dp[predecessor]; ok {
+				dp[word] = max(dp[word], val+1)
+			}
+		}
+		maxChainLength = max(maxChainLength, dp[word])
+	}
+
+	return maxChainLength
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

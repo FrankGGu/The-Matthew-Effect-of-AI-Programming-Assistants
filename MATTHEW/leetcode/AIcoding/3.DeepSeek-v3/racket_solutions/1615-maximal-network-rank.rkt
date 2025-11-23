@@ -1,0 +1,20 @@
+(define/contract (maximal-network-rank n roads)
+  (-> exact-integer? (listof (listof exact-integer?)) exact-integer?)
+  (let* ([degree (make-vector n 0)]
+         [connected (make-hash)])
+    (for ([road roads])
+      (let ([u (first road)]
+            [v (second road)])
+        (vector-set! degree u (+ (vector-ref degree u) 1))
+        (vector-set! degree v (+ (vector-ref degree v) 1))
+        (hash-set! connected (cons (min u v) (max u v)) #t))
+    (let loop ([i 0] [max-rank 0])
+      (if (>= i n)
+          max-rank
+          (let loop2 ([j (+ i 1)] [current-max max-rank])
+            (if (>= j n)
+                (loop (+ i 1) current-max)
+                (let ([rank (+ (vector-ref degree i) (vector-ref degree j))])
+                  (if (hash-has-key? connected (cons (min i j) (max i j)))
+                      (loop2 (+ j 1) (max current-max (- rank 1)))
+                      (loop2 (+ j 1) (max current-max rank))))))))))

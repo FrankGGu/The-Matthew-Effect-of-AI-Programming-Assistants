@@ -1,0 +1,16 @@
+(define (removeKdigits num k)
+  (define (helper digits k)
+    (if (or (zero? k) (null? digits)) 
+        (apply string-append digits)
+        (let loop ((ds digits) (result '()))
+          (cond
+            ((null? ds) (reverse result))
+            ((and (null? (cdr ds)) (> k 0)) (reverse (cons (car ds) result)))
+            ((and (> k 0) (or (null? (cdr ds)) (<= (car ds) (cadr ds))))
+             (loop (cdr ds) (cons (car ds) result)))
+            (else
+             (loop (cdr ds) (cons (car ds) result)))))
+        ))
+  (let ((digits (string->list num)))
+    (let ((result (helper digits k)))
+      (if (string=? result "") "0" (string-trim result #\0)))))

@@ -1,0 +1,6 @@
+(define (minimumSum num)
+  (define digits (map (lambda (x) (string->number (string x))) (string->list (number->string num))))
+  (define sorted-digits (sort digits <))
+  (define first-part (map car (partition 2 sorted-digits)))
+  (define second-part (map cadr (partition 2 sorted-digits)))
+  (+ (apply + first-part) (apply + second-part)))

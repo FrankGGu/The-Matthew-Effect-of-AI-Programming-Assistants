@@ -1,0 +1,7 @@
+(define/contract (divide-array nums)
+  (-> (listof exact-integer?) boolean?)
+  (let ([freq (make-hash)])
+    (for ([num nums])
+      (hash-update! freq num add1 0))
+    (for/and ([count (in-hash-values freq)])
+      (even? count))))

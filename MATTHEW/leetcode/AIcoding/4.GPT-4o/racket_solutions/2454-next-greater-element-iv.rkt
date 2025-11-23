@@ -1,0 +1,17 @@
+(define (nextGreaterElement nums1 nums2)
+  (define stack '())
+  (define next-greater (make-hash))
+
+  (for-each (lambda (num)
+              (let loop ()
+                (when (and (not (null? stack)) (> num (car stack)))
+                  (hash-set! next-greater (car stack) num)
+                  (set! stack (cdr stack))
+                  (loop))))
+            nums2)
+
+  (map (lambda (num)
+         (if (hash-has-key? next-greater num)
+             (hash-ref next-greater num)
+             -1))
+       nums1))

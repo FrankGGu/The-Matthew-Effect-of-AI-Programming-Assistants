@@ -1,0 +1,8 @@
+(define (xor-all-pairings nums1 nums2)
+  (let ((xor1 0) (xor2 0))
+  (for ([num nums1])
+    (set! xor1 (bitwise-xor xor1 num)))
+  (for ([num nums2])
+    (set! xor2 (bitwise-xor xor2 num)))
+  (bitwise-xor (bitwise-and xor1 (bitwise-not (length nums2)))
+               (bitwise-and xor2 (bitwise-not (length nums1))))))

@@ -1,0 +1,16 @@
+#lang racket
+
+(define/contract (next-greater-element nums)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (define n (length nums))
+  (define res (make-list n -1))
+  (define stack '())
+  (for ([i (in-range (* 2 n))])
+    (define j (modulo i n))
+    (let loop ()
+      (when (and (not (null? stack)) (< (list-ref nums (car stack)) (list-ref nums j)))
+        (set! res (list-set res (car stack) (list-ref nums j)))
+        (set! stack (cdr stack))
+        (loop)))
+    (set! stack (cons j stack)))
+  res)

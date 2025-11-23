@@ -1,0 +1,6 @@
+(define (sum-triangular nums)
+  (define (helper nums level)
+    (if (= (length nums) 1)
+        (car nums)
+        (helper (map - (cdr nums) nums) (+ level 1))))
+  (helper nums 0))

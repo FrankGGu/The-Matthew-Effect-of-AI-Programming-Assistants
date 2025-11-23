@@ -1,0 +1,20 @@
+(define (ways-to-partition nums)
+  (define n (length nums))
+  (define total-sum (apply + nums))
+  (define prefix-sum 0)
+  (define count 0)
+  (define counts (make-vector (+ (car nums) 1) 0))
+  (for ([i (in-range n)])
+    (set! prefix-sum (+ prefix-sum (vector-ref nums i)))
+    (if (= prefix-sum (/ total-sum 3))
+        (set! count (+ count (vector-ref counts (if (< i (sub1 n)) (vector-ref nums (add1 i)) 0)))))
+    (if (= prefix-sum (/ total-sum 3))
+        (vector-set! counts (vector-ref nums i) (+ (vector-ref counts (vector-ref nums i)) 1))))
+  count)
+
+(define (maxWays nums)
+  (if (odd? (apply + nums))
+      0
+      (ways-to-partition nums)))
+
+(maxWays '(1 2 2 2 5 0))

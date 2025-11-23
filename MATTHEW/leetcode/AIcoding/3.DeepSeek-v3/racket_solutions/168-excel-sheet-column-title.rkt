@@ -1,0 +1,6 @@
+(define (convert-to-title columnNumber)
+  (let loop ([n columnNumber] [result '()])
+    (if (zero? n)
+        (list->string (reverse result))
+        (let-values ([(q r) (quotient/remainder (sub1 n) 26)])
+          (loop q (cons (integer->char (+ r (char->integer #\A))) result)))))

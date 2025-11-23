@@ -1,0 +1,20 @@
+(define (node-depth n)
+  (- (integer-length n) 1))
+
+(define (find-lca u v)
+  (let loop ((curr-u u) (curr-v v))
+    (cond
+      ((= curr-u curr-v) curr-u)
+      ((> curr-u curr-v) (loop (quotient curr-u 2) curr-v))
+      (else (loop curr-u (quotient curr-v 2))))))
+
+(define (cycleLengthQueries n queries)
+  (map (lambda (query)
+         (let* ((u (car query))
+                (v (cadr query))
+                (d_u (node-depth u))
+                (d_v (node-depth v))
+                (l (find-lca u v))
+                (d_l (node-depth l)))
+           (+ d_u d_v (- (* 2 d_l)) 1)))
+       queries))

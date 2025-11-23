@@ -1,0 +1,15 @@
+(define (convertArrayTo2D arr)
+  (define n (length arr))
+  (define result '())
+  (define current-row '())
+  (define current-sum 0)
+
+  (for ([i (in-range n)])
+    (set! current-sum (+ current-sum (list-ref arr i)))
+    (set! current-row (cons (list-ref arr i) current-row))
+    (when (or (= (length current-row) (list-ref arr i)) (= i (sub1 n)))
+      (set! result (cons (reverse current-row) result))
+      (set! current-row '())
+      (set! current-sum 0)))
+
+  (reverse result))

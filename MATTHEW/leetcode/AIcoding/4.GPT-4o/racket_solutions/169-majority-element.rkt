@@ -1,0 +1,10 @@
+(define (majority-element nums)
+  (define (moore-voting nums)
+    (define (helper nums candidate count)
+      (cond
+        ((null? nums) candidate)
+        ((= count 0) (helper (cdr nums) (car nums) 1))
+        ((= (car nums) candidate) (helper (cdr nums) candidate (+ count 1)))
+        (else (helper (cdr nums) candidate (- count 1)))))
+    (helper nums 0 0))
+  (moore-voting nums))

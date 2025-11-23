@@ -1,0 +1,38 @@
+{
+  "id": "397",
+  "title": "Integer Replacement",
+  "titleSlug": "integer-replacement",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Bit Manipulation",
+    "Memoization",
+    "Dynamic Programming"
+  ],
+  "content": "<p>Given a positive integer <code>n</code>,&nbsp;you can apply one of the following&nbsp;operations:</p>\n\n<ol>\n\t<li>If <code>n</code> is even, replace <code>n</code> with <code>n / 2</code>.</li>\n\t<li>If <code>n</code> is odd, replace <code>n</code> with either <code>n + 1</code> or <code>n - 1</code>.</li>\n</ol>\n\n<p>Return <em>the minimum number of operations needed for</em> <code>n</code> <em>to become</em> <code>1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 8\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> 8 -&gt; 4 -&gt; 2 -&gt; 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 7\n<strong>Output:</strong> 4\n<strong>Explanation: </strong>7 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1\nor 7 -&gt; 6 -&gt; 3 -&gt; 2 -&gt; 1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 4\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int integerReplacement(int n) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int integerReplacement(int n) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def integerReplacement(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def integerReplacement(self, n: int) -> int:\n        ",
+    "c": "int integerReplacement(int n) {\n    \n}",
+    "csharp": "public class Solution {\n    public int IntegerReplacement(int n) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @return {number}\n */\nvar integerReplacement = function(n) {\n    \n};",
+    "typescript": "function integerReplacement(n: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @return Integer\n     */\n    function integerReplacement($n) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func integerReplacement(_ n: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun integerReplacement(n: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int integerReplacement(int n) {\n    \n  }\n}",
+    "golang": "func integerReplacement(n int) int {\n    \n}",
+    "ruby": "# @param {Integer} n\n# @return {Integer}\ndef integer_replacement(n)\n    \nend",
+    "scala": "object Solution {\n    def integerReplacement(n: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn integer_replacement(n: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (integer-replacement n)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec integer_replacement(N :: integer()) -> integer().\ninteger_replacement(N) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec integer_replacement(n :: integer) :: integer\n  def integer_replacement(n) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func integerReplacement(n: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "8\n7\n4",
+  "hints": []
+}

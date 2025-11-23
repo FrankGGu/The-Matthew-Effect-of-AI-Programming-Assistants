@@ -1,0 +1,13 @@
+(define (intersection-arrays arrs)
+  (if (null? arrs)
+      '()
+      (let loop ((current (car arrs))
+                 (rest (cdr arrs)))
+        (if (null? rest)
+            (foldl (lambda (x acc) (if (member x acc) acc (cons x acc))) '() current)
+            (let* ((next (car rest))
+                   (intersection (filter (lambda (x) (and (member x current) (member x next))) current)))
+              (loop intersection (cdr rest)))))))
+
+(define (intersection arrs)
+  (intersection-arrays arrs))

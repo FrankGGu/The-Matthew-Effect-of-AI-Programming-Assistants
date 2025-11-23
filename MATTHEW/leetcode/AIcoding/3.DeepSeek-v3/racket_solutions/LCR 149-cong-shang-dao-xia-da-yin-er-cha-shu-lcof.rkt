@@ -1,0 +1,10 @@
+(define/contract (decorate-record root)
+  (-> (or/c #f list?) (listof exact-integer?))
+  (if (null? root)
+      '()
+      (let loop ([nodes (list root)] [result '()])
+        (if (null? nodes)
+            (reverse result)
+            (let* ([vals (map (lambda (node) (car node)) nodes]
+                   [next-nodes (append* (map (lambda (node) (filter (lambda (x) (not (null? x))) (cdr node))) nodes)])
+              (loop next-nodes (append vals result)))))))

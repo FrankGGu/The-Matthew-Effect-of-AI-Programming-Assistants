@@ -1,0 +1,12 @@
+(define (nearest-valid-point n points x y)
+  (let loop ([i 0] [min-dist +inf.0] [min-index -1])
+    (if (= i n)
+        min-index
+        (let ([point (list-ref points i)])
+          (let ([px (list-ref point 0)] [py (list-ref point 1)])
+            (if (or (= px x) (= py y))
+                (let ([dist (+ (abs (- px x)) (abs (- py y)))])
+                  (if (< dist min-dist)
+                      (loop (+ i 1) dist i)
+                      (loop (+ i 1) min-dist min-index)))
+                (loop (+ i 1) min-dist min-index)))))))

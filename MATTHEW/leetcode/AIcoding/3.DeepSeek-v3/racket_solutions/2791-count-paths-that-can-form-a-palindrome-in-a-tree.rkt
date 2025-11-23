@@ -1,0 +1,25 @@
+#lang racket
+
+(define (count-palindrome-paths parent s)
+  (define n (length parent))
+  (define adj (make-vector n '()))
+  (for ([i (in-range 1 n)])
+    (vector-set! adj (list-ref parent i) 
+                 (cons i (vector-ref adj (list-ref parent i)))))
+  (define res 0)
+  (define mask-hash (make-hash))
+  (hash-set! mask-hash 0 1)
+
+  (define (dfs u mask)
+    (define c (char->integer (string-ref s u))
+    (set! mask (bitwise-xor mask (expt 2 (- c (char->integer #\a)))))
+    (set! res (+ res (hash-ref mask-hash mask 0)))
+    (for ([i (in-range 0 26)])
+      (set! res (+ res (hash-ref mask-hash (bitwise-xor mask (expt 2 i)) 0))))
+    (hash-update! mask-hash mask add1 0)
+    (for ([v (vector-ref adj u)])
+      (dfs v mask))
+    (hash-update! mask-hash mask sub1 0))
+
+  (dfs 0 0)
+  res)

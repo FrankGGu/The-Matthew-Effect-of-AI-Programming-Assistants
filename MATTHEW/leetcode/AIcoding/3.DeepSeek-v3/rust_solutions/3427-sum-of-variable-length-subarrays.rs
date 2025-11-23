@@ -1,0 +1,39 @@
+impl Solution {
+    pub fn sum_subarray_mins(arr: Vec<i32>) -> i32 {
+        let n = arr.len();
+        let mut left = vec![-1; n];
+        let mut right = vec![n as i32; n];
+        let mut stack: Vec<usize> = Vec::new();
+
+        for i in 0..n {
+            while !stack.is_empty() && arr[*stack.last().unwrap()] >= arr[i] {
+                stack.pop();
+            }
+            if let Some(&top) = stack.last() {
+                left[i] = top as i32;
+            }
+            stack.push(i);
+        }
+
+        stack.clear();
+
+        for i in (0..n).rev() {
+            while !stack.is_empty() && arr[*stack.last().unwrap()] > arr[i] {
+                stack.pop();
+            }
+            if let Some(&top) = stack.last() {
+                right[i] = top as i32;
+            }
+            stack.push(i);
+        }
+
+        let mut res = 0;
+        const MOD: i32 = 1_000_000_007;
+        for i in 0..n {
+            res += ((i as i32 - left[i]) * (right[i] - i as i32) % MOD) * arr[i] % MOD;
+            res %= MOD;
+        }
+
+        res
+    }
+}

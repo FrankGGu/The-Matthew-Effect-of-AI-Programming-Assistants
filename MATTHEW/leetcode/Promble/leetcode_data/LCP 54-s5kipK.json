@@ -1,0 +1,37 @@
+{
+  "id": "LCP 54",
+  "title": "夺回据点",
+  "titleSlug": "s5kipK",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Graph",
+    "Array",
+    "Biconnected Component"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    long long minimumCost(vector<int>& cost, vector<vector<int>>& roads) {\n        \n    }\n};",
+    "java": "class Solution {\n    public long minimumCost(int[] cost, int[][] roads) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def minimumCost(self, cost, roads):\n        \"\"\"\n        :type cost: List[int]\n        :type roads: List[List[int]]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def minimumCost(self, cost: List[int], roads: List[List[int]]) -> int:\n        ",
+    "c": "long long minimumCost(int* cost, int costSize, int** roads, int roadsSize, int* roadsColSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public long MinimumCost(int[] cost, int[][] roads) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} cost\n * @param {number[][]} roads\n * @return {number}\n */\nvar minimumCost = function(cost, roads) {\n    \n};",
+    "typescript": "function minimumCost(cost: number[], roads: number[][]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $cost\n     * @param Integer[][] $roads\n     * @return Integer\n     */\n    function minimumCost($cost, $roads) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func minimumCost(_ cost: [Int], _ roads: [[Int]]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun minimumCost(cost: IntArray, roads: Array<IntArray>): Long {\n        \n    }\n}",
+    "dart": "class Solution {\n  int minimumCost(List<int> cost, List<List<int>> roads) {\n    \n  }\n}",
+    "golang": "func minimumCost(cost []int, roads [][]int) int64 {\n    \n}",
+    "ruby": "# @param {Integer[]} cost\n# @param {Integer[][]} roads\n# @return {Integer}\ndef minimum_cost(cost, roads)\n    \nend",
+    "scala": "object Solution {\n    def minimumCost(cost: Array[Int], roads: Array[Array[Int]]): Long = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn minimum_cost(cost: Vec<i32>, roads: Vec<Vec<i32>>) -> i64 {\n        \n    }\n}",
+    "racket": "(define/contract (minimum-cost cost roads)\n  (-> (listof exact-integer?) (listof (listof exact-integer?)) exact-integer?)\n  )",
+    "erlang": "-spec minimum_cost(Cost :: [integer()], Roads :: [[integer()]]) -> integer().\nminimum_cost(Cost, Roads) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec minimum_cost(cost :: [integer], roads :: [[integer]]) :: integer\n  def minimum_cost(cost, roads) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func minimumCost(cost: Array<Int64>, roads: Array<Array<Int64>>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,4,5,6]\n[[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]]\n[3,2,1,4]\n[[0,2],[2,3],[3,1]]",
+  "hints": []
+}

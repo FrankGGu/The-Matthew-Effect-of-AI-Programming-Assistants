@@ -1,0 +1,32 @@
+(define (min-absolute-sum-difference nums1 nums2)
+  (define (mod a) (if (< a 0) (- a) a))
+  (define n (length nums1))
+  (define sorted-nums1 (sort nums1 <))
+  (define total-sum (foldl + 0 (map mod (map - nums1 nums2))))
+  (define max-improvement 0)
+  (for ([i (in-range n)])
+    (define target (list-ref nums2 i))
+    (define pos (binary-search sorted-nums1 target))
+    (for ([j (list (- 1 pos) pos)])
+      (when (and (>= j 0) (< j n))
+        (define current-improvement (- (mod (list-ref nums1 i) target) (mod (list-ref sorted-nums1 j) target)))
+        (set! max-improvement (max max-improvement current-improvement)))))
+  (mod (+ total-sum (- max-improvement)))
+
+(define (binary-search lst target)
+  (define (bs low high)
+    (if (>= low high) 
+        low
+        (define mid (quotient (+ low high) 2))
+        (if (< (list-ref lst mid) target)
+            (bs (+ mid 1) high)
+            (bs low mid))))
+  (bs 0 (length lst)))
+
+(define (sort lst pred)
+  (sort lst pred))
+
+(define (foldl proc init lst)
+  (if (null? lst) 
+      init
+      (foldl proc (proc init (car lst)) (cdr lst))))

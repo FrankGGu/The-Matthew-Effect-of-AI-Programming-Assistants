@@ -1,0 +1,22 @@
+(define (capture-forts forts)
+  (define n (length forts))
+  (define (solve)
+    (let loop ((i 0) (ans 0))
+      (cond
+        ((= i n) ans)
+        ((= (list-ref forts i) 1)
+         (let loop2 ((j (+ i 1)) (max-len 0))
+           (cond
+             ((= j n) (loop (+ i 1) ans))
+             ((= (list-ref forts j) 0) (loop2 (+ j 1) max-len))
+             ((= (list-ref forts j) -1) (loop (+ j 1) (max ans (- j i 1)))))
+           ))
+        ((= (list-ref forts i) -1)
+         (let loop2 ((j (+ i 1)) (max-len 0))
+           (cond
+             ((= j n) (loop (+ i 1) ans))
+             ((= (list-ref forts j) 0) (loop2 (+ j 1) max-len))
+             ((= (list-ref forts j) 1) (loop (+ j 1) (max ans (- j i 1)))))
+           ))
+        (else (loop (+ i 1) ans)))))
+  (solve))

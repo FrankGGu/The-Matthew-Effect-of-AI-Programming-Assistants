@@ -1,0 +1,28 @@
+(define/contract (count-substrings s pattern)
+  (-> string? string? exact-integer?)
+  (let* ([n (string-length s)]
+         [m (string-length pattern)]
+         [result 0])
+    (for ([i n])
+      (let ([freq (make-hash)])
+        (for ([k m])
+          (when (< (+ i k) n)
+            (let ([c (string-ref s (+ i k))])
+              (hash-update! freq c add1 0))))
+        (let ([valid #t])
+          (for ([c pattern] [j m])
+            (unless (and (hash-has-key? freq c) (> (hash-ref freq c) 0))
+              (set! valid #f)))
+          (when valid (set! result (add1 result))))
+      (for ([j (in-range (add1 i) n)])
+        (let ([c-out (string-ref s (sub1 j))]
+              [c-in (if (< (+ j m -1) n) (string-ref s (+ j m -1)) #f)])
+          (when c-in
+            (hash-update! freq c-out sub1)
+            (hash-update! freq c-in add1 0)
+            (let ([valid #t])
+              (for ([c pattern])
+                (unless (and (hash-has-key? freq c) (> (hash-ref freq c) 0))
+                  (set! valid #f)))
+              (when valid (set! result (add1 result))))))))
+    result))

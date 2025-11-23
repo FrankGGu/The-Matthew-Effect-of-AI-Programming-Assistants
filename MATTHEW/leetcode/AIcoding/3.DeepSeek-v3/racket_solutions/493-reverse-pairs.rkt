@@ -1,0 +1,47 @@
+(define/contract (reverse-pairs nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (define (merge-sort nums left right)
+    (if (>= left right)
+        0
+        (let* ([mid (quotient (+ left right) 2)]
+               [count (+ (merge-sort nums left mid)
+                         (merge-sort nums (+ mid 1) right))])
+          (set! count (+ count (merge nums left mid right)))
+          count)))
+
+  (define (merge nums left mid right)
+    (define count 0)
+    (define j (+ mid 1))
+    (for ([i (in-range left (+ mid 1))])
+      (while (and (<= j right) (> (* 2 (list-ref nums j)) (list-ref nums i)))
+        (set! j (+ j 1)))
+      (set! count (+ count (- right j -1))))
+
+  (define (merge-helper nums left mid right)
+    (define temp (make-list (- right left -1) 0))
+    (define i left)
+    (define j (+ mid 1))
+    (define k 0)
+    (while (and (<= i mid) (<= j right))
+      (if (<= (list-ref nums i) (list-ref nums j))
+          (begin
+            (list-set! temp k (list-ref nums i))
+            (set! i (+ i 1)))
+          (begin
+            (list-set! temp k (list-ref nums j))
+            (set! j (+ j 1))))
+      (set! k (+ k 1))))
+    (while (<= i mid)
+      (list-set! temp k (list-ref nums i))
+      (set! i (+ i 1))
+      (set! k (+ k 1)))
+    (while (<= j right)
+      (list-set! temp k (list-ref nums j))
+      (set! j (+ j 1))
+      (set! k (+ k 1)))
+    (for ([i (in-range left (+ right 1))])
+      (list-set! nums i (list-ref temp (- i left)))))
+
+  (if (null? nums)
+      0
+      (merge-sort nums 0 (- (length nums) 1)))

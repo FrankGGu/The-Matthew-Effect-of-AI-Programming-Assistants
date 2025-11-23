@@ -1,0 +1,18 @@
+import java.util.TreeSet;
+
+class Solution {
+    public int thirdMax(int[] nums) {
+        TreeSet<Integer> top3 = new TreeSet<>();
+        for (int num : nums) {
+            top3.add(num);
+            if (top3.size() > 3) {
+                top3.remove(top3.first());
+            }
+        }
+        if (top3.size() < 3) {
+            return top3.last();
+        } else {
+            return top3.first();
+        }
+    }
+}

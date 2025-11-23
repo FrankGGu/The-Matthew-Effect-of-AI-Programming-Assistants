@@ -1,0 +1,11 @@
+(define (findPeakElement nums)
+  (define (binary-search left right)
+    (if (= left right)
+        left
+        (let* ((mid (quotient (+ left right) 2))
+               (mid-left (if (> mid 0) (list-ref nums (- mid 1)) -1))
+               (mid-right (if (< mid (sub1 (length nums))) (list-ref nums (+ mid 1)) -1)))
+          (if (> (list-ref nums mid) mid-left)
+              (binary-search mid right)
+              (binary-search left mid)))))
+  (binary-search 0 (sub1 (length nums))))

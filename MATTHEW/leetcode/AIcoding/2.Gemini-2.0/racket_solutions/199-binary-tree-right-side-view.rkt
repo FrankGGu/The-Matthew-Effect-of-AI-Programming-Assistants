@@ -1,0 +1,15 @@
+(define (right-side-view root)
+  (if (null? root)
+      '()
+      (letrec ((helper (lambda (nodes level acc)
+                         (if (null? nodes)
+                             acc
+                             (let* ((next-level (append-map (lambda (node)
+                                                              (list (and (struct? node) (binary-tree-node-left node))
+                                                                    (and (struct? node) (binary-tree-node-right node))))
+                                                            nodes))
+                                    (filtered-next-level (filter (lambda (x) (not (null? x))) next-level)))
+                               (helper filtered-next-level (+ 1 level) (append acc (list (binary-tree-node-val (last nodes))))))))))
+        (helper (list root) 0 '()))))
+
+(struct binary-tree-node (val left right) #:transparent)

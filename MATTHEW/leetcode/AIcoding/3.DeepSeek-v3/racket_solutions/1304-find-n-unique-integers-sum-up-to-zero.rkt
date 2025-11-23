@@ -1,0 +1,6 @@
+(define/contract (sum-zero n)
+  (-> exact-integer? (listof exact-integer?))
+  (let loop ((i 1) (res '()))
+    (if (> i (/ n 2))
+        (if (odd? n) (cons 0 res) res)
+        (loop (+ i 1) (cons i (cons (- i) res))))))

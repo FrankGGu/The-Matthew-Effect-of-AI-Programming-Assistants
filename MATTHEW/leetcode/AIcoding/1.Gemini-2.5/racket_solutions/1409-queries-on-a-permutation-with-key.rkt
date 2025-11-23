@@ -1,0 +1,18 @@
+(define (list-index lst val)
+  (let loop ((l lst) (idx 0))
+    (cond
+      ((empty? l) -1)
+      ((equal? (car l) val) idx)
+      (else (loop (cdr l) (add1 idx))))))
+
+(define (process-queries queries m)
+  (let loop ((current-queries queries)
+             (current-permutation (build-list m add1))
+             (result '()))
+    (if (empty? current-queries)
+        (reverse result)
+        (let* ((q (car current-queries))
+               (pos (list-index current-permutation q)))
+          (loop (cdr current-queries)
+                (cons q (remove q current-permutation))
+                (cons pos result))))))

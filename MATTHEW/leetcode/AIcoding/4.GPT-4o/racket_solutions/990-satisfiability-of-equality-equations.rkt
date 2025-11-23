@@ -1,0 +1,25 @@
+(define (equationsPossible equations)
+  (define parent (vector 26))
+  (define (find x)
+    (if (!= (vector-ref parent x) x)
+        (set! (vector-ref parent x) (find (vector-ref parent x)))
+        x))
+  (define (union x y)
+    (set! (vector-ref parent (find x)) (find y)))
+
+  (for ((i (in-range 26)))
+    (vector-set! parent i i))
+
+  (for ((eq equations))
+    (if (string=? (substring eq 1 3) "==")
+        (union (- (char->integer (string-ref eq 0)) (char->integer #\a)) 
+               (- (char->integer (string-ref eq 3)) (char->integer #\a)))))
+
+  (for ((eq equations))
+    (if (string=? (substring eq 1 3) "!=")
+        (if (= (find (- (char->integer (string-ref eq 0)) (char->integer #\a)))
+               (find (- (char->integer (string-ref eq 3)) (char->integer #\a)))
+          )
+          (return #f))))
+
+  #t)

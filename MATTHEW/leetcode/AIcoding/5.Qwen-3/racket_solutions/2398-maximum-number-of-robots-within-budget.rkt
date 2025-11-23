@@ -1,0 +1,28 @@
+#lang racket
+
+(define (maximum-robots-costs costs)
+  (define n (length costs))
+  (define sorted (sort (map list (range n) costs) (lambda (a b) (< (second a) (second b)))))
+  (define-values (total count) (for/fold ([total 0] [count 0]) ([i (in-range n)])
+                                 (if (<= (+ total (second (list-ref sorted i))) 1000000)
+                                     (values (+ total (second (list-ref sorted i))) (+ count 1))
+                                     (values total count))))
+  count)
+
+(define (maximum-robots-budgets budgets)
+  (define n (length budgets))
+  (define sorted (sort (map list (range n) budgets) (lambda (a b) (< (second a) (second b)))))
+  (define-values (total count) (for/fold ([total 0] [count 0]) ([i (in-range n)])
+                                 (if (<= (+ total (second (list-ref sorted i))) 1000000)
+                                     (values (+ total (second (list-ref sorted i))) (+ count 1))
+                                     (values total count))))
+  count)
+
+(define (maximum-robots costs budgets)
+  (define n (length costs))
+  (define sorted (sort (map list (range n) (map + costs budgets)) (lambda (a b) (< (second a) (second b)))))
+  (define-values (total count) (for/fold ([total 0] [count 0]) ([i (in-range n)])
+                                 (if (<= (+ total (second (list-ref sorted i))) 1000000)
+                                     (values (+ total (second (list-ref sorted i))) (+ count 1))
+                                     (values total count))))
+  count)

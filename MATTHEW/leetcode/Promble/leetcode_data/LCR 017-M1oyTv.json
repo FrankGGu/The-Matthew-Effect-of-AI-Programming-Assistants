@@ -1,0 +1,35 @@
+{
+  "id": "LCR 017",
+  "title": "最小覆盖子串",
+  "titleSlug": "M1oyTv",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string minWindow(string s, string t) {\n\n    }\n};",
+    "java": "class Solution {\n    public String minWindow(String s, String t) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minWindow(self, s, t):\n        \"\"\"\n        :type s: str\n        :type t: str\n        :rtype: str\n        \"\"\"",
+    "python3": "class Solution:\n    def minWindow(self, s: str, t: str) -> str:",
+    "c": "\n\nchar * minWindow(char * s, char * t){\n\n}",
+    "csharp": "public class Solution {\n    public string MinWindow(string s, string t) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @param {string} t\n * @return {string}\n */\nvar minWindow = function(s, t) {\n\n};",
+    "typescript": "function minWindow(s: string, t: string): string {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @param String $t\n     * @return String\n     */\n    function minWindow($s, $t) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minWindow(_ s: String, _ t: String) -> String {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minWindow(s: String, t: String): String {\n\n    }\n}",
+    "golang": "func minWindow(s string, t string) string {\n\n}",
+    "ruby": "# @param {String} s\n# @param {String} t\n# @return {String}\ndef min_window(s, t)\n\nend",
+    "scala": "object Solution {\n    def minWindow(s: String, t: String): String = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_window(s: String, t: String) -> String {\n\n    }\n}",
+    "racket": "(define/contract (min-window s t)\n  (-> string? string? string?)\n\n  )",
+    "erlang": "-spec min_window(S :: unicode:unicode_binary(), T :: unicode:unicode_binary()) -> unicode:unicode_binary().\nmin_window(S, T) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_window(s :: String.t, t :: String.t) :: String.t\n  def min_window(s, t) do\n\n  end\nend"
+  },
+  "exampleTestcases": "\"ADOBECODEBANC\"\n\"ABC\"\n\"a\"\n\"a\"\n\"a\"\n\"aa\"",
+  "hints": []
+}

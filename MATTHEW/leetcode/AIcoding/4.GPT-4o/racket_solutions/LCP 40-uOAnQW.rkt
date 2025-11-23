@@ -1,0 +1,15 @@
+(define (calculate-answers questions)
+  (map (lambda (q)
+         (let ((parts (string-split q)))
+           (let* ((num1 (string->number (first parts)))
+                  (op (second parts))
+                  (num2 (string->number (third parts))))
+             (cond
+               ((equal? op "+") (+ num1 num2))
+               ((equal? op "-") (- num1 num2))
+               ((equal? op "*") (* num1 num2))
+               ((equal? op "/") (if (zero? num2) 0 (quotient num1 num2))))))))
+       questions))
+
+(define (calculationChallenge questions)
+  (calculate-answers questions))

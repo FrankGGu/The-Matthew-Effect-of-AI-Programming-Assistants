@@ -1,0 +1,37 @@
+{
+  "id": "LCR 180",
+  "title": "文件组合",
+  "titleSlug": "he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Two Pointers",
+    "Enumeration"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> fileCombination(int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[][] fileCombination(int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def fileCombination(self, target):\n        \"\"\"\n        :type target: int\n        :rtype: List[List[int]]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def fileCombination(self, target: int) -> List[List[int]]:\n        ",
+    "c": "/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** fileCombination(int target, int* returnSize, int** returnColumnSizes) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[][] FileCombination(int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} target\n * @return {number[][]}\n */\nvar fileCombination = function(target) {\n    \n};",
+    "typescript": "function fileCombination(target: number): number[][] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $target\n     * @return Integer[][]\n     */\n    function fileCombination($target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func fileCombination(_ target: Int) -> [[Int]] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun fileCombination(target: Int): Array<IntArray> {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<List<int>> fileCombination(int target) {\n    \n  }\n}",
+    "golang": "func fileCombination(target int) [][]int {\n    \n}",
+    "ruby": "# @param {Integer} target\n# @return {Integer[][]}\ndef file_combination(target)\n    \nend",
+    "scala": "object Solution {\n    def fileCombination(target: Int): Array[Array[Int]] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn file_combination(target: i32) -> Vec<Vec<i32>> {\n        \n    }\n}",
+    "racket": "(define/contract (file-combination target)\n  (-> exact-integer? (listof (listof exact-integer?)))\n  )",
+    "erlang": "-spec file_combination(Target :: integer()) -> [[integer()]].\nfile_combination(Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec file_combination(target :: integer) :: [[integer]]\n  def file_combination(target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func fileCombination(target: Int64): Array<Array<Int64>> {\n\n    }\n}"
+  },
+  "exampleTestcases": "12\n18",
+  "hints": []
+}

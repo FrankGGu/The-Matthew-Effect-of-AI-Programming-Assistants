@@ -1,0 +1,26 @@
+(define (wiggle-sort nums)
+  (define n (length nums))
+  (define sorted-nums (sort nums <))
+  (define median (list-ref sorted-nums (- n 1) (quotient n 2)))
+  (define (index i)
+    (let ((idx (- (* 2 (+ i 1)) 1)))
+      (if (>= idx n)
+          (- idx n)
+          idx)))
+
+  (define (swap! nums i j)
+    (let ((temp (list-ref nums i)))
+      (list-set! nums i (list-ref nums j))
+      (list-set! nums j temp)))
+
+  (let loop ((i 0) (j 0) (k (- n 1)))
+    (cond
+      ((= j k) nums)
+      ((> (list-ref nums (index j)) median)
+       (swap! nums (index i) (index j))
+       (loop (+ i 1) (+ j 1) k))
+      ((< (list-ref nums (index j)) median)
+       (swap! nums (index j) (index k))
+       (loop i j (- k 1)))
+      (else
+       (loop i (+ j 1) k)))))

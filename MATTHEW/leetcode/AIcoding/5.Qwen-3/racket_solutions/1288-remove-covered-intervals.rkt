@@ -1,0 +1,26 @@
+(define (remove-covered-intervals intervals)
+  (define (compare a b)
+    (if (= (car a) (car b))
+        (>= (cadr a) (cadr b))
+        (< (car a) (car b))))
+  (define sorted (sort intervals compare))
+  (define (helper prev result)
+    (cond [(null? prev) result]
+          [else
+           (let ([current (car prev)])
+             (if (and (<= (car current) (car result))
+                      (>= (cadr current) (cadr result)))
+                 (helper (cdr prev) result)
+                 (helper (cdr prev) current)))]))
+  (if (null? intervals)
+      0
+      (let ([n (length intervals)])
+        (let ([sorted (sort intervals compare)])
+          (let loop ([i 0] [count 1] [prev (car sorted)])
+            (if (= i (- n 1))
+                count
+                (let ([current (list-ref sorted (+ i 1))])
+                  (if (and (<= (car prev) (car current))
+                           (>= (cadr prev) (cadr current)))
+                      (loop (+ i 1) count prev)
+                      (loop (+ i 1) (+ count 1) current)))))))))

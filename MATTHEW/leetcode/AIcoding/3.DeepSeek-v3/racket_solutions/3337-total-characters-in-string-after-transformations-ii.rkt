@@ -1,0 +1,22 @@
+(define/contract (maximum-length s transformations)
+  (-> string? (listof (listof string?)) exact-integer?)
+  (let* ([n (string-length s)]
+         [dp (make-vector (add1 n) 0)]
+         [max-len 0]
+         [trans-map (make-hash)])
+    (for ([trans transformation])
+      (hash-set! trans-map (car trans) (cadr trans)))
+    (vector-set! dp n 0)
+    (for ([i (in-range (- n 1) -1 -1)])
+      (vector-set! dp i (add1 (vector-ref dp (add1 i))))
+      (let loop ([j 1] [max-j (min 2 (- n i))])
+        (when (<= j max-j)
+          (let ([sub (substring s i (+ i j))])
+            (when (hash-has-key? trans-map sub)
+              (let ([new-len (+ j (vector-ref dp (+ i j)))])
+                (when (> new-len (vector-ref dp i))
+                  (vector-set! dp i new-len))))
+            (loop (add1 j) max-j))))
+      (when (> (vector-ref dp i) max-len)
+        (set! max-len (vector-ref dp i))))
+    max-len))

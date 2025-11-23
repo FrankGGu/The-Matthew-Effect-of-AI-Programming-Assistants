@@ -1,0 +1,10 @@
+(define (shortest-to-char s c)
+  (let* ((n (string-length s))
+         (indices (for/list ((i (in-range n)))
+                    (when (char=? (string-ref s i) c)
+                      i)))
+         (result (make-vector n 0)))
+    (for ((i (in-range n)))
+      (vector-set! result i
+                   (apply min (map (lambda (j) (abs (- i j))) indices))))
+    (vector->list result)))

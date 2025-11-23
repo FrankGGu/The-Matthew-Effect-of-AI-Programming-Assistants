@@ -1,0 +1,11 @@
+(define (incremental-memory-leak memory1 memory2)
+  (let loop ((day 1) (m1 memory1) (m2 memory2))
+    (if (or (zero? m1) (zero? m2))
+        (list day m1 m2)
+        (if (>= day m1)
+            (loop (+ day 1) 0 (- m2 (- day m1)))
+            (if (>= day m2)
+                (loop (+ day 1) (- m1 (- day m2)) 0)
+                (loop (+ day 1) (- m1 day) (- m2 day)))))))
+
+(incremental-memory-leak 2 4)

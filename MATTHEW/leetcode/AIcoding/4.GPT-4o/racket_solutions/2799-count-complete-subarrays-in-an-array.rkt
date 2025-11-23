@@ -1,0 +1,16 @@
+(define (countCompleteSubarrays nums)
+  (define n (length nums))
+  (define unique-count (length (remove-duplicates nums)))
+  (define (count-from left right)
+    (if (>= right n) 0
+        (let loop ((l left) (r right) (count 0) (current-count 0) (seen '()))
+          (if (>= r n)
+              count
+              (let ((num (list-ref nums r)))
+                (if (not (member num seen))
+                    (set! seen (cons num seen))
+                    (set! current-count (+ current-count 1)))
+                (if (= (length seen) unique-count)
+                    (loop l (+ r 1) (+ count (- r l -1)) current-count seen)
+                    (loop l (+ r 1) count current-count seen)))))))
+  (count-from 0 0))

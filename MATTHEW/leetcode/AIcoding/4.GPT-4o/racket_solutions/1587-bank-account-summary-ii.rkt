@@ -1,0 +1,5 @@
+(define (bankAccountSummary accounts)
+  (define total-balance (apply + (map (lambda (account) (string->number (cadr account))) accounts)))
+  (define num-accounts (length accounts))
+  (define num-zero-balance (length (filter (lambda (account) (= (string->number (cadr account)) 0)) accounts)))
+  (list (format "$~a" total-balance) num-accounts num-zero-balance))

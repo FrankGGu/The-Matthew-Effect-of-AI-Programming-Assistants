@@ -1,0 +1,8 @@
+(define (count-pairs nums target)
+  (let* ((n (length nums))
+         (count 0))
+    (for* ((i (in-range n))
+           (j (in-range (+ i 1) n)))
+      (when (< (+ (list-ref nums i) (list-ref nums j)) target)
+        (set! count (+ count 1))))
+    count))

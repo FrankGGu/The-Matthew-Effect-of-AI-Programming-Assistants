@@ -1,0 +1,42 @@
+#lang racket
+
+(define (stables n)
+  (define (dfs pos a b c d)
+    (cond [(= pos n) (list (reverse (append a b c d)))]
+          [else
+           (append
+            (if (and (not (null? a)) (= (car a) 1))
+                '()
+                (dfs (+ pos 1) (cons 0 a) b c d))
+            (if (and (not (null? b)) (= (car b) 1))
+                '()
+                (dfs (+ pos 1) a (cons 1 b) c d))
+            (if (and (not (null? c)) (= (car c) 1))
+                '()
+                (dfs (+ pos 1) a b (cons 0 c) d))
+            (if (and (not (null? d)) (= (car d) 1))
+                '()
+                (dfs (+ pos 1) a b c (cons 1 d))))]))
+  (define (solve)
+    (let loop ([a '()] [b '()] [c '()] [d '()])
+      (if (= (length a) n)
+          (list (reverse (append a b c d)))
+          (append
+           (if (and (not (null? a)) (= (car a) 1))
+               '()
+               (loop (cons 0 a) b c d))
+           (if (and (not (null? b)) (= (car b) 1))
+               '()
+               (loop a (cons 1 b) c d))
+           (if (and (not (null? c)) (= (car c) 1))
+               '()
+               (loop a b (cons 0 c) d))
+           (if (and (not (null? d)) (= (car d) 1))
+               '()
+               (loop a b c (cons 1 d))))))))
+  (if (= n 0)
+      '()
+      (solve)))
+
+(define (find-all-possible-stable-binary-arrays n)
+  (stables n))

@@ -1,0 +1,12 @@
+(define (minimum-replacements nums)
+  (let* ((n (length nums)))
+    (if (<= n 1)
+        0
+        (for/fold ((total-replacements 0)
+                   (current-max-allowed (last nums)))
+                  ((num (in-reverse (drop-right nums 1))))
+          (if (<= num current-max-allowed)
+              (values total-replacements num)
+              (let* ((k (quotient (+ num current-max-allowed -1) current-max-allowed)))
+                (values (+ total-replacements (- k 1))
+                        (quotient num k))))))))

@@ -1,0 +1,21 @@
+(define/contract (minimize-the-difference mat target)
+  (-> (listof (listof exact-integer?)) exact-integer? exact-integer?)
+  (let* ([m (length mat)]
+         [n (length (car mat))]
+         [max-sum (* m 70)]
+         [dp (make-vector (add1 max-sum) #f)])
+    (vector-set! dp 0 #t)
+    (for ([row mat])
+      (let ([next-dp (make-vector (add1 max-sum) #f)])
+        (for ([num row])
+          (for ([sum (in-range max-sum (sub1 num) -1)])
+            (when (vector-ref dp (- sum num))
+              (vector-set! next-dp sum #t))))
+        (set! dp next-dp))
+    (let ([min-diff +inf.0])
+      (for ([sum (in-range (add1 max-sum))])
+        (when (vector-ref dp sum)
+          (let ([diff (abs (- sum target))])
+            (when (< diff min-diff)
+              (set! min-diff diff)))))
+      (exact-round min-diff))))

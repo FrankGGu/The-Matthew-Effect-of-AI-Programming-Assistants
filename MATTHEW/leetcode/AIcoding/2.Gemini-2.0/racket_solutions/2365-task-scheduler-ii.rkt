@@ -1,0 +1,11 @@
+(define (task-scheduler-ii tasks space)
+  (let loop ([tasks tasks] [time 1] [last-task-completion (make-hash)])
+    (if (null? tasks)
+        (- time 1)
+        (let ([current-task (car tasks)])
+          (let ([last-completion (hash-ref last-task-completion current-task 0)])
+            (let ([next-available-time (if (> last-completion time)
+                                            last-completion
+                                            time)])
+              (hash-set! last-task-completion current-task (+ next-available-time space 1))
+              (loop (cdr tasks) (+ next-available-time 1) last-task-completion)))))))

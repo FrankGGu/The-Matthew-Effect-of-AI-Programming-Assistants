@@ -1,0 +1,10 @@
+(define/contract (find-duplicate nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([slow (car nums)] [fast (car nums)])
+    (set! slow (list-ref nums slow))
+    (set! fast (list-ref nums (list-ref nums fast)))
+    (if (= slow fast) slow (loop slow fast)))
+  (let loop ([slow (car nums)] [fast slow])
+    (if (= slow fast)
+        slow
+        (loop (list-ref nums slow) (list-ref nums fast)))))

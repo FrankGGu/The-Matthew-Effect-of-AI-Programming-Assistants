@@ -1,0 +1,8 @@
+(define (buy-choco prices money)
+  (let* ((sorted-prices (sort prices <))
+         (first-choco (list-ref sorted-prices 0))
+         (second-choco (list-ref sorted-prices 1))
+         (cost (+ first-choco second-choco)))
+    (if (>= money cost)
+        (- money cost)
+        money)))

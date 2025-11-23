@@ -1,0 +1,11 @@
+(define/contract (find-lucky arr)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([freq (make-hash)])
+    (for ([num arr])
+      (hash-update! freq num add1 (lambda () 0)))
+    (let ([result -1])
+      (hash-for-each freq 
+                     (lambda (k v)
+                       (when (and (= k v) (> k result))
+                         (set! result k))))
+      result)))

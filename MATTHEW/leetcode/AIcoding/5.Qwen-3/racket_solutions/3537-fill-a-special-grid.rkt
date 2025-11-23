@@ -1,0 +1,21 @@
+(define (number-of-ways n)
+  (define (dfs i j)
+    (if (>= i n)
+        1
+        (let loop ((k 0) (res 0))
+          (if (= k n)
+              res
+              (let ((row (vector-ref grid i)))
+                (if (or (= (vector-ref row k) 1)
+                        (and (> j 0) (= (vector-ref row (- k 1)) 1))
+                        (and (< k (- n 1)) (= (vector-ref row (+ k 1)) 1)))
+                    (loop (+ k 1) res)
+                    (begin
+                      (vector-set! row k 1)
+                      (let ((next-res (if (= j (- n 1))
+                                          (dfs (+ i 1) 0)
+                                          (dfs i (+ j 1))))
+                        (vector-set! row k 0)
+                        (loop (+ k 1) (+ res next-res)))))))))
+  (define grid (make-vector n (make-vector n 0)))
+  (dfs 0 0))

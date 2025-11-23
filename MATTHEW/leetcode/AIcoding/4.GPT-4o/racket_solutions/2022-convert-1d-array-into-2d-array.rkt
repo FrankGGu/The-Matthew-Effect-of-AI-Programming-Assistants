@@ -1,0 +1,7 @@
+(define (convert-1d-to-2d arr m n)
+  (if (= (length arr) (* m n))
+      (let loop ((i 0) (result '()))
+        (if (= i m)
+            (reverse result)
+            (loop (+ i 1) (cons (sublist arr (* i n) (+ (* i n) n)) result))))
+      '()))

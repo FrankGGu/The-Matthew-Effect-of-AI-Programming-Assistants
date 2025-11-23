@@ -1,0 +1,20 @@
+(define (first-digit n)
+  (if (< n 10)
+      n
+      (first-digit (quotient n 10))))
+
+(define (last-digit n)
+  (remainder n 10))
+
+(define (beautiful-pairs nums)
+  (let* ((n (length nums))
+         (count 0))
+    (for ((i (in-range n)))
+      (for ((j (in-range (+ i 1) n)))
+        (let* ((num-i (list-ref nums i))
+               (num-j (list-ref nums j))
+               (fd (first-digit num-i))
+               (ld (last-digit num-j)))
+          (when (= (gcd fd ld) 1)
+            (set! count (+ count 1))))))
+    count))

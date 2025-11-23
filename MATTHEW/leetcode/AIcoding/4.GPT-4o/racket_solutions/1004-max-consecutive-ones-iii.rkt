@@ -1,0 +1,16 @@
+(define (longestOnes nums k)
+  (define (max-length left right zeros)
+    (if (>= right (length nums))
+        (- right left)
+        (let ((num (list-ref nums right)))
+          (if (= num 0)
+              (if (< zeros k)
+                  (max-length left (+ right 1) (if (= num 0) (+ zeros 1) zeros))
+                  (max-length (if (= (list-ref nums left) 0) (+ left 1) left) right 
+                              (if (= (list-ref nums left) 0) (- zeros 1) zeros))
+                  )
+              (max-length left (+ right 1) zeros)))))
+  (max-length 0 0 0))
+
+(define (maxConsecutiveOnes3 nums k)
+  (longestOnes nums k))

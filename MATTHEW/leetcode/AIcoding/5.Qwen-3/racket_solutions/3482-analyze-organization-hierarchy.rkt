@@ -1,0 +1,33 @@
+#lang racket
+
+(define (build-tree data)
+  (define tree (make-hash))
+  (for-each
+   (lambda (line)
+     (when (not (equal? line ""))
+       (define parts (string-split line "\t"))
+       (define name (list-ref parts 0))
+       (define manager (list-ref parts 1))
+       (hash-set! tree name (list manager))
+       (when (hash-has-key? tree manager)
+         (set! (hash-ref tree manager) (append (hash-ref tree manager) (list name)))))
+   data)
+  tree)
+
+(define (get-hierarchy tree name)
+  (define result '())
+  (define (dfs name)
+    (set! result (cons name result))
+    (when (hash-has-key? tree name)
+      (for-each dfs (hash-ref tree name))))
+  (dfs name)
+  (reverse result))
+
+(define (analyze-organization-hierarchy data)
+  (define tree (build-tree data))
+  (define names (hash-keys tree))
+  (define (sort-names n)
+    (if (null? n) '()
+        (let ((sorted (sort (cdr n) string<?)))
+          (cons (car n) (map (lambda (x) (analyze-organization-hierarchy (list x))) sorted)))))
+  (sort-names names))

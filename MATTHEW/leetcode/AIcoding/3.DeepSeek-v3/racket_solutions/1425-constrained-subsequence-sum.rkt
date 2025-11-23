@@ -1,0 +1,20 @@
+(define/contract (constrained-subset-sum nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let* ([n (length nums)]
+         [dp (make-vector n 0)]
+         [deque (make-deque)]
+         [res -inf.0])
+    (for ([i (in-range n)])
+      (let ([num (list-ref nums i)])
+      (when (not (deque-empty? deque))
+        (let ([j (deque-front deque)])
+        (when (> (- i j) k)
+          (deque-pop-front! deque)))
+      (set! dp[i] (+ num (if (deque-empty? deque) 0 (dp (deque-front deque)))))
+      (when (< dp[i] 0)
+        (set! dp[i] 0))
+      (while (and (not (deque-empty? deque)) (>= dp[i] (dp (deque-back deque))))
+        (deque-pop-back! deque))
+      (deque-push-back! deque i)
+      (set! res (max res dp[i])))
+    res))

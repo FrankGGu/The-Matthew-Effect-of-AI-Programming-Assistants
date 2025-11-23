@@ -1,0 +1,21 @@
+(define (find-all-good-indices nums k)
+  (define n (length nums))
+  (define non-decreasing (make-vector n #t))
+  (define non-increasing (make-vector n #t))
+
+  (for ((i (in-range 1 n)))
+    (if (>= (list-ref nums i) (list-ref nums (- i 1)))
+        (vector-set! non-decreasing i (vector-ref non-decreasing (- i 1)))
+        (vector-set! non-decreasing i #f)))
+
+  (for ((i (in-range (- n 2) -1 -1)))
+    (if (>= (list-ref nums i) (list-ref nums (+ i 1)))
+        (vector-set! non-increasing i (vector-ref non-increasing (+ i 1)))
+        (vector-set! non-increasing i #f)))
+
+  (define result '())
+  (for ((i (in-range k (- n k))))
+    (andmap? identity (list (vector-ref non-decreasing (- i k)) (vector-ref non-increasing (+ i k))))
+    (when (and (vector-ref non-decreasing (- i k)) (vector-ref non-increasing (+ i k)))
+      (set! result (cons i result))))
+  (sort result <))

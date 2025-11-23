@@ -1,0 +1,10 @@
+(define (number-of-ways-to-buy-pens-and-pencils totalMoney cost1 cost2)
+  (let loop ((pens-count 0)
+             (total-ways 0))
+    (let* ((money-spent-on-pens (* pens-count cost1)))
+      (if (> money-spent-on-pens totalMoney)
+          total-ways
+          (let* ((remaining-money (- totalMoney money-spent-on-pens))
+                 (pencils-possible (quotient remaining-money cost2))
+                 (ways-for-current-pens (+ pencils-possible 1)))
+            (loop (+ pens-count 1) (+ total-ways ways-for-current-pens)))))))

@@ -1,0 +1,10 @@
+(define (countSubarrays nums)
+  (define (valid? a b c)
+    (and (> b a) (> b c)))
+  (define (count-valid-subarrays lst)
+    (if (< (length lst) 3)
+        0
+        (if (valid? (list-ref lst 0) (list-ref lst 1) (list-ref lst 2))
+            (+ 1 (count-valid-subarrays (cdr lst)))
+            (count-valid-subarrays (cdr lst)))))
+  (count-valid-subarrays nums))

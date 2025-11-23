@@ -1,0 +1,45 @@
+Create a full-stack Personal To-Do List application with the following technology stack:
+- Frontend: React 18 with functional components and hooks
+- Backend: Express.js with Node.js
+- Database: PostgreSQL (already set up in Docker)
+- ORM: Prisma
+
+Database connection details:
+- URL: postgresql://postgres:todosecret@localhost:5432/todo_db
+
+Application requirements:
+1. Frontend components:
+   - TodoList: Display filtered list of todos
+   - TodoItem: Individual todo with status controls
+   - TodoForm: Form for adding/editing todos
+   - DateFilter: Component to filter by date
+
+2. Backend API endpoints:
+   - GET /api/todos - Get todos (with query params for filtering)
+   - POST /api/todos - Create new todo
+   - PATCH /api/todos/:id - Update todo (including status)
+   - DELETE /api/todos/:id - Soft delete todo
+
+3. Data model (Prisma schema):
+   - Use the existing PostgreSQL database with todos table
+   - Define appropriate Prisma model matching the table
+
+4. Functionality:
+   - Add todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter by date (today, specific date, upcoming)
+   - Clean, modern UI with state management
+
+5. Implementation requirements:
+   - Use Prisma for all database operations
+   - Implement React hooks for state management
+   - Use Express middleware for validation and error handling
+   - Include responsive CSS styling
+   - Set up proper project structure with separate frontend/backend
+
+Generate the complete source code with:
+- Express.js server setup
+- React application structure
+- Prisma schema and client configuration
+- Component hierarchy
+- Package.json files with dependencies

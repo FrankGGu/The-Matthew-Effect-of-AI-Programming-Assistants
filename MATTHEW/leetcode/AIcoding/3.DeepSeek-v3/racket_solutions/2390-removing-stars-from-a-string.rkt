@@ -1,0 +1,10 @@
+(define/contract (remove-stars s)
+  (-> string? string?)
+  (list->string
+   (let loop ([chars (string->list s)] [stack '()])
+     (if (null? chars)
+         (reverse stack)
+         (let ([c (car chars)])
+           (if (char=? c #\*)
+               (loop (cdr chars) (cdr stack))
+               (loop (cdr chars) (cons c stack))))))))

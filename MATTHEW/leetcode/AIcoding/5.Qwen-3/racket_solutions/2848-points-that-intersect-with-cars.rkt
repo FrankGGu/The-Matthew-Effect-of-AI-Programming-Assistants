@@ -1,0 +1,27 @@
+(define (car-fleet target positions speeds)
+  (define (compare a b)
+    (< (car a) (car b)))
+  (define sorted (sort (map (lambda (p s) (cons p s)) positions speeds) compare))
+  (define (helper cars result)
+    (if (null? cars)
+        result
+        (let* ((current (car cars))
+               (time (/ (- target (car current)) (cdr current)))
+               (new-result (if (null? result)
+                               (list time)
+                               (let ((last-time (car result)))
+                                 (if (<= time last-time)
+                                     result
+                                     (cons time result)))))
+          (helper (cdr cars) new-result))))
+  (length (helper sorted '())))
+
+(define (main)
+  (let* ((input (read-line))
+         (target (string->number input))
+         (positions (map string->number (string-split (read-line))))
+         (speeds (map string->number (string-split (read-line)))))
+    (display (car-fleet target positions speeds))
+    (newline)))
+
+(main)

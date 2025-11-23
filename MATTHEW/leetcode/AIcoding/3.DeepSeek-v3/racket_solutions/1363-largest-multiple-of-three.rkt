@@ -1,0 +1,30 @@
+(define/contract (largest-multiple-of-three digits)
+  (-> (listof exact-integer?) string?)
+  (let* ([counts (make-hash)]
+         [sum (apply + digits)])
+    (for ([d digits])
+      (hash-update! counts d add1 0))
+    (define (remove-ds ds)
+      (for ([d ds])
+        (when (hash-has-key? counts d)
+          (let ([cnt (hash-ref counts d)])
+          (if (= cnt 1)
+              (hash-remove! counts d)
+              (hash-set! counts d (sub1 cnt))))))
+    (define (find-and-remove target)
+      (let loop ([rem target])
+        (if (hash-has-key? counts rem)
+            (begin (remove-ds (list rem)) #t)
+            (and (< rem 10) (loop (+ rem 3)))))
+    (cond
+      [(= (modulo sum 3) 1)
+       (if (not (or (find-and-remove 1) (find-and-remove 4) (find-and-remove 7)))
+           (if (not (find-and-remove 2 2)) "" (remove-ds '(2 5 8))))
+      [(= (modulo sum 3) 2)
+       (if (not (or (find-and-remove 2) (find-and-remove 5) (find-and-remove 8)))
+           (if (not (find-and-remove 1 1)) "" (remove-ds '(1 4 7))))])
+    (let ([sorted-keys (sort (hash-keys counts) >)])
+      (cond
+        [(null? sorted-keys) "0"]
+        [(= (car sorted-keys) 0) "0"]
+        [else (apply string-append (map number->string sorted-keys))]))))

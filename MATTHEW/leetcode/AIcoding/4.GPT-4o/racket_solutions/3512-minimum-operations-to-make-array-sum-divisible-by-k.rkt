@@ -1,0 +1,11 @@
+(define (minOperations nums k)
+  (define total-sum (apply + nums))
+  (define remainder (modulo total-sum k))
+  (if (= remainder 0)
+      0
+      (define (count-operations lst target)
+        (for/fold ([count 0]) ([num lst])
+          (if (= (modulo num k) target)
+              (+ count 1)
+              count)))
+      (count-operations nums remainder)))

@@ -1,0 +1,12 @@
+(define (min-number-of-increments target)
+  (let loop ((target-list target)
+             (total-operations 0)
+             (previous-value 0))
+    (if (empty? target-list)
+        total-operations
+        (let* ((current-value (car target-list))
+               (diff (- current-value previous-value))
+               (added-operations (if (> diff 0) diff 0)))
+          (loop (cdr target-list)
+                (+ total-operations added-operations)
+                current-value)))))

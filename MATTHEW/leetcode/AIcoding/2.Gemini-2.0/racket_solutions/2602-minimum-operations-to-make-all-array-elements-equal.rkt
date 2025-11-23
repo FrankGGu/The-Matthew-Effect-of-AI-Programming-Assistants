@@ -1,0 +1,18 @@
+(define (min-operations nums queries)
+  (let* ((sorted-nums (sort nums <))
+         (n (length nums)))
+    (map (lambda (q)
+           (let loop ((l 0) (r (- n 1)))
+             (cond
+               ((> l r)
+                (let* ((less-count l)
+                       (greater-count (- n l))
+                       (less-sum (if (= less-count 0) 0 (apply + (take sorted-nums less-count))))
+                       (greater-sum (if (= greater-count 0) 0 (apply + (drop sorted-nums less-count)))))
+                  (+ (- (* q less-count) less-sum)
+                     (- greater-sum (* q greater-count)))))
+               ((< (list-ref sorted-nums (quotient (+ l r) 2)) q)
+                (loop (+ (quotient (+ l r) 2) 1) r))
+               (else
+                (loop l (- (quotient (+ l r) 2) 1))))))
+         queries)))

@@ -1,0 +1,16 @@
+(define (count-vowel-substrings word)
+  (define vowels (set #\a #\e #\i #\o #\u))
+  (define n (string-length word))
+  (define count 0)
+
+  (for ([i (in-range n)])
+    (define seen (mutable-set))
+    (for ([j (in-range i n)])
+      (define c (string-ref word j))
+      (if (set-member? vowels c)
+          (begin
+            (set-add! seen c)
+            (when (= (set-count seen) 5)
+              (set! count (add1 count))))
+          (break))))
+  count)

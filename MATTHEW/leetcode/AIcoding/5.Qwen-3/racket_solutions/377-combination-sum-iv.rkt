@@ -1,0 +1,13 @@
+(define (combination-sum-iv nums target)
+  (define dp
+    (make-hash))
+  (define (helper n)
+    (if (<= n 0)
+        (if (= n 0) 1 0)
+        (let ((res 0))
+          (for-each (lambda (num)
+                      (when (>= n num)
+                        (set! res (+ res (helper (- n num))))))
+                    nums)
+          res)))
+  (helper target))

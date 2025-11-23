@@ -1,0 +1,5 @@
+(define (find-the-distance-value arr1 arr2)
+  (define (is-valid x)
+    (for/and ([y arr2])
+      (> (abs (- x y)) 0)))
+  (length (filter is-valid arr1)))

@@ -1,0 +1,45 @@
+(define (count-good-strings n s evil)
+  (define mod 1000000007)
+  (define evil-len (string-length evil))
+  (define dp (make-vector (+ n 1) (lambda () (make-vector (+ evil-len 1) -1))))
+
+  (define (kmp-table pattern)
+    (let ((m (string-length pattern)))
+      (define table (make-vector m 0))
+      (define j 0)
+      (for ([i (in-range 1 m)])
+        (while (and (> j 0) (not (= (string-ref pattern i) (string-ref pattern j))))
+          (set! j (vector-ref table (sub1 j))))
+        (if (= (string-ref pattern i) (string-ref pattern j))
+            (set! j (add1 j)))
+        (vector-set! table i j))
+      table))
+
+  (define kmp (kmp-table evil))
+
+  (define (count pos evil-pos tight)
+    (if (= pos n)
+        1
+        (if (>= evil-pos evil-len)
+            0
+            (if (vector-ref dp pos evil-pos)
+                (vector-ref dp pos evil-pos)
+                (begin
+                  (define limit (if tight 26 26))
+                  (define result 0)
+                  (for ([i (in-range limit)])
+                    (let ((next-tight (if tight (= i 25) #f))
+                          (next-evil-pos evil-pos))
+                      (while (and (> next-evil-pos 0) 
+                                  (not (= (string-ref evil next-evil-pos) (integer->char (+ i 97)))))
+                        (set! next-evil-pos (vector-ref kmp (sub1 next-evil-pos))))
+                      (if (= (string-ref evil next-evil-pos) (integer->char (+ i 97)))
+                          (set! next-evil-pos (add1 next-evil-pos)))
+                      (set! result (mod (+ result (count (add1 pos) next-evil-pos next-tight)) mod))))
+                  (vector-set! dp pos evil-pos result)
+                  result))))
+
+  (count 0 0 #t))
+
+(define (find-all-good-strings n s evil)
+  (count-good-strings n s evil))

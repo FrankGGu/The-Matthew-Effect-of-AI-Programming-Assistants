@@ -1,0 +1,5 @@
+(define/contract (most-words-found sentences)
+  (-> (listof string?) exact-integer?)
+  (define (count-words s)
+    (length (string-split s)))
+  (apply max (map count-words sentences)))

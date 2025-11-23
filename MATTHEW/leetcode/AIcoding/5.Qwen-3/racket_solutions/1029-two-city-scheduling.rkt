@@ -1,0 +1,10 @@
+(define (two-city-scheduling costs)
+  (define (cost-compare a b)
+    (- (car a) (car b)))
+  (define sorted-costs (sort costs cost-compare))
+  (define half (quotient (length costs) 2))
+  (define (sum-first-half lst)
+    (if (= (length lst) 0)
+        0
+        (+ (caar lst) (sum-first-half (cdr lst)))))
+  (sum-first-half (take sorted-costs half)))

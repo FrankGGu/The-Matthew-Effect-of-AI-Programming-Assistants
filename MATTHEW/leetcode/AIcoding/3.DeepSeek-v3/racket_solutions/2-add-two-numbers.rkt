@@ -1,0 +1,20 @@
+(define/contract (add-two-numbers l1 l2)
+  (-> list? list? list?)
+  (define (reverse-list lst)
+    (let loop ([lst lst] [acc '()])
+      (if (null? lst)
+          acc
+          (loop (cdr lst) (cons (car lst) acc)))))
+  (define (list->number lst)
+    (let loop ([lst (reverse-list lst)] [num 0])
+      (if (null? lst)
+          num
+          (loop (cdr lst) (+ (* num 10) (car lst))))))
+  (define (number->list num)
+    (if (zero? num)
+        '(0)
+        (let loop ([num num] [acc '()])
+          (if (zero? num)
+              acc
+              (loop (quotient num 10) (cons (remainder num 10) acc)))))))
+  (number->list (+ (list->number l1) (list->number l2))))

@@ -1,0 +1,36 @@
+{
+  "id": "LCR 188",
+  "title": "买卖芯片的最佳时机",
+  "titleSlug": "gu-piao-de-zui-da-li-run-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int bestTiming(vector<int>& prices) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int bestTiming(int[] prices) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def bestTiming(self, prices):\n        \"\"\"\n        :type prices: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def bestTiming(self, prices: List[int]) -> int:\n        ",
+    "c": "int bestTiming(int* prices, int pricesSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int BestTiming(int[] prices) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} prices\n * @return {number}\n */\nvar bestTiming = function(prices) {\n    \n};",
+    "typescript": "function bestTiming(prices: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $prices\n     * @return Integer\n     */\n    function bestTiming($prices) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func bestTiming(_ prices: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun bestTiming(prices: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int bestTiming(List<int> prices) {\n    \n  }\n}",
+    "golang": "func bestTiming(prices []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} prices\n# @return {Integer}\ndef best_timing(prices)\n    \nend",
+    "scala": "object Solution {\n    def bestTiming(prices: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn best_timing(prices: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (best-timing prices)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec best_timing(Prices :: [integer()]) -> integer().\nbest_timing(Prices) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec best_timing(prices :: [integer]) :: integer\n  def best_timing(prices) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func bestTiming(prices: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[3,6,2,9,8,5]\n[8,12,15,7,3,10]",
+  "hints": []
+}

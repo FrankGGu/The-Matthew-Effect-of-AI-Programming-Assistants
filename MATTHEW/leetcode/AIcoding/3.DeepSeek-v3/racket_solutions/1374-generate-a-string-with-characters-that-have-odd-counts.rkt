@@ -1,0 +1,5 @@
+(define/contract (generate-the-string n)
+  (-> exact-integer? string?)
+  (if (odd? n)
+      (make-string n #\a)
+      (string-append (make-string (- n 1) #\a) (string #\b))))

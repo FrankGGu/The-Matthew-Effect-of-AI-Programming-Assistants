@@ -1,0 +1,6 @@
+(define (two-sum nums target)
+  (define (helper nums map)
+    (cond ((null? nums) #f)
+          ((hash-has-key? map (- target (car nums))) (list (- target (car nums)) (car nums)))
+          (else (helper (cdr nums) (hash-set map (car nums) (car nums))))))
+  (helper nums (make-hash)))

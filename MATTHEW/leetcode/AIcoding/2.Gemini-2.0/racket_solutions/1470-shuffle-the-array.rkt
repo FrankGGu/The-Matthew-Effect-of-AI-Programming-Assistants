@@ -1,0 +1,5 @@
+(define (shuffle nums n)
+  (let loop ([i 0] [result '()])
+    (if (= i n)
+        (reverse result)
+        (loop (+ i 1) (cons (list-ref nums (+ i n)) (cons (list-ref nums i) result))))))

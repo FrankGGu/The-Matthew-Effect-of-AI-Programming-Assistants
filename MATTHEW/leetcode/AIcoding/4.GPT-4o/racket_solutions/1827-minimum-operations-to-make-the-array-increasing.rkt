@@ -1,0 +1,8 @@
+(define (minOperations nums)
+  (define n (length nums))
+  (define count 0)
+  (for ([i (in-range 1 n)])
+    (when (> (vector-ref nums i) (vector-ref nums (- i 1)))
+      (set! (vector-ref nums i) (vector-ref nums (- i 1)))
+      (set! count (+ count 1))))
+  count)

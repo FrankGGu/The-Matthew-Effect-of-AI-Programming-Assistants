@@ -1,0 +1,22 @@
+#lang racket
+
+(define (minimum-difference nums)
+  (define n (length nums))
+  (define half (/ n 2))
+  (define sorted-nums (sort nums <))
+  (define sum-left (make-vector (add1 half) 0))
+  (define sum-right (make-vector (add1 half) 0))
+  (define total (apply + nums))
+  (let loop ([i 0] [sum 0])
+    (when (< i half)
+      (vector-set! sum-left i sum)
+      (loop (+ i 1) (+ sum (list-ref sorted-nums i)))))
+  (let loop ([i (- n 1)] [sum 0])
+    (when (>= i (- n half))
+      (vector-set! sum-right (- n i -1) sum)
+      (loop (- i 1) (+ sum (list-ref sorted-nums i)))))
+  (let loop ([i 0] [min-diff +inf.0])
+    (if (= i half)
+        min-diff
+        (let ([diff (abs (- (+ (vector-ref sum-left i) (vector-ref sum-right i)) (- total (vector-ref sum-left i) (vector-ref sum-right i))))])
+          (loop (+ i 1) (min min-diff diff))))))

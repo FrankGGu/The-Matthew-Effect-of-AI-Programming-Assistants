@@ -1,0 +1,10 @@
+(define (count-collisions n)
+  (let* ((MOD 1000000007)
+         (power (lambda (base exp mod)
+                  (let loop ((b (modulo base mod)) (e exp) (res 1))
+                    (cond
+                      ((zero? e) res)
+                      ((odd? e) (loop (modulo (* b b) mod) (quotient e 2) (modulo (* res b) mod)))
+                      (else (loop (modulo (* b b) mod) (quotient e 2) res)))))))
+    (let ((two-pow-n (power 2 n MOD)))
+      (modulo (+ (- two-pow-n 2) MOD) MOD))))

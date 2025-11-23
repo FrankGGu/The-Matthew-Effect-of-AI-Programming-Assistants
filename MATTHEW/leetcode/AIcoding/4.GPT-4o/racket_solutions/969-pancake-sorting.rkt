@@ -1,0 +1,22 @@
+(define (pancake-sort arr)
+  (define (flip subarr k)
+    (append (reverse (take subarr k)) (drop subarr k)))
+
+  (define (find-max subarr n)
+    (define max-val (apply max (take subarr n)))
+    (define idx (index-of subarr max-val))
+    idx)
+
+  (define (sort-helper subarr n)
+    (if (<= n 1)
+        '()
+        (let* ((max-index (find-max subarr n))
+               (flips '()))
+          (when (> max-index 0)
+            (set! flips (cons max-index flips))
+            (set! subarr (flip subarr (add1 max-index))))
+          (set! flips (cons (sub1 n) flips))
+          (set! subarr (flip subarr n))
+          (append flips (sort-helper subarr (sub1 n))))))
+
+  (sort-helper arr (length arr)))

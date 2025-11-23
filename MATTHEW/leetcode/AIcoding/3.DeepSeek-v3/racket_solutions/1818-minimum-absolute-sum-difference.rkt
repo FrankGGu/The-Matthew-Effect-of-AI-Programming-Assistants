@@ -1,0 +1,26 @@
+(define/contract (min-absolute-sum-diff nums1 nums2)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer?)
+  (define n (length nums1))
+  (define total (for/sum ([a (in-list nums1)] [b (in-list nums2)])
+                  (abs (- a b))))
+  (define sorted-nums1 (sort (list->vector nums1) <))
+  (define (find-closest x)
+    (let loop ([left 0] [right (sub1 n)])
+      (if (>= left right)
+          (vector-ref sorted-nums1 left)
+          (let* ([mid (quotient (+ left right) 2)]
+                 [mid-val (vector-ref sorted-nums1 mid)])
+            (cond
+              [(= mid-val x) mid-val]
+              [(< mid-val x) (loop (add1 mid) right)]
+              [else (loop left mid)])))))
+  (define max-reduction 0)
+  (for ([a (in-list nums1)] [b (in-list nums2)] [i (in-naturals)])
+    (define diff (abs (- a b)))
+    (when (> diff 0)
+      (define closest (find-closest b))
+      (define new-diff (abs (- closest b)))
+      (define reduction (- diff new-diff))
+      (when (> reduction max-reduction)
+        (set! max-reduction reduction)))))
+  (modulo (- total max-reduction) 1000000007))

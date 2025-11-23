@@ -1,0 +1,10 @@
+(define (rob root)
+  (define (dfs node)
+    (if (null? node)
+        (values 0 0)
+        (let-values ([(left-rob left-not-rob) (dfs (car node))]
+                     [(right-rob right-not-rob) (dfs (cadr node))])
+          (values (+ (car node) left-not-rob right-not-rob)
+                  (+ left-rob right-rob)))))
+  (let-values ([(robbed not-robbed) (dfs root)])
+    (max robbed not-robbed)))

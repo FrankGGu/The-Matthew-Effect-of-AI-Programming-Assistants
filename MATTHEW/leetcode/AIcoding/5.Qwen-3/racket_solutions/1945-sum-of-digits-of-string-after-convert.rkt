@@ -1,0 +1,11 @@
+(define (digit-sum s k)
+  (define (sum-digits n)
+    (if (= n 0)
+        0
+        (+ (modulo n 10) (sum-digits (quotient n 10)))))
+  (define (convert s)
+    (if (= k 1)
+        (sum-digits (string->number s))
+        (let ((new-s (apply string-append (map (lambda (c) (number->string (sum-digits (char->integer c)))) (string->list s)))))
+          (convert new-s))))
+  (convert s))

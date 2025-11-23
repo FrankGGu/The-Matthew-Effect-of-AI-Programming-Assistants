@@ -1,0 +1,8 @@
+(define (xor-beauty arr)
+  (define n (length arr))
+  (define result 0)
+  (for ([i (in-range n)])
+    (define left (bitwise-xor (bitwise-and i (sub1 i)) i))
+    (define right (bitwise-xor (bitwise-and (- n 1) (sub1 (- n 1))) (- n 1)))
+    (set! result (bitwise-xor result (bitwise-xor (bitwise-xor (bitwise-and i (sub1 i)) i) (bitwise-xor (bitwise-and (- n 1) (sub1 (- n 1))) (- n 1))))))
+  result)

@@ -1,0 +1,30 @@
+(define (latest-time-catch-the-bus buses passengers capacity)
+  (let* ((buses (sort buses <))
+         (passengers (sort passengers <))
+         (n (length buses))
+         (m (length passengers))
+         (last-boarded 0)
+         (j 0)
+         (count 0))
+    (for ((i n))
+      (set! count 0)
+      (while (and (< j m) (<= (list-ref passengers j) (list-ref buses i)) (< count capacity))
+        (set! j (+ j 1))
+        (set! count (+ count 1))))
+    (set! last-boarded (if (> j 0) (list-ref passengers (- j 1)) 0))
+    (if (< j m)
+        (let loop ((time (list-ref buses (- n 1))))
+          (cond
+            ((not (member time passengers)) time)
+            (else (loop (- time 1)))))
+        (let loop ((time (list-ref buses (- n 1))) (remaining capacity))
+          (cond
+            ((zero? remaining) (let loop2 ((time (- (list-ref buses (- n 1)) 1)))
+                                  (cond
+                                    ((not (member time passengers)) time)
+                                    (else (loop2 (- time 1))))))
+            (else
+             (let loop2 ((time (- (list-ref buses (- n 1)) 1)))
+               (cond
+                 ((not (member time passengers)) time)
+                 (else (loop2 (- time 1)))))))))))

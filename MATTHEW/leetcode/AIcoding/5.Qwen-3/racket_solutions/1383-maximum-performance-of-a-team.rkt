@@ -1,0 +1,16 @@
+#lang racket
+
+(define (max-performance n engineers k)
+  (define (cmp a b)
+    (> (car a) (car b)))
+  (define sorted (sort engineers cmp))
+  (define pq (make-heap <))
+  (define total 0)
+  (define res 0)
+  (for ([e (in-list sorted)])
+    (set! total (+ total (cadr e)))
+    (heap-add! pq (cadr e))
+    (when (> (heap-size pq) k)
+      (set! total (- total (heap-remove! pq))))
+    (set! res (max res (* (car e) total))))
+  res)

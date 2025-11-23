@@ -1,0 +1,11 @@
+Task: Build a simple recommendation API that returns recommended items based on hardcoded rules.
+
+Technology stack (must use exactly this):
+[Option A] Python + FastAPI
+[Option B] JavaScript + Express
+[Option C] Julia + Genie
+
+Requirements:
+- Accept user ID as input.
+- Return a fixed list of recommended items depending on the user ID.
+- Provide runnable server code.

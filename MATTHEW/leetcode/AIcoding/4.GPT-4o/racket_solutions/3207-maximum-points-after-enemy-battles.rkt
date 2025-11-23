@@ -1,0 +1,13 @@
+(define (maxPoints points)
+  (define n (length points))
+  (define dp (make-vector n 0))
+  (vector-set! dp 0 (max 0 (vector-ref points 0)))
+  (when (> n 1)
+    (vector-set! dp 1 (max (vector-ref dp 0) (vector-ref points 1))))
+  (for ([i (in-range 2 n)])
+    (vector-set! dp i (max (vector-ref dp (- i 1)) 
+                           (+ (vector-ref dp (- i 2)) (vector-ref points i)))))
+  (vector-ref dp (- n 1)))
+
+(define (maximumPoints points)
+  (maxPoints (vector->list points)))

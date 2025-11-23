@@ -1,0 +1,13 @@
+(define (min-falling-path-sum matrix)
+  (define n (length matrix))
+  (for* ([i (in-range (- n 2) -1 -1)])
+    (for* ([j (in-range n)])
+      (set! (matrix-ref matrix i j)
+            (+ (matrix-ref matrix i j)
+               (min (matrix-ref matrix (+ i 1) j)
+                    (if (> j 0) (matrix-ref matrix (+ i 1) (- j 1)) +inf.0)
+                    (if (< j (- n 1)) (matrix-ref matrix (+ i 1) (+ j 1)) +inf.0))))))
+  (apply min (matrix-ref matrix 0)))
+
+(define (matrix-ref matrix row col)
+  (list-ref (list-ref matrix row) col))

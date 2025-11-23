@@ -1,0 +1,8 @@
+(define (inventory-management-ii products threshold)
+  (let* ((counts (make-hash))
+         (n (length products)))
+    (for-each (lambda (p)
+                (hash-update! counts p (lambda (v) (+ v 1)) 1))
+              products)
+    (filter (lambda (p) (<= (hash-ref counts p 0) threshold))
+            (remove-duplicates products))))

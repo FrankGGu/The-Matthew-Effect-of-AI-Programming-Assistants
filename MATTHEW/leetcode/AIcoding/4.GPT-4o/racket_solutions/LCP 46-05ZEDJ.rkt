@@ -1,0 +1,25 @@
+(define (assign-volunteers n skills)
+  (define (helper volunteers remaining)
+    (if (null? remaining)
+        (list volunteers)
+        (let ((current (car remaining))
+              (rest (cdr remaining)))
+          (append (helper (cons current volunteers) rest)
+                  (helper volunteers rest)))))
+  (helper '() skills))
+
+(define (max-skill volunteers)
+  (apply max (map (lambda (v) (apply + v)) (combinations volunteers))))
+
+(define (combinations lst)
+  (if (null? lst)
+      '(())
+      (let ((rest (combinations (cdr lst))))
+        (append (map (lambda (x) (cons (car lst) x)) rest)
+                rest))))
+
+(define (volunteer-allocation n skills)
+  (let ((volunteers (assign-volunteers n skills)))
+    (max-skill volunteers)))
+
+(volunteer-allocation n skills)

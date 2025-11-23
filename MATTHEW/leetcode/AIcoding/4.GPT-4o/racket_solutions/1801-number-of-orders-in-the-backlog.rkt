@@ -1,0 +1,16 @@
+(define (getOrder orders)
+  (define sorted-orders (sort orders (lambda (a b) (or (< (car a) (car b)) (and (= (car a) (car b)) (< (cadr a) (cadr b))))))
+  (define backlog '())
+  (for-each (lambda (order)
+              (let ((order-id (car order))
+                    (order-time (cadr order))
+                    (order-amount (caddr order)))
+                (if (= order-amount 1)
+                    (set! backlog (cons order backlog))
+                    (begin
+                      (set! backlog (append backlog (list order))))))
+            ) sorted-orders)
+  (define result (map (lambda (x) (car x)) backlog))
+  (foldl + 0 result))
+
+(getOrder '((1 2 1) (2 3 2) (3 1 1) (4 2 3)))

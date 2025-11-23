@@ -1,0 +1,56 @@
+(define (count-paths-that-can-form-a-palindrome root)
+  (define (dfs node parent path-mask)
+    (if (null? node)
+        0
+        (let* ((new-path-mask (bitwise-xor path-mask (expt 2 (- (char->integer (hash-ref edges node)) (char->integer #\a))))))
+          (+ (hash-ref counts new-path-mask 0)
+             (foldl + 0 (map (lambda (child) (if (not (equal? child parent)) (dfs child node new-path-mask) 0)) (hash-ref adj node)))))))
+
+  (define (bfs)
+    (let ((q (make-queue)))
+      (enqueue! q (list root #f 0)) ; node, parent, path_mask
+      (hash-set! counts 0 1)
+      (let loop ()
+        (if (queue-empty? q)
+            #t
+            (let* ((curr (dequeue! q))
+                   (node (car curr))
+                   (parent (cadr curr))
+                   (path-mask (caddr curr)))
+              (for-each (lambda (child)
+                          (if (not (equal? child parent))
+                              (let* ((new-path-mask (bitwise-xor path-mask (expt 2 (- (char->integer (hash-ref edges child)) (char->integer #\a))))))
+                                (hash-update! counts new-path-mask add1 0)
+                                (enqueue! q (list child node new-path-mask)))))
+                        (hash-ref adj node))
+              (loop))))))
+
+  (define adj (make-hash))
+  (define edges (make-hash))
+  (define counts (make-hash))
+  (define nodes (make-hash))
+
+  (define (build-graph edges-list)
+    (for-each (lambda (edge)
+                (let ((u (list-ref edge 0))
+                      (v (list-ref edge 1))
+                      (w (list-ref edge 2)))
+                  (hash-set! nodes u #t)
+                  (hash-set! nodes v #t)
+                  (hash-set! edges v w)
+                  (hash-set! edges u w)
+
+                  (hash-update! adj u (lambda (x) (cons v x)) (list))
+                  (hash-update! adj v (lambda (x) (cons u x)) (list)))))
+
+  (build-graph edges-list)
+
+  (define root (hash-keys nodes))
+  (if (null? root)
+      0
+      (let ((r (car root)))
+        (hash-set! edges r #\a)
+        (bfs)
+        (let ((res (dfs r #f 0)))
+          (hash-remove! counts 0)
+          res))))

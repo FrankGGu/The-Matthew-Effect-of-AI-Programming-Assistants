@@ -1,0 +1,59 @@
+You are a senior full-stack developer. Create a lightweight gym membership system using Preact frontend with Gin backend and GORM.
+
+**TECHNOLOGY STACK:**
+- Frontend: Preact with TypeScript
+- Backend: Gin framework in Go
+- ORM: GORM with PostgreSQL
+- Build: Go modules for backend, Vite for frontend
+
+**DATABASE CONNECTION:**
+- PostgreSQL: postgresql://postgres:gymsecret@localhost:5432/gym_management
+- All tables already created
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - CRUD operations for membership plans
+   - Plan listing with features
+
+2. **Member Management**
+   - Member registration and profile management
+   - Member search and filtering
+
+3. **Membership Card System**
+   - Card creation and management
+   - Status tracking and expiration
+
+4. **Check-in System**
+   - Check-in interface
+   - Check-in history and reporting
+
+5. **Payment Processing**
+   - Payment recording
+   - Payment history per member
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use GORM for database operations with proper models
+- Implement REST API with Gin framework
+- Add input validation with Go validator
+- Implement proper error handling middleware
+- Preact frontend should use functional components with hooks
+- Use TypeScript for type safety
+- Manage state with Preact signals
+- Use minimalist CSS for styling (no heavy frameworks)
+- Implement form handling with proper validation
+
+**CODE STRUCTURE:**
+Backend (Go + Gin):
+- GORM models for all database entities
+- Gin route handlers for API endpoints
+- Middleware for CORS and authentication
+- Service layer for business logic
+
+Frontend (Preact + TypeScript):
+- Components for each feature
+- Services for API communication
+- TypeScript interfaces for data models
+- State management with signals
+
+Generate the complete application with emphasis on lightweight implementation and performance.

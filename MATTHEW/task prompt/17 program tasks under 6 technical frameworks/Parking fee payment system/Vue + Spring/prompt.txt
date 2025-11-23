@@ -1,0 +1,32 @@
+Create a complete parking fee payment system using Vue.js frontend and Spring Boot backend with Hibernate ORM. Use PostgreSQL database with the following schema:
+
+Database schema:
+- parking_lots (id, name, location, total_spaces, hourly_rate, max_daily_rate, is_active)
+- parking_spaces (id, parking_lot_id, space_number, space_type, is_occupied)
+- vehicles (id, license_plate, vehicle_type, is_regular_customer)
+- parking_sessions (id, vehicle_id, parking_space_id, entry_time, exit_time, base_fee, discount_amount, total_amount, status)
+- payments (id, parking_session_id, payment_time, amount, payment_method, status)
+- discount_rules (id, rule_name, description, discount_type, discount_value, min_hours, max_hours, applicable_vehicle_types, is_active)
+
+Required features:
+1. Parking lot management: List, add, edit parking lots
+2. Real-time parking space occupancy display with color coding (green=available, red=occupied)
+3. Vehicle entry/exit tracking with automatic fee calculation
+4. Payment processing integration (simulate credit card, mobile app, and cash payments)
+5. Discount system application based on vehicle type and customer status
+6. Reports: Daily revenue, occupancy rates, vehicle statistics
+
+Technical requirements:
+- Frontend: Vue 3 with Composition API, Vue Router for navigation, Pinia for state management
+- Backend: Spring Boot with Spring Data JPA/Hibernate
+- Use RESTful API design with proper HTTP status codes
+- Implement proper error handling and validation
+- Include basic authentication with JWT
+- Generate complete, runnable code with proper package structure
+
+Database connection: 
+- URL: jdbc:postgresql://localhost:5432/parking_system
+- Username: postgres
+- Password: parking123
+
+Please create the complete project structure with all necessary configuration files.

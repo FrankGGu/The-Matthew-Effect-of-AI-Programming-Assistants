@@ -1,0 +1,8 @@
+(define (min-removals-to-sort arr)
+  (define n (length arr))
+  (define dp (make-vector n 1))
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (<= (list-ref arr j) (list-ref arr i))
+        (vector-set! dp i (max (vector-ref dp i) (+ (vector-ref dp j) 1))))))
+  (- n (vector-ref dp (- n 1))))

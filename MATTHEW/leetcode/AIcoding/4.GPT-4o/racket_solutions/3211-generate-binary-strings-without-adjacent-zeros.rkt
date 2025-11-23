@@ -1,0 +1,16 @@
+(define (generateBinaryStrings n)
+  (define (helper current remaining)
+    (if (= remaining 0)
+        (list current)
+        (append 
+          (if (string-empty? current)
+              (helper (string-append current "0") (- remaining 1))
+              '())
+          (helper (string-append current "1") (- remaining 1))
+          (if (string-ends-with? current "1")
+              (helper (string-append current "0") (- remaining 1))
+              '()))))
+  (helper "" n))
+
+(define (generateBinaryStringsWrapper n)
+  (map (lambda (s) (string->list s)) (generateBinaryStrings n)))

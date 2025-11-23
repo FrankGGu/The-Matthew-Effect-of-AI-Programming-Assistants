@@ -1,0 +1,18 @@
+(define (minimum-moves arr)
+  (let* ((n (length arr))
+         (min-val (apply min arr))
+         (max-val (apply max arr))
+         (min-index (index-of arr min-val))
+         (max-index (index-of arr max-val)))
+    (let ((left-min (min min-index max-index))
+          (right-max (max min-index max-index)))
+      (min (+ right-max 1)
+           (+ 1 (- n left-min))
+           (+ 1 left-min (- n right-max))))))
+
+(define (index-of arr val)
+  (let loop ((i 0))
+    (cond
+      ((= i (length arr)) #f)
+      ((= (list-ref arr i) val) i)
+      (else (loop (+ i 1))))))

@@ -1,0 +1,5 @@
+(define/contract (count-good-rectangles rectangles)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (define squares (map (lambda (r) (min (first r) (second r))) rectangles))
+  (define max-side (apply max squares))
+  (count (lambda (s) (= s max-side)) squares))

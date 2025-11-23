@@ -1,0 +1,37 @@
+Build a lightweight e-commerce system using Preact for frontend and Gin with GORM for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, phone, address, created_at
+- products: id, name, description, price, category, stock_quantity, image_url, is_active, created_at
+- orders: id, user_id, total_amount, status, shipping_address, payment_status, created_at, updated_at
+- order_items: id, order_id, product_id, quantity, unit_price
+- reviews: id, product_id, user_id, rating, comment, created_at
+
+Requirements:
+1. User Management:
+   - JWT-based authentication
+   - User profile management
+   - Address management
+
+2. Product Management:
+   - CRUD operations for products
+   - Product search and categorization
+   - Stock level monitoring
+
+3. Order Management:
+   - Create, view, update orders
+   - Shopping cart management
+   - Order status tracking
+
+Technical Specifications:
+- Frontend: Preact with lightweight state management
+- Backend: Gin framework with JWT authentication, GORM as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:ecopass@localhost:5432/ecommerce
+- API: RESTful design with minimal overhead
+
+Generate complete, runnable code including:
+- Gin server with routes, middleware, and handlers
+- Preact components with minimal dependencies
+- GORM models and database operations
+- Authentication system
+- Build and run instructions

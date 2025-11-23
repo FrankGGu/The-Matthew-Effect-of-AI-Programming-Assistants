@@ -1,0 +1,25 @@
+(define (levelOrderBottom root)
+  (if (null? root)
+      '()
+      (let loop ((current-level-nodes (list root))
+                 (acc '()))
+        (if (empty? current-level-nodes)
+            acc
+            (let process-current-level ((nodes-to-dequeue current-level-nodes)
+                                        (nodes-in-level-rev '())
+                                        (next-level-nodes-rev '()))
+              (if (empty? nodes-to-dequeue)
+                  (loop (reverse next-level-nodes-rev) (cons (reverse nodes-in-level-rev) acc))
+                  (let* ((node (car nodes-to-dequeue))
+                         (rest-nodes (cdr nodes-to-dequeue))
+                         (next-level-nodes-rev-after-left
+                           (if (TreeNode-left node)
+                               (cons (TreeNode-left node) next-level-nodes-rev)
+                               next-level-nodes-rev))
+                         (next-level-nodes-rev-after-right
+                           (if (TreeNode-right node)
+                               (cons (TreeNode-right node) next-level-nodes-rev-after-left)
+                               next-level-nodes-rev-after-left)))
+                    (process-current-level rest-nodes
+                                           (cons (TreeNode-val node) nodes-in-level-rev)
+                                           next-level-nodes-rev-after-right))))))))

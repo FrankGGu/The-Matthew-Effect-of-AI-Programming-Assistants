@@ -1,0 +1,26 @@
+(define (largest-submatrix-with-rearrangements matrix)
+  (define (count-ones row)
+    (for/fold ([count 0]) ([c row])
+      (+ count (if (= c 1) 1 0))))
+
+  (define (sort-rows matrix)
+    (map (lambda (row)
+           (sort row >))
+         matrix))
+
+  (define (max-area matrix)
+    (for/fold ([max 0]) ([row matrix])
+      (let ([h (length row)])
+        (for/fold ([current max]) ([i (in-range h)])
+          (let ([w (- h i)])
+            (max current (* (list-ref row i) w)))))))
+
+  (let ([m (length matrix)]
+        [n (length (car matrix))])
+    (for/fold ([max 0]) ([i (in-range m)])
+      (let ([row (make-list n 0)])
+        (for ([j (in-range i m)])
+          (for ([k (in-range n)])
+            (set! (list-ref row k) (+ (list-ref row k) (if (= (list-ref (list-ref matrix j) k) 1) 1 0)))))
+        (let ([sorted-row (sort row >)])
+          (max max (max-area sorted-row)))))))

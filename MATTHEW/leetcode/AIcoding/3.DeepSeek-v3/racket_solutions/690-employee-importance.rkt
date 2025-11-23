@@ -1,0 +1,13 @@
+(define-struct employee (id importance subordinates))
+
+(define (get-importance employees id)
+  (letrec ((find-employee (lambda (id)
+                            (findf (lambda (e) (equal? (employee-id e) id)) employees)))
+           (helper (lambda (emp)
+                     (if (null? (employee-subordinates emp))
+                         (employee-importance emp)
+                         (foldl (lambda (sub-id acc)
+                                  (+ acc (helper (find-employee sub-id))))
+                                (employee-importance emp)
+                                (employee-subordinates emp))))))
+    (helper (find-employee id))))

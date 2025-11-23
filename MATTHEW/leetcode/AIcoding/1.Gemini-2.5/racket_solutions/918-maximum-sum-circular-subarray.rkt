@@ -1,0 +1,23 @@
+(define (max-sum-circular-subarray nums)
+  (let* ((total-sum (apply + nums))
+         (max-kadane (let loop ((lst nums)
+                                (current-max 0)
+                                (global-max (car nums)))
+                       (if (empty? lst)
+                           global-max
+                           (let* ((num (car lst))
+                                  (new-current-max (max num (+ current-max num)))
+                                  (new-global-max (max global-max new-current-max)))
+                             (loop (cdr lst) new-current-max new-global-max)))))
+         (min-kadane (let loop ((lst nums)
+                                (current-min 0)
+                                (global-min (car nums)))
+                       (if (empty? lst)
+                           global-min
+                           (let* ((num (car lst))
+                                  (new-current-min (min num (+ current-min num)))
+                                  (new-global-min (min global-min new-current-min)))
+                             (loop (cdr lst) new-current-min new-global-min))))))
+    (if (< max-kadane 0)
+        max-kadane
+        (max max-kadane (- total-sum min-kadane)))))

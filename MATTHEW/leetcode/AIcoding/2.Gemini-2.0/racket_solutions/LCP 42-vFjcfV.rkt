@@ -1,0 +1,10 @@
+(define (toy-circle toys k)
+  (let loop ([circle toys] [current 0] [removed '()])
+    (if (null? circle)
+        (reverse removed)
+        (if (= (length circle) 1)
+            (reverse (cons (car circle) removed))
+            (let ([next-index (modulo (+ current k -1) (length circle))])
+              (loop (append (take circle next-index) (drop circle (+ next-index 1)))
+                    next-index
+                    (cons (list-ref circle next-index) removed)))))))

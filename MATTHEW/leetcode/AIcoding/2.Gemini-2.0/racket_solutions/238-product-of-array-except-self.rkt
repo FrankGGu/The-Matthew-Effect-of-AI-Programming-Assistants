@@ -1,0 +1,16 @@
+(define (product-except-self nums)
+  (let* ((n (length nums))
+         (left-products (make-vector n 1))
+         (right-products (make-vector n 1))
+         (result (make-vector n 1)))
+    (for/fold (accum 1) ((i (in-range n)))
+      (begin
+        (vector-set! left-products i accum)
+        (* accum (vector-ref nums i))))
+    (for/fold (accum 1) ((i (in-range (- n 1) -1 -1)))
+      (begin
+        (vector-set! right-products i accum)
+        (* accum (vector-ref nums i))))
+    (for ((i (in-range n)))
+      (vector-set! result i (* (vector-ref left-products i) (vector-ref right-products i))))
+    result))

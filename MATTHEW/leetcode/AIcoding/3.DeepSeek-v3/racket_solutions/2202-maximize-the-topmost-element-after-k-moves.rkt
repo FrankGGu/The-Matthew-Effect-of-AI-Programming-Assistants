@@ -1,0 +1,11 @@
+(define (maximum-top nums k)
+  (let ((n (length nums)))
+    (cond
+      ((= n 1) (if (odd? k) -1 (car nums)))
+      ((= k 0) (car nums))
+      ((> k n) (apply max nums))
+      ((= k 1) (if (>= n 2) (list-ref nums 1) -1))
+      (else (let ((max-prefix (apply max (take nums (- k 1)))))
+              (if (< k n)
+                  (max max-prefix (list-ref nums k))
+                  max-prefix))))))

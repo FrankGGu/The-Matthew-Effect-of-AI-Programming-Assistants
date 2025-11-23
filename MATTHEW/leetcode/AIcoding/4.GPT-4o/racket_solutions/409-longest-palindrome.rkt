@@ -1,0 +1,20 @@
+(define (longestPalindrome s)
+  (define (expandAroundCenter left right)
+    (let loop ((l left) (r right))
+      (if (and (>= l 0) (< r (string-length s)) (equal? (string-ref s l) (string-ref s r)))
+          (loop (sub1 l) (add1 r))
+          (sub1 r))))
+
+  (define maxLen 0)
+  (define start 0)
+
+  (for ([i (in-range (string-length s))])
+    (define len1 (expandAroundCenter i i))
+    (define len2 (expandAroundCenter i (add1 i)))
+    (define len (max len1 len2))
+    (when (> len maxLen)
+      (set! maxLen len)
+      (set! start (- i (quotient (- len 1) 2))))
+  )
+
+  (substring s start (+ start maxLen)))

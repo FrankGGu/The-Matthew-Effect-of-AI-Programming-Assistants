@@ -1,0 +1,7 @@
+(define (split-array nums)
+  (let ((prefix-sum 0)
+        (total-sum (apply + nums)))
+    (for/first ((i (in-range (sub1 (length nums))))
+                #:when (= (* 2 prefix-sum) total-sum))
+      #t)
+    #f))

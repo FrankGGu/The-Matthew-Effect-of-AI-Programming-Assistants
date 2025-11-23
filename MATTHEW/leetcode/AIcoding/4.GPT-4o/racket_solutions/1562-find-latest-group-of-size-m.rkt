@@ -1,0 +1,20 @@
+(define (find-latest-group sizes m)
+  (define groups (filter (lambda (x) (= (length x) m)) (group sizes)))
+  (if (null? groups)
+      '()
+      (let ((latest (apply max (map (lambda (x) (car (last x))) groups))))
+        (filter (lambda (x) (= (car (last x)) latest)) groups))))
+
+(define (group sizes)
+  (if (null? sizes)
+      '()
+      (let ((current (car sizes))
+            (rest (cdr sizes)))
+        (let loop ((count 1) (acc '()))
+          (cond
+            ((null? rest) (cons (list current count) acc))
+            ((= current (car rest)) (loop (+ count 1) acc))
+            (else (loop 1 (cons (list current count) acc)))))))))
+
+(define (last lst)
+  (if (null? (cdr lst)) (car lst) (last (cdr lst))))

@@ -1,0 +1,8 @@
+(define (minOperations s)
+  (define n (string-length s))
+  (define dp (make-vector (add1 n) 0))
+  (for ([i (in-range n)])
+    (for ([j (in-range i)])
+      (when (< (string-ref s j) (string-ref s i))
+        (vector-set! dp (add1 i) (max (vector-ref dp (add1 i)) (add1 (vector-ref dp (add1 j))))))))
+  (- n (apply max (vector->list (vector-slice dp 1 (add1 n))))))

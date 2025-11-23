@@ -1,0 +1,27 @@
+(define (find-and-replace-pattern words pattern)
+  (define (match? word pattern)
+    (let ((word-map (make-hash))
+          (pattern-map (make-hash)))
+      (if (= (string-length word) (string-length pattern))
+          (let loop ((i 0))
+            (if (= i (string-length word))
+                #t
+                (let ((word-char (string-ref word i))
+                      (pattern-char (string-ref pattern i)))
+                  (let ((word-val (hash-ref word-map word-char #f))
+                        (pattern-val (hash-ref pattern-map pattern-char #f)))
+                    (cond
+                      ((and word-val pattern-val)
+                       (if (and (equal? word-val pattern-char)
+                                (equal? pattern-val word-char))
+                           (loop (+ i 1))
+                           #f))
+                      ((or word-val pattern-val)
+                       #f)
+                      (else
+                       (hash-set! word-map word-char pattern-char)
+                       (hash-set! pattern-map pattern-char word-char)
+                       (loop (+ i 1))))))))
+          #f)))
+
+  (filter (lambda (word) (match? word pattern)) words))

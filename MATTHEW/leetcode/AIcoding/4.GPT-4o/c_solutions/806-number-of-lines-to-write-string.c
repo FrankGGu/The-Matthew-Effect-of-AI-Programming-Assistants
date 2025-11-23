@@ -1,0 +1,16 @@
+int[] numberOfLines(int[] widths, char* s) {
+    int lines = 1, width = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        int w = widths[s[i] - 'a'];
+        if (width + w > 100) {
+            lines++;
+            width = w;
+        } else {
+            width += w;
+        }
+    }
+    int* result = (int*)malloc(2 * sizeof(int));
+    result[0] = lines;
+    result[1] = width;
+    return result;
+}

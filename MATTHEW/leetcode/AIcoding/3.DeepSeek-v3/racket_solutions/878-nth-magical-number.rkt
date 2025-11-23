@@ -1,0 +1,15 @@
+(define/contract (nth-magical-number n a b)
+  (-> exact-integer? exact-integer? exact-integer? exact-integer?)
+  (define lcm-ab (lcm a b))
+  (define (count-magical x)
+    (quotient x a) + (quotient x b) - (quotient x lcm-ab))
+  (define left 1)
+  (define right (* n (min a b)))
+  (let loop ([left left] [right right])
+    (if (>= left right)
+        left
+        (let* ([mid (quotient (+ left right) 2)]
+               [cnt (count-magical mid)])
+          (if (< cnt n)
+              (loop (+ mid 1) right)
+              (loop left mid)))))

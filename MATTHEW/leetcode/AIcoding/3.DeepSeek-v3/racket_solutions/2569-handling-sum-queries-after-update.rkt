@@ -1,0 +1,51 @@
+(define (handle-query nums1 nums2 queries)
+  (define n (vector-length nums1))
+  (define m (vector-length nums2))
+  (define sum (apply + (vector->list nums2)))
+  (define seg-tree (make-vector (* 4 n) 0))
+  (define lazy (make-vector (* 4 n) #f))
+
+  (define (build node l r)
+    (if (= l r)
+        (vector-set! seg-tree node (vector-ref nums1 (- l 1)))
+        (let ((mid (quotient (+ l r) 2)))
+          (build (* 2 node) l mid)
+          (build (+ (* 2 node) 1) (+ mid 1) r)
+          (vector-set! seg-tree node (+ (vector-ref seg-tree (* 2 node))
+                                       (vector-ref seg-tree (+ (* 2 node) 1)))))))
+
+  (define (push-down node l r)
+    (when (vector-ref lazy node)
+      (let ((mid (quotient (+ l r) 2)))
+        (vector-set! lazy (* 2 node) (not (vector-ref lazy (* 2 node))))
+        (vector-set! lazy (+ (* 2 node) 1) (not (vector-ref lazy (+ (* 2 node) 1))))
+        (vector-set! seg-tree (* 2 node) (- (- mid l 1) (vector-ref seg-tree (* 2 node))))
+        (vector-set! seg-tree (+ (* 2 node) 1) (- (- r mid) (vector-ref seg-tree (+ (* 2 node) 1))))
+        (vector-set! lazy node #f))))
+
+  (define (update-range node l r ql qr)
+    (if (> ql r qr l)
+        (void)
+        (if (and (<= ql l) (<= r qr))
+            (begin
+              (vector-set! seg-tree node (- (- r l 1) (vector-ref seg-tree node)))
+              (vector-set! lazy node (not (vector-ref lazy node))))
+            (begin
+              (push-down node l r)
+              (let ((mid (quotient (+ l r) 2)))
+                (update-range (* 2 node) l mid ql qr)
+                (update-range (+ (* 2 node) 1) (+ mid 1) r ql qr)
+                (vector-set! seg-tree node (+ (vector-ref seg-tree (* 2 node))
+                                             (vector-ref seg-tree (+ (* 2 node) 1))))))))))
+
+  (build 1 1 n)
+  (define res '())
+  (for ([q queries])
+    (match q
+      [(vector 1 l r)
+       (update-range 1 1 n (+ l 1) (+ r 1))]
+      [(vector 2 p idx)
+       (set! sum (+ sum (* p (vector-ref seg-tree 1))))]
+      [(vector 3)
+       (set! res (cons sum res))]))
+  (reverse res))

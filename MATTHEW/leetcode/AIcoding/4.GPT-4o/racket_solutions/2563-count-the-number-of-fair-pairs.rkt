@@ -1,0 +1,26 @@
+(define (countFairPairs nums lower upper)
+  (define sorted-nums (sort nums <))
+  (define (countPairs l r)
+    (if (>= l r) 0
+      (+ (countPairs l (sub1 r))
+         (if (<= (+ (list-ref sorted-nums l) (list-ref sorted-nums r)) upper)
+             (sub1 (- r l))
+             0))))
+  (define (countInRange l r)
+    (if (>= l r) 0
+      (+ (countInRange (add1 l) r)
+         (if (<= (+ (list-ref sorted-nums l) (list-ref sorted-nums r)) upper)
+             (countPairs l r)
+             0))))
+  (define (countLowerBound l r)
+    (if (>= l r) 0
+      (+ (countLowerBound l (sub1 r))
+         (if (>= (+ (list-ref sorted-nums l) (list-ref sorted-nums r)) lower)
+             (sub1 (- r l))
+             0))))
+  (define total (countInRange 0 (sub1 (length sorted-nums))))
+  (define lower-count (countLowerBound 0 (sub1 (length sorted-nums))))
+  (- total lower-count))
+
+(define (fairPairs nums lower upper)
+  (countFairPairs nums lower upper))

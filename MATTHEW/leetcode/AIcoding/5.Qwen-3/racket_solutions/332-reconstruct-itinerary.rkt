@@ -1,0 +1,18 @@
+#lang racket
+
+(define (reconstruct-itinerary tickets)
+  (define graph (make-hash))
+  (for-each (lambda (ticket)
+              (let ((src (car ticket))
+                    (dst (cadr ticket)))
+                (hash-set! graph src (cons dst (hash-ref graph src '())))))
+            tickets)
+  (define (dfs node)
+    (let ((neighbors (hash-ref graph node '())))
+      (if (null? neighbors)
+          (list node)
+          (let ((next (car neighbors)))
+            (hash-set! graph node (cdr neighbors))
+            (append (dfs next) (list node))))))
+  (let ((start-node (car (sort (hash-keys graph) string<?))))
+    (reverse (dfs start-node))))

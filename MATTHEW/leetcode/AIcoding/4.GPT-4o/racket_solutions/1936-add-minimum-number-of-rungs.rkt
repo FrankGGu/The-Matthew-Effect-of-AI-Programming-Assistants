@@ -1,0 +1,10 @@
+(define (add-minimum-rungs rungs dist)
+  (define (helper prev curr)
+    (if (null? curr)
+        0
+        (let* ((gap (- (car curr) prev)))
+          (+ (if (> gap dist) 
+                 (sub1 (quotient gap dist)) 
+                 0) 
+             (helper (car curr) (cdr curr))))))
+  (helper 0 rungs))

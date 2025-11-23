@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* makeTheStringGreat(char* s) {
+    int len = strlen(s);
+    char* result = (char*)malloc((len + 1) * sizeof(char));
+    int index = 0;
+
+    for (int i = 0; i < len; i++) {
+        if (index > 0 && abs(s[i] - result[index - 1]) == 32) {
+            index--;
+        } else {
+            result[index++] = s[i];
+        }
+    }
+
+    result[index] = '\0';
+    return result;
+}

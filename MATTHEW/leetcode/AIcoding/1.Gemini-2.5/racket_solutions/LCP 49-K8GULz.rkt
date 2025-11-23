@@ -1,0 +1,5 @@
+(define (find-winner n k)
+  (let loop ((i 1) (result 0))
+    (if (> i n)
+        (+ result 1)
+        (loop (+ i 1) (modulo (+ result k) i)))))

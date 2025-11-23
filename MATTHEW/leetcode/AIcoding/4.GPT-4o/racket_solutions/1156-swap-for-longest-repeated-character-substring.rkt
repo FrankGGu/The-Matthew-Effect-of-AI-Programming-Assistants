@@ -1,0 +1,21 @@
+(define (character-replacement s k)
+  (define (max-length s k)
+    (define len (string-length s))
+    (define frequency (make-vector 26 0))
+    (define left 0)
+    (define max-count 0)
+    (define result 0)
+    (for ([right (in-range len)])
+      (define char-index (- (char->integer (string-ref s right)) (char->integer #\A)))
+      (vector-set! frequency char-index (+ 1 (vector-ref frequency char-index)))
+      (set! max-count (max max-count (vector-ref frequency char-index)))
+      (while (> (- (+ right 1) left) (+ max-count k))
+        (define left-char-index (- (char->integer (string-ref s left)) (char->integer #\A)))
+        (vector-set! frequency left-char-index (- (vector-ref frequency left-char-index) 1))
+        (set! left (+ left 1)))
+      (set! result (max result (- (+ right 1) left))))
+    result)
+
+  (max-length s k))
+
+(character-replacement "ABAB" 2) ; Example usage

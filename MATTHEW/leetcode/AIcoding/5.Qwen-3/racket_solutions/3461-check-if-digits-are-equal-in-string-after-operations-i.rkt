@@ -1,0 +1,7 @@
+(define (equal-digits s)
+  (define (count-chars str)
+    (for/fold ([counts (hash)]) ([c (in-string str)])
+      (hash-update counts c add1 0)))
+  (define counts (count-chars s))
+  (define values (hash-values counts))
+  (andmap (lambda (x) (= x (car values))) values))

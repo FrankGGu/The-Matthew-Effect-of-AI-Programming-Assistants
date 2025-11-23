@@ -1,0 +1,20 @@
+(define (addTwoNumbers l1 l2)
+  (define (reverse-list lst)
+    (if (null? lst)
+        '()
+        (cons (car lst) (reverse-list (cdr lst)))))
+
+  (define (list-to-number lst)
+    (foldl (lambda (x acc) (+ (* acc 10) x)) 0 lst))
+
+  (define (number-to-list n)
+    (if (= n 0)
+        (list 0)
+        (let loop ((n n) (acc '()))
+          (if (= n 0)
+              (reverse-list acc)
+              (loop (quotient n 10) (cons (remainder n 10) acc))))))
+
+  (define num1 (list-to-number (reverse-list l1)))
+  (define num2 (list-to-number (reverse-list l2)))
+  (number-to-list (+ num1 num2)))

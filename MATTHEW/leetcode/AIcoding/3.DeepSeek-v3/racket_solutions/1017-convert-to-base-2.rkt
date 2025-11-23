@@ -1,0 +1,10 @@
+(define (baseNeg2 n)
+  (if (zero? n)
+      "0"
+      (let loop ([n n] [res '()])
+        (if (zero? n)
+            (list->string (map integer->char (map (lambda (x) (+ x 48)) res))
+            (let-values ([(q r) (quotient/remainder n -2)])
+              (if (negative? r)
+                  (loop (+ q 1) (cons (- r 2) res))
+                  (loop q (cons r res))))))))

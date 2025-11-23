@@ -1,0 +1,12 @@
+(define (rearrange-spaces text)
+  (define words (filter (lambda (w) (not (string=? w ""))) (string-split text)))
+  (define space-count (string-length (string-join (filter (lambda (c) (char=? c #\space)) (string->list text)))))
+  (define word-count (length words))
+  (define spaces-between (if (> word-count 1) (quotient space-count (- word-count 1)) 0))
+  (define extra-spaces (remainder space-count (- word-count 1)))
+  (define result (string-join (map (lambda (w) (string-append w (make-string spaces-between #\space))) (take words (- word-count 1))) ""))
+  (if (> word-count 0)
+      (string-append result (last words) (make-string extra-spaces #\space))
+      ""))
+
+(rearrange-spaces "  this   is  a sentence ")

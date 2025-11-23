@@ -1,0 +1,13 @@
+(define/contract (equal-frequency word)
+  (-> string? boolean?)
+  (define freq (make-hash))
+  (for ([c (in-string word)])
+    (hash-update! freq c add1 0))
+  (define freqs (hash-values freq))
+  (define (check-possible)
+    (for/or ([i (in-range (length freqs))])
+      (define new-freqs (for/list ([(val idx) (in-indexed freqs)]
+                          (if (= idx i) (sub1 val) val)))
+      (define filtered (filter (lambda (x) (> x 0)) new-freqs))
+      (or (empty? filtered) (apply = filtered)))))
+  (or (check-possible) (apply = freqs)))

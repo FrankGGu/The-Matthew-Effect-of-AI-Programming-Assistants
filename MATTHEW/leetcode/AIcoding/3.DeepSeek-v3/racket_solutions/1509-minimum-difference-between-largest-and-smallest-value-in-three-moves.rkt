@@ -1,0 +1,10 @@
+(define/contract (min-difference nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([n (length nums)])
+    (if (<= n 4)
+        0
+        (let ([sorted (sort nums <)])
+          (min (- (list-ref sorted (- n 1 3)) (list-ref sorted 0))
+               (- (list-ref sorted (- n 1 2)) (list-ref sorted 1))
+               (- (list-ref sorted (- n 1 1)) (list-ref sorted 2))
+               (- (list-ref sorted (- n 1)) (list-ref sorted 3)))))))

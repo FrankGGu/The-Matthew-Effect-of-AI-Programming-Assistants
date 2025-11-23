@@ -1,0 +1,10 @@
+var mostPoints = function(questions) {
+    const n = questions.length;
+    const dp = new Array(n + 1).fill(0);
+
+    for (let i = n - 1; i >= 0; i--) {
+        dp[i] = Math.max(dp[i + 1], questions[i][0] + (i + questions[i][1] + 1 < n ? dp[i + questions[i][1] + 1] : 0));
+    }
+
+    return dp[0];
+};

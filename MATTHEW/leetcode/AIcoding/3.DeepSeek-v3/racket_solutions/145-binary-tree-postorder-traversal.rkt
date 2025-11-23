@@ -1,0 +1,7 @@
+(define/contract (postorder-traversal root)
+  (-> (or/c null? tree-node?) (listof exact-integer?))
+  (if (null? root)
+      '()
+      (append (postorder-traversal (tree-node-left root))
+              (postorder-traversal (tree-node-right root))
+              (list (tree-node-val root)))))

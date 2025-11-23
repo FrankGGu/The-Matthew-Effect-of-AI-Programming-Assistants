@@ -1,0 +1,13 @@
+(define (count-of-pairs n x y)
+  (let* ([dist (make-vector (+ n 1) (make-vector (+ n 1) 0))]
+         [res (make-vector n 0)])
+    (for ([i (in-range 1 (+ n 1))])
+      (for ([j (in-range (+ i 1) (+ n 1))])
+        (let ([d (min (- j i) (+ (abs (- i x)) 1 (abs (- j y))) (+ (abs (- i y)) 1 (abs (- j x))))])
+          (vector-set! (vector-ref dist i) j d)
+          (vector-set! (vector-ref dist j) i d))))
+    (for ([i (in-range 1 (+ n 1))])
+      (for ([j (in-range (+ i 1) (+ n 1))])
+        (let ([d (vector-ref (vector-ref dist i) j)])
+          (vector-set! res (- d 1) (+ (vector-ref res (- d 1)) 2)))))
+    (vector->list res)))

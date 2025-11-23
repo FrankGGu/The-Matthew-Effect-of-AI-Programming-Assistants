@@ -1,0 +1,13 @@
+impl Solution {
+    pub fn remove_adjacent_duplicates(s: String) -> String {
+        let mut stack: Vec<char> = Vec::new();
+        for c in s.chars() {
+            if !stack.is_empty() && stack.last().unwrap() == &c {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
+        }
+        stack.into_iter().collect()
+    }
+}

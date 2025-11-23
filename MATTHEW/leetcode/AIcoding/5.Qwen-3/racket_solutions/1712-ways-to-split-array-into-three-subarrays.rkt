@@ -1,0 +1,15 @@
+#lang racket
+
+(define (num-ways nums)
+  (let ([n (length nums)])
+    (let ([prefix (make-vector n 0)])
+      (vector-set! prefix 0 (car nums))
+      (for ([i (in-range 1 n)])
+        (vector-set! prefix i (+ (vector-ref prefix (- i 1)) (list-ref nums i))))
+      (let ([total (vector-ref prefix (- n 1))])
+        (let ([count 0])
+          (for ([i (in-range 0 (- n 2))])
+            (when (and (>= (vector-ref prefix i) (quotient total 3))
+                       (>= (- (vector-ref prefix (- n 1)) (vector-ref prefix i)) (quotient total 3)))
+              (set! count (+ count 1))))
+          count)))))

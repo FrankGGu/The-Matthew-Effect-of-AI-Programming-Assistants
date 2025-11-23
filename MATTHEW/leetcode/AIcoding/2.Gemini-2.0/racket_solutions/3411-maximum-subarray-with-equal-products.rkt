@@ -1,0 +1,20 @@
+(define (max-subarray-with-equal-products nums)
+  (let* ((n (length nums))
+         (prefix-products (make-vector (+ n 1) 1))
+         (product-map (make-hash '()))
+         (max-len 0))
+    (vector-set! prefix-products 0 1)
+    (hash-set! product-map 1 0)
+    (for/fold ([i 0]
+               [max-len max-len])
+              ([num (in-vector nums)]
+               [idx (in-range n)])
+      (let* ((current-product (* (vector-ref prefix-products idx) num))
+             (next-idx (+ idx 1)))
+        (vector-set! prefix-products next-idx current-product)
+        (if (hash-has-key? product-map current-product)
+            (let* ((prev-idx (hash-ref product-map current-product)))
+              (values (+ i 1) (max max-len (- next-idx prev-idx))))
+            (begin
+              (hash-set! product-map current-product next-idx)
+              (values (+ i 1) max-len)))))))

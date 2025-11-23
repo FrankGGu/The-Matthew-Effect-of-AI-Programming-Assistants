@@ -1,0 +1,8 @@
+(define (search-in-2d-array matrix target)
+  (define (helper row col)
+    (cond ((or (< row 0) (>= col (length (car matrix)))) #f)
+          ((= (list-ref (list-ref matrix row) col) target) #t)
+          ((< (list-ref (list-ref matrix row) col) target)
+           (helper row (+ col 1)))
+          (else (helper (- row 1) col))))
+  (helper (- (length matrix) 1) 0))

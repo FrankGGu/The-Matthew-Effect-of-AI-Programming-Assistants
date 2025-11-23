@@ -1,0 +1,35 @@
+{
+  "id": "LCP 31",
+  "title": "变换的迷宫",
+  "titleSlug": "Db3wC1",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool escapeMaze(vector<vector<string>>& maze) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean escapeMaze(List<List<String>> maze) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def escapeMaze(self, maze):\n        \"\"\"\n        :type maze: List[List[str]]\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def escapeMaze(self, maze: List[List[str]]) -> bool:",
+    "c": "\n\nbool escapeMaze(char*** maze, int mazeSize, int* mazeColSize){\n\n}",
+    "csharp": "public class Solution {\n    public bool EscapeMaze(string[][] maze) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[][]} maze\n * @return {boolean}\n */\nvar escapeMaze = function(maze) {\n\n};",
+    "typescript": "function escapeMaze(maze: string[][]): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[][] $maze\n     * @return Boolean\n     */\n    function escapeMaze($maze) {\n\n    }\n}",
+    "swift": "class Solution {\n    func escapeMaze(_ maze: [[String]]) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun escapeMaze(maze: Array<Array<String>>): Boolean {\n\n    }\n}",
+    "golang": "func escapeMaze(maze [][]string) bool {\n\n}",
+    "ruby": "# @param {String[][]} maze\n# @return {Boolean}\ndef escape_maze(maze)\n\nend",
+    "scala": "object Solution {\n    def escapeMaze(maze: Array[Array[String]]): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn escape_maze(maze: Vec<Vec<String>>) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (escape-maze maze)\n  (-> (listof (listof string?)) boolean?)\n\n  )"
+  },
+  "exampleTestcases": "[[\".#.\",\"#..\"],[\"...\",\".#.\"],[\".##\",\".#.\"],[\"..#\",\".#.\"]]\n[[\".#.\",\"...\"],[\"...\",\"...\"]]\n[[\"....\",\"....\"],[\".#..\",\"#...\"],[\"..#.\",\".#..\"],[\"...#\",\"..#.\"],[\"....\",\".##.\"]]",
+  "hints": []
+}

@@ -1,0 +1,37 @@
+(define (single-threaded-cpu tasks)
+  (let* ((n (length tasks))
+         (indexed-tasks (map (lambda (i task) (cons i task)) (range n) tasks))
+         (sorted-tasks (sort indexed-tasks (lambda (a b) (if (= (cadr a) (cadr b)) (< (car a) (car b)) (< (cadr a) (cadr b))))))
+         (heap (make-heap (lambda (a b) (if (= (caddr a) (caddr b)) (< (car a) (car b)) (< (caddr a) (caddr b))))))
+         (result '())
+         (current-time 0))
+    (letrec ((process-tasks
+              (lambda (available-tasks)
+                (cond
+                  ((and (empty? available-tasks) (heap-empty? heap))
+                   result)
+                  ((heap-empty? heap)
+                   (let ((next-task (car available-tasks)))
+                     (heap-insert! heap next-task)
+                     (process-tasks (cdr available-tasks))))
+                  (else
+                   (let* ((task (heap-remove-min! heap))
+                          (index (car task))
+                          (enqueue-time (cadr task))
+                          (processing-time (caddr task)))
+                     (set! current-time (max current-time enqueue-time))
+                     (set! current-time (+ current-time processing-time))
+                     (set! result (append result (list index)))
+                     (let loop ((remaining-tasks available-tasks)
+                                (new-available-tasks '()))
+                       (cond
+                         ((empty? remaining-tasks)
+                          (process-tasks new-available-tasks))
+                         (else
+                          (let ((next-task (car remaining-tasks)))
+                            (if (<= (cadr next-task) current-time)
+                                (begin
+                                  (heap-insert! heap next-task)
+                                  (loop (cdr remaining-tasks) new-available-tasks))
+                                (loop (cdr remaining-tasks) (append new-available-tasks (list next-task)))))))))))))))
+      (process-tasks sorted-tasks))))

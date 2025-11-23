@@ -1,0 +1,11 @@
+(define (find-center edges)
+  (let ((n (length edges)))
+    (let ((first-edge (car edges)))
+      (let ((a (car first-edge))
+            (b (cadr first-edge)))
+        (let ((second-edge (cadr edges)))
+          (let ((c (car second-edge))
+                (d (cadr second-edge)))
+            (cond
+              ((or (= a c) (= a d)) a)
+              (else b))))))))

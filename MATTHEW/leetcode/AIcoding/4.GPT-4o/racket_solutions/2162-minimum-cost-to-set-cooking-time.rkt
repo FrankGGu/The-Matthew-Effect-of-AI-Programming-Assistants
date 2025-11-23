@@ -1,0 +1,12 @@
+(define (min-cost-set-cooking-time giftTime)
+  (define (dp index time)
+    (if (= index (length giftTime))
+        (if (= time 0) 0 +inf.0)
+        (let ((cost (car (list-ref giftTime index))))
+          (min (dp (+ index 1) time)
+               (+ cost (dp (+ index 1) (- time 1))))))
+    )
+  (dp 0 60))
+
+(define (minCostToSetCookingTime giftTime)
+  (min-cost-set-cooking-time giftTime))

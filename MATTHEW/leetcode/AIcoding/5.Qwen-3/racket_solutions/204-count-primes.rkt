@@ -1,0 +1,10 @@
+(define (count-primes n)
+  (if (< n 2)
+      0
+      (let ([sieve (make-vector (- n 1) #t)])
+        (for ([i (in-range 2 (sqrt n))])
+          (when (vector-ref sieve (- i 2))
+            (for ([j (in-range (* i i) n i)])
+              (vector-set! sieve (- j 2) #f))))
+        (vector-count values sieve)))
+  )

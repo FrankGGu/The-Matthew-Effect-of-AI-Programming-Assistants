@@ -1,0 +1,31 @@
+{
+  "id": "LCP 08",
+  "title": "剧情触发时间",
+  "titleSlug": "ju-qing-hong-fa-shi-jian",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Sorting"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> getTriggerTime(vector<vector<int>>& increase, vector<vector<int>>& requirements) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[] getTriggerTime(int[][] increase, int[][] requirements) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def getTriggerTime(self, increase, requirements):\n        \"\"\"\n        :type increase: List[List[int]]\n        :type requirements: List[List[int]]\n        :rtype: List[int]\n        \"\"\"",
+    "python3": "class Solution:\n    def getTriggerTime(self, increase: List[List[int]], requirements: List[List[int]]) -> List[int]:",
+    "c": "\n\n/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* getTriggerTime(int** increase, int increaseSize, int* increaseColSize, int** requirements, int requirementsSize, int* requirementsColSize, int* returnSize){\n\n}",
+    "csharp": "public class Solution {\n    public int[] GetTriggerTime(int[][] increase, int[][] requirements) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} increase\n * @param {number[][]} requirements\n * @return {number[]}\n */\nvar getTriggerTime = function(increase, requirements) {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $increase\n     * @param Integer[][] $requirements\n     * @return Integer[]\n     */\n    function getTriggerTime($increase, $requirements) {\n\n    }\n}",
+    "swift": "class Solution {\n    func getTriggerTime(_ increase: [[Int]], _ requirements: [[Int]]) -> [Int] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun getTriggerTime(increase: Array<IntArray>, requirements: Array<IntArray>): IntArray {\n\n    }\n}",
+    "golang": "func getTriggerTime(increase [][]int, requirements [][]int) []int {\n\n}",
+    "ruby": "# @param {Integer[][]} increase\n# @param {Integer[][]} requirements\n# @return {Integer[]}\ndef get_trigger_time(increase, requirements)\n\nend",
+    "scala": "object Solution {\n    def getTriggerTime(increase: Array[Array[Int]], requirements: Array[Array[Int]]): Array[Int] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn get_trigger_time(increase: Vec<Vec<i32>>, requirements: Vec<Vec<i32>>) -> Vec<i32> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[[2,8,4],[2,5,0],[10,9,8]]\n[[2,11,3],[15,10,7],[9,17,12],[8,1,14]]\n[[1,1,1]]\n[[0,0,0]]\n[[0,4,5],[4,8,8],[8,6,1],[10,10,0]]\n[[12,11,16],[20,2,6],[9,2,6],[10,18,3],[8,14,9]]",
+  "hints": []
+}

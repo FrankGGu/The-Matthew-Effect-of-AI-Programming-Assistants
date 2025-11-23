@@ -1,0 +1,27 @@
+func minimumChanges(s string) int {
+    n := len(s)
+    if n < 2 {
+        return 0
+    }
+
+    count0 := 0
+    count1 := 0
+
+    for i := 0; i < n; i++ {
+        if s[i] == '0' {
+            count0++
+        } else {
+            count1++
+        }
+    }
+
+    if count0 == count1 {
+        return 0
+    }
+
+    if count0 > count1 {
+        return (count0 - count1) / 2
+    }
+
+    return (count1 - count0) / 2
+}

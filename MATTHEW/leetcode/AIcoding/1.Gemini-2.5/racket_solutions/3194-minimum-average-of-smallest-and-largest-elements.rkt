@@ -1,0 +1,11 @@
+(define (minimum-average nums)
+  (let* ((sorted-nums (sort nums <))
+         (len (length sorted-nums))
+         (min-avg +inf.0))
+    (let loop ((left 0) (right (- len 1)) (current-min-avg min-avg))
+      (if (>= left right)
+          current-min-avg
+          (let* ((val1 (list-ref sorted-nums left))
+                 (val2 (list-ref sorted-nums right))
+                 (avg (/ (+ val1 val2) 2.0)))
+            (loop (+ left 1) (- right 1) (min current-min-avg avg)))))))

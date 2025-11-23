@@ -1,0 +1,11 @@
+(define (minFlips s)
+  (define n (string-length s))
+  (define (count-flips expected)
+    (define flips 0)
+    (for ([i (in-range n)])
+      (when (not (= (string-ref s i) expected))
+        (set! flips (+ flips 1))))
+    flips)
+  (min (count-flips #\0) (count-flips #\1)))
+
+(minFlips "111000")

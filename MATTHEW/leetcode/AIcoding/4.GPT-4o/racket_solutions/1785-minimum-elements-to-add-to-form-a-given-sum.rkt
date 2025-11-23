@@ -1,0 +1,12 @@
+(define (minElements nums limit target)
+  (define n (length nums))
+  (define dp (make-vector (+ target 1) (expt 10 9)))
+  (vector-set! dp 0 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range target (+ 1 (vector-ref dp target)))])
+      (when (>= j (vector-ref nums i))
+        (vector-set! dp j (min (vector-ref dp j) (+ 1 (vector-ref dp (- j (vector-ref nums i)))))))))
+  (if (= (vector-ref dp target) (expt 10 9)) -1 (vector-ref dp target)))
+
+(define (minElementsToAdd nums limit target)
+  (minElements nums limit target))

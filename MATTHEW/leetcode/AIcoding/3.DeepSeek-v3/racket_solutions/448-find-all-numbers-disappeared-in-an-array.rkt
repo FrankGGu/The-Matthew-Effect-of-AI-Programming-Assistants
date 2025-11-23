@@ -1,0 +1,8 @@
+(define/contract (find-disappeared-numbers nums)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (define n (length nums))
+  (define marked (make-hash))
+  (for ([num nums])
+    (hash-set! marked num #t))
+  (filter (lambda (x) (not (hash-has-key? marked x)))
+          (range 1 (+ n 1))))

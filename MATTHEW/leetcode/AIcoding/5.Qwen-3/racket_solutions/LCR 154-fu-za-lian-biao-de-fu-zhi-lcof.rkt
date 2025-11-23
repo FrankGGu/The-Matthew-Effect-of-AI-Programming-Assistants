@@ -1,0 +1,32 @@
+(define (copy-random-list head)
+  (define (copy-node node)
+    (if (not node)
+        #f
+        (let ([new-node (make-hash)])
+          (hash-set! new-node 'val (hash-ref node 'val))
+          (hash-set! new-node 'next #f)
+          (hash-set! new-node 'random #f)
+          new-node)))
+
+  (define (get-or-create node)
+    (if (not node)
+        #f
+        (let ([key (object-address->string node)])
+          (if (hash-has-key? hash key)
+              (hash-ref hash key)
+              (let ([new-node (copy-node node)])
+                (hash-set! hash key new-node)
+                new-node))))
+
+  (define hash (make-hash))
+  (let loop ([node head])
+    (when node
+      (let ([new-node (get-or-create node)])
+        (when (hash-ref node 'next)
+          (let ([next-node (get-or-create (hash-ref node 'next))])
+            (hash-set! new-node 'next next-node)))
+        (when (hash-ref node 'random)
+          (let ([random-node (get-or-create (hash-ref node 'random))])
+            (hash-set! new-node 'random random-node)))
+        (loop (hash-ref node 'next))))
+  (get-or-create head))

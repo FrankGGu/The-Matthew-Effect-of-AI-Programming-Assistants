@@ -1,0 +1,12 @@
+(define (unique-xor-triplets nums)
+  (let* ([n (length nums)]
+         [count 0])
+    (for ([i (in-range 0 n)])
+      (for ([j (in-range (+ i 1) n)])
+        (for ([k (in-range (+ j 1) n)])
+          (when (= (xor (list-ref nums i)
+                        (list-ref nums j)
+                        (list-ref nums k))
+                   0)
+            (set! count (+ count 1))))))
+    count))

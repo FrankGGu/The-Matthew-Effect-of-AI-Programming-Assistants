@@ -1,0 +1,20 @@
+(define (create-sorted-array instructions)
+  (define MOD 1000000007)
+  (define (insert lst x)
+    (let loop ([left 0] [right (length lst)])
+      (if (= left right)
+          (append (take lst left) (cons x (drop lst left)))
+          (let ([mid (quotient (+ left right) 2)])
+            (if (< x (list-ref lst mid))
+                (loop left mid)
+                (loop (+ mid 1) right))))))
+  (let loop ([lst '()] [cost 0] [instrs instructions])
+    (if (null? instrs)
+        (modulo cost MOD)
+        (let* ([x (car instrs)]
+               [left (let ([i (index-of lst (lambda (y) (>= y x)))])
+                       (if i i 0))]
+               [right (let ([i (index-of lst (lambda (y) (> y x)))])
+                        (if i (- (length lst) i) 0))]
+               [new-cost (+ cost (min left right))])
+          (loop (insert lst x) new-cost (cdr instrs))))))

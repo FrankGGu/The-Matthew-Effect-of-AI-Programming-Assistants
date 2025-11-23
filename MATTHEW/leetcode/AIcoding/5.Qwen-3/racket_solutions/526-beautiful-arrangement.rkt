@@ -1,0 +1,11 @@
+(define (count-arrangement n)
+  (define (backtrack pos used)
+    (if (> pos n)
+        1
+        (let ([count 0])
+          (for ([i (in-range 1 (+ n 1))])
+            (when (and (not (bitwise-and used (arithmetic-shift 1 i)))
+                       (or (= (modulo pos i) 0) (= (modulo i pos) 0)))
+              (set! count (+ count (backtrack (+ pos 1) (bitwise-ior used (arithmetic-shift 1 i)))))))
+          count)))
+  (backtrack 1 0))

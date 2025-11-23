@@ -1,0 +1,7 @@
+(define (decompressRLElist nums)
+  (define result '())
+  (for ((i (in-range 0 (length nums) 2)))
+    (let ((freq (list-ref nums i))
+          (val (list-ref nums (+ i 1))))
+      (set! result (append result (make-list freq val)))))
+  result)

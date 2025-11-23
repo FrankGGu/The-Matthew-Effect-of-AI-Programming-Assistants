@@ -1,0 +1,5 @@
+(define (find-final-value nums original)
+  (let loop ([current original])
+    (if (member current nums)
+        (loop (* current 2))
+        current)))

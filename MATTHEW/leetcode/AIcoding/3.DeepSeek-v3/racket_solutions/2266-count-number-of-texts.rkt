@@ -1,0 +1,25 @@
+(define (count-texts pressed-keys)
+  (define n (string-length pressed-keys))
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (define mod 1000000007)
+
+  (for ([i (in-range 1 (+ n 1))])
+    (define current-char (string-ref pressed-keys (- i 1)))
+    (vector-set! dp i (vector-ref dp (- i 1)))
+    (if (and (>= i 2) 
+             (equal? current-char (string-ref pressed-keys (- i 2))))
+        (begin
+          (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i 2))) mod))
+          (if (and (>= i 3) 
+                   (equal? current-char (string-ref pressed-keys (- i 3))))
+              (begin
+                (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i 3))) mod)
+                (if (and (or (equal? current-char #\7) (equal? current-char #\9))
+                         (>= i 4)
+                         (equal? current-char (string-ref pressed-keys (- i 4))))
+                    (vector-set! dp i (modulo (+ (vector-ref dp i) (vector-ref dp (- i 4))) mod)
+                    (void))))))
+        (void)))
+
+  (vector-ref dp n))

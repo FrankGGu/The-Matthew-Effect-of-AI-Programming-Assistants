@@ -1,0 +1,13 @@
+(define (max-sum-of-distinct-subarrays-with-length-k nums k)
+  (define (distinct? lst)
+    (= (length (remove-duplicates lst)) k))
+  (define (sum lst)
+    (apply + lst))
+  (define (helper i acc)
+    (if (>= i (- (length nums) k))
+        acc
+        (let ((current (take nums (+ i k))))
+          (if (distinct? current)
+              (helper (+ i 1) (max acc (sum current)))
+              (helper (+ i 1) acc)))))
+  (helper 0 0))

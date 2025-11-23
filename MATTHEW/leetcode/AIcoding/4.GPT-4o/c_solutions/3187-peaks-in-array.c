@@ -1,0 +1,9 @@
+int countPeaks(int* arr, int arrSize) {
+    int peakCount = 0;
+    for (int i = 1; i < arrSize - 1; i++) {
+        if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+            peakCount++;
+        }
+    }
+    return peakCount;
+}

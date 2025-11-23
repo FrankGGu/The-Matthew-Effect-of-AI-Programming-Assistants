@@ -1,0 +1,25 @@
+(define (reverse-between head left right)
+  (define (reverse-node node)
+    (let loop ((prev #f) (curr node))
+      (if (not curr) prev
+          (let ((next (cdr curr)))
+            (set-cdr! curr prev)
+            (loop curr next)))))
+
+  (let ((dummy (cons 0 head)))
+    (let loop ((prev dummy) (curr head) (pos 1))
+      (if (> pos right)
+          (begin
+            (set-cdr! prev (reverse-node curr))
+            dummy)
+          (if (= pos left)
+              (let ((left-node curr))
+                (let loop2 ((prev prev) (curr curr) (pos pos))
+                  (if (> pos right)
+                      (begin
+                        (set-cdr! prev (reverse-node curr))
+                        (set-cdr! left-node curr)
+                        dummy)
+                      (loop2 curr (cdr curr) (+ pos 1)))))
+              (loop curr (cdr curr) (+ pos 1))))))
+  (cdr (reverse-between head 1 (length (cdr head)))))

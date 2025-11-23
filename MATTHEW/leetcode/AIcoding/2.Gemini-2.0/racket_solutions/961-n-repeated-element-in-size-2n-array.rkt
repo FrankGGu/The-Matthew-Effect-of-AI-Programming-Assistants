@@ -1,0 +1,6 @@
+(define (repeated-n-times A)
+  (let ([seen (make-hash)])
+    (for ([x (in-list A)])
+      (if (hash-has-key? seen x)
+          (return x)
+          (hash-set! seen x #t)))))

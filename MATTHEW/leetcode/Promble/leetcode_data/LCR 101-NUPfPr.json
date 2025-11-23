@@ -1,0 +1,35 @@
+{
+  "id": "LCR 101",
+  "title": "分割等和子集",
+  "titleSlug": "NUPfPr",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool canPartition(vector<int>& nums) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean canPartition(int[] nums) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def canPartition(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def canPartition(self, nums: List[int]) -> bool:",
+    "c": "\n\nbool canPartition(int* nums, int numsSize){\n\n}",
+    "csharp": "public class Solution {\n    public bool CanPartition(int[] nums) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {boolean}\n */\nvar canPartition = function(nums) {\n\n};",
+    "typescript": "function canPartition(nums: number[]): boolean {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Boolean\n     */\n    function canPartition($nums) {\n\n    }\n}",
+    "swift": "class Solution {\n    func canPartition(_ nums: [Int]) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun canPartition(nums: IntArray): Boolean {\n\n    }\n}",
+    "golang": "func canPartition(nums []int) bool {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Boolean}\ndef can_partition(nums)\n\nend",
+    "scala": "object Solution {\n    def canPartition(nums: Array[Int]): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn can_partition(nums: Vec<i32>) -> bool {\n\n    }\n}",
+    "racket": "(define/contract (can-partition nums)\n  (-> (listof exact-integer?) boolean?)\n\n  )",
+    "erlang": "-spec can_partition(Nums :: [integer()]) -> boolean().\ncan_partition(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec can_partition(nums :: [integer]) :: boolean\n  def can_partition(nums) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[1,5,11,5]\n[1,2,3,5]",
+  "hints": []
+}

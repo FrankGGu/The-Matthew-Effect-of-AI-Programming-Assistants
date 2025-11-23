@@ -1,0 +1,17 @@
+(define (longest-mountain arr)
+  (let* ([n (length arr)]
+         [longest 0])
+    (for ([i (in-range 1 (- n 1))])
+      (when (and (> (list-ref arr i) (list-ref arr (- i 1)))
+                 (> (list-ref arr i) (list-ref arr (+ i 1))))
+        (let loop ([left (- i 1)] [right (+ i 1)] [len 1])
+          (let* ([left-len (let loop-left ([l left] [l-len len])
+                              (if (and (>= l 1) (> (list-ref arr l) (list-ref arr (- l 1))))
+                                  (loop-left (- l 1) (+ l-len 1))
+                                  l-len))]
+                 [right-len (let loop-right ([r right] [r-len left-len])
+                               (if (and (< r (- n 1)) (> (list-ref arr r) (list-ref arr (+ r 1))))
+                                   (loop-right (+ r 1) (+ r-len 1))
+                                   r-len))])
+            (set! longest (max longest right-len))))))
+    longest))

@@ -1,0 +1,20 @@
+(define (word-ladder begin-word end-word word-list)
+  (define word-set (set word-list))
+  (define (one-char-diff? w1 w2)
+    (= (length (filter (lambda (x) (not (equal? (string-ref w1 x) (string-ref w2 x)))) (range 0 (string-length w1)))) 1))
+
+  (define (bfs queue visited)
+    (if (null? queue)
+        (if (set-member? visited end-word) 
+            (length (set-union visited (set (list end-word)))) 
+            0)
+        (let ((current (car queue))
+              (rest (cdr queue)))
+          (if (equal? current end-word)
+              (length (set-union visited (set (list end-word))))
+              (let ((next-words (filter (lambda (word) (and (not (set-member? visited word)) (one-char-diff? current word))) word-set)))
+                (bfs (append rest next-words) (set-add visited current)))))))
+
+  (if (not (set-member? word-set end-word)) 
+      0 
+      (bfs (list begin-word) (set (list begin-word)))))

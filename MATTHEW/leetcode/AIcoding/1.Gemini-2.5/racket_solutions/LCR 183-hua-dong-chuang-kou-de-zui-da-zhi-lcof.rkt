@@ -1,0 +1,10 @@
+(define (find-highest-altitude gain)
+  (let* ((initial-state (cons 0 0)) ; (current-altitude . max-altitude)
+         (final-state (foldl (lambda (g acc)
+                                (let* ((current-alt (car acc))
+                                       (max-alt (cdr acc))
+                                       (new-current-alt (+ current-alt g)))
+                                  (cons new-current-alt (max max-alt new-current-alt))))
+                              initial-state
+                              gain)))
+    (cdr final-state)))

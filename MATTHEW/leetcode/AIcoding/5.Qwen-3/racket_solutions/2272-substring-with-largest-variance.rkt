@@ -1,0 +1,27 @@
+#lang racket
+
+(define (largest-variance s)
+  (define (max-variance a b)
+    (define max-v 0)
+    (define curr-v 0)
+    (define has-b #f)
+    (for ([c s])
+      (cond [(equal? c a) (set! curr-v (+ curr-v 1))]
+            [(equal? c b) 
+             (set! has-b #t)
+             (set! curr-v (- curr-v 1))
+             (when (< curr-v 0)
+               (set! curr-v 0)
+               (set! has-b #f))]))
+    (if has-b curr-v -1))
+
+  (define chars (string->list s))
+  (define unique-chars (remove-duplicates chars))
+  (define max-var 0)
+  (for ([a unique-chars])
+    (for ([b unique-chars])
+      (when (not (equal? a b))
+        (define var (max-variance a b))
+        (when (> var max-var)
+          (set! max-var var)))))
+  max-var)

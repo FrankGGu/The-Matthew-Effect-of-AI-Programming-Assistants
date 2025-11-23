@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+using namespace std;
+
+class Solution {
+public:
+    bool checkIfExist(vector<int>& arr) {
+        unordered_set<int> seen;
+        for (int num : arr) {
+            if (seen.count(2 * num) || seen.count(num / 2)) {
+                return true;
+            }
+            seen.insert(num);
+        }
+        return false;
+    }
+};

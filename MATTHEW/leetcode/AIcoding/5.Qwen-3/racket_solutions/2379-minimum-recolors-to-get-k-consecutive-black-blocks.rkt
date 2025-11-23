@@ -1,0 +1,10 @@
+(define (minimum-recolors s k)
+  (define n (string-length s))
+  (define (count-black start)
+    (for/sum ([i (in-range start (+ start k))])
+      (if (= (string-ref s i) #\B) 1 0)))
+  (define (helper i res)
+    (if (>= i (- n k))
+        res
+        (helper (+ i 1) (min res (count-black i)))))
+  (helper 0 (count-black 0)))

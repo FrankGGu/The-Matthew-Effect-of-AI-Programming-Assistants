@@ -1,0 +1,8 @@
+(define (max-width-ramp A)
+  (define n (length A))
+  (define indices (range n))
+  (define sorted-indices (sort indices (lambda (i j) (< (list-ref A i) (list-ref A j)))))
+  (define-values (max-width _) 
+    (for/fold ([max-width 0] [min-index +inf.0]) ([i sorted-indices])
+      (values (max max-width (- i min-index)) (min min-index i))))
+  max-width)

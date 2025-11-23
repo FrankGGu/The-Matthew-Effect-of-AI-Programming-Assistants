@@ -1,0 +1,15 @@
+(define (longest-arith-seq-length A)
+  (define n (length A))
+  (define dp (make-vector n (make-vector n 0)))
+  (define max-len 2)
+  (for* ([j (in-range 1 n)]
+         [i (in-range j)])
+    (define diff (- (vector-ref A j) (vector-ref A i)))
+    (for ([k (in-range 0 j)])
+      (when (= (- (vector-ref A j) (vector-ref A k)) diff)
+        (vector-set! dp j k (+ 1 (vector-ref dp k j)))
+        (set! max-len (max max-len (+ 1 (vector-ref dp j k))))))
+    (vector-set! dp j i 1))
+  max-len)
+
+(longest-arith-seq-length (vector 3 6 9 12))

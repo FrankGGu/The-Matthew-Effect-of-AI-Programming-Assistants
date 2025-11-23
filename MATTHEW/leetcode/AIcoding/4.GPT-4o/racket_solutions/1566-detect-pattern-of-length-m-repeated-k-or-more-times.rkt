@@ -1,0 +1,13 @@
+(define (containsPattern arr m k)
+  (define n (length arr))
+  (define (check i)
+    (and (<= (+ i (* m k)) n)
+         (equal? (subvector arr i (+ i m))
+                 (subvector arr (+ i m) (+ i (* m 2))))))
+  (for/or ([i (in-range 0 (- n (* m k)))])
+    (let loop ([j 1])
+      (if (>= j k)
+          #t
+          (if (check i)
+              (loop (+ j 1))
+              #f)))))

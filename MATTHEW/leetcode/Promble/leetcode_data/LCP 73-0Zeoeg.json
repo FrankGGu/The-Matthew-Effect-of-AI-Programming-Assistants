@@ -1,0 +1,32 @@
+{
+  "id": "LCP 73",
+  "title": "探险营地",
+  "titleSlug": "0Zeoeg",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int adventureCamp(vector<string>& expeditions) {\n\n    }\n};",
+    "java": "class Solution {\n    public int adventureCamp(String[] expeditions) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def adventureCamp(self, expeditions):\n        \"\"\"\n        :type expeditions: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def adventureCamp(self, expeditions: List[str]) -> int:",
+    "c": "int adventureCamp(char** expeditions, int expeditionsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int AdventureCamp(string[] expeditions) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} expeditions\n * @return {number}\n */\nvar adventureCamp = function(expeditions) {\n\n};",
+    "typescript": "function adventureCamp(expeditions: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $expeditions\n     * @return Integer\n     */\n    function adventureCamp($expeditions) {\n\n    }\n}",
+    "swift": "class Solution {\n    func adventureCamp(_ expeditions: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun adventureCamp(expeditions: Array<String>): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int adventureCamp(List<String> expeditions) {\n\n  }\n}",
+    "golang": "func adventureCamp(expeditions []string) int {\n\n}",
+    "ruby": "# @param {String[]} expeditions\n# @return {Integer}\ndef adventure_camp(expeditions)\n\nend",
+    "scala": "object Solution {\n    def adventureCamp(expeditions: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn adventure_camp(expeditions: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (adventure-camp expeditions)\n  (-> (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec adventure_camp(Expeditions :: [unicode:unicode_binary()]) -> integer().\nadventure_camp(Expeditions) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec adventure_camp(expeditions :: [String.t]) :: integer\n  def adventure_camp(expeditions) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"leet->code\",\"leet->code->Campsite->Leet\",\"leet->code->leet->courier\"]\n[\"Alice->Dex\",\"\",\"Dex\"]\n[\"\",\"Gryffindor->Slytherin->Gryffindor\",\"Hogwarts->Hufflepuff->Ravenclaw\"]",
+  "hints": []
+}

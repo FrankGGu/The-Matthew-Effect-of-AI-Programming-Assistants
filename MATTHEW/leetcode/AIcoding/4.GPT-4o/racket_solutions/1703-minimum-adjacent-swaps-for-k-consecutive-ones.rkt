@@ -1,0 +1,22 @@
+(define (min-swaps nums k)
+  (define (count-ones lst)
+    (length (filter (lambda (x) (= x 1)) lst)))
+
+  (define (calculate-swaps lst ones-count)
+    (define swaps 0)
+    (define ones-in-window 0)
+    (for ([i (in-range (length lst))])
+      (when (= (list-ref lst i) 1)
+        (set! ones-in-window (+ ones-in-window 1)))
+      (when (>= i ones-count)
+        (when (= (list-ref lst (- i ones-count)) 1)
+          (set! ones-in-window (- ones-in-window 1))))
+      (when (and (>= i ones-count -1) (= (add1 ones-in-window) k))
+        (set! swaps (min swaps (- (length lst) ones-in-window))))
+      (set! swaps (if (or (= ones-in-window 0) (= ones-in-window k)) swaps (add1 swaps))))
+    swaps)
+
+  (define total-ones (count-ones nums))
+  (if (< total-ones k) -1
+      (let ([min-swaps (calculate-swaps nums (if (= total-ones k) k total-ones))])
+        min-swaps)))

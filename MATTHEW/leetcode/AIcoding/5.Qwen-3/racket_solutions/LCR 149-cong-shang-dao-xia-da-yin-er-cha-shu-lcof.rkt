@@ -1,0 +1,8 @@
+(define (distribute-colors cnt)
+  (define (helper n res)
+    (if (null? res)
+        '()
+        (let ((color (car res))
+              (count (car cnt)))
+          (append (make-list count color) (helper (cdr cnt) (cdr res))))))
+  (helper cnt (list 0 1 2)))

@@ -1,0 +1,5 @@
+(define (minimumCost a)
+  (define n (length a))
+  (define sorted-a (sort (cdr a) <))
+  (define first-three (take sorted-a 2))
+  (+ (first a) (apply + first-three)))

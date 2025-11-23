@@ -1,0 +1,32 @@
+(define (longest-increasing-path matrix)
+  (define m (vector-length matrix))
+  (if (= m 0) 0
+      (define n (vector-length (vector-ref matrix 0)))
+      (if (= n 0) 0
+          (let* ((memo (build-vector m (lambda (r) (build-vector n (lambda (c) 0)))))
+                 (dirs '((0 1) (0 -1) (1 0) (-1 0))))
+
+            (define (dfs r c)
+              (let ((cached-val (vector-ref (vector-ref memo r) c)))
+                (if (> cached-val 0)
+                    cached-val
+                    (let ((max-len 1))
+                      (for-each (lambda (dir)
+                                  (let* ((dr (car dir))
+                                         (dc (cadr dir))
+                                         (nr (+ r dr))
+                                         (nc (+ c dc)))
+                                    (when (and (>= nr 0) (< nr m)
+                                               (>= nc 0) (< nc n)
+                                               (> (vector-ref (vector-ref matrix nr) nc)
+                                                  (vector-ref (vector-ref matrix r) c)))
+                                      (set! max-len (max max-len (add1 (dfs nr nc)))))))
+                                dirs)
+                      (vector-set! (vector-ref memo r) c max-len)
+                      max-len))))
+
+            (let ((overall-max 0))
+              (for* ((r (in-range m))
+                     (c (in-range n)))
+                (set! overall-max (max overall-max (dfs r c))))
+              overall-max)))))

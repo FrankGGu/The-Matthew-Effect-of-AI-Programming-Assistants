@@ -1,0 +1,20 @@
+(define (robot-sim commands obstacles)
+  (define (hash-obstacles obs)
+    (let ((h (make-hash)))
+      (for-each (lambda (o) (hash-set! h o #t)) obs)
+      h))
+  (let loop ((x 0) (y 0) (dx 0) (dy 1) (max-dist 0) (obstacles-hash (hash-obstacles obstacles)) (cmds commands))
+    (if (null? cmds)
+        max-dist
+        (let ((cmd (car cmds)))
+          (cond
+            ((= cmd -2) (loop x y (- dy) dx max-dist obstacles-hash (cdr cmds)))
+            ((= cmd -1) (loop x y dy (- dx) max-dist obstacles-hash (cdr cmds))
+            (else
+             (let move ((i 0) (nx x) (ny y))
+               (if (>= i cmd)
+                   (loop nx ny dx dy (max max-dist (+ (* nx nx) (* ny ny))) obstacles-hash (cdr cmds))
+                   (let ((new-x (+ nx dx)) (new-y (+ ny dy)))
+                     (if (hash-ref obstacles-hash (cons new-x new-y) #f)
+                         (loop nx ny dx dy (max max-dist (+ (* nx nx) (* ny ny))) obstacles-hash (cdr cmds))
+                         (move (+ i 1) new-x new-y))))))))))

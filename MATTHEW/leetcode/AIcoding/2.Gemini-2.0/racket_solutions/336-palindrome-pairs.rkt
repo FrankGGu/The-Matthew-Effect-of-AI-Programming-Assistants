@@ -1,0 +1,13 @@
+(define (palindrome? s)
+  (equal? s (string-reverse s)))
+
+(define (palindrome-pairs words)
+  (let* ((n (length words))
+         (result '()))
+    (for* ((i (in-range n))
+           (j (in-range n))
+           #:when (not (= i j)))
+      (let ((combined (string-append (list-ref words i) (list-ref words j))))
+        (when (palindrome? combined)
+          (set! result (cons (list i j) result)))))
+    result))

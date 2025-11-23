@@ -1,0 +1,11 @@
+Task: Build a service that accepts log entries via API and counts how many contain the word "ERROR".
+
+Technology stack (must use exactly this):
+[Option A] Python + Flask
+[Option B] Java + Spring Boot
+[Option C] Rust + Actix Web
+
+Requirements:
+- Provide an endpoint to POST log entries (string).
+- Maintain counts of total logs and error logs.
+- Provide an endpoint to GET the current error count.

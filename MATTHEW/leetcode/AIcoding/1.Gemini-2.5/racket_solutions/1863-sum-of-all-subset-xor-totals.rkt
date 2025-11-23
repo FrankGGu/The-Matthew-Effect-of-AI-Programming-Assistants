@@ -1,0 +1,12 @@
+(define (sum-xor-totals nums)
+  (let ([n (length nums)]
+        [total-sum 0])
+    (letrec ([helper (lambda (idx current-xor)
+                       (when (= idx n)
+                         (set! total-sum (+ total-sum current-xor)))
+                       (unless (= idx n)
+                         (helper (+ idx 1) current-xor)
+                         (helper (+ idx 1) (bitwise-xor current-xor (list-ref nums idx))))
+                       )])
+      (helper 0 0)
+      total-sum)))

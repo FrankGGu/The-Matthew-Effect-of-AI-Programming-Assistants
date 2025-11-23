@@ -1,0 +1,37 @@
+{
+  "id": "LCR 130",
+  "title": "衣橱整理",
+  "titleSlug": "ji-qi-ren-de-yun-dong-fan-wei-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int wardrobeFinishing(int m, int n, int cnt) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int wardrobeFinishing(int m, int n, int cnt) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def wardrobeFinishing(self, m, n, cnt):\n        \"\"\"\n        :type m: int\n        :type n: int\n        :type cnt: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def wardrobeFinishing(self, m: int, n: int, cnt: int) -> int:\n        ",
+    "c": "int wardrobeFinishing(int m, int n, int cnt) {\n    \n}",
+    "csharp": "public class Solution {\n    public int WardrobeFinishing(int m, int n, int cnt) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} m\n * @param {number} n\n * @param {number} cnt\n * @return {number}\n */\nvar wardrobeFinishing = function(m, n, cnt) {\n    \n};",
+    "typescript": "function wardrobeFinishing(m: number, n: number, cnt: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $m\n     * @param Integer $n\n     * @param Integer $cnt\n     * @return Integer\n     */\n    function wardrobeFinishing($m, $n, $cnt) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func wardrobeFinishing(_ m: Int, _ n: Int, _ cnt: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun wardrobeFinishing(m: Int, n: Int, cnt: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int wardrobeFinishing(int m, int n, int cnt) {\n    \n  }\n}",
+    "golang": "func wardrobeFinishing(m int, n int, cnt int) int {\n    \n}",
+    "ruby": "# @param {Integer} m\n# @param {Integer} n\n# @param {Integer} cnt\n# @return {Integer}\ndef wardrobe_finishing(m, n, cnt)\n    \nend",
+    "scala": "object Solution {\n    def wardrobeFinishing(m: Int, n: Int, cnt: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn wardrobe_finishing(m: i32, n: i32, cnt: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (wardrobe-finishing m n cnt)\n  (-> exact-integer? exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec wardrobe_finishing(M :: integer(), N :: integer(), Cnt :: integer()) -> integer().\nwardrobe_finishing(M, N, Cnt) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec wardrobe_finishing(m :: integer, n :: integer, cnt :: integer) :: integer\n  def wardrobe_finishing(m, n, cnt) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func wardrobeFinishing(m: Int64, n: Int64, cnt: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "4\n7\n5",
+  "hints": []
+}

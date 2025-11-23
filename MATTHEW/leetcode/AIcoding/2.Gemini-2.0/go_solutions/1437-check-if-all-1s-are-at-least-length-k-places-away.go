@@ -1,0 +1,12 @@
+func kLengthApart(nums []int, k int) bool {
+	last := -1
+	for i, num := range nums {
+		if num == 1 {
+			if last != -1 && i-last <= k {
+				return false
+			}
+			last = i
+		}
+	}
+	return true
+}

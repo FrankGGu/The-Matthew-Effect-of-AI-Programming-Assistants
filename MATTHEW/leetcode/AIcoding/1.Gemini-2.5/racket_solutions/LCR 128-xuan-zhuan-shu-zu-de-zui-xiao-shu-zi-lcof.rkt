@@ -1,0 +1,8 @@
+(define (remove-duplicates s)
+  (let loop ((idx 0) (stack '()))
+    (if (= idx (string-length s))
+        (list->string (reverse stack))
+        (let ((current-char (string-ref s idx)))
+          (if (and (not (null? stack)) (char=? current-char (car stack)))
+              (loop (+ idx 1) (cdr stack))
+              (loop (+ idx 1) (cons current-char stack)))))))

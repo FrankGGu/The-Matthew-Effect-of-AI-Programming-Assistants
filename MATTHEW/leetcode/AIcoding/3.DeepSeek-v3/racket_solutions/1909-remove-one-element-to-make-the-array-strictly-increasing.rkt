@@ -1,0 +1,8 @@
+(define/contract (can-be-increasing nums)
+  (-> (listof exact-integer?) boolean?)
+  (define (strictly-increasing? lst)
+    (for/and ([i (in-range 1 (length lst))])
+      (< (list-ref lst (sub1 i)) (list-ref lst i))))
+  (or (strictly-increasing? nums)
+      (for/or ([i (in-range (length nums))])
+        (strictly-increasing? (append (take nums i) (drop nums (add1 i)))))))

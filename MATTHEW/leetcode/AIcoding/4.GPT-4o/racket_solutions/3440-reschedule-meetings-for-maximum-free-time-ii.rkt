@@ -1,0 +1,25 @@
+(define (maxFreeTime meetings)
+  (define (merge-intervals intervals)
+    (sort intervals (lambda (a b) (< (car a) (car b))))
+    (let loop ((merged '()) (current (car intervals)) (rest (cdr intervals)))
+      (if (null? rest)
+          (append merged (list current))
+          (let ((next (car rest)))
+            (if (<= (cadr current) (car next))
+                (loop (append merged (list current)) next (cdr rest))
+                (loop merged (list (car current) (max (cadr current) (cadr next))) (cdr rest)))))))
+
+  (define merged-meetings (merge-intervals meetings))
+  (define free-time '())
+
+  (define (calculate-free-time)
+    (for ((i (in-range (sub1 (length merged-meetings)))))
+      (let ((end1 (cadr (list-ref merged-meetings i)))
+            (start2 (car (list-ref merged-meetings (+ i 1)))))
+        (when (> start2 end1)
+          (set! free-time (append free-time (list (list end1 start2))))))))
+
+  (calculate-free-time)
+  free-time)
+
+(maxFreeTime '((0 30) (5 10) (15 20)))

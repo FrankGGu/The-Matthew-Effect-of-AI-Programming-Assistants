@@ -1,0 +1,20 @@
+-spec minimize_the_manhattan_distance(Points :: [[integer()]]) -> float().
+minimize_the_manhattan_distance(Points) ->
+    Xs = lists:map(fun([X, _Y]) -> X end, Points),
+    Ys = lists:map(fun([_X, Y]) -> Y end, Points),
+    XSorted = lists:sort(Xs),
+    YSorted = lists:sort(Ys),
+    N = length(Points),
+    X1 = lists:nth(1, XSorted),
+    X2 = lists:nth(2, XSorted),
+    Xn = lists:nth(N, XSorted),
+    Xn1 = lists:nth(N - 1, XSorted),
+    Y1 = lists:nth(1, YSorted),
+    Y2 = lists:nth(2, YSorted),
+    Yn = lists:nth(N, YSorted),
+    Yn1 = lists:nth(N - 1, YSorted),
+    XCandidates = [Xn - X1, Xn - X2, Xn1 - X1],
+    YCandidates = [Yn - Y1, Yn - Y2, Yn1 - Y1],
+    MaxX = lists:max(XCandidates),
+    MaxY = lists:max(YCandidates),
+    MaxX + MaxY.

@@ -1,0 +1,11 @@
+(define/contract (rob nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (define (helper lst)
+    (let loop ([prev1 0] [prev2 0] [rest lst])
+      (if (null? rest)
+          prev1
+          (loop (max (+ (car rest) prev2) prev1) prev1 (cdr rest)))))
+  (if (= (length nums) 1)
+      (car nums)
+      (max (helper (take nums (- (length nums) 1)))
+                 (helper (cdr nums)))))

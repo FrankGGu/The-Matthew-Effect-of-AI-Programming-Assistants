@@ -1,0 +1,10 @@
+(define (maximum-odd-binary-number s)
+  (let* ((len (string-length s))
+         (ones-count (for/sum ((c (in-string s)))
+                       (if (char=? c #\1) 1 0))))
+    (let* ((zeros-count (- len ones-count))
+           (prefix-ones (- ones-count 1)))
+      (string-append
+       (make-string prefix-ones #\1)
+       (make-string zeros-count #\0)
+       "1"))))

@@ -1,0 +1,18 @@
+(define (min-xor-sum nums1 nums2)
+  (define n (length nums1))
+  (define m (length nums2))
+  (define dp (make-vector (* n m) #f))
+  (define (solve i j)
+    (if (>= i n)
+        0
+        (let ((key (+ (* i m) j)))
+          (if (vector-ref dp key)
+              (vector-ref dp key)
+              (let ((res (apply min (for/list ([k (in-range m)])
+                                     (if (= k j)
+                                         #inf.0
+                                         (+ (bitwise-xor (list-ref nums1 i) (list-ref nums2 k))
+                                            (solve (+ i 1) k)))))))
+                (vector-set! dp key res)
+                res)))))
+  (solve 0 0))

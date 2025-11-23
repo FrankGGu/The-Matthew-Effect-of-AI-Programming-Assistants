@@ -1,0 +1,7 @@
+(define (create-router)
+  (let ((routes (make-hash)))
+    (define (add-route path handler)
+      (hash-set! routes path handler))
+    (define (route path)
+      (hash-ref routes path #f))
+    (hash 'add-route add-route 'route route)))

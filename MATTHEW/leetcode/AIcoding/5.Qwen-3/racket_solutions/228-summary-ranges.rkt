@@ -1,0 +1,10 @@
+(define (summary-ranges nums)
+  (cond ((null? nums) '())
+        (else
+         (let loop ((nums nums) (start (car nums)) (result '()))
+           (if (null? nums)
+               (cons (if (= start (car (reverse result))) (car result) (list start (car (reverse result)))) result)
+               (let ((current (car nums)))
+                 (if (= current (+ 1 (car (reverse result))))
+                     (loop (cdr nums) start (append (reverse (cdr (reverse result))) (list current)))
+                     (loop (cdr nums) current (append result (list (if (= start (car (reverse result))) (car result) (list start (car (reverse result))))))))))))))

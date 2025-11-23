@@ -1,0 +1,13 @@
+(define (findFrequentTreeSum root)
+  (define sums (make-hash))
+  (define (subtree-sum node)
+    (if (null? node)
+        0
+        (let ((left-sum (subtree-sum (car node)))
+              (right-sum (subtree-sum (cdr node))))
+          (let ((total-sum (+ (car node) left-sum right-sum)))
+            (hash-update! sums total-sum add1 0)
+            total-sum))))
+  (subtree-sum root)
+  (let ((max-freq (apply max (hash-values sums))))
+    (filter (lambda (key) (= (hash-ref sums key) max-freq)) (hash-keys sums))))

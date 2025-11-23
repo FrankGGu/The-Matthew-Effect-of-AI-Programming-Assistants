@@ -1,0 +1,31 @@
+#lang racket
+
+(define (sort-matrix-by-diagonals matrix)
+  (define (get-diagonals m)
+    (define n (length m))
+    (define m-row (length (car m)))
+    (define result '())
+    (for ([i (in-range (+ n m-row))])
+      (define diag '())
+      (for ([k (in-range (min i (- n 1)) (max (- i (- m-row 1)) -1) -1)])
+        (set! diag (cons (list-ref (list-ref m k) (- i k)) diag)))
+      (set! result (cons diag result)))
+    (reverse result))
+
+  (define (sort-diagonal d)
+    (sort d <))
+
+  (define (fill-diagonals m diag-list)
+    (define n (length m))
+    (define m-row (length (car m)))
+    (define result (map (lambda (row) (map (lambda (x) 0) row)) m))
+    (for ([i (in-range (+ n m-row))])
+      (define diag (list-ref diag-list i))
+      (for ([k (in-range (min i (- n 1)) (max (- i (- m-row 1)) -1) -1)])
+        (list-set! (list-ref result k) (- i k) (car diag))
+        (set! diag (cdr diag))))
+    result)
+
+  (define diagonals (get-diagonals matrix))
+  (define sorted-diagonals (map sort-diagonal diagonals))
+  (fill-diagonals matrix sorted-diagonals))

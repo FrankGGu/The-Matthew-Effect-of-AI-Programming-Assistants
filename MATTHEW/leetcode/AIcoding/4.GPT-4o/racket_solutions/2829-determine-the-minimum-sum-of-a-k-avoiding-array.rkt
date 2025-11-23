@@ -1,0 +1,12 @@
+(define (minimumSum k n)
+  (define (avoid-k lst)
+    (if (null? lst) '()
+        (let loop ((x (car lst)) (xs (cdr lst)) (used '()))
+          (if (or (null? xs) (member (+ x k) used))
+              (cons x (avoid-k xs))
+              (loop (car xs) (cdr xs) (cons x used))))))
+  (define nums (build-list n (λ (i) (add1 i))))
+  (apply + (avoid-k nums)))
+
+(define (minimumSum k n)
+  (minimumSum k n))

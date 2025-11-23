@@ -1,0 +1,7 @@
+(define (minStartValue nums)
+  (define (helper sum min-val)
+    (if (null? nums)
+        (max 1 (- min-val))
+        (let ((next-sum (+ sum (car nums))))
+          (helper next-sum (min min-val next-sum)))))
+  (helper 0 +inf.0))

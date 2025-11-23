@@ -1,0 +1,11 @@
+(define (maxPoints cardPoints k)
+  (define n (length cardPoints))
+  (define total (apply + (take cardPoints k)))
+  (define max-sum total)
+  (for ([i (in-range 1 (add1 k))])
+    (define current-sum (+ total (cardPoints (- n i)) (- (cardPoints (- k i)))))
+    (set! max-sum (max max-sum current-sum)))
+  max-sum)
+
+(define (maxPointsWrapper cardPoints k)
+  (maxPoints cardPoints k))

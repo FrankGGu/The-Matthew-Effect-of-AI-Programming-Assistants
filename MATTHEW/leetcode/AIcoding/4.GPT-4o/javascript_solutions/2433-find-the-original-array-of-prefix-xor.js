@@ -1,0 +1,9 @@
+function findArray(pref) {
+    const n = pref.length;
+    const result = new Array(n);
+    result[0] = pref[0];
+    for (let i = 1; i < n; i++) {
+        result[i] = pref[i] ^ pref[i - 1];
+    }
+    return result;
+}

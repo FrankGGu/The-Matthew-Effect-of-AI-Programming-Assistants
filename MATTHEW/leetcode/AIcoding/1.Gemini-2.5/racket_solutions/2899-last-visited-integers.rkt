@@ -1,0 +1,16 @@
+(define (last-visited-integers words)
+  (let ((visited-numbers '())
+        (temp-result '())
+        (prev-count 0))
+    (for-each (lambda (word)
+                (if (string=? word "prev")
+                    (begin
+                      (set! prev-count (+ prev-count 1))
+                      (if (> prev-count (length visited-numbers))
+                          (set! temp-result (cons -1 temp-result))
+                          (set! temp-result (cons (list-ref visited-numbers (- prev-count 1)) temp-result))))
+                    (begin
+                      (set! visited-numbers (cons (string->number word) visited-numbers))
+                      (set! prev-count 0))))
+              words)
+    (reverse temp-result)))

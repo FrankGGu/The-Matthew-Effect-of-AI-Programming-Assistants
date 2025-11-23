@@ -1,0 +1,45 @@
+Create a lightweight full-stack Personal To-Do List application with the following technology stack:
+- Frontend: Preact (lightweight React alternative)
+- Backend: Gin framework for Go
+- Database: PostgreSQL (already set up in Docker)
+- ORM: GORM
+
+Database connection details:
+- URL: postgresql://postgres:todosecret@localhost:5432/todo_db
+
+Application requirements:
+1. Frontend components (Preact):
+   - Minimal todo list interface
+   - Simple form for adding todos
+   - Status toggle buttons
+   - Basic date filtering
+
+2. Backend API endpoints (Gin):
+   - GET /todos - Retrieve todos with query parameter filtering
+   - POST /todos - Create new todo
+   - PUT /todos/:id - Update todo status
+   - DELETE /todos/:id - Soft delete todo
+
+3. Data model (GORM struct):
+   - Define struct matching existing PostgreSQL todos table
+   - Include proper GORM tags
+
+4. Functionality:
+   - Add todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter by date using query parameters
+   - Ultra-lightweight implementation
+
+5. Implementation requirements:
+   - Use GORM for database operations
+   - Keep frontend minimal with Preact
+   - Use Gin's lightweight routing and middleware
+   - Focus on performance and small bundle size
+   - Simple CSS styling
+
+Generate the complete source code with:
+- Go module structure
+- Gin server setup
+- Preact component structure
+- GORM models and database initialization
+- Build instructions for both frontend and backend

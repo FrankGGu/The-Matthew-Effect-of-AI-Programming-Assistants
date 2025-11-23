@@ -1,0 +1,21 @@
+(define (minimum-recolors blocks k)
+  (let loop ([i 0]
+             [min-recolors (string-length blocks)]
+             [count-w 0])
+    (if (>= i (string-length blocks))
+        (if (> min-recolors (string-length blocks)) 0 min-recolors)
+        (let ([current-char (string-ref blocks i)])
+          (if (char=? current-char #\W)
+              (set! count-w (add1 count-w))
+              (void))
+          (if (>= i (sub1 k))
+              (let ([start (- i (sub1 k))])
+                (if (>= start 0)
+                    (begin
+                      (if (char=? (string-ref blocks start) #\W)
+                          (set! count-w (sub1 count-w))
+                          (void))
+                      (set! min-recolors (min min-recolors count-w)))
+                    (void)))
+              (void))
+          (loop (add1 i) min-recolors count-w)))))

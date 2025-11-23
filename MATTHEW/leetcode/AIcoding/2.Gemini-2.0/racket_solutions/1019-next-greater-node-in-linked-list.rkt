@@ -1,0 +1,36 @@
+(define (next-larger-nodes head)
+  (define (list->vector lst)
+    (vector (length lst) (apply vector lst)))
+
+  (define (vector->list vec)
+    (define n (vector-length vec))
+    (let loop ((i 0) (acc '()))
+      (if (= i n)
+          (reverse acc)
+          (loop (+ i 1) (cons (vector-ref vec i) acc)))))
+
+  (define (solve lst)
+    (define n (length lst))
+    (define result (make-vector n 0))
+    (define stack '())
+    (for/list ((i (in-range n)))
+      (let loop ((stack stack))
+        (if (null? stack)
+            (begin
+              (set! stack (cons i stack))
+              (vector-ref result i))
+            (let ((top (car stack)))
+              (if (> (list-ref lst i) (list-ref lst top))
+                  (begin
+                    (vector-set! result top (list-ref lst i))
+                    (loop (cdr stack)))
+                  (begin
+                    (set! stack (cons i stack))
+                    (vector-ref result i))))))
+    (vector->list result))
+
+  (define lst (let loop ((node head) (acc '()))
+                  (if (null? node)
+                      (reverse acc)
+                      (loop (cdr node) (cons (car node) acc)))))
+  (solve lst))

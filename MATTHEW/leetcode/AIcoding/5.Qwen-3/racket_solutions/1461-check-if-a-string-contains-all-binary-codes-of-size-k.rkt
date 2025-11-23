@@ -1,0 +1,7 @@
+(define (has-all-codes-to-encode s k)
+  (define n (string-length s))
+  (define required (expt 2 k))
+  (define seen (make-hash))
+  (for ([i (in-range (- n k +1))])
+    (hash-set! seen (substring s i (+ i k)) #t))
+  (= (hash-count seen) required))

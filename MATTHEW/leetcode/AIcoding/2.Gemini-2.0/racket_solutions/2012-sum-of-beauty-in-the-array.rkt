@@ -1,0 +1,22 @@
+(define (sum-of-beauty nums)
+  (let* ((n (length nums))
+         (left-max (make-vector n (car nums)))
+         (right-min (make-vector n (car nums))))
+    (for/fold ((max-val (car nums)))
+              ((i (in-range 1 n)))
+      (let ((current (list-ref nums i)))
+        (vector-set! left-max i max-val)
+        (max max-val current)))
+    (for/fold ((min-val (list-ref nums (- n 1))))
+              ((i (in-range (- n 2) -1 -1)))
+      (let ((current (list-ref nums i)))
+        (vector-set! right-min i min-val)
+        (min min-val current)))
+    (for/sum ((i (in-range 1 (- n 1))))
+      (let ((current (list-ref nums i))
+            (left (vector-ref left-max i))
+            (right (vector-ref right-min i)))
+        (cond
+          [(and (> current left) (< current right)) 2]
+          [(> current (vector-ref left-max i)) 1]
+          [else 0])))))

@@ -1,0 +1,18 @@
+(define/contract (maximum-moves board)
+  (-> (listof (listof char?)) exact-integer?)
+  (let* ([m (length board)]
+         [n (if (zero? m) 0 (length (car board)))]
+         [dp (make-vector m 1)])
+    (for ([j (in-range 1 n)])
+      (let ([new-dp (make-vector m 0)])
+        (for ([i (in-range m)])
+          (for ([di (in-list '(-1 0 1))])
+            (let ([prev-i (+ i di)])
+              (when (and (>= prev-i 0) (< prev-i m))
+                (when (char=? (list-ref (list-ref board prev-i) (- j 1)) #\X)
+                  (vector-set! new-dp i (max (vector-ref new-dp i) 
+                                           (vector-ref dp prev-i)))))))
+        (set! dp new-dp))
+      (when (zero? (apply max (vector->list dp)))
+        (return (- j 1))))
+    (if (zero? n) 0 (- n 1))))

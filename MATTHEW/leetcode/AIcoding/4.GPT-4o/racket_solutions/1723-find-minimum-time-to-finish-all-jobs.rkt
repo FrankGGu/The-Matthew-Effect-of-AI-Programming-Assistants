@@ -1,0 +1,22 @@
+(define (minimumTimeRequired jobs k)
+  (define (canFinishInTime time)
+    (define (helper idx workers)
+      (if (>= idx (length jobs))
+          (>= (apply max workers) time)
+          (for/or ([i (in-range k)])
+            (let ([new-workers (vector-copy workers)])
+              (vector-set! new-workers i (+ (vector-ref new-workers i) (list-ref jobs idx)))
+              (if (<= (vector-ref new-workers i) time)
+                  (helper (+ idx 1) new-workers)
+                  #f))))
+    (helper 0 (make-vector k 0)))
+
+  (define (binarySearch left right)
+    (if (= left right)
+        left
+        (let ([mid (quotient (+ left right) 2)])
+          (if (canFinishInTime mid)
+              (binarySearch left mid)
+              (binarySearch (+ mid 1) right)))))
+
+  (binarySearch (apply max jobs) (apply + jobs)))

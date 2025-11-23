@@ -1,0 +1,12 @@
+(define (max-unique-splits s)
+  (let loop ([i 0] [seen (set)] [count 0])
+    (if (>= i (string-length s))
+        count
+        (let ([max-count count])
+          (for ([j (in-range i (string-length s))])
+            (let ([sub (substring s i (+ j 1))])
+              (unless (set-member? seen sub)
+                (let ([new-count (loop (+ j 1) (set-add seen sub) (+ count 1))])
+                  (when (> new-count max-count)
+                    (set! max-count new-count))))))
+          max-count))))

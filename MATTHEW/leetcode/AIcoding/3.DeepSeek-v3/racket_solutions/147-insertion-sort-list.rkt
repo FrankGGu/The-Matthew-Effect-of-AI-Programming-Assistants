@@ -1,0 +1,22 @@
+(define/contract (insertion-sort-list head)
+  (-> (or/c list-node? #f) (or/c list-node? #f))
+  (if (or (not head) (not (list-node-next head)))
+      head
+      (let ([dummy (list-node 0)])
+        (let loop ([prev dummy] [curr head])
+          (let ([next (list-node-next curr)])
+            (if (or (not next) (> (list-node-val curr) (list-node-val next)))
+                (begin
+                  (set-list-node-next! prev (list-node-next curr))
+                  (let search ([prev-search dummy])
+                    (if (and (list-node-next prev-search)
+                             (< (list-node-val (list-node-next prev-search))
+                                (list-node-val next)))
+                        (search (list-node-next prev-search))
+                        (begin
+                          (set-list-node-next! next (list-node-next prev-search))
+                          (set-list-node-next! prev-search next)
+                          (if (list-node-next curr)
+                              (loop curr (list-node-next curr))
+                              (list-node-next dummy))))))
+                (loop curr next)))))))

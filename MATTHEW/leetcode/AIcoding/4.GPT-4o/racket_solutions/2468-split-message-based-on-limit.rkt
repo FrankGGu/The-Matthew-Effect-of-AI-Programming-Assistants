@@ -1,0 +1,11 @@
+(define (split-message message limit)
+  (define (helper msg limit idx)
+    (if (string=? msg "")
+        '()
+        (let* ([remaining (- limit (string-length (number->string idx)) 4)] ; 4 for " [n]"
+               [split (substring msg 0 (min (string-length msg) remaining))])
+          (if (string=? split "")
+              '()
+              (cons (string-append split " [" (number->string idx) "]")
+                    (helper (substring msg (string-length split)) limit (+ idx 1)))))))
+  (helper message limit 1))

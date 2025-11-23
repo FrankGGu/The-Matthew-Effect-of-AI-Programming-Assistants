@@ -1,0 +1,6 @@
+(define (buy-choco prices money)
+  (let* ((sorted-prices (sort prices <))
+         (min-cost (+ (car sorted-prices) (cadr sorted-prices))))
+    (if (>= money min-cost)
+        (- money min-cost)
+        money)))

@@ -1,0 +1,18 @@
+(define (card-flipping-game fronts backs)
+  (let ([forbidden (set)])
+    (for ([f fronts] [b backs])
+      (when (equal? f b)
+        (set-add! forbidden f)))
+    (let ([min-val (foldl min #inf.0 (append fronts backs))])
+      (for ([f fronts])
+        (when (set-member? forbidden f)
+          (set-add! forbidden f)))
+      (for ([b backs])
+        (when (set-member? forbidden b)
+          (set-add! forbidden b)))
+      (let ([result (foldl min #inf.0
+                           (append (filter (lambda (x) (not (set-member? forbidden x))) fronts)
+                                   (filter (lambda (x) (not (set-member? forbidden x))) backs)))])
+        (if (equal? result #inf.0)
+            0
+            result)))))

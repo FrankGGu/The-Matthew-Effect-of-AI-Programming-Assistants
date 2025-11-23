@@ -1,0 +1,15 @@
+(define (maximum-sum indices nums)
+  (define n (vector-length nums))
+  (define sums (make-vector n 0))
+
+  (for ([i (in-range n)])
+    (define sum 0)
+    (define j (+ i 1))
+    (define k 1)
+    (while (<= (* k k) j)
+      (when (= (* k k) j)
+        (set! sum (+ sum (vector-ref nums i))))
+      (set! k (+ k 1)))
+    (vector-set! sums i sum))
+
+  (apply max (vector->list sums)))

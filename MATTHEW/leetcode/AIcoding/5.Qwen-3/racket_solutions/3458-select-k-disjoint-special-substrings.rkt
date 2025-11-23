@@ -1,0 +1,31 @@
+#lang racket
+
+(define (max-k-disjoint-special-substrings s k)
+  (define n (string-length s))
+  (define (is-special? s)
+    (let ([freq (make-hash)])
+      (for ([c s])
+        (hash-set! freq c (+ (hash-ref freq c 0) 1)))
+      (andmap (lambda (v) (= v 1)) (hash-values freq))))
+  (define (get-specials s)
+    (for/fold ([acc '()]) ([i (in-range n)])
+      (for/fold ([acc acc]) ([j (in-range i n)])
+        (if (is-special? (substring s i (add1 j)))
+            (cons (substring s i (add1 j)) acc)
+            acc))))
+  (define specials (get-specials s))
+  (define (overlap? a b)
+    (let ([a-start (string-index-of s a)]
+          [a-end (+ (string-index-of s a) (string-length a))]
+          [b-start (string-index-of s b)]
+          [b-end (+ (string-index-of s b) (string-length b))])
+      (or (<= a-start b-start a-end)
+          (<= b-start a-start b-end))))
+  (define (dfs idx selected)
+    (if (>= idx (length specials))
+        (if (= (length selected) k) (apply + (map string-length selected)) 0)
+        (let ([current (list-ref specials idx)])
+          (if (andmap (lambda (s) (not (overlap? current s))) selected)
+              (max (dfs (add1 idx) selected) (dfs (add1 idx) (append selected (list current))))
+              (dfs (add1 idx) selected)))))
+  (dfs 0 '()))

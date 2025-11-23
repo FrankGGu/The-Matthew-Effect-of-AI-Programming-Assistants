@@ -1,0 +1,1 @@
+由于题目 "Maximum Containers on a Ship" 并不是 LeetCode 上的标准题目，我无法提供确切的解决方案代码。如果你能提供更详细的题目描述或具体要求（如输入输出示例、约束条件等），我可以帮助你编写相应的 JavaScript 代码。

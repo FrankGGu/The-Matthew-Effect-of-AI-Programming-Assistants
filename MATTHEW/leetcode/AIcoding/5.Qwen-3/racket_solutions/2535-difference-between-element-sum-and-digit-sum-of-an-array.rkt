@@ -1,0 +1,5 @@
+(define/contract (difference-between-element-and-digit-sum nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let* ((element-sum (apply + nums))
+         (digit-sum (apply + (map (lambda (n) (apply + (map (lambda (c) (- (char->integer c) 48)) (string->list (number->string n))))) nums))))
+    (- element-sum digit-sum)))

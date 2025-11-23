@@ -1,0 +1,34 @@
+{
+  "id": "LCR 088",
+  "title": "使用最小花费爬楼梯",
+  "titleSlug": "GzCJIP",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minCostClimbingStairs(vector<int>& cost) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minCostClimbingStairs(int[] cost) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minCostClimbingStairs(self, cost):\n        \"\"\"\n        :type cost: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minCostClimbingStairs(self, cost: List[int]) -> int:",
+    "c": "\n\nint minCostClimbingStairs(int* cost, int costSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MinCostClimbingStairs(int[] cost) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} cost\n * @return {number}\n */\nvar minCostClimbingStairs = function(cost) {\n\n};",
+    "typescript": "function minCostClimbingStairs(cost: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $cost\n     * @return Integer\n     */\n    function minCostClimbingStairs($cost) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minCostClimbingStairs(_ cost: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minCostClimbingStairs(cost: IntArray): Int {\n\n    }\n}",
+    "golang": "func minCostClimbingStairs(cost []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} cost\n# @return {Integer}\ndef min_cost_climbing_stairs(cost)\n\nend",
+    "scala": "object Solution {\n    def minCostClimbingStairs(cost: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (min-cost-climbing-stairs cost)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec min_cost_climbing_stairs(Cost :: [integer()]) -> integer().\nmin_cost_climbing_stairs(Cost) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_cost_climbing_stairs(cost :: [integer]) :: integer\n  def min_cost_climbing_stairs(cost) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[10,15,20]",
+  "hints": []
+}

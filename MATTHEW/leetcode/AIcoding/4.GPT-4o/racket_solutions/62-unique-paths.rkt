@@ -1,0 +1,6 @@
+(define (uniquePaths m n)
+  (define (factorial x)
+    (if (= x 0) 1 (* x (factorial (- x 1)))))
+  (define (binomial-coefficient n k)
+    (/ (factorial n) (* (factorial k) (factorial (- n k)))))
+  (binomial-coefficient (- (+ m n) 2) (- m 1)))

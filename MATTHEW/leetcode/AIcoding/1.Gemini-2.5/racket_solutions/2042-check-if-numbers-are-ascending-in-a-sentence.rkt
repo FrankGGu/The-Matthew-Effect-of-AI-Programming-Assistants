@@ -1,0 +1,15 @@
+(define (are-numbers-ascending s)
+  (let loop ((words (string-split s " "))
+             (prev-num #f))
+    (cond
+      ((empty? words) #t)
+      (else
+       (let* ((word (car words))
+              (current-val (string->number word)))
+         (if (and (number? current-val) (integer? current-val))
+             (if (and prev-num (> current-val prev-num))
+                 (loop (cdr words) current-val)
+                 (if (not prev-num)
+                     (loop (cdr words) current-val)
+                     #f))
+             (loop (cdr words) prev-num)))))))

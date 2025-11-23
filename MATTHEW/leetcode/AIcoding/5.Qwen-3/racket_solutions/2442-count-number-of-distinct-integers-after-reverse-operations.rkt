@@ -1,0 +1,6 @@
+(define (count-distinct-integers nums)
+  (define (reverse-num n)
+    (string->number (list->string (reverse (string->list (number->string n))))))
+  (define reversed (map reverse-num nums))
+  (define all (append nums reversed))
+  (length (remove-duplicates all)))

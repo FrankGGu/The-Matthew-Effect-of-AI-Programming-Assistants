@@ -1,0 +1,12 @@
+(define (odd-values n m indices)
+  (define grid (make-vector (* n m) 0))
+  (for-each
+   (lambda (idx)
+     (let ((row (car idx))
+           (col (cadr idx)))
+       (for ([i (in-range n)])
+         (vector-set! grid (+ (* i m) col) (+ (vector-ref grid (+ (* i m) col)) 1)))
+       (for ([j (in-range m)])
+         (vector-set! grid (+ (* row m) j) (+ (vector-ref grid (+ (* row m) j)) 1)))))
+   indices)
+  (for/sum ([val (in-vector grid)] #:when (odd? val)) 1))

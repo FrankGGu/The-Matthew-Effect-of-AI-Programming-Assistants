@@ -1,0 +1,7 @@
+(define/contract (fraction nums)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (let loop ([nums (reverse nums)] [a 1] [b 0])
+    (if (null? nums)
+        (list a b)
+        (let ([x (car nums)])
+          (loop (cdr nums) b (+ a (* b x)))))))

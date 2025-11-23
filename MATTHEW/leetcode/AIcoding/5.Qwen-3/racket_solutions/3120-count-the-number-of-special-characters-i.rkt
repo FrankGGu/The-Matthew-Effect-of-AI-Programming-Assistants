@@ -1,0 +1,7 @@
+(define (number-of-special-characters word)
+  (define cnt (make-hash))
+  (for-each (lambda (c) (hash-update! cnt c add1)) (string->list word))
+  (define (is-special? c)
+    (and (char-alphabetic? c)
+         (>= (hash-ref cnt (char-downcase c) 0) 2)))
+  (length (filter is-special? (string->list word))))

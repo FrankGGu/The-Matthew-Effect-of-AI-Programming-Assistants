@@ -1,0 +1,39 @@
+{
+  "id": "810",
+  "title": "Chalkboard XOR Game",
+  "titleSlug": "chalkboard-xor-game",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Brainteaser",
+    "Array",
+    "Math",
+    "Game Theory"
+  ],
+  "content": "<p>You are given an array of integers <code>nums</code> represents the numbers written on a chalkboard.</p>\n\n<p>Alice and Bob take turns erasing exactly one number from the chalkboard, with Alice starting first. If erasing a number causes the bitwise XOR of all the elements of the chalkboard to become <code>0</code>, then that player loses. The bitwise XOR of one element is that element itself, and the bitwise XOR of no elements is <code>0</code>.</p>\n\n<p>Also, if any player starts their turn with the bitwise XOR of all the elements of the chalkboard equal to <code>0</code>, then that player wins.</p>\n\n<p>Return <code>true</code> <em>if and only if Alice wins the game, assuming both players play optimally</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,1,2]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> \nAlice has two choices: erase 1 or erase 2. \nIf she erases 1, the nums array becomes [1, 2]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 2 = 3. Now Bob can remove any element he wants, because Alice will be the one to erase the last element and she will lose. \nIf Alice erases 2 first, now nums become [1, 1]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 1 = 0. Alice will lose.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,1]\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3]\n<strong>Output:</strong> true\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= nums[i] &lt; 2<sup>16</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool xorGame(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean xorGame(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def xorGame(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def xorGame(self, nums: List[int]) -> bool:\n        ",
+    "c": "bool xorGame(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool XorGame(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {boolean}\n */\nvar xorGame = function(nums) {\n    \n};",
+    "typescript": "function xorGame(nums: number[]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Boolean\n     */\n    function xorGame($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func xorGame(_ nums: [Int]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun xorGame(nums: IntArray): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool xorGame(List<int> nums) {\n    \n  }\n}",
+    "golang": "func xorGame(nums []int) bool {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Boolean}\ndef xor_game(nums)\n    \nend",
+    "scala": "object Solution {\n    def xorGame(nums: Array[Int]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn xor_game(nums: Vec<i32>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (xor-game nums)\n  (-> (listof exact-integer?) boolean?)\n  )",
+    "erlang": "-spec xor_game(Nums :: [integer()]) -> boolean().\nxor_game(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec xor_game(nums :: [integer]) :: boolean\n  def xor_game(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func xorGame(nums: Array<Int64>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,1,2]\n[0,1]\n[1,2,3]",
+  "hints": []
+}

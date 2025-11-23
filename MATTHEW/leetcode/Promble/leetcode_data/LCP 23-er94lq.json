@@ -1,0 +1,31 @@
+{
+  "id": "LCP 23",
+  "title": "魔术排列",
+  "titleSlug": "er94lq",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Queue",
+    "Array",
+    "Simulation"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool isMagic(vector<int>& target) {\n\n    }\n};",
+    "java": "class Solution {\n    public boolean isMagic(int[] target) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def isMagic(self, target):\n        \"\"\"\n        :type target: List[int]\n        :rtype: bool\n        \"\"\"",
+    "python3": "class Solution:\n    def isMagic(self, target: List[int]) -> bool:",
+    "c": "\n\nbool isMagic(int* target, int targetSize){\n\n}",
+    "csharp": "public class Solution {\n    public bool IsMagic(int[] target) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} target\n * @return {boolean}\n */\nvar isMagic = function(target) {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $target\n     * @return Boolean\n     */\n    function isMagic($target) {\n\n    }\n}",
+    "swift": "class Solution {\n    func isMagic(_ target: [Int]) -> Bool {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun isMagic(target: IntArray): Boolean {\n\n    }\n}",
+    "golang": "func isMagic(target []int) bool {\n\n}",
+    "ruby": "# @param {Integer[]} target\n# @return {Boolean}\ndef is_magic(target)\n\nend",
+    "scala": "object Solution {\n    def isMagic(target: Array[Int]): Boolean = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn is_magic(target: Vec<i32>) -> bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,4,3,1,5]\n[5,4,3,2,1]",
+  "hints": []
+}

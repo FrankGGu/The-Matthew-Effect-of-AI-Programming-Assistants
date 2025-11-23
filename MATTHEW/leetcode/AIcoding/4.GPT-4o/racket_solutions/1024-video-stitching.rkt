@@ -1,0 +1,22 @@
+(define (videoStitching clips time)
+  (define sorted-clips (sort clips (lambda (a b) (if (= (car a) (car b)) (> (cadr a) (cadr b)) (< (car a) (car b))))))
+  (define (helper clips time start end count)
+    (cond
+      ((>= start time) count)
+      ((null? clips) -1)
+      (else
+        (let* ((first-clip (car clips))
+               (first-start (car first-clip))
+               (first-end (cadr first-clip)))
+          (if (and (<= first-start start) (> first-end end))
+              (helper (cdr clips) time end count)
+              (if (<= first-start start)
+                  (let loop ((next-clips (cdr clips)) (new-end (max end first-end)) (new-count (+ count 1)))
+                    (let ((result (helper next-clips time new-end new-count)))
+                      (if (>= result 0) result (loop (cdr next-clips) new-end new-count))))
+                  (helper (cdr clips) time start end count)))))))
+  (let ((result (helper sorted-clips time 0 0 0)))
+    (if (>= result 0) result -1)))
+
+(define (videoStitching-main clips time)
+  (videoStitching clips time))

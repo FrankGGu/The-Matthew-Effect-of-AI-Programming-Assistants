@@ -1,0 +1,20 @@
+(define (count-unique-characters-of-all-substrings s)
+  (define n (string-length s))
+  (define (calculate-contrib char-index)
+    (let* ([left 0] [right 0]
+           [char (string-ref s char-index)])
+      (let loop-left ([i (- char-index 1)])
+        (if (or (< i 0) (char=? (string-ref s i) char))
+            (set! left (- char-index i 1))
+            (loop-left (- i 1))))
+      (let loop-right ([i (+ char-index 1)])
+        (if (or (>= i n) (char=? (string-ref s i) char))
+            (set! right (- i char-index 1))
+            (loop-right (+ i 1))))
+      (* left right)))
+
+  (let loop ([i 0] [total 0])
+    (if (= i n)
+        total
+        (loop (+ i 1) (+ total (calculate-contrib i)))))
+)

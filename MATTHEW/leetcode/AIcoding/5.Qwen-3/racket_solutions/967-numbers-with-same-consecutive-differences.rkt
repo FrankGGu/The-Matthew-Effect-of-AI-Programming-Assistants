@@ -1,0 +1,18 @@
+(define (nums-with-same-consecutive-differences n k)
+  (define (dfs num last-digit)
+    (if (= (string-length (number->string num)) n)
+        (list num)
+        (append
+         (if (and (> k 0) (< (+ last-digit k) 10))
+             (dfs (+ (* num 10) (+ last-digit k)) (+ last-digit k))
+             '())
+         (if (and (> k 0) (> (- last-digit k) -1))
+             (dfs (+ (* num 10) (- last-digit k)) (- last-digit k))
+             '()))))
+  (append
+   (if (> k 0)
+       (map (lambda (i) (dfs i i)) (range 1 10))
+       '())
+   (if (= k 0)
+       (map (lambda (i) (make-list n i)) (range 1 10))
+       '())))

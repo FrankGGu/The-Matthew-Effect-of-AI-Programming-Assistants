@@ -1,0 +1,27 @@
+(define (maxMoves grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define dp (make-vector rows (make-vector cols 0)))
+
+  (define (dfs x y)
+    (if (vector-ref dp x y) 
+        (vector-ref dp x y)
+        (begin
+          (define max-move 0)
+          (for ([dx '(1 0 -1 0 0 1 0 -1)])
+            (define nx (+ x dx))
+            (define ny (+ y dy))
+            (when (and (>= nx 0) (< nx rows) (>= ny 0) (< ny cols) 
+                       (> (vector-ref (vector-ref grid x) y) (vector-ref (vector-ref grid nx) ny)))
+              (set! max-move (max max-move (dfs nx ny))))
+          (vector-set! dp x y (+ max-move 1))
+          (vector-ref dp x y)))
+
+  (define max-moves 0)
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (max-moves (max max-moves (dfs i j)))))
+  (- max-moves 1))
+
+(define (solve grid)
+  (maxMoves grid))

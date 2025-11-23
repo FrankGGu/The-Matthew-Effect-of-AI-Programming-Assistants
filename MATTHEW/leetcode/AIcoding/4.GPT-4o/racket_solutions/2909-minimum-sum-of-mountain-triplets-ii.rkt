@@ -1,0 +1,21 @@
+(define (minimum-sum-of-mountain-triplets nums)
+  (define n (length nums))
+  (define (helper i j k)
+    (if (or (>= i n) (>= j n) (>= k n))
+        (if (and (<= i j) (<= j k))
+            (+ (list-ref nums i) (list-ref nums j) (list-ref nums k))
+            +inf.0)
+        (let ((current-sum (+ (list-ref nums i) (list-ref nums j) (list-ref nums k))))
+          (min (helper (add1 i) j k)
+               (helper i (add1 j) k)
+               (helper i j (add1 k))
+               current-sum))))
+  (if (< n 3)
+      0
+      (helper 0 1 2)))
+
+(define (minimum-sum-of-mountain-triplets-main)
+  (define nums (list 1 2 3 4 5))
+  (minimum-sum-of-mountain-triplets nums))
+
+(minimum-sum-of-mountain-triplets-main)

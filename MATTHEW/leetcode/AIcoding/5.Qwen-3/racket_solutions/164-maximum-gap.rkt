@@ -1,0 +1,25 @@
+#lang racket
+
+(define (maximum-gap nums)
+  (cond [(< (length nums) 2) 0]
+        [else
+         (define n (length nums))
+         (define min-val (apply min nums))
+         (define max-val (apply max nums))
+         (define gap (floor (/ (- max-val min-val) (- n 1))))
+         (define buckets (make-vector n '()))
+         (for ([num nums])
+           (define idx (if (= gap 0) 0 (floor (/ (- num min-val) gap))))
+           (vector-set! buckets idx (cons num (vector-ref buckets idx))))
+         (define (get-max lst)
+           (if (null? lst) -inf.0 (apply max lst)))
+         (define (get-min lst)
+           (if (null? lst) +inf.0 (apply min lst)))
+         (define res 0)
+         (define prev (get-max (vector-ref buckets 0)))
+         (for ([i (in-range 1 n)])
+           (define curr-min (get-min (vector-ref buckets i)))
+           (when (not (and (nan? curr-min) (nan? prev)))
+             (set! res (max res (- curr-min prev)))
+             (set! prev (get-max (vector-ref buckets i)))))
+         res]))

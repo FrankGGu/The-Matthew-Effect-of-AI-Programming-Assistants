@@ -1,0 +1,23 @@
+(define (mostProfitablePath edges bob start amount)
+  (define (build-graph edges)
+    (let ((graph (make-hash)))
+      (for-each (lambda (edge)
+                  (let ((u (car edge))
+                        (v (cadr edge)))
+                    (hash-set! graph u (cons v (hash-ref graph u '())))
+                    (hash-set! graph v (cons u (hash-ref graph v '())))))
+                edges)
+      graph))
+
+  (define (dfs node parent depth)
+    (if (equal? depth (length amount))
+      (cons (if (equal? node start) 0 (if (equal? node bob) (hash-ref amount depth) 0)) 0)
+            (if (equal? node start) (hash-ref amount depth) 0))
+      (for/fold ([max-profit 0]) ([neigh (hash-ref graph node '())])
+        (if (equal? neigh parent)
+          max-profit
+          (let-values ([(profit-bob profit-bob) (dfs neigh node (+ depth 1))])
+            (max max-profit (+ profit-bob (if (= node start) (hash-ref amount depth) 0)))))))))
+
+  (define graph (build-graph edges))
+  (dfs start -1 0))

@@ -1,0 +1,47 @@
+Develop a Pet Information Registration System using Django REST Framework backend with Django templates frontend.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (Django):**
+1. Implement using Django REST Framework for API endpoints
+2. Use Django ORM with proper models for Pet and Vaccination
+3. Create serializers for both models
+4. Implement ViewSets or APIViews for all CRUD operations
+5. Add proper validation and error handling
+6. Implement pagination for list views
+7. Add Django filters for searching and filtering
+
+**Frontend Requirements (Django Templates):**
+1. Create responsive UI using Django templates with Bootstrap
+2. Implement pages for:
+   - Pet list with search and filtering
+   - Add/edit pet form
+   - Vaccination records for each pet
+   - Add vaccination form
+3. Use Django template inheritance for consistent layout
+4. Implement form validation with error display
+5. Add pagination for lists
+
+**API Endpoints:**
+- GET /api/pets/ - List pets
+- POST /api/pets/ - Create pet
+- GET /api/pets/{id}/ - Get pet details
+- PUT /api/pets/{id}/ - Update pet
+- DELETE /api/pets/{id}/ - Delete pet
+- GET /api/pets/{id}/vaccinations/ - Get pet's vaccinations
+- POST /api/vaccinations/ - Add vaccination
+- PUT /api/vaccinations/{id}/ - Update vaccination
+- DELETE /api/vaccinations/{id}/ - Delete vaccination
+
+**Database Connection:**
+- ENGINE: django.db.backends.postgresql
+- NAME: pet_registry
+- USER: postgres
+- PASSWORD: petpassword
+- HOST: localhost
+- PORT: 5432
+
+Generate complete Django project with models, views, serializers, URLs, templates, and settings configuration.

@@ -1,0 +1,21 @@
+(define (breakingSafe password n k)
+  (define (generate-all-combinations n k)
+    (for/fold ([combinations '()])
+              ([i (in-range (expt k n))])
+      (let ([combination (number->string i 10)])
+        (let ([padded-combination (string-append (make-string (- n (string-length combination)) #\0) combination)])
+              [result (cons padded-combination combinations)])
+          result))))
+
+  (define all-combinations (generate-all-combinations n k))
+  (define (attempts-to-crack password combinations)
+    (for/fold ([attempts 0])
+              ([combination combinations])
+      (if (equal? password combination)
+          (add1 attempts)
+          attempts)))
+
+  (define attempts (attempts-to-crack password all-combinations))
+  (add1 attempts))
+
+(breakingSafe "123" 3 3)

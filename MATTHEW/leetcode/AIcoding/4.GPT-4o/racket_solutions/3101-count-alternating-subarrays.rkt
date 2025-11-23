@@ -1,0 +1,18 @@
+(define (count-alternating-subarrays nums)
+  (define (count-length i)
+    (if (or (>= i (sub1 (length nums))) (not (= (list-ref nums i) (modulo (+ 1 (list-ref nums i)) 2))))
+        0
+        (+ 1 (count-length (+ i 1)))))
+  (define (count-subarrays n)
+    (if (zero? n) 0
+        (+ n (count-subarrays (sub1 n)))))
+  (define (find-alternating-subarrays)
+    (define len (length nums))
+    (define total 0)
+    (for ([i (in-range len)])
+      (when (and (zero? i) (or (equal? (list-ref nums i) 0) (equal? (list-ref nums i) 1)))
+                  (or (and (> i 0) (not (= (list-ref nums i) (list-ref nums (sub1 i)))))
+                      (= i 0)))
+        (set! total (+ total (count-length i)))))
+    total)
+  (find-alternating-subarrays))

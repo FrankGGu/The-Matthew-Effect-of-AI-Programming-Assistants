@@ -1,0 +1,32 @@
+{
+  "id": "LCP 78",
+  "title": "城墙防线",
+  "titleSlug": "Nsibyl",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int rampartDefensiveLine(vector<vector<int>>& rampart) {\n\n    }\n};",
+    "java": "class Solution {\n    public int rampartDefensiveLine(int[][] rampart) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def rampartDefensiveLine(self, rampart):\n        \"\"\"\n        :type rampart: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def rampartDefensiveLine(self, rampart: List[List[int]]) -> int:",
+    "c": "int rampartDefensiveLine(int** rampart, int rampartSize, int* rampartColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int RampartDefensiveLine(int[][] rampart) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} rampart\n * @return {number}\n */\nvar rampartDefensiveLine = function(rampart) {\n\n};",
+    "typescript": "function rampartDefensiveLine(rampart: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $rampart\n     * @return Integer\n     */\n    function rampartDefensiveLine($rampart) {\n\n    }\n}",
+    "swift": "class Solution {\n    func rampartDefensiveLine(_ rampart: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun rampartDefensiveLine(rampart: Array<IntArray>): Int {\n\n    }\n}",
+    "dart": "class Solution {\n  int rampartDefensiveLine(List<List<int>> rampart) {\n\n  }\n}",
+    "golang": "func rampartDefensiveLine(rampart [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} rampart\n# @return {Integer}\ndef rampart_defensive_line(rampart)\n\nend",
+    "scala": "object Solution {\n    def rampartDefensiveLine(rampart: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn rampart_defensive_line(rampart: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (rampart-defensive-line rampart)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec rampart_defensive_line(Rampart :: [[integer()]]) -> integer().\nrampart_defensive_line(Rampart) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec rampart_defensive_line(rampart :: [[integer]]) :: integer\n  def rampart_defensive_line(rampart) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[0,3],[4,5],[7,9]]\n[[1,2],[5,8],[11,15],[18,25]]",
+  "hints": []
+}

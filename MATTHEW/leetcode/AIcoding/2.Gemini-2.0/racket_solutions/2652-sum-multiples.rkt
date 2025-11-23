@@ -1,0 +1,13 @@
+(define (sum-multiples n)
+  (define (sum-multiples-helper n factor)
+    (let loop ((i factor) (sum 0))
+      (if (> i n)
+          sum
+          (loop (+ i factor) (+ sum i)))))
+  (+ (sum-multiples-helper n 3)
+     (sum-multiples-helper n 5)
+     (sum-multiples-helper n 7)
+     (- (sum-multiples-helper n 15))
+     (- (sum-multiples-helper n 21))
+     (- (sum-multiples-helper n 35))
+     (+ (sum-multiples-helper n 105))))

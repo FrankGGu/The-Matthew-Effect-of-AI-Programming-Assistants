@@ -1,0 +1,22 @@
+(define (count-servers grid)
+  (let* ((rows (length grid))
+         (cols (length (first grid)))
+         (row-counts (make-vector rows 0))
+         (col-counts (make-vector cols 0))
+         (servers (for*/list ((i (in-range rows))
+                               (j (in-range cols))
+                               #:when (= (list-ref (list-ref grid i) j) 1))
+                    (begin
+                      (vector-set! row-counts i (+ (vector-ref row-counts i) 1))
+                      (vector-set! col-counts j (+ (vector-ref col-counts j) 1))
+                      (list i j))))
+         (count (length servers)))
+    (foldl (lambda (server acc)
+             (let ((i (first server))
+                   (j (second server)))
+               (if (or (> (vector-ref row-counts i) 1)
+                       (> (vector-ref col-counts j) 1))
+                   acc
+                   (- acc 1))))
+           count
+           servers)))

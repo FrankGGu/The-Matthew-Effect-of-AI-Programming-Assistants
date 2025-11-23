@@ -1,0 +1,7 @@
+(define (sum-encrypted-integers nums)
+  (define (encrypt n)
+    (let loop ([n n] [digits '()])
+      (if (= n 0)
+          (string->number (list->string (reverse digits)))
+          (loop (quotient n 10) (cons (modulo n 10) digits)))))
+  (apply + (map encrypt nums)))

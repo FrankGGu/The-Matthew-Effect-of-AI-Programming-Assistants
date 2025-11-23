@@ -1,0 +1,10 @@
+(define (convert-bst root)
+  (let ((sum (box 0)))
+    (define (traverse node)
+      (when node
+        (traverse (bst-right node))
+        (set-box! sum (+ (box-unbox sum) (bst-val node)))
+        (set-bst-val! node (box-unbox sum))
+        (traverse (bst-left node))))
+    (traverse root)
+    root))

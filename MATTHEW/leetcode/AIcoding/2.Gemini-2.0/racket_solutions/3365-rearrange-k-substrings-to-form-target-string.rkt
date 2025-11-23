@@ -1,0 +1,16 @@
+(define (can-rearrange k target s)
+  (define (char-counts str)
+    (let ((counts (make-hash)))
+      (for ([c (string->list str)])
+        (hash-update! counts c add1 0))
+      counts))
+
+  (define target-counts (char-counts target))
+  (define s-counts (char-counts s))
+
+  (for ([(char count) (hash->list target-counts)])
+    (if (not (hash-has-key? s-counts char))
+        (return #f)
+        (if (< (hash-ref s-counts char) (* k count))
+            (return #f))))
+  #t)

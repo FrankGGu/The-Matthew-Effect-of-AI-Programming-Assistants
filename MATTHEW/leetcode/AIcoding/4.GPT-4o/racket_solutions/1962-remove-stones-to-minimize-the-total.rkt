@@ -1,0 +1,40 @@
+(define (minStoneSum piles k)
+  (define (max-heapify arr n i)
+    (let loop ((largest i) (left (+ (* 2 i) 1)) (right (+ (* 2 i) 2)))
+      (cond
+        ((>= left n) arr)
+        ((>= right n) (if (> (list-ref arr largest) (list-ref arr left))
+                          arr
+                          (begin (set! arr (list-set! arr largest (list-ref arr left)))
+                                 (set! arr (list-set! arr left (list-ref arr largest)))
+                                 (loop left (left) (right))))
+        ((> (list-ref arr left) (list-ref arr largest))
+         (loop left (left) (right))
+         (set! arr (list-set! arr largest (list-ref arr left)))
+         (set! arr (list-set! arr left (list-ref arr largest)))
+         (loop largest (left) (right)))
+        (else (loop largest (left) (right))))))
+
+  (define (build-max-heap arr)
+    (let loop ((i (quotient (length arr) 2)))
+      (when (>= i 0)
+        (max-heapify arr (length arr) i)
+        (loop (sub1 i)))))
+
+  (define (extract-max arr)
+    (let ((max (list-ref arr 0)))
+      (set! arr (list-set! arr 0 (list-ref arr (sub1 (length arr)))))
+      (set! arr (sublist arr 0 (sub1 (length arr))))
+      max))
+
+  (define (insert arr value)
+    (set! arr (append arr (list value)))
+    (build-max-heap arr))
+
+  (define heap piles)
+  (build-max-heap heap)
+
+  (do ((i 0 (add1 i)))
+      ((= i k) (apply + heap))
+    (let ((max (extract-max heap)))
+      (insert heap (sub1 max)))))

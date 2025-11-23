@@ -1,0 +1,13 @@
+(define (letterCasePermutation s)
+  (define (backtrack path index)
+    (if (= index (string-length s))
+        (list (apply string path))
+        (let ([char (string-ref s index)])
+          (if (char-numeric? char)
+              (backtrack (cons char path) (+ index 1))
+              (append (backtrack (cons (string-upcase char) path) (+ index 1))
+                      (backtrack (cons (string-downcase char) path) (+ index 1))))))
+    )
+  (reverse (backtrack '() 0)))
+
+(letterCasePermutation "a1b2")

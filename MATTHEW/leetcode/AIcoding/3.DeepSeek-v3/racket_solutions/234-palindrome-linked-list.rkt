@@ -1,0 +1,8 @@
+(define/contract (is-palindrome head)
+  (-> (or/c list-node? #f) boolean?)
+  (define (list->vals node)
+    (if (null? node)
+        '()
+        (cons (list-node-val node) (list->vals (list-node-next node)))))
+  (define vals (list->vals head))
+  (equal? vals (reverse vals)))

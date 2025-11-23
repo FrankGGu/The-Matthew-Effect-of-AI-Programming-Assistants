@@ -1,0 +1,7 @@
+(define (max-sum-non-adjacent-subsequence nums)
+  (define-values (dp-i-minus-1 dp-i-minus-2)
+    (for/fold ([current-max 0] [prev-max 0])
+              ([n (in-list nums)])
+      (let ([new-current-max (max current-max (+ n prev-max))])
+        (values new-current-max current-max))))
+  dp-i-minus-1)

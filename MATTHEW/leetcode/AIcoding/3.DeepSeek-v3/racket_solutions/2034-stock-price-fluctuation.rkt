@@ -1,0 +1,92 @@
+(define-struct stock-price (timestamp price))
+
+(define stock-price-fluctuation%
+  (class object%
+    (super-new)
+
+    (init-field)
+    (define max-heap '())
+    (define min-heap '())
+    (define latest-timestamp -1)
+    (define timestamp-prices (make-hash))
+
+    (define/public (update timestamp price)
+      (hash-set! timestamp-prices timestamp price)
+      (when (>= timestamp latest-timestamp)
+        (set! latest-timestamp timestamp))
+      (heap-add! max-heap (make-stock-price timestamp (- price)) #:cmp >)
+      (heap-add! min-heap (make-stock-price timestamp price) #:cmp <))
+
+    (define/public (current)
+      (hash-ref timestamp-prices latest-timestamp))
+
+    (define/public (maximum)
+      (let loop ()
+        (define top (heap-max max-heap))
+        (if (= (hash-ref timestamp-prices (stock-price-timestamp top)) (- (stock-price-price top)))
+            (- (stock-price-price top))
+            (begin
+              (heap-remove! max-heap)
+              (loop)))))
+
+    (define/public (minimum)
+      (let loop ()
+        (define top (heap-min min-heap))
+        (if (= (hash-ref timestamp-prices (stock-price-timestamp top)) (stock-price-price top))
+            (stock-price-price top)
+            (begin
+              (heap-remove! min-heap)
+              (loop))))))
+
+(define (heap-add! heap elem #:cmp (cmp <))
+  (set! heap (cons elem heap))
+  (heapify-up! heap (sub1 (length heap)) cmp))
+
+(define (heap-remove! heap #:cmp (cmp <))
+  (if (null? heap)
+      (error "Heap is empty")
+      (let ((root (car heap)))
+        (set! heap (if (null? (cdr heap))
+                       '()
+                       (let ((last (last heap)))
+                         (set! heap (drop-right heap 1))
+                         (set-car! heap last)
+                         (heapify-down! heap 0 cmp))
+                       heap))
+        root)))
+
+(define (heapify-up! heap idx cmp)
+  (let ((parent (quotient (sub1 idx) 2)))
+    (when (and (>= parent 0)
+               (cmp (list-ref heap idx) (list-ref heap parent)))
+      (swap! heap idx parent)
+      (heapify-up! heap parent cmp))))
+
+(define (heapify-down! heap idx cmp)
+  (let* ((left (+ (* idx 2) 1))
+         (right (+ (* idx 2) 2))
+         (smallest idx))
+    (when (and (< left (length heap))
+               (cmp (list-ref heap left) (list-ref heap smallest)))
+      (set! smallest left))
+    (when (and (< right (length heap))
+               (cmp (list-ref heap right) (list-ref heap smallest)))
+      (set! smallest right))
+    (when (not (= smallest idx))
+      (swap! heap idx smallest)
+      (heapify-down! heap smallest cmp))))
+
+(define (swap! heap i j)
+  (let ((tmp (list-ref heap i)))
+    (list-set! heap i (list-ref heap j))
+    (list-set! heap j tmp)))
+
+(define (heap-max heap)
+  (if (null? heap)
+      (error "Heap is empty")
+      (car heap)))
+
+(define (heap-min heap)
+  (if (null? heap)
+      (error "Heap is empty")
+      (car heap)))

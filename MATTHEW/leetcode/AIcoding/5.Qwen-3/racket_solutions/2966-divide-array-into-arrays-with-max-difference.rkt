@@ -1,0 +1,7 @@
+(define (divide-array nums k)
+  (let* ((n (length nums))
+         (nums (sort nums <))
+         (result '()))
+    (for ([i (in-range 0 n k)])
+      (set! result (cons (take nums (+ i k)) result)))
+    (reverse result)))

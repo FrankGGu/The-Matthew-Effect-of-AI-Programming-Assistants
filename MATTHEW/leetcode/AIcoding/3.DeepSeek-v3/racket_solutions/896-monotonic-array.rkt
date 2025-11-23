@@ -1,0 +1,11 @@
+(define/contract (is-monotonic nums)
+  (-> (listof exact-integer?) boolean?)
+  (or (let loop ([prev (car nums)] [rest (cdr nums)] [increasing #t] [decreasing #t])
+        (if (null? rest)
+            (or increasing decreasing)
+            (let ([curr (car rest)])
+              (loop curr
+                    (cdr rest)
+                    (and increasing (>= curr prev))
+                    (and decreasing (<= curr prev))))))
+      (null? (cdr nums))))

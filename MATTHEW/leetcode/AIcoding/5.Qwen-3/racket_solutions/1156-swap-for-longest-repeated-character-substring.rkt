@@ -1,0 +1,72 @@
+#lang racket
+
+(define (max-repeating-substring s)
+  (define len (string-length s))
+  (define max-len 0)
+  (define current-char #\a)
+  (define current-count 0)
+  (for ([c s])
+    (if (char=? c current-char)
+        (set! current-count (+ current-count 1))
+        (begin
+          (set! current-char c)
+          (set! current-count 1)))
+    (set! max-len (max max-len current-count)))
+  max-len)
+
+(define (max-repeating-substring-with-swap s)
+  (define len (string-length s))
+  (define max-len 0)
+  (define freq (make-hash))
+  (for ([c s])
+    (hash-set! freq c (+ (hash-ref freq c 0) 1)))
+  (define (get-max-freq)
+    (apply max (hash-values freq)))
+  (define (get-max-repeating)
+    (let loop ([i 0] [current-char #\a] [current-count 0] [max-count 0])
+      (if (= i len)
+          max-count
+          (let ([c (string-ref s i)])
+            (if (char=? c current-char)
+                (loop (+ i 1) current-char (+ current-count 1) (max max-count (+ current-count 1)))
+                (loop (+ i 1) c 1 max-count))))))
+  (define max-rep (get-max-repeating))
+  (if (> (get-max-freq) max-rep)
+      (add1 (get-max-freq))
+      max-rep))
+
+(define (max-repeating-substring-with-swap-and-adjacent s)
+  (define len (string-length s))
+  (define max-len 0)
+  (define (check c)
+    (define count 1)
+    (define i 0)
+    (define j 0)
+    (define prev #f)
+    (for ([k (in-range len)])
+      (if (char=? (string-ref s k) c)
+          (begin
+            (set! count (+ count 1))
+            (when (and prev (not (char=? (string-ref s (- k 1)) c)))
+              (set! count 1)))
+          (set! prev #t)))
+    (- count 1))
+  (for ([c (in-list (string->list s))])
+    (set! max-len (max max-len (check c))))
+  max-len)
+
+(define (longest-repeated-character-substring s)
+  (define len (string-length s))
+  (if (< len 2)
+      len
+      (let ([max-rep (max-repeating-substring s)]
+            [max-swap (max-repeating-substring-with-swap s)])
+        (if (> max-rep max-swap)
+            max-rep
+            max-swap))))
+
+(define (solve)
+  (define s (read-line))
+  (printf "~a\n" (longest-repeated-character-substring s)))
+
+(solve)

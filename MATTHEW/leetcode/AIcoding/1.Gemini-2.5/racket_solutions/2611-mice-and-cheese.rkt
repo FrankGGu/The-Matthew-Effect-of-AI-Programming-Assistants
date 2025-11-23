@@ -1,0 +1,7 @@
+(define (mice-and-cheese reward1 reward2 k)
+  (let* ((differences (map - reward1 reward2))
+         (sorted-differences (sort differences >))
+         (top-k-differences (take sorted-differences k))
+         (sum-reward2 (apply + reward2))
+         (sum-top-k-differences (apply + top-k-differences)))
+    (+ sum-reward2 sum-top-k-differences)))

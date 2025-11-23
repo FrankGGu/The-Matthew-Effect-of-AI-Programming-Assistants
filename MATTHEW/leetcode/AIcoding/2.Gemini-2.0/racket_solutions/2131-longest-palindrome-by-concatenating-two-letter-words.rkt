@@ -1,0 +1,21 @@
+(define (longest-palindrome words)
+  (let* ((counts (make-hash))
+         (len (length words))
+         (result 0))
+    (for ([word (in-list words)])
+      (let* ((reversed-word (string-append (substring word 1 2) (substring word 0 1)))
+             (count (hash-ref counts word 0)))
+        (hash-set! counts word (+ count 1))
+        (when (and (hash-has-key? counts reversed-word) (> (hash-ref counts reversed-word 0) 0))
+          (hash-update! counts reversed-word - 1)
+          (set! result (+ result 4)))))
+    (let loop ([keys (hash-keys counts)])
+      (cond
+        [(null? keys) result]
+        [else
+         (let ([key (car keys)])
+           (when (and (= (string-length key) 2) (= (substring key 0 1) (substring key 1 2)) (> (hash-ref counts key 0) 0))
+             (set! result (+ result 2))
+             (set! keys '()))
+           (loop (cdr keys))])))
+    result))

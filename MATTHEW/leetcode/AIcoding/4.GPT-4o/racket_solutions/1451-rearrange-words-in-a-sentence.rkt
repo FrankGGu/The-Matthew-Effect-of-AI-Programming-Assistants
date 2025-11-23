@@ -1,0 +1,5 @@
+(define (arrange-words sentence)
+  (define words (string-split sentence))
+  (define sorted-words (sort words (lambda (a b) (< (string-length a) (string-length b)))))
+  (define result (string-join sorted-words " "))
+  (string-append (string-upcase (substring result 0 1)) (substring result 1)))

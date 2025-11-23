@@ -1,0 +1,5 @@
+(define/contract (num-jewels-in-stones jewels stones)
+  (-> string? string? exact-integer?)
+  (for/sum ([j (in-string jewels)])
+    (for/sum ([s (in-string stones)])
+      (if (char=? j s) 1 0)))

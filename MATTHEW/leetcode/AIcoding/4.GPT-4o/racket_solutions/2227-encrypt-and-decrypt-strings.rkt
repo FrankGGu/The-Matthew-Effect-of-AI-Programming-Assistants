@@ -1,0 +1,25 @@
+(define (encrypt str)
+  (define (char->code c)
+    (string-append (number->string (char->integer c)) ","))
+  (define (encrypt-helper s)
+    (if (string-empty? s)
+        ""
+        (string-append (char->code (string-ref s 0)) (encrypt-helper (substring s 1)))))
+  (string-drop (encrypt-helper str) -1))
+
+(define (decrypt str)
+  (define (code->char code)
+    (integer->char (string->number code)))
+  (define (decrypt-helper s)
+    (if (string-empty? s)
+        ""
+        (let* ((comma-index (string-index s #\,))
+               (code (if comma-index (substring s 0 comma-index) s))
+               (rest (if comma-index (substring s (+ comma-index 1)) "")))
+          (string-append (code->char code) (decrypt-helper rest)))))
+  (decrypt-helper str))
+
+(define (encryptAndDecrypt str)
+  (define encrypted (encrypt str))
+  (define decrypted (decrypt encrypted))
+  (list encrypted decrypted))

@@ -1,0 +1,13 @@
+(define (minimum-swap s1 s2)
+  (let loop ([i 0] [x 0] [y 0])
+    (if (>= i (string-length s1))
+        (if (even? (+ x y))
+            (quotient (+ x y) 2)
+            -1)
+        (let ([c1 (string-ref s1 i)]
+              [c2 (string-ref s2 i)])
+          (if (char=? c1 c2)
+              (loop (add1 i) x y)
+              (if (char=? c1 #\x)
+                  (loop (add1 i) (add1 x) y)
+                  (loop (add1 i) x (add1 y))))))))

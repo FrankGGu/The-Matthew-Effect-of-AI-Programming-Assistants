@@ -1,0 +1,15 @@
+(define (maxFruitCount fruitTree)
+  (define (helper idx count)
+    (if (>= idx (length fruitTree))
+        count
+        (let* ((current (list-ref fruitTree idx))
+               (next (if (< (+ idx 1) (length fruitTree)) (list-ref fruitTree (+ idx 1)) -1))
+               (next-next (if (< (+ idx 2) (length fruitTree)) (list-ref fruitTree (+ idx 2)) -1)))
+          (if (or (= current next) (= current next-next))
+              (helper (+ idx 1) count)
+              (max (helper (+ idx 1) (+ count 1))
+                   (helper (+ idx 2) count)))))))
+  (helper 0 0))
+
+(define (collectFruits fruitTree)
+  (maxFruitCount fruitTree))

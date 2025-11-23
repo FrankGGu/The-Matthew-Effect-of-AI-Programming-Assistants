@@ -1,0 +1,11 @@
+(define (count-almost-equal-pairs nums)
+  (let ((n (length nums)))
+    (let loop ((i 0) (count 0))
+      (if (= i n)
+          count
+          (let loop2 ((j (add1 i)))
+            (if (= j n)
+                (loop (add1 i) count)
+                (if (<= (abs (- (list-ref nums i) (list-ref nums j))) 1)
+                    (loop2 (add1 j) (add1 count))
+                    (loop2 (add1 j) count))))))))

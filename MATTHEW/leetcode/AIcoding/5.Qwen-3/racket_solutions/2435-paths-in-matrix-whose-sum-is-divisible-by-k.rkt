@@ -1,0 +1,18 @@
+(define (paths-in-matrix-whose-sum-divisible-by-k grid k)
+  (let* ([m (length grid)]
+         [n (length (car grid))]
+         [dp (make-vector m (make-vector n (make-vector k 0)))])
+    (vector-set! (vector-ref dp 0) 0 (vector-set! (vector-ref (vector-ref dp 0) 0) (modulo (list-ref (list-ref grid 0) 0) k) 1))
+    (for ([i m])
+      (for ([j n])
+        (when (and (= i 0) (= j 0)) (continue))
+        (let ([current-val (list-ref (list-ref grid i) j)])
+          (when (> i 0)
+            (for ([rem k])
+              (let ([prev-rem (modulo (- rem (modulo current-val k)) k)])
+                (vector-set! (vector-ref dp i) j rem (+ (vector-ref (vector-ref dp (sub1 i)) j prev-rem) (vector-ref (vector-ref dp i) j rem)))))
+          (when (> j 0)
+            (for ([rem k])
+              (let ([prev-rem (modulo (- rem (modulo current-val k)) k)])
+                (vector-set! (vector-ref dp i) j rem (+ (vector-ref (vector-ref dp i) (sub1 j) prev-rem) (vector-ref (vector-ref dp i) j rem))))))))
+    (vector-ref (vector-ref dp (sub1 m)) (sub1 n) 0)))

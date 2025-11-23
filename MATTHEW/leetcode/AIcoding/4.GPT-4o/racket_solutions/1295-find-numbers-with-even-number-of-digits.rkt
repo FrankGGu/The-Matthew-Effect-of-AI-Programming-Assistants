@@ -1,0 +1,6 @@
+(define (find-numbers nums)
+  (define (even-digits? n)
+    (even? (string-length (number->string n))))
+  (define (count-even-digits lst)
+    (length (filter even-digits? lst)))
+  (count-even-digits nums))

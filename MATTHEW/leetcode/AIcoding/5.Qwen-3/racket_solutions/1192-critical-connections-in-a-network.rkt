@@ -1,0 +1,38 @@
+#lang racket
+
+(define (critical-connections n connections)
+  (define adj (make-hash))
+  (for ([conn connections])
+    (define u (car conn))
+    (define v (cadr conn))
+    (hash-update! adj u (λ (lst) (cons v lst)) '())
+    (hash-update! adj v (λ (lst) (cons u lst)) '()))
+
+  (define time 0)
+  (define (dfs node parent)
+    (define low (make-hash))
+    (define (visit node)
+      (set! time (+ time 1))
+      (hash-set! low node time)
+      (for ([neighbor (hash-ref adj node)])
+        (when (not (= neighbor parent))
+          (if (hash-has-key? low neighbor)
+              (hash-set! low node (min (hash-ref low node) (hash-ref low neighbor)))
+              (begin
+                (visit neighbor)
+                (hash-set! low node (min (hash-ref low node) (hash-ref low neighbor)))))))
+      (when (= (hash-ref low node) (hash-ref low parent))
+        (when (not (= node parent))
+          (set! connections (append connections (list (list node parent)))))))
+    (visit node)
+    (hash-ref low node))
+
+  (define result '())
+  (define (dfs-wrapper node parent)
+    (when (not (hash-has-key? low node))
+      (visit node)
+      (when (not (= node parent))
+        (set! result (append result (list (list node parent)))))))
+
+  (dfs 0 -1)
+  result)

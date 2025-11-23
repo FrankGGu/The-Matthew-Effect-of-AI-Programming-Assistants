@@ -1,0 +1,20 @@
+(define (strong-password-checker password)
+  (define (has-lower? s) (define (loop lst) (cond ((null? lst) #f) ((char? (car lst)) (loop (cdr lst))) (else (loop (cdr lst)))))
+  (define (has-upper? s) (define (loop lst) (cond ((null? lst) #f) ((char? (car lst)) (loop (cdr lst))) (else (loop (cdr lst)))))
+  (define (has-digit? s) (define (loop lst) (cond ((null? lst) #f) ((char? (car lst)) (loop (cdr lst))) (else (loop (cdr lst)))))
+  (define (has-special? s) (define (loop lst) (cond ((null? lst) #f) ((char? (car lst)) (loop (cdr lst))) (else (loop (cdr lst)))))
+
+  (define lower (has-lower? password))
+  (define upper (has-upper? password))
+  (define digit (has-digit? password))
+  (define special (has-special? password))
+
+  (define requirements (list lower upper digit special))
+  (define required-types (count (lambda (x) x) requirements))
+
+  (if (< (string-length password) 6)
+      (max (- 6 (string-length password)) (- 4 required-types))
+      (if (> (string-length password) 20)
+          (let ((excess (- (string-length password) 20)))
+            (max excess (- required-types)))
+          (- required-types))))

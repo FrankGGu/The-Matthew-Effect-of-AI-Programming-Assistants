@@ -1,0 +1,11 @@
+(define (reduction-operations nums)
+  (define sorted (sort nums >))
+  (define (helper i count)
+    (if (= i (sub1 (length sorted)))
+        count
+        (let ((current (list-ref sorted i))
+              (next (list-ref sorted (add1 i))))
+          (if (= current next)
+              (helper (add1 i) count)
+              (helper (add1 i) (+ count (- (length sorted) (add1 i))))))))
+  (helper 0 0))

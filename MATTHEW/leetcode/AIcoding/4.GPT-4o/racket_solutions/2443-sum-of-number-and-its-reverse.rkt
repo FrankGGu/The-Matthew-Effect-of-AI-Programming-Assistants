@@ -1,0 +1,10 @@
+(define (isSumEqual first second target)
+  (define (string->num str)
+    (foldl (lambda (char acc)
+             (+ (* acc 10) (- (char->integer char) (char->integer #\0))))
+           0
+           str))
+  (define num1 (string->num first))
+  (define num2 (string->num second))
+  (define num3 (string->num target))
+  (= (+ num1 num2) num3))

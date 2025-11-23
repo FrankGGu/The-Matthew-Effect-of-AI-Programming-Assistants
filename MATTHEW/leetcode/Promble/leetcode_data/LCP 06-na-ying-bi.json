@@ -1,0 +1,36 @@
+{
+  "id": "LCP 06",
+  "title": "拿硬币",
+  "titleSlug": "na-ying-bi",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minCount(vector<int>& coins) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int minCount(int[] coins) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def minCount(self, coins):\n        \"\"\"\n        :type coins: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def minCount(self, coins: List[int]) -> int:\n        ",
+    "c": "int minCount(int* coins, int coinsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MinCount(int[] coins) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} coins\n * @return {number}\n */\nvar minCount = function(coins) {\n    \n};",
+    "typescript": "function minCount(coins: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $coins\n     * @return Integer\n     */\n    function minCount($coins) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func minCount(_ coins: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun minCount(coins: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int minCount(List<int> coins) {\n    \n  }\n}",
+    "golang": "func minCount(coins []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} coins\n# @return {Integer}\ndef min_count(coins)\n    \nend",
+    "scala": "object Solution {\n    def minCount(coins: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_count(coins: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (min-count coins)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec min_count(Coins :: [integer()]) -> integer().\nmin_count(Coins) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_count(coins :: [integer]) :: integer\n  def min_count(coins) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func minCount(coins: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[4,2,1]\n[2,3,10]",
+  "hints": []
+}

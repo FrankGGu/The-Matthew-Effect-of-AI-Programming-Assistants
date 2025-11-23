@@ -1,0 +1,22 @@
+(define (max-eaten-apples apples days)
+  (define n (length apples))
+  (define eaten 0)
+  (define available-apples (make-vector 0))
+
+  (for ((i (in-range n)))
+    (vector-set! available-apples i (list (vector-ref apples i) (if (< i n) (vector-ref days i) 0))))
+    (if (and (= (vector-ref (vector-ref available-apples i) 0) 0)
+             (> (vector-ref (vector-ref available-apples (if (> i 0) (- i 1) 0)) 0) 0))
+        (vector-set! available-apples i (list 0 (vector-ref (vector-ref available-apples (if (> i 0) (- i 1) 0)) 1))))
+    (for ((j (in-range (if (> i 0) (+ (vector-ref (vector-ref available-apples i) 1) 1) (vector-ref (vector-ref available-apples i) 1)))))
+      (if (and (> (vector-ref (vector-ref available-apples i) 0) 0)
+               (> (vector-ref (vector-ref available-apples j) 1) 0))
+          (begin
+            (set! eaten (+ eaten (min (vector-ref (vector-ref available-apples i) 0) (vector-ref (vector-ref available-apples j) 1))))
+            (vector-set! available-apples i (list (- (vector-ref (vector-ref available-apples i) 0) (min (vector-ref (vector-ref available-apples i) 0) (vector-ref (vector-ref available-apples j) 1))) (vector-ref (vector-ref available-apples i) 1)))
+            (vector-set! available-apples j (list (vector-ref (vector-ref available-apples j) 0) (- (vector-ref (vector-ref available-apples j) 1) (min (vector-ref (vector-ref available-apples i) 0) (vector-ref (vector-ref available-apples j) 1)))))))
+      ))
+    )
+  eaten)
+
+(max-eaten-apples (vector 1 2 3 4 5) (vector 5 4 3 2 1))

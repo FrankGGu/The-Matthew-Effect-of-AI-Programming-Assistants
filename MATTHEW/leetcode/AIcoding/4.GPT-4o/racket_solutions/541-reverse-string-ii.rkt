@@ -1,0 +1,20 @@
+(define (reverse-string-ii s k)
+  (define (reverse lst)
+    (reverse-helper lst '()))
+  (define (reverse-helper lst acc)
+    (if (null? lst)
+        acc
+        (reverse-helper (cdr lst) (cons (car lst) acc))))
+
+  (define (process str)
+    (define len (length str))
+    (define (helper start)
+      (if (>= start len)
+          '()
+          (let* ((end (min (+ start k) len))
+                 (rev-part (reverse (substring str start end)))
+                 (rest-part (substring str end (min (+ end k) len))))
+            (append rev-part rest-part (helper (+ end k))))))
+    (helper 0))
+
+  (list->string (process (string->list s))))

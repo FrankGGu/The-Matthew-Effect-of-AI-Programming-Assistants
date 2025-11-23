@@ -1,0 +1,5 @@
+(define (min-changes s)
+  (define (count-changes target)
+    (for/sum ([c s])
+      (if (= c target) 0 1)))
+  (min (count-changes #\0) (count-changes #\1)))

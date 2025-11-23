@@ -1,0 +1,11 @@
+(define (remove-anagrams words)
+  (define (sorted-str s)
+    (apply string (sort string<? (string->list s))))
+  (define result '())
+  (for ([word words])
+    (when (or (null? result) (not (equal? (sorted-str word) (sorted-str (car result)))))
+      (set! result (cons word result))))
+  (reverse result))
+
+(define (find-resultant-array words)
+  (remove-anagrams words))

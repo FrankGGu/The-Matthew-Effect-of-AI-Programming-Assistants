@@ -1,0 +1,12 @@
+(define (canConstruct s k)
+  (define freq (make-hash))
+  (for-each (lambda (char)
+              (hash-set! freq char (+ 1 (hash-ref freq char 0))))
+            (string->list s))
+  (define odd-count (foldl (lambda (count key)
+                              (if (odd? (hash-ref freq key))
+                                  (+ count 1)
+                                  count))
+                            0
+                            (hash-keys freq)))
+  (<= odd-count k))

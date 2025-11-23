@@ -1,0 +1,8 @@
+(define (count-monotonic-pairs nums)
+  (let* ((n (length nums))
+         (count 0))
+    (for* ((i (in-range n))
+           (j (in-range (+ i 1) n)))
+      (when (<= (list-ref nums i) (list-ref nums j))
+        (set! count (+ count 1))))
+    count))

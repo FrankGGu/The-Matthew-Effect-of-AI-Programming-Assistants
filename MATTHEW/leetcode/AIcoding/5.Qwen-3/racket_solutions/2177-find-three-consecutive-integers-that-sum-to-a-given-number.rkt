@@ -1,0 +1,5 @@
+(define (sum-to-three n)
+  (let ((x (quotient (- n 3) 3)))
+    (if (= (+ x (+ x 1) (+ x 2)) n)
+        (list x (+ x 1) (+ x 2))
+        #f)))

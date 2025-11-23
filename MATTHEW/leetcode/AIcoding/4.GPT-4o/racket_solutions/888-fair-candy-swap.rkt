@@ -1,0 +1,11 @@
+(define (fair-candy-swap A B)
+  (let* ((sum-a (apply + A))
+         (sum-b (apply + B))
+         (delta (/ (- sum-a sum-b) 2))
+         (set-b (set B)))
+    (for/fold ([result '()]) ([x A])
+      (if (set? (set (- x delta)))
+          (cons (list x (- x delta)) result)
+          result))))
+
+(fair-candy-swap '(1 1) '(2 2))

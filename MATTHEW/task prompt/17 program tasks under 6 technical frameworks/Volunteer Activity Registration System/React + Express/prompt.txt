@@ -1,0 +1,38 @@
+Build a volunteer management system using modern JavaScript stack:
+
+**Backend:**
+- Express.js with TypeScript
+- Prisma ORM for database operations
+- JWT authentication with bcrypt
+- CORS enabled
+
+**Frontend:**
+- React 18 with TypeScript
+- React Router for navigation
+- TanStack Query for API state management
+- Tailwind CSS for styling
+
+**Database:**
+- PostgreSQL: postgresql://postgres:volunteerpass@localhost:5432/volunteer_db
+- Prisma schema matching existing tables
+
+**Required Features:**
+1. Volunteer profile management
+2. Activity creation and browsing
+3. Registration system with confirmation flow
+4. Attendance tracking with hours calculation
+5. Responsive design for mobile/desktop
+
+**Code Structure:**
+- Prisma schema file with all models and relations
+- Express routers for each entity
+- React components with hooks
+- Custom hooks for API calls
+- Proper TypeScript interfaces
+- Environment configuration
+
+**Generate:**
+- Complete Express.js server with Prisma
+- React application with routing
+- Prisma migration files
+- Docker configuration

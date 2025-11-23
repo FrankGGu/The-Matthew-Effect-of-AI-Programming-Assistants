@@ -1,0 +1,27 @@
+(define (minFlips matrix)
+  (define rows (length matrix))
+  (define cols (length (car matrix)))
+  (define (flip-state state r c)
+    (for ([i (in-range (max 0 (- r 1)) (min rows (+ r 2)))])
+      (for ([j (in-range (max 0 (- c 1)) (min cols (+ c 2)))])
+        (set! (vector-ref state i j) (if (= (vector-ref state i j) 0) 1 0)))))
+
+  (define (dfs state r c flips)
+    (if (>= r rows)
+      (if (and (every (lambda (row) (every (lambda (x) (= x 0)) row)) state))
+               (or (= flips 0) (= flips 1))) 
+          flips 
+          +inf.0)
+      (let ([next-r (if (= c (- cols 1)) (+ r 1) r)]
+            [next-c (if (= c (- cols 1)) 0 (+ c 1))])
+        (let ([current-flips (if (= (vector-ref (vector-ref state r) c) 1) 
+                                 (+ flips 1) flips)])
+          (dfs state next-r next-c current-flips)
+          (flip-state state r c)
+          (let ([flipped-flips (dfs state next-r next-c current-flips)])
+            (min current-flips flipped-flips))))))
+
+  (let ([state (vector (for ([i (in-range rows)])
+                        (vector (for ([j (in-range cols)]) 
+                                   (vector-ref (vector-ref matrix i) j))))))])
+    (dfs state 0 0 0)))

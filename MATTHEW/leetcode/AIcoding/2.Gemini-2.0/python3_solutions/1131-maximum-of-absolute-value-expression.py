@@ -1,0 +1,21 @@
+class Solution:
+    def maxAbsValExpr(self, arr1: List[int], arr2: List[int]) -> int:
+        n = len(arr1)
+        max1 = float('-inf')
+        max2 = float('-inf')
+        max3 = float('-inf')
+        max4 = float('-inf')
+        min1 = float('inf')
+        min2 = float('inf')
+        min3 = float('inf')
+        min4 = float('inf')
+        for i in range(n):
+            max1 = max(max1, arr1[i] + arr2[i] + i)
+            min1 = min(min1, arr1[i] + arr2[i] + i)
+            max2 = max(max2, arr1[i] + arr2[i] - i)
+            min2 = min(min2, arr1[i] + arr2[i] - i)
+            max3 = max(max3, arr1[i] - arr2[i] + i)
+            min3 = min(min3, arr1[i] - arr2[i] + i)
+            max4 = max(max4, arr1[i] - arr2[i] - i)
+            min4 = min(min4, arr1[i] - arr2[i] - i)
+        return max(max1 - min1, max2 - min2, max3 - min3, max4 - min4)

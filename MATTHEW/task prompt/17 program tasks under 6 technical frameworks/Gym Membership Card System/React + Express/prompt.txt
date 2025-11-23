@@ -1,0 +1,63 @@
+You are a senior full-stack developer. Create a modern gym membership system using React 18 with Express.js backend and Prisma ORM.
+
+**TECHNOLOGY STACK:**
+- Frontend: React 18 with TypeScript, React Router, Zustand for state management
+- Backend: Express.js with TypeScript
+- ORM: Prisma with PostgreSQL
+- Build: Vite for frontend, ts-node for backend
+
+**DATABASE CONNECTION:**
+- URL: postgresql://postgres:gymsecret@localhost:5432/gym_management
+- Already configured with all tables
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - Create, read, update, delete membership plans
+   - Display plans with features and pricing
+
+2. **Member Management**
+   - Member registration form with validation
+   - Member directory with search and filters
+   - Member profile editing
+
+3. **Membership Card System**
+   - Generate membership cards with unique numbers
+   - Track card status and validity periods
+   - Automatic status updates based on dates
+
+4. **Check-in System**
+   - Check-in interface with card number scanning
+   - Check-in history with timestamps
+   - Current active check-ins display
+
+5. **Payment Processing**
+   - Record payment transactions
+   - Payment history per member
+   - Payment method tracking
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use Prisma for all database operations with proper schema
+- Implement RESTful API with Express.js and TypeScript
+- Add input validation with Zod
+- Implement proper error handling middleware
+- React frontend should use functional components with hooks
+- Use React Router for navigation
+- Manage state with Zustand
+- Use Tailwind CSS for styling with responsive design
+- Implement form handling with React Hook Form
+
+**CODE STRUCTURE:**
+Backend (Express.js + Prisma):
+- Prisma schema for all database models
+- Route handlers for all API endpoints
+- Middleware for authentication and validation
+- Services for business logic
+
+Frontend (React + TypeScript):
+- Components for each feature section
+- Custom hooks for API calls and state management
+- TypeScript interfaces for all data types
+- Context or Zustand for application state
+
+Generate the complete application with all necessary configuration files and setup instructions.

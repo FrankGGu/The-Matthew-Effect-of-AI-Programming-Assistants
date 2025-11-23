@@ -1,0 +1,41 @@
+{
+  "id": "LCR 170",
+  "title": "交易逆序对的总数",
+  "titleSlug": "shu-zu-zhong-de-ni-xu-dui-lcof",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Ordered Set",
+    "Merge Sort"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int reversePairs(vector<int>& record) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int reversePairs(int[] record) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def reversePairs(self, record):\n        \"\"\"\n        :type record: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def reversePairs(self, record: List[int]) -> int:\n        ",
+    "c": "int reversePairs(int* record, int recordSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int ReversePairs(int[] record) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} record\n * @return {number}\n */\nvar reversePairs = function(record) {\n    \n};",
+    "typescript": "function reversePairs(record: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $record\n     * @return Integer\n     */\n    function reversePairs($record) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func reversePairs(_ record: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun reversePairs(record: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int reversePairs(List<int> record) {\n    \n  }\n}",
+    "golang": "func reversePairs(record []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} record\n# @return {Integer}\ndef reverse_pairs(record)\n    \nend",
+    "scala": "object Solution {\n    def reversePairs(record: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn reverse_pairs(record: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (reverse-pairs record)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec reverse_pairs(Record :: [integer()]) -> integer().\nreverse_pairs(Record) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec reverse_pairs(record :: [integer]) :: integer\n  def reverse_pairs(record) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func reversePairs(record: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[7,5,6,4]",
+  "hints": []
+}

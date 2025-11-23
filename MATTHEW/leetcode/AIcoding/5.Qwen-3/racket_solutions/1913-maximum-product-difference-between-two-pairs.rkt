@@ -1,0 +1,5 @@
+(define (max-product-difference nums)
+  (let* ((sorted (sort nums <))
+         (n (length sorted)))
+    (- (* (list-ref sorted (- n 1)) (list-ref sorted (- n 2)))
+       (* (list-ref sorted 0) (list-ref sorted 1)))))

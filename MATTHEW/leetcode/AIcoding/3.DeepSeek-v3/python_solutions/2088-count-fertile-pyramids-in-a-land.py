@@ -1,0 +1,30 @@
+class Solution:
+    def countPyramids(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        res = 0
+        dp = [[0] * n for _ in range(m)]
+
+        for i in range(m - 1, -1, -1):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    dp[i][j] = 0
+                else:
+                    if i == m - 1 or j == 0 or j == n - 1:
+                        dp[i][j] = 1
+                    else:
+                        dp[i][j] = 1 + min(dp[i + 1][j - 1], dp[i + 1][j], dp[i + 1][j + 1])
+                    res += dp[i][j] - 1
+
+        dp = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    dp[i][j] = 0
+                else:
+                    if i == 0 or j == 0 or j == n - 1:
+                        dp[i][j] = 1
+                    else:
+                        dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i - 1][j], dp[i - 1][j + 1])
+                    res += dp[i][j] - 1
+
+        return res

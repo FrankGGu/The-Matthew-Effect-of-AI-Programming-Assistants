@@ -1,0 +1,13 @@
+(define/contract (number-of-boomerangs points)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let ([res 0])
+    (for ([p1 points])
+      (let ([ht (make-hash)])
+        (for ([p2 points])
+          (let ([dx (- (car p1) (car p2))]
+                [dy (- (cadr p1) (cadr p2))])
+            (let ([dist (+ (* dx dx) (* dy dy))])
+              (hash-update! ht dist add1 0))))
+        (for ([(k v) (in-hash ht)])
+          (set! res (+ res (* v (- v 1)))))))
+    res))

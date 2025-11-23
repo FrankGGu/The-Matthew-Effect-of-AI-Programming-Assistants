@@ -1,0 +1,15 @@
+#lang racket
+
+(define (make-k-subarray-sums-equal arr k)
+  (define n (length arr))
+  (define freq (make-hash))
+  (for ([i (in-range n)])
+    (define key (modulo i k))
+    (hash-update! freq key add1 0))
+  (define max-freq (apply max (hash-values freq)))
+  (define res '())
+  (for ([i (in-range n)])
+    (define key (modulo i k))
+    (when (< (hash-ref freq key) max-freq)
+      (set! res (cons i res))))
+  res)

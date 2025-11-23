@@ -1,0 +1,12 @@
+(define (find-beautiful-indices arr)
+  (define n (length arr))
+  (define beautiful-indices '())
+  (for ([i (in-range n)])
+    (when (and (not (= i 0))
+               (not (= i (- n 1)))
+               (and (> (list-ref arr i) (list-ref arr (- i 1)))
+                    (> (list-ref arr i) (list-ref arr (+ i 1)))))
+      (set! beautiful-indices (cons i beautiful-indices))))
+  (reverse beautiful-indices))
+
+(find-beautiful-indices '(1 3 2 4 5 4 3))

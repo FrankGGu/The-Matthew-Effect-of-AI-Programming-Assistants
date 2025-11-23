@@ -1,0 +1,25 @@
+(define (profitable-schemes n min-profit group profit)
+  (define mod 1000000007)
+  (define dp (make-vector (+ min-profit 1) (make-vector (+ n 1) 0)))
+  (vector-set! (vector-ref dp 0) 0 1)
+
+  (for ([k (in-range (length group))])
+    (define g (list-ref group k))
+    (define p (list-ref profit k))
+    (define new-dp (vector-copy dp))
+
+    (for ([i (in-range (+ min-profit 1))])
+      (for ([j (in-range (+ n 1))])
+        (when (>= j g)
+          (define new-i (min (+ i p) min-profit))
+          (define new-j (- j g))
+          (vector-set! (vector-ref new-dp new-i) new-j 
+            (modulo (+ (vector-ref (vector-ref new-dp new-i) new-j)
+                     (vector-ref (vector-ref dp i) j))
+                     mod)))))
+    (set! dp new-dp))
+
+  (define total 0)
+  (for ([j (in-range (+ n 1))])
+    (set! total (modulo (+ total (vector-ref (vector-ref dp min-profit) j)) mod)))
+  total)

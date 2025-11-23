@@ -1,0 +1,12 @@
+(struct TreeNode (val left right) #:transparent)
+
+(define (insertIntoBST root val)
+  (if (null? root)
+      (TreeNode val null null)
+      (if (< val (TreeNode-val root))
+          (TreeNode (TreeNode-val root)
+                    (insertIntoBST (TreeNode-left root) val)
+                    (TreeNode-right root))
+          (TreeNode (TreeNode-val root)
+                    (TreeNode-left root)
+                    (insertIntoBST (TreeNode-right root) val)))))

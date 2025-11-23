@@ -1,0 +1,10 @@
+(define (rearrange-spaces words)
+  (define total-space (string-length (string-join words " ")))
+  (define num-spaces (- total-space (length words)))
+  (if (= (length words) 1)
+      (car words)
+      (let* ((space-per-gap (quotient num-spaces (- (length words) 1)))
+             (extra-spaces (remainder num-spaces (- (length words) 1))))
+        (string-join
+         (append words (make-list extra-spaces " "))
+         (make-string space-per-gap #\space)))))

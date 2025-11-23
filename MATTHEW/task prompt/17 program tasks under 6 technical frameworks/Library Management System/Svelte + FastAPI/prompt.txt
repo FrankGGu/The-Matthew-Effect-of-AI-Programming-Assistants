@@ -1,0 +1,85 @@
+你是一个全栈开发专家，请使用以下技术栈实现图书馆管理系统：
+
+前端：SvelteKit + TypeScript
+后端：FastAPI + SQLAlchemy + Pydantic
+数据库：PostgreSQL
+
+系统功能需求：
+1. 书籍管理：
+   - 书籍列表（显示ISBN、标题、作者、出版社、出版年份、分类、总副本数、可用副本数）
+   - 添加/编辑书籍表单
+   - 书籍搜索（按标题、作者、ISBN）
+
+2. 借阅者管理：
+   - 借阅者列表（显示借阅证号、姓名、邮箱、注册日期、状态）
+   - 添加/编辑借阅者表单
+   - 借阅证号生成规则：LC+自增数字（如LC1001）
+
+3. 借阅记录管理：
+   - 借阅记录列表（显示书籍信息、借阅者信息、借出日期、应还日期、归还日期、状态）
+   - 借书功能（选择借阅者和书籍，自动计算应还日期为30天后）
+   - 还书功能
+   - 逾期记录标记
+
+数据库配置：
+- 使用SQLAlchemy连接PostgreSQL
+- 数据库URL: postgresql://postgres:library123@localhost:5432/library_db
+
+请生成完整可运行的项目代码，包括：
+1. FastAPI后端：
+   - SQLAlchemy模型定义（Book, Borrower, Loan）
+   - Pydantic模式（用于请求/响应验证）
+   - API路由和依赖注入
+   - 数据库会话管理
+   - 自动API文档（Swagger/OpenAPI）
+
+2. SvelteKit前端：
+   - Svelte组件和响应式状态
+   - 使用TypeScript确保类型安全
+   - 路由和表单处理
+   - 错误处理和加载状态
+
+3. 确保功能完整：
+   - 借书时自动减少书籍可用副本数
+   - 还书时自动增加书籍可用副本数
+   - 逾期状态自动计算
+   - 输入验证和错误处理
+
+代码要求：
+- 使用Python 3.10+和FastAPI
+- 使用SQLAlchemy 2.0+和异步操作
+- 使用SvelteKit和TypeScript
+- 包含完整的OpenAPI文档
+- 提供uv或poetry依赖管理配置
+数据库是这样的
+主机: localhost
+端口: 5432
+数据库: library_db
+用户: postgres
+密码: library123
+连接字符串: 
+  postgresql://postgres:library123@localhost:5432/library_db
+# 创建示例数据脚本
+cat > sample-data.sql << 'EOF'
+-- 添加示例书籍
+INSERT INTO books (isbn, title, author, publisher, publication_year, category, total_copies, available_copies) VALUES
+('978-3-16-148410-0', 'The Great Gatsby', 'F. Scott Fitzgerald', 'Scribner', 1925, 'Fiction', 5, 5),
+('978-0-7432-7356-5', 'To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott & Co.', 1960, 'Fiction', 3, 3),
+('978-0-452-28423-4', '1984', 'George Orwell', 'Secker & Warburg', 1949, 'Dystopian', 4, 4),
+('978-0-14-143951-8', 'Pride and Prejudice', 'Jane Austen', 'T. Egerton', 1813, 'Romance', 2, 2),
+('978-0-547-92822-9', 'The Hobbit', 'J.R.R. Tolkien', 'Allen & Unwin', 1937, 'Fantasy', 6, 6);
+
+-- 添加示例借阅者
+INSERT INTO borrowers (library_card_id, first_name, last_name, email, phone, address) VALUES
+('LC1001', 'John', 'Doe', 'john.doe@example.com', '555-0101', '123 Main St, Anytown'),
+('LC1002', 'Jane', 'Smith', 'jane.smith@example.com', '555-0102', '456 Oak Ave, Somewhere'),
+('LC1003', 'Robert', 'Johnson', 'robert.j@example.com', '555-0103', '789 Pine Rd, Nowhere'),
+('LC1004', 'Sarah', 'Williams', 'sarah.w@example.com', '555-0104', '321 Elm St, Anycity');
+
+-- 添加示例借阅记录
+INSERT INTO loans (book_id, borrower_id, loan_date, due_date, return_date, status) VALUES
+(1, 1, '2024-01-15', '2024-02-15', '2024-02-10', 'RETURNED'),
+(2, 2, '2024-02-01', '2024-03-01', NULL, 'BORROWED'),
+(3, 3, '2024-02-10', '2024-03-10', NULL, 'BORROWED'),
+(1, 4, '2024-02-20', '2024-03-20', NULL, 'BORROWED');
+EOF

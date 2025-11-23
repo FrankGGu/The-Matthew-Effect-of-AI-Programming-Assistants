@@ -1,0 +1,33 @@
+(define (k-similarity s1 s2)
+  (define (neighbors s)
+    (define result '())
+    (for*/list ([i (in-range 0 (string-length s))]
+                [j (in-range (+ i 1) (string-length s))]
+                #:when (char=? (string-ref s i) (string-ref s2 i))
+                #:when (not (char=? (string-ref s j) (string-ref s2 j))))
+      (define new-s (string-copy s))
+      (define temp (string-ref new-s i))
+      (string-set! new-s i (string-ref new-s j))
+      (string-set! new-s j temp)
+      new-s))
+
+  (define q (make-queue))
+  (enqueue! q s1)
+  (define visited (make-hash))
+  (hash-set! visited s1 #t)
+  (define steps 0)
+
+  (let loop ()
+    (if (queue-empty? q)
+        -1
+        (let ([level-size (queue-size q)])
+          (for ([i (in-range level-size)])
+            (let ([curr (dequeue! q)])
+              (if (string=? curr s2)
+                  (return steps)
+                  (for ([neighbor (neighbors curr)])
+                    (unless (hash-ref visited neighbor #f)
+                      (hash-set! visited neighbor #t)
+                      (enqueue! q neighbor))))))
+          (set! steps (+ steps 1))
+          (loop)))))

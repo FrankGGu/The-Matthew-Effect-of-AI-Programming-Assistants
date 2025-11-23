@@ -1,0 +1,5 @@
+(define (create-data-frame column-names data)
+  (define dt (make-table column-names))
+  (for ([row data])
+    (table-add-row! dt (vector->list row)))
+  dt)

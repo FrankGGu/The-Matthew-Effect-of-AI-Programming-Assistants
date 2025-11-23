@@ -1,0 +1,16 @@
+(define (findGoodSubset matrix)
+  (define (is-good-subset subset)
+    (and (not (null? subset))
+         (for/and ([row subset])
+           (for/and ([col subset])
+             (not (zero? (matrix-ref matrix row col)))))))
+  (define (helper subset row)
+    (if (>= row (vector-length matrix))
+        (if (is-good-subset subset)
+            subset
+            '())
+        (let ([with-row (cons row subset)]
+              [without-row subset])
+          (or (helper with-row (+ row 1))
+              (helper without-row (+ row 1))))))
+  (helper '() 0))

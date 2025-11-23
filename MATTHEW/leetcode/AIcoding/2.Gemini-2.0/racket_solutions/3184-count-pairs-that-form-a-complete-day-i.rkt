@@ -1,0 +1,11 @@
+(define (number-of-pairs nums)
+  (let ((n (length nums)))
+    (let loop ((i 0) (count 0))
+      (if (= i n)
+          count
+          (let loop2 ((j (+ i 1)))
+            (if (= j n)
+                (loop (+ i 1) count)
+                (if (and (<= (list-ref nums i) (list-ref nums j)) (<= (- (list-ref nums j) (list-ref nums i)) 1))
+                    (loop2 (+ j 1) (+ count 1))
+                    (loop2 (+ j 1) count))))))))

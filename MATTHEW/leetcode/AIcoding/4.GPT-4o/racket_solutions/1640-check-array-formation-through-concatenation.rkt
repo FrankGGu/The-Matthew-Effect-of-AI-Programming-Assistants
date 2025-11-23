@@ -1,0 +1,15 @@
+(define (can-form-array arr pieces)
+  (define piece-map (foldl (lambda (p acc) (hash-set! acc (hash-ref p 0) p)) (make-hash) pieces))
+  (define (check idx)
+    (if (>= idx (length arr))
+        #t
+        (let* ((start (list-ref arr idx))
+               (piece (hash-ref piece-map start #f)))
+          (if (not piece)
+              #f
+              (for/fold ([i idx]) ([j (in-range 1 (length piece))])
+                (if (= (list-ref arr i) (list-ref piece j))
+                    (+ i 1)
+                    (error "Unexpected value")))
+              (check (+ idx (length piece)))))))
+  (check 0))

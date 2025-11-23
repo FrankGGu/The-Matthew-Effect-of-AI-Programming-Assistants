@@ -1,0 +1,11 @@
+(define (vowels-of-all-substrings s)
+  (define vowels-set (set '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U)))
+  (define n (string-length s))
+  (define total-vowels 0)
+  (for ([i (in-range n)])
+    (when (set-member? vowels-set (string-ref s i))
+      (set! total-vowels (+ total-vowels (* (1+ i) (- n i))))))
+  total-vowels)
+
+(define (count-vowels s)
+  (vowels-of-all-substrings s))

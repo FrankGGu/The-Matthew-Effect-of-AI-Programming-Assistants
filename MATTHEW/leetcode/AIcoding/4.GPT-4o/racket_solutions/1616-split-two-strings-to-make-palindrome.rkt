@@ -1,0 +1,15 @@
+(define (checkPalindrome s)
+  (define (is-palindrome str)
+    (equal? str (string-reverse str)))
+  (is-palindrome s))
+
+(define (canBePalindrome s1 s2)
+  (define len1 (string-length s1))
+  (define len2 (string-length s2))
+  (for/or ([i (in-range (+ len1 len2))])
+    (define s (if (< i len1)
+                   (string-append (substring s1 0 i) (substring s1 (+ i 1)))
+                   (string-append (substring s2 0 (- i len1)) (substring s2 (+ (- i len1) 1)))))
+    (checkPalindrome s)))
+
+(canBePalindrome s1 s2)

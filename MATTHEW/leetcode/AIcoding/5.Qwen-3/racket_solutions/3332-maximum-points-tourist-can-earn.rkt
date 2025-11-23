@@ -1,0 +1,15 @@
+#lang racket
+
+(define (max-points points)
+  (define (cmp a b)
+    (< (car a) (car b)))
+  (define sorted (sort points cmp))
+  (define n (length sorted))
+  (define dp (make-vector n 0))
+  (vector-set! dp 0 (cadr (vector-ref sorted 0)))
+  (for ([i (in-range 1 n)])
+    (vector-set! dp i (cadr (vector-ref sorted i)))
+    (for ([j (in-range 0 i)])
+      (when (<= (caddr (vector-ref sorted j)) (car (vector-ref sorted i)))
+        (vector-set! dp i (max (vector-ref dp i) (+ (vector-ref dp j) (cadr (vector-ref sorted i))))))))
+  (vector-ref dp (- n 1)))

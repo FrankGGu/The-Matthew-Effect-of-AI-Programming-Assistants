@@ -1,0 +1,15 @@
+(define (merge-similar-items items1 items2)
+  (define (update-map m item)
+    (let ((key (car item))
+          (value (cadr item)))
+      (if (hash-has-key? m key)
+          (hash-set! m key (+ (hash-ref m key) value))
+          (hash-set! m key value))))
+
+  (define m (make-hash))
+  (for-each (lambda (item) (update-map m item)) items1)
+  (for-each (lambda (item) (update-map m item)) items2)
+
+  (define result '())
+  (hash-for-each m (lambda (k v) (set! result (cons (list k v) result))))
+  (sort result (lambda (a b) (< (car a) (car b)))))

@@ -1,0 +1,16 @@
+(define (peaks-in-array A)
+  (define (is-peak i)
+    (and (> (vector-ref A i) (vector-ref A (- i 1)))
+         (> (vector-ref A i) (vector-ref A (+ i 1)))))
+  (define n (vector-length A))
+  (define peaks '())
+  (for ((i (in-range 1 (- n 1))))
+    (when (is-peak i)
+      (set! peaks (cons i peaks))))
+  (reverse peaks))
+
+(define (main)
+  (let ((A (vector 1 3 2 3 5 0 3)))
+    (peaks-in-array A)))
+
+(main)

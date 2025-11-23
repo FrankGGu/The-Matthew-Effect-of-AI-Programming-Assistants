@@ -1,0 +1,22 @@
+(struct TreeNode (val left right))
+
+(define (lca-deepest-leaves root)
+  (define (dfs node)
+    ;; Returns a pair: (cons depth lca-node)
+    (if (null? node)
+        (cons 0 null)
+        (let* ((left-pair (dfs (TreeNode-left node)))
+               (right-pair (dfs (TreeNode-right node)))
+               (left-depth (car left-pair))
+               (left-lca (cdr left-pair))
+               (right-depth (car right-pair))
+               (right-lca (cdr right-pair)))
+          (cond
+            ((= left-depth right-depth)
+             (cons (+ 1 left-depth) node))
+            ((> left-depth right-depth)
+             (cons (+ 1 left-depth) left-lca))
+            (else ; (< right-depth left-depth)
+             (cons (+ 1 right-depth) right-lca))))))
+
+  (cdr (dfs root)))

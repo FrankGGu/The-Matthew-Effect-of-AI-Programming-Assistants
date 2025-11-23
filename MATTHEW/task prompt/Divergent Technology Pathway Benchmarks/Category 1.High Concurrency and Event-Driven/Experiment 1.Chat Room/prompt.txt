@@ -1,0 +1,11 @@
+Task: Build a simple chat server where clients can connect and send messages to each other.
+
+Technology stack (must use exactly this):
+[Option A] Elixir + Phoenix Channels
+[Option B] Node.js + Socket.IO
+[Option C] Go + Gorilla WebSocket
+
+Requirements:
+- Start a server.
+- Support multiple clients connecting.
+- Broadcast messages from one client to all others.

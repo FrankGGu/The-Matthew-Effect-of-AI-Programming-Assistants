@@ -1,0 +1,36 @@
+#lang racket
+
+(define (solve board)
+  (define rows (vector-length board))
+  (when (zero? rows) (void))
+  (define cols (vector-length (vector-ref board 0)))
+  (when (zero? cols) (void))
+
+  (define (dfs r c)
+    (when (and (>= r 0) (< r rows)
+               (>= c 0) (< c cols)
+               (char=? (vector-ref (vector-ref board r) c) #\O))
+      (vector-set! (vector-ref board r) c #\S)
+      (dfs (+ r 1) c)
+      (dfs (- r 1) c)
+      (dfs r (+ c 1))
+      (dfs r (- c 1))))
+
+  (for ([i (in-range rows)])
+    (when (char=? (vector-ref (vector-ref board i) 0) #\O)
+      (dfs i 0))
+    (when (char=? (vector-ref (vector-ref board i) (- cols 1)) #\O)
+      (dfs i (- cols 1))))
+
+  (for ([j (in-range cols)])
+    (when (char=? (vector-ref (vector-ref board 0) j) #\O)
+      (dfs 0 j))
+    (when (char=? (vector-ref (vector-ref board (- rows 1)) j) #\O)
+      (dfs (- rows 1) j)))
+
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (case (vector-ref (vector-ref board i) j)
+        ((#\O) (vector-set! (vector-ref board i) j #\X))
+        ((#\S) (vector-set! (vector-ref board i) j #\O)))))
+  )

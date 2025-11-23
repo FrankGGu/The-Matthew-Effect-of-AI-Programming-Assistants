@@ -1,0 +1,21 @@
+(define (maximum-difference-between-even-and-odd-frequency-ii nums)
+  (let* ((n (length nums))
+         (freq (make-hash))
+         (max-diff 0))
+    (for ([num nums])
+      (hash-update! freq num add1 0))
+    (define (calculate-diff)
+      (let ((even-freq 0)
+            (odd-freq 0))
+        (hash-for-each freq (lambda (k v) (if (even? v) (set! even-freq (+ even-freq v)) (set! odd-freq (+ odd-freq v)))))
+        (- even-freq odd-freq)))
+
+    (set! max-diff (calculate-diff))
+
+    (for ([num nums])
+      (hash-update! freq num sub1)
+      (when (= (hash-ref freq num) 0)
+        (hash-remove! freq num))
+      (set! max-diff (max max-diff (calculate-diff))))
+
+    max-diff))

@@ -1,0 +1,50 @@
+(define-struct TreeNode (val left right) #:mutable)
+
+(define (replace-cousins root)
+  (define level-sums (make-hash))
+  (define parent-child-sums (make-hash))
+
+  (let bfs-pass1 ((q (list (list root 0 #f))))
+    (unless (empty? q)
+      (let* ((current-level-items q)
+             (next-level-items '()))
+        (for-each
+         (lambda (item)
+           (let* ((node (car item))
+                  (level (cadr item))
+                  (parent (caddr item)))
+             (hash-set! level-sums level (+ (hash-ref level-sums level 0) (TreeNode-val node)))
+             (when parent
+               (hash-set! parent-child-sums parent (+ (hash-ref parent-child-sums parent 0) (TreeNode-val node))))
+             (when (TreeNode-left node)
+               (set! next-level-items (cons (list (TreeNode-left node) (+ level 1) node) next-level-items)))
+             (when (TreeNode-right node)
+               (set! next-level-items (cons (list (TreeNode-right node) (+ level 1) node) next-level-items))))
+         current-level-items)
+        (bfs-pass1 (reverse next-level-items)))))
+
+  (let bfs-pass2 ((q (list (list root 0 #f))))
+    (unless (empty? q)
+      (let* ((current-level-items q)
+             (next-level-items '()))
+        (for-each
+         (lambda (item)
+           (let* ((node (car item))
+                  (level (cadr item))
+                  (parent (caddr item)))
+             (cond
+               ((not parent)
+                (set-TreeNode-val! node 0))
+               (else
+                (let* ((total-level-sum (hash-ref level-sums level 0))
+                       (siblings-and-self-sum (hash-ref parent-child-sums parent 0))
+                       (cousin-sum (- total-level-sum siblings-and-self-sum)))
+                  (set-TreeNode-val! node cousin-sum))))
+             (when (TreeNode-left node)
+               (set! next-level-items (cons (list (TreeNode-left node) (+ level 1) node) next-level-items)))
+             (when (TreeNode-right node)
+               (set! next-level-items (cons (list (TreeNode-right node) (+ level 1) node) next-level-items))))
+         current-level-items)
+        (bfs-pass2 (reverse next-level-items)))))
+
+  root)

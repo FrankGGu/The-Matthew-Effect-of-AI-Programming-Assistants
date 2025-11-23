@@ -1,0 +1,39 @@
+{
+  "id": "LCR 183",
+  "title": "望远镜中最高的海拔",
+  "titleSlug": "hua-dong-chuang-kou-de-zui-da-zhi-lcof",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Queue",
+    "Array",
+    "Sliding Window",
+    "Monotonic Queue",
+    "Heap (Priority Queue)"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> maxAltitude(vector<int>& heights, int limit) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] maxAltitude(int[] heights, int limit) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxAltitude(self, heights, limit):\n        \"\"\"\n        :type heights: List[int]\n        :type limit: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxAltitude(self, heights: List[int], limit: int) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* maxAltitude(int* heights, int heightsSize, int limit, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] MaxAltitude(int[] heights, int limit) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} heights\n * @param {number} limit\n * @return {number[]}\n */\nvar maxAltitude = function(heights, limit) {\n    \n};",
+    "typescript": "function maxAltitude(heights: number[], limit: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $heights\n     * @param Integer $limit\n     * @return Integer[]\n     */\n    function maxAltitude($heights, $limit) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxAltitude(_ heights: [Int], _ limit: Int) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxAltitude(heights: IntArray, limit: Int): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> maxAltitude(List<int> heights, int limit) {\n    \n  }\n}",
+    "golang": "func maxAltitude(heights []int, limit int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} heights\n# @param {Integer} limit\n# @return {Integer[]}\ndef max_altitude(heights, limit)\n    \nend",
+    "scala": "object Solution {\n    def maxAltitude(heights: Array[Int], limit: Int): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_altitude(heights: Vec<i32>, limit: i32) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (max-altitude heights limit)\n  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))\n  )",
+    "erlang": "-spec max_altitude(Heights :: [integer()], Limit :: integer()) -> [integer()].\nmax_altitude(Heights, Limit) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_altitude(heights :: [integer], limit :: integer) :: [integer]\n  def max_altitude(heights, limit) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxAltitude(heights: Array<Int64>, limit: Int64): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[14,2,27,-5,28,13,39]\n3",
+  "hints": []
+}

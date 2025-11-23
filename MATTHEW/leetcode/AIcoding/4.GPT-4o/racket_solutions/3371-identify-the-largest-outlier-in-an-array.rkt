@@ -1,0 +1,16 @@
+(define (largest-outlier nums)
+  (define (is-outlier n)
+    (or (< n (- (mean nums) (* 2 (stddev nums))))
+        (> n (+ (mean nums) (* 2 (stddev nums)))))
+  (define (mean lst)
+    (/ (apply + lst) (length lst)))
+  (define (stddev lst)
+    (define m (mean lst))
+    (sqrt (/ (apply + (map (lambda (x) (expt (- x m) 2)) lst)) (length lst))))
+  (define outliers (filter is-outlier nums))
+  (if (null? outliers)
+      #f
+      (apply max outliers)))
+
+(define (identifyLargestOutlier nums)
+  (largest-outlier nums))

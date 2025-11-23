@@ -1,0 +1,10 @@
+(define (replace-digits s)
+  (let ((len (string-length s)))
+    (list->string
+     (for/list ([i (in-range len)])
+       (if (odd? i)
+           (let* ((prev-char (string-ref s (- i 1)))
+                  (digit-char (string-ref s i))
+                  (digit-val (- (char->integer digit-char) (char->integer #\0))))
+             (integer->char (+ (char->integer prev-char) digit-val)))
+           (string-ref s i))))))

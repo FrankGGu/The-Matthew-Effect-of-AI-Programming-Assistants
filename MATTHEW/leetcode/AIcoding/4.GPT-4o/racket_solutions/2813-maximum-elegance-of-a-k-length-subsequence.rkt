@@ -1,0 +1,11 @@
+(define (findMaxElegance nums k)
+  (define (helper nums k)
+    (if (null? nums)
+        0
+        (let* ((current (car nums))
+               (elegance (+ (car current) (helper (cdr nums) k)))
+               (next-elegance (if (and (>= (length nums) k) (not (null? (cdr nums))))
+                                  (helper (cdr nums) k))
+               (max-elegance (max elegance next-elegance)))
+          max-elegance)))
+  (helper (sort nums (lambda (x y) (> (car x) (car y)))) k))

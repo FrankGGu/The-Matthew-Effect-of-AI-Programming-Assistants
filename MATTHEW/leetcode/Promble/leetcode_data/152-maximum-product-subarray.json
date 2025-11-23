@@ -1,0 +1,36 @@
+{
+  "id": "152",
+  "title": "Maximum Product Subarray",
+  "titleSlug": "maximum-product-subarray",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "<p>Given an integer array <code>nums</code>, find a <span data-keyword=\"subarray-nonempty\">subarray</span> that has the largest product, and return <em>the product</em>.</p>\n\n<p>The test cases are generated so that the answer will fit in a <strong>32-bit</strong> integer.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,-2,4]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> [2,3] has the largest product 6.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-2,0,-1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> The result cannot be 2, because [-2,-1] is not a subarray.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>\n\t<li>The product of any subarray of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxProduct(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxProduct(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxProduct(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxProduct(self, nums: List[int]) -> int:\n        ",
+    "c": "int maxProduct(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxProduct(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar maxProduct = function(nums) {\n    \n};",
+    "typescript": "function maxProduct(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function maxProduct($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxProduct(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxProduct(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxProduct(List<int> nums) {\n    \n  }\n}",
+    "golang": "func maxProduct(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef max_product(nums)\n    \nend",
+    "scala": "object Solution {\n    def maxProduct(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_product(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-product nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec max_product(Nums :: [integer()]) -> integer().\nmax_product(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_product(nums :: [integer]) :: integer\n  def max_product(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxProduct(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,3,-2,4]\n[-2,0,-1]",
+  "hints": []
+}

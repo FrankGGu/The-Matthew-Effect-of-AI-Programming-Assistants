@@ -1,0 +1,15 @@
+(define (topKFrequent words k)
+  (define freq-table (make-hash))
+  (for-each (lambda (word)
+              (hash-update! freq-table word (lambda (x) (+ x 1)) 0))
+            words)
+  (define sorted-words
+    (sort (hash-map->list freq-table)
+          (lambda (a b)
+            (or (> (cdr a) (cdr b))
+                (and (= (cdr a) (cdr b))
+                     (string<? (car b) (car a))))))
+    ))
+  (map car (take sorted-words k)))
+
+(topKFrequent '("i" "love" "leetcode" "i" "love" "coding") 2)

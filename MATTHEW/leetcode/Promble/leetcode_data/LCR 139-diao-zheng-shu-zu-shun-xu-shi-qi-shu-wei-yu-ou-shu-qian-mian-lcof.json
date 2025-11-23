@@ -1,0 +1,37 @@
+{
+  "id": "LCR 139",
+  "title": "训练计划 I",
+  "titleSlug": "diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> trainingPlan(vector<int>& actions) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] trainingPlan(int[] actions) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def trainingPlan(self, actions):\n        \"\"\"\n        :type actions: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def trainingPlan(self, actions: List[int]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* trainingPlan(int* actions, int actionsSize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] TrainingPlan(int[] actions) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} actions\n * @return {number[]}\n */\nvar trainingPlan = function(actions) {\n    \n};",
+    "typescript": "function trainingPlan(actions: number[]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $actions\n     * @return Integer[]\n     */\n    function trainingPlan($actions) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func trainingPlan(_ actions: [Int]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun trainingPlan(actions: IntArray): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> trainingPlan(List<int> actions) {\n    \n  }\n}",
+    "golang": "func trainingPlan(actions []int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} actions\n# @return {Integer[]}\ndef training_plan(actions)\n    \nend",
+    "scala": "object Solution {\n    def trainingPlan(actions: Array[Int]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn training_plan(actions: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (training-plan actions)\n  (-> (listof exact-integer?) (listof exact-integer?))\n  )",
+    "erlang": "-spec training_plan(Actions :: [integer()]) -> [integer()].\ntraining_plan(Actions) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec training_plan(actions :: [integer]) :: [integer]\n  def training_plan(actions) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func trainingPlan(actions: Array<Int64>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,4,5]",
+  "hints": []
+}

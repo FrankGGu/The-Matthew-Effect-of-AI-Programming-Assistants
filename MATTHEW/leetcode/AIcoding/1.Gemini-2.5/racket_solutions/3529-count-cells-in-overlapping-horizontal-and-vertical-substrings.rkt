@@ -1,0 +1,27 @@
+(define (count-cells grid)
+  (define R (length grid))
+  (define C (string-length (car grid)))
+
+  (define row-counts (make-vector R 0))
+  (for ([r (in-range R)])
+    (define current-row (list-ref grid r))
+    (for ([c (in-range C)])
+      (when (char=? (string-ref current-row c) #\X)
+        (vector-set! row-counts r (+ (vector-ref row-counts r) 1)))))
+
+  (define col-counts (make-vector C 0))
+  (for ([c (in-range C)])
+    (for ([r (in-range R)])
+      (when (char=? (string-ref (list-ref grid r) c) #\X)
+        (vector-set! col-counts c (+ (vector-ref col-counts c) 1)))))
+
+  (define total-count 0)
+  (for ([r (in-range R)])
+    (define current-row (list-ref grid r))
+    (for ([c (in-range C)])
+      (when (and (char=? (string-ref current-row c) #\X)
+                 (> (vector-ref row-counts r) 1)
+                 (> (vector-ref col-counts c) 1))
+        (set! total-count (+ total-count 1)))))
+
+  total-count)

@@ -1,0 +1,20 @@
+#lang racket
+
+(define (count-matching-subarrays s p)
+  (define n (string-length s))
+  (define m (string-length p))
+  (define p-values (map (lambda (c) (- (char->integer c) (char->integer #\a))) (string->list p)))
+  (define s-values (map (lambda (c) (- (char->integer c) (char->integer #\a))) (string->list s)))
+  (define (match i j)
+    (and (< j m)
+         (= (list-ref s-values i) (list-ref p-values j))))
+  (define (check i)
+    (let loop ((j 0))
+      (cond ((= j m) #t)
+            ((and (< i n) (match i j)) (loop (+ j 1)))
+            (else #f))))
+  (define (helper i res)
+    (if (>= i (- n m))
+        res
+        (helper (+ i 1) (if (check i) (+ res 1) res))))
+  (helper 0 0))

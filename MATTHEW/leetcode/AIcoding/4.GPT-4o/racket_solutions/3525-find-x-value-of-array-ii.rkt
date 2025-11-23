@@ -1,0 +1,11 @@
+(define (findXValueOfArrayII arr x)
+  (define (binary-search left right)
+    (if (<= left right)
+        (let* ((mid (quotient (+ left right) 2))
+               (current (list-ref arr mid)))
+          (cond
+            ((= current x) mid)
+            ((< current x) (binary-search (+ mid 1) right))
+            (else (binary-search left (- mid 1)))))
+        -1))
+  (binary-search 0 (sub1 (length arr))))

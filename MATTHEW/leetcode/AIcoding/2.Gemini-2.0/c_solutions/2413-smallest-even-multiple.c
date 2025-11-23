@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int smallestEvenMultiple(int n){
+    if (n % 2 == 0) {
+        return n;
+    } else {
+        return n * 2;
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "LCP 04",
+  "title": "Broken Board Dominoes",
+  "titleSlug": "broken-board-dominoes",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Graph",
+    "Array",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int domino(int n, int m, vector<vector<int>>& broken) {\n\n    }\n};",
+    "java": "class Solution {\n    public int domino(int n, int m, int[][] broken) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def domino(self, n, m, broken):\n        \"\"\"\n        :type n: int\n        :type m: int\n        :type broken: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def domino(self, n: int, m: int, broken: List[List[int]]) -> int:",
+    "c": "\n\nint domino(int n, int m, int** broken, int brokenSize, int* brokenColSize){\n\n}\n",
+    "javascript": "/**\n * @param {number} n\n * @param {number} m\n * @param {number[][]} broken\n * @return {number}\n */\nvar domino = function(n, m, broken) {\n\n};",
+    "typescript": "function domino(n: number, m: number, broken: number[][]): number {\n\n};",
+    "golang": "func domino(n int, m int, broken [][]int) int {\n\n}"
+  },
+  "exampleTestcases": "2\n3\n[[1, 0], [1, 1]]\n3\n3\n[]",
+  "hints": []
+}

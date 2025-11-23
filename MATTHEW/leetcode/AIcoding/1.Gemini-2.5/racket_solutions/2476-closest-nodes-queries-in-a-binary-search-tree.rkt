@@ -1,0 +1,41 @@
+(define-struct TreeNode (val left right))
+
+(define (closest-nodes root queries)
+  (define (inorder-traversal node)
+    (let ((result '()))
+      (define (traverse current-node)
+        (when (not (null? current-node))
+          (traverse (TreeNode-left current-node))
+          (set! result (cons (TreeNode-val current-node) result))
+          (traverse (TreeNode-right current-node))))
+      (traverse node)
+      (reverse result)))
+
+  (define sorted-values-list (inorder-traversal root))
+  (define sorted-values-vec (list->vector sorted-values-list))
+  (define n (vector-length sorted-values-vec))
+
+  (define (find-min-val target)
+    (let loop ((low 0) (high (- n 1)) (ans -1))
+      (if (> low high)
+          ans
+          (let* ((mid (quotient (+ low high) 2))
+                 (mid-val (vector-ref sorted-values-vec mid)))
+            (if (<= mid-val target)
+                (loop (+ mid 1) high mid-val)
+                (loop low (- mid 1) ans))))))
+
+  (define (find-max-val target)
+    (let loop ((low 0) (high (- n 1)) (ans -1))
+      (if (> low high)
+          ans
+          (let* ((mid (quotient (+ low high) 2))
+                 (mid-val (vector-ref sorted-values-vec mid)))
+            (if (>= mid-val target)
+                (loop low (- mid 1) mid-val)
+                (loop (+ mid 1) high ans))))))
+
+  (map (lambda (query-val)
+         (list (find-min-val query-val)
+               (find-max-val query-val)))
+       queries))

@@ -1,0 +1,15 @@
+(define (max-score-non-overlapping-intervals intervals)
+  (define (dp i prev-end)
+    (if (>= i (length intervals))
+        0
+        (let* ((curr (list-ref intervals i))
+               (curr-start (car curr))
+               (curr-score (cadr curr))
+               (include (if (or (null? prev-end) (< prev-end curr-start))
+                            (+ curr-score (dp (+ i 1) curr-start))
+                            0))
+               (exclude (dp (+ i 1) prev-end)))
+          (max include exclude))))
+  (dp 0 #f))
+
+(max-score-non-overlapping-intervals '((1 3) (2 4) (3 5) (4 6)))

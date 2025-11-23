@@ -1,0 +1,25 @@
+(define (waysToMakeFair A)
+  (define n (length A))
+  (define left-sum (make-vector n 0))
+  (define right-sum (make-vector n 0))
+
+  (for ([i (in-range n)])
+    (if (even? i)
+        (vector-set! left-sum i (if (= i 0) (vector-ref left-sum 0) (+ (vector-ref left-sum (- i 1)) (vector-ref A i))))
+        (vector-set! left-sum i (if (= i 0) 0 (vector-ref left-sum (- i 1))))))
+
+  (for ([i (in-range (- n 1) -1 -1)])
+    (if (odd? i)
+        (vector-set! right-sum i (if (= i (- n 1)) (vector-ref A i) (+ (vector-ref right-sum (+ i 1)) (vector-ref A i))))
+        (vector-set! right-sum i (if (= i (- n 1)) 0 (vector-ref right-sum (+ i 1))))))
+
+  (define count 0)
+  (for ([i (in-range n)])
+    (define left-even (if (even? i) (vector-ref left-sum i) (if (= i 0) 0 (vector-ref left-sum (- i 1)))))
+    (define left-odd (if (even? i) (if (= i 0) 0 (vector-ref left-sum (- i 1))) (vector-ref left-sum i)))
+    (define right-even (if (even? i) (vector-ref right-sum (+ i 1)) (vector-ref right-sum i)))
+    (define right-odd (if (even? i) (vector-ref right-sum i) (if (= i (- n 1)) 0 (vector-ref right-sum (+ i 1)))))
+    (when (= (+ left-even right-odd) (+ left-odd right-even))
+      (set! count (+ count 1))))
+
+  count)

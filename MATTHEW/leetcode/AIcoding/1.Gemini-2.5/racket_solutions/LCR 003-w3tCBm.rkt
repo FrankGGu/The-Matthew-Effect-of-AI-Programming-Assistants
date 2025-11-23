@@ -1,0 +1,7 @@
+(define (countBits n)
+  (let ([dp (make-vector (add1 n))])
+    (vector-set! dp 0 0)
+    (for ([i (in-range 1 (add1 n))])
+      (vector-set! dp i (+ (vector-ref dp (arithmetic-shift i -1))
+                           (bitwise-and i 1))))
+    (vector->list dp)))

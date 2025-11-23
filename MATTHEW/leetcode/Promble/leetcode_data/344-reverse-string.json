@@ -1,0 +1,35 @@
+{
+  "id": "344",
+  "title": "Reverse String",
+  "titleSlug": "reverse-string",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>Write a function that reverses a string. The input string is given as an array of characters <code>s</code>.</p>\n\n<p>You must do this by modifying the input array <a href=\"https://en.wikipedia.org/wiki/In-place_algorithm\" target=\"_blank\">in-place</a> with <code>O(1)</code> extra memory.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> s = [\"h\",\"e\",\"l\",\"l\",\"o\"]\n<strong>Output:</strong> [\"o\",\"l\",\"l\",\"e\",\"h\"]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> s = [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]\n<strong>Output:</strong> [\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>s[i]</code> is a <a href=\"https://en.wikipedia.org/wiki/ASCII#Printable_characters\" target=\"_blank\">printable ascii character</a>.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    void reverseString(vector<char>& s) {\n        \n    }\n};",
+    "java": "class Solution {\n    public void reverseString(char[] s) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def reverseString(self, s):\n        \"\"\"\n        :type s: List[str]\n        :rtype: None Do not return anything, modify s in-place instead.\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def reverseString(self, s: List[str]) -> None:\n        \"\"\"\n        Do not return anything, modify s in-place instead.\n        \"\"\"\n        ",
+    "c": "void reverseString(char* s, int sSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public void ReverseString(char[] s) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {character[]} s\n * @return {void} Do not return anything, modify s in-place instead.\n */\nvar reverseString = function(s) {\n    \n};",
+    "typescript": "/**\n Do not return anything, modify s in-place instead.\n */\nfunction reverseString(s: string[]): void {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $s\n     * @return NULL\n     */\n    function reverseString(&$s) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func reverseString(_ s: inout [Character]) {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun reverseString(s: CharArray): Unit {\n        \n    }\n}",
+    "dart": "class Solution {\n  void reverseString(List<String> s) {\n    \n  }\n}",
+    "golang": "func reverseString(s []byte)  {\n    \n}",
+    "ruby": "# @param {Character[]} s\n# @return {Void} Do not return anything, modify s in-place instead.\ndef reverse_string(s)\n    \nend",
+    "scala": "object Solution {\n    def reverseString(s: Array[Char]): Unit = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn reverse_string(s: &mut Vec<char>) {\n        \n    }\n}",
+    "cangjie": "class Solution {\n    func reverseString(s: Array<Rune>): Unit {\n\n    }\n}"
+  },
+  "exampleTestcases": "[\"h\",\"e\",\"l\",\"l\",\"o\"]\n[\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]",
+  "hints": [
+    "The entire logic for reversing a string is based on using the opposite directional two-pointer approach!"
+  ]
+}

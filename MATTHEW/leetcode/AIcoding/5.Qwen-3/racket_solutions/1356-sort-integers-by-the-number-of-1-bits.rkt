@@ -1,0 +1,7 @@
+(define (sort-integers-by-the-number-of-1-bits nums)
+  (sort nums (lambda (a b)
+               (let ((count-a (bit-count a))
+                     (count-b (bit-count b)))
+                 (if (= count-a count-b)
+                     (< a b)
+                     (< count-a count-b))))) )

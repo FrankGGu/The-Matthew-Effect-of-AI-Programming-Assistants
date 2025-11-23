@@ -1,0 +1,11 @@
+(define (specialArray nums)
+  (define (count-greater x)
+    (length (filter (lambda (n) (> n x)) nums)))
+  (for/fold ([result -1]) ([i 0 (length nums)])
+    (let ([count (count-greater i)])
+      (if (= count i)
+          (max result i)
+          result))))
+
+(define (specialArray-main nums)
+  (specialArray nums))

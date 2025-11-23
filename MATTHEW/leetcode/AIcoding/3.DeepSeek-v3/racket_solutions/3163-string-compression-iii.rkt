@@ -1,0 +1,13 @@
+(define/contract (compressed-string s)
+  (-> string? string?)
+  (define chars (string->list s))
+  (define (helper chars prev count acc)
+    (if (null? chars)
+        (string-append acc (string prev) (if (> count 1) (string-append (number->string count)) ""))
+        (let ((current (car chars)))
+          (if (equal? current prev)
+              (helper (cdr chars) prev (+ count 1) acc)
+              (helper (cdr chars) current 1 (string-append acc (string prev) (if (> count 1) (number->string count) "")))))))
+  (if (null? (string->list s)) 
+      "" 
+      (helper (cdr (string->list s)) (car (string->list s)) 1 "")))

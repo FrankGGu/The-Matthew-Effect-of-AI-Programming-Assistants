@@ -1,0 +1,10 @@
+(define (fill-missing-data keys values)
+  (define (helper k v res)
+    (if (null? k)
+        res
+        (let ((key (car k))
+              (val (car v)))
+          (if (equal? val #f)
+              (helper (cdr k) (cdr v) res)
+              (helper (cdr k) (cdr v) (append res (list (cons key val))))))))
+  (helper keys values '()))

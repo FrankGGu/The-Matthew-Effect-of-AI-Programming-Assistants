@@ -1,0 +1,23 @@
+(define (search nums target)
+  (let* ((n (vector-length nums))
+         (low 0)
+         (high (- n 1)))
+    (let loop ((low low) (high high))
+      (if (<= low high)
+          (let* ((mid (+ low (quotient (- high low) 2)))
+                 (mid-val (vector-ref nums mid)))
+            (cond
+              ((= mid-val target) mid)
+              ;; Left half is sorted
+              ((<= (vector-ref nums low) mid-val)
+               (if (and (<= (vector-ref nums low) target)
+                        (< target mid-val))
+                   (loop low (- mid 1))
+                   (loop (+ mid 1) high)))
+              ;; Right half is sorted
+              (else ; (> (vector-ref nums low) mid-val)
+               (if (and (> target mid-val)
+                        (<= target (vector-ref nums high)))
+                   (loop (+ mid 1) high)
+                   (loop low (- mid 1))))))
+          -1))))

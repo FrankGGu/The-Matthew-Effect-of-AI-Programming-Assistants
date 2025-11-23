@@ -1,0 +1,36 @@
+{
+  "id": "LCR 116",
+  "title": "省份数量",
+  "titleSlug": "bLyHh0",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Graph"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findCircleNum(vector<vector<int>>& isConnected) {\n\n    }\n};",
+    "java": "class Solution {\n    public int findCircleNum(int[][] isConnected) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def findCircleNum(self, isConnected):\n        \"\"\"\n        :type isConnected: List[List[int]]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def findCircleNum(self, isConnected: List[List[int]]) -> int:",
+    "c": "\n\nint findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize){\n\n}",
+    "csharp": "public class Solution {\n    public int FindCircleNum(int[][] isConnected) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} isConnected\n * @return {number}\n */\nvar findCircleNum = function(isConnected) {\n\n};",
+    "typescript": "function findCircleNum(isConnected: number[][]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $isConnected\n     * @return Integer\n     */\n    function findCircleNum($isConnected) {\n\n    }\n}",
+    "swift": "class Solution {\n    func findCircleNum(_ isConnected: [[Int]]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun findCircleNum(isConnected: Array<IntArray>): Int {\n\n    }\n}",
+    "golang": "func findCircleNum(isConnected [][]int) int {\n\n}",
+    "ruby": "# @param {Integer[][]} is_connected\n# @return {Integer}\ndef find_circle_num(is_connected)\n\nend",
+    "scala": "object Solution {\n    def findCircleNum(isConnected: Array[Array[Int]]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_circle_num(is_connected: Vec<Vec<i32>>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (find-circle-num isConnected)\n  (-> (listof (listof exact-integer?)) exact-integer?)\n\n  )",
+    "erlang": "-spec find_circle_num(IsConnected :: [[integer()]]) -> integer().\nfind_circle_num(IsConnected) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_circle_num(is_connected :: [[integer]]) :: integer\n  def find_circle_num(is_connected) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[1,1,0],[1,1,0],[0,0,1]]\n[[1,0,0],[0,1,0],[0,0,1]]",
+  "hints": []
+}

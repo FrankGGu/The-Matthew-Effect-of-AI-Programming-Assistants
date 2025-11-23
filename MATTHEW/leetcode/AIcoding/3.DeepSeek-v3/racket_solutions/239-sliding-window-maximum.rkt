@@ -1,0 +1,20 @@
+(define/contract (max-sliding-window nums k)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (if (null? nums)
+      '()
+      (let loop ([i 0]
+                 [result '()]
+                 [window (make-deque)])
+        (if (< i (length nums))
+            (begin
+              (when (and (not (deque-empty? window))
+                         (>= (- i k) (deque-front window)))
+                (deque-pop-front! window))
+              (while (and (not (deque-empty? window))
+                          (< (list-ref nums (deque-back window)) (list-ref nums i)))
+                (deque-pop-back! window))
+              (deque-push-back! window i)
+              (if (>= i (- k 1))
+                  (loop (+ i 1) (cons (list-ref nums (deque-front window)) result) window)
+                  (loop (+ i 1) result window)))
+            (reverse result)))))

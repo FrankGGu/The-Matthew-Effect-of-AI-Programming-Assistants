@@ -1,0 +1,13 @@
+(define (diagonalPrime mat)
+  (define (is-prime n)
+    (if (< n 2) #f
+        (let loop ((i 2))
+          (cond ((> i (sqrt n)) #t)
+                ((zero? (modulo n i)) #f)
+                (else (loop (+ i 1))))))
+    )
+  (define (get-diagonal-primes mat)
+    (for/fold ([primes '()]) ([i (in-range (length mat))])
+      (let ([val (vector-ref (list-ref mat i) i)])
+        (if (is-prime val) (cons val primes) primes))))
+  (apply max (get-diagonal-primes mat)))

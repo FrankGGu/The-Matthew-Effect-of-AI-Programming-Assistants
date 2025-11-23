@@ -1,0 +1,10 @@
+(define (total-fruit nums)
+  (define (helper i j max-count count)
+    (if (>= i (length nums))
+        max-count
+        (let ([current (list-ref nums i)])
+          (if (and (<= j i) (not (= current (list-ref nums j))))
+              (helper (+ i 1) i (max max-count (- i j)) (hash-set count current 1))
+              (let ([new-count (hash-update count current add1 0)])
+                (helper (+ i 1) j (max max-count (- i j)) new-count))))))
+  (helper 0 0 0 (make-hash)))

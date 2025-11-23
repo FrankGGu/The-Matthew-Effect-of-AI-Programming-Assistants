@@ -1,0 +1,10 @@
+(define (canConstruct ransomNote magazine)
+  (define magazine-map (make-hash))
+  (for ([char (string->list magazine)])
+    (hash-set! magazine-map char (+ 1 (hash-ref magazine-map char 0))))
+  (for ([char (string->list ransomNote)])
+    (let ([count (hash-ref magazine-map char 0)])
+      (if (= count 0)
+          #f
+          (hash-set! magazine-map char (- count 1)))))
+  #t)

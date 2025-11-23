@@ -1,0 +1,13 @@
+(define (rowWithMax1s matrix)
+  (define (count-ones row)
+    (length (filter (lambda (x) (= x 1)) row)))
+  (define (find-max-row-index matrix)
+    (define (helper idx max-count max-row)
+      (if (>= idx (length matrix))
+          max-row
+          (let ((current-count (count-ones (list-ref matrix idx))))
+            (if (> current-count max-count)
+                (helper (+ idx 1) current-count idx)
+                (helper (+ idx 1) max-count max-row)))))
+    (helper 0 -1 -1))
+  (find-max-row-index matrix))

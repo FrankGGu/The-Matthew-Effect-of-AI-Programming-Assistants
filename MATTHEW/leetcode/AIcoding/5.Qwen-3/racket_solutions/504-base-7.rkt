@@ -1,0 +1,7 @@
+(define (convert-to-base-7 num)
+  (if (<= num 6)
+      (number->string num)
+      (let loop ((n (abs num)) (res '()))
+        (if (= n 0)
+            (if (null? res) "0" (list->string (reverse res)))
+            (loop (quotient n 7) (cons (integer->char (+ 48 (remainder n 7))) res))))))

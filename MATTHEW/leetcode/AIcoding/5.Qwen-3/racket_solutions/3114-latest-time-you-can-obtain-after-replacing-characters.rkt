@@ -1,0 +1,40 @@
+#lang racket
+
+(define (find-min-time s)
+  (define (to-int c)
+    (- (char->integer c) (char->integer #\0)))
+  (define (from-int i)
+    (integer->char (+ i (char->integer #\0))))
+  (define (valid? h m)
+    (and (<= 0 h 23) (<= 0 m 59)))
+  (define (generate-times s)
+    (for/fold ([res '()])
+              ([i (in-range 4)])
+      (if (char=? (string-ref s i) #\?)
+          (append res (map (λ (d) (string-set s i (from-int d))) (range 0 10)))
+          (cons s res))))
+  (define (parse-time t)
+    (let ([h (string->number (substring t 0 2))]
+          [m (string->number (substring t 3 5))])
+      (values h m)))
+  (define (time->string h m)
+    (string-append
+     (if (< h 10) "0" "") (number->string h)
+     ":"
+     (if (< m 10) "0" "") (number->string m)))
+  (define times (generate-times s))
+  (for/fold ([best ""])
+            ([t (in-list times)])
+    (let-values ([(h m) (parse-time t)])
+      (if (valid? h m)
+          (if (or (string=? best "")
+                  (and (< h (string->number (substring best 0 2)))
+                       (or (> m (string->number (substring best 3 5)))
+                           (and (= h (string->number (substring best 0 2)))
+                                (> m (string->number (substring best 3 5)))))))
+              t
+              best)
+          best))))
+
+(define (latest-time s)
+  (find-min-time s))

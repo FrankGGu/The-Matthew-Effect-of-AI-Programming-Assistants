@@ -1,0 +1,17 @@
+(define (max-count s)
+  (if (null? s)
+      0
+      (let ((min-row (car (car s)))
+            (min-col (cadr (car s))))
+        (for/fold ((count 0))
+                  ((i (in-list (cdr s))))
+          (let ((row (car i))
+                (col (cadr i)))
+            (if (and (<= row min-row) (<= col min-col))
+                (+ count 1)
+                count))))))
+
+(define (get-max-integer-matrix)
+  (define input '((2 3) (3 4) (5 6)))
+  (define result (apply max (map (lambda (x) (* (car x) (cadr x))) input)))
+  result)

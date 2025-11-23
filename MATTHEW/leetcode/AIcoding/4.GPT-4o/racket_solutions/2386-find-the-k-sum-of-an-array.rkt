@@ -1,0 +1,10 @@
+(define (k-sum nums k)
+  (define (helper nums k)
+    (if (or (= k 0) (null? nums))
+        (if (= k 0) 1 0)
+        (+ (helper (cdr nums) k)
+           (helper (cdr nums) (- k (car nums))))))
+  (helper nums k))
+
+(define (findKSum nums k)
+  (k-sum nums k))

@@ -1,0 +1,32 @@
+(define (moves-to-stamp stamp target)
+  (define stamp-len (string-length stamp))
+  (define target-len (string-length target))
+  (define stamped? #f)
+  (define res '())
+
+  (define (can-stamp? i)
+    (for/and ([j (in-range stamp-len)])
+      (or (char=? (string-ref stamp j) (string-ref target (+ i j)))
+          (char=? #\? (string-ref target (+ i j))))))
+
+  (define (do-stamp! i)
+    (for ([j (in-range stamp-len)])
+      (string-set! target (+ i j) #\?))
+    (set! stamped? #t)
+    (set! res (cons i res)))
+
+  (define (all-question-marks?)
+    (for/and ([i (in-range target-len)])
+      (char=? (string-ref target i) #\?)))
+
+  (let loop ()
+    (set! stamped? #f)
+    (for ([i (in-range (- target-len stamp-len -1))])
+      (when (can-stamp? i)
+        (do-stamp! i)))
+    (when (and stamped? (not (all-question-marks?)))
+      (loop)))
+
+  (if (all-question-marks?)
+      (reverse res)
+      '()))

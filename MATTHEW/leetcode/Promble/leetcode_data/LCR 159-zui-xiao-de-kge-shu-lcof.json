@@ -1,0 +1,39 @@
+{
+  "id": "LCR 159",
+  "title": "库存管理 III",
+  "titleSlug": "zui-xiao-de-kge-shu-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Quickselect",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> inventoryManagement(vector<int>& stock, int cnt) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] inventoryManagement(int[] stock, int cnt) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def inventoryManagement(self, stock, cnt):\n        \"\"\"\n        :type stock: List[int]\n        :type cnt: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def inventoryManagement(self, stock: List[int], cnt: int) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* inventoryManagement(int* stock, int stockSize, int cnt, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] InventoryManagement(int[] stock, int cnt) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} stock\n * @param {number} cnt\n * @return {number[]}\n */\nvar inventoryManagement = function(stock, cnt) {\n    \n};",
+    "typescript": "function inventoryManagement(stock: number[], cnt: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $stock\n     * @param Integer $cnt\n     * @return Integer[]\n     */\n    function inventoryManagement($stock, $cnt) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func inventoryManagement(_ stock: [Int], _ cnt: Int) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun inventoryManagement(stock: IntArray, cnt: Int): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> inventoryManagement(List<int> stock, int cnt) {\n    \n  }\n}",
+    "golang": "func inventoryManagement(stock []int, cnt int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} stock\n# @param {Integer} cnt\n# @return {Integer[]}\ndef inventory_management(stock, cnt)\n    \nend",
+    "scala": "object Solution {\n    def inventoryManagement(stock: Array[Int], cnt: Int): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn inventory_management(stock: Vec<i32>, cnt: i32) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (inventory-management stock cnt)\n  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))\n  )",
+    "erlang": "-spec inventory_management(Stock :: [integer()], Cnt :: integer()) -> [integer()].\ninventory_management(Stock, Cnt) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec inventory_management(stock :: [integer], cnt :: integer) :: [integer]\n  def inventory_management(stock, cnt) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func inventoryManagement(stock: Array<Int64>, cnt: Int64): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,5,7,4]\n1\n[0,2,3,6]\n2",
+  "hints": []
+}

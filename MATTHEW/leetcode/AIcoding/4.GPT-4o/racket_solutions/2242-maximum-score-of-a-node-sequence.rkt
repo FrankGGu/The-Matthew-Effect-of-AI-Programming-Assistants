@@ -1,0 +1,15 @@
+(define (maximumScore a b c)
+  (let* ((scores (list a b c))
+         (sorted-scores (sort scores >)))
+    (+ (first sorted-scores) (second sorted-scores))))
+
+(define (maximumScoreOfNodeSequence A)
+  (define (helper score)
+    (if (null? score)
+        0
+        (let ((current (car score))
+              (rest (cdr score)))
+          (max (maximumScore current (if (null? rest) 0 (car rest)) 
+                                       (if (null? (cdr rest)) 0 (cadr rest)))
+               (helper rest)))))
+  (helper A))

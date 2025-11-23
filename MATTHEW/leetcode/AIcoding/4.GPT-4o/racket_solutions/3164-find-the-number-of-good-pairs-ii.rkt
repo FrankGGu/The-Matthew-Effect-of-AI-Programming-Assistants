@@ -1,0 +1,13 @@
+(define (count-good-pairs nums)
+  (define (count-good-pairs-helper nums)
+    (define counts (make-vector (add1 (apply max nums)) 0))
+    (define good-pairs 0)
+    (for-each (lambda (num)
+                (set! good-pairs (+ good-pairs (vector-ref counts num)))
+                (vector-set! counts num (+ (vector-ref counts num) 1)))
+              nums)
+    good-pairs)
+  (count-good-pairs-helper nums))
+
+(define (numIdenticalPairs nums)
+  (count-good-pairs nums))

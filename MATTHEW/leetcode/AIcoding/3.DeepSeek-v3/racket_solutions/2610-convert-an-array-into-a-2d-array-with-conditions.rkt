@@ -1,0 +1,8 @@
+(define/contract (find-matrix nums)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)))
+  (let loop ([nums nums] [result '()])
+    (if (null? nums)
+        (reverse (map reverse result))
+        (let-values ([(unique remaining) 
+                      (partition (lambda (x) (not (member x (car result)))) nums)])
+          (loop remaining (cons unique result))))))

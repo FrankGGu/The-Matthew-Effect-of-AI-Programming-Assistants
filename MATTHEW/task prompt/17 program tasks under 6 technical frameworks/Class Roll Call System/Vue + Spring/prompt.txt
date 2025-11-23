@@ -1,0 +1,42 @@
+Create a complete Class Roll Call System with Vue frontend and Spring Boot backend using Hibernate ORM. The system should maintain student lists, record attendance status (present/absent), and provide attendance counting by date.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Frontend Requirements (Vue 3):**
+- Student management page: List, add, edit, delete students
+- Attendance recording page: Select date, mark students present/absent
+- Reports page: View attendance by date, student attendance history
+- Use Vue Router for navigation
+- Use Vuex for state management
+- Responsive design with Bootstrap or similar
+
+**Backend Requirements (Spring Boot):**
+- RESTful API with proper HTTP status codes
+- JPA/Hibernate for database operations
+- Data validation and error handling
+- Use DTOs for data transfer
+- Implement proper service layer architecture
+
+**Key Features:**
+- Record attendance for specific dates
+- View attendance history by student
+- Generate attendance reports by date
+- Prevent duplicate attendance records for same student/date
+
+**Database Connection:**
+Use PostgreSQL with connection string: jdbc:postgresql://localhost:5432/rollcall_db
+
+**Code Structure:**
+- Separate frontend and backend projects
+- Include proper package structure for Java
+- Use component-based architecture for Vue
+- Include sample data initialization
+
+**Deliverables:**
+- Complete source code for both frontend and backend
+- Build configuration files (Maven/Gradle)
+- README with setup instructions
+- API documentation

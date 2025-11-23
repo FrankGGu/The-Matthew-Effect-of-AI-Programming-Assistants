@@ -1,0 +1,6 @@
+(define (missing-number nums)
+  (define n (length nums))
+  (let loop ([i 0] [sum 0])
+    (if (= i n)
+        (- (* n (+ n 1)) (/ 2))
+        (loop (+ i 1) (+ sum (list-ref nums i))))))

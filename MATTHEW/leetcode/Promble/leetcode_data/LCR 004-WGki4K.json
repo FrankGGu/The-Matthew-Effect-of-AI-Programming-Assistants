@@ -1,0 +1,34 @@
+{
+  "id": "LCR 004",
+  "title": "只出现一次的数字 II",
+  "titleSlug": "WGki4K",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n\n    }\n};",
+    "java": "class Solution {\n    public int singleNumber(int[] nums) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def singleNumber(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def singleNumber(self, nums: List[int]) -> int:",
+    "c": "\n\nint singleNumber(int* nums, int numsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int SingleNumber(int[] nums) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar singleNumber = function(nums) {\n\n};",
+    "typescript": "function singleNumber(nums: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function singleNumber($nums) {\n\n    }\n}",
+    "swift": "class Solution {\n    func singleNumber(_ nums: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun singleNumber(nums: IntArray): Int {\n\n    }\n}",
+    "golang": "func singleNumber(nums []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef single_number(nums)\n\nend",
+    "scala": "object Solution {\n    def singleNumber(nums: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn single_number(nums: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (single-number nums)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec single_number(Nums :: [integer()]) -> integer().\nsingle_number(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec single_number(nums :: [integer]) :: integer\n  def single_number(nums) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[2,2,3,2]\n[0,1,0,1,0,1,99]",
+  "hints": []
+}

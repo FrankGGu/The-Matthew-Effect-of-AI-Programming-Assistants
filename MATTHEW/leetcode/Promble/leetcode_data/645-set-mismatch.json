@@ -1,0 +1,38 @@
+{
+  "id": "645",
+  "title": "Set Mismatch",
+  "titleSlug": "set-mismatch",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "content": "<p>You have a set of integers <code>s</code>, which originally contains all the numbers from <code>1</code> to <code>n</code>. Unfortunately, due to some error, one of the numbers in <code>s</code> got duplicated to another number in the set, which results in <strong>repetition of one</strong> number and <strong>loss of another</strong> number.</p>\n\n<p>You are given an integer array <code>nums</code> representing the data status of this set after the error.</p>\n\n<p>Find the number that occurs twice and the number that is missing and return <em>them in the form of an array</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,2,4]\n<strong>Output:</strong> [2,3]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,1]\n<strong>Output:</strong> [1,2]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> findErrorNums(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] findErrorNums(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def findErrorNums(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def findErrorNums(self, nums: List[int]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* findErrorNums(int* nums, int numsSize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] FindErrorNums(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number[]}\n */\nvar findErrorNums = function(nums) {\n    \n};",
+    "typescript": "function findErrorNums(nums: number[]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer[]\n     */\n    function findErrorNums($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func findErrorNums(_ nums: [Int]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun findErrorNums(nums: IntArray): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> findErrorNums(List<int> nums) {\n    \n  }\n}",
+    "golang": "func findErrorNums(nums []int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer[]}\ndef find_error_nums(nums)\n    \nend",
+    "scala": "object Solution {\n    def findErrorNums(nums: Array[Int]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_error_nums(nums: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (find-error-nums nums)\n  (-> (listof exact-integer?) (listof exact-integer?))\n  )",
+    "erlang": "-spec find_error_nums(Nums :: [integer()]) -> [integer()].\nfind_error_nums(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_error_nums(nums :: [integer]) :: [integer]\n  def find_error_nums(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func findErrorNums(nums: Array<Int64>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,2,4]\n[1,1]",
+  "hints": []
+}

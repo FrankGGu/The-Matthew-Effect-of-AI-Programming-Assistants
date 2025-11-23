@@ -1,0 +1,35 @@
+Build a lightweight book management system using Preact for frontend and Gin with GORM for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, role, membership_type, created_at
+- books: id, title, author, isbn, publisher, publication_date, genre, total_copies, available_copies, location, is_available, created_at
+- borrow_records: id, book_id, user_id, borrow_date, due_date, return_date, status, fine_amount, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - JWT-based authentication
+   - Role-based access control
+   - Membership management
+
+2. Book Management:
+   - CRUD operations for books
+   - Advanced search functionality
+   - Copy availability tracking
+
+3. Borrowing Management:
+   - Create, view, update, delete borrow records
+   - Overdue book detection
+   - Fine calculation and management
+
+Technical Specifications:
+- Frontend: Preact with lightweight state management
+- Backend: Gin framework with JWT authentication, GORM as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:bookpass@localhost:5432/book_management
+- API: RESTful design with minimal overhead
+
+Generate complete, runnable code including:
+- Gin server with routes, middleware, and handlers
+- Preact components with minimal dependencies
+- GORM models and database operations
+- Authentication system
+- Build and run instructions

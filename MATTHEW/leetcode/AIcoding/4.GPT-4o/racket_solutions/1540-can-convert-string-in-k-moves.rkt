@@ -1,0 +1,15 @@
+(define (can-convert-string s t k)
+  (define n (string-length s))
+  (define char-diff (lambda (c1 c2)
+                      (modulo (- (char->integer c2) (char->integer c1)) 26)))
+  (define needed-moves (for/sum ([i (in-range n)])
+                        (char-diff (string-ref s i) (string-ref t i))))
+  (define total-moves (if (<= needed-moves k) 
+                         (if (= (modulo (- k needed-moves) 26) 0) 
+                             #t 
+                             (< (- k needed-moves) n))
+                         #f))
+  total-moves)
+
+(define (can-convert-string-main s t k)
+  (can-convert-string s t k))

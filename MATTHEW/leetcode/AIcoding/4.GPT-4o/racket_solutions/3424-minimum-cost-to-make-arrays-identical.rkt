@@ -1,0 +1,12 @@
+(define (minCost A B)
+  (define n (length A))
+  (define count (make-hash))
+  (for ([i (in-range n)])
+    (hash-set! count (vector-ref A i) (+ (hash-ref count (vector-ref A i) 0) 1))
+    (hash-set! count (vector-ref B i) (+ (hash-ref count (vector-ref B i) 0) 1)))
+  (define total-sum (apply + (hash-map count (lambda (k v) (* k v)))))
+  (define max-count (apply max (hash-values count)))
+  (- total-sum (* max-count 2)))
+
+(define (minCostToMakeArraysIdentical A B)
+  (minCost A B))

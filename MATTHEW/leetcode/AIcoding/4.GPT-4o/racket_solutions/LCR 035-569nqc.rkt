@@ -1,0 +1,17 @@
+(define (find-min-time-difference time-points)
+  (define minutes (map (lambda (tp)
+                         (+ (* (string->number (substring tp 0 2)) 60)
+                            (string->number (substring tp 3 5))))
+                       time-points))
+  (define sorted-minutes (sort minutes <))
+  (define n (length sorted-minutes))
+  (define diffs
+    (map (lambda (i)
+           (if (= i (sub1 n))
+               (+ (abs (- (list-ref sorted-minutes i) (list-ref sorted-minutes 0))) 1440)
+               (abs (- (list-ref sorted-minutes i) (list-ref sorted-minutes (add1 i))))))
+         (range n)))
+  (apply min diffs))
+
+(define (minimum-time-difference time-points)
+  (find-min-time-difference time-points))

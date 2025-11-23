@@ -1,0 +1,16 @@
+(define (max-frequency arr)
+  (let* ((freq-map (make-hash))
+         (max-freq 0)
+         (count 0))
+    (for ([num (in-list arr)])
+      (hash-update! freq-map num (λ (v) (+ v 1)) 1))
+    (hash-for-each freq-map
+                   (λ (k v)
+                     (cond
+                       ((> v max-freq)
+                        (set! max-freq v)
+                        (set! count 1))
+                       ((= v max-freq)
+                        (set! count (+ count 1)))
+                       (else #f))))
+    (* max-freq count)))

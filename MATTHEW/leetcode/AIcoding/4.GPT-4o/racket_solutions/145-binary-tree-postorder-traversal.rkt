@@ -1,0 +1,8 @@
+(define (postorderTraversal root)
+  (define (helper node)
+    (if (null? node)
+        '()
+        (append (helper (node-left node))
+                (helper (node-right node))
+                (list (node-val node)))))
+  (helper root))

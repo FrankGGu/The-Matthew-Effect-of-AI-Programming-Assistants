@@ -1,0 +1,20 @@
+(define (odd-cells n m indices)
+  (let* ((row-counts (make-vector n 0))
+         (col-counts (make-vector m 0))
+         (update-counts
+          (lambda (indices)
+            (for ([index indices])
+              (let ([r (first index)]
+                    [c (second index)])
+                (vector-set! row-counts r (+ 1 (vector-ref row-counts r)))
+                (vector-set! col-counts c (+ 1 (vector-ref col-counts c)))))))
+         (count-odd-cells
+          (lambda ()
+            (let ([odd-count 0])
+              (for ([r (in-range n)])
+                (for ([c (in-range m)])
+                  (if (odd? (+ (vector-ref row-counts r) (vector-ref col-counts c)))
+                      (set! odd-count (+ odd-count 1)))))
+              odd-count))))
+    (update-counts indices)
+    (count-odd-cells)))

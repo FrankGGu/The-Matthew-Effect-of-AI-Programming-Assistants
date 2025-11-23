@@ -1,0 +1,12 @@
+(define (minimumAbsoluteDifference arr)
+  (define (abs x) (if (< x 0) (- x) x))
+  (define n (length arr))
+  (define min-diff +inf.0)
+  (define sorted-arr (sort arr <))
+  (for ([i (in-range n)])
+    (for ([j (in-range (max 0 (- i 1)) (min n (+ i 2)))])
+      (when (not (= i j))
+        (set! min-diff (min min-diff (abs (- (list-ref sorted-arr i) (list-ref sorted-arr j))))))))
+  min-diff)
+
+(minimumAbsoluteDifference (list 1 3 6 10 15))

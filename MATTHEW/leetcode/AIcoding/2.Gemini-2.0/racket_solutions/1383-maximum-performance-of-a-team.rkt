@@ -1,0 +1,21 @@
+(define (max-performance n speed efficiency k)
+  (let* ((pairs (map list efficiency speed))
+         (sorted-pairs (sort pairs > #:key car)))
+    (let loop ((i 0)
+               (heap (mutable-priority-queue <))
+               (sum-speed 0)
+               (performance 0))
+      (if (= i n)
+          performance
+          (let* ((eff (car (list-ref sorted-pairs i)))
+                 (spd (cadr (list-ref sorted-pairs i))))
+            (mutable-priority-queue-add! heap spd)
+            (set! sum-speed (+ sum-speed spd))
+            (if (> (mutable-priority-queue-size heap) k)
+                (let ((min-speed (mutable-priority-queue-remove-min! heap)))
+                  (set! sum-speed (- sum-speed min-speed))))
+            (let ((curr-performance (modulo (* sum-speed eff) 1000000007)))
+              (loop (+ i 1)
+                    heap
+                    sum-speed
+                    (max performance curr-performance))))))))

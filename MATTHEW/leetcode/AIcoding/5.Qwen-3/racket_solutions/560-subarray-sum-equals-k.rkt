@@ -1,0 +1,10 @@
+(define (subarray-sum nums k)
+  (define count (make-hash))
+  (hash-set! count 0 1)
+  (let loop ([sum 0] [i 0] [result 0])
+    (if (= i (length nums))
+        result
+        (let ([sum (+ sum (list-ref nums i))])
+          (let ([target (- sum k)])
+            (loop sum (+ i 1) (+ result (hash-ref count target 0))))
+          (hash-set! count sum (+ (hash-ref count sum 0) 1))))))

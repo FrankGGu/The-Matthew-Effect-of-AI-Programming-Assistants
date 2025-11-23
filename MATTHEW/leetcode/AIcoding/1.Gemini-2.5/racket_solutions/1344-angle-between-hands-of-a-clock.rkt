@@ -1,0 +1,6 @@
+(define (angle-between-hands hour minutes)
+  (let* ((hour-adjusted (modulo hour 12))
+         (minute-angle (* minutes 6.0))
+         (hour-angle (+ (* hour-adjusted 30.0) (* minutes 0.5)))
+         (diff (abs (- hour-angle minute-angle))))
+    (min diff (- 360.0 diff))))

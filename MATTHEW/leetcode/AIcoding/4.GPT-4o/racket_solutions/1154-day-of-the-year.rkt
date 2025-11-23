@@ -1,0 +1,13 @@
+(define (day-of-year date)
+  (define days-in-month '(0 31 28 31 30 31 30 31 31 30 31 30 31))
+  (define (is-leap-year year)
+    (or (and (= (modulo year 4) 0) (not (= (modulo year 100) 0)))
+        (= (modulo year 400) 0)))
+  (define (calculate-day year month day)
+    (if (and (= month 2) (is-leap-year year))
+        (+ day 31)
+        (foldl + day 0 (sublist days-in-month 1 month))))
+  (define parts (map string->number (string-split date "-")))
+  (calculate-day (list-ref parts 0) (list-ref parts 1) (list-ref parts 2)))
+
+(day-of-year "2019-01-09")

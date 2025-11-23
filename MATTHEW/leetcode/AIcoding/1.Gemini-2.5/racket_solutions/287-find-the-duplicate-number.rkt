@@ -1,0 +1,12 @@
+(define (find-duplicate nums)
+  (let loop-detect ((slow (list-ref nums 0))
+                    (fast (list-ref nums (list-ref nums 0))))
+    (if (= slow fast)
+        (let loop-find-entry ((finder 0)
+                              (fast-ptr fast))
+          (if (= finder fast-ptr)
+              finder
+              (loop-find-entry (list-ref nums finder)
+                               (list-ref nums fast-ptr))))
+        (loop-detect (list-ref nums slow)
+                     (list-ref nums (list-ref nums fast))))))

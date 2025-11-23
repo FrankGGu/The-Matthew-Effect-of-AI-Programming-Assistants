@@ -1,0 +1,15 @@
+(define (int-to-roman num)
+  (define roman-map
+    '((1000 . "M") (900 . "CM") (500 . "D") (400 . "CD")
+      (100 . "C") (90 . "XC") (50 . "L") (40 . "XL")
+      (10 . "X") (9 . "IX") (5 . "V") (4 . "IV") (1 . "I")))
+
+  (let loop ((n num) (map-rest roman-map) (result-list '()))
+    (if (zero? n)
+        (string-append* (reverse result-list))
+        (let* ((current-pair (car map-rest))
+               (value (car current-pair))
+               (symbol (cdr current-pair)))
+          (if (>= n value)
+              (loop (- n value) map-rest (cons symbol result-list))
+              (loop n (cdr map-rest) result-list))))))

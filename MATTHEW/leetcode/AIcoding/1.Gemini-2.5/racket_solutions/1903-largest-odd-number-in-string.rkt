@@ -1,0 +1,10 @@
+(define (largest-odd-number num)
+  (let* ((len (string-length num)))
+    (let loop ((i (- len 1)))
+      (if (< i 0)
+          ""
+          (let* ((char-digit (string-ref num i))
+                 (digit (- (char->integer char-digit) (char->integer #\0))))
+            (if (= (remainder digit 2) 1)
+                (substring num 0 (+ i 1))
+                (loop (- i 1))))))))

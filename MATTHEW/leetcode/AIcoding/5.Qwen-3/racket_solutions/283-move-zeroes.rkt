@@ -1,0 +1,5 @@
+(define (move-zeroes nums)
+  (let loop ([nums nums] [zeros 0])
+    (if (null? nums)
+        (append (make-list zeros 0) (reverse (filter (lambda (x) (not (= x 0))) (reverse nums))))
+        (loop (cdr nums) (if (= (car nums) 0) (+ zeros 1) zeros)))))

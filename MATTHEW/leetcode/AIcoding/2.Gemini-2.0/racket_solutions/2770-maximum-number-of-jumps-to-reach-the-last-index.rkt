@@ -1,0 +1,22 @@
+(define (max-jumps arr d)
+  (define n (length arr))
+  (define dp (make-vector n 1))
+
+  (define (solve i)
+    (if (> (vector-ref dp i) 1)
+        (vector-ref dp i)
+        (begin
+          (define max-jump 1)
+          (for ([j (in-range (max 0 (- i d)) (min n (+ i d 1)))])
+            (when (and (!= j i)
+                       (<= (abs (- (vector-ref arr j) (vector-ref arr i))) d)
+                       (if (< j i)
+                           (for/and ([k (in-range j i)])
+                             (<= (vector-ref arr k) (vector-ref arr i)))
+                           (for/and ([k (in-range (+ i 1) j)])
+                             (<= (vector-ref arr k) (vector-ref arr i)))))
+              (set! max-jump (max max-jump (+ 1 (solve j))))))
+          (vector-set! dp i max-jump)
+          max-jump)))
+
+  (solve (- n 1)))

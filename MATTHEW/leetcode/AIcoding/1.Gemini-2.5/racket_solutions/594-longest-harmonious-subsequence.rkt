@@ -1,0 +1,13 @@
+(define (find-lhs nums)
+  (let ([freq-map (make-hash)])
+    (for-each (lambda (num)
+                (hash-set! freq-map num (+ (hash-ref freq-map num 0) 1)))
+              nums)
+    (let ([max-len 0])
+      (for-each (lambda (k)
+                  (when (hash-has-key? freq-map (+ k 1))
+                    (set! max-len (max max-len
+                                       (+ (hash-ref freq-map k)
+                                          (hash-ref freq-map (+ k 1)))))))
+                (hash-keys freq-map))
+      max-len)))

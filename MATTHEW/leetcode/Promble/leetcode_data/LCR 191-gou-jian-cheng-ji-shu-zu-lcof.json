@@ -1,0 +1,36 @@
+{
+  "id": "LCR 191",
+  "title": "按规则计算统计结果",
+  "titleSlug": "gou-jian-cheng-ji-shu-zu-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> statisticalResult(vector<int>& arrayA) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] statisticalResult(int[] arrayA) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def statisticalResult(self, arrayA):\n        \"\"\"\n        :type arrayA: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def statisticalResult(self, arrayA: List[int]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* statisticalResult(int* arrayA, int arrayASize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] StatisticalResult(int[] arrayA) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} arrayA\n * @return {number[]}\n */\nvar statisticalResult = function(arrayA) {\n    \n};",
+    "typescript": "function statisticalResult(arrayA: number[]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $arrayA\n     * @return Integer[]\n     */\n    function statisticalResult($arrayA) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func statisticalResult(_ arrayA: [Int]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun statisticalResult(arrayA: IntArray): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> statisticalResult(List<int> arrayA) {\n    \n  }\n}",
+    "golang": "func statisticalResult(arrayA []int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} array_a\n# @return {Integer[]}\ndef statistical_result(array_a)\n    \nend",
+    "scala": "object Solution {\n    def statisticalResult(arrayA: Array[Int]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn statistical_result(array_a: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (statistical-result arrayA)\n  (-> (listof exact-integer?) (listof exact-integer?))\n  )",
+    "erlang": "-spec statistical_result(ArrayA :: [integer()]) -> [integer()].\nstatistical_result(ArrayA) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec statistical_result(array_a :: [integer]) :: [integer]\n  def statistical_result(array_a) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func statisticalResult(arrayA: Array<Int64>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,4,6,8,10]",
+  "hints": []
+}

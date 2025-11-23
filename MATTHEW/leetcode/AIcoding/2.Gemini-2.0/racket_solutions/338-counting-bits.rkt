@@ -1,0 +1,5 @@
+(define (count-bits n)
+  (let ((ans (make-vector (+ n 1) 0)))
+    (for ((i (in-range 1 (+ n 1))))
+      (vector-set! ans i (+ (vector-ref ans (quotient i 2)) (remainder i 2))))
+    (vector->list ans)))

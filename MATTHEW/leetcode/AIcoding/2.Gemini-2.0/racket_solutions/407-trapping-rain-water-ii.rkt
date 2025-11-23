@@ -1,0 +1,40 @@
+(define (trapRainWater heightMap)
+  (let* ((m (length heightMap))
+         (n (if (zero? m) 0 (length (first heightMap))))
+         (if (or (<= m 2) (<= n 2)) 0)
+         (visited (make-vector m (make-vector n #f)))
+         (pq (make-heap < #:key (lambda (cell) (vector-ref cell 2)))))
+
+    (define (add-border i j)
+      (vector-set! (vector-ref visited i) j #t)
+      (heap-add! pq (vector i j (vector-ref (vector-ref heightMap i) j))))
+
+    (for ([i (in-range m)])
+      (add-border i 0)
+      (add-border i (- n 1)))
+
+    (for ([j (in-range n)])
+      (add-border 0 j)
+      (add-border (- m 1) j))
+
+    (let loop ([water 0])
+      (if (heap-empty? pq)
+          water
+          (let* ((curr (heap-remove-min! pq))
+                 (i (vector-ref curr 0))
+                 (j (vector-ref curr 1))
+                 (height (vector-ref curr 2)))
+
+            (define (add-neighbor ni nj)
+              (when (and (>= ni 0) (< ni m) (>= nj 0) (< nj n) (not (vector-ref (vector-ref visited ni) nj)))
+                (vector-set! (vector-ref visited ni) nj #t)
+                (let ((new-height (vector-ref (vector-ref heightMap ni) nj)))
+                  (heap-add! pq (vector ni nj (max height new-height)))
+                  (if (< new-height height)
+                      (- water height new-height)
+                      water))))
+
+            (loop (add-neighbor (+ i 1) j)
+                  (add-neighbor (- i 1) j)
+                  (add-neighbor i (+ j 1))
+                  (add-neighbor i (- j 1))))))))

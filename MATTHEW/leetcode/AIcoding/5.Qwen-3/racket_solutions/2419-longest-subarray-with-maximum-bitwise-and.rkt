@@ -1,0 +1,7 @@
+(define/contract (longest-subarray nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ((max-val (apply max nums)))
+    (let loop ((nums nums) (count 0) (max-count 0))
+      (cond ((null? nums) max-count)
+            ((= (car nums) max-val) (loop (cdr nums) (+ count 1) (max max-count (+ count 1))))
+            (else (loop (cdr nums) 0 max-count))))))

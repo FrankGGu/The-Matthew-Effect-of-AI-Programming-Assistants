@@ -1,0 +1,22 @@
+(define (is-possible s)
+  (define (count-chars str)
+    (define cnt (make-hash))
+    (for-each (lambda (c) (hash-set! cnt c (+ 1 (hash-ref cnt c 0)))) (string->list str))
+    (hash-values cnt))
+
+  (define (get-freqs str)
+    (sort (count-chars str) <))
+
+  (define (can-convert f1 f2)
+    (and (= (length f1) (length f2))
+         (for/and ([a f1] [b f2])
+           (= a b))))
+
+  (define len (string-length s))
+  (define freqs (get-freqs s))
+  (for/and ([i (in-range 1 len)])
+    (define left (substring s 0 i))
+    (define right (substring s i len))
+    (define left-freqs (get-freqs left))
+    (define right-freqs (get-freqs right))
+    (can-convert left-freqs right-freqs)))

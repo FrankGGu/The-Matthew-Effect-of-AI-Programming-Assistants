@@ -1,0 +1,13 @@
+(define (min-increment-operations nums k)
+  (let loop ((i 0)
+             (prev-val 0)
+             (total-cost 0))
+    (if (= i (vector-length nums))
+        total-cost
+        (let* ((current-original-val (vector-ref nums i)))
+          (if (= i 0)
+              (loop (+ i 1) current-original-val total-cost)
+              (let* ((required-val (+ prev-val k))
+                     (actual-val (max current-original-val required-val))
+                     (cost-for-current (- actual-val current-original-val)))
+                (loop (+ i 1) actual-val (+ total-cost cost-for-current))))))))

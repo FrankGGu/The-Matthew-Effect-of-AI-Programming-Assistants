@@ -1,0 +1,16 @@
+(define (day-of-the-week day month year)
+  (define (leap-year? y)
+    (and (zero? (modulo y 4))
+         (or (not (zero? (modulo y 100)))
+             (zero? (modulo y 400)))))
+  (define days-in-month
+    (vector 31 28 31 30 31 30 31 31 30 31 30 31))
+  (define (days-passed y m d)
+    (let loop ((y (- y 1)) (m m) (d d) (total 0))
+      (if (zero? y)
+          (+ total d (if (and (leap-year? y) (> m 2)) 1 0))
+          (loop (- y 1) m d (+ total (if (leap-year? y) 366 365))))))
+  (define weekdays
+    (vector "Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"))
+  (let ((total-days (days-passed year month day)))
+    (vector-ref weekdays (modulo total-days 7))))

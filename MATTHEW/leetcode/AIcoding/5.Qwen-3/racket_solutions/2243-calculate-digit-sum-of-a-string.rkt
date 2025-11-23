@@ -1,0 +1,12 @@
+(define (digit-sum s k)
+  (define (sum-digits s)
+    (string->number (apply string (map (lambda (c) (number->string (- (char->integer c) 48))) s))))
+  (define (process s k)
+    (if (= k 0)
+        s
+        (let* ((n (string-length s))
+               (new-s (make-string (quotient n 2) #\0)))
+          (for ([i (in-range (quotient n 2))])
+            (string-set! new-s i (number->string (+ (string-ref s (* 2 i)) (string-ref s (+ (* 2 i) 1))))))
+          (process new-s (- k 1)))))
+  (process s k))

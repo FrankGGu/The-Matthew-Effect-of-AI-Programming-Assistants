@@ -1,0 +1,24 @@
+Create a lightweight Equipment Borrowing Registration System using Preact for the frontend and Gin framework with GORM for the backend. Use PostgreSQL with this connection: postgresql://postgres:equipment_pass@localhost:5432/equipment_db
+
+Database schema:
+- equipment (id, name, model, serial_number, status, purchase_date, created_at, updated_at)
+- borrowers (id, name, email, department, created_at)
+- borrowing_records (id, equipment_id, borrower_id, borrow_date, expected_return_date, actual_return_date, status, notes, created_at)
+
+Frontend requirements (Preact):
+1. Minimalist UI for equipment management
+2. Borrower management interface
+3. Borrow/return functionality
+4. Basic dashboard with key metrics
+
+Backend requirements (Gin + GORM):
+1. Create efficient REST API endpoints using Gin
+2. Use GORM for database operations with proper model definitions
+3. Implement middleware for request validation
+4. Add automatic status updates for overdue items
+
+Include:
+- Lightweight and fast implementation
+- Proper error handling
+- Simple but responsive UI
+- Instructions for building and running the application

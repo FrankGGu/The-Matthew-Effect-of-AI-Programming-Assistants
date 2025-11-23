@@ -1,0 +1,10 @@
+(define (min-delete-columns strs)
+  (define (is-sorted? col)
+    (for/and ([i (in-range 1 (length strs))])
+      (<= (string-ref (list-ref strs i) col) (string-ref (list-ref strs (- i 1)) col))))
+  (define (count-unsorted-cols)
+    (for/sum ([col (in-range (string-length (list-ref strs 0)))])
+      (if (is-sorted? col) 0 1)))
+  (count-unsorted-cols))
+
+(min-delete-columns '("cba" "daf" "ghi"))

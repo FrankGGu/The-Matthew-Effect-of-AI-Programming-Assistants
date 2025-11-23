@@ -1,0 +1,12 @@
+(define (maxPoints archer)
+  (define (dp i arrows remaining)
+    (if (or (zero? remaining) (zero? i))
+        (if (>= remaining 0) 0 -1)
+        (let* ((points (if (>= remaining i) i 0))
+               (take (if (>= remaining i) (+ points (dp (sub1 i) (sub1 remaining))) -1))
+               (skip (dp (sub1 i) remaining)))
+          (max take skip))))
+  (dp (length archer) 1000))
+
+(define (maximumPoints archer)
+  (maxPoints archer))

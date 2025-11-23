@@ -1,0 +1,26 @@
+(define (smallest-range nums)
+  (define k (length nums))
+  (define min-heap (make-priority-queue))
+  (define max-val -inf)
+  (define range (list -inf inf))
+
+  (for ([i (in-range k)])
+    (for ([j (in-list nums[i])])
+      (priority-queue-add! min-heap (list j i))))
+    (set! max-val (max max-val (car (priority-queue-peek min-heap)))))
+
+  (define (update-range)
+    (define min-val (car (priority-queue-peek min-heap)))
+    (when (< (- max-val min-val) (- (second range) (car range)))
+      (set! range (list min-val max-val))))
+
+  (while (not (priority-queue-empty? min-heap))
+    (define min-entry (priority-queue-remove! min-heap))
+    (define min-val (car min-entry))
+    (define list-index (cadr min-entry))
+    (update-range)
+    (when (< (length (list-ref nums list-index)) (add1 (length nums)))
+      (priority-queue-add! min-heap (list (list-ref nums list-index (priority-queue-index min-entry)) list-index))
+      (set! max-val (max max-val (car (priority-queue-peek min-heap))))))
+
+  range)

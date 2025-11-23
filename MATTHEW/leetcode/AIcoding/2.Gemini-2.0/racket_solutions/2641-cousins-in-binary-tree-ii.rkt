@@ -1,0 +1,22 @@
+(define (replace-value-in-tree! root)
+  (letrec (
+    (replace-level! (level)
+      (if (null? level)
+          '()
+          (let* (
+              (level-sum (apply + (map (lambda (node) (if (null? node) 0 (car node))) level)))
+              (new-level (map (lambda (node)
+                                 (if (null? node)
+                                     null
+                                     (let ((left (cdr (car node)))
+                                           (right (cddr (car node))))
+                                       (list (- level-sum (if (null? left) 0 (car left)) (if (null? right) 0 (car right)))))))
+                               level)))
+            (map! (lambda (node new-val)
+                     (if (not (null? node))
+                         (set-car! node new-val)))
+                  level new-level)
+            (append (replace-level! (filter (lambda (node) (and (not (null? node)) (not (null? (cdr (car node)))))) (apply append (map (lambda (node) (list (cdr (car node)) (cddr (car node)))) level))))
+                    (replace-level! (filter (lambda (node) (and (not (null? node)) (not (null? (cddr (car node)))))) (apply append (map (lambda (node) (list (cdr (car node)) (cddr (car node)))) level))))))))
+    (replace-level! (list root))
+    root))

@@ -1,0 +1,12 @@
+(define (longest-arith-seq-length arr difference)
+  (define n (length arr))
+  (define dp (make-vector n 0))
+  (define idx (make-hash))
+  (for ([i (in-range n)])
+    (hash-set! idx (vector-ref arr i) (if (hash-ref idx (- (vector-ref arr i) difference) #f)
+                                             (+ 1 (hash-ref idx (- (vector-ref arr i) difference)))
+                                             1))
+    (vector-set! dp i (hash-ref idx (vector-ref arr i))))
+  (apply max (vector->list dp)))
+
+(longest-arith-seq-length '(1 2 3 4 5) 1)

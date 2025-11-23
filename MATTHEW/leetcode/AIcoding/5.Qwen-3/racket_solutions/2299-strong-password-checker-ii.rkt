@@ -1,0 +1,16 @@
+#lang racket
+
+(define (strong-password-checker-ii password)
+  (define (has-lower? s)
+    (regexp-match #px"[a-z]" s))
+  (define (has-upper? s)
+    (regexp-match #px"[A-Z]" s))
+  (define (has-digit? s)
+    (regexp-match #px"[0-9]" s))
+  (define (has-special? s)
+    (regexp-match #px"[$@!%*#?&]" s))
+  (and (>= (string-length password) 8)
+       (has-lower? password)
+       (has-upper? password)
+       (has-digit? password)
+       (has-special? password)))

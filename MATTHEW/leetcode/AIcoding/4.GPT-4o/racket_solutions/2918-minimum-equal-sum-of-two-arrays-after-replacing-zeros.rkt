@@ -1,0 +1,13 @@
+(define (minEqualSum nums1 nums2)
+  (define (sum lst) (foldl + 0 lst))
+  (define s1 (sum nums1))
+  (define s2 (sum nums2))
+  (define zeros1 (count (lambda (x) (= x 0)) nums1))
+  (define zeros2 (count (lambda (x) (= x 0)) nums2))
+  (define min-sum (min s1 s2))
+  (define max-sum (max s1 s2))
+  (define target (floor (/ (+ min-sum max-sum) 2)))
+  (define diff (- max-sum target))
+  (if (or (< diff 0) (>= diff (+ zeros1 zeros2)))
+      target
+      (+ target (- diff (min zeros1 zeros2)))))

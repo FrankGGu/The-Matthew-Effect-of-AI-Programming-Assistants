@@ -1,0 +1,25 @@
+#lang racket
+
+(define (count-valid-paths n edges)
+  (define graph (make-hash))
+  (for ([e edges])
+    (define u (car e))
+    (define v (cadr e))
+    (hash-update! graph u (λ (lst) (cons v lst)) '())
+    (hash-update! graph v (λ (lst) (cons u lst)) '()))
+
+  (define result 0)
+  (define (dfs node parent)
+    (define cnt (make-hash))
+    (for ([neighbor (hash-ref graph node)])
+      (when (not (= neighbor parent))
+        (define sub (dfs neighbor node))
+        (for ([k (in-hash-keys sub)])
+          (hash-set! cnt k (+ (hash-ref cnt k 0) (hash-ref sub k))))
+        (hash-set! cnt (add1 (hash-ref sub #f 0)) (add1 (hash-ref cnt (add1 (hash-ref sub #f 0)) 0)))
+        (set! result (+ result (hash-ref sub #f 0))))
+    (hash-set! cnt #f 1)
+    cnt)
+
+  (dfs 0 -1)
+  result)

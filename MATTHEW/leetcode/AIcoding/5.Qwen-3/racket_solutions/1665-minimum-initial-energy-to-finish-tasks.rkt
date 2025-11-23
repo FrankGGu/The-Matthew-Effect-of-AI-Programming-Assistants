@@ -1,0 +1,13 @@
+(define (minimum-initial-energy tasks)
+  (let loop ((tasks tasks) (min-energy 0) (max-diff 0))
+    (if (null? tasks)
+        min-energy
+        (let* ((task (car tasks))
+               (cost (car task))
+               (effort (cadr task))
+               (diff (- cost effort)))
+          (loop (cdr tasks) (max min-energy (+ max-diff diff)) (max max-diff diff))))))
+(define (main)
+  (let ((input (read)))
+    (display (minimum-initial-energy input))
+    (newline)))

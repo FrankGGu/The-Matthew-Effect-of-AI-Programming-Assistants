@@ -1,0 +1,5 @@
+(define (maximumXor nums)
+  (define (xor a b) (bitwise-xor a b))
+  (define (max-xor l)
+    (foldl (lambda (x y) (max x y)) 0 l))
+  (max-xor (map (lambda (x) (foldl xor 0 x)) (list nums))))

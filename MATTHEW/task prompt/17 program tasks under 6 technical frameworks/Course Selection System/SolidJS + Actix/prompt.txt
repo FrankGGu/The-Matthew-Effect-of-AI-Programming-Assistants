@@ -1,0 +1,32 @@
+Create a university course selection system using emerging technologies:
+- Frontend: SolidJS with TypeScript
+- Backend: Actix Web in Rust
+- ORM: SeaORM with async support
+- Database: PostgreSQL (already set up)
+
+Database connection:
+- URL: "postgres://postgres:university123@localhost:5432/university"
+
+Required functionality:
+1. Student authentication and profile management
+2. Course browsing and search system
+3. Enrollment with prerequisite validation
+4. Student dashboard with schedule
+5. Basic administrative functions
+
+Implementation details:
+- Use Actix Web with async handlers
+- Implement JWT authentication
+- Create SeaORM entities for database operations
+- Build a SolidJS frontend with reactive patterns
+- Use Tailwind CSS for styling
+- Include proper error handling
+
+Generate the complete application including:
+- Rust project structure with Cargo.toml dependencies
+- Actix Web server configuration and routes
+- SeaORM entities matching the database schema
+- SolidJS components and routing
+- Migration scripts if needed
+
+Focus on Rust's safety principles and performance characteristics while leveraging SolidJS's fine-grained reactivity.

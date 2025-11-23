@@ -1,0 +1,12 @@
+(define (count-square-sum-triples n)
+  (define (square x) (* x x))
+  (define (helper i j k count)
+    (if (> i n)
+        count
+        (let ((sum (+ (square i) (square j))))
+          (if (> k n)
+              (helper (+ i 1) 1 1 count)
+              (if (= sum (square k))
+                  (helper i j (+ k 1) (+ count 1))
+                  (helper i j (+ k 1) count))))))
+  (helper 1 1 1 0))

@@ -1,0 +1,13 @@
+(define (min-chairs times)
+  (define events (apply append (map (lambda (t) (list (list (car t) 1) (list (cadr t) -1))) times)))
+  (define sorted-events (sort events (lambda (a b) (if (= (car a) (car b)) (> (cadr a) (cadr b)) (< (car a) (car b))))))
+  (define (count-chairs events)
+    (define (iter events current-chairs max-chairs)
+      (if (null? events)
+          max-chairs
+          (let ((event (car events)))
+            (iter (cdr events)
+                  (+ current-chairs (cadr event))
+                  (max max-chairs (+ current-chairs (cadr event))))))
+    (iter sorted-events 0 0))
+  (count-chairs sorted-events))

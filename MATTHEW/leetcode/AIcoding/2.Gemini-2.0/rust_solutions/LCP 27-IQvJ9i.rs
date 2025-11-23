@@ -1,0 +1,17 @@
+impl Solution {
+    pub fn mirror_reflection(p: i32, q: i32) -> i32 {
+        let mut m = 1;
+        let mut n = 1;
+        while m * p != n * q {
+            m += 1;
+            n = m * p / q;
+        }
+        if m % 2 == 0 {
+            2
+        } else if n % 2 == 0 {
+            0
+        } else {
+            1
+        }
+    }
+}

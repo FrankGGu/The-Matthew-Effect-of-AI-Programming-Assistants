@@ -1,0 +1,35 @@
+(define (count-square-free-subsets nums)
+  (define MOD 1000000007)
+  (define primes '(2 3 5 7 11 13 17 19 23 29))
+  (define (is-square-free? n)
+    (for/and ([p primes])
+      (or (= (modulo n (* p p)) n)
+          (= (modulo n (* p p)) 0))))
+  (define (mask n)
+    (let loop ([n n] [idx 0] [m 0])
+      (cond
+        [(= n 1) m]
+        [(zero? (modulo n (list-ref primes idx)))
+         (loop (/ n (list-ref primes idx)) (add1 idx) (+ m (expt 2 idx)))]
+        [else (loop n (add1 idx) m)])))
+  (define square-free-nums
+    (filter is-square-free? nums))
+  (define valid-nums
+    (filter (lambda (x) (<= x 30)) square-free-nums))
+  (define counts (make-hash))
+  (for-each (lambda (x) (hash-update! counts x add1 0)) valid-nums)
+  (define dp (make-vector 1024 0))
+  (vector-set! dp 0 1)
+  (for-each
+   (lambda (num)
+     (let ([m (mask num)])
+       (let ([count (hash-ref counts num)])
+         (for ([i (in-range 1024)])
+           (when (zero? (bitwise-and i m))
+             (vector-set! dp i (modulo (+ (vector-ref dp i)
+                                           (* count (vector-ref dp (bitwise-xor i m)))) MOD)))))))
+   (hash-keys counts))
+  (define ans (modulo (- (vector-ref dp 0) 1) MOD))
+  (define ones-count (count (lambda (x) (= x 1)) nums))
+  (define ones-pow (expt 2 ones-count))
+  (modulo (* ans ones-pow) MOD))

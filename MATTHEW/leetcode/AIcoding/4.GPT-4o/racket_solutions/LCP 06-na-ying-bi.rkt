@@ -1,0 +1,18 @@
+(define (minCoins coins amount)
+  (define (dp n)
+    (if (= n 0) 0)
+    (if (< n 0) +inf.0)
+    (if (memo-n n) (memo-n n))
+    (define min-coin +inf.0)
+    (for ([coin coins])
+      (set! min-coin (min min-coin (+ 1 (dp (- n coin)))))
+    )
+    (set! memo-n n min-coin)
+    min-coin)
+
+  (define memo-n (make-vector (+ amount 1) #f))
+  (define res (dp amount))
+  (if (= res +inf.0) -1 res))
+
+(define (coinChange coins amount)
+  (minCoins coins amount))

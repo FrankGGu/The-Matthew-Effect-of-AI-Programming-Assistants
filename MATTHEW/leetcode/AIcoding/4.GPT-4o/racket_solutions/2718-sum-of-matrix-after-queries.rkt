@@ -1,0 +1,27 @@
+(define (matrixSumQueries n queries)
+  (define matrix (make-vector n (make-vector n 0)))
+  (define total-sum 0)
+  (define row-sum (make-vector n 0))
+  (define col-sum (make-vector n 0))
+
+  (for-each (lambda (query)
+              (define index (car query))
+              (define value (cadr query))
+              (define type (caddr query))
+              (cond
+                [(eq? type 0) 
+                 (for-each (lambda (col)
+                             (set! total-sum (+ total-sum (- value (vector-ref (vector-ref matrix index) col))))
+                             (vector-set! (vector-ref matrix index) col value)
+                             (set! (vector-ref row-sum index) (+ (vector-ref row-sum index) value)))
+                           (range n))]
+                [(eq? type 1)
+                 (for-each (lambda (row)
+                             (set! total-sum (+ total-sum (- value (vector-ref (vector-ref matrix row) index))))
+                             (vector-set! (vector-ref matrix row) index value)
+                             (set! (vector-ref col-sum index) (+ (vector-ref col-sum index) value)))
+                           (range n))]))
+            queries)
+  total-sum)
+
+(matrixSumQueries n queries)

@@ -1,0 +1,17 @@
+(define (maxAreaOfSquare rect1 rect2)
+  (define (intersect r1 r2)
+    (let ((x1 (max (first r1) (first r2)))
+          (y1 (max (second r1) (second r2)))
+          (x2 (min (third r1) (third r2)))
+          (y2 (min (fourth r1) (fourth r2))))
+      (if (and (< x1 x2) (< y1 y2))
+          (list x1 y1 x2 y2)
+          '())))
+
+  (define intersection (intersect rect1 rect2))
+  (if (null? intersection)
+      0
+      (let ((width (- (third intersection) (first intersection)))
+            (height (- (fourth intersection) (second intersection))))
+        (let ((side (min width height)))
+          (* side side)))))

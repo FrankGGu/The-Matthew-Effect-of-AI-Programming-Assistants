@@ -1,0 +1,11 @@
+(define (num-good-pairs nums)
+  (define (count-pairs freq)
+    (if (null? freq)
+        0
+        (+ (* (car freq) (- (car freq) 1)) (count-pairs (cdr freq)))))
+  (define (helper nums freq)
+    (cond ((null? nums) (count-pairs freq))
+          ((assoc (car nums) freq)
+           (helper (cdr nums) (cons (cons (car nums) (+ 1 (cdar (assoc (car nums) freq)))) (remove (assoc (car nums) freq) freq))))
+          (else (helper (cdr nums) (cons (cons (car nums) 1) freq)))))
+  (helper nums '()))

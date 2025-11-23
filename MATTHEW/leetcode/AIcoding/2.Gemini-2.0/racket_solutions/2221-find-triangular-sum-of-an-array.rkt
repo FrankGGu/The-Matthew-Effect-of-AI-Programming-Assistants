@@ -1,0 +1,10 @@
+(define (triangular-sum nums)
+  (if (null? nums)
+      0
+      (let loop ([arr nums])
+        (if (= (length arr) 1)
+            (car arr)
+            (let ([next-arr (list)])
+              (for ([i (in-range (- (length arr) 1))])
+                (set! next-arr (append next-arr (list (modulo (+ (list-ref arr i) (list-ref arr (+ i 1))) 10)))))
+              (loop next-arr))))))

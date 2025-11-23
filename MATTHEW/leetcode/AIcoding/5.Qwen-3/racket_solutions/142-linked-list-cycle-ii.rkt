@@ -1,0 +1,6 @@
+(define (has-cycle? head)
+  (define (helper slow fast)
+    (cond ((or (not slow) (not fast)) #f)
+          ((eqv? slow fast) #t)
+          (else (helper (cdr slow) (cddr fast)))))
+  (helper head head))

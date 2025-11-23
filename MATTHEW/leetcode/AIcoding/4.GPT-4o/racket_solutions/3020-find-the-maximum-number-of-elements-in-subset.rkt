@@ -1,0 +1,15 @@
+(define (maxElements nums limit)
+  (define (helper nums limit count)
+    (if (or (null? nums) (<= limit 0))
+        count
+        (let* ((current (car nums))
+               (remaining (cdr nums))
+               (with-current (if (<= current limit)
+                                 (helper remaining (- limit current) (+ count 1))
+                                 count))
+               (without-current (helper remaining limit count)))
+          (max with-current without-current))))
+  (helper (sort nums <) limit 0))
+
+(define (findMaxSubsetSize nums limit)
+  (maxElements nums limit))

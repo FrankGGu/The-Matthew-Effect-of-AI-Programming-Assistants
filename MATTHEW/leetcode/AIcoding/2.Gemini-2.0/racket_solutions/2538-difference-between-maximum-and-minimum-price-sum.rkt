@@ -1,0 +1,31 @@
+(define (max-profit n edges price)
+  (define adj (make-vector n '()))
+  (for-each (lambda (edge)
+              (let ((u (car edge)) (v (cadr edge)))
+                (vector-set! adj u (cons v (vector-ref adj u)))
+                (vector-set! adj v (cons u (vector-ref adj v)))))
+            edges)
+
+  (define (dfs start)
+    (define visited (make-vector n #f))
+    (define max-sum (list 0))
+
+    (define (explore u path-sum)
+      (vector-set! visited u #t)
+      (let ((current-sum (+ path-sum (vector-ref price u))))
+        (if (null? (vector-ref adj u))
+            (set! max-sum (list (max (car max-sum) current-sum)))
+            (for-each (lambda (v)
+                        (if (not (vector-ref visited v))
+                            (explore v current-sum)))
+                      (vector-ref adj u))))
+      (vector-set! visited u #f))
+
+    (explore start 0)
+    (car max-sum))
+
+  (let loop ((i 0) (max-p 0))
+    (if (= i n)
+        max-p
+        (let ((current-profit (dfs i)))
+          (loop (+ i 1) (max max-p current-profit))))))

@@ -1,0 +1,45 @@
+{
+  "id": "3235",
+  "title": "Check if the Rectangle Corner Is Reachable",
+  "titleSlug": "check-if-the-rectangle-corner-is-reachable",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Geometry",
+    "Array",
+    "Math"
+  ],
+  "content": "<p>You are given two positive integers <code>xCorner</code> and <code>yCorner</code>, and a 2D array <code>circles</code>, where <code>circles[i] = [x<sub>i</sub>, y<sub>i</sub>, r<sub>i</sub>]</code> denotes a circle with center at <code>(x<sub>i</sub>, y<sub>i</sub>)</code> and radius <code>r<sub>i</sub></code>.</p>\n\n<p>There is a rectangle in the coordinate plane with its bottom left corner at the origin and top right corner at the coordinate <code>(xCorner, yCorner)</code>. You need to check whether there is a path from the bottom left corner to the top right corner such that the <strong>entire path</strong> lies inside the rectangle, <strong>does not</strong> touch or lie inside <strong>any</strong> circle, and touches the rectangle <strong>only</strong> at the two corners.</p>\n\n<p>Return <code>true</code> if such a path exists, and <code>false</code> otherwise.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">xCorner = 3, yCorner = 4, circles = [[2,1,1]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/05/18/example2circle1.png\" style=\"width: 346px; height: 264px;\" /></p>\n\n<p>The black curve shows a possible path between <code>(0, 0)</code> and <code>(3, 4)</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">xCorner = 3, yCorner = 3, circles = [[1,1,2]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">false</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/05/18/example1circle.png\" style=\"width: 346px; height: 264px;\" /></p>\n\n<p>No path exists from <code>(0, 0)</code> to <code>(3, 3)</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">xCorner = 3, yCorner = 3, circles = [[2,1,1],[1,2,1]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">false</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/05/18/example0circle.png\" style=\"width: 346px; height: 264px;\" /></p>\n\n<p>No path exists from <code>(0, 0)</code> to <code>(3, 3)</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 4:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">xCorner = 4, yCorner = 4, circles = [[5,5,1]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/08/04/rectangles.png\" style=\"width: 346px; height: 264px;\" /></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>3 &lt;= xCorner, yCorner &lt;= 10<sup>9</sup></code></li>\n\t<li><code>1 &lt;= circles.length &lt;= 1000</code></li>\n\t<li><code>circles[i].length == 3</code></li>\n\t<li><code>1 &lt;= x<sub>i</sub>, y<sub>i</sub>, r<sub>i</sub> &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool canReachCorner(int xCorner, int yCorner, vector<vector<int>>& circles) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean canReachCorner(int xCorner, int yCorner, int[][] circles) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def canReachCorner(self, xCorner, yCorner, circles):\n        \"\"\"\n        :type xCorner: int\n        :type yCorner: int\n        :type circles: List[List[int]]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def canReachCorner(self, xCorner: int, yCorner: int, circles: List[List[int]]) -> bool:\n        ",
+    "c": "bool canReachCorner(int xCorner, int yCorner, int** circles, int circlesSize, int* circlesColSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool CanReachCorner(int xCorner, int yCorner, int[][] circles) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} xCorner\n * @param {number} yCorner\n * @param {number[][]} circles\n * @return {boolean}\n */\nvar canReachCorner = function(xCorner, yCorner, circles) {\n    \n};",
+    "typescript": "function canReachCorner(xCorner: number, yCorner: number, circles: number[][]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $xCorner\n     * @param Integer $yCorner\n     * @param Integer[][] $circles\n     * @return Boolean\n     */\n    function canReachCorner($xCorner, $yCorner, $circles) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func canReachCorner(_ xCorner: Int, _ yCorner: Int, _ circles: [[Int]]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun canReachCorner(xCorner: Int, yCorner: Int, circles: Array<IntArray>): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool canReachCorner(int xCorner, int yCorner, List<List<int>> circles) {\n    \n  }\n}",
+    "golang": "func canReachCorner(xCorner int, yCorner int, circles [][]int) bool {\n    \n}",
+    "ruby": "# @param {Integer} x_corner\n# @param {Integer} y_corner\n# @param {Integer[][]} circles\n# @return {Boolean}\ndef can_reach_corner(x_corner, y_corner, circles)\n    \nend",
+    "scala": "object Solution {\n    def canReachCorner(xCorner: Int, yCorner: Int, circles: Array[Array[Int]]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn can_reach_corner(x_corner: i32, y_corner: i32, circles: Vec<Vec<i32>>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (can-reach-corner xCorner yCorner circles)\n  (-> exact-integer? exact-integer? (listof (listof exact-integer?)) boolean?)\n  )",
+    "erlang": "-spec can_reach_corner(XCorner :: integer(), YCorner :: integer(), Circles :: [[integer()]]) -> boolean().\ncan_reach_corner(XCorner, YCorner, Circles) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec can_reach_corner(x_corner :: integer, y_corner :: integer, circles :: [[integer]]) :: boolean\n  def can_reach_corner(x_corner, y_corner, circles) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func canReachCorner(xCorner: Int64, yCorner: Int64, circles: Array<Array<Int64>>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "3\n4\n[[2,1,1]]\n3\n3\n[[1,1,2]]\n3\n3\n[[2,1,1],[1,2,1]]\n4\n4\n[[5,5,1]]",
+  "hints": [
+    "Create a graph with <code>n + 4</code> vertices.",
+    "Vertices 0 to <code>n - 1</code> represent the circles, vertex <code>n</code> represents upper edge, vertex <code>n + 1</code> represents right edge, vertex <code>n + 2</code> represents lower edge, and vertex <code>n + 3</code> represents left edge.",
+    "Add an edge between these vertices if they intersect or touch.",
+    "Answer will be <code>false</code> when any of two sides left-right, left-bottom, right-top or top-bottom are reachable using the edges."
+  ]
+}

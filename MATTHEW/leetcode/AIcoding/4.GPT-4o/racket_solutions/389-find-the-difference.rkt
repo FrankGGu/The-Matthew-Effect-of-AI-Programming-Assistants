@@ -1,0 +1,12 @@
+(define (find-the-difference s t)
+  (define (char-count str)
+    (foldl (lambda (char acc)
+             (hash-update acc char (lambda (v) (+ v 1)) 1))
+           (make-hash) str))
+  (define s-count (char-count s))
+  (define t-count (char-count t))
+  (for/fold ([result #f]) ([char (hash-keys t-count)])
+    (if (or (not (hash-has? s-count char))
+            (not (= (hash-ref t-count char) (hash-ref s-count char))))
+        char
+        result)))

@@ -1,0 +1,10 @@
+(define (maximum-69-number num)
+  (let loop ((n num) (i 0) (pos -1))
+    (if (= n 0)
+        (if (= pos -1)
+            num
+            (+ num (* (- 9 (quotient num (expt 10 pos))) (expt 10 pos))))
+        (let ((digit (remainder n 10)))
+          (if (= digit 6)
+              (loop (quotient n 10) (+ i 1) i)
+              (loop (quotient n 10) (+ i 1) pos))))))

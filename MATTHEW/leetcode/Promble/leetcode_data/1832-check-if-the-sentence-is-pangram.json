@@ -1,0 +1,39 @@
+{
+  "id": "1832",
+  "title": "Check if the Sentence Is Pangram",
+  "titleSlug": "check-if-the-sentence-is-pangram",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Hash Table",
+    "String"
+  ],
+  "content": "<p>A <strong>pangram</strong> is a sentence where every letter of the English alphabet appears at least once.</p>\n\n<p>Given a string <code>sentence</code> containing only lowercase English letters, return<em> </em><code>true</code><em> if </em><code>sentence</code><em> is a <strong>pangram</strong>, or </em><code>false</code><em> otherwise.</em></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> sentence = &quot;thequickbrownfoxjumpsoverthelazydog&quot;\n<strong>Output:</strong> true\n<strong>Explanation:</strong> sentence contains at least one of every letter of the English alphabet.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> sentence = &quot;leetcode&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= sentence.length &lt;= 1000</code></li>\n\t<li><code>sentence</code> consists of lowercase English letters.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool checkIfPangram(string sentence) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean checkIfPangram(String sentence) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def checkIfPangram(self, sentence):\n        \"\"\"\n        :type sentence: str\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def checkIfPangram(self, sentence: str) -> bool:\n        ",
+    "c": "bool checkIfPangram(char* sentence) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool CheckIfPangram(string sentence) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} sentence\n * @return {boolean}\n */\nvar checkIfPangram = function(sentence) {\n    \n};",
+    "typescript": "function checkIfPangram(sentence: string): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $sentence\n     * @return Boolean\n     */\n    function checkIfPangram($sentence) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func checkIfPangram(_ sentence: String) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun checkIfPangram(sentence: String): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool checkIfPangram(String sentence) {\n    \n  }\n}",
+    "golang": "func checkIfPangram(sentence string) bool {\n    \n}",
+    "ruby": "# @param {String} sentence\n# @return {Boolean}\ndef check_if_pangram(sentence)\n    \nend",
+    "scala": "object Solution {\n    def checkIfPangram(sentence: String): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn check_if_pangram(sentence: String) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (check-if-pangram sentence)\n  (-> string? boolean?)\n  )",
+    "erlang": "-spec check_if_pangram(Sentence :: unicode:unicode_binary()) -> boolean().\ncheck_if_pangram(Sentence) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec check_if_pangram(sentence :: String.t) :: boolean\n  def check_if_pangram(sentence) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func checkIfPangram(sentence: String): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"thequickbrownfoxjumpsoverthelazydog\"\n\"leetcode\"",
+  "hints": [
+    "Iterate over the string and mark each character as found (using a boolean array, bitmask, or any other similar way).",
+    "Check if the number of found characters equals the alphabet length."
+  ]
+}

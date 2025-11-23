@@ -1,0 +1,17 @@
+(define (max-score s)
+  (let* ((n (string-length s))
+         (current-zeros-left 0)
+         (current-ones-right 0)
+         (max-s -1))
+
+    (for ((i (in-range n)))
+      (when (char=? (string-ref s i) #\1)
+        (set! current-ones-right (+ current-ones-right 1))))
+
+    (for ((i (in-range (- n 1))))
+      (let ((char-at-i (string-ref s i)))
+        (if (char=? char-at-i #\0)
+            (set! current-zeros-left (+ current-zeros-left 1))
+            (set! current-ones-right (- current-ones-right 1))))
+      (set! max-s (max max-s (+ current-zeros-left current-ones-right))))
+    max-s))

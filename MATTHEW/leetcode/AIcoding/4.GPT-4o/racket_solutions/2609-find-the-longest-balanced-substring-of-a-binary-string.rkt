@@ -1,0 +1,12 @@
+(define (findLongestBalancedSubstring s)
+  (define (count-balance str)
+    (let loop ((i 0) (count 0) (max-count 0))
+      (if (>= i (string-length str))
+          max-count
+          (let ((char (string-ref str i)))
+            (if (char=? char #\0)
+                (loop (+ i 1) (+ count 1) max-count)
+                (if (char=? char #\1)
+                    (loop (+ i 1) (- count 1) (if (= count 0) (max max-count (+ i 1)) max-count))
+                    (loop (+ i 1) count max-count)))))))
+  (count-balance s))

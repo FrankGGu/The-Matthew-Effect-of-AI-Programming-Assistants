@@ -1,0 +1,38 @@
+{
+  "id": "3370",
+  "title": "Smallest Number With All Set Bits",
+  "titleSlug": "smallest-number-with-all-set-bits",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Math"
+  ],
+  "content": "<p>You are given a <em>positive</em> number <code>n</code>.</p>\n\n<p>Return the <strong>smallest</strong> number <code>x</code> <strong>greater than</strong> or <strong>equal to</strong> <code>n</code>, such that the binary representation of <code>x</code> contains only <span data-keyword=\"set-bit\">set bits</span></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 5</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">7</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The binary representation of 7 is <code>&quot;111&quot;</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 10</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">15</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The binary representation of 15 is <code>&quot;1111&quot;</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 3</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">3</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The binary representation of 3 is <code>&quot;11&quot;</code>.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 1000</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int smallestNumber(int n) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int smallestNumber(int n) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def smallestNumber(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def smallestNumber(self, n: int) -> int:\n        ",
+    "c": "int smallestNumber(int n) {\n    \n}",
+    "csharp": "public class Solution {\n    public int SmallestNumber(int n) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @return {number}\n */\nvar smallestNumber = function(n) {\n    \n};",
+    "typescript": "function smallestNumber(n: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @return Integer\n     */\n    function smallestNumber($n) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func smallestNumber(_ n: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun smallestNumber(n: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int smallestNumber(int n) {\n    \n  }\n}",
+    "golang": "func smallestNumber(n int) int {\n    \n}",
+    "ruby": "# @param {Integer} n\n# @return {Integer}\ndef smallest_number(n)\n    \nend",
+    "scala": "object Solution {\n    def smallestNumber(n: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn smallest_number(n: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (smallest-number n)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec smallest_number(N :: integer()) -> integer().\nsmallest_number(N) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec smallest_number(n :: integer) :: integer\n  def smallest_number(n) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func smallestNumber(n: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "5\n10\n3",
+  "hints": [
+    "Find the strictly greater power of 2, and subtract 1 from it."
+  ]
+}

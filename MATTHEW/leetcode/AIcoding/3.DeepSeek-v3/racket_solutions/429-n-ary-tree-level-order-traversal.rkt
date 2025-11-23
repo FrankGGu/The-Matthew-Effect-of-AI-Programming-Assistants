@@ -1,0 +1,11 @@
+(define (level-order root)
+  (define result '())
+  (define (helper node level)
+    (when node
+      (if (>= level (length result))
+          (set! result (append result (list (list (node-val node)))))
+          (let ((current (list-ref result level)))
+            (set! result (list-set result level (append current (list (node-val node))))))
+      (for-each (lambda (child) (helper child (+ level 1))) (node-children node)))
+  (helper root 0)
+  result)

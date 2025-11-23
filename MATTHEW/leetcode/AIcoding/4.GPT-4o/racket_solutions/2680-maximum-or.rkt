@@ -1,0 +1,10 @@
+(define (maximum-or nums k)
+  (define (bitwise-or lst)
+    (foldl (lambda (x acc) (logior x acc)) 0 lst))
+  (define (max-or-with-k lst k)
+    (let loop ((i 0) (max-or 0))
+      (if (>= i (length lst))
+          max-or
+          (let ((current-or (bitwise-or (list-ref lst i))))
+            (loop (+ i 1) (max max-or (logior current-or k)))))))
+  (max-or-with-k nums k))

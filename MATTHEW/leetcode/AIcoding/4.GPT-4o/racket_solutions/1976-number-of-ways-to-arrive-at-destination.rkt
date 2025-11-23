@@ -1,0 +1,51 @@
+#lang racket
+
+(define (countPaths n roads)
+  (define mod 1000000007)
+  (define graph (make-vector n '()))
+  (for-each (lambda (road)
+              (define u (vector-ref road 0))
+              (define v (vector-ref road 1))
+              (define w (vector-ref road 2))
+              (vector-set! graph u (cons (list v w) (vector-ref graph u)))
+              (vector-set! graph v (cons (list u w) (vector-ref graph v))))
+            roads)
+
+  (define dist (make-vector n +inf.0))
+  (define ways (make-vector n 0))
+  (vector-set! dist 0 0)
+  (vector-set! ways 0 1)
+
+  (define (dijkstra)
+    (define pq (make-pqueue (lambda (a b) (< (vector-ref a 0) (vector-ref b 0)))))
+    (pqueue-add pq (vector 0 0)) ; (distance, node)
+
+    (while (not (pqueue-empty? pq))
+      (define current (pqueue-remove-min pq))
+      (define curr-dist (vector-ref current 0))
+      (define node (vector-ref current 1))
+
+      (when (< curr-dist (vector-ref dist node))
+        (vector-set! dist node curr-dist)
+        (for-each (lambda (neighbor)
+                    (define next-node (car neighbor))
+                    (define weight (cadr neighbor))
+                    (define new-dist (+ curr-dist weight))
+                    (when (< new-dist (vector-ref dist next-node))
+                      (vector-set! dist next-node new-dist)
+                      (vector-set! ways next-node (vector-ref ways node))
+                      (pqueue-add pq (vector new-dist next-node))
+                      )
+                    (when (= new-dist (vector-ref dist next-node))
+                      (vector-set! ways next-node (mod (+ (vector-ref ways next-node) (vector-ref ways node)) mod))
+                      ))
+                    )
+                  (vector-ref graph node))))
+
+  (dijkstra)
+  (vector-ref ways (- n 1)))
+
+(define (countPathsWrapper n roads)
+  (countPaths n roads))
+
+(countPathsWrapper 7 (list (vector 0 1 3) (vector 1 2 1) (vector 2 3 6) (vector 0 3 2) (vector 3 4 1) (vector 4 5 2) (vector 5 6 2)))

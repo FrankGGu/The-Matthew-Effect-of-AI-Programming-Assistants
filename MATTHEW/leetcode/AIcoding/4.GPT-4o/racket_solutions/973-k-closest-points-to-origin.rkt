@@ -1,0 +1,5 @@
+(define (kClosest points k)
+  (define (distance point)
+    (+ (sqr (car point)) (sqr (cadr point))))
+  (define sorted-points (sort points (lambda (a b) (< (distance a) (distance b)))))
+  (take sorted-points k))

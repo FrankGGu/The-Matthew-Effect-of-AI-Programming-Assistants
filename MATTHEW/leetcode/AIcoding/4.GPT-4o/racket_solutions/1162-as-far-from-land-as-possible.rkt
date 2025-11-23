@@ -1,0 +1,36 @@
+(define (maxDistance grid)
+  (define (in-bounds? x y)
+    (and (>= x 0) (< x (length grid)) (>= y 0) (< y (length (vector-ref grid 0)))))
+
+  (define (bfs land)
+    (define queue (list))
+    (for-each (lambda (pos) (set! queue (cons pos queue))) land)
+    (define distance 0)
+    (define directions '((1 0) (-1 0) (0 1) (0 -1)))
+
+    (let loop ()
+      (if (null? queue)
+          distance
+          (begin
+            (set! distance (+ distance 1))
+            (define new-queue '())
+            (for-each (lambda (pos)
+                        (for-each (lambda (dir)
+                                    (let* ((nx (+ (car pos) (car dir)))
+                                           (ny (+ (cdr pos) (cdr dir))))
+                                      (when (and (in-bounds? nx ny)
+                                                 (= (vector-ref (vector-ref grid nx) ny) 0))
+                                        (vector-set! (vector-ref grid nx) ny 1)
+                                        (set! new-queue (cons (cons nx ny) new-queue)))))
+                                  directions))
+                      queue)
+            (set! queue new-queue)
+            (loop)))))
+
+  (define land (for/list ([i (in-range (length grid))])
+                 (for/list ([j (in-range (length (vector-ref grid 0)))])
+                   (when (= (vector-ref (vector-ref grid i) j) 1)
+                     (cons i j))))
+  (if (or (null? land) (= (length land) (* (length grid) (length (vector-ref grid 0)))))
+      -1
+      (bfs land)))

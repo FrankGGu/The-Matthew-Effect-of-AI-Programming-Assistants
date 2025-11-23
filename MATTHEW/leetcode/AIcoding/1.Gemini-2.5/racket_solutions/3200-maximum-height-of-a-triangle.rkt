@@ -1,0 +1,17 @@
+(define (max-height-of-triangle red blue)
+  (define (get-height balls-for-odd-rows balls-for-even-rows)
+    (let loop ((k 1)
+               (current-odd-balls balls-for-odd-rows)
+               (current-even-balls balls-for-even-rows)
+               (height 0))
+      (cond
+        ((odd? k)
+         (if (>= current-odd-balls k)
+             (loop (+ k 1) (- current-odd-balls k) current-even-balls (+ height 1))
+             height))
+        ((even? k)
+         (if (>= current-even-balls k)
+             (loop (+ k 1) current-odd-balls (- current-even-balls k) (+ height 1))
+             height)))))
+
+  (max (get-height red blue) (get-height blue red)))

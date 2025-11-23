@@ -1,0 +1,46 @@
+Create a complete Pet Information Registration System using Vue.js frontend with Spring Boot backend and Hibernate ORM.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (Spring Boot):**
+1. Implement RESTful API with proper HTTP status codes
+2. Use Hibernate for database operations with JPA annotations
+3. Create entities for Pet and Vaccination with proper relationships
+4. Implement repositories with Spring Data JPA
+5. Add proper validation annotations
+6. Include comprehensive error handling
+7. Use DTOs for data transfer between layers
+8. Add CORS configuration for frontend communication
+
+**Frontend Requirements (Vue.js):**
+1. Create responsive UI with Vue 3 Composition API
+2. Implement pages for:
+   - Pet list with search and filter capabilities
+   - Add/edit pet form
+   - Vaccination records for each pet
+   - Add vaccination form
+3. Use Vue Router for navigation
+4. Use Axios for API communication
+5. Implement form validation
+6. Add loading states and error handling
+
+**API Endpoints:**
+- GET /api/pets - List all pets with optional filters
+- POST /api/pets - Create new pet
+- GET /api/pets/{id} - Get pet details
+- PUT /api/pets/{id} - Update pet
+- DELETE /api/pets/{id} - Delete pet
+- GET /api/pets/{id}/vaccinations - Get vaccinations for a pet
+- POST /api/vaccinations - Add vaccination record
+- PUT /api/vaccinations/{id} - Update vaccination record
+- DELETE /api/vaccinations/{id} - Delete vaccination record
+
+**Database Connection:**
+- URL: jdbc:postgresql://localhost:5432/pet_registry
+- Username: postgres
+- Password: petpassword
+
+Generate complete, runnable code with proper project structure, configuration files, and documentation.

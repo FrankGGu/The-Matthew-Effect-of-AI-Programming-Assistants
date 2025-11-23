@@ -1,0 +1,7 @@
+(define (max-product nums)
+  (define (helper nums a b)
+    (cond ((null? nums) (* a b))
+          ((> (car nums) a) (helper (cdr nums) (car nums) b))
+          ((> (car nums) b) (helper (cdr nums) a (car nums)))
+          (else (helper (cdr nums) a b))))
+  (helper nums 0 0))

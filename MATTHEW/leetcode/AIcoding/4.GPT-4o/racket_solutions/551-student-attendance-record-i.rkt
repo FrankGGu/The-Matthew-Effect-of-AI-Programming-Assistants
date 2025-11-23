@@ -1,0 +1,5 @@
+(define (checkRecord s)
+  (define (count-char char s)
+    (length (filter (lambda (x) (char=? x char)) (string->list s))))
+  (and (< (count-char #\A s) 2)
+       (not (string-contains? s "LLL"))))

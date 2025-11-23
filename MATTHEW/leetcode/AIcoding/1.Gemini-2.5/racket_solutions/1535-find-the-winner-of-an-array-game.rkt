@@ -1,0 +1,20 @@
+(define (find-winner arr k)
+  (let* ((n (length arr)))
+    (if (>= k (- n 1))
+        (apply max arr)
+        (let loop ((current-leader (car arr))
+                   (consecutive-wins 0)
+                   (remaining-opponents (cdr arr)))
+          (if (null? remaining-opponents)
+              current-leader
+              (let ((opponent (car remaining-opponents)))
+                (if (> current-leader opponent)
+                    (let ((new-wins (+ consecutive-wins 1)))
+                      (if (= new-wins k)
+                          current-leader
+                          (loop current-leader new-wins (cdr remaining-opponents))))
+                    (let ((new-leader opponent)
+                          (new-wins 1)))
+                      (if (= new-wins k)
+                          new-leader
+                          (loop new-leader new-wins (cdr remaining-opponents))))))))))

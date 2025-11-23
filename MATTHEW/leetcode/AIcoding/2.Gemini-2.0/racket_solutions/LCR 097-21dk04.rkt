@@ -1,0 +1,14 @@
+(define (num-distinct s t)
+  (define s-len (string-length s))
+  (define t-len (string-length t))
+
+  (define dp (make-vector (+ t-len 1) 0))
+  (vector-set! dp 0 1)
+
+  (for ([i (in-range 1 (+ s-len 1))])
+    (for ([j (in-range t-len 0 -1)])
+      (if (char=? (string-ref s (- i 1)) (string-ref t (- j 1)))
+          (vector-set! dp j (+ (vector-ref dp j) (vector-ref dp (- j 1))))
+          (void))))
+
+  (vector-ref dp t-len))

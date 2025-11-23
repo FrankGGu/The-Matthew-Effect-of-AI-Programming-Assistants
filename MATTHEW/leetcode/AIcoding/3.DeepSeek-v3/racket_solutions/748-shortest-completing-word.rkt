@@ -1,0 +1,23 @@
+(define/contract (shortest-completing-word license-plate words)
+  (-> string? (listof string?) string?)
+  (define (count-letters s)
+    (let loop ([s (string-downcase s)] [counts (make-hash)])
+      (if (zero? (string-length s))
+          counts
+          (let ([c (string-ref s 0)])
+            (if (char-alphabetic? c)
+                (loop (substring s 1) (hash-update counts c add1 0))
+                (loop (substring s 1) counts))))))
+  (define license-counts (count-letters license-plate))
+  (define (completing? word)
+    (let ([word-counts (count-letters word)])
+      (for/and ([(k v) (in-hash license-counts)])
+        (>= (hash-ref word-counts k 0) v)))
+  (let loop ([words words] [result ""] [min-len +inf.0])
+    (if (null? words)
+        result
+        (let* ([word (car words)]
+               [len (string-length word)])
+          (if (and (completing? word) (or (string=? result "") (< len min-len)))
+              (loop (cdr words) word len)
+              (loop (cdr words) result min-len))))))

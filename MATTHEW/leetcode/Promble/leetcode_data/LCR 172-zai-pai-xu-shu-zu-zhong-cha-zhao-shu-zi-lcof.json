@@ -1,0 +1,36 @@
+{
+  "id": "LCR 172",
+  "title": "统计目标成绩的出现次数",
+  "titleSlug": "zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Binary Search"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int countTarget(vector<int>& scores, int target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int countTarget(int[] scores, int target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def countTarget(self, scores, target):\n        \"\"\"\n        :type scores: List[int]\n        :type target: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def countTarget(self, scores: List[int], target: int) -> int:\n        ",
+    "c": "int countTarget(int* scores, int scoresSize, int target) {\n    \n}",
+    "csharp": "public class Solution {\n    public int CountTarget(int[] scores, int target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} scores\n * @param {number} target\n * @return {number}\n */\nvar countTarget = function(scores, target) {\n    \n};",
+    "typescript": "function countTarget(scores: number[], target: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $scores\n     * @param Integer $target\n     * @return Integer\n     */\n    function countTarget($scores, $target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func countTarget(_ scores: [Int], _ target: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun countTarget(scores: IntArray, target: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int countTarget(List<int> scores, int target) {\n    \n  }\n}",
+    "golang": "func countTarget(scores []int, target int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} scores\n# @param {Integer} target\n# @return {Integer}\ndef count_target(scores, target)\n    \nend",
+    "scala": "object Solution {\n    def countTarget(scores: Array[Int], target: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn count_target(scores: Vec<i32>, target: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (count-target scores target)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec count_target(Scores :: [integer()], Target :: integer()) -> integer().\ncount_target(Scores, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec count_target(scores :: [integer], target :: integer) :: integer\n  def count_target(scores, target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func countTarget(scores: Array<Int64>, target: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,2,3,4,4,4,5,6,6,8]\n4",
+  "hints": []
+}

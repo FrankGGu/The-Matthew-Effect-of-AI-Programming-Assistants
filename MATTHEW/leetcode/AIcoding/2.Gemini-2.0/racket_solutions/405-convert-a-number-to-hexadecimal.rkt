@@ -1,0 +1,7 @@
+(define (to-hex num)
+  (letrec ((hex-chars (vector #\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\a #\b #\c #\d #\e #\f))
+           (to-hex-helper (lambda (n acc)
+                             (if (= n 0)
+                                 (if (null? acc) "0" (list->string (reverse acc)))
+                                 (to-hex-helper (arithmetic-shift n -4) (cons (vector-ref hex-chars (bitwise-and n #x0f)) acc))))))
+    (to-hex-helper (bitwise-and num #xffffffff) '())))

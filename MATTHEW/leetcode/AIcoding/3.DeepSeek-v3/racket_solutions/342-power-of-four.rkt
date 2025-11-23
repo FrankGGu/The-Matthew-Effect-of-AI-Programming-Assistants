@@ -1,0 +1,5 @@
+(define/contract (is-power-of-four n)
+  (-> exact-integer? boolean?)
+  (and (> n 0)
+       (zero? (bitwise-and n (- n 1)))
+       (zero? (modulo (integer-length n) 2))))

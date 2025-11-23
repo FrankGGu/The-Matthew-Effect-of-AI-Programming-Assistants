@@ -1,0 +1,50 @@
+Create a movie ticket booking system using Django full-stack:
+
+**Technology Stack:**
+- Backend: Django 4.x with Django REST Framework
+- Frontend: Django Templates with HTMX
+- ORM: Django ORM
+- Database: PostgreSQL (configured below)
+
+**Database Connection:**
+- ENGINE: django.db.backends.postgresql
+- NAME: movie_booking
+- USER: postgres
+- PASSWORD: moviepass
+- HOST: localhost
+- PORT: 5432
+
+**Core Features:**
+1. Movie Schedule View
+   - List and detail views for screenings
+   - Django admin integration for management
+   - Pagination and filtering
+
+2. Seat Selection Interface
+   - Dynamic seat map using CSS/JavaScript
+   - Real-time availability updates
+   - Seat reservation system
+
+3. Order Processing
+   - Django forms for customer information
+   - Order confirmation system
+   - Email notifications
+
+**Technical Requirements:**
+- Use Django Class-Based Views
+- Implement Django REST Framework for APIs
+- Use Django Templates with HTMX for interactivity
+- Add comprehensive tests
+- Use Django authentication system
+
+**File Structure:**
+- models.py (Django models)
+- views.py (Django views)
+- templates/ (HTML templates)
+- static/ (CSS, JS)
+- urls.py (URL routing)
+
+**Output:**
+- Complete Django project
+- Migration files
+- Requirements.txt

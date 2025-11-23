@@ -1,0 +1,73 @@
+(define (kth-largest nums k)
+  (define h (make-heap <))
+  (for-each (lambda (x)
+              (heap-add! h x)
+              (when (> (heap-count h) k)
+                (heap-remove-min! h)))
+            nums)
+  (heap-top h))
+
+(define (kth-smallest nums k)
+  (define h (make-heap >))
+  (for-each (lambda (x)
+              (heap-add! h x)
+              (when (> (heap-count h) k)
+                (heap-remove-max! h)))
+            nums)
+  (heap-top h))
+
+(define (max-and-min-subsums nums k)
+  (define n (length nums))
+  (define max-heap (make-heap <))
+  (define min-heap (make-heap >))
+
+  (for ([i (in-range n)])
+    (heap-add! max-heap (list (list-ref nums i) i))
+    (heap-add! min-heap (list (list-ref nums i) i)))
+
+  (for ([i (in-range n)])
+    (for ([j (in-range (+ i 1) n)])
+      (heap-add! max-heap (list (+ (list-ref nums i) (list-ref nums j)) i j))
+      (heap-add! min-heap (list (+ (list-ref nums i) (list-ref nums j)) i j))))
+
+  (for ([len (in-range 3 (+ k 1))]
+        [i (in-range n)])
+    (for ([j (in-range (+ i 1) n)])
+      (for ([l (in-range (+ j 1) n)])
+        (when (= len 3)
+          (heap-add! max-heap (list (+ (list-ref nums i) (list-ref nums j) (list-ref nums l)) i j l))
+          (heap-add! min-heap (list (+ (list-ref nums i) (list-ref nums j) (list-ref nums l)) i j l)))
+        (when (> len 3)
+          (for ([m (in-range (+ l 1) n)])
+            (heap-add! max-heap (list (+ (list-ref nums i) (list-ref nums j) (list-ref nums l) (list-ref nums m)) i j l m))
+            (heap-add! min-heap (list (+ (list-ref nums i) (list-ref nums j) (list-ref nums l) (list-ref nums m)) i j l m))))))))
+
+  (define max-sums (list))
+  (define min-sums (list))
+
+  (for ([i (in-range k)])
+    (set! max-sums (cons (first (heap-remove-max! max-heap)) max-sums))
+    (set! min-sums (cons (first (heap-remove-min! min-heap)) min-sums)))
+
+  (list (apply + max-sums) (apply + min-sums)))
+
+(define (max-and-min-subsums nums k)
+  (define n (length nums))
+  (define max-heap (make-heap <))
+  (define min-heap (make-heap >))
+
+  (for ([i (in-range (min (+ n 1) (+ k 1)))])
+    (for/list ([comb (in-combinations nums i)])
+      (let ([sum (apply + comb)])
+          (heap-add! max-heap sum)
+          (when (> (heap-count max-heap) k)
+            (heap-remove-min! max-heap))
+
+          (heap-add! min-heap sum)
+          (when (> (heap-count min-heap) k)
+            (heap-remove-max! min-heap))
+       )
+     )
+   )
+
+  (list (apply + (heap->sorted-list > max-heap)) (apply + (heap->sorted-list < min-heap))))

@@ -1,0 +1,23 @@
+(define (count-subarrays nums k)
+  (define (count-at-least k)
+    (define n (length nums))
+    (define left 0)
+    (define right 0)
+    (define count 0)
+    (define freq (make-vector (add1 (apply max nums)) 0))
+    (define valid-subarrays 0)
+
+    (for ([right (in-range n)])
+      (vector-set! freq (vector-ref nums right) (add1 (vector-ref freq (vector-ref nums right))))
+      (while (and (>= right left) (>= (vector-ref freq (vector-ref nums right)) k))
+        (set! valid-subarrays (+ valid-subarrays (- right left)))
+        (vector-set! freq (vector-ref nums left) (sub1 (vector-ref freq (vector-ref nums left))))
+        (set! left (add1 left)))
+      (set! count (+ count valid-subarrays)))
+    count)
+
+  (define max-nums (apply max nums))
+  (define max-count (count-at-least k))
+  max-count)
+
+(count-subarrays (vector 1 2 2 3 2) 2)

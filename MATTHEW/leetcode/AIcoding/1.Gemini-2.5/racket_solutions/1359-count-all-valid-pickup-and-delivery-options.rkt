@@ -1,0 +1,10 @@
+(define (count-orders n)
+  (let* ((mod 1000000007))
+    (let loop ((k 1) (ans 1))
+      (if (> k n)
+          ans
+          (let* ((term-k k)
+                 (term-2k-1 (- (* 2 k) 1))
+                 (ans-after-k (modulo (* ans term-k) mod))
+                 (final-ans-for-k (modulo (* ans-after-k term-2k-1) mod)))
+            (loop (+ k 1) final-ans-for-k))))))

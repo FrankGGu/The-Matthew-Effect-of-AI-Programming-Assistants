@@ -1,0 +1,11 @@
+(define (minMoves2 nums)
+  (define (median lst)
+    (define sorted (sort < lst))
+    (if (odd? (length sorted))
+        (list-ref sorted (quotient (length sorted) 2))
+        (/ (+ (list-ref sorted (quotient (length sorted) 2))
+              (list-ref sorted (quotient (length sorted) 2 - 1)) ) 2)))
+  (define med (median nums))
+  (apply + (map (lambda (x) (abs (- x med))) nums)))
+
+(minMoves2 (vector->list (vector 1 2 3)))

@@ -1,0 +1,10 @@
+(define (countWinningSequences n)
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 1 (+ n 1))])
+    (for ([j (in-range 1 (min 3 (+ 1 i)))])
+      (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i j))))))
+  (vector-ref dp n))
+
+(define (countWinningSequencesWrapper n)
+  (countWinningSequences n))

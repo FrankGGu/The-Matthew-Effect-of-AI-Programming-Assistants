@@ -1,0 +1,33 @@
+(define (odd-even-jump A)
+  (define n (length A))
+  (define odd-jump (make-vector n #f))
+  (define even-jump (make-vector n #f))
+  (vector-set! odd-jump (- n 1) #t)
+  (vector-set! even-jump (- n 1) #t)
+
+  (define (find-next-jumps jumps)
+    (let loop ((index 0) (stack '()))
+      (if (< index n)
+          (let* ((value (vector-ref A index))
+                 (next-stack (filter (lambda (i) (if (equal? jumps odd-jump) 
+                                                       (>= value (vector-ref A i)) 
+                                                       (<= value (vector-ref A i)))) 
+                                      stack)))
+            (when (not (null? next-stack))
+              (for-each (lambda (i) (vector-set! (if (equal? jumps odd-jump) odd-jump even-jump) i #t)) next-stack))
+            (loop (+ index 1) (cons index stack))
+          (if (equal? jumps odd-jump) odd-jump even-jump))))
+
+  (find-next-jumps #t)
+  (find-next-jumps #f)
+
+  (define (count-good-jumps)
+    (define result 0)
+    (for ((i (in-range n)))
+      (when (and (vector-ref odd-jump i) (vector-ref even-jump i))
+        (set! result (+ result 1))))
+    result)
+
+  (count-good-jumps))
+
+(odd-even-jump '(10 13 12 14 15))

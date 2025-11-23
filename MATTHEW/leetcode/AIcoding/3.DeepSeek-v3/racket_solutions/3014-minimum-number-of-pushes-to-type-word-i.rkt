@@ -1,0 +1,8 @@
+(define/contract (minimum-pushes word)
+  (-> string? exact-integer?)
+  (let* ((len (string-length word))
+         (groups (quotient (+ len 7) 8))
+         (full-groups (quotient len groups))
+         (remainder (remainder len groups)))
+    (+ (* full-groups (quotient (* groups (+ groups 1)) 2))
+       (* remainder (+ groups 1)))))

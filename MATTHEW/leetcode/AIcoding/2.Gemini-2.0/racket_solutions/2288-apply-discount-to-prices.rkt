@@ -1,0 +1,10 @@
+(define (apply-discount-to-prices sentence discount)
+  (string-join
+   (map (lambda (word)
+          (if (and (string=? (substring word 0 1) "$")
+                   (regexp-match? #rx"^\\$\\d+(\\.\\d+)?$" word))
+              (let ((price (string->number (substring word 1))))
+                (format "$~$.2f" (* price (- 1 (/ discount 100)))))
+              word))
+        (string-split sentence))
+   " "))

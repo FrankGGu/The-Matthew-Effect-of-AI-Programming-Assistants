@@ -1,0 +1,11 @@
+(define (number-of-changing-keys s)
+  (let ((n (string-length s)))
+    (if (< n 2)
+        0
+        (for/fold ((changes 0)
+                   (prev-lc (char-downcase (string-ref s 0))))
+                  ((i (in-range 1 n)))
+          (let ((current-lc (char-downcase (string-ref s i))))
+            (if (char=? prev-lc current-lc)
+                (values changes current-lc)
+                (values (+ changes 1) current-lc)))))))

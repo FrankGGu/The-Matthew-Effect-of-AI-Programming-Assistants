@@ -1,0 +1,22 @@
+(define (minimum-score nums)
+  (let ((n (length nums)))
+    (if (<= n 2)
+        0
+        (let ((ans (min (abs (- (list-ref nums 0) (list-ref nums (- n 1))))
+                         (abs (- (list-ref nums 0) (list-ref nums 1)))
+                         (abs (- (list-ref nums (- n 2)) (list-ref nums (- n 1)))))))
+          (for*/fold ((min-score ans))
+                     ((i (in-range n))
+                      (j (in-range i (+ 1 n))))
+            (if (= i j)
+                min-score
+                (min min-score
+                     (let* ((temp (list->vector (append (list (list-ref nums 0)) (list-tail nums 1))))
+                            (original-i (list-ref nums i))
+                            (original-j (list-ref nums j)))
+                       (vector-set! temp (- i 1) (list-ref nums j))
+                       (vector-set! temp (- j 1) (list-ref nums i))
+                       (let ((new-nums (vector->list temp)))
+                         (min (abs (- (list-ref new-nums 0) (list-ref new-nums (- n 1))))
+                              (abs (- (list-ref new-nums 0) (list-ref new-nums 1)))
+                              (abs (- (list-ref new-nums (- n 2)) (list-ref new-nums (- n 1)))))))))))))))

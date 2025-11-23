@@ -1,0 +1,5 @@
+(define (find-array pref)
+  (let loop ([i 1] [res (list (car pref))])
+    (if (= i (length pref))
+        (reverse res)
+        (loop (+ i 1) (cons (bitwise-xor (list-ref pref i) (list-ref pref (- i 1))) res)))))

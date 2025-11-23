@@ -1,0 +1,16 @@
+(define (roman-to-int s)
+  (define values '((\I . 1) (\V . 5) (\X . 10) (\L . 50) (\C . 100) (\D . 500) (\M . 1000)))
+  (define (char-value c)
+    (cdr (assoc c values)))
+  (define (helper s total prev-value)
+    (if (string-empty? s)
+        total
+        (let* ((current-char (string-ref s 0))
+               (current-value (char-value current-char))
+               (new-total (if (and prev-value (> current-value prev-value))
+                              (- total prev-value)
+                              (+ total current-value))))
+          (helper (substring s 1) new-total current-value))))
+  (helper s 0 0))
+
+(roman-to-int "MCMXCIV")

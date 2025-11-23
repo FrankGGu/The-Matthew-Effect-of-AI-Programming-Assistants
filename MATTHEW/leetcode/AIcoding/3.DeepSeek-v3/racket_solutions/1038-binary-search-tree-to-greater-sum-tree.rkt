@@ -1,0 +1,11 @@
+(define/contract (bst-to-gst root)
+  (-> (or/c null? tree-node?) (or/c null? tree-node?))
+  (let ([sum 0])
+    (define (in-order node)
+      (when node
+        (in-order (tree-node-right node))
+        (set! sum (+ sum (tree-node-val node)))
+        (set-tree-node-val! node sum)
+        (in-order (tree-node-left node))))
+    (in-order root)
+    root))

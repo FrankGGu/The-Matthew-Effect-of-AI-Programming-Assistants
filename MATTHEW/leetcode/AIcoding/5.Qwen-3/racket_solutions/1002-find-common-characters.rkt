@@ -1,0 +1,16 @@
+#lang racket
+
+(define (common-characters words)
+  (define (count-chars word)
+    (for/fold ([counts (hash)]) ([c word])
+      (hash-update counts c add1 0)))
+  (define (intersect a b)
+    (for/fold ([result (hash)]) ([k (in-hash-keys a)])
+      (if (hash-has-key? b k)
+          (hash-set result k (min (hash-ref a k) (hash-ref b k)))
+          result)))
+  (define first-count (count-chars (car words)))
+  (for/fold ([common first-count]) ([word (cdr words)])
+    (intersect common (count-chars word)))
+  (for/list ([k (in-hash-keys common)] [v (in-hash-values common)])
+    (make-string v k)))

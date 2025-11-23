@@ -1,0 +1,10 @@
+(define (generate numrows)
+  (define (next-row prev)
+    (map + (append prev '(0)) (cons 0 prev)))
+  (define (build n acc)
+    (if (= n 0)
+        acc
+        (build (- n 1) (cons (car acc) (append acc (list (next-row (car acc))))))))
+  (if (< numrows 1)
+      '()
+      (build numrows (list '(1)))))

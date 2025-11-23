@@ -1,0 +1,6 @@
+(define/contract (shuffle nums n)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (let loop ([i 0] [res '()])
+    (if (= i n)
+        (reverse res)
+        (loop (+ i 1) (cons (list-ref nums (+ i n)) (cons (list-ref nums i) res))))))

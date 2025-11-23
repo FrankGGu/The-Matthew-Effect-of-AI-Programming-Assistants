@@ -1,0 +1,10 @@
+(define (sum-of-powers nums)
+  (define mod 1000000007)
+  (define sorted-nums (sort nums <))
+  (define (helper sorted-nums sum power)
+    (if (null? sorted-nums)
+        sum
+        (let ((first (car sorted-nums))
+              (rest (cdr sorted-nums)))
+          (helper rest (modulo (+ sum (modulo (* first (modulo (+ power 1) mod)) mod)) mod) (modulo (+ power (expt 2 (- (length sorted-nums) 1))) mod)))))
+  (helper sorted-nums 0 0))

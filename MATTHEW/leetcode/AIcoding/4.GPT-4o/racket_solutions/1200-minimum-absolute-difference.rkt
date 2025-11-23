@@ -1,0 +1,10 @@
+(define (minimum-absolute-difference arr)
+  (define sorted (sort arr <))
+  (define min-diff (apply min (map - (cdr sorted) sorted)))
+  (define result '())
+  (for ([i (in-range (sub1 (length sorted)))])
+    (when (= (abs (- (list-ref sorted (+ i 1)) (list-ref sorted i))) min-diff)
+      (set! result (cons (list (list-ref sorted i) (list-ref sorted (+ i 1))) result))))
+  (reverse result))
+
+(minimum-absolute-difference '(4 2 1 3))

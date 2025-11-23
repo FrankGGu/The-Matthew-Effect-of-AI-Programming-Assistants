@@ -1,0 +1,33 @@
+Create a complete university course selection system using Java Enterprise stack with the following technologies:
+- Frontend: Vue 3 with Composition API
+- Backend: Spring Boot 3 with RESTful APIs
+- ORM: Hibernate with JPA
+- Database: PostgreSQL (already configured with tables)
+
+Database connection details:
+- URL: jdbc:postgresql://localhost:5432/university
+- Username: postgres
+- Password: university123
+
+Required functionalities:
+1. Student management (view, add, edit students)
+2. Course catalog browsing with filtering by department
+3. Course registration with prerequisite checking
+4. Student dashboard showing enrolled courses
+5. Professor view for managing courses they teach
+
+Implementation requirements:
+- Use Spring Security for authentication (basic auth for now)
+- Implement proper error handling and validation
+- Use DTOs for API responses
+- Create Vue components with proper state management using Pinia
+- Include responsive design with Tailwind CSS
+
+Generate the complete project structure including:
+- Spring Boot application with proper package structure
+- Vue 3 application with router and components
+- Database entities matching the existing PostgreSQL schema
+- RESTful APIs for all CRUD operations
+- Sample data initialization
+
+Focus on clean code architecture and proper separation of concerns.

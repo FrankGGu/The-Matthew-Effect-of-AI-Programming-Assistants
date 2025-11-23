@@ -1,0 +1,20 @@
+(define/contract (max-groups cards)
+  (-> (listof exact-integer?) exact-integer?)
+  (let* ([counts (make-hash)]
+         [max-groups 0])
+    (for ([card cards])
+      (hash-update! counts card add1 0))
+    (let loop ([current-groups 0])
+      (let ([min-count +inf.0])
+        (for ([(card cnt) counts])
+          (when (> cnt 0)
+            (set! min-count (min min-count cnt))))
+        (if (= min-count +inf.0)
+            max-groups
+            (begin
+              (set! current-groups (+ current-groups min-count))
+              (for ([(card cnt) counts])
+                (when (> cnt 0)
+                  (hash-set! counts card (- cnt min-count))))
+              (set! max-groups (max max-groups current-groups))
+              (loop current-groups)))))))

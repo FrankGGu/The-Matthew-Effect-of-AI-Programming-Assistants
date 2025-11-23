@@ -1,0 +1,25 @@
+(define (k-concatenation-max-sum arr k)
+  (define MOD 1000000007)
+
+  (define (kadane-max-sum arr)
+    (let loop ((current-max 0)
+               (global-max 0)
+               (lst arr))
+      (if (empty? lst)
+          global-max
+          (let* ((x (car lst))
+                 (new-current-max (+ current-max x))
+                 (effective-current-max (if (< new-current-max 0) 0 new-current-max)))
+            (loop effective-current-max
+                  (max global-max effective-current-max)
+                  (cdr lst))))))
+
+  (let* ((s1 (kadane-max-sum arr))
+         (total-sum (foldl + 0 arr)))
+    (if (= k 1)
+        (modulo s1 MOD)
+        (let* ((arr-double (append arr arr))
+               (s2 (kadane-max-sum arr-double)))
+          (if (> total-sum 0)
+              (modulo (+ s2 (* total-sum (- k 2))) MOD)
+              (modulo s2 MOD))))))

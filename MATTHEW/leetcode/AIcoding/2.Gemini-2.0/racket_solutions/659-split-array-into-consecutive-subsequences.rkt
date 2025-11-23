@@ -1,0 +1,20 @@
+(define (is-possible nums)
+  (let ([counts (make-hash)]
+        [tails (make-hash)])
+    (for ([num nums])
+      (hash-update! counts num (λ (v) (+ v 1)) 1))
+    (for ([num nums])
+      (when (> (hash-ref counts num 0) 0)
+        (hash-update! counts num (λ (v) (- v 1)) 0)
+        (if (> (hash-ref tails (- num 1) 0) 0)
+            (begin
+              (hash-update! tails (- num 1) (λ (v) (- v 1)) 0)
+              (hash-update! tails num (λ (v) (+ v 1)) 1))
+            (if (and (> (hash-ref counts (+ num 1) 0) 0)
+                     (> (hash-ref counts (+ num 2) 0) 0))
+                (begin
+                  (hash-update! counts (+ num 1) (λ (v) (- v 1)) 0)
+                  (hash-update! counts (+ num 2) (λ (v) (- v 1)) 0)
+                  (hash-update! tails num (λ (v) (+ v 1)) 1))
+                (return #f)))))
+    #t))

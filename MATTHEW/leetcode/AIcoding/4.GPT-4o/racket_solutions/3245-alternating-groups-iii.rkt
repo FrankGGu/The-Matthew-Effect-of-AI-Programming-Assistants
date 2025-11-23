@@ -1,0 +1,13 @@
+(define (alternatingGroups n)
+  (define (helper group acc)
+    (if (null? group)
+        (reverse acc)
+        (let ((current (car group)))
+          (if (null? (cdr group))
+              (helper '() (cons current acc))
+              (if (= (modulo (car (cdr group)) 2) 0)
+                  (helper (cdr group) (cons current acc))
+                  (helper (cdr (cdr group)) (cons current acc)))))))
+  (helper (range 1 (+ n 1)) '()))
+
+(alternatingGroups n)

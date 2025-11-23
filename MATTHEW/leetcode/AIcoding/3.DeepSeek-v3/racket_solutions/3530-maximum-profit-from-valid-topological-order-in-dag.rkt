@@ -1,0 +1,3 @@
+Unfortunately, the problem "Maximum Profit from Valid Topological Order in DAG" does not exist on LeetCode. Could you please verify the problem name or provide more details about the problem? If you're referring to a different problem, please provide the correct name or description so I can assist you with the Racket solution. 
+
+If you're looking for a solution to a similar problem (like "Course Schedule III" or "Maximum Profit in Job Scheduling"), let me know and I'd be happy to provide a Racket solution for that.

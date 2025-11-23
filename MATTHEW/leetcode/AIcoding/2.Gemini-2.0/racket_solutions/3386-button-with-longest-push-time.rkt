@@ -1,0 +1,10 @@
+(define (longest-push-time releaseTimes pressedKeys)
+  (let loop ([rt releaseTimes] [pk pressedKeys] [prev 0] [max-time 0] [result #\space])
+    (if (null? rt)
+        result
+        (let ([curr-time (car rt)] [curr-key (string->symbol (string (car pk)))] [duration (- curr-time prev)])
+          (if (> duration max-time)
+              (loop (cdr rt) (cdr pk) curr-time duration curr-key)
+              (if (= duration max-time)
+                  (loop (cdr rt) (cdr pk) curr-time max-time (min result curr-key))
+                  (loop (cdr rt) (cdr pk) curr-time max-time result)))))))

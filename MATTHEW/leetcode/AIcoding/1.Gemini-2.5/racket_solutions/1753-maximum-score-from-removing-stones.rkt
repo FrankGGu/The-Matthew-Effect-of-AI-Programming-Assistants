@@ -1,0 +1,8 @@
+(define (maximum-score-from-removing-stones a b c)
+  (let* ((piles (sort (list a b c) <))
+         (x (car piles))
+         (y (cadr piles))
+         (z (caddr piles)))
+    (if (<= (+ x y) z)
+        (+ x y)
+        (quotient (+ x y z) 2))))

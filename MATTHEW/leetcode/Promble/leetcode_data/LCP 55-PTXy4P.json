@@ -1,0 +1,33 @@
+{
+  "id": "LCP 55",
+  "title": "采集果实",
+  "titleSlug": "PTXy4P",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int getMinimumTime(vector<int>& time, vector<vector<int>>& fruits, int limit) {\n\n    }\n};",
+    "java": "class Solution {\n    public int getMinimumTime(int[] time, int[][] fruits, int limit) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def getMinimumTime(self, time, fruits, limit):\n        \"\"\"\n        :type time: List[int]\n        :type fruits: List[List[int]]\n        :type limit: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def getMinimumTime(self, time: List[int], fruits: List[List[int]], limit: int) -> int:",
+    "c": "\n\nint getMinimumTime(int* time, int timeSize, int** fruits, int fruitsSize, int* fruitsColSize, int limit){\n\n}",
+    "csharp": "public class Solution {\n    public int GetMinimumTime(int[] time, int[][] fruits, int limit) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} time\n * @param {number[][]} fruits\n * @param {number} limit\n * @return {number}\n */\nvar getMinimumTime = function(time, fruits, limit) {\n\n};",
+    "typescript": "function getMinimumTime(time: number[], fruits: number[][], limit: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $time\n     * @param Integer[][] $fruits\n     * @param Integer $limit\n     * @return Integer\n     */\n    function getMinimumTime($time, $fruits, $limit) {\n\n    }\n}",
+    "swift": "class Solution {\n    func getMinimumTime(_ time: [Int], _ fruits: [[Int]], _ limit: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun getMinimumTime(time: IntArray, fruits: Array<IntArray>, limit: Int): Int {\n\n    }\n}",
+    "golang": "func getMinimumTime(time []int, fruits [][]int, limit int) int {\n\n}",
+    "ruby": "# @param {Integer[]} time\n# @param {Integer[][]} fruits\n# @param {Integer} limit\n# @return {Integer}\ndef get_minimum_time(time, fruits, limit)\n\nend",
+    "scala": "object Solution {\n    def getMinimumTime(time: Array[Int], fruits: Array[Array[Int]], limit: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn get_minimum_time(time: Vec<i32>, fruits: Vec<Vec<i32>>, limit: i32) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (get-minimum-time time fruits limit)\n  (-> (listof exact-integer?) (listof (listof exact-integer?)) exact-integer? exact-integer?)\n\n  )",
+    "erlang": "-spec get_minimum_time(Time :: [integer()], Fruits :: [[integer()]], Limit :: integer()) -> integer().\nget_minimum_time(Time, Fruits, Limit) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec get_minimum_time(time :: [integer], fruits :: [[integer]], limit :: integer) :: integer\n  def get_minimum_time(time, fruits, limit) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[2,3,2]\n[[0,2],[1,4],[2,1]]\n3\n[1]\n[[0,3],[0,5]]\n2",
+  "hints": []
+}

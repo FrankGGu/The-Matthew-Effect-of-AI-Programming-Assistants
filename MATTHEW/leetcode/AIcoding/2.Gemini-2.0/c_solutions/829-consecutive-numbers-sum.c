@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int consecutiveNumbersSum(int n) {
+    int count = 0;
+    for (int k = 1; k * k <= 2 * n; k++) {
+        if ((n - (k * (k - 1)) / 2) % k == 0 && (n - (k * (k - 1)) / 2) / k > 0) {
+            count++;
+        }
+    }
+    return count;
+}

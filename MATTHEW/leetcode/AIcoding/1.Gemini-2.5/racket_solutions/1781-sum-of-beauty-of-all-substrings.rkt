@@ -1,0 +1,23 @@
+(define (sum-of-beauty-of-all-substrings s)
+  (let* ((n (string-length s))
+         (total-beauty 0))
+    (for ((i (in-range n)))
+      (let ((counts (make-vector 26 0)))
+        (for ((j (in-range i n)))
+          (let* ((char-idx (- (char->integer (string-ref s j)) (char->integer #\a)))
+                 (current-count (vector-ref counts char-idx)))
+            (vector-set! counts char-idx (+ current-count 1)))
+
+          (let ((min-freq #f)
+                (max-freq 0))
+            (for ((k (in-range 26)))
+              (let ((freq (vector-ref counts k)))
+                (when (> freq 0)
+                  (set! max-freq (max max-freq freq))
+                  (if (not min-freq)
+                      (set! min-freq freq)
+                      (set! min-freq (min min-freq freq))))))
+
+            (when min-freq
+              (set! total-beauty (+ total-beauty (- max-freq min-freq))))))))
+    total-beauty))

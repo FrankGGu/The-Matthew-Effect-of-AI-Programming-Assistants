@@ -1,0 +1,17 @@
+(define (longest-substring-vowels s)
+  (define vowels "aeiou")
+  (define (helper s last-vowel length max-length)
+    (cond
+      ((null? s) max-length)
+      ((string-contains? vowels (string (car s)))
+       (if (and (char=? (car s) (string-ref vowels last-vowel))
+                (< last-vowel 4))
+           (helper (cdr s) (+ last-vowel 1) (+ length 1) (max max-length (+ length 1)))
+           (if (char=? (car s) (string-ref vowels (+ last-vowel 1)))
+               (helper (cdr s) (+ last-vowel 1) (+ length 1) (max max-length (+ length 1)))
+               (helper (cdr s) 0 0 (max max-length length))))
+       )
+      (else (helper (cdr s) 0 0 (max max-length length)))))
+  (helper (string->list s) 0 0 0))
+
+(longest-substring-vowels "aeiouu"))

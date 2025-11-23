@@ -1,0 +1,8 @@
+(define/contract (construct2-d-array original m n)
+  (-> (listof exact-integer?) exact-integer? exact-integer? (listof (listof exact-integer?)))
+  (if (not (= (length original) (* m n)))
+      '()
+      (let loop ([lst original] [i 0] [res '()])
+        (if (= i m)
+            (reverse res)
+            (loop (drop lst n) (+ i 1) (cons (take lst n) res))))))

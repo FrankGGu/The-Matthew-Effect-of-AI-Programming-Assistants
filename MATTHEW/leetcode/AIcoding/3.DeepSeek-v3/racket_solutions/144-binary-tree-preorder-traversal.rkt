@@ -1,0 +1,7 @@
+(define/contract (preorder-traversal root)
+  (-> (or/c null? tree-node?) (listof exact-integer?))
+  (if (null? root)
+      '()
+      (append (list (tree-node-val root))
+              (preorder-traversal (tree-node-left root))
+              (preorder-traversal (tree-node-right root)))))

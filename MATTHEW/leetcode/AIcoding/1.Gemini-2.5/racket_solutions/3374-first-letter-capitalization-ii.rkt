@@ -1,0 +1,16 @@
+(define (capitalize-first-letter-ii s)
+  (let* ((len (string-length s))
+         (sb (open-string-builder)))
+    (let loop ((i 0) (capitalize-next #t))
+      (when (< i len)
+        (let ((char (string-ref s i)))
+          (if (char-whitespace? char)
+              (begin
+                (string-builder-add-char! sb char)
+                (loop (+ i 1) #t))
+              (begin
+                (if (and capitalize-next (char-alphabetic? char))
+                    (string-builder-add-char! sb (char-upcase char))
+                    (string-builder-add-char! sb char))
+                (loop (+ i 1) #f))))))
+    (string-builder-get-string sb)))

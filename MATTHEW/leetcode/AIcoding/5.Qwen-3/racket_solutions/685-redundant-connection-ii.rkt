@@ -1,0 +1,45 @@
+#lang racket
+
+(define (find-connection edges)
+  (define n (length edges))
+  (define parent (make-vector n 0))
+  (define (find x)
+    (if (= (vector-ref parent x) x)
+        x
+        (let ([p (find (vector-ref parent x))])
+          (vector-set! parent x p)
+          p)))
+  (define (union x y)
+    (let ([xroot (find x)]
+          [yroot (find y)])
+      (if (= xroot yroot)
+          #t
+          (begin
+            (vector-set! parent yroot xroot)
+            #f))))
+  (define (check-cycle)
+    (for-each (lambda (e)
+                (let ([u (car e)]
+                      [v (cadr e)])
+                  (if (union u v)
+                      (set! result (cons e '())))))
+              edges)
+    result)
+  (define result '())
+  (for ([i (in-range n)])
+    (vector-set! parent i i))
+  (check-cycle)
+  (if (null? result)
+      (let ([parent (make-vector n 0)])
+        (for ([i (in-range n)])
+          (vector-set! parent i i))
+        (define result2 '())
+        (for-each (lambda (e)
+                    (let ([u (car e)]
+                          [v (cadr e)])
+                      (if (= (find u) (find v))
+                          (set! result2 (cons e '())))
+                      (union u v)))
+                  edges)
+        (car result2))
+      (car result)))

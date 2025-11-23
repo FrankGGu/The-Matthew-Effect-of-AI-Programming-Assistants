@@ -1,0 +1,12 @@
+(define (num-of-substrings word abbrevs)
+  (define (is-substring s t)
+    (and (<= (string-length s) (string-length t))
+         (let loop ((i 0))
+           (cond ((= i (- (string-length t) (string-length s))) #f)
+                 ((equal? (substring t i (+ i (string-length s))) s) #t)
+                 (else (loop (+ i 1)))))))
+  (define (count s)
+    (if (null? abbrevs) 0
+        (+ (if (is-substring (car abbrevs) s) 1 0)
+           (count (cdr abbrevs)))))
+  (count abbrevs))

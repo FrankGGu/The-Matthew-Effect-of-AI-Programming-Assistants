@@ -1,0 +1,5 @@
+(define (sum-of-three-consecutive-integers num)
+  (if (= (remainder num 3) 0)
+      (let* ((x (/ num 3)))
+        (list (- x 1) x (+ x 1)))
+      (list)))

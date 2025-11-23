@@ -1,0 +1,13 @@
+(define (find-invalid-ip-addresses ip-addresses)
+  (define (valid-ip? ip)
+    (let ([octets (string-split ip #\. #f)])
+      (and (= (length octets) 4)
+           (for/all ([octet octets])
+             (and (not (string-blank? octet))
+                  (let ([num (string->number octet)])
+                    (and (<= 0 num 255)
+                         (or (= (string-length octet) 1)
+                             (and (not (equal? (string-ref octet 0) #\0))
+                                  (= (string-length octet) (string-length (number->string num)))))))))))))
+
+  (filter (lambda (ip) (not (valid-ip? ip))) ip-addresses))

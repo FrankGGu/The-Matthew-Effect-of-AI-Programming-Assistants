@@ -1,0 +1,6 @@
+(define/contract (minimum-operations nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([nums nums] [res 0] [xor-val 0])
+    (if (null? nums)
+        (abs (- xor-val k))
+        (loop (cdr nums) (+ res (bitwise-xor (car nums) xor-val)) (bitwise-xor (car nums) xor-val)))))

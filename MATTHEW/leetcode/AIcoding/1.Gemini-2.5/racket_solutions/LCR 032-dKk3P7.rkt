@@ -1,0 +1,15 @@
+(define (anagram? s t)
+  (if (not (= (string-length s) (string-length t)))
+      #f
+      (let ([counts (make-hash)])
+        (for ([char (in-string s)])
+          (hash-update! counts char add1 0))
+        (for ([char (in-string t)])
+          (hash-update! counts char sub1 0))
+        (let loop ([keys (hash-keys counts)])
+          (if (empty? keys)
+              #t
+              (let ([key (first keys)])
+                (if (= (hash-ref counts key) 0)
+                    (loop (rest keys))
+                    #f)))))))

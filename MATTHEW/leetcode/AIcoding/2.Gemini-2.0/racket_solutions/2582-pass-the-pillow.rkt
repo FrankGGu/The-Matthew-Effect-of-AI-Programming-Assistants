@@ -1,0 +1,7 @@
+(define (pass-the-pillow n time)
+  (let ((cycle-time (- n 1)))
+    (let ((full-cycles (quotient time cycle-time))
+          (remaining-time (remainder time cycle-time)))
+      (if (even? full-cycles)
+          (+ 1 remaining-time)
+          (- n remaining-time)))))

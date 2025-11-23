@@ -1,0 +1,6 @@
+(define (single-number nums)
+  (define xor-sum (foldl xor 0 nums))
+  (define rightmost-bit (bitwise-and xor-sum (- xor-sum)))
+  (define num1 (foldl (lambda (num acc) (if (bitwise-and num rightmost-bit) (xor num acc) acc)) 0 nums))
+  (define num2 (xor xor-sum num1))
+  (list num1 num2))

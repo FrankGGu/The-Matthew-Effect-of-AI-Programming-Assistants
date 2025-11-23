@@ -1,0 +1,17 @@
+(define/contract (check-palindrome-formation a b)
+  (-> string? string? boolean?)
+  (define (is-palindrome s left right)
+    (let loop ([l left] [r right])
+      (if (>= l r)
+          #t
+          (if (char=? (string-ref s l) (string-ref s r))
+              (loop (add1 l) (sub1 r))
+              #f))))
+  (define n (string-length a))
+  (let loop ([left 0] [right (sub1 n)])
+    (if (>= left right)
+        #t
+        (if (char=? (string-ref a left) (string-ref b right))
+            (loop (add1 left) (sub1 right))
+            (or (is-palindrome a left right)
+                (is-palindrome b left right)))))))

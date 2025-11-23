@@ -1,0 +1,23 @@
+(define (reorganizeString S)
+  (define freq (make-hash))
+  (for-each (lambda (c) (hash-set! freq c (+ 1 (hash-ref freq c 0)))) S)
+  (define sorted-chars (sort (hash-map->list freq) (lambda (a b) (> (cdr a) (cdr b)))))
+  (define max-count (cdr (car sorted-chars)))
+  (define len (string-length S))
+  (if (> max-count (+ (/ len 2) (modulo len 2)))
+      ""
+      (define result (make-vector len #\0))
+      (define idx 0)
+      (for-each (lambda (pair)
+                  (let ((char (car pair))
+                        (count (cdr pair)))
+                    (for ((i count))
+                      (begin
+                        (vector-set! result idx char)
+                        (set! idx (+ idx 2))
+                        (when (>= idx len)
+                          (set! idx 1)))))))
+                sorted-chars)
+      (apply string (vector->list result))))
+
+(reorganizeString "aabb")

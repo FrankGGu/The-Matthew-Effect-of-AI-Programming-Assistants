@@ -1,0 +1,5 @@
+(define (is-covered ranges left right)
+  (for/and ([i (in-range left (+ right 1))])
+    (ormap (lambda (range)
+             (and (<= (car range) i) (<= i (cdr range))))
+           ranges)))

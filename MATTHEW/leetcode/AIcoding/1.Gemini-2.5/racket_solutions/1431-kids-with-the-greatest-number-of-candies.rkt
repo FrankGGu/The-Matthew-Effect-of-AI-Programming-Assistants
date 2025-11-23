@@ -1,0 +1,5 @@
+(define (kids-with-greatest-number-of-candies candies extraCandies)
+  (let ((max-candies (apply max candies)))
+    (map (lambda (candy)
+           (>= (+ candy extraCandies) max-candies))
+         candies)))

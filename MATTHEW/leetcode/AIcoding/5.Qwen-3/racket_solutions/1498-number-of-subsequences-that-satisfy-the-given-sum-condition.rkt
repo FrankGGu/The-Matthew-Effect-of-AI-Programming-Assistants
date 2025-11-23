@@ -1,0 +1,20 @@
+#lang racket
+
+(define (num-subseqs-to-get-target-sum nums target)
+  (define MOD 1000000007)
+  (define dp (make-hash))
+  (hash-set! dp 0 1)
+  (for ([n nums])
+    (define new-dp (make-hash))
+    (for ([k (in-hash-keys dp)])
+      (define v (hash-ref dp k))
+      (define new-k (+ k n))
+      (when (<= new-k target)
+        (hash-set! new-dp new-k (modulo (+ (hash-ref new-dp new-k 0) v) MOD))))
+    (for ([k (in-hash-keys new-dp)])
+      (hash-set! dp k (modulo (+ (hash-ref dp k 0) (hash-ref new-dp k)) MOD))))
+  (hash-ref dp target 0))
+
+(define/contract (num-subsequence-sums nums target)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (num-subseqs-to-get-target-sum nums target))

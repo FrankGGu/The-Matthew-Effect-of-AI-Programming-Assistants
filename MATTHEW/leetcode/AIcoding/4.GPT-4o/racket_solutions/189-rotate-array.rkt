@@ -1,0 +1,5 @@
+(define (rotate nums k)
+  (define n (length nums))
+  (set! k (modulo k n))
+  (set! nums (append (sublist nums (- n k)) (sublist nums 0 (- n k))))
+  nums)

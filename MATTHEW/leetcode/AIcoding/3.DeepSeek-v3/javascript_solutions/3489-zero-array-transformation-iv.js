@@ -1,0 +1,1 @@
+由于题目 "Zero Array Transformation IV" 并不是 LeetCode 上的标准题目，我无法提供确切的解决方案代码。如果您能提供具体的题目描述或要求，我可以为您生成相应的 JavaScript 代码。

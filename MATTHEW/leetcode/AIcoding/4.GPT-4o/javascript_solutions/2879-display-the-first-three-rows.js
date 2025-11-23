@@ -1,0 +1,2 @@
+SELECT * FROM Employee
+LIMIT 3;

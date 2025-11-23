@@ -1,0 +1,7 @@
+(define (max-difference nums)
+  (define n (length nums))
+  (define max-diff 0)
+  (for ([i (in-range n)])
+    (define diff (abs (- (list-ref nums i) (list-ref nums (modulo (+ i 1) n)))))
+    (set! max-diff (max max-diff diff)))
+  max-diff)

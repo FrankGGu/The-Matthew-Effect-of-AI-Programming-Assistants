@@ -1,0 +1,15 @@
+#lang racket
+
+(define (max-frequency nums k)
+  (define n (length nums))
+  (define freq (make-hash))
+  (define max-freq 0)
+  (define left 0)
+  (for ([right (in-range n)])
+    (hash-set! freq (list-ref nums right) (+ (hash-ref freq (list-ref nums right) 0) 1))
+    (set! max-freq (max max-freq (hash-ref freq (list-ref nums right))))
+    (when (> (- right left) (+ k max-freq))
+      (hash-set! freq (list-ref nums left) (- (hash-ref freq (list-ref nums left)) 1))
+      (set! left (+ left 1)))
+  )
+  (hash-count freq))

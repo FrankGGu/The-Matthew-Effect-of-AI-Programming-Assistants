@@ -1,0 +1,10 @@
+(define (convert-bst root)
+  (define (helper node acc)
+    (if (null? node)
+        acc
+        (let* ((right (helper (node-right node) acc))
+               (new-val (+ (node-val node) right)))
+          (set-node-val! node new-val)
+          (helper (node-left node) new-val))))
+  (helper root 0)
+  root)

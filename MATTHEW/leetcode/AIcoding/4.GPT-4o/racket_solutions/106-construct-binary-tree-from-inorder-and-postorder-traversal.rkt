@@ -1,0 +1,21 @@
+(define (build-tree inorder postorder)
+  (define (helper inorder postorder in-start in-end post-start post-end)
+    (if (or (< in-start in-end) (< post-start post-end))
+        #f
+        (let ((root (vector-ref postorder (- post-end 1)))
+              (root-index (vector-index-of inorder root in-start in-end)))
+          (define left-size (- root-index in-start))
+          (define right-size (- in-end root-index 1))
+          (define left-subtree (helper inorder postorder in-start root-index post-start (- post-start 1)))
+          (define right-subtree (helper inorder postorder (+ root-index 1) in-end (- post-end 1) (- post-end right-size 1)))
+          (cons root (list left-subtree right-subtree)))))
+  (define (vector-index-of v elem start end)
+    (for/fold ([i #f]) ([index (in-range start end)])
+      (if (equal? (vector-ref v index) elem)
+          index
+          i)))
+  (helper inorder postorder 0 (vector-length inorder) 0 (vector-length postorder))
+)
+
+(define (construct-binary-tree inorder postorder)
+  (build-tree inorder postorder))

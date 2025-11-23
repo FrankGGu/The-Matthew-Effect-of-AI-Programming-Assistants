@@ -1,0 +1,17 @@
+(define (replace-q s)
+  (let* ((len (string-length s))
+         (vec (make-vector len)))
+
+    (for ([i (in-range len)])
+      (let ((current-s-char (string-ref s i)))
+        (if (char=? current-s-char #\?)
+            (let loop ((c #\a))
+              (let* ((prev-char (if (> i 0) (vector-ref vec (- i 1)) #\null))
+                     (next-char (if (< (+ i 1) len) (string-ref s (+ i 1)) #\null)))
+                (if (and (not (char=? c prev-char))
+                         (not (char=? c next-char)))
+                    (vector-set! vec i c)
+                    (loop (integer->char (+ (char->integer c) 1))))))
+            (vector-set! vec i current-s-char))))
+
+    (vector->string vec)))

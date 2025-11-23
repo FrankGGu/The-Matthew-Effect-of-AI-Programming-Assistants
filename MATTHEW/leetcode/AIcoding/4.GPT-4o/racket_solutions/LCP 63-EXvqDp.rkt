@@ -1,0 +1,13 @@
+(define (maxPoints piles)
+  (let ((n (length piles)))
+    (define dp (make-vector (add1 n) (make-vector (add1 n) 0)))
+    (for ([i (in-range n)])
+      (vector-set! dp i 0))
+    (for ([i (in-range n)])
+      (for ([j (in-range i n)])
+        (define x (if (= i j) 0 (vector-ref dp i)))
+        (define y (if (= j (- i 1)) 0 (vector-ref dp (- i 1))))
+        (vector-set! dp j (max (vector-ref dp j) (+ (vector-ref piles j) x y)))))
+    (apply max (vector->list dp))))
+
+(maxPoints (vector 1 2 3 4))

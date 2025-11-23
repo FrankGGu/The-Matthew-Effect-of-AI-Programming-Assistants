@@ -1,0 +1,12 @@
+(define (highest-edge-score edges)
+  (let* ((n (vector-length edges))
+         (scores (make-vector n 0)))
+    (for/list ((i (in-range (vector-length edges))))
+      (vector-set! scores (vector-ref edges i) (+ (vector-ref scores (vector-ref edges i)) i)))
+    (let loop ((i 0) (max-score -1) (max-node -1))
+      (if (= i n)
+          max-node
+          (let ((current-score (vector-ref scores i)))
+            (if (> current-score max-score)
+                (loop (+ i 1) current-score i)
+                (loop (+ i 1) max-score max-node)))))))

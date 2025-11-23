@@ -1,0 +1,10 @@
+(define (canBeIncreasing nums)
+  (define (helper nums removed)
+    (cond
+      ((or (null? nums) (null? (cdr nums))) #t)
+      ((and (not removed) (or (<= (car nums) (cadr nums)) (<= (cadr nums) (car (cdr nums))))) 
+       (or (helper (cdr nums) #t) (helper (cdr (cdr nums)) #t)))
+      ((and removed (<= (car nums) (cadr nums))) 
+       (helper (cdr nums) removed))
+      (else #f)))
+  (helper nums #f))

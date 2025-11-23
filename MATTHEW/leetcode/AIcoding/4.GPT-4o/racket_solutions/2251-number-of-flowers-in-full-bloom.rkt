@@ -1,0 +1,15 @@
+(define (numFlowersInFullBloom flowers)
+  (define n (length flowers))
+  (define blooms (make-vector n 0))
+  (for ([i (in-range n)])
+    (let ([start (vector-ref flowers i 0)]
+          [end (vector-ref flowers i 1)])
+      (for ([j (in-range n)])
+        (when (and (>= (vector-ref flowers j 0) start)
+                   (<= (vector-ref flowers j 1) end))
+          (vector-set! blooms j (+ (vector-ref blooms j) 1))))))
+  blooms)
+
+(define (fullBloomFlowers flowers persons)
+  (let ([bloom-count (numFlowersInFullBloom flowers)])
+    (map (λ (p) (vector-ref bloom-count p)) persons)))

@@ -1,0 +1,46 @@
+#lang racket
+
+(define (min-moves-to-clean-the-classroom m n k)
+  (define (distance x1 y1 x2 y2)
+    (+ (abs (- x1 x2)) (abs (- y1 y2))))
+
+  (define (bfs start-x start-y)
+    (define visited (make-hash))
+    (define queue (list (cons start-x start-y)))
+    (hash-set! visited (cons start-x start-y) #t)
+    (define steps 0)
+    (define (loop q)
+      (when (not (null? q))
+        (define next-q '())
+        (for-each
+         (lambda (pos)
+           (define x (car pos))
+           (define y (cdr pos))
+           (when (and (= (vector-ref (vector-ref m y) x) 0)
+                      (or (= x 0) (= x (sub1 n)) (= y 0) (= y (sub1 m))))
+             (set! steps (add1 steps))
+             (exit)))
+           (for-each
+            (lambda (dx dy)
+              (define nx (+ x dx))
+              (define ny (+ y dy))
+              (when (and (<= 0 nx (sub1 n)) (<= 0 ny (sub1 m)) (not (hash-has-key? visited (cons nx ny))))
+                (hash-set! visited (cons nx ny) #t)
+                (set! next-q (cons (cons nx ny) next-q))))
+            '((1 0) (-1 0) (0 1) (0 -1)))
+         q)
+        (loop next-q)))
+    (loop queue)
+    steps)
+
+  (define (find-start-points)
+    (for/fold ([res '()]) ([y (in-range m)])
+      (for/fold ([res res]) ([x (in-range n)])
+        (if (= (vector-ref (vector-ref m y) x) 0)
+            (cons (cons x y) res)
+            res))))
+
+  (define start-points (find-start-points))
+  (if (null? start-points)
+      0
+      (apply min (map (lambda (p) (bfs (car p) (cdr p))) start-points))))

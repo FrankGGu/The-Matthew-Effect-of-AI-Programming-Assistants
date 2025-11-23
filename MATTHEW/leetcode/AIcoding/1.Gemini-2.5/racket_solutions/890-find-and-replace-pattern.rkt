@@ -1,0 +1,25 @@
+(define (matches? word pattern)
+  (let* ((len (string-length word)))
+    (let loop ((i 0)
+               (p->w (make-hash))
+               (w->p (make-hash)))
+      (if (= i len)
+          #t
+          (let* ((pc (string-ref pattern i))
+                 (wc (string-ref word i))
+                 (mapped-wc (hash-ref p->w pc #f))
+                 (mapped-pc (hash-ref w->p wc #f)))
+            (cond
+              ((and mapped-wc mapped-pc)
+               (if (and (char=? mapped-wc wc) (char=? mapped-pc pc))
+                   (loop (+ i 1) p->w w->p)
+                   #f))
+              ((and (not mapped-wc) (not mapped-pc))
+               (hash-set! p->w pc wc)
+               (hash-set! w->p wc pc)
+               (loop (+ i 1) p->w w->p))
+              (else
+               #f)))))))
+
+(define (find-and-replace-pattern words pattern)
+  (filter (lambda (word) (matches? word pattern)) words))

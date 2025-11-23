@@ -1,0 +1,12 @@
+(define (find-max-form strs m n)
+  (let ((dp (make-vector (add1 m) (make-vector (add1 n) 0))))
+    (for-each (lambda (s)
+                (let ((zeros (count (lambda (c) (char=? c #\0)) s))
+                      (ones (- (string-length s) zeros)))
+                  (for ((i (in-range m (sub1 zeros) -1)))
+                    (for ((j (in-range n (sub1 ones) -1)))
+                      (vector-set! (vector-ref dp i) j
+                                   (max (vector-ref (vector-ref dp i) j)
+                                        (add1 (vector-ref (vector-ref dp (- i zeros)) (- j ones))))))))
+              strs)
+    (vector-ref (vector-ref dp m) n)))

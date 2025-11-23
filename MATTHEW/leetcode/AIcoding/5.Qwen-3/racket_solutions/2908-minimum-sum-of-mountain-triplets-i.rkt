@@ -1,0 +1,13 @@
+(define (minimum-sum-of-mountain-triplets i)
+  (let loop ((i i) (min-sum #f))
+    (if (null? i)
+        min-sum
+        (let ((n (length i)))
+          (loop (cdr i)
+                (let ((current-min (if min-sum min-sum +inf.0)))
+                  (for/fold ((min-current current-min))
+                            ((j (in-range 1 n)))
+                    (if (and (< (list-ref i 0) (list-ref i j))
+                             (< (list-ref i j) (list-ref i (- n 1))))
+                        (min min-current (+ (list-ref i 0) (list-ref i j) (list-ref i (- n 1))))
+                        min-current))))))))

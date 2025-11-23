@@ -1,0 +1,13 @@
+(define (split-array nums)
+  (let ((prefix (make-vector (length nums) 0))
+        (suffix (make-vector (length nums) 0)))
+    (vector-set! prefix 0 (car nums))
+    (for ([i (in-range 1 (length nums))])
+      (vector-set! prefix i (+ (vector-ref prefix (- i 1)) (list-ref nums i))))
+    (vector-set! suffix (- (length nums) 1) (last nums))
+    (for ([i (in-range (- (length nums) 2) -1 -1)])
+      (vector-set! suffix i (+ (vector-ref suffix (+ i 1)) (list-ref nums i))))
+    (for/first ([i (in-range (length nums))]
+                #:when (= (vector-ref prefix i) (vector-ref suffix i)))
+      #t)
+    #f))

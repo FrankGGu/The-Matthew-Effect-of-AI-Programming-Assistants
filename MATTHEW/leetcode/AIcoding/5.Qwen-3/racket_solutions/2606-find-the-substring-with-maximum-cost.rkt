@@ -1,0 +1,17 @@
+#lang racket
+
+(define (max-cost-substring s k)
+  (define n (string-length s))
+  (define cost (make-vector n 0))
+  (for ([i (in-range n)])
+    (vector-set! cost i (if (char=? #\A (string-ref s i)) 1 0)))
+  (define max-cost 0)
+  (define current 0)
+  (for ([i (in-range k)])
+    (set! current (+ current (vector-ref cost i))))
+  (set! max-cost current)
+  (for ([i (in-range k n)])
+    (set! current (+ current (- (vector-ref cost i) (vector-ref cost (- i k)))))
+    (when (> current max-cost)
+      (set! max-cost current)))
+  max-cost)

@@ -1,0 +1,26 @@
+(define (good-indices nums k)
+  (define n (vector-length nums))
+
+  (define dp-left (make-vector n 0))
+  (when (> n 0)
+    (vector-set! dp-left 0 1)
+    (for ([j (in-range 1 n)])
+      (if (>= (vector-ref nums (- j 1)) (vector-ref nums j))
+          (vector-set! dp-left j (+ (vector-ref dp-left (- j 1)) 1))
+          (vector-set! dp-left j 1))))
+
+  (define dp-right (make-vector n 0))
+  (when (> n 0)
+    (vector-set! dp-right (- n 1) 1)
+    (for ([j (in-range (- n 2) -1 -1)])
+      (if (<= (vector-ref nums j) (vector-ref nums (+ j 1)))
+          (vector-set! dp-right j (+ (vector-ref dp-right (+ j 1)) 1))
+          (vector-set! dp-right j 1))))
+
+  (define good-indices-list '())
+  (for ([i (in-range k (- n k))])
+    (when (and (>= (vector-ref dp-left (- i 1)) k)
+               (>= (vector-ref dp-right (+ i 1)) k))
+      (set! good-indices-list (cons i good-indices-list))))
+
+  (reverse good-indices-list))

@@ -1,0 +1,8 @@
+(define (max-length-between-equal-characters s)
+  (let* ((n (string-length s))
+         (max-len -1))
+    (for ([i (in-range n)])
+      (for ([j (in-range (+ i 1) n)])
+        (when (char=? (string-ref s i) (string-ref s j))
+          (set! max-len (max max-len (- j i 1))))))
+    max-len))

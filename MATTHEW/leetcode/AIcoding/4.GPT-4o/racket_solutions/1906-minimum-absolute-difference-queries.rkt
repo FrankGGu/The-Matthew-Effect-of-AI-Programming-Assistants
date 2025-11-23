@@ -1,0 +1,8 @@
+(define (minimum-absolute-difference-queries arr queries)
+  (define (abs-diff x y) (if (< x y) (- y x) (- x y)))
+  (define (process-query start end)
+    (define subarray (sublist arr start end))
+    (define sorted (sort subarray <))
+    (define diffs (map abs-diff (rest sorted) sorted))
+    (if (null? diffs) 0 (apply min diffs)))
+  (map (lambda (q) (process-query (car q) (cadr q))) queries))

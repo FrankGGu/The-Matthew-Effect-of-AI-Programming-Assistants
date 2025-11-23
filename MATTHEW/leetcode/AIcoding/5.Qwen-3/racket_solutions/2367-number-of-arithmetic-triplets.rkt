@@ -1,0 +1,6 @@
+(define (number-of-arithmetic-triplets nums difference)
+  (define n (length nums))
+  (define s (list->set nums))
+  (define (check x) (set-member? s (+ x difference)))
+  (define (check2 x) (set-member? s (+ x (* 2 difference))))
+  (for/sum ([x nums] #:when (and (check x) (check2 x))) 1))

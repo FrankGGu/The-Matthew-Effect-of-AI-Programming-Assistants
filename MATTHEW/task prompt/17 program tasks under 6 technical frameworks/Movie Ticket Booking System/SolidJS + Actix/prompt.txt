@@ -1,0 +1,46 @@
+Create a movie ticket booking system using emerging Rust stack:
+
+**Technology Stack:**
+- Frontend: SolidJS with TypeScript
+- Backend: Actix Web
+- ORM: SeaORM
+- Database: PostgreSQL (configured below)
+
+**Database Connection:**
+- URL: postgresql://postgres:moviepass@localhost:5432/movie_booking
+- SeaORM with connection pooling
+
+**Core Features:**
+1. High-performance schedule API
+   - Actix Web's actor system
+   - Minimal response times
+   - Efficient database queries
+
+2. Reactive seat selection
+   - SolidJS fine-grained reactivity
+   - Real-time updates with minimal overhead
+   - Optimized rendering
+
+3. Reliable order system
+   - Transaction handling
+   - Error recovery
+   - Memory safety guarantees
+
+**Technical Requirements:**
+- Use Actix Web's async handlers
+- Implement SeaORM entities and queries
+- Use Rust's type system for safety
+- SolidJS with minimal JavaScript
+- No external dependencies where possible
+
+**File Structure:**
+- src/ (Actix Web application)
+- entities/ (SeaORM entities)
+- handlers/ (HTTP handlers)
+- frontend/ (SolidJS components)
+- Cargo.toml with dependencies
+
+**Output:**
+- Complete Rust project
+- Optimized production build
+- Safety-focused implementation

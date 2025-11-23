@@ -1,0 +1,11 @@
+(require racket/set)
+
+(define (dest-city paths)
+  (let ((source-cities (set)))
+    (for-each (lambda (path)
+                (set! source-cities (set-add source-cities (car path))))
+              paths)
+    (for/first ((path paths))
+      (let ((cityB (cadr path)))
+        (unless (set-member? source-cities cityB)
+          cityB)))))

@@ -1,0 +1,26 @@
+Develop a complete Equipment Borrowing Registration System using Django REST Framework for the backend and Django templates for the frontend. Use PostgreSQL with this connection: postgresql://postgres:equipment_pass@localhost:5432/equipment_db
+
+Database schema:
+- equipment (id, name, model, serial_number, status, purchase_date, created_at, updated_at)
+- borrowers (id, name, email, department, created_at)
+- borrowing_records (id, equipment_id, borrower_id, borrow_date, expected_return_date, actual_return_date, status, notes, created_at)
+
+Backend requirements (Django):
+1. Create Django models for all tables with proper relationships
+2. Implement Django REST Framework serializers and viewsets for all models
+3. Add authentication and permission classes
+4. Create API endpoints for all CRUD operations
+5. Implement automatic status updates for overdue items
+
+Frontend requirements (Django templates):
+1. Equipment management interface with list and form views
+2. Borrower management interface
+3. Borrowing records interface with filtering options
+4. Dashboard with statistics
+
+Include:
+- Proper form validation and error handling
+- Responsive design with Bootstrap or similar CSS framework
+- Django admin customization for data management
+- Unit tests for models and API endpoints
+- Instructions for setup and deployment

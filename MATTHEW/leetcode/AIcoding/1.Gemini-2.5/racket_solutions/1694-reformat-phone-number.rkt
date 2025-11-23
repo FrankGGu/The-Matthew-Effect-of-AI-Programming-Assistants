@@ -1,0 +1,20 @@
+(define (reformat-phone-number s)
+  (define digits-chars (filter char-numeric? (string->list s)))
+  (define digits-str (list->string digits-chars))
+  (define n (string-length digits-str))
+
+  (let loop ((current-pos 0) (parts '()))
+    (if (>= current-pos n)
+        (string-join (reverse parts) "")
+        (let* ((remaining-digits (- n current-pos))
+               (block-size
+                 (cond
+                   ((= remaining-digits 4) 2)
+                   ((= remaining-digits 2) 2)
+                   ((= remaining-digits 3) 3)
+                   (else 3))))
+          (let* ((block (substring digits-str current-pos (+ current-pos block-size)))
+                 (next-pos (+ current-pos block-size)))
+            (if (< next-pos n)
+                (loop next-pos (cons "-" (cons block parts)))
+                (loop next-pos (cons block parts))))))))

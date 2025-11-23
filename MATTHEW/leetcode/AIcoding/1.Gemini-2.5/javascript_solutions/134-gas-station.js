@@ -1,0 +1,23 @@
+var canCompleteCircuit = function(gas, cost) {
+    let totalGas = 0;
+    let totalCost = 0;
+    let currentTank = 0;
+    let startStation = 0;
+
+    for (let i = 0; i < gas.length; i++) {
+        totalGas += gas[i];
+        totalCost += cost[i];
+        currentTank += gas[i] - cost[i];
+
+        if (currentTank < 0) {
+            startStation = i + 1;
+            currentTank = 0;
+        }
+    }
+
+    if (totalGas < totalCost) {
+        return -1;
+    } else {
+        return startStation;
+    }
+};

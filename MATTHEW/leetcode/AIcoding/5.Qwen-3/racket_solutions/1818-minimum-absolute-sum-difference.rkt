@@ -1,0 +1,28 @@
+(define (min-absolute-sum-difference nums1 nums2)
+  (define n (length nums1))
+  (define sorted-nums1 (sort nums1 <))
+  (define (binary-search target)
+    (let loop ([low 0] [high (- n 1)])
+      (if (> low high)
+          -1
+          (let* ([mid (quotient (+ low high) 2)]
+                 [val (list-ref sorted-nums1 mid)])
+            (cond [(= val target) mid]
+                  [(< val target) (loop (+ mid 1) high)]
+                  [else (loop low (- mid 1))])))))
+  (define (abs x) (if (< x 0) (- x) x))
+  (define (sum-diff)
+    (for/sum ([i (in-range n)] [x nums1] [y nums2])
+      (abs (- x y))))
+  (define total (sum-diff))
+  (define min-diff (make-parameter (abs (- (car nums1) (car nums2))))
+    (for ([i (in-range n)])
+      (define x (list-ref nums1 i))
+      (define y (list-ref nums2 i))
+      (define pos (binary-search y))
+      (when (not (= pos -1))
+        (define candidate (abs (- x (list-ref sorted-nums1 pos))))
+        (when (< candidate (parameter-ref min-diff))
+          (parameter-set! min-diff candidate))))
+    (parameter-ref min-diff))
+  (- total (min-diff)))

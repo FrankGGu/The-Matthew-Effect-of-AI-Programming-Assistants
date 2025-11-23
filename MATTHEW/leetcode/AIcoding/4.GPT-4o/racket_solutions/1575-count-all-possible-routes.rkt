@@ -1,0 +1,20 @@
+(define (count-routes locations start finish fuel)
+  (define mod 1000000007)
+  (define n (length locations))
+  (define dp (make-vector n (make-vector (+ fuel 1) -1)))
+
+  (define (dfs pos fuel-left)
+    (if (>= fuel-left 0)
+      (if (vector-ref (vector-ref dp pos) fuel-left) 
+          (vector-ref (vector-ref dp pos) fuel-left)
+          (begin
+            (define count (if (= pos finish) 1 0))
+            (for ([next (in-range n)])
+              (when (not (= next pos))
+                (define cost (abs (- (vector-ref locations next) (vector-ref locations pos))))
+                (set! count (mod (+ count (dfs next (- fuel-left cost))) mod))))
+            (vector-set! (vector-ref dp pos) fuel-left count)
+            count))
+      0))
+
+  (dfs start fuel))

@@ -1,0 +1,21 @@
+(define (find-players matches)
+  (define player-count (make-hash))
+  (define loss-count (make-hash))
+
+  (for-each (lambda (match)
+              (define winner (first match))
+              (define loser (second match))
+              (hash-set! player-count winner (add1 (hash-ref player-count winner 0)))
+              (hash-set! player-count loser (add1 (hash-ref player-count loser 0)))
+              (hash-set! loss-count loser (add1 (hash-ref loss-count loser 0)))
+              (hash-set! loss-count winner (hash-ref loss-count winner 0)))
+            matches)
+
+  (define result '())
+  (for-each (lambda (player)
+              (define losses (hash-ref loss-count player 0))
+              (when (<= losses 1)
+                (set! result (cons player result))))
+            (hash-keys player-count))
+
+  (sort result <))

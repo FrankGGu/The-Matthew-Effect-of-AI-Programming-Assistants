@@ -1,0 +1,15 @@
+(define-struct node (val neighbors))
+
+(define (clone-graph node)
+  (if (not node)
+      #f
+      (let ((visited (make-hash)))
+        (define (dfs n)
+          (if (hash-has-key? visited (node-val n))
+              (hash-ref visited (node-val n))
+              (let* ((new-node (make-node (node-val n) '()))
+                     (neighbors (map dfs (node-neighbors n))))
+                (hash-set! visited (node-val n) new-node)
+                (set-node-neighbors! new-node neighbors)
+                new-node)))
+        (dfs node))))

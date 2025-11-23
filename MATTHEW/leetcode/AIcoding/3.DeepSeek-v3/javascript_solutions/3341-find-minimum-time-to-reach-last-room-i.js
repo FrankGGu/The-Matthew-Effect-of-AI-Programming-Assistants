@@ -1,0 +1,1 @@
+由于题目 "Find Minimum Time to Reach Last Room I" 并不是 LeetCode 上的标准题目，我无法提供确切的解决方案代码。如果您能提供该题目的具体描述或要求，我可以帮助编写相应的 JavaScript 代码。或者，如果您指的是其他类似的题目，例如 "Minimum Path Sum" 或 "Unique Paths"，请提供更详细的信息，我可以为您提供相应的解决方案代码。

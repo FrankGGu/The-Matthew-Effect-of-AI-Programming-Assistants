@@ -1,0 +1,25 @@
+(define/contract (longest-obstacle-course-at-each-position obstacles)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (define n (length obstacles))
+  (define dp (make-vector n 1))
+  (define lis (make-vector n +inf.0))
+  (define len 0)
+  (for ([i (in-range n)]
+        [obstacle (in-list obstacles)])
+    (define idx (bisect-right lis obstacle len))
+    (vector-set! dp i (+ idx 1))
+    (when (or (= idx len) (< obstacle (vector-ref lis idx)))
+      (vector-set! lis idx obstacle)
+      (when (= idx len) (set! len (+ len 1))))
+  (vector->list dp))
+
+(define (bisect-right arr target len)
+  (let loop ([left 0]
+             [right len])
+    (if (< left right)
+        (let* ([mid (quotient (+ left right) 2)]
+               [mid-val (vector-ref arr mid)])
+          (if (<= mid-val target)
+              (loop (+ mid 1) right)
+              (loop left mid)))
+        left)))

@@ -1,0 +1,13 @@
+(define (unique-morse-words words)
+  (define morse-codes '(".-" "-..." "-.-." "-.." "." "..-." " --." "...." ".." ".---" "-.-" ".-.." "--" "-." "---" ".--." "--.-" ".-." "..." "- " "..-" "...." ".-..")
+  (define (word-to-morse word)
+    (apply string-append
+           (map (lambda (c)
+                  (list-ref morse-codes (- (char->integer c) (char->integer #\a))))
+                (string->list word))))
+  (define (unique lst)
+    (if (null? lst)
+        '()
+        (cons (car lst)
+              (unique (filter (lambda (x) (not (equal? x (car lst)))) (cdr lst))))))
+  (length (unique (map word-to-morse words))))

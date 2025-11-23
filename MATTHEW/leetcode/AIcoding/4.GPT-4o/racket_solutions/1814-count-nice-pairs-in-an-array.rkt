@@ -1,0 +1,18 @@
+(define (countNicePairs nums)
+  (define mod 1000000007)
+  (define (reverse-number n)
+    (let loop ((n n) (rev 0))
+      (if (= n 0)
+          rev
+          (loop (quotient n 10) (+ (* rev 10) (remainder n 10))))))
+  (define counts (make-hash))
+  (for-each (lambda (num)
+              (define rev (reverse-number num))
+              (define key (+ num rev))
+              (hash-set! counts key (add1 (hash-ref counts key 0))))
+            nums)
+  (apply + (map (lambda (x) (quotient (* x (- x 1)) 2)) (hash-values counts)))
+  (modulo (apply + (map (lambda (x) (quotient (* x (- x 1)) 2)) (hash-values counts))) mod))
+
+(define (countPairs nums)
+  (countNicePairs nums))

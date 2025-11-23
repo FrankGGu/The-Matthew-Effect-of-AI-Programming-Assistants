@@ -1,0 +1,7 @@
+(define (generateParenthesis n)
+  (define (backtrack current open close)
+    (if (= (string-length current) (* 2 n))
+        (list current)
+        (append (if (< open n) (backtrack (string-append current "(") (+ open 1) close) '()) '())
+                (if (< close open) (backtrack (string-append current ")") open (+ close 1)) '()))))
+  (backtrack "" 0 0))

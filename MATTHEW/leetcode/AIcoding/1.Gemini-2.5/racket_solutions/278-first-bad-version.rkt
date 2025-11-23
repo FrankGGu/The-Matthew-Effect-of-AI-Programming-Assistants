@@ -1,0 +1,10 @@
+(define (first-bad-version n)
+  (let loop ((low 1)
+             (high n)
+             (ans n))
+    (if (> low high)
+        ans
+        (let* ((mid (+ low (quotient (- high low) 2))))
+          (if (is-bad-version? mid)
+              (loop low (- mid 1) mid)
+              (loop (+ mid 1) high ans))))))

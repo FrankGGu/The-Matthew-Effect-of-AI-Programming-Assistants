@@ -1,0 +1,12 @@
+(define (count-triples n)
+  (let loop ([a 1] [count 0])
+    (if (> a n)
+        count
+        (let loop-b ([b a])
+          (if (> b n)
+              (loop (+ a 1) count)
+              (let ([c-squared (+ (* a a) (* b b))])
+                (let ([c (integer-sqrt c-squared)])
+                  (if (and (= (* c c) c-squared) (<= c n))
+                      (loop-b (+ b 1) (if (= a b) (+ count 1) (+ count 2)))
+                      (loop-b (+ b 1) count)))))))))

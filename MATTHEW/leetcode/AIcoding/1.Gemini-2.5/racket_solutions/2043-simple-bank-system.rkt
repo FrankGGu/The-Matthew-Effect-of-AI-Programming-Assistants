@@ -1,0 +1,43 @@
+(struct bank (balances))
+
+(define (valid-account? b account-num)
+  (and (>= account-num 1)
+       (<= account-num (vector-length (bank-balances b)))))
+
+(define (Bank initial-balances)
+  (bank (list->vector initial-balances)))
+
+(define (transfer this account1 account2 money)
+  (let ((balances (bank-balances this)))
+    (if (and (valid-account? this account1)
+             (valid-account? this account2))
+        (let* ((idx1 (- account1 1))
+               (idx2 (- account2 1))
+               (bal1 (vector-ref balances idx1)))
+          (if (>= bal1 money)
+              (begin
+                (vector-set! balances idx1 (- bal1 money))
+                (vector-set! balances idx2 (+ (vector-ref balances idx2) money))
+                #t)
+              #f))
+        #f)))
+
+(define (deposit this account money)
+  (let ((balances (bank-balances this)))
+    (if (valid-account? this account)
+        (let ((idx (- account 1)))
+          (vector-set! balances idx (+ (vector-ref balances idx) money))
+          #t)
+        #f)))
+
+(define (withdraw this account money)
+  (let ((balances (bank-balances this)))
+    (if (valid-account? this account)
+        (let* ((idx (- account 1))
+               (bal (vector-ref balances idx)))
+          (if (>= bal money)
+              (begin
+                (vector-set! balances idx (- bal money))
+                #t)
+              #f))
+        #f)))

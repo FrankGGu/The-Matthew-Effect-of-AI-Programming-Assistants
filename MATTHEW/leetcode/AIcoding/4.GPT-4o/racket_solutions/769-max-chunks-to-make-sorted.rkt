@@ -1,0 +1,10 @@
+(define (maxChunksToSorted arr)
+  (define (helper arr max-so-far count)
+    (if (null? arr)
+        count
+        (let* ((current (car arr))
+               (new-max (max max-so-far current)))
+          (if (= new-max (length (take arr (+ count 1))))
+              (helper (cdr arr) new-max (+ count 1))
+              (helper (cdr arr) new-max count)))))
+  (helper arr 0 0))

@@ -1,0 +1,37 @@
+{
+  "id": "LCR 162",
+  "title": "数字 1 的个数",
+  "titleSlug": "1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Recursion",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int digitOneInNumber(int num) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int digitOneInNumber(int num) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def digitOneInNumber(self, num):\n        \"\"\"\n        :type num: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def digitOneInNumber(self, num: int) -> int:\n        ",
+    "c": "int digitOneInNumber(int num) {\n    \n}",
+    "csharp": "public class Solution {\n    public int DigitOneInNumber(int num) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @return {number}\n */\nvar digitOneInNumber = function(num) {\n    \n};",
+    "typescript": "function digitOneInNumber(num: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @return Integer\n     */\n    function digitOneInNumber($num) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func digitOneInNumber(_ num: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun digitOneInNumber(num: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int digitOneInNumber(int num) {\n    \n  }\n}",
+    "golang": "func digitOneInNumber(num int) int {\n    \n}",
+    "ruby": "# @param {Integer} num\n# @return {Integer}\ndef digit_one_in_number(num)\n    \nend",
+    "scala": "object Solution {\n    def digitOneInNumber(num: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn digit_one_in_number(num: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (digit-one-in-number num)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec digit_one_in_number(Num :: integer()) -> integer().\ndigit_one_in_number(Num) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec digit_one_in_number(num :: integer) :: integer\n  def digit_one_in_number(num) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func digitOneInNumber(num: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "0\n13",
+  "hints": []
+}

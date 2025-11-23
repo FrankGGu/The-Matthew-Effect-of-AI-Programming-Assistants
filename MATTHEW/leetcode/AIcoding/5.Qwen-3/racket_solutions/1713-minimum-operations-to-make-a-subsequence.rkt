@@ -1,0 +1,23 @@
+#lang racket
+
+(define (min-ops target arr)
+  (define (lis xs)
+    (define dp (make-hash))
+    (define (find k)
+      (cond [(hash-has-key? dp k) (hash-ref dp k)]
+            [else 0]))
+    (define (update k v)
+      (hash-set! dp k v))
+    (for/fold ([res 0]) ([x xs])
+      (let ([v (add1 (find x))])
+        (update x v)
+        (max res v))))
+  (define (index-of x lst)
+    (for/first ([i (in-range (length lst))] #:when (= (list-ref lst i) x)) i))
+  (define target-list (string->list target))
+  (define arr-list (string->list arr))
+  (define indices (for/hash ([i (in-range (length target-list))] [c target-list]) (values c i)))
+  (define filtered (filter (λ (c) (hash-has-key? indices c)) arr-list))
+  (define mapped (map (λ (c) (hash-ref indices c)) filtered))
+  (define lis-length (lis mapped))
+  (- (length target-list) lis-length))

@@ -1,0 +1,39 @@
+{
+  "id": "2849",
+  "title": "Determine if a Cell Is Reachable at a Given Time",
+  "titleSlug": "determine-if-a-cell-is-reachable-at-a-given-time",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Math"
+  ],
+  "content": "<p>You are given four integers <code>sx</code>, <code>sy</code>, <code>fx</code>, <code>fy</code>, and a <strong>non-negative</strong> integer <code>t</code>.</p>\n\n<p>In an infinite 2D grid, you start at the cell <code>(sx, sy)</code>. Each second, you <strong>must</strong> move to any of its adjacent cells.</p>\n\n<p>Return <code>true</code> <em>if you can reach cell </em><code>(fx, fy)</code> <em>after<strong> exactly</strong></em> <code>t</code> <strong><em>seconds</em></strong>, <em>or</em> <code>false</code> <em>otherwise</em>.</p>\n\n<p>A cell&#39;s <strong>adjacent cells</strong> are the 8 cells around it that share at least one corner with it. You can visit the same cell several times.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2023/08/05/example2.svg\" style=\"width: 443px; height: 243px;\" />\n<pre>\n<strong>Input:</strong> sx = 2, sy = 4, fx = 7, fy = 7, t = 6\n<strong>Output:</strong> true\n<strong>Explanation:</strong> Starting at cell (2, 4), we can reach cell (7, 7) in exactly 6 seconds by going through the cells depicted in the picture above. \n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2023/08/05/example1.svg\" style=\"width: 383px; height: 202px;\" />\n<pre>\n<strong>Input:</strong> sx = 3, sy = 1, fx = 7, fy = 3, t = 3\n<strong>Output:</strong> false\n<strong>Explanation:</strong> Starting at cell (3, 1), it takes at least 4 seconds to reach cell (7, 3) by going through the cells depicted in the picture above. Hence, we cannot reach cell (7, 3) at the third second.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= sx, sy, fx, fy &lt;= 10<sup>9</sup></code></li>\n\t<li><code>0 &lt;= t &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean isReachableAtTime(int sx, int sy, int fx, int fy, int t) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def isReachableAtTime(self, sx, sy, fx, fy, t):\n        \"\"\"\n        :type sx: int\n        :type sy: int\n        :type fx: int\n        :type fy: int\n        :type t: int\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:\n        ",
+    "c": "bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool IsReachableAtTime(int sx, int sy, int fx, int fy, int t) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} sx\n * @param {number} sy\n * @param {number} fx\n * @param {number} fy\n * @param {number} t\n * @return {boolean}\n */\nvar isReachableAtTime = function(sx, sy, fx, fy, t) {\n    \n};",
+    "typescript": "function isReachableAtTime(sx: number, sy: number, fx: number, fy: number, t: number): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $sx\n     * @param Integer $sy\n     * @param Integer $fx\n     * @param Integer $fy\n     * @param Integer $t\n     * @return Boolean\n     */\n    function isReachableAtTime($sx, $sy, $fx, $fy, $t) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func isReachableAtTime(_ sx: Int, _ sy: Int, _ fx: Int, _ fy: Int, _ t: Int) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun isReachableAtTime(sx: Int, sy: Int, fx: Int, fy: Int, t: Int): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) {\n    \n  }\n}",
+    "golang": "func isReachableAtTime(sx int, sy int, fx int, fy int, t int) bool {\n    \n}",
+    "ruby": "# @param {Integer} sx\n# @param {Integer} sy\n# @param {Integer} fx\n# @param {Integer} fy\n# @param {Integer} t\n# @return {Boolean}\ndef is_reachable_at_time(sx, sy, fx, fy, t)\n    \nend",
+    "scala": "object Solution {\n    def isReachableAtTime(sx: Int, sy: Int, fx: Int, fy: Int, t: Int): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn is_reachable_at_time(sx: i32, sy: i32, fx: i32, fy: i32, t: i32) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (is-reachable-at-time sx sy fx fy t)\n  (-> exact-integer? exact-integer? exact-integer? exact-integer? exact-integer? boolean?)\n  )",
+    "erlang": "-spec is_reachable_at_time(Sx :: integer(), Sy :: integer(), Fx :: integer(), Fy :: integer(), T :: integer()) -> boolean().\nis_reachable_at_time(Sx, Sy, Fx, Fy, T) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec is_reachable_at_time(sx :: integer, sy :: integer, fx :: integer, fy :: integer, t :: integer) :: boolean\n  def is_reachable_at_time(sx, sy, fx, fy, t) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func isReachableAtTime(sx: Int64, sy: Int64, fx: Int64, fy: Int64, t: Int64): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "2\n4\n7\n7\n6\n3\n1\n7\n3\n3",
+  "hints": [
+    "Minimum time to reach the cell should be less than or equal to given time.",
+    "The answer is true if <code>t</code> is greater or equal than the Chebyshev distance from <code>(sx, sy)</code> to <code>(fx, fy)</code>. However, there is one more edge case to be considered.",
+    "The answer is false If <code>sx == fx</code> and <code>sy == fy</code>"
+  ]
+}

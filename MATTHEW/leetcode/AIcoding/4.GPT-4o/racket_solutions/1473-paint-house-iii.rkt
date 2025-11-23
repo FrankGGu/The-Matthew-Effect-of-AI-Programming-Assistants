@@ -1,0 +1,21 @@
+(define (min-cost-houses costs m n target)
+  (define dp (make-vector (add1 m) (make-vector (add1 target) (make-vector (add1 n) +inf.0))))
+  (vector-set! dp 0 0 0)
+
+  (for-each (lambda (i)
+              (for-each (lambda (j)
+                          (for-each (lambda (k)
+                                      (when (and (not (= (vector-ref costs i k) +inf.0))
+                                                 (or (= j 0) (and (> j 0) (not (= (vector-ref dp (sub1 i) j) +inf.0))))))
+                                        (define new-cost (+ (vector-ref dp (sub1 i) (sub1 j)) (vector-ref costs i k)))
+                                        (when (< new-cost (vector-ref dp i j k))
+                                          (vector-set! dp i j k new-cost))))
+                                    (range n)))
+                        (range (add1 target)))
+              (range (add1 m)))
+
+  (define result (apply min (vector-ref dp (sub1 m) target)))
+  (if (= result +inf.0) -1 result))
+
+(define (paint-house-iii costs m n target)
+  (min-cost-houses costs m n target))

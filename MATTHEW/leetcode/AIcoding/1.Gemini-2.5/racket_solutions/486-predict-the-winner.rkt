@@ -1,0 +1,15 @@
+(define (predict-the-winner nums)
+  (let* ((n (vector-length nums))
+         (memo (make-vector n (make-vector n #f))))
+    (define (solve i j)
+      (cond
+        ((> i j) 0)
+        ((= i j) (vector-ref nums i))
+        ((vector-ref (vector-ref memo i) j) => identity)
+        (else
+          (let* ((score-take-i (- (vector-ref nums i) (solve (+ i 1) j)))
+                 (score-take-j (- (vector-ref nums j) (solve i (- j 1)))))
+            (let ((result (max score-take-i score-take-j)))
+              (vector-set! (vector-ref memo i) j result)
+              result)))))
+    (>= (solve 0 (- n 1)) 0)))

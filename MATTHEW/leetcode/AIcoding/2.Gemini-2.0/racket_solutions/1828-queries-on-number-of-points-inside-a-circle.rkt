@@ -1,0 +1,17 @@
+(define (count-points points query)
+  (let* ((x0 (vector-ref query 0))
+         (y0 (vector-ref query 1))
+         (r2 (* (vector-ref query 2) (vector-ref query 2))))
+    (foldl (lambda (p acc)
+             (let* ((x (vector-ref p 0))
+                    (y (vector-ref p 1))
+                    (dist2 (+ (* (- x x0) (- x x0))
+                              (* (- y y0) (- y y0)))))
+               (if (<= dist2 r2)
+                   (+ acc 1)
+                   acc)))
+           0
+           points)))
+
+(define (count-points-inside-circles points queries)
+  (map (lambda (query) (count-points points query)) queries))

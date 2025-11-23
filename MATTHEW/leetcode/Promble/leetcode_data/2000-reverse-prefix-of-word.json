@@ -1,0 +1,40 @@
+{
+  "id": "2000",
+  "title": "Reverse Prefix of Word",
+  "titleSlug": "reverse-prefix-of-word",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Stack",
+    "Two Pointers",
+    "String"
+  ],
+  "content": "<p>Given a <strong>0-indexed</strong> string <code>word</code> and a character <code>ch</code>, <strong>reverse</strong> the segment of <code>word</code> that starts at index <code>0</code> and ends at the index of the <strong>first occurrence</strong> of <code>ch</code> (<strong>inclusive</strong>). If the character <code>ch</code> does not exist in <code>word</code>, do nothing.</p>\n\n<ul>\n\t<li>For example, if <code>word = &quot;abcdefd&quot;</code> and <code>ch = &quot;d&quot;</code>, then you should <strong>reverse</strong> the segment that starts at <code>0</code> and ends at <code>3</code> (<strong>inclusive</strong>). The resulting string will be <code>&quot;<u>dcba</u>efd&quot;</code>.</li>\n</ul>\n\n<p>Return <em>the resulting string</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> word = &quot;<u>abcd</u>efd&quot;, ch = &quot;d&quot;\n<strong>Output:</strong> &quot;<u>dcba</u>efd&quot;\n<strong>Explanation:</strong>&nbsp;The first occurrence of &quot;d&quot; is at index 3. \nReverse the part of word from 0 to 3 (inclusive), the resulting string is &quot;dcbaefd&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> word = &quot;<u>xyxz</u>xe&quot;, ch = &quot;z&quot;\n<strong>Output:</strong> &quot;<u>zxyx</u>xe&quot;\n<strong>Explanation:</strong>&nbsp;The first and only occurrence of &quot;z&quot; is at index 3.\nReverse the part of word from 0 to 3 (inclusive), the resulting string is &quot;zxyxxe&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> word = &quot;abcd&quot;, ch = &quot;z&quot;\n<strong>Output:</strong> &quot;abcd&quot;\n<strong>Explanation:</strong>&nbsp;&quot;z&quot; does not exist in word.\nYou should not do any reverse operation, the resulting string is &quot;abcd&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= word.length &lt;= 250</code></li>\n\t<li><code>word</code> consists of lowercase English letters.</li>\n\t<li><code>ch</code> is a lowercase English letter.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string reversePrefix(string word, char ch) {\n        \n    }\n};",
+    "java": "class Solution {\n    public String reversePrefix(String word, char ch) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def reversePrefix(self, word, ch):\n        \"\"\"\n        :type word: str\n        :type ch: str\n        :rtype: str\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def reversePrefix(self, word: str, ch: str) -> str:\n        ",
+    "c": "char* reversePrefix(char* word, char ch) {\n    \n}",
+    "csharp": "public class Solution {\n    public string ReversePrefix(string word, char ch) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {string} word\n * @param {character} ch\n * @return {string}\n */\nvar reversePrefix = function(word, ch) {\n    \n};",
+    "typescript": "function reversePrefix(word: string, ch: string): string {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $word\n     * @param String $ch\n     * @return String\n     */\n    function reversePrefix($word, $ch) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func reversePrefix(_ word: String, _ ch: Character) -> String {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun reversePrefix(word: String, ch: Char): String {\n        \n    }\n}",
+    "dart": "class Solution {\n  String reversePrefix(String word, String ch) {\n    \n  }\n}",
+    "golang": "func reversePrefix(word string, ch byte) string {\n    \n}",
+    "ruby": "# @param {String} word\n# @param {Character} ch\n# @return {String}\ndef reverse_prefix(word, ch)\n    \nend",
+    "scala": "object Solution {\n    def reversePrefix(word: String, ch: Char): String = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn reverse_prefix(word: String, ch: char) -> String {\n        \n    }\n}",
+    "racket": "(define/contract (reverse-prefix word ch)\n  (-> string? char? string?)\n  )",
+    "erlang": "-spec reverse_prefix(Word :: unicode:unicode_binary(), Ch :: char()) -> unicode:unicode_binary().\nreverse_prefix(Word, Ch) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec reverse_prefix(word :: String.t, ch :: char) :: String.t\n  def reverse_prefix(word, ch) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func reversePrefix(word: String, ch: Rune): String {\n\n    }\n}"
+  },
+  "exampleTestcases": "\"abcdefd\"\n\"d\"\n\"xyxzxe\"\n\"z\"\n\"abcd\"\n\"z\"",
+  "hints": [
+    "Find the first index where ch appears.",
+    "Find a way to reverse a substring of word."
+  ]
+}

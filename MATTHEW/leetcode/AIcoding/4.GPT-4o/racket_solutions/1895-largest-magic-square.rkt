@@ -1,0 +1,27 @@
+(define (largest-magic-square grid)
+  (define (is-magic-square x y size)
+    (let* ((sum (apply + (map (lambda (i) (apply + (sublist (vector->list (vector-ref grid i)) x (+ x size)))) (range y (+ y size)))))
+           (rows (map (lambda (i) (apply + (sublist (vector->list (vector-ref grid (+ x i))) y (+ y size)))) (range 0 size)))
+           (cols (map (lambda (j) (apply + (map (lambda (i) (vector-ref (vector-ref grid (+ x i)) (+ y j))) (range 0 size)))) (range 0 size)))
+           (diag1 (apply + (map (lambda (i) (vector-ref (vector-ref grid (+ x i)) (+ y i))) (range 0 size))))
+           (diag2 (apply + (map (lambda (i) (vector-ref (vector-ref grid (+ x i)) (+ y (- size 1 i)))) (range 0 size)))))
+      (and (= sum (first rows))
+           (= sum (first cols))
+           (for/all ((row rows)) (= sum row))
+           (for/all ((col cols)) (= sum col))
+           (= sum diag1)
+           (= sum diag2)))
+    )
+
+  (define (check-size size)
+    (for*/all ((i (range 0 (- (vector-length grid) size)))
+                (j (range 0 (- (vector-length (vector-ref grid 0)) size))))
+      (is-magic-square i j size)))
+
+  (define (find-largest)
+    (for/fold ([max-size 0]) ((size (range 1 (min (vector-length grid) (vector-length (vector-ref grid 0))))))
+      (if (check-size size)
+          size
+          max-size)))
+
+  (find-largest))

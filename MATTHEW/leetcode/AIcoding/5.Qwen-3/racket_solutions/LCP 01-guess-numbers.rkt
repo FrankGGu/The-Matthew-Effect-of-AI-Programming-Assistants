@@ -1,0 +1,8 @@
+(define (guess-number n)
+  (define (helper low high)
+    (let ((mid (quotient (+ low high) 2)))
+      (cond ((= mid 0) 1)
+            ((= (guess mid) 0) mid)
+            ((= (guess mid) -1) (helper low (sub1 mid)))
+            (else (helper (add1 mid) high)))))
+  (helper 1 n))

@@ -1,0 +1,16 @@
+(define (longest-subarray arr)
+  (define (find-longest seq)
+    (define len (length seq))
+    (define longest 1)
+    (define current 1)
+    (for ([i (in-range 1 len)])
+      (if (= (vector-ref seq (- i 1)) (vector-ref seq i))
+          (set! current 1)
+          (begin
+            (set! current (+ current 1))
+            (set! longest (max longest current)))))
+    longest)
+  (max (find-longest arr) (find-longest (vector-reverse arr))))
+
+(define (longestStrictlyIncreasingOrDecreasingSubarray arr)
+  (longest-subarray (vector->list arr)))

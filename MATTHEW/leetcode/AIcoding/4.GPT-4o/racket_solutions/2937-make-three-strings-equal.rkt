@@ -1,0 +1,12 @@
+(define (make-three-strings-equal a b c)
+  (define count-a (foldl (lambda (x acc) (+ acc (if (equal? x #\a) 1 0))) 0 a))
+  (define count-b (foldl (lambda (x acc) (+ acc (if (equal? x #\b) 1 0))) 0 b))
+  (define count-c (foldl (lambda (x acc) (+ acc (if (equal? x #\c) 1 0))) 0 c))
+  (let ((total (+ count-a count-b count-c)))
+    (and (= (modulo total 3) 0)
+         (>= count-a (quotient total 3))
+         (>= count-b (quotient total 3))
+         (>= count-c (quotient total 3)))))
+
+(define (makeThreeStringsEqual a b c)
+  (make-three-strings-equal a b c))

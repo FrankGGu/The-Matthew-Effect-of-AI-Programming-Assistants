@@ -1,0 +1,5 @@
+(define (change-data-type df)
+  (map (lambda (row)
+         (list (string->number (car row))
+               (string->number (cadr row))))
+       df))

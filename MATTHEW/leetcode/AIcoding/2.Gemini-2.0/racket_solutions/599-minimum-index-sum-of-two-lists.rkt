@@ -1,0 +1,26 @@
+(define (find-restaurant list1 list2)
+  (let* ((hash1 (make-hash))
+         (len1 (length list1)))
+    (for/list ((item (in-list list1))
+               (i (in-range len1)))
+      (hash-set! hash1 item i))
+    (let loop ((list2 list2)
+               (index 0)
+               (min-sum #f)
+               (result '()))
+      (cond
+        ((null? list2) result)
+        (else
+         (let ((item (car list2)))
+           (if (hash-has-key? hash1 item)
+               (let ((sum (+ index (hash-ref hash1 item))))
+                 (cond
+                   ((not min-sum)
+                    (loop (cdr list2) (add1 index) sum (list item)))
+                   ((< sum min-sum)
+                    (loop (cdr list2) (add1 index) sum (list item)))
+                   ((= sum min-sum)
+                    (loop (cdr list2) (add1 index) min-sum (cons item result)))
+                   (else
+                    (loop (cdr list2) (add1 index) min-sum result))))
+               (loop (cdr list2) (add1 index) min-sum result))))))))

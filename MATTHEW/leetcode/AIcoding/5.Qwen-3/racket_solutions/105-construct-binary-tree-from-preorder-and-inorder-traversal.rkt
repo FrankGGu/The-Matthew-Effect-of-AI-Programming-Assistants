@@ -1,0 +1,13 @@
+(define (build-tree preorder inorder)
+  (define (helper pre in)
+    (if (null? pre)
+        #f
+        (let* ((root-val (car pre))
+               (root-index (index-of in root-val))
+               (left-in (take in root-index))
+               (right-in (drop in (add1 root-index)))
+               (left-size (length left-in))
+               (left-pre (take pre (add1 left-size)))
+               (right-pre (drop pre (add1 left-size))))
+          (make-node root-val (helper left-pre left-in) (helper right-pre right-in)))))
+  (helper preorder inorder))

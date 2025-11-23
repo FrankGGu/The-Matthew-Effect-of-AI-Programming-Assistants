@@ -1,0 +1,10 @@
+(define (maximum-bags capacity rocks)
+  (define (helper cap rock)
+    (- cap rock))
+  (define sorted (sort (map helper capacity rocks) <))
+  (define (count-full lst)
+    (let loop ((lst lst) (count 0) (sum 0))
+      (if (or (null? lst) (>= sum (car lst)))
+          count
+          (loop (cdr lst) (+ count 1) (+ sum (car lst))))))
+  (count-full sorted))

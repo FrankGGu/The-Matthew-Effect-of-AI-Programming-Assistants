@@ -1,0 +1,17 @@
+#lang racket
+
+(define (reverse-degree s)
+  (define (count-chars s)
+    (for/fold ([counts (hash)]) ([c s])
+      (hash-update counts c add1 0)))
+  (define (get-degree counts)
+    (for/fold ([max 0]) ([v (in-hash-values counts)])
+      (max max v)))
+  (define counts (count-chars s))
+  (define degree (get-degree counts))
+  (define (reverse-string s)
+    (list->string (reverse (string->list s))))
+  (if (= degree 1)
+      (reverse-string s)
+      (let ([sorted (sort (string->list s) >)])
+        (list->string sorted))))

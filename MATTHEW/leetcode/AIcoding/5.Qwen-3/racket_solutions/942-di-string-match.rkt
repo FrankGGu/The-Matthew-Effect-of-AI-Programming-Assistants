@@ -1,0 +1,8 @@
+(define (di-string-match s)
+  (let loop ((s (string->list s)) (low 0) (high (string-length s)) (result '()))
+    (if (null? s)
+        (reverse result)
+        (let ((c (car s)))
+          (if (char=? c #\I)
+              (loop (cdr s) (+ low 1) high (cons low result))
+              (loop (cdr s) low (- high 1) (cons high result)))))))

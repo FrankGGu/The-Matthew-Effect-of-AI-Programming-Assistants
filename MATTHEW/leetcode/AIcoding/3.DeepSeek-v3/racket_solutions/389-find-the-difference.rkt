@@ -1,0 +1,8 @@
+(define/contract (find-the-difference s t)
+  (-> string? string? char?)
+  (let ((sum 0))
+    (for ((c s))
+      (set! sum (- sum (char->integer c))))
+    (for ((c t))
+      (set! sum (+ sum (char->integer c))))
+    (integer->char sum)))

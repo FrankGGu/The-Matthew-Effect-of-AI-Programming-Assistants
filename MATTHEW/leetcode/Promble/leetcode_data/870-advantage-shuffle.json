@@ -1,0 +1,38 @@
+{
+  "id": "870",
+  "title": "Advantage Shuffle",
+  "titleSlug": "advantage-shuffle",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "content": "<p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> both of the same length. The <strong>advantage</strong> of <code>nums1</code> with respect to <code>nums2</code> is the number of indices <code>i</code> for which <code>nums1[i] &gt; nums2[i]</code>.</p>\n\n<p>Return <em>any permutation of </em><code>nums1</code><em> that maximizes its <strong>advantage</strong> with respect to </em><code>nums2</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums1 = [2,7,11,15], nums2 = [1,10,4,11]\n<strong>Output:</strong> [2,11,7,15]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums1 = [12,24,8,32], nums2 = [13,25,32,11]\n<strong>Output:</strong> [24,32,8,12]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums1.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>nums2.length == nums1.length</code></li>\n\t<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> advantageCount(vector<int>& nums1, vector<int>& nums2) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] advantageCount(int[] nums1, int[] nums2) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def advantageCount(self, nums1, nums2):\n        \"\"\"\n        :type nums1: List[int]\n        :type nums2: List[int]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def advantageCount(self, nums1: List[int], nums2: List[int]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* advantageCount(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] AdvantageCount(int[] nums1, int[] nums2) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums1\n * @param {number[]} nums2\n * @return {number[]}\n */\nvar advantageCount = function(nums1, nums2) {\n    \n};",
+    "typescript": "function advantageCount(nums1: number[], nums2: number[]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums1\n     * @param Integer[] $nums2\n     * @return Integer[]\n     */\n    function advantageCount($nums1, $nums2) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func advantageCount(_ nums1: [Int], _ nums2: [Int]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun advantageCount(nums1: IntArray, nums2: IntArray): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> advantageCount(List<int> nums1, List<int> nums2) {\n    \n  }\n}",
+    "golang": "func advantageCount(nums1 []int, nums2 []int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums1\n# @param {Integer[]} nums2\n# @return {Integer[]}\ndef advantage_count(nums1, nums2)\n    \nend",
+    "scala": "object Solution {\n    def advantageCount(nums1: Array[Int], nums2: Array[Int]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn advantage_count(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (advantage-count nums1 nums2)\n  (-> (listof exact-integer?) (listof exact-integer?) (listof exact-integer?))\n  )",
+    "erlang": "-spec advantage_count(Nums1 :: [integer()], Nums2 :: [integer()]) -> [integer()].\nadvantage_count(Nums1, Nums2) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec advantage_count(nums1 :: [integer], nums2 :: [integer]) :: [integer]\n  def advantage_count(nums1, nums2) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func advantageCount(nums1: Array<Int64>, nums2: Array<Int64>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[2,7,11,15]\n[1,10,4,11]\n[12,24,8,32]\n[13,25,32,11]",
+  "hints": []
+}

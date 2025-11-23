@@ -1,0 +1,5 @@
+(define/contract (intersection nums1 nums2)
+  (-> (listof exact-integer?) (listof exact-integer?) (listof exact-integer?))
+  (define set1 (list->set nums1))
+  (define set2 (list->set nums2))
+  (set->list (set-intersect set1 set2)))

@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+bool digitCount(char * num){
+    int n = strlen(num);
+    int counts[10] = {0};
+    for (int i = 0; i < n; i++) {
+        counts[num[i] - '0']++;
+    }
+    for (int i = 0; i < n; i++) {
+        if (counts[i] != (num[i] - '0')) {
+            return false;
+        }
+    }
+    return true;
+}

@@ -1,0 +1,7 @@
+(define (find-valid-pair s)
+  (for/fold ([result '()]) ([i (in-range (sub1 (string-length s)))])
+    (let ([pair (substring s i (+ i 2))])
+      (if (and (= (string-ref pair 0) (string-ref pair 1))
+               (not (member pair result)))
+          (cons pair result)
+          result))))

@@ -1,0 +1,6 @@
+(define/contract (poor-pigs buckets minutesToDie minutesToTest)
+  (-> exact-integer? exact-integer? exact-integer? exact-integer?)
+  (define t (add1 (quotient minutesToTest minutesToDie)))
+  (define (iter pigs)
+    (if (>= (expt t pigs) buckets) pigs (iter (add1 pigs))))
+  (iter 0))

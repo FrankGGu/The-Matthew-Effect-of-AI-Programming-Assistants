@@ -1,0 +1,6 @@
+(define (find-kth-character n k)
+  (let loop ((s "0") (i 1))
+    (if (= i n)
+        (string-ref s (- k 1))
+        (let ((next (string-append s (string-reverse (string-map (lambda (c) (if (char=? c #\0) #\1 #\0)) s))))))
+          (loop next (+ i 1))))))

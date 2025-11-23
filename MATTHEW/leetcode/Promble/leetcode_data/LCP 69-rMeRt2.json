@@ -1,0 +1,37 @@
+{
+  "id": "LCP 69",
+  "title": "Hello LeetCode!",
+  "titleSlug": "rMeRt2",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int Leetcode(vector<string>& words) {\n\n    }\n};",
+    "java": "class Solution {\n    public int Leetcode(String[] words) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def Leetcode(self, words):\n        \"\"\"\n        :type words: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def Leetcode(self, words: List[str]) -> int:",
+    "c": "\n\nint Leetcode(char** words, int wordsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int Leetcode(string[] words) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} words\n * @return {number}\n */\nvar Leetcode = function(words) {\n\n};",
+    "typescript": "function Leetcode(words: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $words\n     * @return Integer\n     */\n    function Leetcode($words) {\n\n    }\n}",
+    "swift": "class Solution {\n    func Leetcode(_ words: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun Leetcode(words: Array<String>): Int {\n\n    }\n}",
+    "golang": "func Leetcode(words []string) int {\n\n}",
+    "ruby": "# @param {String[]} words\n# @return {Integer}\ndef leetcode(words)\n\nend",
+    "scala": "object Solution {\n    def Leetcode(words: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn leetcode(words: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (leetcode words)\n  (-> (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec leetcode(Words :: [unicode:unicode_binary()]) -> integer().\nleetcode(Words) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec leetcode(words :: [String.t]) :: integer\n  def leetcode(words) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"hold\",\"engineer\",\"cost\",\"level\"]\n[\"hello\",\"leetcode\"]",
+  "hints": []
+}

@@ -1,0 +1,15 @@
+(define (probabilityOfHeads (probabilities '() n))
+  (define (helper prob n)
+    (if (zero? n)
+        (list 1.0)
+        (let ((prev (helper prob (sub1 n))))
+          (append (map (lambda (p) (* p (list-ref probabilities (sub1 n)))) prev)
+                  (map (lambda (p) (* p (list-ref probabilities (sub1 n)))) (map (lambda (x) (- 1 x)) prev))))))
+  (define total (apply + (helper probabilities n)))
+  (define heads (helper probabilities n))
+  (if (= total 0)
+      0
+      (/ (apply + heads) total)))
+
+(define (probabilityOfHeadsWrapper probabilities target)
+  (probabilityOfHeads probabilities target))

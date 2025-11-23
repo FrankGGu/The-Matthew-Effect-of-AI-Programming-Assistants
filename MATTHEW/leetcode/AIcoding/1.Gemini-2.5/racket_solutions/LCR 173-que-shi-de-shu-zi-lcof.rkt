@@ -1,0 +1,6 @@
+(define (solution items)
+  (let ([counts (make-hash)])
+    (for-each (lambda (item)
+                (hash-update! counts item add1 0))
+              items)
+    (hash->list counts)))

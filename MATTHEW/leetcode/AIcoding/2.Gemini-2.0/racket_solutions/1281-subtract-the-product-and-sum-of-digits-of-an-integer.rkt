@@ -1,0 +1,6 @@
+(define (subtract-product-and-sum n)
+  (let loop ([n n] [product 1] [sum 0])
+    (if (= n 0)
+        (- product sum)
+        (let ([digit (modulo n 10)])
+          (loop (quotient n 10) (* product digit) (+ sum digit))))))

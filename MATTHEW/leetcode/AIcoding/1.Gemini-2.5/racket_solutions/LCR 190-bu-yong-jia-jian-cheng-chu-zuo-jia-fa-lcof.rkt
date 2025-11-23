@@ -1,0 +1,12 @@
+(define (solution base exp mod)
+  (let loop ((b (modulo base mod))
+             (e exp)
+             (res 1))
+    (cond
+      ((zero? e) res)
+      ((odd? e) (loop (modulo (* b b) mod)
+                       (quotient e 2)
+                       (modulo (* res b) mod)))
+      (else (loop (modulo (* b b) mod)
+                  (quotient e 2)
+                  res)))))

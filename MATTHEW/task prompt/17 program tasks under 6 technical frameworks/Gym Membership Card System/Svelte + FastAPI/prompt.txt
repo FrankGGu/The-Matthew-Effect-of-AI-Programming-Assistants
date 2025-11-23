@@ -1,0 +1,59 @@
+You are a senior full-stack developer. Create a modern gym membership system using Svelte frontend with FastAPI backend and SQLAlchemy ORM.
+
+**TECHNOLOGY STACK:**
+- Frontend: Svelte with TypeScript
+- Backend: FastAPI with Python
+- ORM: SQLAlchemy with PostgreSQL
+- Build: Vite for frontend, Poetry for backend
+
+**DATABASE CONNECTION:**
+- PostgreSQL: postgresql://postgres:gymsecret@localhost:5432/gym_management
+- All tables already created
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - CRUD operations for membership plans
+   - Plan display with features and pricing
+
+2. **Member Management**
+   - Member registration and profile management
+   - Member directory with search
+
+3. **Membership Card System**
+   - Card issuance and management
+   - Status tracking and expiration
+
+4. **Check-in System**
+   - Check-in interface with validation
+   - Check-in history and reporting
+
+5. **Payment Processing**
+   - Payment recording and history
+   - Payment method tracking
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use SQLAlchemy ORM with async support
+- Implement REST API with FastAPI and Pydantic models
+- Add automatic API documentation with OpenAPI/Swagger
+- Implement proper error handling with HTTP exceptions
+- Svelte frontend should use SvelteKit for routing
+- Use TypeScript for type safety
+- Manage state with Svelte stores
+- Use Tailwind CSS for styling with responsive design
+- Implement form handling with Svelte forms
+
+**CODE STRUCTURE:**
+Backend (FastAPI + SQLAlchemy):
+- SQLAlchemy models for all database entities
+- Pydantic models for request/response validation
+- FastAPI route handlers with dependency injection
+- Database session management
+
+Frontend (Svelte + TypeScript):
+- Svelte components for each feature
+- Svelte stores for state management
+- Services for API communication
+- TypeScript interfaces for data models
+
+Generate the complete application with all necessary configuration and emphasize modern Python practices.

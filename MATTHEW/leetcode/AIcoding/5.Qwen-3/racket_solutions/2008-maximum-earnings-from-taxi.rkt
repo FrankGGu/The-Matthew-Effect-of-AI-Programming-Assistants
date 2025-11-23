@@ -1,0 +1,35 @@
+#lang racket
+
+(define (max-earnings trips)
+  (define (cmp a b)
+    (< (car a) (car b)))
+  (define sorted-trips (sort trips cmp))
+  (define dp (make-hash))
+  (define (find-max i)
+    (if (>= i (length sorted-trips))
+        0
+        (let* ((trip (list-ref sorted-trips i))
+               (start (car trip))
+               (end (cadr trip))
+               (earn (caddr trip))
+               (next-i (binary-search sorted-trips start end)))
+          (hash-set! dp i (+ earn (if next-i (find-max next-i) 0)))
+          (max (hash-ref dp i) (find-max (+ i 1))))))
+  (define (binary-search lst target end)
+    (let loop ((low 0) (high (sub1 (length lst))))
+      (if (> low high)
+          #f
+          (let ((mid (quotient (+ low high) 2)))
+            (let ((mid-end (cadr (list-ref lst mid))))
+              (if (>= mid-end target)
+                  (if (and (> mid 0) (<= (cadr (list-ref lst (sub1 mid))) target))
+                      (loop 0 (sub1 mid))
+                      mid)
+                  (loop (+ mid 1) high)))))))
+  (find-max 0))
+
+(define (main)
+  (define input (read))
+  (displayln (max-earnings input)))
+
+(main)

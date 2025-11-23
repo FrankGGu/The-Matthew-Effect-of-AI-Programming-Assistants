@@ -1,0 +1,11 @@
+(define (mirror-reflection e)
+  (let loop ((m 1) (n 1))
+    (if (and (= (* m e) (* n e)) (= m n))
+        (if (= m 1) 1 (if (= n 1) 2 0))
+        (if (> m n)
+            (loop (- m n) n)
+            (loop m (- n m))))))
+
+(define (main)
+  (let ((e (read)))
+    (display (mirror-reflection e))))

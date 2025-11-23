@@ -1,0 +1,5 @@
+(define (find-mice-cheese mice cheese)
+  (let loop ([mice mice] [cheese cheese] [result '()])
+    (if (or (null? mice) (null? cheese))
+        (reverse result)
+        (loop (cdr mice) (cdr cheese) (cons (car mice) (cons (car cheese) result))))))

@@ -1,0 +1,12 @@
+(define (interpret command)
+  (define (loop i res)
+    (if (>= i (string-length command))
+        res
+        (let ((c (string-ref command i)))
+          (if (char=? c #\G)
+              (loop (+ i 1) (string-append res "G"))
+              (if (char=? c #\()
+                  (if (and (< (+ i 1) (string-length command)) (char=? (string-ref command (+ i 1)) #\a))
+                      (loop (+ i 2) (string-append res "a"))
+                      (loop (+ i 1) (string-append res "o")))))))
+  (loop 0 ""))

@@ -1,0 +1,5 @@
+(define (range-bitwise-and m n)
+  (let loop ([m m] [n n] [shift 0])
+    (if (= m n)
+        (arithmetic-shift m shift)
+        (loop (arithmetic-shift m -1) (arithmetic-shift n -1) (+ shift 1)))))

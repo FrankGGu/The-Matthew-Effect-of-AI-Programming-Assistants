@@ -1,0 +1,40 @@
+(define (zero-even-odd n)
+  (define zero-channel (make-channel))
+  (define even-channel (make-channel))
+  (define odd-channel (make-channel))
+
+  (define (print-number ch num)
+    (channel-put ch num))
+
+  (define (zero)
+    (let loop ()
+      (when (<= (channel-get zero-channel) n)
+        (printf "0")
+        (if (even? (channel-get zero-channel))
+            (channel-put even-channel (channel-get zero-channel))
+            (channel-put odd-channel (channel-get zero-channel)))
+        (loop))))
+
+  (define (even)
+    (let loop ()
+      (when (<= (channel-get even-channel) n)
+        (printf "~a" (channel-get even-channel))
+        (loop))))
+
+  (define (odd)
+    (let loop ()
+      (when (<= (channel-get odd-channel) n)
+        (printf "~a" (channel-get odd-channel))
+        (loop))))
+
+  (define zero-thread (thread zero))
+  (define even-thread (thread even))
+  (define odd-thread (thread odd))
+
+  (for ([i (in-range 1 (+ n 1))])
+    (channel-put zero-channel i))
+
+  (thread-wait zero-thread)
+  (thread-wait even-thread)
+  (thread-wait odd-thread)
+  (void))

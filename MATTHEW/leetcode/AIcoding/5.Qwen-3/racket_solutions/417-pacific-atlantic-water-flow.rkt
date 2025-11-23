@@ -1,0 +1,31 @@
+#lang racket
+
+(define (pacific-atlantic heights)
+  (define rows (length heights))
+  (define cols (if (> rows 0) (length (car heights)) 0))
+  (define (bfs queue visited)
+    (define directions '((0 1) (1 0) (0 -1) (-1 0)))
+    (define (loop q v)
+      (cond [(null? q) v]
+            [else
+             (define cell (car q))
+             (define r (car cell))
+             (define c (cadr cell))
+             (define new-queue (cdr q))
+             (for-each
+              (lambda (d)
+                (define nr (+ r (car d)))
+                (define nc (+ c (cadr d)))
+                (when (and (<= 0 nr (- rows 1)) (<= 0 nc (- cols 1)) (not (member (list nr nc) v)))
+                  (set! v (append v (list (list nr nc))))
+                  (set! new-queue (append new-queue (list (list nr nc))))))
+              directions)
+             (loop new-queue v)]))
+    (loop queue visited))
+  (define (get-reachable)
+    (define pacific (map (lambda (i) (list 0 i)) (range cols)))
+    (define atlantic (map (lambda (i) (list (- rows 1) i)) (range cols)))
+    (define pacific-visited (bfs pacific '()))
+    (define atlantic-visited (bfs atlantic '()))
+    (filter (lambda (cell) (member cell pacific-visited)) atlantic-visited))
+  (if (or (= rows 0) (= cols 0)) '() (get-reachable)))

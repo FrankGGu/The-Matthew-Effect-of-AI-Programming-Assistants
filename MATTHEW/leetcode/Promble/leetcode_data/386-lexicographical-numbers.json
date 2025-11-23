@@ -1,0 +1,36 @@
+{
+  "id": "386",
+  "title": "Lexicographical Numbers",
+  "titleSlug": "lexicographical-numbers",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Trie"
+  ],
+  "content": "<p>Given an integer <code>n</code>, return all the numbers in the range <code>[1, n]</code> sorted in lexicographical order.</p>\n\n<p>You must write an algorithm that runs in&nbsp;<code>O(n)</code>&nbsp;time and uses <code>O(1)</code> extra space.&nbsp;</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> n = 13\n<strong>Output:</strong> [1,10,11,12,13,2,3,4,5,6,7,8,9]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> n = 2\n<strong>Output:</strong> [1,2]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 5 * 10<sup>4</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> lexicalOrder(int n) {\n        \n    }\n};",
+    "java": "class Solution {\n    public List<Integer> lexicalOrder(int n) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def lexicalOrder(self, n):\n        \"\"\"\n        :type n: int\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def lexicalOrder(self, n: int) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* lexicalOrder(int n, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public IList<int> LexicalOrder(int n) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @return {number[]}\n */\nvar lexicalOrder = function(n) {\n    \n};",
+    "typescript": "function lexicalOrder(n: number): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @return Integer[]\n     */\n    function lexicalOrder($n) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func lexicalOrder(_ n: Int) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun lexicalOrder(n: Int): List<Int> {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> lexicalOrder(int n) {\n    \n  }\n}",
+    "golang": "func lexicalOrder(n int) []int {\n    \n}",
+    "ruby": "# @param {Integer} n\n# @return {Integer[]}\ndef lexical_order(n)\n    \nend",
+    "scala": "object Solution {\n    def lexicalOrder(n: Int): List[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn lexical_order(n: i32) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (lexical-order n)\n  (-> exact-integer? (listof exact-integer?))\n  )",
+    "erlang": "-spec lexical_order(N :: integer()) -> [integer()].\nlexical_order(N) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec lexical_order(n :: integer) :: [integer]\n  def lexical_order(n) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func lexicalOrder(n: Int64): ArrayList<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "13\n2",
+  "hints": []
+}

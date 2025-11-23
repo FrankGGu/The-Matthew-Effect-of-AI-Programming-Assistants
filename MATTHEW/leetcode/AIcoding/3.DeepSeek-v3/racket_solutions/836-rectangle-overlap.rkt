@@ -1,0 +1,5 @@
+(define (is-rectangle-overlap rec1 rec2)
+  (not (or (>= (list-ref rec1 0) (list-ref rec2 2))
+           (>= (list-ref rec1 1) (list-ref rec2 3))
+           (<= (list-ref rec1 2) (list-ref rec2 0))
+           (<= (list-ref rec1 3) (list-ref rec2 1)))))

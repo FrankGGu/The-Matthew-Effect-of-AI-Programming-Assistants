@@ -1,0 +1,16 @@
+(define (minimum-limit-of-balls-in-a-bag nums maxOperations)
+  (define (canAchieve limit)
+    (define ops 0)
+    (for ([num nums])
+      (set! ops (+ ops (max 0 (ceiling (/ (- num limit) limit))))))
+    (<= ops maxOperations))
+  (define (binary-search left right)
+    (if (>= left right)
+        left
+        (let ([mid (quotient (+ left right) 2)])
+          (if (canAchieve mid)
+              (binary-search left mid)
+              (binary-search (add1 mid) right)))))
+  (binary-search 1 (apply max nums)))
+
+(minimum-limit-of-balls-in-a-bag '(9 7 4 1) 4)

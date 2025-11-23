@@ -1,0 +1,7 @@
+(define (check-overlap radius x_center y_center x1 y1 x2 y2)
+  (let* ((closest_x (max x1 (min x_center x2)))
+         (closest_y (max y1 (min y_center y2)))
+         (dist_x (- x_center closest_x))
+         (dist_y (- y_center closest_y))
+         (dist_sq (+ (* dist_x dist_x) (* dist_y dist_y))))
+    (<= dist_sq (* radius radius))))

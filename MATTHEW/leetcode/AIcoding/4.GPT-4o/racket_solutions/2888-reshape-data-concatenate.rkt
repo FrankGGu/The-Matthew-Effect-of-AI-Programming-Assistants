@@ -1,0 +1,5 @@
+(define (reshape-data mat r c)
+  (define flat (apply append mat))
+  (if (= (length flat) (* r c))
+      (map (lambda (i) (sublist flat (* i c) (* (+ i 1) c))) (range r))
+      mat))

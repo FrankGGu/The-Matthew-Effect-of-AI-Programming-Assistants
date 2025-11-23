@@ -1,0 +1,16 @@
+(define/contract (total-steps nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([nums nums] [steps 0] [stack '()])
+    (if (null? nums)
+        steps
+        (let* ([current (car nums)]
+               [count 0])
+          (let inner-loop ([stack stack])
+            (if (and (not (null? stack)) (> current (caar stack)))
+                (let ([prev (car stack)])
+                  (inner-loop (cdr stack))
+                  (set! count (max count (cdr prev))))
+                (void)))
+          (loop (cdr nums)
+                (max steps count)
+                (cons (cons current (if (null? stack) 0 (add1 count))) stack))))))

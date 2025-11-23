@@ -1,0 +1,6 @@
+(define (min-moves-to-equal-array-elements-ii nums)
+  (define sorted (sort nums <))
+  (define len (length sorted))
+  (define mid (quotient len 2))
+  (define median (list-ref sorted mid))
+  (apply + (map (lambda (x) (abs (- x median))) sorted)))

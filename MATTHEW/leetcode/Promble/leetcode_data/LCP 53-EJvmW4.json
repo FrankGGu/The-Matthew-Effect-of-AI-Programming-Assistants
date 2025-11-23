@@ -1,0 +1,36 @@
+{
+  "id": "LCP 53",
+  "title": "守护太空城",
+  "titleSlug": "EJvmW4",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int defendSpaceCity(vector<int>& time, vector<int>& position) {\n\n    }\n};",
+    "java": "class Solution {\n    public int defendSpaceCity(int[] time, int[] position) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def defendSpaceCity(self, time, position):\n        \"\"\"\n        :type time: List[int]\n        :type position: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def defendSpaceCity(self, time: List[int], position: List[int]) -> int:",
+    "c": "\n\nint defendSpaceCity(int* time, int timeSize, int* position, int positionSize){\n\n}",
+    "csharp": "public class Solution {\n    public int DefendSpaceCity(int[] time, int[] position) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} time\n * @param {number[]} position\n * @return {number}\n */\nvar defendSpaceCity = function(time, position) {\n\n};",
+    "typescript": "function defendSpaceCity(time: number[], position: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $time\n     * @param Integer[] $position\n     * @return Integer\n     */\n    function defendSpaceCity($time, $position) {\n\n    }\n}",
+    "swift": "class Solution {\n    func defendSpaceCity(_ time: [Int], _ position: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun defendSpaceCity(time: IntArray, position: IntArray): Int {\n\n    }\n}",
+    "golang": "func defendSpaceCity(time []int, position []int) int {\n\n}",
+    "ruby": "# @param {Integer[]} time\n# @param {Integer[]} position\n# @return {Integer}\ndef defend_space_city(time, position)\n\nend",
+    "scala": "object Solution {\n    def defendSpaceCity(time: Array[Int], position: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn defend_space_city(time: Vec<i32>, position: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (defend-space-city time position)\n  (-> (listof exact-integer?) (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec defend_space_city(Time :: [integer()], Position :: [integer()]) -> integer().\ndefend_space_city(Time, Position) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec defend_space_city(time :: [integer], position :: [integer]) :: integer\n  def defend_space_city(time, position) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[1,2,1]\n[6,3,3]\n[1,1,1,2,2,3,5]\n[1,2,3,1,2,1,3]",
+  "hints": []
+}

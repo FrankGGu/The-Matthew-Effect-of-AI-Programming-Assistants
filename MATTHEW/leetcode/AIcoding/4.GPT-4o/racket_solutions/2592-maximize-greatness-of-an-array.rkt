@@ -1,0 +1,12 @@
+(define (maximize-greatness A)
+  (define (count-greatness sorted)
+    (let loop ((i 0) (j 0) (count 0))
+      (if (< i (length sorted))
+          (if (>= (list-ref sorted i) (+ 1 count))
+              (loop (+ i 1) j count)
+              (loop (+ i 1) (+ j 1) (+ count 1)))
+          count)))
+  (count-greatness (sort A <)))
+
+(define (maximize-greatness-wrapper A)
+  (maximize-greatness A))

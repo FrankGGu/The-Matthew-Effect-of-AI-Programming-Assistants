@@ -1,0 +1,37 @@
+#lang racket
+
+(define (count-complete-substrings s)
+  (define (is-complete? s)
+    (define freq (make-hash))
+    (for ([c s])
+      (hash-set! freq c (+ 1 (hash-ref freq c 0))))
+    (and (>= (hash-count freq) 26)
+         (equal? (sort (hash-values freq) <) (range 1 27))))
+
+  (define (split-by-adjacent-chars s)
+    (define (helper i prev result)
+      (if (= i (string-length s))
+          (reverse result)
+          (let ([current (string-ref s i)])
+            (if (or (char=? current prev)
+                    (char=? (char-downcase current) (char-downcase prev)))
+                (helper (+ i 1) current (cons (string-ref s i) (car result)))
+                (helper (+ i 1) current (cons (list (string-ref s i)) result)))))
+    (reverse (helper 1 (string-ref s 0) (list (list (string-ref s 0))))))
+
+  (define (count-substrings lst)
+    (define (helper lst acc)
+      (if (null? lst)
+          acc
+          (let ([current (car lst)])
+            (let loop ([i 0] [current-str (list current)] [acc acc])
+              (if (>= i (length lst))
+                  (loop (+ i 1) (list (list-ref lst i)) acc)
+                  (let ([new-str (append current-str (list (list-ref lst i)))])
+                    (if (is-complete? new-str)
+                        (loop (+ i 1) new-str (+ acc 1))
+                        (loop (+ i 1) new-str acc))))))))
+    (helper lst 0))
+
+  (define split-lists (split-by-adjacent-chars s))
+  (apply + (map count-substrings split-lists)))

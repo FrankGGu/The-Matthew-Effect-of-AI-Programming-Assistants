@@ -1,0 +1,11 @@
+(define/contract (max-area h w horizontal-cuts vertical-cuts)
+  (-> exact-integer? exact-integer? (listof exact-integer?) (listof exact-integer?) exact-integer?)
+  (define (max-gap lst size)
+    (define sorted (sort lst <))
+    (define gaps (cons (first sorted) (map - (rest sorted) sorted)))
+    (define max-gap (apply max gaps))
+    (max max-gap (- size (last sorted))))
+
+  (define max-h (max-gap horizontal-cuts h))
+  (define max-v (max-gap vertical-cuts w))
+  (modulo (* max-h max-v) 1000000007))

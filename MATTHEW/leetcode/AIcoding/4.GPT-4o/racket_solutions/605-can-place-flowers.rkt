@@ -1,0 +1,11 @@
+(define (can-place-flowers flowerbed n)
+  (define (can-place? flowerbed)
+    (let loop ((i 0) (count 0))
+      (cond
+        ((= i (length flowerbed)) count)
+        ((= (list-ref flowerbed i) 1) (loop (+ i 1) count))
+        ((or (and (> i 0) (= (list-ref flowerbed (- i 1)) 1))
+             (and (< i (- (length flowerbed) 1) (= (list-ref flowerbed (+ i 1)) 1))))
+         (loop (+ i 1) count))
+        (else (loop (+ i 2) (+ count 1))))))
+  (>= (can-place? flowerbed) n))

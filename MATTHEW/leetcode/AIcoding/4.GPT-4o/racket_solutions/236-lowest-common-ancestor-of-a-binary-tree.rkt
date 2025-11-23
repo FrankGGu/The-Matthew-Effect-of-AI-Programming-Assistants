@@ -1,0 +1,12 @@
+(define (lowestCommonAncestor root p q)
+  (define (helper node)
+    (if (null? node)
+        '()
+        (let ((left (helper (node-left node)))
+              (right (helper (node-right node))))
+          (cond
+            ((and (equal? node p) (equal? node q)) node)
+            ((or (equal? node p) (equal? node q)) node)
+            ((and (not (null? left)) (not (null? right))) node)
+            (else (if (not (null? left)) left right))))))
+  (helper root))

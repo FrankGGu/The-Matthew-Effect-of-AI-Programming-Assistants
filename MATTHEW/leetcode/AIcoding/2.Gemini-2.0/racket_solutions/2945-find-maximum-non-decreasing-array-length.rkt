@@ -1,0 +1,15 @@
+(define (max-non-decreasing-array-length nums)
+  (let* ((n (length nums))
+         (dp (make-vector n 1))
+         (sums (make-vector n 0)))
+    (vector-set! sums 0 (list-ref nums 0))
+    (for ([i (in-range 1 n)])
+      (vector-set! sums i (+ (vector-ref sums (- i 1)) (list-ref nums i))))
+
+    (for ([i (in-range 1 n)])
+      (for ([j (in-range 0 i)])
+        (let ([sum1 (if (zero? j) (list-ref nums 0) (- (vector-ref sums (- j 1)) (list-ref nums 0)))]
+              [sum2 (- (vector-ref sums i) (vector-ref sums j))])
+          (when (>= sum2 sum1)
+            (vector-set! dp i (max (vector-ref dp i) (+ (vector-ref dp j) 1)))))))
+    (vector-ref dp (- n 1))))

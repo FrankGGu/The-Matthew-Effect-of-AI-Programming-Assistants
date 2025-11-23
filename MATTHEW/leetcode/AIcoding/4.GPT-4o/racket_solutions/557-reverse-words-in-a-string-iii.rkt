@@ -1,0 +1,5 @@
+(define (reverseWords s)
+  (define (reverse str)
+    (list->string (reverse (string->list str))))
+  (define words (string-split s))
+  (string-join (map reverse words) " "))

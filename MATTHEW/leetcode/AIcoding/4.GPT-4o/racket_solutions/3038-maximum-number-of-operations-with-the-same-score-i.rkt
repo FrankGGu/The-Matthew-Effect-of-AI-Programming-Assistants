@@ -1,0 +1,16 @@
+(define (maximum-operations(nums target)
+  (define (helper nums target ops)
+    (if (null? nums)
+        ops
+        (let* ((first (car nums))
+               (rest (cdr nums)))
+          (if (= first target)
+              (helper rest target (add1 ops))
+              (if (< first target)
+                  (helper rest target ops)
+                  (if (> first target)
+                      (helper rest target ops)
+                      (max ops (helper rest target ops))))))))
+  (helper nums target 0))
+
+(maximum-operations nums target)

@@ -1,0 +1,6 @@
+(define (minimum-garden-perimeter neededApples)
+  (let loop ((L 0))
+    (let ((apples-collected (* 2 L (+ (* 2 L) 1) (+ L 1))))
+      (if (>= apples-collected neededApples)
+          (* 8 L)
+          (loop (+ L 1))))))

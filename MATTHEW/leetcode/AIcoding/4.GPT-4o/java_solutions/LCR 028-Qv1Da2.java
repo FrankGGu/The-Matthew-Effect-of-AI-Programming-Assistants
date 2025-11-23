@@ -1,0 +1,40 @@
+class Node {
+    public int val;
+    public Node prev;
+    public Node next;
+    public Node child;
+
+    public Node() {}
+
+    public Node(int _val, Node _prev, Node _next, Node _child) {
+        val = _val;
+        prev = _prev;
+        next = _next;
+        child = _child;
+    }
+}
+
+class Solution {
+    public Node flatten(Node head) {
+        if (head == null) return null;
+        Node dummy = new Node(0, null, head, null);
+        Node prev = dummy;
+        Stack<Node> stack = new Stack<>();
+        stack.push(head);
+
+        while (!stack.isEmpty()) {
+            Node curr = stack.pop();
+            prev.next = curr;
+            curr.prev = prev;
+            if (curr.next != null) stack.push(curr.next);
+            if (curr.child != null) {
+                stack.push(curr.child);
+                curr.child = null;
+            }
+            prev = curr;
+        }
+
+        dummy.next.prev = null; // detach the dummy node from the head
+        return dummy.next;
+    }
+}

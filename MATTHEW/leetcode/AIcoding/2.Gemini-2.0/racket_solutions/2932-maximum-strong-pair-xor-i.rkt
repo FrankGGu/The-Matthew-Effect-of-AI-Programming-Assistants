@@ -1,0 +1,10 @@
+(define (maximum-strong-pair-xor1 nums)
+  (let loop ([i 0] [max-xor 0])
+    (if (= i (length nums))
+        max-xor
+        (let loop2 ([j 0])
+          (if (= j (length nums))
+              (loop (+ i 1) max-xor)
+              (if (<= (abs (- (list-ref nums i) (list-ref nums j))) (min (list-ref nums i) (list-ref nums j)))
+                  (loop2 (+ j 1) (loop (+ i 1) (max max-xor (bitwise-xor (list-ref nums i) (list-ref nums j)))))
+                  (loop2 (+ j 1))))))))

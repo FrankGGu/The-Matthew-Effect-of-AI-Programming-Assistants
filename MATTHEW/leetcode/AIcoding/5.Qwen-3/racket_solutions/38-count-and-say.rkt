@@ -1,0 +1,11 @@
+(define (count-and-say n)
+  (if (= n 1)
+      "1"
+      (let ((prev (count-and-say (- n 1))))
+        (let loop ((s prev) (current-char (string-ref s 0)) (count 1) (result '()))
+          (if (null? s)
+              (list->string (append result (list (integer->char (+ (char->integer #\0) count)))))
+              (let ((next-char (string-ref s 0)))
+                (if (= next-char current-char)
+                    (loop (substring s 1) current-char (+ count 1) result)
+                    (loop (substring s 1) next-char 1 (append result (list (integer->char (+ (char->integer #\0) count)) (integer->char (+ (char->integer #\0) (char->integer current-char)))))))))))))

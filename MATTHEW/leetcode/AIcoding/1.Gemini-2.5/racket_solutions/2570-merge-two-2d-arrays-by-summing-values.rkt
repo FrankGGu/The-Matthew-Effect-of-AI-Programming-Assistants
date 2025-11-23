@@ -1,0 +1,20 @@
+(define (merge-arrays nums1 nums2)
+  (let ((id-map (make-hash)))
+
+    (for-each (lambda (pair)
+                (let ((id (car pair))
+                      (val (cadr pair)))
+                  (hash-set! id-map id val)))
+              nums1)
+
+    (for-each (lambda (pair)
+                (let ((id (car pair))
+                      (val (cadr pair)))
+                  (if (hash-has-key? id-map id)
+                      (hash-set! id-map id (+ (hash-ref id-map id) val))
+                      (hash-set! id-map id val))))
+              nums2)
+
+    (let* ((result-list (hash-map id-map (lambda (k v) (list k v))))
+           (sorted-list (sort result-list (lambda (a b) (< (car a) (car b))))))
+      sorted-list)))

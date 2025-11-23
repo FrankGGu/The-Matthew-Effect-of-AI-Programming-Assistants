@@ -1,0 +1,35 @@
+(define/contract (plates-between-candles s queries)
+  (-> string? (listof (listof exact-integer?)) (listof exact-integer?))
+  (define n (string-length s))
+  (define left (make-vector n -1))
+  (define right (make-vector n -1))
+  (define prefix (make-vector n 0))
+
+  (define last-candle -1)
+  (for ([i (in-range n)])
+    (when (char=? (string-ref s i) #\|)
+      (set! last-candle i))
+    (vector-set! left i last-candle))
+
+  (set! last-candle -1)
+  (for ([i (in-range (sub1 n) -1 -1)])
+    (when (char=? (string-ref s i) #\|)
+      (set! last-candle i))
+    (vector-set! right i last-candle))
+
+  (define cnt 0)
+  (for ([i (in-range n)])
+    (when (char=? (string-ref s i) #\*)
+      (set! cnt (add1 cnt)))
+    (vector-set! prefix i cnt))
+
+  (define (answer query)
+    (define x (first query))
+    (define y (second query))
+    (define l (vector-ref right x))
+    (define r (vector-ref left y))
+    (if (or (= l -1) (= r -1) (>= l r))
+        0
+        (- (vector-ref prefix r) (vector-ref prefix l))))
+
+  (map answer queries))

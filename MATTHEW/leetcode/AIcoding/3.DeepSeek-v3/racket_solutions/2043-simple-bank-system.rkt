@@ -1,0 +1,26 @@
+(struct bank (accounts) #:mutable #:transparent)
+
+(define (make-bank-system balance)
+  (bank balance))
+
+(define (bank-transfer my-bank account1 account2 money)
+  (let ([accounts (bank-accounts my-bank)])
+    (when (and (<= 1 account1 (vector-length accounts))
+              (<= 1 account2 (vector-length accounts))
+              (>= (vector-ref accounts (sub1 account1)) money))
+      (vector-set! accounts (sub1 account1) (- (vector-ref accounts (sub1 account1)) money))
+      (vector-set! accounts (sub1 account2) (+ (vector-ref accounts (sub1 account2)) money))
+      #t)))
+
+(define (bank-deposit my-bank account money)
+  (let ([accounts (bank-accounts my-bank)])
+    (when (<= 1 account (vector-length accounts))
+      (vector-set! accounts (sub1 account) (+ (vector-ref accounts (sub1 account)) money))
+      #t)))
+
+(define (bank-withdraw my-bank account money)
+  (let ([accounts (bank-accounts my-bank)])
+    (when (and (<= 1 account (vector-length accounts))
+               (>= (vector-ref accounts (sub1 account)) money))
+      (vector-set! accounts (sub1 account) (- (vector-ref accounts (sub1 account)) money))
+      #t)))

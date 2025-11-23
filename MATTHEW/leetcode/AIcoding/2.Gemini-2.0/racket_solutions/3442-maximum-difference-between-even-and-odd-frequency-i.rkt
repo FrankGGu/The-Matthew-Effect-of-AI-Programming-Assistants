@@ -1,0 +1,11 @@
+(define (max-diff-even-odd-frequency nums)
+  (let* ((freq (make-hash))
+         (n (length nums)))
+    (for-each (lambda (x) (hash-update! freq x (lambda (v) (+ v 1)) 1)) nums)
+    (let loop ((keys (hash-keys freq)) (max-diff -inf))
+      (if (null? keys)
+          max-diff
+          (let* ((key (car keys))
+                 (val (hash-ref freq key))
+                 (diff (if (even? val) val (- val))))
+            (loop (cdr keys) (max (if (equal? max-diff -inf) diff (+ max-diff diff))))))))

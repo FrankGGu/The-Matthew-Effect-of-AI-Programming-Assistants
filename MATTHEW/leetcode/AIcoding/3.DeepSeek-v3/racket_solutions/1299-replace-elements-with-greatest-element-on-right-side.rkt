@@ -1,0 +1,6 @@
+(define/contract (replace-elements arr)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (let loop ([lst (reverse arr)] [max-so-far -1] [result '()])
+    (if (null? lst)
+        (reverse result)
+        (loop (cdr lst) (max max-so-far (car lst)) (cons max-so-far result)))))

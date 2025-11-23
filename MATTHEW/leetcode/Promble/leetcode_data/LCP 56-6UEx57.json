@@ -1,0 +1,38 @@
+{
+  "id": "LCP 56",
+  "title": "信物传送",
+  "titleSlug": "6UEx57",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Breadth-First Search",
+    "Graph",
+    "Array",
+    "Matrix",
+    "Shortest Path",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int conveyorBelt(vector<string>& matrix, vector<int>& start, vector<int>& end) {\n\n    }\n};",
+    "java": "class Solution {\n    public int conveyorBelt(String[] matrix, int[] start, int[] end) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def conveyorBelt(self, matrix, start, end):\n        \"\"\"\n        :type matrix: List[str]\n        :type start: List[int]\n        :type end: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def conveyorBelt(self, matrix: List[str], start: List[int], end: List[int]) -> int:",
+    "c": "\n\nint conveyorBelt(char** matrix, int matrixSize, int* start, int startSize, int* end, int endSize){\n\n}",
+    "csharp": "public class Solution {\n    public int ConveyorBelt(string[] matrix, int[] start, int[] end) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} matrix\n * @param {number[]} start\n * @param {number[]} end\n * @return {number}\n */\nvar conveyorBelt = function(matrix, start, end) {\n\n};",
+    "typescript": "function conveyorBelt(matrix: string[], start: number[], end: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $matrix\n     * @param Integer[] $start\n     * @param Integer[] $end\n     * @return Integer\n     */\n    function conveyorBelt($matrix, $start, $end) {\n\n    }\n}",
+    "swift": "class Solution {\n    func conveyorBelt(_ matrix: [String], _ start: [Int], _ end: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun conveyorBelt(matrix: Array<String>, start: IntArray, end: IntArray): Int {\n\n    }\n}",
+    "golang": "func conveyorBelt(matrix []string, start []int, end []int) int {\n\n}",
+    "ruby": "# @param {String[]} matrix\n# @param {Integer[]} start\n# @param {Integer[]} end\n# @return {Integer}\ndef conveyor_belt(matrix, start, end)\n\nend",
+    "scala": "object Solution {\n    def conveyorBelt(matrix: Array[String], start: Array[Int], end: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn conveyor_belt(matrix: Vec<String>, start: Vec<i32>, end: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (conveyor-belt matrix start end)\n  (-> (listof string?) (listof exact-integer?) (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec conveyor_belt(Matrix :: [unicode:unicode_binary()], Start :: [integer()], End :: [integer()]) -> integer().\nconveyor_belt(Matrix, Start, End) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec conveyor_belt(matrix :: [String.t], start :: [integer], end :: [integer]) :: integer\n  def conveyor_belt(matrix, start, end) do\n\n  end\nend"
+  },
+  "exampleTestcases": "",
+  "hints": []
+}

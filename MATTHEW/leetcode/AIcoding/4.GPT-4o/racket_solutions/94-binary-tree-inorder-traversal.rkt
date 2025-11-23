@@ -1,0 +1,8 @@
+(define (inorder-traversal root)
+  (define (traverse node)
+    (if (null? node)
+        '()
+        (append (traverse (node-left node))
+                (list (node-val node))
+                (traverse (node-right node)))))
+  (traverse root))

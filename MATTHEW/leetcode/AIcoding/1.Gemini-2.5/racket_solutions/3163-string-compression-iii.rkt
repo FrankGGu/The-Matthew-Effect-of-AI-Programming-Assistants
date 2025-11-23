@@ -1,0 +1,18 @@
+(define (compress-string word)
+  (let* ((n (string-length word)))
+    (let loop ((i 0) (acc '()))
+      (if (< i n)
+          (let* ((current-char (string-ref word i)))
+            (let find-next-block ((k i) (current-count 0))
+              (if (and (< k n) (char=? (string-ref word k) current-char))
+                  (find-next-block (+ k 1) (+ current-count 1))
+                  (let* ((count current-count)
+                         (j k)
+                         (new-acc (cons (string current-char) acc)))
+                    (let ((final-new-acc
+                           (cond
+                             ((= count 2) (cons (string current-char) new-acc))
+                             ((> count 2) (cons (number->string count) new-acc))
+                             (else new-acc))))
+                      (loop j final-new-acc)))))
+          (string-append* (reverse acc))))))

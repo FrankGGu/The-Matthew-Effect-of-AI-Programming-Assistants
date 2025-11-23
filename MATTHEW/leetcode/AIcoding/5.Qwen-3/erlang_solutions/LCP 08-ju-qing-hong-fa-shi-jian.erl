@@ -1,0 +1,13 @@
+-module(solution).
+-export([find_all_people/2]).
+
+find_all_people(Events, L) ->
+    Find = fun(Events, L, 0, dict:new(), []) -> 
+        case Events of
+            [] -> lists:reverse([]);
+            [H|T] ->
+                [Time, Person1, Person2] = H,
+                dict:store(Person1, Time, dict:store(Person2, Time, dict:erase(Person1, dict:erase(Person2, dict:map(fun(K, V) when K == Person1; K == Person2 -> V; _ -> V end, dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:map(fun(K, V) when K == Person1; K == Person2 -> V; _ -> V end, dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person1, dict:erase(Person2, dict:from_list(dict:to_list(dict:erase(Person......
+                end
+    end,
+    Find(Events, L, 0, dict:new(), []).

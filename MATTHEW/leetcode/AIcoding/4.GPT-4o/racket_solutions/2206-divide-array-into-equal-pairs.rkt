@@ -1,0 +1,16 @@
+(define (canDivideIntoEqualPairs nums)
+  (define n (length nums))
+  (if (not (= (modulo n 2) 0))
+      #f
+      (define freq (make-hash))
+      (for-each (lambda (x)
+                  (hash-set! freq x (add1 (hash-ref freq x 0))))
+                nums)
+      (define pairs (for/fold ([count 0]) ([key (hash-keys freq)])
+                      (if (>= (hash-ref freq key) 2)
+                          (+ count (quotient (hash-ref freq key) 2))
+                          count)))
+      (>= pairs (/ n 2))))
+
+(define (divideArray nums)
+  (canDivideIntoEqualPairs nums))

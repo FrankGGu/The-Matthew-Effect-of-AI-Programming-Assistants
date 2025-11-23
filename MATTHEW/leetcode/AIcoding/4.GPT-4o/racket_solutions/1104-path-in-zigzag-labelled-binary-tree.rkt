@@ -1,0 +1,21 @@
+(define (zigzag-path label)
+  (define (get-path n)
+    (if (= n 1)
+        '(1)
+        (let loop ((x n) (path '()))
+          (let ((level (floor (log (exact->inexact x) 2))))
+            (let ((parent (exact->inexact (/ x 2)))
+                  (is-left? (even? level)))
+              (if (zero? level)
+                  (cons 1 path)
+                  (loop parent (cons
+                                (if is-left?
+                                    (expt 2 level) 
+                                    (- (expt 2 (add1 level)) 1 (- x)))
+                                path))))))))
+  (define (reverse-path p)
+    (reverse p))
+  (reverse-path (get-path label)))
+
+(define (pathInZigZagTree label)
+  (zigzag-path label))

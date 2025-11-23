@@ -1,0 +1,6 @@
+(define (pass-the-pillow n time)
+  (let* ((cycle-length (* 2 (- n 1)))
+         (effective-time (modulo time cycle-length)))
+    (if (< effective-time (- n 1))
+        (+ 1 effective-time)
+        (- n (- effective-time (- n 1))))))

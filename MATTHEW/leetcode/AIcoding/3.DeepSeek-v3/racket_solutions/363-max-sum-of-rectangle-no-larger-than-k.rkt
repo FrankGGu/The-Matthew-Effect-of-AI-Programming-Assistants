@@ -1,0 +1,40 @@
+(define/contract (max-sum-submatrix matrix k)
+  (-> (listof (listof exact-integer?)) exact-integer? exact-integer?)
+  (define rows (length matrix))
+  (define cols (if (null? matrix) 0 (length (car matrix))))
+  (define max-sum -inf.0)
+
+  (for ([left (in-range cols)])
+    (define row-sums (make-list rows 0))
+    (for ([right (in-range left cols)])
+      (for ([i (in-range rows)])
+        (set! row-sums (list-update row-sums i (lambda (val) (+ val (list-ref (list-ref matrix i) right))))))
+
+      (define prefix-sums (list 0))
+      (define current-sum 0)
+      (for ([sum (in-list row-sums)])
+        (set! current-sum (+ current-sum sum))
+        (define idx (bisect-left prefix-sums (- current-sum k)))
+        (when (< idx (length prefix-sums))
+          (define candidate (- current-sum (list-ref prefix-sums idx)))
+          (when (and (<= candidate k) (> candidate max-sum))
+            (set! max-sum candidate))
+            (when (= max-sum k) (return max-sum)))
+        (bisect-insort prefix-sums current-sum)))
+
+  (if (= max-sum -inf.0) 0 max-sum))
+
+(define (bisect-left lst x)
+  (let loop ([low 0]
+             [high (length lst)])
+    (if (< low high)
+        (let* ([mid (quotient (+ low high) 2)]
+               [mid-val (list-ref lst mid)])
+          (if (< mid-val x)
+              (loop (add1 mid) high)
+              (loop low mid)))
+        low)))
+
+(define (bisect-insort lst x)
+  (define pos (bisect-left lst x))
+  (append (take lst pos) (cons x (drop lst pos))))

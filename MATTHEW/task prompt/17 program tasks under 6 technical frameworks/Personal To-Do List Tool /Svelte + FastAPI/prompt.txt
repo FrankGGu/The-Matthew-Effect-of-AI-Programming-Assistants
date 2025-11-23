@@ -1,0 +1,47 @@
+Create a modern full-stack Personal To-Do List application with the following technology stack:
+- Frontend: Svelte with SvelteKit
+- Backend: FastAPI with Python
+- Database: PostgreSQL (already set up in Docker)
+- ORM: SQLAlchemy with async support
+
+Database connection details:
+- URL: postgresql+asyncpg://postgres:todosecret@localhost:5432/todo_db
+
+Application requirements:
+1. Frontend components (Svelte):
+   - Reactive todo list with filters
+   - Form for adding/editing todos
+   - Status indicators and controls
+   - Date picker for filtering
+
+2. Backend API endpoints (FastAPI):
+   - GET /todos - Retrieve todos with query parameter filtering
+   - POST /todos - Create new todo
+   - PUT /todos/{id} - Update todo
+   - DELETE /todos/{id} - Soft delete todo
+   - Automatic OpenAPI documentation
+
+3. Data model (SQLAlchemy):
+   - Define model matching existing PostgreSQL todos table
+   - Use SQLAlchemy's declarative base
+   - Implement async database operations
+
+4. Functionality:
+   - Add todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter by date using FastAPI query parameters
+   - Modern, responsive UI with Svelte
+
+5. Implementation requirements:
+   - Use SQLAlchemy with async support
+   - Implement FastAPI with Pydantic models
+   - Use Svelte's reactive programming model
+   - Include proper error handling and validation
+   - Modern CSS styling
+
+Generate the complete source code with:
+- FastAPI application structure
+- Svelte components and routing
+- SQLAlchemy models and database setup
+- Requirements.txt and package.json
+- Configuration for database connection

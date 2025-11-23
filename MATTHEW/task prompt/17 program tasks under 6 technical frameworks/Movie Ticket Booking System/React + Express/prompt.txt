@@ -1,0 +1,44 @@
+Build a movie ticket booking system using modern JavaScript stack:
+
+**Technology Stack:**
+- Frontend: React 18 with TypeScript
+- Backend: Express.js with TypeScript
+- ORM: Prisma
+- Database: PostgreSQL (configured below)
+
+**Database Connection:**
+- URL: postgresql://postgres:moviepass@localhost:5432/movie_booking
+- Prisma schema: Generate from existing database
+
+**Core Features:**
+1. Movie Schedule Component
+   - Display screenings with pagination
+   - Search and filter functionality
+   - Real-time seat availability
+
+2. Seat Selection Component
+   - Interactive seat map using CSS Grid
+   - Real-time updates via WebSockets or polling
+   - Seat selection validation
+
+3. Checkout Process
+   - Multi-step form (screening → seats → customer info → confirmation)
+   - Order confirmation email template
+
+**Technical Requirements:**
+- Use Prisma Client for all database operations
+- Implement proper error handling
+- Add input validation with Zod
+- Use React Query for data fetching
+- Responsive design with styled-components
+
+**File Structure:**
+- prisma/schema.prisma
+- src/backend/ (Express routes, middleware)
+- src/frontend/ (React components, hooks)
+- Shared types between frontend and backend
+
+**Output:**
+- Complete source code with TypeScript
+- Prisma migration files
+- Docker setup if applicable

@@ -1,0 +1,22 @@
+(define/contract (reverse-k-group head k)
+  (-> (or/c list? null?) exact-positive-integer? (or/c list? null?))
+  (define (reverse-list lst)
+    (let loop ([lst lst] [acc null])
+      (if (null? lst)
+          acc
+          (loop (cdr lst) (cons (car lst) acc)))))
+  (define (take lst n)
+    (if (or (null? lst) (zero? n))
+        null
+        (cons (car lst) (take (cdr lst) (sub1 n)))))
+  (define (drop lst n)
+    (if (or (null? lst) (zero? n))
+        lst
+        (drop (cdr lst) (sub1 n))))
+  (let loop ([head head] [acc null])
+    (if (null? head)
+        (reverse-list acc)
+        (let ([group (take head k)])
+          (if (= (length group) k)
+              (loop (drop head k) (append (reverse-list group) acc))
+              (loop null (append head acc)))))))

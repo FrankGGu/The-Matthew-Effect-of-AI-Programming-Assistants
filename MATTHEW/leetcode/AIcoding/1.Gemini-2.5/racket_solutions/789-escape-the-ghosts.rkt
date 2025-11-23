@@ -1,0 +1,12 @@
+(define (manhattan-distance x1 y1 x2 y2)
+  (+ (abs (- x1 x2)) (abs (- y1 y2))))
+
+(define (escape-the-ghosts ghosts target)
+  (let* ((target-x (car target))
+         (target-y (cadr target))
+         (your-time (manhattan-distance 0 0 target-x target-y)))
+    (for/and ([ghost ghosts])
+      (let* ((ghost-x (car ghost))
+             (ghost-y (cadr ghost))
+             (ghost-time (manhattan-distance ghost-x ghost-y target-x target-y)))
+        (<= your-time ghost-time)))))

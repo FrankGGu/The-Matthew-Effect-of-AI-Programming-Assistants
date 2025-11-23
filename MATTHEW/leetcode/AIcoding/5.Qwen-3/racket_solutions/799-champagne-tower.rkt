@@ -1,0 +1,18 @@
+(define (pouring t p)
+  (let loop ([row 0] [remaining (list 1.0)])
+    (if (>= row t)
+        (list-ref remaining p)
+        (let ([next (make-list (add1 (length remaining)) 0.0)])
+          (for-each
+           (lambda (i)
+             (when (< i (length remaining))
+               (let ([val (list-ref remaining i)])
+                 (when (> val 0)
+                   (let ([split (/ val 2.0)])
+                     (set! (list-ref next i) (+ (list-ref next i) split))
+                     (set! (list-ref next (add1 i)) (+ (list-ref next (add1 i)) split)))))))
+           (range (length remaining)))
+          (loop (add1 row) next)))))
+
+(define (num-champagne-tower t p)
+  (if (or (> p t) (< p 0)) 0.0 (pouring t p)))

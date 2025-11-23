@@ -1,0 +1,12 @@
+(define (max-area-rectangle points)
+  (if (empty? points)
+      0
+      (let* ((x-coords (map car points))
+             (y-coords (map cadr points))
+             (min-x (apply min x-coords))
+             (max-x (apply max x-coords))
+             (min-y (apply min y-coords))
+             (max-y (apply max y-coords))
+             (width (- max-x min-x))
+             (height (- max-y min-y)))
+        (* width height))))

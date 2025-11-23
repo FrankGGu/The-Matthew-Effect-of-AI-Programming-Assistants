@@ -1,0 +1,33 @@
+(define (get-length-of-optimal-compression s k)
+  (let* ((n (string-length s))
+         (dp (make-vector (add1 n) (make-vector (add1 k) +inf.0))))
+    (vector-set! (vector-ref dp 0) 0 0)
+    (for ([i (in-range 1 (add1 n))])
+      (for ([j (in-range 0 (add1 k))])
+        (let ([cost-delete (if (> j 0) (vector-ref (vector-ref dp (sub1 i)) (sub1 j)) +inf.0)]
+              [cost-keep +inf.0])
+          (let loop ([l i] [cnt 0] [same 0] [diff 0] [del 0])
+            (when (>= l 1)
+              (if (char=? (string-ref s (sub1 l)) (string-ref s (sub1 i)))
+                  (begin
+                    (set! cnt (add1 cnt))
+                    (set! same (add1 same))
+                    (let ([new-diff diff])
+                      (when (or (= cnt 1) (= cnt 9) (= cnt 99))
+                        (set! new-diff (add1 new-diff)))
+                      (when (<= (+ del j) k)
+                        (set! cost-keep (min cost-keep
+                                             (+ (vector-ref (vector-ref dp (sub1 l)) (- j del))
+                                             (if (> cnt 100) 4 (if (> cnt 10) 3 (if (> cnt 1) 2 1))))))
+                        (loop (sub1 l) cnt same new-diff del))))
+                  (begin
+                    (set! diff (add1 diff))
+                    (when (<= (+ del diff j) k)
+                      (set! cost-keep (min cost-keep
+                                         (+ (vector-ref (vector-ref dp (sub1 l)) (- j (+ del diff)))
+                                         (if (> same 0)
+                                             (if (> same 100) 4 (if (> same 10) 3 (if (> same 1) 2 1)))
+                                             0)))
+                      (loop (sub1 l) 0 0 diff (add1 del)))))))
+          (vector-set! (vector-ref dp i) j (min cost-delete cost-keep)))))
+    (inexact->exact (vector-ref (vector-ref dp n) k))))

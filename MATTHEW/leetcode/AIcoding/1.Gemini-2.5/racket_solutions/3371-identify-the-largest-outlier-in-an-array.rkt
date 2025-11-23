@@ -1,0 +1,6 @@
+(define (identify-the-largest-outlier-in-an-array nums)
+  (let* ((evens (filter even? nums))
+         (odds (filter odd? nums)))
+    (if (< (length evens) (length odds))
+        (apply max evens)
+        (apply max odds))))

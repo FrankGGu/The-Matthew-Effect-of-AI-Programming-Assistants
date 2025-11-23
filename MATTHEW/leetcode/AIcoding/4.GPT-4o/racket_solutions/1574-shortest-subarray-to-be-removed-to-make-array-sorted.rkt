@@ -1,0 +1,26 @@
+(define (find-length-of-shortest-subarray arr)
+  (define n (length arr))
+  (define left (make-vector n))
+  (define right (make-vector n))
+
+  (vector-set! left 0 1)
+  (for ([i (in-range 1 n)])
+    (if (<= (vector-ref arr i) (vector-ref arr (sub1 i)))
+        (vector-set! left i (1+ (vector-ref left (sub1 i)))
+        (vector-set! left i 1)))
+
+  (vector-set! right (sub1 n) 1)
+  (for ([i (in-range (- n 2) -1 -1)])
+    (if (<= (vector-ref arr (add1 i)) (vector-ref arr i))
+        (vector-set! right i (1+ (vector-ref right (add1 i))))
+        (vector-set! right i 1)))
+
+  (define min-length n)
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (when (and (<= (vector-ref arr i) (vector-ref arr j))
+                 (<= (vector-ref left i) (sub1 j)))
+        (set! min-length (min min-length (sub1 (add1 j) i)))))
+    (set! min-length (min min-length (sub1 n (vector-ref left i)))))
+
+  (if (= min-length n) -1 min-length))

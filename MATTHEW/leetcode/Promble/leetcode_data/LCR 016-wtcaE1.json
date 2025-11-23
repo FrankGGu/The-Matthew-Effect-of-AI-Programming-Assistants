@@ -1,0 +1,35 @@
+{
+  "id": "LCR 016",
+  "title": "无重复字符的最长子串",
+  "titleSlug": "wtcaE1",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n\n    }\n};",
+    "java": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def lengthOfLongestSubstring(self, s):\n        \"\"\"\n        :type s: str\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:",
+    "c": "\n\nint lengthOfLongestSubstring(char * s){\n\n}",
+    "csharp": "public class Solution {\n    public int LengthOfLongestSubstring(string s) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} s\n * @return {number}\n */\nvar lengthOfLongestSubstring = function(s) {\n\n};",
+    "typescript": "function lengthOfLongestSubstring(s: string): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $s\n     * @return Integer\n     */\n    function lengthOfLongestSubstring($s) {\n\n    }\n}",
+    "swift": "class Solution {\n    func lengthOfLongestSubstring(_ s: String) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun lengthOfLongestSubstring(s: String): Int {\n\n    }\n}",
+    "golang": "func lengthOfLongestSubstring(s string) int {\n\n}",
+    "ruby": "# @param {String} s\n# @return {Integer}\ndef length_of_longest_substring(s)\n\nend",
+    "scala": "object Solution {\n    def lengthOfLongestSubstring(s: String): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn length_of_longest_substring(s: String) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (length-of-longest-substring s)\n  (-> string? exact-integer?)\n\n  )",
+    "erlang": "-spec length_of_longest_substring(S :: unicode:unicode_binary()) -> integer().\nlength_of_longest_substring(S) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec length_of_longest_substring(s :: String.t) :: integer\n  def length_of_longest_substring(s) do\n\n  end\nend"
+  },
+  "exampleTestcases": "\"abcabcbb\"\n\"bbbbb\"\n\"pwwkew\"\n\"\"",
+  "hints": []
+}

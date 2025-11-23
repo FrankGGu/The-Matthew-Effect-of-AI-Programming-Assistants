@@ -1,0 +1,8 @@
+(define (longestIdealSubsequence a k)
+  (define n (length a))
+  (define dp (make-vector (+ 1 128) 0))
+  (for ([i (in-range n)])
+    (let ([val (vector-ref a i)])
+      (for ([j (max 0 (- val k)) (in-range (min 127 (+ val k 1)))])
+        (vector-set! dp j (max (vector-ref dp j) (+ 1 (vector-ref dp (- val 1))))))))
+  (apply max (vector->list dp)))

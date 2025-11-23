@@ -1,0 +1,35 @@
+(define (cmp a b)
+  (let ((x (car a)) (y (car b)))
+    (< x y)))
+
+(define (sort-list lst cmp)
+  (cond ((null? lst) '())
+        ((null? (cdr lst)) lst)
+        (else
+         (let* ((mid (quotient (length lst) 2))
+                (left (take lst mid))
+                (right (drop lst mid)))
+           (merge (sort-list left cmp)
+                  (sort-list right cmp)
+                  cmp)))))
+
+(define (merge left right cmp)
+  (cond ((null? left) right)
+        ((null? right) left)
+        ((cmp (car left) (car right))
+         (cons (car left) (merge (cdr left) right cmp)))
+        (else
+         (cons (car right) (merge left (cdr right) cmp)))))
+
+(define (find-min-arrows points)
+  (let ((sorted-points (sort-list points cmp)))
+    (let loop ((points sorted-points)
+               (arrows 0)
+               (last-end -inf.0))
+      (if (null? points)
+          arrows
+          (let ((current-start (caar points))
+                (current-end (cadar points)))
+            (if (<= current-start last-end)
+                (loop (cdr points) arrows last-end)
+                (loop (cdr points) (+ arrows 1) current-end)))))))

@@ -1,0 +1,13 @@
+(define (find-score nums)
+  (let-values (((scores current-sum current-max)
+                (for/fold ((acc-scores '())
+                           (s 0)
+                           (m 0))
+                          ((num (in-list nums)))
+                  (let* ((new-s (+ s num))
+                         (new-m (max m num))
+                         (current-score (+ new-s new-m)))
+                    (values (cons current-score acc-scores)
+                            new-s
+                            new-m)))))
+    (reverse scores)))

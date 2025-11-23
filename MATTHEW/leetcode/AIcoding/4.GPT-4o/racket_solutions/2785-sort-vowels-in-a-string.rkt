@@ -1,0 +1,12 @@
+(define (sortVowels s)
+  (define vowels (filter (lambda (c) (member c '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U))) (string->list s)))
+  (define sorted-vowels (sort vowels char<?))
+  (define index 0)
+  (string-append
+   (map (lambda (c)
+          (if (member c '(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U))
+              (let ([vowel (list-ref sorted-vowels index)])
+                (set! index (+ index 1))
+                vowel)
+              c))
+        (string->list s)))

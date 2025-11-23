@@ -1,0 +1,6 @@
+按照这6种Java Enterprise Vue + Spring Boot + Hibernate 
+Modern JS React + Express.js + Prisma 
+Python Full-stack Django (REST) + Django ORM 
+Lightweight Go Preact + Gin + GORM 
+Modern Python Svelte + FastAPI + SQLAlchemy
+Rust Emerging SolidJS + Actix Web + SeaORM 前后端组合分别给我写出完成上述会议室预订系统的prompt 用英文

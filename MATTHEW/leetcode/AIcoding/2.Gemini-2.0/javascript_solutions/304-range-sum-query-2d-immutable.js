@@ -1,0 +1,20 @@
+var NumMatrix = function(matrix) {
+    this.matrix = matrix;
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        this.sum = [[]];
+        return;
+    }
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+    this.sum = Array(rows + 1).fill(null).map(() => Array(cols + 1).fill(0));
+
+    for (let i = 1; i <= rows; i++) {
+        for (let j = 1; j <= cols; j++) {
+            this.sum[i][j] = this.sum[i - 1][j] + this.sum[i][j - 1] - this.sum[i - 1][j - 1] + matrix[i - 1][j - 1];
+        }
+    }
+};
+
+NumMatrix.prototype.sumRegion = function(row1, col1, row2, col2) {
+    return this.sum[row2 + 1][col2 + 1] - this.sum[row1][col2 + 1] - this.sum[row2 + 1][col1] + this.sum[row1][col1];
+};

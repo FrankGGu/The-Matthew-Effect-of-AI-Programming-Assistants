@@ -1,0 +1,22 @@
+(define (min-lines costs)
+  (define (slope a b)
+    (let ((x1 (car a)) (y1 (cadr a)) (x2 (car b)) (y2 (cadr b)))
+      (if (= x1 x2)
+          #f
+          (/ (- y2 y1) (- x2 x1)))))
+  (define (same-slope a b c)
+    (let ((s1 (slope a b)) (s2 (slope b c)))
+      (if (and s1 s2)
+          (= s1 s2)
+          #t)))
+  (if (< (length costs) 2)
+      0
+      (let loop ((i 0) (count 0))
+        (if (>= i (- (length costs) 2))
+            count
+            (let ((a (list-ref costs i))
+                  (b (list-ref costs (+ i 1)))
+                  (c (list-ref costs (+ i 2))))
+              (if (same-slope a b c)
+                  (loop (+ i 1) count)
+                  (loop (+ i 1) (+ count 1))))))))

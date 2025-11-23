@@ -1,0 +1,35 @@
+Create a complete quick pickup code management system using Django REST Framework backend and Django template frontend with Django ORM. Use PostgreSQL with the following schema:
+
+Database schema:
+- pickup_locations (id, name, address, is_active, created_at)
+- pickup_items (id, name, description, price, is_available, created_at)
+- pickup_orders (id, customer_name, customer_phone, pickup_code, location_id, status, created_at, updated_at, expected_ready_time, actual_pickup_time)
+- order_items (id, order_id, item_id, quantity, special_instructions)
+- pickup_audit_log (id, order_id, action, performed_at, performed_by)
+
+Required features:
+1. Django backend with REST API using Django REST Framework
+2. Django template frontend with modern JavaScript
+3. Django ORM for database operations
+4. Session-based or token authentication
+5. Unique pickup code generation (6-character alphanumeric)
+6. Order status management with state transitions
+7. Admin interface using Django admin
+8. Customer-facing order creation and tracking
+9. Real-time notifications for order status changes
+
+Implementation requirements:
+- Use Django class-based views for API endpoints
+- Implement proper form validation and error handling
+- Include unit tests for models, views, and APIs
+- Use Django templates with modern CSS framework
+- Generate complete, runnable code with proper documentation
+- Include database migrations
+
+Generate the complete project structure including:
+- Django project with all apps
+- Models, serializers, views, and URLs
+- Templates and static files
+- Django admin configuration
+- Settings configuration for production and development
+- Requirements.txt with all dependencies

@@ -1,0 +1,10 @@
+(define (findTilt root)
+  (define (helper node)
+    (if (null? node)
+        (values 0 0)
+        (let-values ([(left-sum left-tilt) (helper (node-left node))]
+                     [(right-sum right-tilt) (helper (node-right node))])
+          (define tilt (+ left-tilt right-tilt (abs (- left-sum right-sum))))
+          (values (+ left-sum right-sum (+ (node-val node) 0)) tilt))))
+  (define-values (total-sum total-tilt) (helper root))
+  total-tilt)

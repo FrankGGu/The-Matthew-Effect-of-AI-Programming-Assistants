@@ -1,0 +1,7 @@
+(define (xorQueries arr queries)
+  (define n (length arr))
+  (define prefix-xor (make-vector (+ n 1) 0))
+  (for* ([i (in-range n)])
+    (vector-set! prefix-xor (+ i 1) (xor (vector-ref prefix-xor i) (vector-ref arr i))))
+  (map (lambda (q) (xor (vector-ref prefix-xor (car q)) (vector-ref prefix-xor (+ (cdr q) 1))))
+       queries))

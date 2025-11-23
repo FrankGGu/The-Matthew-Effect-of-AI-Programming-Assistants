@@ -1,0 +1,18 @@
+(define (capitalize-title title)
+  (define (capitalize-word word)
+    (if (string=? "" word)
+        ""
+        (string-append (string-upcase (substring word 0 1)) (substring word 1))))
+  (define (process-words words)
+    (map (lambda (word)
+           (if (or (string=? word "the")
+                   (string=? word "and")
+                   (string=? word "a")
+                   (string=? word "of")
+                   (string=? word "in"))
+               word
+               (capitalize-word word)))
+         words))
+  (define words (string-split title))
+  (define capitalized-words (process-words words))
+  (string-join capitalized-words " "))

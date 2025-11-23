@@ -1,0 +1,36 @@
+{
+  "id": "LCP 49",
+  "title": "环形闯关游戏",
+  "titleSlug": "K8GULz",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Union Find",
+    "Array",
+    "Heap (Priority Queue)"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    long long ringGame(vector<long long>& challenge) {\n\n    }\n};",
+    "java": "class Solution {\n    public long ringGame(long[] challenge) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def ringGame(self, challenge):\n        \"\"\"\n        :type challenge: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def ringGame(self, challenge: List[int]) -> int:",
+    "c": "\n\nlong long ringGame(long long* challenge, int challengeSize){\n\n}",
+    "csharp": "public class Solution {\n    public long RingGame(long[] challenge) {\n\n    }\n}",
+    "javascript": "/**\n * @param {BigInt[]} challenge\n * @return {BigInt}\n */\nvar ringGame = function(challenge) {\n\n};",
+    "typescript": "function ringGame(challenge: BigInt[]): BigInt {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $challenge\n     * @return Integer\n     */\n    function ringGame($challenge) {\n\n    }\n}",
+    "swift": "class Solution {\n    func ringGame(_ challenge: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun ringGame(challenge: LongArray): Long {\n\n    }\n}",
+    "golang": "func ringGame(challenge []int64) int64 {\n\n}",
+    "ruby": "# @param {Integer[]} challenge\n# @return {Integer}\ndef ring_game(challenge)\n\nend",
+    "scala": "object Solution {\n    def ringGame(challenge: Array[Long]): Long = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn ring_game(challenge: Vec<i64>) -> i64 {\n\n    }\n}",
+    "racket": "(define/contract (ring-game challenge)\n  (-> (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec ring_game(Challenge :: [integer()]) -> integer().\nring_game(Challenge) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec ring_game(challenge :: [integer]) :: integer\n  def ring_game(challenge) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[5,4,6,2,7]\n[1,17,1,19,1]\n[12,7,11,3,9]",
+  "hints": []
+}

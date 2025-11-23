@@ -1,0 +1,32 @@
+{
+  "id": "LCP 76",
+  "title": "魔法棋盘",
+  "titleSlug": "1ybDKD",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    long long getSchemeCount(int n, int m, vector<string>& chessboard) {\n\n    }\n};",
+    "java": "class Solution {\n    public long getSchemeCount(int n, int m, String[] chessboard) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def getSchemeCount(self, n, m, chessboard):\n        \"\"\"\n        :type n: int\n        :type m: int\n        :type chessboard: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def getSchemeCount(self, n: int, m: int, chessboard: List[str]) -> int:",
+    "c": "long long getSchemeCount(int n, int m, char** chessboard, int chessboardSize){\n\n}",
+    "csharp": "public class Solution {\n    public long GetSchemeCount(int n, int m, string[] chessboard) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} n\n * @param {number} m\n * @param {string[]} chessboard\n * @return {number}\n */\nvar getSchemeCount = function(n, m, chessboard) {\n\n};",
+    "typescript": "function getSchemeCount(n: number, m: number, chessboard: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $n\n     * @param Integer $m\n     * @param String[] $chessboard\n     * @return Integer\n     */\n    function getSchemeCount($n, $m, $chessboard) {\n\n    }\n}",
+    "swift": "class Solution {\n    func getSchemeCount(_ n: Int, _ m: Int, _ chessboard: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun getSchemeCount(n: Int, m: Int, chessboard: Array<String>): Long {\n\n    }\n}",
+    "dart": "class Solution {\n  int getSchemeCount(int n, int m, List<String> chessboard) {\n\n  }\n}",
+    "golang": "func getSchemeCount(n int, m int, chessboard []string) int64 {\n\n}",
+    "ruby": "# @param {Integer} n\n# @param {Integer} m\n# @param {String[]} chessboard\n# @return {Integer}\ndef get_scheme_count(n, m, chessboard)\n\nend",
+    "scala": "object Solution {\n    def getSchemeCount(n: Int, m: Int, chessboard: Array[String]): Long = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn get_scheme_count(n: i32, m: i32, chessboard: Vec<String>) -> i64 {\n\n    }\n}",
+    "racket": "(define/contract (get-scheme-count n m chessboard)\n  (-> exact-integer? exact-integer? (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec get_scheme_count(N :: integer(), M :: integer(), Chessboard :: [unicode:unicode_binary()]) -> integer().\nget_scheme_count(N, M, Chessboard) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec get_scheme_count(n :: integer, m :: integer, chessboard :: [String.t]) :: integer\n  def get_scheme_count(n, m, chessboard) do\n\n  end\nend"
+  },
+  "exampleTestcases": "3\n3\n[\"..R\",\"..B\",\"?R?\"]\n3\n3\n[\"?R?\",\"B?B\",\"?R?\"]",
+  "hints": []
+}

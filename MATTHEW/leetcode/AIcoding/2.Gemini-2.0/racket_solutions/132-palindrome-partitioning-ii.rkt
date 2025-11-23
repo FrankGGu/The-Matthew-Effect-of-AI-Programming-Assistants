@@ -1,0 +1,18 @@
+(define (min-cut s)
+  (let* ((n (string-length s))
+         (is-palindrome? (make-matrix n n #f))
+         (cuts (make-vector n (+ n 1))))
+
+    (for* ((i (in-range n))
+           (j (in-range i (+ 1 i))))
+      (when (equal? (string-ref s i) (string-ref s j))
+        (if (or (= i j) (= (- i j) 1) (matrix-ref is-palindrome? (+ 1 j) (- i 1)))
+            (matrix-set! is-palindrome? j i #t))))
+
+    (vector-set! cuts 0 -1)
+    (for ((i (in-range 1 (+ n 1))))
+      (let loop ((j (in-range i)))
+        (when (matrix-ref is-palindrome? j (- i 1))
+          (vector-set! cuts i (min (vector-ref cuts i (or #f +infinity))
+                                  (+ 1 (vector-ref cuts j)))))))
+    (vector-ref cuts n)))

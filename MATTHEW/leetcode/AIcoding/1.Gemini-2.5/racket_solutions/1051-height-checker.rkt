@@ -1,0 +1,5 @@
+(define (height-checker heights)
+  (let ((expected (sort heights <)))
+    (for/sum ((h heights)
+              (e expected))
+      (if (= h e) 0 1))))

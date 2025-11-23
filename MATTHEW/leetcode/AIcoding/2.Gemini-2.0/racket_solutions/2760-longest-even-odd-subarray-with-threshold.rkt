@@ -1,0 +1,15 @@
+(define (longest-even-odd-subarray threshold nums)
+  (let loop ([nums nums] [max-len 0])
+    (if (empty? nums)
+        max-len
+        (let ([first-num (car nums)]
+              [rest-nums (cdr nums)])
+          (if (and (<= first-num threshold) (even? first-num))
+              (let loop2 ([nums rest-nums] [len 1])
+                (if (empty? nums)
+                    (loop rest-nums (max max-len len))
+                    (let ([next-num (car nums)])
+                      (if (and (<= next-num threshold) (not (equal? (even? (car (reverse (list first-num (car nums))))) (even? (car (list first-num (car nums)))))))
+                          (loop2 nums (+ len 1))
+                          (loop rest-nums (max max-len len))))))
+              (loop rest-nums max-len))))) )

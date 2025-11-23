@@ -1,0 +1,17 @@
+(define (count-servers grid)
+  (define (count-rows grid)
+    (map (lambda (row) (if (>= (apply + row) 2) 1 0)) grid))
+  (define (count-cols grid)
+    (map (lambda (col) (if (>= (apply + col) 2) 1 0)) 
+         (apply map list grid)))
+  (define row-counts (count-rows grid))
+  (define col-counts (count-cols grid))
+  (define (count-communicating grid row-counts col-counts)
+    (for/sum ([i (in-range (length grid))] 
+               [j (in-range (length (first grid)))])
+      (if (and (= (list-ref (list-ref grid i) j) 1)
+               (or (= (list-ref row-counts i) 1) 
+                   (= (list-ref col-counts j) 1)))
+          1
+          0)))
+  (count-communicating grid row-counts col-counts))

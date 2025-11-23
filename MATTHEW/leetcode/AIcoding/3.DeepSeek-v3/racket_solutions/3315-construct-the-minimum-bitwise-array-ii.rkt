@@ -1,0 +1,8 @@
+(define (minimum-array n bits)
+  (let loop ((i 0) (res '()) (prev 0))
+    (if (= i n)
+        (reverse res)
+        (let ((current (if (null? bits) 0 (car bits))))
+          (if (and (not (null? bits)) (= i (car bits)))
+              (loop (+ i 1) (cons (bitwise-xor prev 1) res) (bitwise-xor prev 1))
+              (loop (+ i 1) (cons prev res) prev))))))

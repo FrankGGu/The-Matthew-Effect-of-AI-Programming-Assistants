@@ -1,0 +1,8 @@
+(define (split-string s sep)
+  (if (string=? s "")
+      '()
+      (let loop ((start 0) (result '()))
+        (let ((index (string-index s sep start)))
+          (if (null? index)
+              (cons (substring s start) result)
+              (loop (+ index 1) (cons (substring s start index) result)))))))

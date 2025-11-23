@@ -1,0 +1,10 @@
+(define (count-pairs nums target)
+  (let loop ((i 0) (count 0))
+    (if (>= i (sub1 (length nums)))
+        count
+        (let inner-loop ((j (add1 i)) (count count))
+          (if (>= j (length nums))
+              (loop (add1 i) count)
+              (if (< (+ (list-ref nums i) (list-ref nums j)) target)
+                  (inner-loop (add1 j) (add1 count))
+                  (inner-loop (add1 j) count))))))

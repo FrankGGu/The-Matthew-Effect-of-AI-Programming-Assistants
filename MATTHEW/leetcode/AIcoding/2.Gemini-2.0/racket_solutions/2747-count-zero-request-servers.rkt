@@ -1,0 +1,15 @@
+(define (count-servers n logs x queries)
+  (define server-counts (make-vector n 0))
+  (for ([log logs])
+    (vector-set! server-counts (car log) (+ 1 (vector-ref server-counts (car log))))
+    (vector-set! server-counts (cadr log) (+ 1 (vector-ref server-counts (cadr log)))))
+
+  (define results (list))
+  (for ([query queries])
+    (define count 0)
+    (for ([i (range n)])
+      (if (>= (vector-ref server-counts i) query)
+          (set! count (+ count 1))))
+    (set! results (append results (list count))))
+
+  results)

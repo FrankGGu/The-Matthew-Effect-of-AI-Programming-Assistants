@@ -1,0 +1,6 @@
+(define (get-smallest-string n k)
+  (let loop ([n n] [k k] [result '()])
+    (if (= n 0)
+        (list->string (reverse result))
+        (let ([val (min (- k (* n 1)) 26)])
+          (loop (- n 1) (- k val) (cons (integer->char (+ 96 val)) result))))))

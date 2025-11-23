@@ -1,0 +1,5 @@
+(define (average-salary salary)
+  (let* ((sorted-salary (sort salary <))
+         (n (length sorted-salary))
+         (cleaned-salary (take (drop sorted-salary 1) (- n 2))))
+    (/ (apply + cleaned-salary) (length cleaned-salary))))

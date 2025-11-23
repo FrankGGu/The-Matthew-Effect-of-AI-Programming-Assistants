@@ -1,0 +1,8 @@
+(define (kth-largest-element-in-a-stream nums k)
+  (let ((heap (list->heap nums #:type 'max)))
+    (lambda (val)
+      (heap-add! heap val)
+      (if (> (heap-length heap) k)
+          (heap-remove! heap)
+          #f)
+      (heap-ref heap 0))))

@@ -1,0 +1,8 @@
+(define (find-kth-string n k)
+  (define (dfs path)
+    (if (= (string-length path) n)
+        (list path)
+        (append (dfs (string-append path "a"))
+                (dfs (string-append path "b"))
+                (dfs (string-append path "c"))))
+  (list-ref (dfs "") (- k 1)))

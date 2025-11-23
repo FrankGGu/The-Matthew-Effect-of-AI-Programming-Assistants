@@ -1,0 +1,5 @@
+(define (sum-of-unique nums)
+  (let ((counts (make-hash)))
+    (for ([num nums])
+      (hash-update! counts num (lambda (v) (+ v 1)) 0))
+    (foldl + 0 (filter (lambda (num) (= (hash-ref counts num) 1)) nums))))

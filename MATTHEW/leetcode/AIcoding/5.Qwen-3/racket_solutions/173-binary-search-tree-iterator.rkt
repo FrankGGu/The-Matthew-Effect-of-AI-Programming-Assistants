@@ -1,0 +1,26 @@
+(define-struct tree-node (val left right) #:mutable)
+
+(define (make-bst-iterator root)
+  (define (inorder-traversal node)
+    (if (not node)
+        '()
+        (append (inorder-traversal (tree-node-left node))
+                (list node)
+                (inorder-traversal (tree-node-right node)))))
+  (define traversal (inorder-traversal root))
+  (define index 0)
+  (lambda ()
+    (if (< index (length traversal))
+        (begin
+          (set! index (+ index 1))
+          (tree-node-val (list-ref traversal (- index 1))))
+        #f)))
+
+(define (bst-iterator-has-next iterator)
+  (let ((index (car (reverse (current-environment)))))
+    (< index (length (cadr (reverse (current-environment)))))))
+
+(define (bst-iterator-next iterator)
+  (let ((index (car (reverse (current-environment)))))
+    (set! index (+ index 1))
+    (tree-node-val (list-ref (cadr (reverse (current-environment))) (- index 1)))))

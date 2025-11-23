@@ -1,0 +1,37 @@
+#lang racket
+
+(define (find-row-min-and-idx row)
+  (let loop ((current-min (car row)) (current-min-idx 0) (idx 0) (rest (cdr row)))
+    (if (empty? rest)
+        (cons current-min current-min-idx)
+        (let ((val (car rest)))
+          (if (< val current-min)
+              (loop val (+ idx 1) (+ idx 1) (cdr rest))
+              (loop current-min current-min-idx (+ idx 1) (cdr rest)))))))
+
+(define (get-col matrix col-idx num-rows)
+  (let loop ((r 0) (col-elements '()))
+    (if (= r num-rows)
+        (reverse col-elements)
+        (loop (+ r 1) (cons (list-ref (list-ref matrix r) col-idx) col-elements)))))
+
+(define (find-list-max lst)
+  (if (empty? lst)
+      (error "find-list-max on empty list")
+      (foldl max (car lst) (cdr lst))))
+
+(define (lucky-numbers matrix)
+  (let* ((num-rows (length matrix))
+         (num-cols (if (empty? matrix) 0 (length (car matrix))))
+         (lucky-nums-acc '()))
+
+    (when (and (> num-rows 0) (> num-cols 0))
+      (for ([r (in-range num-rows)])
+        (let* ((row (list-ref matrix r))
+               (min-info (find-row-min-and-idx row))
+               (row-min-val (car min-info))
+               (col-idx-of-min (cdr min-info)))
+          (let ((col-list (get-col matrix col-idx-of-min num-rows)))
+            (when (= row-min-val (find-list-max col-list))
+              (set! lucky-nums-acc (cons row-min-val lucky-nums-acc)))))))
+    (reverse lucky-nums-acc)))

@@ -1,0 +1,35 @@
+import heapq
+
+class Solution:
+    def minimumEffortPath(self, heights: list[list[int]]) -> int:
+        rows = len(heights)
+        cols = len(heights[0])
+
+        dist = [[float('inf')] * cols for _ in range(rows)]
+        dist[0][0] = 0
+
+        min_heap = [(0, 0, 0)]  # (current_max_effort, row, col)
+
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+        while min_heap:
+            effort, r, c = heapq.heappop(min_heap)
+
+            if effort > dist[r][c]:
+                continue
+
+            if r == rows - 1 and c == cols - 1:
+                return effort
+
+            for dr, dc in directions:
+                nr, nc = r + dr, c + dc
+
+                if 0 <= nr < rows and 0 <= nc < cols:
+                    current_step_effort = abs(heights[r][c] - heights[nr][nc])
+                    new_effort = max(effort, current_step_effort)
+
+                    if new_effort < dist[nr][nc]:
+                        dist[nr][nc] = new_effort
+                        heapq.heappush(min_heap, (new_effort, nr, nc))
+
+        return 0

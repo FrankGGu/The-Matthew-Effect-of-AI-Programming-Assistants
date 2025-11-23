@@ -1,0 +1,8 @@
+(define (paint-walls cost time)
+  (define n (length cost))
+  (define dp (make-vector (+ n 1) 1000000000))
+  (vector-set! dp 0 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range n -1 -1)])
+      (vector-set! dp (+ j 1) (min (vector-ref dp (+ j 1)) (+ (vector-ref dp j) (vector-ref cost i))))))
+  (vector-ref dp n))

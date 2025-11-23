@@ -1,0 +1,20 @@
+(define (find-longest-word s d)
+  (define (can-form-word word)
+    (let loop ((i 0) (j 0))
+      (cond
+        ((= i (string-length word)) #t)
+        ((= j (string-length s)) #f)
+        ((char=? (string-ref word i) (string-ref s j))
+         (loop (+ i 1) (+ j 1)))
+        (else (loop i (+ j 1))))))
+
+  (define longest-word "")
+  (for-each (lambda (word)
+              (when (and (can-form-word word)
+                         (> (string-length word) (string-length longest-word)))
+                (set! longest-word word)))
+            d)
+  longest-word)
+
+(define (longest-word-in-dictionary s d)
+  (find-longest-word s d))

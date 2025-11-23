@@ -1,0 +1,20 @@
+(define (min-operations nums target)
+  (let loop ((nums (sort nums <))
+             (target target)
+             (ops 0))
+    (cond
+      ((= target 0) ops)
+      ((null? nums) (if (= target 0) ops -1))
+      ((> target (apply + nums)) -1)
+      ((>= (car (reverse nums)) target)
+       (let loop2 ((nums nums))
+         (cond
+           ((null? nums) -1)
+           ((>= (car (reverse nums)) target)
+            (if (>= (car (reverse nums)) target)
+                (loop (remove (car (reverse nums)) nums 1) (- target (car (reverse nums))) ops)
+                (loop2 (drop-right nums 1))))
+           (else -1))))
+      (else
+       (let ((max-val (car (reverse nums))))
+         (loop (append nums (list max-val)) target (+ ops 1)))))))

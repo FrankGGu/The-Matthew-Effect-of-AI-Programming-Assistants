@@ -1,0 +1,15 @@
+#lang racket
+
+(define (find-score nums)
+  (define n (length nums))
+  (define prefix-sums (make-vector n 0))
+  (vector-set! prefix-sums 0 (car nums))
+  (for ([i (in-range 1 n)])
+    (vector-set! prefix-sums i (+ (vector-ref prefix-sums (- i 1)) (list-ref nums i))))
+  (define total (apply + nums))
+  (define res 0)
+  (for ([i (in-range n)])
+    (define sum (vector-ref prefix-sums i))
+    (define diff (abs (- sum (- total sum))))
+    (set! res (+ res diff)))
+  res)

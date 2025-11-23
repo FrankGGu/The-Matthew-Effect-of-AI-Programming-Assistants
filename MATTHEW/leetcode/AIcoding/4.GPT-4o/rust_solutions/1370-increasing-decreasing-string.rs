@@ -1,0 +1,26 @@
+impl Solution {
+    pub fn sort_string(s: String) -> String {
+        let mut count = vec![0; 26];
+        for c in s.chars() {
+            count[(c as usize) - ('a' as usize)] += 1;
+        }
+
+        let mut result = String::new();
+        while result.len() < s.len() {
+            for i in 0..26 {
+                if count[i] > 0 {
+                    result.push((i as u8 + 'a' as u8) as char);
+                    count[i] -= 1;
+                }
+            }
+            for i in (0..26).rev() {
+                if count[i] > 0 {
+                    result.push((i as u8 + 'a' as u8) as char);
+                    count[i] -= 1;
+                }
+            }
+        }
+
+        result
+    }
+}

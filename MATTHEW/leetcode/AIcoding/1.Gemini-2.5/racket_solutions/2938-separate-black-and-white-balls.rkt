@@ -1,0 +1,11 @@
+(define (separate-black-and-white-balls s)
+  (let ((n (string-length s)))
+    (let loop ((i 0)
+               (operations 0)
+               (count-ones 0))
+      (if (= i n)
+          operations
+          (let ((char (string-ref s i)))
+            (if (char=? char #\1)
+                (loop (+ i 1) operations (+ count-ones 1))
+                (loop (+ i 1) (+ operations count-ones) count-ones)))))))

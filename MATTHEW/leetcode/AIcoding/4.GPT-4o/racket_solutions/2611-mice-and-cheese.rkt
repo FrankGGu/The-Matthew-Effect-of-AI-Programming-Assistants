@@ -1,0 +1,7 @@
+(define (mice-and-cheese mice cheese)
+  (define n (length mice))
+  (define dp (make-vector (+ 1 n) 0))
+  (for ((i (in-range n)))
+    (vector-set! dp (add1 i) 
+                 (+ (vector-ref dp i) (max (list-ref mice i) (list-ref cheese i)))))
+  (vector-ref dp n))

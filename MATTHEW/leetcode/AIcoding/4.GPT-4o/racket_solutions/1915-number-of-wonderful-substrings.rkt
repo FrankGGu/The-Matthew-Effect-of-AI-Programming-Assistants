@@ -1,0 +1,20 @@
+(define (wonderful-substrings word)
+  (define (count-ones n)
+    (if (= n 0) 0 (modulo n 2)))
+
+  (define prefix-count (make-vector 1024 0))
+  (vector-set! prefix-count 0 1)
+  (define count 0)
+  (define mask 0)
+
+  (for-each (lambda (c)
+              (set! mask (bitwise-xor mask (1 << (- (char->integer c) (char->integer #\a)))))
+              (set! count (+ count (vector-ref prefix-count mask)))
+              (for-each (lambda (i)
+                          (set! count (+ count (vector-ref prefix-count (bitwise-xor mask (1 << i))))))
+                        (range 10))
+              (vector-set! prefix-count mask (+ 1 (vector-ref prefix-count mask))))
+            (string->list word))
+  count)
+
+(wonderful-substrings "aba")

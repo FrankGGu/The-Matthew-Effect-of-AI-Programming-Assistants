@@ -1,0 +1,7 @@
+(define (kth-distinct strings k)
+  (let ((count (make-hash)))
+    (for-each (lambda (s) (hash-update! count s add1 0)) strings)
+    (let loop ((lst strings) (k k))
+      (cond ((null? lst) #f)
+            ((= (hash-ref count (car lst)) 1) (if (= k 1) (car lst) (loop (cdr lst) (- k 1))))
+            (else (loop (cdr lst) k))))))

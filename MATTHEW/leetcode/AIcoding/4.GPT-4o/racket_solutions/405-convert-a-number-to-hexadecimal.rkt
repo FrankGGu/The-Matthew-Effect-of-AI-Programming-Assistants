@@ -1,0 +1,10 @@
+(define (toHex num)
+  (if (= num 0)
+      "0"
+      (let loop ((n num) (hex ""))
+        (if (= n 0)
+            (reverse hex)
+            (let ((digit (mod n 16)))
+              (loop (quotient n 16) (string-append hex (if (< digit 10)
+                                                            (string (char (+ digit 48)))
+                                                            (string (char (+ digit 87)))))))))))

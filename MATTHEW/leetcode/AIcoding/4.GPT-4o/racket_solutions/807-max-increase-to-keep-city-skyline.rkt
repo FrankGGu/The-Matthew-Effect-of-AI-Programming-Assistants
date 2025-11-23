@@ -1,0 +1,7 @@
+(define (maxIncreaseKeepingSkyline grid)
+  (define n (length grid))
+  (define row-max (map (lambda (i) (apply max (map (lambda (j) (list-ref (list-ref grid i) j)) (range n)))) (range n)))
+  (define col-max (map (lambda (j) (apply max (map (lambda (i) (list-ref (list-ref grid i) j)) (range n)))) (range n)))
+  (define total-increase (for/sum ((i (in-range n)) (j (in-range n)))
+                                   (max 0 (- (min (list-ref row-max i) (list-ref col-max j)) (list-ref (list-ref grid i) j)))))
+  total-increase)

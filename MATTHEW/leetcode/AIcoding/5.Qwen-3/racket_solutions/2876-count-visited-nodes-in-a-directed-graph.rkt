@@ -1,0 +1,17 @@
+#lang racket
+
+(define (count-visited-nodes edges)
+  (define n (length edges))
+  (define visited (make-vector n #f))
+  (define result 0)
+  (define (dfs node)
+    (when (not (vector-ref visited node))
+      (vector-set! visited node #t)
+      (set! result (+ result 1))
+      (define next-node (list-ref edges node))
+      (when (not (vector-ref visited next-node))
+        (dfs next-node))))
+  (for ([i (in-range n)])
+    (when (not (vector-ref visited i))
+      (dfs i)))
+  result)

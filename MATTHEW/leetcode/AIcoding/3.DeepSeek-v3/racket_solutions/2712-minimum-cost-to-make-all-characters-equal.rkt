@@ -1,0 +1,12 @@
+(define (minimum-cost s)
+  (define n (string-length s))
+  (define (flip c) (if (char=? c #\0) #\1 #\0))
+  (define (cost start-char)
+    (let loop ([i 0] [current-char start-char] [total 0])
+      (if (>= i n)
+          total
+          (let ([c (string-ref s i)])
+            (if (char=? c current-char)
+                (loop (add1 i) current-char total)
+                (loop (add1 i) (flip current-char) (+ total (- n i))))))))
+  (min (cost #\0) (cost #\1)))

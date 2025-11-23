@@ -1,0 +1,11 @@
+(define (maximumSum nums)
+  (define (digit-sum n)
+    (if (= n 0)
+        0
+        (+ (modulo n 10) (digit-sum (quotient n 10)))))
+  (define sum-map (make-hash))
+  (for-each (lambda (num)
+              (let ((s (digit-sum num)))
+                (hash-set! sum-map s (max (hash-ref sum-map s 0) num))))
+            nums)
+  (apply max (hash-values sum-map)))

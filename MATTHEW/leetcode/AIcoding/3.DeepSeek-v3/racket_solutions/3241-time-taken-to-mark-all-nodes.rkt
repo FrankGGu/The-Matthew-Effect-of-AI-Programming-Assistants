@@ -1,0 +1,1 @@
+Unfortunately, there is no LeetCode problem titled "Time Taken to Mark All Nodes" in their official problem set. Could you please verify the problem name or provide more details about the problem? If you meant a different problem, please let me know the correct title or description so I can provide the appropriate Racket solution.

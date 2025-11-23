@@ -1,0 +1,5 @@
+(define/contract (sort-array-by-parity nums)
+  (-> (listof integer?) (listof integer?))
+  (let* ((evens (filter even? nums))
+         (odds (filter odd? nums)))
+    (append evens odds)))

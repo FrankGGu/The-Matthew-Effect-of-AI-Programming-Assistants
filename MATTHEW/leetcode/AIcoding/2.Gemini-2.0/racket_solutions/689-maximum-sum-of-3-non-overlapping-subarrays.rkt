@@ -1,0 +1,45 @@
+(define (max-sum-three-subarrays nums k)
+  (define n (length nums))
+  (define sums (make-vector (+ n 1) 0))
+  (for ([i (in-range n)])
+    (vector-set! sums (+ i 1) (+ (vector-ref sums i) (list-ref nums i))))
+
+  (define (sub-array-sum start end)
+    (- (vector-ref sums (+ end 1)) (vector-ref sums start)))
+
+  (define left (make-vector n 0))
+  (define best-sum 0)
+  (for ([i (in-range 0 (- n k 0))])
+    (define current-sum (sub-array-sum i (+ i k -1)))
+    (if (> current-sum best-sum)
+        (begin
+          (set! best-sum current-sum)
+          (vector-set! left i i))
+        (if (> i 0)
+            (vector-set! left i (vector-ref left (- i 1)))
+            (vector-set! left i 0))))
+
+  (define right (make-vector n 0))
+  (set! best-sum 0)
+  (for ([i (in-range (- n k 1) -1 -1)])
+    (define current-sum (sub-array-sum i (+ i k -1)))
+    (if (>= current-sum best-sum)
+        (begin
+          (set! best-sum current-sum)
+          (vector-set! right i i))
+        (if (< i (- n k 1))
+            (vector-set! right i (vector-ref right (+ i 1)))
+            (vector-set! right i (- n k)))))
+
+  (define best-indices '())
+  (set! best-sum 0)
+  (for ([j (in-range k (- n (* 2 k) 0))])
+    (define current-sum (+ (sub-array-sum (vector-ref left (- j k)) (+ (vector-ref left (- j k)) k -1))
+                             (sub-array-sum j (+ j k -1))
+                             (sub-array-sum (vector-ref right (+ j k)) (+ (vector-ref right (+ j k)) k -1))))
+    (if (> current-sum best-sum)
+        (begin
+          (set! best-sum current-sum)
+          (set! best-indices (list (vector-ref left (- j k)) j (vector-ref right (+ j k)))))))
+
+  best-indices)

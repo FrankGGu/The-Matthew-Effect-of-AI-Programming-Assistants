@@ -1,0 +1,11 @@
+(define (find-min nums)
+  (define (binary-search left right)
+    (if (>= left right)
+        (list-ref nums left)
+        (let ([mid (quotient (+ left right) 2)])
+          (if (> (list-ref nums mid) (list-ref nums right))
+              (binary-search (+ mid 1) right)
+              (binary-search left mid)))))
+  (binary-search 0 (- (length nums) 1)))
+
+(find-min '(3 4 5 1 2))

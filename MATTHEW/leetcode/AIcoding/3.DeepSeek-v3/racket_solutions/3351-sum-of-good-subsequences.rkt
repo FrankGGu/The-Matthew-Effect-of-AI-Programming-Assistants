@@ -1,0 +1,3 @@
+Unfortunately, there is no LeetCode problem titled "Sum of Good Subsequences" in the official problem set. Could you please verify the problem name or provide more details about the problem statement? This will help me provide you with the correct Racket solution code. 
+
+If you're referring to a problem from a different source or a custom problem, please share the problem description, constraints, and examples so I can generate the appropriate Racket code for you.

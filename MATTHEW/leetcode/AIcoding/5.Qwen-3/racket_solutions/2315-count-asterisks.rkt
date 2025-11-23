@@ -1,0 +1,10 @@
+(define (count-asterisks s)
+  (define (helper str count)
+    (cond ((string=? str "") count)
+          ((char=? #\| (string-ref str 0))
+           (helper (substring str 1) count))
+          ((char=? #\* (string-ref str 0))
+           (helper (substring str 1) (+ count 1)))
+          (else
+           (helper (substring str 1) count))))
+  (helper s 0))

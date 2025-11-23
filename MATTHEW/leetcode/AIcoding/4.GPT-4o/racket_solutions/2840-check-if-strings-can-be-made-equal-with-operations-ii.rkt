@@ -1,0 +1,5 @@
+(define (canBeEqual s t)
+  (define (count-char str char)
+    (foldl (lambda (c acc) (if (equal? c char) (+ acc 1) acc)) 0 str))
+  (and (= (count-char s #\a) (count-char t #\a))
+       (= (count-char s #\b) (count-char t #\b))))

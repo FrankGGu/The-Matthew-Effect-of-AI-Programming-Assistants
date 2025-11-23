@@ -1,0 +1,11 @@
+(define (minMovesToClean(classroom))
+  (define (count-ones lst)
+    (length (filter (lambda (x) (= x 1)) lst)))
+  (define n (length classroom))
+  (define m (length (first classroom)))
+  (define total-ones (count-ones (apply append classroom)))
+  (if (= total-ones 0)
+      0
+      (define row-ones (map count-ones classroom))
+      (define col-ones (map count-ones (apply map list classroom)))
+      (+ (apply max row-ones) (apply max col-ones) -1))))

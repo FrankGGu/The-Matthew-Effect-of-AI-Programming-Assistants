@@ -1,0 +1,10 @@
+class Solution:
+    def getMoneyAmount(self, n: int) -> int:
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
+        for length in range(2, n + 1):
+            for start in range(1, n - length + 2):
+                end = start + length - 1
+                dp[start][end] = float('inf')
+                for pivot in range(start, end):
+                    dp[start][end] = min(dp[start][end], pivot + max(dp[start][pivot - 1] if start <= pivot - 1 else 0, dp[pivot + 1][end] if pivot + 1 <= end else 0))
+        return dp[1][n]

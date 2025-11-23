@@ -1,0 +1,13 @@
+(define (find-kth-bit n k)
+  (define (reverse-string s)
+    (list->string (reverse (string->list s))))
+  (define (generate-binary-string n)
+    (if (= n 1)
+        "0"
+        (let* ((prev (generate-binary-string (- n 1)))
+               (rev (reverse-string prev))
+               (flipped (map (lambda (c) (if (char=? c #\0) #\1 #\0)) (string->list rev)))
+               (new-str (string-append prev "1" (list->string flipped))))
+          new-str)))
+  (define s (generate-binary-string n))
+  (string-ref s (- k 1)))

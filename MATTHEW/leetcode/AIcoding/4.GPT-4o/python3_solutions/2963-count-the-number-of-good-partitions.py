@@ -1,0 +1,14 @@
+class Solution:
+    def countGoodPartitions(self, s: str) -> int:
+        MOD = 10**9 + 7
+        n = len(s)
+
+        dp = [0] * (n + 1)
+        dp[0] = 1
+
+        for i in range(1, n + 1):
+            for j in range(i):
+                if s[j:i].count('1') == s[j:i].count('0'):
+                    dp[i] = (dp[i] + dp[j]) % MOD
+
+        return dp[n]

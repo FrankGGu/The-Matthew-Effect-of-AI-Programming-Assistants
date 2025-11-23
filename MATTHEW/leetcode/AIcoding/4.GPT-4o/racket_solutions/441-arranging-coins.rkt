@@ -1,0 +1,6 @@
+(define (arrange-coins n)
+  (define (helper k)
+    (if (>= (* k (+ k 1)) (* 2 n))
+        (sub1 k)
+        (helper (add1 k))))
+  (helper 1))

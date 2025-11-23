@@ -1,0 +1,13 @@
+(define (halve-array-sum nums)
+  (define sum (apply + nums))
+  (define target (/ sum 2.0))
+  (define heap (make-heap (lambda (x y) (> x y))))
+  (for-each (lambda (n) (heap-add! heap n)) nums)
+  (define (helper count current-sum)
+    (if (<= current-sum target)
+        count
+        (let* ((largest (heap-remove-min! heap))
+               (half (/ largest 2.0)))
+          (heap-add! heap half)
+          (helper (+ count 1) (- current-sum largest) (+ current-sum half)))))
+  (helper 0 sum))

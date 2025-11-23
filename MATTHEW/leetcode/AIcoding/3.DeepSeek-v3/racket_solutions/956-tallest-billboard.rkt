@@ -1,0 +1,15 @@
+(define/contract (tallest-billboard rods)
+  (-> (listof exact-integer?) exact-integer?)
+  (let ([dp (make-hash)])
+    (hash-set! dp 0 0)
+    (for ([rod (in-list rods)])
+      (let ([new-dp (hash-copy dp)])
+        (for ([(diff height) (in-hash dp)])
+          (let* ([new-diff (+ diff rod)]
+                 [new-height (+ height rod)])
+            (hash-update! new-dp new-diff (lambda (old) (max old new-height)) (lambda () 0)))
+          (let* ([new-diff (abs (- diff rod))]
+                 [new-height (max (- height rod) height)])
+            (hash-update! new-dp new-diff (lambda (old) (max old new-height)) (lambda () 0))))
+        (set! dp new-dp)))
+    (hash-ref dp 0 0)))

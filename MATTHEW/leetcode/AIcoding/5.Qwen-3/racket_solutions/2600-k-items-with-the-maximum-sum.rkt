@@ -1,0 +1,5 @@
+(define (k-items-with-maximum-sum num-knights num-knights-2 num-knights-3 k)
+  (let ((a (min num-knights k))
+        (b (min num-knights-2 (- k num-knights)))
+        (c (min num-knights-3 (- k num-knights num-knights-2))))
+    (+ (* a 1) (* b 2) (* c 3))))

@@ -1,0 +1,5 @@
+(define (max-product-of-two-digits nums)
+  (let* ((sorted-nums (sort nums >))
+         (largest (car sorted-nums))
+         (second-largest (cadr sorted-nums)))
+    (* (- largest 1) (- second-largest 1))))

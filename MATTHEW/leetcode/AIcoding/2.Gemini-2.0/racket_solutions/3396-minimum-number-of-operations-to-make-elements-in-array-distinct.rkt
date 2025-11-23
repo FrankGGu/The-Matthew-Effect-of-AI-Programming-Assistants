@@ -1,0 +1,7 @@
+(define (min-operations nums)
+  (define s (list->set nums))
+  (define n (length nums))
+  (define k (set-count s))
+  (if (<= k n)
+      (- n k)
+      0))

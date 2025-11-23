@@ -1,0 +1,12 @@
+(define/contract (merge intervals)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)))
+  (if (null? intervals)
+      '()
+      (let* ([sorted-intervals (sort intervals (lambda (a b) (< (car a) (car b))))]
+             [result (list (car sorted-intervals))])
+        (for ([interval (cdr sorted-intervals)])
+          (let ([last-interval (car result)])
+            (if (<= (car interval) (cadr last-interval))
+                (set-car! result (list (car last-interval) (max (cadr last-interval) (cadr interval))))
+                (set! result (cons interval result)))))
+        (reverse result))))

@@ -1,0 +1,58 @@
+#lang racket
+
+(define (longest-common-subpath n k list-of-arrays)
+  (define (min-length arrs)
+    (for/fold ([min-len +inf.0]) ([arr arrs])
+      (min min-len (length arr))))
+
+  (define (get-hash-values arr)
+    (define base 1000003)
+    (define mod 10^18+3)
+    (define len (length arr))
+    (define hash (make-vector len 0))
+    (define power (make-vector len 1))
+    (vector-set! hash 0 (vector-ref arr 0))
+    (vector-set! power 0 1)
+    (for ([i (in-range 1 len)])
+      (vector-set! hash i (modulo (+ (* (vector-ref hash (- i 1)) base) (vector-ref arr i)) mod))
+      (vector-set! power i (modulo (* (vector-ref power (- i 1)) base) mod)))
+    (values hash power))
+
+  (define (get-subarray-hash hash power start end)
+    (if (= start 0)
+        (vector-ref hash end)
+        (modulo (- (vector-ref hash end) (* (vector-ref hash (- start 1)) (vector-ref power (- end start +1)))) mod)))
+
+  (define (binary-search low high)
+    (cond [(> low high) 0]
+          [else
+           (define mid (quotient (+ low high) 2))
+           (if (exists-subpath-with-length mid list-of-arrays)
+               (max mid (binary-search (+ mid 1) high))
+               (binary-search low (- mid 1)))]))
+
+  (define (exists-subpath-with-length len arrs)
+    (define n (length arrs))
+    (define first-array (vector-ref arrs 0))
+    (define m (length first-array))
+    (when (< m len) #f)
+    (define (get-hashes arr)
+      (define-values (hash power) (get-hash-values arr))
+      (for/list ([i (in-range 0 (- (length arr) len +1))])
+        (get-subarray-hash hash power i (+ i len -1))))
+
+    (define first-hashes (get-hashes first-array))
+    (when (null? first-hashes) #f)
+    (for ([h first-hashes])
+      (define cnt 1)
+      (for ([i (in-range 1 n)])
+        (define current-hashes (get-hashes (vector-ref arrs i)))
+        (when (not (member h current-hashes)) (break)
+          (set! cnt (+ cnt 1))))
+      (when (= cnt n) (return #t)))
+    #f)
+
+  (define mod 1000000007)
+  (define arrs (map (lambda (arr) (apply vector arr)) list-of-arrays))
+  (define max-len (min-length arrs))
+  (binary-search 0 max-len))

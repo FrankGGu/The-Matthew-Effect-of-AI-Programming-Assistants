@@ -1,0 +1,10 @@
+(define (total-hamming-distance nums)
+  (let loop ([total 0] [mask 1])
+    (if (> mask (apply max nums))
+        total
+        (let ([count 0])
+          (for ([num nums])
+            (when (not (zero? (bitwise-and num mask)))
+              (set! count (add1 count)))
+          (loop (+ total (* count (- (length nums) count)))
+                (arithmetic-shift mask 1))))))

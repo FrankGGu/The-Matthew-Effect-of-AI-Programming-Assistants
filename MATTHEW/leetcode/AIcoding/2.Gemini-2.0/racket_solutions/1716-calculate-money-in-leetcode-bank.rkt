@@ -1,0 +1,8 @@
+(define (total-money n)
+  (let* ((weeks (quotient n 7))
+         (days (remainder n 7))
+         (week-sum (* 7 (+ 1 weeks) weeks) / 2)
+         (day-sum (* days (+ weeks 1 (+ weeks days))))
+         )
+    (+ week-sum day-sum)
+    ))

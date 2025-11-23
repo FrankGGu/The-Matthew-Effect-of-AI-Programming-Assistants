@@ -1,0 +1,12 @@
+(define (max-length-substring s)
+  (define (helper s count)
+    (if (or (null? s) (> count 2))
+        (if (> count 2) 0 (string-length s))
+        (let ((next-char (string-ref s 0)))
+          (if (and (not (equal? next-char (string-ref s 1))) (not (equal? next-char (string-ref s 2))))
+              (helper (substring s 1) (+ count 1))
+              (max (helper (substring s 1) count) (helper (substring s 1) (+ count 1))))))
+    )
+  (helper s 0))
+
+(max-length-substring "abcabcbb")

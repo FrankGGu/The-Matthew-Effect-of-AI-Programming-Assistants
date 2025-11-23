@@ -1,0 +1,33 @@
+(define (kthSmallestPrimeFraction arr k)
+  (define (count-fractions less-than)
+    (let loop ((i 0) (count 0) (max-numerator 0))
+      (if (>= i (length arr))
+          (values count max-numerator)
+          (let* ((numerator (list-ref arr i))
+                 (denominator (filter (lambda (d) (< d numerator)) arr))
+                 (num-fractions (length denominator)))
+            (loop (+ i 1) (+ count num-fractions) (if (positive? num-fractions) (max max-numerator (/ numerator (car (last denominator))) 0) max-numerator))))))
+
+  (define (search left right)
+    (if (= left right)
+        left
+        (let* ((mid (/ (+ left right) 2))
+               (value (count-fractions mid)))
+          (if (< (car value) k)
+              (search (+ mid 1) right)
+              (search left mid)))))
+
+  (let* ((n (length arr))
+         (left 1)
+         (right (apply max arr)))
+    (let loop ((best-fraction '()))
+      (let* ((cutoff (search left right))
+             (denominators (filter (lambda (d) (>= d cutoff)) arr))
+             (numerators (map (lambda (d) (list (car d) (car (last d)))) (map (lambda (d) (list-ref arr d)) (range 0 n)))))
+        (if (null? denominators)
+            best-fraction
+            (let* ((sorted (sort numerators (lambda (x y) (< (/ (car x) (cadr x)) (/ (car y) (cadr y))))))
+                   (selected (list-ref sorted (- k 1))))
+              (if (null? selected)
+                  best-fraction
+                  (list (car selected) (cadr selected)))))))))

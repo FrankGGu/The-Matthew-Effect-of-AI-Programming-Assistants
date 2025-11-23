@@ -1,0 +1,11 @@
+(define/contract (convert-bst root)
+  (-> (or/c null? tree-node?) (or/c null? tree-node?))
+  (let ([sum 0])
+    (define (traverse node)
+      (when node
+        (traverse (tree-node-right node))
+        (set! sum (+ sum (tree-node-val node)))
+        (set-tree-node-val! node sum)
+        (traverse (tree-node-left node))))
+    (traverse root)
+    root))

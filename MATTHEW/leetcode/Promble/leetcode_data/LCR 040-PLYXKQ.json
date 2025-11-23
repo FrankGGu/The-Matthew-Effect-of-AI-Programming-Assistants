@@ -1,0 +1,37 @@
+{
+  "id": "LCR 040",
+  "title": "最大矩形",
+  "titleSlug": "PLYXKQ",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Stack",
+    "Array",
+    "Dynamic Programming",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maximalRectangle(vector<string>& matrix) {\n\n    }\n};",
+    "java": "class Solution {\n    public int maximalRectangle(String[] matrix) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def maximalRectangle(self, matrix):\n        \"\"\"\n        :type matrix: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def maximalRectangle(self, matrix: List[str]) -> int:",
+    "c": "\n\nint maximalRectangle(char** matrix, int matrixSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MaximalRectangle(string[] matrix) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} matrix\n * @return {number}\n */\nvar maximalRectangle = function(matrix) {\n\n};",
+    "typescript": "function maximalRectangle(matrix: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $matrix\n     * @return Integer\n     */\n    function maximalRectangle($matrix) {\n\n    }\n}",
+    "swift": "class Solution {\n    func maximalRectangle(_ matrix: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun maximalRectangle(matrix: Array<String>): Int {\n\n    }\n}",
+    "golang": "func maximalRectangle(matrix []string) int {\n\n}",
+    "ruby": "# @param {String[]} matrix\n# @return {Integer}\ndef maximal_rectangle(matrix)\n\nend",
+    "scala": "object Solution {\n    def maximalRectangle(matrix: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn maximal_rectangle(matrix: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (maximal-rectangle matrix)\n  (-> (listof string?) exact-integer?)\n\n  )",
+    "erlang": "-spec maximal_rectangle(Matrix :: [unicode:unicode_binary()]) -> integer().\nmaximal_rectangle(Matrix) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec maximal_rectangle(matrix :: [String.t]) :: integer\n  def maximal_rectangle(matrix) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"10100\",\"10111\",\"11111\",\"10010\"]\n[]\n[\"0\"]\n[\"1\"]\n[\"00\"]",
+  "hints": []
+}

@@ -1,0 +1,10 @@
+(define (remove-methods project methods)
+  (define (remove-methods-helper project methods)
+    (if (null? project)
+        '()
+        (let ((current (car project))
+              (rest (remove-methods-helper (cdr project) methods)))
+          (if (member current methods)
+              rest
+              (cons current rest)))))
+  (remove-methods-helper project methods))

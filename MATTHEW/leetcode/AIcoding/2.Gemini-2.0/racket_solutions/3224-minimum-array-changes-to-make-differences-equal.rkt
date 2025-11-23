@@ -1,0 +1,12 @@
+(define (min-operations nums k)
+  (let ((n (length nums)))
+    (if (zero? n)
+        0
+        (let ((counts (make-hash)))
+          (for ([num (in-list nums)])
+            (let ((remainder (modulo num k)))
+              (hash-update! counts remainder (λ (v) (+ v 1)) 1)))
+          (let ((max-count 0))
+            (hash-for-each counts (λ (key value)
+                                     (set! max-count (max max-count value))))
+            (- n max-count))))))

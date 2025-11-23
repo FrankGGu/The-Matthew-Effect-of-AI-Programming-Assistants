@@ -1,0 +1,50 @@
+Create a full-stack commodity inventory management system using:
+- Frontend: Vue 3 with Composition API and Vue Router
+- Backend: Spring Boot 3.2 with Spring Data JPA/Hibernate
+- Database: PostgreSQL (already configured with tables: products, inventory, transactions)
+
+**Database Connection:**
+- URL: jdbc:postgresql://localhost:5432/inventory_db
+- Username: admin
+- Password: admin123
+
+**Required Features:**
+1. Product Management:
+   - Add products (name, specification, sku, category, unit_price)
+   - List all products with search and pagination
+   - Edit product details
+
+2. Inventory Management:
+   - Update stock quantities (inbound/outbound transactions)
+   - Show current stock levels with low-stock warnings
+   - Transaction history with filters
+
+3. API Requirements:
+   - RESTful endpoints with proper HTTP status codes
+   - JWT authentication (Spring Security)
+   - Validation and error handling
+
+**Technical Specifications:**
+- Use Lombok for entity classes
+- Implement DTO pattern with MapStruct
+- Use Spring Boot's pagination for listings
+- Vue 3: Use Composition API with Pinia for state management
+- UI: Use Vuetify or PrimeVue component library
+
+**Code Structure:**
+Backend:
+- Entity classes for Products, Inventory, Transactions
+- Repository interfaces extending JpaRepository
+- Service layer with business logic
+- REST controllers with proper exception handling
+
+Frontend:
+- Vue components for ProductList, ProductForm, InventoryManager, TransactionHistory
+- Vue Router for navigation
+- Axios for API calls
+
+**Deliverables:**
+- Complete Spring Boot application with Maven structure
+- Vue 3 application with proper component structure
+- Docker configuration if applicable
+- README with setup instructions

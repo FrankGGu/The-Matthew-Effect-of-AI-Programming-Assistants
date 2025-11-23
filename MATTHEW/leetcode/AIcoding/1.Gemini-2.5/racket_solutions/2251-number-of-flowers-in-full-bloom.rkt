@@ -1,0 +1,40 @@
+(require racket/list)
+
+(define (number-of-flowers-in-full-bloom flowers people)
+  (let* ((start-times (map car flowers))
+         (end-times   (map (lambda (f) (+ (cadr f) 1)) flowers))
+         (sorted-start-times (sort start-times <))
+         (sorted-end-times   (sort end-times <))
+         (start-vec (list->vector sorted-start-times))
+         (end-vec (list->vector sorted-end-times))
+         (num-people (length people))
+         (results (make-vector num-people)))
+
+    (define (bisect-right vec target)
+      (let loop ((low 0) (high (vector-length vec)))
+        (if (>= low high)
+            low
+            (let ((mid (+ low (quotient (- high low) 2))))
+              (if (<= (vector-ref vec mid) target)
+                  (loop (+ mid 1) high)
+                  (loop low mid))))))
+
+    (define (bisect-left vec target)
+      (let loop ((low 0) (high (vector-length vec)))
+        (if (>= low high)
+            low
+            (let ((mid (+ low (quotient (- high low) 2))))
+              (if (< (vector-ref vec mid) target)
+                  (loop (+ mid 1) high)
+                  (loop low mid))))))
+
+    (let process-people ((person-list people) (idx 0))
+      (if (null? person-list)
+          (void)
+          (let* ((person-time (car person-list))
+                 (started-count (bisect-right start-vec person-time))
+                 (finished-count (bisect-left end-vec person-time)))
+            (vector-set! results idx (- started-count finished-count))
+            (process-people (cdr person-list) (+ idx 1)))))
+
+    (vector->list results)))

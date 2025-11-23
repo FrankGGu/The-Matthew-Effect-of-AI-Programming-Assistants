@@ -1,0 +1,17 @@
+(define (k-length-palindrome n k)
+  (if (odd? k)
+      (for/list ([i (in-range 0 10)])
+        (let ([mid (string i)])
+          (for/list ([prefix (in-range (expt 10 (/ (- k 1) 2)))])
+            (let ([s (string-append (number->string prefix) mid (number->string (reverse prefix)))])
+              (if (= (string-length s) k) (string->number s) #f))))
+      (for/list ([prefix (in-range (expt 10 (/ k 2)))])
+        (let ([s (string-append (number->string prefix) (number->string (reverse prefix)))])
+          (if (= (string-length s) k) (string->number s) #f))))))
+
+(define (palindromeNumbers n k)
+  (filter (lambda (x) (and (not (zero? x)) (= (string-length (number->string x)) k)))
+          (k-length-palindrome n k)))
+
+(define (kLengthPalindrome n k)
+  (palindromeNumbers n k))

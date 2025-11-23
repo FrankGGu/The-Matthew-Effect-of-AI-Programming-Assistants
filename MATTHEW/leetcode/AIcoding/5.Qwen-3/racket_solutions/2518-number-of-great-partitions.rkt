@@ -1,0 +1,15 @@
+#lang racket
+
+(define (number-of-great-partitions nums)
+  (define MOD 1000000007)
+  (define n (length nums))
+  (define nums (sort nums <))
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (define (add x y) (modulo (+ x y) MOD))
+  (for ([i (in-range n)])
+    (define num (list-ref nums i))
+    (for ([j (in-range i -1 -1)])
+      (when (<= (+ (vector-ref dp j) num) n)
+        (vector-set! dp (+ j num) (add (vector-ref dp (+ j num)) (vector-ref dp j))))))
+  (vector-ref dp n))

@@ -1,0 +1,10 @@
+(define (largest-local-values grid)
+  (let* ((n (length grid))
+         (result-size (- n 2)))
+    (for/list ([i (in-range result-size)])
+      (for/list ([j (in-range result-size)])
+        (let ((current-max 0)) ; Constraints usually ensure positive values, 0 is a safe lower bound.
+          (for ([r (in-range i (+ i 3))])
+            (for ([c (in-range j (+ j 3))])
+              (set! current-max (max current-max (list-ref (list-ref grid r) c)))))
+          current-max)))))

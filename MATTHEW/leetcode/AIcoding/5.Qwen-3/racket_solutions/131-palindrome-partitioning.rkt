@@ -1,0 +1,17 @@
+(define (partition s)
+  (define (is-palindrome? s start end)
+    (let loop ([i start] [j end])
+      (or (> i j)
+          (and (= (string-ref s i) (string-ref s j))
+               (loop (+ i 1) (- j 1))))))
+
+  (define (helper start current result)
+    (if (= start (string-length s))
+        (cons (reverse current) result)
+        (let loop ([i start])
+          (when (< i (string-length s))
+            (when (is-palindrome? s start i)
+              (helper (+ i 1) (cons (substring s start (+ i 1)) current) result)))
+          result)))
+
+  (helper 0 '() '()))

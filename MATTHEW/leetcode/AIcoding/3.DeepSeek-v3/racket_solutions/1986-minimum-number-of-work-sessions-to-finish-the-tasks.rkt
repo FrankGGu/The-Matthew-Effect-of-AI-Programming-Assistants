@@ -1,0 +1,21 @@
+(define/contract (min-sessions tasks sessionTime)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([n (length tasks)])
+    (let loop ([mask 0] [dp (make-vector (expt 2 n) +inf.0)] [sums (make-vector (expt 2 n) 0)])
+      (if (= mask (sub1 (expt 2 n)))
+          (vector-ref dp mask)
+          (let ([next-mask (add1 mask)])
+            (for ([i 0 n])
+              (when (not (bitwise-bit-set? mask i))
+                (let* ([new-mask (bitwise-ior mask (arithmetic-shift 1 i))]
+                       [new-sum (+ (vector-ref sums mask) (list-ref tasks i))])
+                  (if (<= new-sum sessionTime)
+                      (begin
+                        (when (< (vector-ref dp new-mask) (vector-ref dp mask))
+                          (vector-set! dp new-mask (vector-ref dp mask))
+                          (vector-set! sums new-mask new-sum)))
+                      (begin
+                        (when (< (vector-ref dp new-mask) (add1 (vector-ref dp mask)))
+                          (vector-set! dp new-mask (add1 (vector-ref dp mask)))
+                          (vector-set! sums new-mask (list-ref tasks i))))))))
+            (loop next-mask dp sums))))))

@@ -1,0 +1,5 @@
+(define (build-array nums)
+  (let loop ([i 0] [result '()])
+    (if (= i (length nums))
+        (reverse result)
+        (loop (+ i 1) (cons (list-ref nums (list-ref nums i)) result)))))

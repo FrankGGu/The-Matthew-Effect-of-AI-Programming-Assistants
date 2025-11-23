@@ -1,0 +1,7 @@
+(define (can-be-typed-words text broken-letters)
+  (let ((broken-set (list->set (string->list broken-letters)))
+        (words (string-split text)))
+    (count (lambda (word)
+             (not (ormap (lambda (c) (set-member? broken-set c))
+                         (string->list word))))
+          words)))

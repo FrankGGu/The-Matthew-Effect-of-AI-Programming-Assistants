@@ -1,0 +1,5 @@
+(define (minimum-length-encoding words)
+  (define suffixes (map (lambda (word) (substring word 1)) words))
+  (define unique-words (filter (lambda (word) (not (member word suffixes))) words))
+  (define total-length (apply + (map (lambda (word) (+ (string-length word) 1)) unique-words)))
+  total-length)

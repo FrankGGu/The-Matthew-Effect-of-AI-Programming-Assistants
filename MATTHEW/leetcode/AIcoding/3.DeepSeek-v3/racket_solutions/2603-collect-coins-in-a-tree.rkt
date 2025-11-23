@@ -1,0 +1,58 @@
+#lang racket
+
+(define (collect-the-coins coins edges)
+  (define n (vector-length coins))
+  (when (or (zero? n) (null? edges)) (return 0))
+  (define adj (make-vector n '()))
+  (for ([edge edges])
+    (let ([u (car edge)]
+          [v (cadr edge)])
+      (vector-set! adj u (cons v (vector-ref adj u)))
+      (vector-set! adj v (cons u (vector-ref adj v)))))
+
+  (define (bfs start)
+    (define dist (make-vector n -1))
+    (define q (make-queue))
+    (enqueue! q start)
+    (vector-set! dist start 0)
+    (let loop ()
+      (unless (queue-empty? q)
+        (let ([u (dequeue! q)])
+          (for ([v (vector-ref adj u)])
+            (when (= (vector-ref dist v) -1)
+              (vector-set! dist v (+ (vector-ref dist u) 1))
+              (enqueue! q v))))
+          (loop)))
+    dist)
+
+  (define coin-nodes (for/list ([i (in-range n)] #:when (= (vector-ref coins i) 1)) i))
+  (when (null? coin-nodes) (return 0))
+
+  (define dist1 (bfs (car coin-nodes)))
+  (define farthest (car coin-nodes))
+  (for ([node coin-nodes])
+    (when (> (vector-ref dist1 node) (vector-ref dist1 farthest))
+      (set! farthest node)))
+
+  (define dist2 (bfs farthest))
+  (define max-dist 0)
+  (for ([node coin-nodes])
+    (when (> (vector-ref dist2 node) max-dist)
+      (set! max-dist (vector-ref dist2 node))))
+
+  (if (zero? max-dist) 0 (* 2 (sub1 max-dist))))
+
+(define (return x) x)
+
+(define (make-queue) (mcons '() '()))
+(define (queue-empty? q) (null? (mcar q)))
+(define (enqueue! q x)
+  (let ([new-pair (mcons x '())])
+    (if (null? (mcar q))
+        (begin (set-mcar! q new-pair) (set-mcdr! q new-pair))
+        (begin (set-mcdr! (mcdr q) new-pair) (set-mcdr! q new-pair)))))
+(define (dequeue! q)
+  (let ([front (mcar (mcar q))])
+    (set-mcar! q (mcdr (mcar q)))
+    (when (null? (mcar q)) (set-mcdr! q '()))
+    front))

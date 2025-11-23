@@ -1,0 +1,28 @@
+(define (largestOverlap A B)
+  (define (count-overlap x-offset y-offset)
+    (let loop ((i 0) (count 0))
+      (if (< i (length A))
+          (let ((j 0))
+            (if (< j (length B))
+                (begin
+                  (when (and (< (+ i x-offset) (length A))
+                             (< (+ j y-offset) (length B))
+                             (= (list-ref (list-ref A i) (+ j y-offset)) 1)
+                             (= (list-ref (list-ref B (+ i x-offset)) j) 1))
+                    (set! count (+ count 1)))
+                  (loop (+ j 1) count))
+                count))
+          count)))
+
+  (define (max-overlap)
+    (let loop ((i 0) (max-count 0))
+      (if (< i (length A))
+          (let loop2 ((j 0))
+            (if (< j (length B))
+                (begin
+                  (set! max-count (max max-count (count-overlap i j)))
+                  (loop2 (+ j 1)))
+                (loop (+ i 1) max-count)))
+          max-count)))
+
+  (max-overlap))

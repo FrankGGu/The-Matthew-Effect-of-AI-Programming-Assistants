@@ -1,0 +1,23 @@
+{
+  "id": "LCP 01",
+  "title": "Guess Numbers",
+  "titleSlug": "guess-numbers",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.<br />\r\n&nbsp;</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int game(vector<int>& guess, vector<int>& answer) {\n\n    }\n};",
+    "java": "class Solution {\n    public int game(int[] guess, int[] answer) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def game(self, guess, answer):\n        \"\"\"\n        :type guess: List[int]\n        :type answer: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def game(self, guess: List[int], answer: List[int]) -> int:",
+    "c": "\n\nint game(int* guess, int guessSize, int* answer, int answerSize){\n\n}\n",
+    "javascript": "/**\n * @param {number[]} guess\n * @param {number[]} answer\n * @return {number}\n */\nvar game = function(guess, answer) {\n\n};",
+    "typescript": "function game(guess: number[], answer: number[]): number {\n\n};",
+    "golang": "func game(guess []int, answer []int) int {\n\n}"
+  },
+  "exampleTestcases": "[1,2,3]\n[1,2,3]\n[2,2,3]\n[3,2,1]",
+  "hints": []
+}

@@ -1,0 +1,10 @@
+(define (intersect nums1 nums2)
+  (let* ([freq1 (make-hash)]
+         [result '()])
+    (for ([num (in-list nums1)])
+      (hash-update! freq1 num (λ (k v) (+ v 1)) 1))
+    (for ([num (in-list nums2)])
+      (when (and (hash-has-key? freq1 num) (> (hash-ref freq1 num) 0))
+        (set! result (cons num result))
+        (hash-update! freq1 num (λ (k v) (- v 1)) 0)))
+    (reverse result)))

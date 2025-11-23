@@ -1,0 +1,27 @@
+(define/contract (find-possible-recipes recipes ingredients supplies)
+  (-> (listof (listof string)) (listof (listof string)) (listof string) (listof string))
+  (let* ([n (length recipes)]
+         [supply-set (set . supplies)]
+         [graph (make-hash)]
+         [in-degree (make-hash)]
+         [result '()])
+    (for ([i (in-range n)])
+      (hash-set! graph i '())
+      (hash-set! in-degree i (length (list-ref ingredients i))))
+    (for ([i (in-range n)])
+      (for ([ing (list-ref ingredients i)])
+        (when (set-member? supply-set ing)
+          (hash-set! in-degree i (- (hash-ref in-degree i) 1))
+          (hash-set! graph i (cons i (hash-ref graph i))))))
+    (define q (queue))
+    (for ([i (in-range n)])
+      (when (= (hash-ref in-degree i) 0)
+        (queue-add! q i)))
+    (while (not (queue-empty? q))
+      (let ([u (queue-remove! q)])
+        (set! result (cons (list-ref recipes u) result))
+        (for ([v (hash-ref graph u)])
+          (hash-set! in-degree v (- (hash-ref in-degree v) 1))
+          (when (= (hash-ref in-degree v) 0)
+            (queue-add! q v))))
+    (reverse result))

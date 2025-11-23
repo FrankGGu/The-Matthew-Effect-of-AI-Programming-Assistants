@@ -1,0 +1,8 @@
+(define (max-sum-after-partitioning arr k)
+  (define n (length arr))
+  (define dp (make-vector (add1 n) 0))
+  (for ([i (in-range n)])
+    (for ([j (in-range 1 (min k (add1 i)))])
+      (define max-val (apply max (sublist arr (- i j) (+ 1 i))))
+      (vector-set! dp (add1 i) (max (vector-ref dp (add1 (- i j))) (+ (* max-val j) (vector-ref dp i))))))
+  (vector-ref dp n))

@@ -1,0 +1,5 @@
+(define/contract (left-rigth-difference nums)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (define left-sum (foldl (lambda (x acc) (cons (+ x (car acc)) (cdr acc)) '(0) (reverse nums)))
+  (define right-sum (foldl (lambda (x acc) (cons (+ x (car acc)) (cdr acc))) '(0) nums))
+  (map (lambda (l r) (abs (- l r))) (reverse (cdr left-sum)) (cdr right-sum)))

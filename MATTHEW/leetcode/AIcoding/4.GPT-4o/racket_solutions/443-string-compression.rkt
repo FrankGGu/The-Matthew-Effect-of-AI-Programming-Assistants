@@ -1,0 +1,16 @@
+(define (compress s)
+  (define len (string-length s))
+  (define result (make-string len))
+  (define count 0)
+  (define index 0)
+
+  (for ((i 0 (add1 i)))
+    (when (< i len)
+      (set! count (+ count 1))
+      (when (or (= i (sub1 len)) (not (= (string-ref s i) (string-ref s (add1 i)))))
+        (set! result (string-append result (string (string-ref s i))))
+        (when (> count 1)
+          (set! result (string-append result (number->string count))))
+        (set! count 0))))
+
+  (substring result 0 (string-length result)))

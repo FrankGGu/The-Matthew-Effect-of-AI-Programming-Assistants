@@ -1,0 +1,39 @@
+{
+  "id": "2319",
+  "title": "Check if Matrix Is X-Matrix",
+  "titleSlug": "check-if-matrix-is-x-matrix",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Matrix"
+  ],
+  "content": "<p>A square matrix is said to be an <strong>X-Matrix</strong> if <strong>both</strong> of the following conditions hold:</p>\n\n<ol>\n\t<li>All the elements in the diagonals of the matrix are <strong>non-zero</strong>.</li>\n\t<li>All other elements are 0.</li>\n</ol>\n\n<p>Given a 2D integer array <code>grid</code> of size <code>n x n</code> representing a square matrix, return <code>true</code><em> if </em><code>grid</code><em> is an X-Matrix</em>. Otherwise, return <code>false</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2022/05/03/ex1.jpg\" style=\"width: 311px; height: 320px;\" />\n<pre>\n<strong>Input:</strong> grid = [[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> Refer to the diagram above. \nAn X-Matrix should have the green elements (diagonals) be non-zero and the red elements be 0.\nThus, grid is an X-Matrix.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2022/05/03/ex2.jpg\" style=\"width: 238px; height: 246px;\" />\n<pre>\n<strong>Input:</strong> grid = [[5,7,0],[0,3,1],[0,5,0]]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> Refer to the diagram above.\nAn X-Matrix should have the green elements (diagonals) be non-zero and the red elements be 0.\nThus, grid is not an X-Matrix.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == grid.length == grid[i].length</code></li>\n\t<li><code>3 &lt;= n &lt;= 100</code></li>\n\t<li><code>0 &lt;= grid[i][j] &lt;= 10<sup>5</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool checkXMatrix(vector<vector<int>>& grid) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean checkXMatrix(int[][] grid) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def checkXMatrix(self, grid):\n        \"\"\"\n        :type grid: List[List[int]]\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def checkXMatrix(self, grid: List[List[int]]) -> bool:\n        ",
+    "c": "bool checkXMatrix(int** grid, int gridSize, int* gridColSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool CheckXMatrix(int[][] grid) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[][]} grid\n * @return {boolean}\n */\nvar checkXMatrix = function(grid) {\n    \n};",
+    "typescript": "function checkXMatrix(grid: number[][]): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $grid\n     * @return Boolean\n     */\n    function checkXMatrix($grid) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func checkXMatrix(_ grid: [[Int]]) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun checkXMatrix(grid: Array<IntArray>): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool checkXMatrix(List<List<int>> grid) {\n    \n  }\n}",
+    "golang": "func checkXMatrix(grid [][]int) bool {\n    \n}",
+    "ruby": "# @param {Integer[][]} grid\n# @return {Boolean}\ndef check_x_matrix(grid)\n    \nend",
+    "scala": "object Solution {\n    def checkXMatrix(grid: Array[Array[Int]]): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn check_x_matrix(grid: Vec<Vec<i32>>) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (check-x-matrix grid)\n  (-> (listof (listof exact-integer?)) boolean?)\n  )",
+    "erlang": "-spec check_x_matrix(Grid :: [[integer()]]) -> boolean().\ncheck_x_matrix(Grid) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec check_x_matrix(grid :: [[integer]]) :: boolean\n  def check_x_matrix(grid) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func checkXMatrix(grid: Array<Array<Int64>>): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]\n[[5,7,0],[0,3,1],[0,5,0]]",
+  "hints": [
+    "Assuming a 0-indexed matrix, for a given cell on row i and column j, it is in a diagonal if and only if i == j or i == n - 1 - j.",
+    "We can then iterate through the elements in the matrix to check if all the elements in the diagonals are non-zero and all other elements are zero."
+  ]
+}

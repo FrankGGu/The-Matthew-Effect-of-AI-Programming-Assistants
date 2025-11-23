@@ -1,0 +1,16 @@
+(define/contract (max-jumps arr d)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let* ([n (length arr)]
+         [dp (make-vector n 1)]
+         [indices (sort (range n) (lambda (i j) (< (list-ref arr i) (list-ref arr j))))])
+    (for ([i indices])
+      (let loop ([j (sub1 i)] [max_val 0] [steps 0])
+        (when (and (>= j 0) (< steps d) (< (list-ref arr j) (list-ref arr i)))
+          (set! max_val (max max_val (vector-ref dp j)))
+          (loop (sub1 j) max_val (add1 steps)))
+      (let loop ([j (add1 i)] [max_val 0] [steps 0])
+        (when (and (< j n) (< steps d) (< (list-ref arr j) (list-ref arr i)))
+          (set! max_val (max max_val (vector-ref dp j)))
+          (loop (add1 j) max_val (add1 steps)))
+      (vector-set! dp i (add1 max_val)))
+    (apply max (vector->list dp))))

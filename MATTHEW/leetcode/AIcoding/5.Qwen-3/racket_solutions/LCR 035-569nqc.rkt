@@ -1,0 +1,18 @@
+(define (find-minimum-time-difference time-stamps)
+  (define (to-minutes s)
+    (let* ([h (string->number (substring s 0 2))]
+           [m (string->number (substring s 3 5))])
+      (+ (* h 60) m)))
+  (define sorted (sort (map to-minutes time-stamps) <))
+  (define n (length sorted))
+  (define (diff a b)
+    (if (> a b)
+        (- a b)
+        (- b a)))
+  (define (min-diff lst)
+    (if (null? (cdr lst))
+        (car lst)
+        (min (- (cadr lst) (car lst)) (min-diff (cdr lst)))))
+  (let ([min1 (min-diff sorted)]
+        [min2 (- 1440 (- (last sorted) (first sorted)))])
+    (min min1 min2)))

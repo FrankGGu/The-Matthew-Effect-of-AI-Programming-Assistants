@@ -1,0 +1,10 @@
+(define (compute-area ax1 ay1 ax2 ay2 bx1 by1 bx2 by2)
+  (define (overlap a1 a2 b1 b2)
+    (if (or (>= a1 b2) (>= b1 a2))
+        0
+        (- (min a2 b2) (max a1 b1))))
+  (let ((area1 (* (- ax2 ax1) (- ay2 ay1)))
+        (area2 (* (- bx2 bx1) (- by2 by1)))
+        (overlap-x (overlap ax1 ax2 bx1 bx2))
+        (overlap-y (overlap ay1 ay2 by1 by2)))
+    (- (+ area1 area2) (* overlap-x overlap-y))))

@@ -1,0 +1,59 @@
+You are a senior full-stack developer. Create a gym membership system using the emerging Rust stack with SolidJS frontend and Actix Web backend with SeaORM.
+
+**TECHNOLOGY STACK:**
+- Frontend: SolidJS with TypeScript
+- Backend: Actix Web with Rust
+- ORM: SeaORM with PostgreSQL
+- Build: Vite for frontend, Cargo for backend
+
+**DATABASE CONNECTION:**
+- PostgreSQL: postgresql://postgres:gymsecret@localhost:5432/gym_management
+- All tables already created
+
+**REQUIRED FEATURES:**
+
+1. **Membership Plan Management**
+   - CRUD operations for membership plans
+   - Plan listing with details
+
+2. **Member Management**
+   - Member registration and profile management
+   - Member directory with search
+
+3. **Membership Card System**
+   - Card creation and management
+   - Status tracking and expiration
+
+4. **Check-in System**
+   - Check-in interface
+   - Check-in history and reporting
+
+5. **Payment Processing**
+   - Payment recording
+   - Payment history per member
+
+**IMPLEMENTATION REQUIREMENTS:**
+- Use SeaORM for database operations with entity definitions
+- Implement REST API with Actix Web framework
+- Add input validation with validator crate
+- Implement proper error handling with custom error types
+- SolidJS frontend should use reactive primitives
+- Use TypeScript for type safety
+- Manage state with SolidJS stores
+- Use minimalist CSS for styling
+- Implement form handling with proper validation
+
+**CODE STRUCTURE:**
+Backend (Rust + Actix Web):
+- SeaORM entities for all database tables
+- Actix Web route handlers with JSON responses
+- Middleware for CORS and error handling
+- Service layer for business logic
+
+Frontend (SolidJS + TypeScript):
+- SolidJS components for each feature
+- Services for API communication using fetch
+- TypeScript interfaces for data models
+- Reactive state management
+
+Generate the complete application with emphasis on the emerging Rust stack and performance benefits.

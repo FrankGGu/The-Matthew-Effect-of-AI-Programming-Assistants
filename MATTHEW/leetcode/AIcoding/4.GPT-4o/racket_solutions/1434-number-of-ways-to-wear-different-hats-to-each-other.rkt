@@ -1,0 +1,22 @@
+(define (numberOfWays hats)
+  (define n (length hats))
+  (define mod 1000000007)
+  (define dp (make-vector (expt 2 n) 0))
+  (vector-set! dp 0 1)
+
+  (for ([i (in-range (length hats))])
+    (for ([j (in-range (length (vector-ref hats i)))])
+      (let ([mask (bit-shift-left 1 (vector-ref (vector-ref hats i) j))])
+        (for ([k (in-range (expt 2 n))])
+          (when (> (vector-ref dp k) 0)
+            (vector-set! dp (bitwise-ior k mask) 
+                         (modulo (+ (vector-ref dp (bitwise-ior k mask)) 
+                                     (vector-ref dp k)) mod)))))))
+
+  (apply + (for/list ([k (in-range (expt 2 n))])
+             (when (= (bit-count k) 1)
+               (vector-ref dp k))) 
+          mod))
+
+(define (numberOfWaysWrapper hats)
+  (numberOfWays hats))

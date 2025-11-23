@@ -1,0 +1,15 @@
+(define (maximumUniqueSubarray nums)
+  (define (helper nums seen start end max-sum)
+    (if (>= end (length nums))
+        max-sum
+        (let ((current (list-ref nums end)))
+          (if (set-member? seen current)
+              (helper nums (set-remove seen (list-ref nums start)) (+ start 1) end max-sum)
+              (helper nums (set-add seen current) start (+ end 1) (max max-sum (+ current (foldl + 0 (subvector nums start (+ end 1)))))))))
+    )
+  (helper nums (set) 0 0 0))
+
+(define (set) (vector))
+(define (set-add s x) (vector-set! s x #t) s)
+(define (set-remove s x) (vector-set! s x #f) s)
+(define (set-member? s x) (vector-ref s x))

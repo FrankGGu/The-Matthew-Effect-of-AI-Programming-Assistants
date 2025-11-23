@@ -1,0 +1,12 @@
+(define (make-array n)
+  (build-list n values))
+
+(define (min-cost-to-divide arr)
+  (define n (length arr))
+  (define dp (make-vector n #f))
+  (vector-set! dp 0 0)
+  (for ([i (in-range 1 n)])
+    (vector-set! dp i (apply min (for/list ([j (in-range 0 i)])
+                                   (+ (vector-ref dp j) (apply + (take arr (+ j 1))))))
+    ))
+  (vector-ref dp (- n 1)))

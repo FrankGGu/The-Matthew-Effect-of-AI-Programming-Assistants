@@ -1,0 +1,20 @@
+(define (find-minimum-time machines)
+  (define n (length machines))
+  (define (can-finish? time)
+    (define total 0)
+    (for-each (lambda (m)
+                (set! total (+ total (quotient (+ time m) (+ m 1)))))
+              machines)
+    (>= total n))
+  (define (binary-search left right)
+    (if (= left right)
+        left
+        (let* ((mid (quotient (+ left right) 2))
+               (can-finish (can-finish? mid)))
+          (if can-finish
+              (binary-search left mid)
+              (binary-search (+ mid 1) right)))))
+  (binary-search 0 (apply max machines)))
+
+(define (findMinTime machines)
+  (find-minimum-time machines))

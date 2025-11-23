@@ -1,0 +1,10 @@
+(define (all-paths-source-target graph)
+  (let* ((n (length graph)))
+    (letrec ((dfs (lambda (curr-node path)
+                    (if (= curr-node (- n 1))
+                        (list (reverse path))
+                        (apply append
+                               (map (lambda (next-node)
+                                      (dfs next-node (cons next-node path)))
+                                    (list-ref graph curr-node)))))))
+      (dfs 0 '(0)))))

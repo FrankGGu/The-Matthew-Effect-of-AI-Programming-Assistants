@@ -1,0 +1,13 @@
+(define (num-weak-guards guards)
+  (define (weak? g)
+    (not (or (equal? g 1) (equal? g 2))))
+  (define (count-weak guards)
+    (length (filter weak? guards)))
+  (count-weak guards))
+
+(define (num-weak-guards guards)
+  (define (weak? g)
+    (not (or (equal? g 1) (equal? g 2))))
+  (define (count-weak guards)
+    (length (filter weak? guards)))
+  (count-weak guards))

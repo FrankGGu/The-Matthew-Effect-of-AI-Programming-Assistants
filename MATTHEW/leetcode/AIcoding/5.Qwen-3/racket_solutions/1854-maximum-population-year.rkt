@@ -1,0 +1,5 @@
+(define (maximum-population logs)
+  (define (count-population year)
+    (for/sum ([log (in-list logs)])
+      (if (and (<= (car log) year) (< year (cadr log))) 1 0)))
+  (argmax (lambda (y) (count-population y)) (range 1950 2051)))

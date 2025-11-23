@@ -1,0 +1,28 @@
+(define (possible-bipartition n dislikes)
+  (define graph (make-vector (+ n 1) '()))
+  (for-each (lambda (pair)
+              (let ((u (car pair))
+                    (v (cadr pair)))
+                (vector-set! graph u (cons v (vector-ref graph u)))
+                (vector-set! graph v (cons u (vector-ref graph v)))))
+            dislikes)
+
+  (define colors (make-vector (+ n 1) -1))
+
+  (define (dfs node color)
+    (if (vector-ref colors node) 
+        (eq? (vector-ref colors node) color)
+        (begin
+          (vector-set! colors node color)
+          (for-each (lambda (neighbor)
+                      (if (not (dfs neighbor (- color 1)))
+                          #f))
+                    (vector-ref graph node))
+          #t)))
+
+  (for-each (lambda (i)
+              (when (and (zero? (vector-ref colors i))
+                         (not (dfs i 1)))
+                (return #f)))
+            (range 1 (+ n 1)))
+  #t)

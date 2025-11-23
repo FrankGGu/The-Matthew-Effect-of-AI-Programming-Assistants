@@ -1,0 +1,38 @@
+{
+  "id": "LCP 63",
+  "title": "弹珠游戏",
+  "titleSlug": "EXvqDp",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Topological Sort",
+    "Memoization",
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> ballGame(int num, vector<string>& plate) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[][] ballGame(int num, String[] plate) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def ballGame(self, num, plate):\n        \"\"\"\n        :type num: int\n        :type plate: List[str]\n        :rtype: List[List[int]]\n        \"\"\"",
+    "python3": "class Solution:\n    def ballGame(self, num: int, plate: List[str]) -> List[List[int]]:",
+    "c": "\n\n/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\nint** ballGame(int num, char** plate, int plateSize, int* returnSize, int** returnColumnSizes){\n\n}",
+    "csharp": "public class Solution {\n    public int[][] BallGame(int num, string[] plate) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @param {string[]} plate\n * @return {number[][]}\n */\nvar ballGame = function(num, plate) {\n\n};",
+    "typescript": "function ballGame(num: number, plate: string[]): number[][] {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @param String[] $plate\n     * @return Integer[][]\n     */\n    function ballGame($num, $plate) {\n\n    }\n}",
+    "swift": "class Solution {\n    func ballGame(_ num: Int, _ plate: [String]) -> [[Int]] {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun ballGame(num: Int, plate: Array<String>): Array<IntArray> {\n\n    }\n}",
+    "golang": "func ballGame(num int, plate []string) [][]int {\n\n}",
+    "ruby": "# @param {Integer} num\n# @param {String[]} plate\n# @return {Integer[][]}\ndef ball_game(num, plate)\n\nend",
+    "scala": "object Solution {\n    def ballGame(num: Int, plate: Array[String]): Array[Array[Int]] = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn ball_game(num: i32, plate: Vec<String>) -> Vec<Vec<i32>> {\n\n    }\n}",
+    "racket": "(define/contract (ball-game num plate)\n  (-> exact-integer? (listof string?) (listof (listof exact-integer?)))\n\n  )"
+  },
+  "exampleTestcases": "4\n[\"..E.\",\".EOW\",\"..W.\"]\n5\n[\".....\",\"..E..\",\".WO..\",\".....\"]\n3\n[\".....\",\"....O\",\"....O\",\".....\"]",
+  "hints": []
+}

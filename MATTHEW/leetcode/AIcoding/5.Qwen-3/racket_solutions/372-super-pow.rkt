@@ -1,0 +1,11 @@
+(define (super-pow a b)
+  (define (mod-exp x y)
+    (cond ((= y 0) 1)
+          ((even? y) (let ((temp (mod-exp x (/ y 2))))
+                       (modulo (* temp temp) 1000000007)))
+          (else (modulo (* x (mod-exp x (- y 1))) 1000000007))))
+  (define (helper a b)
+    (if (null? b)
+        1
+        (modulo (* (mod-exp a (car b)) (helper a (cdr b))) 1000000007)))
+  (helper a b))

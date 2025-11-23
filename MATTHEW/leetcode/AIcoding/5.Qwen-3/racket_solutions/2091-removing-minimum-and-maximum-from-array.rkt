@@ -1,0 +1,11 @@
+(define (min-operations-to-remove-min-and-max nums)
+  (let ((n (length nums)))
+    (if (<= n 2)
+        0
+        (let* ((min-val (apply min nums))
+               (max-val (apply max nums))
+               (min-index (index-of nums min-val))
+               (max-index (index-of nums max-val)))
+          (if (= min-index max-index)
+              (- n 1)
+              (- n 2))))))

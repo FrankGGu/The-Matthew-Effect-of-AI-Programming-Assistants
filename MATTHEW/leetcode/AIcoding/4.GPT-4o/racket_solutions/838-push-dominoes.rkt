@@ -1,0 +1,73 @@
+(define (pushDominoes dominoes)
+  (define n (string-length dominoes))
+  (define result (make-string n #\0))
+  (define last-affected -1)
+  (define last-direction #\0)
+
+  (for ([i (in-range n)])
+    (let ([current (string-ref dominoes i)])
+      (cond
+        [(char=? current #\.)
+         (when (and (not (char=? last-direction #\.))
+                    (not (char=? last-direction #\0)))
+           (set! result (string-set! result i (if (char=? last-direction #\L) #\L #\R)))
+           (set! last-affected i))]
+        [(char=? current #\R)
+         (for ([j (in-range last-affected (+ last-affected (max 0 (- i last-affected))) 1)])
+           (if (char=? (string-ref result j) #\0)
+               (set! result (string-set! result j #\R)))
+           (set! last-affected i))
+         (set! last-direction #\R)]
+        [(char=? current #\L)
+         (for ([j (in-range last-affected (+ last-affected (max 0 (- i last-affected))) 1)])
+           (if (char=? (string-ref result j) #\0)
+               (set! result (string-set! result j #\L)))
+           (set! last-affected i))
+         (set! last-direction #\L)])))
+
+  (if (char=? last-direction #\R)
+      (for ([j (in-range last-affected n)])
+        (if (char=? (string-ref result j) #\0)
+            (set! result (string-set! result j #\R))))
+      (for ([j (in-range 0 last-affected)])
+        (if (char=? (string-ref result j) #\0)
+            (set! result (string-set! result j #\L)))))
+
+  result)
+
+(define (pushDominoes dominoes)
+  (define n (string-length dominoes))
+  (define result (make-string n #\0))
+  (define last-affected -1)
+  (define last-direction #\0)
+
+  (for ([i (in-range n)])
+    (let ([current (string-ref dominoes i)])
+      (cond
+        [(char=? current #\.) 
+         (when (and (not (char=? last-direction #\.))
+                    (not (char=? last-direction #\0)))
+           (set! result (string-set! result i (if (char=? last-direction #\L) #\L #\R)))
+           (set! last-affected i))]
+        [(char=? current #\R)
+         (for ([j (in-range last-affected (+ last-affected (max 0 (- i last-affected))) 1)])
+           (if (char=? (string-ref result j) #\0)
+               (set! result (string-set! result j #\R)))
+           (set! last-affected i))
+         (set! last-direction #\R)]
+        [(char=? current #\L)
+         (for ([j (in-range last-affected (+ last-affected (max 0 (- i last-affected))) 1)])
+           (if (char=? (string-ref result j) #\0)
+               (set! result (string-set! result j #\L)))
+           (set! last-affected i))
+         (set! last-direction #\L)])))
+
+  (if (char=? last-direction #\R)
+      (for ([j (in-range last-affected n)])
+        (if (char=? (string-ref result j) #\0)
+            (set! result (string-set! result j #\R))))
+      (for ([j (in-range 0 last-affected)])
+        (if (char=? (string-ref result j) #\0)
+            (set! result (string-set! result j #\L)))))
+
+  result)

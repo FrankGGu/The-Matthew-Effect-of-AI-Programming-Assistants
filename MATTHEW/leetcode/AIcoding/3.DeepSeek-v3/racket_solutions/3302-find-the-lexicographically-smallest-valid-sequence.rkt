@@ -1,0 +1,33 @@
+(define (findSmallestSequence n)
+  (define used (make-vector (+ (* 2 n) 1) #f))
+  (define path (make-vector (+ (* 2 n) 1) 0))
+  (vector-set! path 1 1)
+  (vector-set! used 1 #t)
+  (define (backtrack pos)
+    (if (= pos (+ (* 2 n) 1))
+        #t
+        (if (> (vector-ref path pos) 0)
+            (backtrack (+ pos 1))
+            (let loop ([i 1])
+              (if (> i (* 2 n))
+                  #f
+                  (if (and (not (vector-ref used i))
+                          (or (= i 1)
+                              (and (> pos 1)
+                                   (let ([sum (+ i (vector-ref path (- pos 1)))])
+                                     (and (>= sum 0)
+                                          (let ([root (sqrt sum)])
+                                            (and (integer? root)
+                                                 (= (* root root) sum))))))))
+                      (begin
+                        (vector-set! path pos i)
+                        (vector-set! used i #t)
+                        (if (backtrack (+ pos 1))
+                            #t
+                            (begin
+                              (vector-set! path pos 0)
+                              (vector-set! used i #f)
+                              (loop (+ i 1)))))
+                      (loop (+ i 1))))))))
+  (backtrack 2)
+  (vector->list (vector-copy path 1 (+ (* 2 n) 1))))

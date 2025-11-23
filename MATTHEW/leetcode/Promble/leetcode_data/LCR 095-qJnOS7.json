@@ -1,0 +1,34 @@
+{
+  "id": "LCR 095",
+  "title": "最长公共子序列",
+  "titleSlug": "qJnOS7",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int longestCommonSubsequence(string text1, string text2) {\n\n    }\n};",
+    "java": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def longestCommonSubsequence(self, text1, text2):\n        \"\"\"\n        :type text1: str\n        :type text2: str\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def longestCommonSubsequence(self, text1: str, text2: str) -> int:",
+    "c": "\n\nint longestCommonSubsequence(char * text1, char * text2){\n\n}",
+    "csharp": "public class Solution {\n    public int LongestCommonSubsequence(string text1, string text2) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string} text1\n * @param {string} text2\n * @return {number}\n */\nvar longestCommonSubsequence = function(text1, text2) {\n\n};",
+    "typescript": "function longestCommonSubsequence(text1: string, text2: string): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String $text1\n     * @param String $text2\n     * @return Integer\n     */\n    function longestCommonSubsequence($text1, $text2) {\n\n    }\n}",
+    "swift": "class Solution {\n    func longestCommonSubsequence(_ text1: String, _ text2: String) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun longestCommonSubsequence(text1: String, text2: String): Int {\n\n    }\n}",
+    "golang": "func longestCommonSubsequence(text1 string, text2 string) int {\n\n}",
+    "ruby": "# @param {String} text1\n# @param {String} text2\n# @return {Integer}\ndef longest_common_subsequence(text1, text2)\n\nend",
+    "scala": "object Solution {\n    def longestCommonSubsequence(text1: String, text2: String): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn longest_common_subsequence(text1: String, text2: String) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (longest-common-subsequence text1 text2)\n  (-> string? string? exact-integer?)\n\n  )",
+    "erlang": "-spec longest_common_subsequence(Text1 :: unicode:unicode_binary(), Text2 :: unicode:unicode_binary()) -> integer().\nlongest_common_subsequence(Text1, Text2) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec longest_common_subsequence(text1 :: String.t, text2 :: String.t) :: integer\n  def longest_common_subsequence(text1, text2) do\n\n  end\nend"
+  },
+  "exampleTestcases": "\"abcde\"\n\"ace\"\n\"abc\"\n\"abc\"\n\"abc\"\n\"def\"",
+  "hints": []
+}

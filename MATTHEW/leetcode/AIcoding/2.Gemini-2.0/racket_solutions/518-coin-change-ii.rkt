@@ -1,0 +1,8 @@
+(define (change amount coins)
+  (define n (length coins))
+  (define dp (make-vector (+ amount 1) 0))
+  (vector-set! dp 0 1)
+  (for ([coin coins])
+    (for ([i (range coin (+ amount 1))])
+      (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i coin))))))
+  (vector-ref dp amount))

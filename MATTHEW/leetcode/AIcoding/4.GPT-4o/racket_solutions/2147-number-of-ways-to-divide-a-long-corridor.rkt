@@ -1,0 +1,11 @@
+(define (count-ways corridor)
+  (define n (string-length corridor))
+  (define (count-segments start count)
+    (if (>= start n)
+        (if (= count 0) 1 0)
+        (count-segments (+ start 2) (if (= (string-ref corridor start) #\|) (+ count 1) count))
+        + (count-segments (+ start 1) count)))
+  (define segments (count-segments 0 0))
+  (if (or (not (= (modulo segments 2) 0)) (<= segments 2))
+      0
+      (modulo (expt 2 (/ segments 2)) (expt 10 9))))

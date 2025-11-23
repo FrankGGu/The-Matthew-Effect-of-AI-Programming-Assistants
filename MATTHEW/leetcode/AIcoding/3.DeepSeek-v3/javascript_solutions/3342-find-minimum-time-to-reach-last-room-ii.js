@@ -1,0 +1,1 @@
+由于题目 "Find Minimum Time to Reach Last Room II" 并不是 LeetCode 上的标准题目，我无法提供确切的解决方案代码。如果你能提供具体的题目描述或 LeetCode 上的题目链接，我可以为你提供相应的 JavaScript 解决方案代码。

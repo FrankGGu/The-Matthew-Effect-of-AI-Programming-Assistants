@@ -1,0 +1,10 @@
+(define (shortest-distance-target-string-in-circular-array target arr)
+  (define n (length arr))
+  (define (distance i j)
+    (min (abs (- i j)) (- n (abs (- i j)))))
+  (let loop ((i 0) (min-dist #f))
+    (if (= i n)
+        min-dist
+        (if (equal? (list-ref arr i) target)
+            (loop (+ i 1) (if (not min-dist) (distance 0 i) (min min-dist (distance 0 i))))
+            (loop (+ i 1) min-dist)))))

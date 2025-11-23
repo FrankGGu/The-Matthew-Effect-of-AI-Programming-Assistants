@@ -1,0 +1,15 @@
+(define (isFascinating n)
+  (define (concat-numbers a b c)
+    (string->number (string-append (number->string a) (number->string b) (number->string c))))
+  (define (digit-count x)
+    (define lst (string->list (number->string x)))
+    (define counts (make-vector 10 0))
+    (for-each (lambda (d) (vector-set! counts (- (char->integer d) 48) (+ 1 (vector-ref counts (- (char->integer d) 48)))))
+              lst)
+    counts)
+  (define num1 (concat-numbers n (* 2 n) (* 3 n)))
+  (define counts (digit-count num1))
+  (and (every? (lambda (i) (= (vector-ref counts i) 1)) (range 1 10))
+       (= (vector-ref counts 0) 0)))
+
+(isFascinating 192) ; Example test case

@@ -1,0 +1,23 @@
+#lang racket
+
+(define (serialize root)
+  (define (helper node)
+    (if (not node)
+        (list "null")
+        (append (list (number->string (node-val node)))
+                (helper (node-left node))
+                (helper (node-right node)))))
+  (string-join (map (lambda (x) (if (equal? x "null") "null" x)) (helper root)) ","))
+
+(define (deserialize data)
+  (define lst (string-split data ","))
+  (define (helper lst)
+    (if (null? lst)
+        (values #f '())
+        (let ((val (car lst)))
+          (if (equal? val "null")
+              (values #f (cdr lst))
+              (let-values (((left left-rest) (helper (cdr lst))))
+                (let-values (((right right-rest) (helper left-rest)))
+                  (values (make-node (string->number val) left right) right-rest)))))))
+  (car (helper lst)))

@@ -1,0 +1,7 @@
+(define (rotate matrix)
+  (let* ((n (length matrix))
+         (new-matrix (make-list n (make-list n 0))))
+    (for ([i (in-range n)])
+      (for ([j (in-range n)])
+        (list-set! new-matrix j (- n 1 i) (list-ref (list-ref matrix i) j))))
+    new-matrix))

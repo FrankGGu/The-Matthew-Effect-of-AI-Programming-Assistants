@@ -1,0 +1,41 @@
+{
+  "id": "3233",
+  "title": "Find the Count of Numbers Which Are Not Special",
+  "titleSlug": "find-the-count-of-numbers-which-are-not-special",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math",
+    "Number Theory"
+  ],
+  "content": "<p>You are given 2 <strong>positive</strong> integers <code>l</code> and <code>r</code>. For any number <code>x</code>, all positive divisors of <code>x</code> <em>except</em> <code>x</code> are called the <strong>proper divisors</strong> of <code>x</code>.</p>\n\n<p>A number is called <strong>special</strong> if it has exactly 2 <strong>proper divisors</strong>. For example:</p>\n\n<ul>\n\t<li>The number 4 is <em>special</em> because it has proper divisors 1 and 2.</li>\n\t<li>The number 6 is <em>not special</em> because it has proper divisors 1, 2, and 3.</li>\n</ul>\n\n<p>Return the count of numbers in the range <code>[l, r]</code> that are <strong>not</strong> <strong>special</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">l = 5, r = 7</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">3</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>There are no special numbers in the range <code>[5, 7]</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">l = 4, r = 16</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">11</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The special numbers in the range <code>[4, 16]</code> are 4 and 9.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= l &lt;= r &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int nonSpecialCount(int l, int r) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int nonSpecialCount(int l, int r) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def nonSpecialCount(self, l, r):\n        \"\"\"\n        :type l: int\n        :type r: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def nonSpecialCount(self, l: int, r: int) -> int:\n        ",
+    "c": "int nonSpecialCount(int l, int r) {\n    \n}",
+    "csharp": "public class Solution {\n    public int NonSpecialCount(int l, int r) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} l\n * @param {number} r\n * @return {number}\n */\nvar nonSpecialCount = function(l, r) {\n    \n};",
+    "typescript": "function nonSpecialCount(l: number, r: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $l\n     * @param Integer $r\n     * @return Integer\n     */\n    function nonSpecialCount($l, $r) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func nonSpecialCount(_ l: Int, _ r: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun nonSpecialCount(l: Int, r: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int nonSpecialCount(int l, int r) {\n    \n  }\n}",
+    "golang": "func nonSpecialCount(l int, r int) int {\n    \n}",
+    "ruby": "# @param {Integer} l\n# @param {Integer} r\n# @return {Integer}\ndef non_special_count(l, r)\n    \nend",
+    "scala": "object Solution {\n    def nonSpecialCount(l: Int, r: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn non_special_count(l: i32, r: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (non-special-count l r)\n  (-> exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec non_special_count(L :: integer(), R :: integer()) -> integer().\nnon_special_count(L, R) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec non_special_count(l :: integer, r :: integer) :: integer\n  def non_special_count(l, r) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func nonSpecialCount(l: Int64, r: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "5\n7\n4\n16",
+  "hints": [
+    "A special number must be a square of a prime number.",
+    "We need to find all primes in the range <code>[sqrt(l), sqrt(r)]</code>.",
+    "Use sieve to find primes till <code>sqrt(10<sup>9</sup>)</code>."
+  ]
+}

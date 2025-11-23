@@ -1,0 +1,6 @@
+(define (find-max-average nums k)
+  (let ((n (length nums)))
+    (let loop ((i 0) (current-sum (apply + (take nums k))) (max-sum (apply + (take nums k))))
+      (if (= i (- n k))
+          (/ max-sum k)
+          (loop (+ i 1) (- (+ current-sum (list-ref nums (+ i k))) (list-ref nums i)) (max max-sum (- (+ current-sum (list-ref nums (+ i k))) (list-ref nums i))))))))

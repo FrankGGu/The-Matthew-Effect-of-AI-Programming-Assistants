@@ -1,0 +1,12 @@
+(define (num-subarrays-with-bounded-maximum A L U)
+  (define (count-bound max)
+    (define count 0)
+    (define total 0)
+    (for ([x A])
+      (if (<= x max)
+          (begin
+            (set! count (+ count 1))
+            (set! total (+ total count)))
+          (set! count 0)))
+    total)
+  (- (count-bound U) (count-bound (- L 1))))

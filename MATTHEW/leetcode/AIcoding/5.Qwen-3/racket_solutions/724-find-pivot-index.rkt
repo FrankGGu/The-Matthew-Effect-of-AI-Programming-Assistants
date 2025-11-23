@@ -1,0 +1,8 @@
+(define (pivot-index nums)
+  (let* ((total (apply + nums))
+         (sum 0)
+         (len (length nums)))
+    (for/first ((i (in-range len))
+                #:when (= sum (- total (+ sum (list-ref nums i))))
+                #:result i)
+      (set! sum (+ sum (list-ref nums i))))))

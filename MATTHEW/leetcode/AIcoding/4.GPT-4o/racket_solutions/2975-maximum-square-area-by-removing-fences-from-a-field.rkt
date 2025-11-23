@@ -1,0 +1,21 @@
+(define (maxSquareArea f)
+  (let* ((n (length f))
+         (m (length (first f)))
+         (dp (make-vector n (make-vector m 0))))
+    (for ([i (in-range n)])
+      (for ([j (in-range m)])
+        (if (equal? (vector-ref (vector-ref f i) j) 1)
+            (begin
+              (vector-set! (vector-ref dp i) j 1)
+              (if (and (> i 0) (> j 0))
+                  (vector-set! (vector-ref dp i) j
+                               (+ 1 (min (vector-ref (vector-ref dp (- i 1)) j)
+                                         (vector-ref (vector-ref dp i) (- j 1))
+                                         (vector-ref (vector-ref dp (- i 1)) (- j 1)))))))))
+    (define max-area 0)
+    (for ([i (in-range n)])
+      (for ([j (in-range m)])
+        (set! max-area (max max-area (expt (vector-ref (vector-ref dp i) j) 2)))))
+    max-area))
+
+(maxSquareArea #(#(0 1 1 0) #(1 1 1 0) #(0 1 1 0) #(0 0 0 0)))

@@ -1,0 +1,10 @@
+(define (hasGroupsSizeX deck)
+  (define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (mod a b))))
+  (define counts (make-hash))
+  (for ([card deck])
+    (hash-set! counts card (+ (hash-ref counts card 0) 1)))
+  (define x (apply gcd (hash-map->list counts (λ (key value) value))))
+  (>= x 2))

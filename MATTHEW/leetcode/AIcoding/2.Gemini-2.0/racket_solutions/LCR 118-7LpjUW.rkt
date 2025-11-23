@@ -1,0 +1,6 @@
+(define (find-redundant-connection edges)
+  (let* ((n (add1 (apply max (append-map (lambda (edge) (list (car edge) (cadr edge))) edges))))
+         (uf (new-union-find n)))
+    (for/first ([edge edges] #:when (union-find-connected? uf (car edge) (cadr edge)))
+      edge)
+    ))

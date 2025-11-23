@@ -1,0 +1,36 @@
+{
+  "id": "LCR 008",
+  "title": "长度最小的子数组",
+  "titleSlug": "2VG8Kg",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Prefix Sum",
+    "Sliding Window"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int minSubArrayLen(int target, vector<int>& nums) {\n\n    }\n};",
+    "java": "class Solution {\n    public int minSubArrayLen(int target, int[] nums) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def minSubArrayLen(self, target, nums):\n        \"\"\"\n        :type target: int\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def minSubArrayLen(self, target: int, nums: List[int]) -> int:",
+    "c": "\n\nint minSubArrayLen(int target, int* nums, int numsSize){\n\n}",
+    "csharp": "public class Solution {\n    public int MinSubArrayLen(int target, int[] nums) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} target\n * @param {number[]} nums\n * @return {number}\n */\nvar minSubArrayLen = function(target, nums) {\n\n};",
+    "typescript": "function minSubArrayLen(target: number, nums: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $target\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function minSubArrayLen($target, $nums) {\n\n    }\n}",
+    "swift": "class Solution {\n    func minSubArrayLen(_ target: Int, _ nums: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun minSubArrayLen(target: Int, nums: IntArray): Int {\n\n    }\n}",
+    "golang": "func minSubArrayLen(target int, nums []int) int {\n\n}",
+    "ruby": "# @param {Integer} target\n# @param {Integer[]} nums\n# @return {Integer}\ndef min_sub_array_len(target, nums)\n\nend",
+    "scala": "object Solution {\n    def minSubArrayLen(target: Int, nums: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (min-sub-array-len target nums)\n  (-> exact-integer? (listof exact-integer?) exact-integer?)\n\n  )",
+    "erlang": "-spec min_sub_array_len(Target :: integer(), Nums :: [integer()]) -> integer().\nmin_sub_array_len(Target, Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec min_sub_array_len(target :: integer, nums :: [integer]) :: integer\n  def min_sub_array_len(target, nums) do\n\n  end\nend"
+  },
+  "exampleTestcases": "7\n[2,3,1,2,4,3]\n4\n[1,4,4]\n11\n[1,1,1,1,1,1,1,1]",
+  "hints": []
+}

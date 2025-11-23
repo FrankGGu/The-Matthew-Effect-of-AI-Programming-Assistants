@@ -1,0 +1,21 @@
+(define (min-operations nums k)
+  (let* ((prefix-sums (for/fold ([sum 0] [res '()]) ([num nums])
+                       (let ([new-sum (+ sum num)])
+                         (values new-sum (cons new-sum res)))))
+         (sum (car prefix-sums))
+         (prefixes (reverse (cdr prefix-sums)))
+         (mod (modulo sum k))
+         (count (make-hash)))
+    (when (not (= mod 0))
+      (hash-set! count 0 1))
+    (for-each (lambda (p)
+                (let ([m (modulo p k)])
+                  (hash-set! count m (+ (hash-ref count m 0) 1))))
+              prefixes)
+    (let loop ([i 0] [res 0])
+      (if (= i (length prefixes))
+          res
+          (let* ([p (list-ref prefixes i)]
+                 [m (modulo p k)]
+                 [target (modulo (- mod m) k)])
+            (loop (+ i 1) (+ res (hash-ref count target 0))))))))

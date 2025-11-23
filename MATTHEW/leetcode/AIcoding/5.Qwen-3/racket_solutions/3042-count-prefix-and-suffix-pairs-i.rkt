@@ -1,0 +1,10 @@
+(define (prefix-suffix-pairs words)
+  (define (is-prefix-suffix? word prefix suffix)
+    (and (string-prefix? prefix word) (string-suffix? suffix word)))
+  (define (count-pairs words)
+    (let loop ((words words) (count 0))
+      (if (null? words)
+          count
+          (let ((word (car words)))
+            (loop (cdr words) (+ count (length (filter (lambda (w) (is-prefix-suffix? w word word)) words))))))))
+  (count-pairs words))

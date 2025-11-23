@@ -1,0 +1,5 @@
+(define/contract (k-closest points k)
+  (-> (listof (listof exact-integer?)) exact-integer? (listof (listof exact-integer?)))
+  (define (distance p)
+    (+ (expt (car p) 2) (expt (cadr p) 2)))
+  (take (sort points (lambda (p1 p2) (< (distance p1) (distance p2)))) k)

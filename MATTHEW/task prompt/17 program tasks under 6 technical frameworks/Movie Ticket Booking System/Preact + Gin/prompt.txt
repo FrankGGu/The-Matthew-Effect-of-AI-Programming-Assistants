@@ -1,0 +1,46 @@
+Develop a lightweight movie ticket booking system using Go stack:
+
+**Technology Stack:**
+- Frontend: Preact with TypeScript
+- Backend: Gin Gonic framework
+- ORM: GORM
+- Database: PostgreSQL (configured below)
+
+**Database Connection:**
+- PostgreSQL: postgresql://postgres:moviepass@localhost:5432/movie_booking
+- GORM configuration with connection pooling
+
+**Core Features:**
+1. High-performance schedule endpoint
+   - Fast JSON serialization
+   - Efficient database queries
+   - Caching layer
+
+2. Minimalist seat selection
+   - Lightweight seat map component
+   - Fast reservation system
+   - Concurrent seat booking protection
+
+3. Streamlined checkout
+   - Minimal form fields
+   - Fast order processing
+   - Instant confirmation
+
+**Technical Requirements:**
+- Use Gin's high-performance routing
+- Implement GORM with prepared statements
+- Use Go's concurrency patterns
+- Preact frontend with minimal bundle size
+- No external CSS framework (use native CSS)
+
+**File Structure:**
+- main.go (Gin server)
+- models/ (GORM models)
+- handlers/ (HTTP handlers)
+- frontend/ (Preact components)
+- go.mod with dependencies
+
+**Output:**
+- Complete Go module
+- Production-ready Dockerfile
+- Minimal bundle size frontend

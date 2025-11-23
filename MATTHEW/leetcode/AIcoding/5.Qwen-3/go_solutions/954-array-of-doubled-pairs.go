@@ -1,0 +1,15 @@
+package main
+
+func canBeEqual(target []int, arr []int) bool {
+    count := make(map[int]int)
+    for _, num := range target {
+        count[num]++
+    }
+    for _, num := range arr {
+        if count[num] == 0 {
+            return false
+        }
+        count[num]--
+    }
+    return true
+}

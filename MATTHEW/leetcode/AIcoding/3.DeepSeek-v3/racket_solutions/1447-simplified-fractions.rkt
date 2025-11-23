@@ -1,0 +1,10 @@
+(define/contract (simplified-fractions n)
+  (-> exact-integer? (listof string?))
+  (define (gcd a b)
+    (if (= b 0) a (gcd b (remainder a b))))
+  (define result '())
+  (for* ([denominator (in-range 2 (add1 n))]
+         [numerator (in-range 1 denominator)])
+    (when (= (gcd numerator denominator) 1)
+      (set! result (cons (format "~a/~a" numerator denominator) result))))
+  (reverse result))

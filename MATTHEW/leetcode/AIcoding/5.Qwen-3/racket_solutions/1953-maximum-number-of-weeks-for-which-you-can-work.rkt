@@ -1,0 +1,6 @@
+(define/contract (most-weeks-after-projects last-day)
+  (-> exact-integer? exact-integer?)
+  (let loop ([d last-day] [sum 0])
+    (if (> d 0)
+        (loop (- d 1) (+ sum d))
+        sum)))

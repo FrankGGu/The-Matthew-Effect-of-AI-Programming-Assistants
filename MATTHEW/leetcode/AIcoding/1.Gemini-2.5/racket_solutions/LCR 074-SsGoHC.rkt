@@ -1,0 +1,16 @@
+(define (merge-intervals intervals)
+  (let ([sorted-intervals (sort intervals (lambda (a b) (< (car a) (car b))))])
+    (if (empty? sorted-intervals)
+        '()
+        (let loop ([merged-list (list (car sorted-intervals))]
+                   [remaining-intervals (cdr sorted-intervals)])
+          (if (empty? remaining-intervals)
+              (reverse merged-list)
+              (let* ([current-interval (car remaining-intervals)]
+                     [last-merged (car merged-list)])
+                (if (<= (car current-interval) (cadr last-merged))
+                    (loop (cons (list (car last-merged) (max (cadr last-merged) (cadr current-interval)))
+                                (cdr merged-list))
+                          (cdr remaining-intervals))
+                    (loop (cons current-interval merged-list)
+                          (cdr remaining-intervals))))))))

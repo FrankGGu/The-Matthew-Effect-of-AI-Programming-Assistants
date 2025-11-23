@@ -1,0 +1,5 @@
+(define (maximum-number-of-events (events) (arrivals))
+  (let* ((event-set (list->set events))
+         (arrival-set (list->set arrivals))
+         (overlap-set (set-intersect event-set arrival-set)))
+    (set-count overlap-set)))

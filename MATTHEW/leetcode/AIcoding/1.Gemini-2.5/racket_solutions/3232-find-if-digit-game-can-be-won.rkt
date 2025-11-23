@@ -1,0 +1,10 @@
+(define (can-alice-win nums)
+  (let* ([sorted-nums (sort nums >)])
+    (let-values ([(alice-score bob-score)
+                  (for/fold ([a-score 0] [b-score 0])
+                            ([num (in-list sorted-nums)]
+                             [idx (in-naturals)])
+                    (if (even? idx)
+                        (values (+ a-score num) b-score)
+                        (values a-score (+ b-score num))))])
+      (> alice-score bob-score))))

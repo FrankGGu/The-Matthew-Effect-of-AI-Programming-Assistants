@@ -1,0 +1,10 @@
+(define (is-x-matrix grid)
+  (define n (length grid))
+  (define (is-x i j)
+    (or (= i j) (= (+ i j) (- n 1))))
+  (for/and ([i (in-range n)]
+            [row (in-range n)])
+    (for/and ([j (in-range n)])
+      (if (is-x i j)
+          (not (= (list-ref (list-ref grid i) j) 0))
+          (= (list-ref (list-ref grid i) j) 0)))))

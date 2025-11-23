@@ -1,0 +1,11 @@
+(define (count-fair-pairs nums lower upper)
+  (let loop ((i 0) (count 0))
+    (if (>= i (length nums))
+        count
+        (let inner-loop ((j (+ i 1)) (current-count count))
+          (if (>= j (length nums))
+              (loop (+ i 1) current-count)
+              (let ((sum (+ (list-ref nums i) (list-ref nums j))))
+                (inner-loop (+ j 1) (if (and (>= sum lower) (<= sum upper))
+                                     (+ current-count 1)
+                                     current-count))))))))

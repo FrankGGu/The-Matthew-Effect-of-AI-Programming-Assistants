@@ -1,0 +1,10 @@
+(define/contract (reorder-log-files logs)
+  (-> (listof string?) (listof string?))
+  (define (get-key log)
+    (let ([parts (string-split log)])
+      (cons (string-join (rest parts)) (first parts)))
+  (define (letter-log? log)
+    (not (char-numeric? (string-ref (car (string-split (substring log (add1 (string-index-of log #\ ))))) 0))))
+  (let ([letter-logs (filter letter-log? logs)]
+        [digit-logs (remove* (filter letter-log? logs) logs)])
+    (append (sort letter-logs (lambda (a b) (string<? (cdr (get-key a)) (cdr (get-key b)))) digit-logs)))

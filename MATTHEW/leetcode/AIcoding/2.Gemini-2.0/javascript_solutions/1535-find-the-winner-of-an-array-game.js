@@ -1,0 +1,16 @@
+var getWinner = function(arr, k) {
+    let winner = arr[0];
+    let wins = 0;
+    for (let i = 1; i < arr.length; i++) {
+        if (winner > arr[i]) {
+            wins++;
+        } else {
+            winner = arr[i];
+            wins = 1;
+        }
+        if (wins === k) {
+            return winner;
+        }
+    }
+    return winner;
+};

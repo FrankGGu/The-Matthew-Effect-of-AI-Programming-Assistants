@@ -1,0 +1,38 @@
+{
+  "id": "LCR 129",
+  "title": "字母迷宫",
+  "titleSlug": "ju-zhen-zhong-de-lu-jing-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    bool wordPuzzle(vector<vector<char>>& grid, string target) {\n        \n    }\n};",
+    "java": "class Solution {\n    public boolean wordPuzzle(char[][] grid, String target) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def wordPuzzle(self, grid, target):\n        \"\"\"\n        :type grid: List[List[str]]\n        :type target: str\n        :rtype: bool\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def wordPuzzle(self, grid: List[List[str]], target: str) -> bool:\n        ",
+    "c": "bool wordPuzzle(char** grid, int gridSize, int* gridColSize, char* target) {\n    \n}",
+    "csharp": "public class Solution {\n    public bool WordPuzzle(char[][] grid, string target) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {character[][]} grid\n * @param {string} target\n * @return {boolean}\n */\nvar wordPuzzle = function(grid, target) {\n    \n};",
+    "typescript": "function wordPuzzle(grid: string[][], target: string): boolean {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[][] $grid\n     * @param String $target\n     * @return Boolean\n     */\n    function wordPuzzle($grid, $target) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func wordPuzzle(_ grid: [[Character]], _ target: String) -> Bool {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun wordPuzzle(grid: Array<CharArray>, target: String): Boolean {\n        \n    }\n}",
+    "dart": "class Solution {\n  bool wordPuzzle(List<List<String>> grid, String target) {\n    \n  }\n}",
+    "golang": "func wordPuzzle(grid [][]byte, target string) bool {\n    \n}",
+    "ruby": "# @param {Character[][]} grid\n# @param {String} target\n# @return {Boolean}\ndef word_puzzle(grid, target)\n    \nend",
+    "scala": "object Solution {\n    def wordPuzzle(grid: Array[Array[Char]], target: String): Boolean = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn word_puzzle(grid: Vec<Vec<char>>, target: String) -> bool {\n        \n    }\n}",
+    "racket": "(define/contract (word-puzzle grid target)\n  (-> (listof (listof char?)) string? boolean?)\n  )",
+    "erlang": "-spec word_puzzle(Grid :: [[char()]], Target :: unicode:unicode_binary()) -> boolean().\nword_puzzle(Grid, Target) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec word_puzzle(grid :: [[char]], target :: String.t) :: boolean\n  def word_puzzle(grid, target) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func wordPuzzle(grid: Array<Array<Rune>>, target: String): Bool {\n\n    }\n}"
+  },
+  "exampleTestcases": "[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\n\"ABCCED\"\n[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\n\"SEE\"\n[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\n\"ABCB\"",
+  "hints": []
+}

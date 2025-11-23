@@ -1,0 +1,12 @@
+(define (lengthOfLongestSubstring s)
+  (define (helper s start max-length char-map)
+    (if (null? s)
+        max-length
+        (let* ((char (car s))
+               (new-start (if (hash-has-key? char-map char)
+                              (max start (hash-ref char-map char))
+                              start))
+               (new-length (max max-length (- (length s) new-start)))
+               (new-map (hash-set char-map char (length s))))
+          (helper (cdr s) new-start new-length new-map))))
+  (helper (string->list s) 0 0 (make-hash)))

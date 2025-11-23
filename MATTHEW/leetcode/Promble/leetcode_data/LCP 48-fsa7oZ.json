@@ -1,0 +1,36 @@
+{
+  "id": "LCP 48",
+  "title": "无限棋局",
+  "titleSlug": "fsa7oZ",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math",
+    "Enumeration",
+    "Game Theory"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string gobang(vector<vector<int>>& pieces) {\n\n    }\n};",
+    "java": "class Solution {\n    public String gobang(int[][] pieces) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def gobang(self, pieces):\n        \"\"\"\n        :type pieces: List[List[int]]\n        :rtype: str\n        \"\"\"",
+    "python3": "class Solution:\n    def gobang(self, pieces: List[List[int]]) -> str:",
+    "c": "\n\nchar* gobang(int** pieces, int piecesSize, int* piecesColSize){\n\n}",
+    "csharp": "public class Solution {\n    public string Gobang(int[][] pieces) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[][]} pieces\n * @return {string}\n */\nvar gobang = function(pieces) {\n\n};",
+    "typescript": "function gobang(pieces: number[][]): string {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $pieces\n     * @return String\n     */\n    function gobang($pieces) {\n\n    }\n}",
+    "swift": "class Solution {\n    func gobang(_ pieces: [[Int]]) -> String {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun gobang(pieces: Array<IntArray>): String {\n\n    }\n}",
+    "golang": "func gobang(pieces [][]int) string {\n\n}",
+    "ruby": "# @param {Integer[][]} pieces\n# @return {String}\ndef gobang(pieces)\n\nend",
+    "scala": "object Solution {\n    def gobang(pieces: Array[Array[Int]]): String = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn gobang(pieces: Vec<Vec<i32>>) -> String {\n\n    }\n}",
+    "racket": "(define/contract (gobang pieces)\n  (-> (listof (listof exact-integer?)) string?)\n\n  )",
+    "erlang": "-spec gobang(Pieces :: [[integer()]]) -> unicode:unicode_binary().\ngobang(Pieces) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec gobang(pieces :: [[integer]]) :: String.t\n  def gobang(pieces) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[[0,0,1],[1,1,1],[2,2,0]]\n[[1,2,1],[1,4,1],[1,5,1],[2,1,0],[2,3,0],[2,4,0],[3,2,1],[3,4,0],[4,2,1],[5,2,1]]",
+  "hints": []
+}

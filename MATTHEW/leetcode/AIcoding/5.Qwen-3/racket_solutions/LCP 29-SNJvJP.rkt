@@ -1,0 +1,5 @@
+(define (find-integer n)
+  (let loop ((i 1))
+    (if (<= (* i i) n)
+        (loop (+ i 1))
+        (- i 1))))

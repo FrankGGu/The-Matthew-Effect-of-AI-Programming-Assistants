@@ -1,0 +1,5 @@
+(define (intersection nums1 nums2)
+  (define set1 (list->set nums1))
+  (define set2 (list->set nums2))
+  (define intersection-set (set-intersect set1 set2))
+  (set->list intersection-set))

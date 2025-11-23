@@ -1,0 +1,8 @@
+(define (canBeNonDecreasing nums)
+  (let loop ([i 1] [prev (car nums)] [count 0])
+    (if (>= i (length nums))
+        (<= count 1)
+        (let ([current (list-ref nums i)])
+          (if (<= current prev)
+              (loop (+ i 1) current (+ count 1))
+              (loop (+ i 1) current count))))))

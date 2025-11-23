@@ -1,0 +1,25 @@
+(define (maxPerformance n speed efficiency k)
+  (define mod 1000000007)
+  (define team (map list efficiency speed))
+  (define sorted-team (sort team (lambda (x y) (> (car x) (car y)))))
+  (define speed-sum 0)
+  (define max-performance 0)
+  (define heap '())
+
+  (define (add-to-heap speed)
+    (set! speed-sum (+ speed-sum speed))
+    (set! heap (cons speed heap))
+    (if (> (length heap) k)
+        (let ((removed (car heap)))
+          (set! speed-sum (- speed-sum removed))
+          (set! heap (cdr heap)))))
+
+  (for-each (lambda (pair)
+              (add-to-heap (cadr pair))
+              (set! max-performance (max max-performance (* speed-sum (car pair)))))
+            sorted-team)
+
+  (modulo max-performance mod))
+
+(define (maximumPerformance n speed efficiency k)
+  (maxPerformance n speed efficiency k))

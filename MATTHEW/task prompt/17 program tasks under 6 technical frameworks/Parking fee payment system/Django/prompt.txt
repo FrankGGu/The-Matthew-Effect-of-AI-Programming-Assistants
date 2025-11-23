@@ -1,0 +1,35 @@
+Develop a comprehensive parking management system using Django REST Framework backend and Django template frontend. Use the following PostgreSQL database schema:
+
+Database schema:
+- parking_lots (id, name, location, total_spaces, hourly_rate, max_daily_rate, is_active)
+- parking_spaces (id, parking_lot_id, space_number, space_type, is_occupied)
+- vehicles (id, license_plate, vehicle_type, is_regular_customer)
+- parking_sessions (id, vehicle_id, parking_space_id, entry_time, exit_time, base_fee, discount_amount, total_amount, status)
+- payments (id, parking_session_id, payment_time, amount, payment_method, status)
+- discount_rules (id, rule_name, description, discount_type, discount_value, min_hours, max_hours, applicable_vehicle_types, is_active)
+
+Required features:
+1. Admin interface for managing all aspects of the system
+2. Real-time parking space status dashboard
+3. Vehicle entry and exit management with fee calculation
+4. Payment processing with receipt generation
+5. Reporting system with export capabilities
+6. User management with different permission levels
+
+Technical requirements:
+- Use Django REST Framework for API endpoints
+- Implement frontend with Django templates and Bootstrap
+- Use Django ORM for database operations
+- Include authentication with session management
+- Implement proper form validation and error handling
+- Generate complete project with requirements.txt and proper settings
+
+Database connection:
+- ENGINE: django.db.backends.postgresql
+- NAME: parking_system
+- USER: postgres
+- PASSWORD: parking123
+- HOST: localhost
+- PORT: 5432
+
+Please create a complete Django project with all necessary apps, models, views, and templates.

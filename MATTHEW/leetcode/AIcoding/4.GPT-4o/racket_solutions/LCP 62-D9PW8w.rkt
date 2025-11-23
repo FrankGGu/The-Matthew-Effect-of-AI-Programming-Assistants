@@ -1,0 +1,17 @@
+(define (find-traffic-hub roads)
+  (define n (length roads))
+  (define (out-degree node)
+    (length (filter (lambda (x) (= x node)) (flatten roads))))
+  (define (in-degree node)
+    (length (filter (lambda (x) (= node (car x))) roads)))
+  (define (is-hub node)
+    (= (out-degree node) (- n 1)) (and (= (in-degree node) (- n 1))))
+  (for/fold ([hubs '()]) ([i (in-range n)])
+    (if (is-hub i)
+        (cons i hubs)
+        hubs)))
+
+(define (traffic-hub roads)
+  (if (null? (find-traffic-hub roads))
+      -1
+      (car (find-traffic-hub roads))))

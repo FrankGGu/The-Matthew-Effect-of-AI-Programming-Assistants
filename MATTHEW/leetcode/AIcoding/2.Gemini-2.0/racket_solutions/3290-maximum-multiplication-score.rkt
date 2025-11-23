@@ -1,0 +1,20 @@
+(define (maximum-score nums multipliers)
+  (define n (vector-length nums))
+  (define m (vector-length multipliers))
+  (define memo (make-hash))
+
+  (define (dp i left)
+    (if (= i m)
+        0
+        (let ((key (cons i left)))
+          (if (hash-has-key? memo key)
+              (hash-ref memo key)
+              (let* ((right (- n 1 (- i left)))
+                     (mult (vector-ref multipliers i))
+                     (left-score (+ (* mult (vector-ref nums left)) (dp (+ i 1) (+ left 1))))
+                     (right-score (+ (* mult (vector-ref nums right)) (dp (+ i 1) left)))
+                     (result (max left-score right-score)))
+                (hash-set! memo key result)
+                result)))))
+
+  (dp 0 0))

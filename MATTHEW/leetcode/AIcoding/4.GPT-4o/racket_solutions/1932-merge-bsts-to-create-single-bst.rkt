@@ -1,0 +1,21 @@
+(define (merge-bsts bst1 bst2)
+  (define (inorder bst)
+    (if (null? bst)
+        '()
+        (append (inorder (car bst)) (list (cadr bst)) (inorder (caddr bst)))))
+
+  (define (build-bst sorted-list)
+    (if (null? sorted-list)
+        '()
+        (let ((mid (quotient (length sorted-list) 2)))
+          (cons (list (list-ref sorted-list mid) (build-bst (sublist sorted-list 0 mid)) (build-bst (sublist sorted-list (+ mid 1) (length sorted-list))))))))
+
+  (define sorted-list (append (inorder bst1) (inorder bst2)))
+  (build-bst (sort sorted-list <)))
+
+(define (sort lst cmp)
+  (if (null? lst)
+      '()
+      (append (sort (filter (lambda (x) (cmp x (car lst))) (cdr lst)))
+              (list (car lst))
+              (sort (filter (lambda (x) (not (cmp x (car lst)))) (cdr lst))))))

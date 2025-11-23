@@ -1,0 +1,12 @@
+(define (count-pairs nums low high)
+  (define (count-xor-pairs x)
+    (define count 0)
+    (for ([i (in-range (length nums))])
+      (for ([j (in-range i (length nums))])
+        (when (and (>= (bitwise-xor (list-ref nums i) (list-ref nums j)) low)
+                   (<= (bitwise-xor (list-ref nums i) (list-ref nums j)) high))
+          (set! count (+ count 1)))))
+    count)
+  (count-xor-pairs nums))
+
+(count-pairs '(1 2 3 4) 2 3)

@@ -1,0 +1,41 @@
+{
+  "id": "2221",
+  "title": "Find Triangular Sum of an Array",
+  "titleSlug": "find-triangular-sum-of-an-array",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Math",
+    "Combinatorics",
+    "Simulation"
+  ],
+  "content": "<p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>, where <code>nums[i]</code> is a digit between <code>0</code> and <code>9</code> (<strong>inclusive</strong>).</p>\n\n<p>The <strong>triangular sum</strong> of <code>nums</code> is the value of the only element present in <code>nums</code> after the following process terminates:</p>\n\n<ol>\n\t<li>Let <code>nums</code> comprise of <code>n</code> elements. If <code>n == 1</code>, <strong>end</strong> the process. Otherwise, <strong>create</strong> a new <strong>0-indexed</strong> integer array <code>newNums</code> of length <code>n - 1</code>.</li>\n\t<li>For each index <code>i</code>, where <code>0 &lt;= i &lt;&nbsp;n - 1</code>, <strong>assign</strong> the value of <code>newNums[i]</code> as <code>(nums[i] + nums[i+1]) % 10</code>, where <code>%</code> denotes modulo operator.</li>\n\t<li><strong>Replace</strong> the array <code>nums</code> with <code>newNums</code>.</li>\n\t<li><strong>Repeat</strong> the entire process starting from step 1.</li>\n</ol>\n\n<p>Return <em>the triangular sum of</em> <code>nums</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2022/02/22/ex1drawio.png\" style=\"width: 250px; height: 250px;\" />\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4,5]\n<strong>Output:</strong> 8\n<strong>Explanation:</strong>\nThe above diagram depicts the process from which we obtain the triangular sum of the array.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [5]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong>\nSince there is only one element in nums, the triangular sum is the value of that element itself.</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 9</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int triangularSum(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int triangularSum(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def triangularSum(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def triangularSum(self, nums: List[int]) -> int:\n        ",
+    "c": "int triangularSum(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int TriangularSum(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar triangularSum = function(nums) {\n    \n};",
+    "typescript": "function triangularSum(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function triangularSum($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func triangularSum(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun triangularSum(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int triangularSum(List<int> nums) {\n    \n  }\n}",
+    "golang": "func triangularSum(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef triangular_sum(nums)\n    \nend",
+    "scala": "object Solution {\n    def triangularSum(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn triangular_sum(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (triangular-sum nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec triangular_sum(Nums :: [integer()]) -> integer().\ntriangular_sum(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec triangular_sum(nums :: [integer]) :: integer\n  def triangular_sum(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func triangularSum(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,4,5]\n[5]",
+  "hints": [
+    "Try simulating the entire process.",
+    "To reduce space, use a temporary array to update nums in every step instead of creating a new array at each step."
+  ]
+}

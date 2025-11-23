@@ -1,0 +1,17 @@
+(define (maxAreaOfIsland grid)
+  (define (dfs x y)
+    (if (or (< x 0) (>= x (length grid)) 
+            (< y 0) (>= y (length (vector-ref grid 0))) 
+            (not (= (vector-ref (vector-ref grid x) y) 1)))
+        0
+        (begin
+          (vector-set! (vector-ref grid x) y 0)
+          (+ 1 (dfs (+ x 1) y) (dfs (- x 1) y) 
+                 (dfs x (+ y 1)) (dfs x (- y 1))))))
+  (define (helper)
+    (for/sum ((i (in-range (length grid)))
+              (j (in-range (length (vector-ref grid 0)))))
+      (if (= (vector-ref (vector-ref grid i) j) 1)
+          (dfs i j)
+          0)))
+  (helper))

@@ -1,0 +1,7 @@
+(define/contract (running-sum nums)
+  (-> (listof exact-integer?) (listof exact-integer?))
+  (let loop ([nums nums] [sum 0] [result '()])
+    (if (null? nums)
+        (reverse result)
+        (let ([new-sum (+ sum (car nums))])
+          (loop (cdr nums) new-sum (cons new-sum result))))))

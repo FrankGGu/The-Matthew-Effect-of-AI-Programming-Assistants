@@ -1,0 +1,13 @@
+(define (min-cost-cut-stick n cuts)
+  (define dp (make-vector (+ n 1) +inf.0))
+  (vector-set! dp 0 0)
+  (define cuts (sort cuts <))
+  (define m (length cuts))
+  (for ([i (in-range m)])
+    (for ([j (in-range n 0 -1)])
+      (when (and (> j 0) (<= (vector-ref cuts i) j))
+        (vector-set! dp j (min (vector-ref dp j) (+ (vector-ref dp (- j (vector-ref cuts i))) (if (= i 0) n (vector-ref cuts (- i 1)))))))))
+  (vector-ref dp n))
+
+(define (minCost n cuts)
+  (min-cost-cut-stick n cuts))

@@ -1,0 +1,10 @@
+(define (get-convertible n)
+  (define (no-zero? x)
+    (not (member #\0 (string->list (number->string x)))))
+  (let loop ((i 1))
+    (if (> i (/ n 2))
+        #f
+        (let ((j (- n i)))
+          (if (and (no-zero? i) (no-zero? j))
+              (list i j)
+              (loop (+ i 1)))))))

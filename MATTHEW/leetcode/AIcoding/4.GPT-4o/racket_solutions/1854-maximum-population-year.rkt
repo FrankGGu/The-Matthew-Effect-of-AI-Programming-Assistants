@@ -1,0 +1,15 @@
+(define (maximumPopulation logs)
+  (define years (make-vector 2051 0))
+  (for ([log logs])
+    (let ([birth (vector-ref log 0)]
+          [death (vector-ref log 1)])
+      (for ([year (in-range birth death)])
+        (vector-set! years year (+ (vector-ref years year) 1)))))
+  (define max-population-year 0)
+  (define max-population 0)
+  (for ([year (in-range 1950 2051)])
+    (if (> (vector-ref years year) max-population)
+        (begin
+          (set! max-population (vector-ref years year))
+          (set! max-population-year year))))
+  max-population-year)

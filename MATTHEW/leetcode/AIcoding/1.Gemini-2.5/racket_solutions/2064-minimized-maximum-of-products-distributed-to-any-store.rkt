@@ -1,0 +1,20 @@
+(define (minimized-maximum n quantities)
+  (define (check max-allowed)
+    (let loop ((qs quantities) (stores-needed 0))
+      (if (null? qs)
+          (<= stores-needed n)
+          (let* ((q (car qs))
+                 (needed-for-q (ceiling (/ q max-allowed))))
+            (loop (cdr qs) (+ stores-needed needed-for-q))))))
+
+  (let* ((low 1)
+         (high (apply max quantities))
+         (ans high))
+
+    (let loop ((l low) (h high) (current-ans ans))
+      (if (> l h)
+          current-ans
+          (let* ((mid (+ l (quotient (- h l) 2))))
+            (if (check mid)
+                (loop l (- mid 1) mid)
+                (loop (+ mid 1) h current-ans)))))))

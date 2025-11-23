@@ -1,0 +1,15 @@
+(define (minimum-rounds tasks)
+  (let ((count (make-hash)))
+    (for-each (lambda (t) (hash-set! count t (+ 1 (hash-ref count t 0)))) tasks)
+    (let loop ((res 0))
+      (if (null? (hash-map count (lambda (k v) (if (> v 0) #t #f))))
+          res
+          (let ((new-res 0))
+            (for-each (lambda (k)
+                        (let ((v (hash-ref count k 0)))
+                          (if (> v 0)
+                              (begin
+                                (set! new-res (+ new-res (quotient (+ v 2) 3)))
+                                (hash-set! count k (- v 3))))))
+                      (hash-keys count))
+            (loop new-res))))))

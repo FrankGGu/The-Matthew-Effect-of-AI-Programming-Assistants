@@ -1,0 +1,23 @@
+(define (min-cost colors neededTime)
+  (let* ((n (string-length colors))
+         (needed-time-vec (list->vector neededTime)))
+    (if (<= n 1)
+        0
+        (let loop ((i 1)
+                   (total-cost 0)
+                   (current-max-time (vector-ref needed-time-vec 0))
+                   (current-sum-time (vector-ref needed-time-vec 0)))
+          (if (= i n)
+              (+ total-cost (- current-sum-time current-max-time))
+              (let ((current-char (string-ref colors i))
+                    (prev-char (string-ref colors (- i 1)))
+                    (current-time (vector-ref needed-time-vec i)))
+                (if (char=? current-char prev-char)
+                    (loop (+ i 1)
+                          total-cost
+                          (max current-max-time current-time)
+                          (+ current-sum-time current-time))
+                    (loop (+ i 1)
+                          (+ total-cost (- current-sum-time current-max-time))
+                          current-time
+                          current-time))))))))

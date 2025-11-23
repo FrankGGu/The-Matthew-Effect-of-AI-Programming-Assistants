@@ -1,0 +1,5 @@
+(define (reverse-prefix word ch)
+  (let loop ((i 0) (acc '()))
+    (if (or (= i (string-length word)) (= (string-ref word i) ch))
+        (string-append (list->string (reverse acc)) (substring word i))
+        (loop (+ i 1) (cons (string-ref word i) acc)))))

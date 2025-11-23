@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double angleClock(int hour, int minutes) {
+    double hourAngle = (hour % 12) * 30.0 + minutes * 0.5;
+    double minuteAngle = minutes * 6.0;
+    double diff = fabs(hourAngle - minuteAngle);
+    return diff > 180.0 ? 360.0 - diff : diff;
+}

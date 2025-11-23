@@ -1,0 +1,10 @@
+(define/contract (next-greatest-letter letters target)
+  (-> (listof char?) char? char?)
+  (let loop ([low 0]
+             [high (sub1 (length letters))])
+    (if (> low high)
+        (list-ref letters 0)
+        (let ([mid (quotient (+ low high) 2)])
+          (if (char<=? (list-ref letters mid) target)
+              (loop (add1 mid) high)
+              (loop low (sub1 mid)))))))

@@ -1,0 +1,16 @@
+(define (merge-intervals intervals)
+  (define sorted-intervals (sort intervals (lambda (a b) (< (car a) (car b)))))
+  (define (merge acc curr)
+    (if (null? curr)
+        acc
+        (let* ((current (car curr))
+               (last (if (null? acc) '() (car (last acc)))))
+          (if (null? last)
+              (merge (cons current acc) (cdr curr))
+              (if (< (cadr last) (car current))
+                  (merge (cons current acc) (cdr curr))
+                  (merge (cons (list (car last) (max (cadr last) (cadr current))) (cdr acc)) (cdr curr)))))))
+  (reverse (merge '() sorted-intervals)))
+
+(define (merge intervals)
+  (merge-intervals intervals))

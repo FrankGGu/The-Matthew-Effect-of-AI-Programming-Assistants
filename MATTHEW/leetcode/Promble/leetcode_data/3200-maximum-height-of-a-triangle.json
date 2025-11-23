@@ -1,0 +1,39 @@
+{
+  "id": "3200",
+  "title": "Maximum Height of a Triangle",
+  "titleSlug": "maximum-height-of-a-triangle",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Enumeration"
+  ],
+  "content": "<p>You are given two integers <code>red</code> and <code>blue</code> representing the count of red and blue colored balls. You have to arrange these balls to form a triangle such that the 1<sup>st</sup> row will have 1 ball, the 2<sup>nd</sup> row will have 2 balls, the 3<sup>rd</sup> row will have 3 balls, and so on.</p>\n\n<p>All the balls in a particular row should be the <strong>same</strong> color, and adjacent rows should have <strong>different</strong> colors.</p>\n\n<p>Return the <strong>maximum</strong><em> height of the triangle</em> that can be achieved.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">red = 2, blue = 4</span></p>\n\n<p><strong>Output:</strong> 3</p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/06/16/brb.png\" style=\"width: 300px; height: 240px; padding: 10px;\" /></p>\n\n<p>The only possible arrangement is shown above.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">red = 2, blue = 1</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">2</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/06/16/br.png\" style=\"width: 150px; height: 135px; padding: 10px;\" /><br />\nThe only possible arrangement is shown above.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">red = 1, blue = 1</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n</div>\n\n<p><strong class=\"example\">Example 4:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">red = 10, blue = 1</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">2</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2024/06/16/br.png\" style=\"width: 150px; height: 135px; padding: 10px;\" /><br />\nThe only possible arrangement is shown above.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= red, blue &lt;= 100</code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maxHeightOfTriangle(int red, int blue) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maxHeightOfTriangle(int red, int blue) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maxHeightOfTriangle(self, red, blue):\n        \"\"\"\n        :type red: int\n        :type blue: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maxHeightOfTriangle(self, red: int, blue: int) -> int:\n        ",
+    "c": "int maxHeightOfTriangle(int red, int blue) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaxHeightOfTriangle(int red, int blue) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} red\n * @param {number} blue\n * @return {number}\n */\nvar maxHeightOfTriangle = function(red, blue) {\n    \n};",
+    "typescript": "function maxHeightOfTriangle(red: number, blue: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $red\n     * @param Integer $blue\n     * @return Integer\n     */\n    function maxHeightOfTriangle($red, $blue) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maxHeightOfTriangle(_ red: Int, _ blue: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maxHeightOfTriangle(red: Int, blue: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maxHeightOfTriangle(int red, int blue) {\n    \n  }\n}",
+    "golang": "func maxHeightOfTriangle(red int, blue int) int {\n    \n}",
+    "ruby": "# @param {Integer} red\n# @param {Integer} blue\n# @return {Integer}\ndef max_height_of_triangle(red, blue)\n    \nend",
+    "scala": "object Solution {\n    def maxHeightOfTriangle(red: Int, blue: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn max_height_of_triangle(red: i32, blue: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (max-height-of-triangle red blue)\n  (-> exact-integer? exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec max_height_of_triangle(Red :: integer(), Blue :: integer()) -> integer().\nmax_height_of_triangle(Red, Blue) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec max_height_of_triangle(red :: integer, blue :: integer) :: integer\n  def max_height_of_triangle(red, blue) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maxHeightOfTriangle(red: Int64, blue: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "2\n4\n2\n1\n1\n1\n10\n1",
+  "hints": [
+    "Count the max height using both possibilities. That is, red ball as top and blue ball as top.",
+    "For counting the max height, use a simple for loop and remove the number of balls required at this level."
+  ]
+}

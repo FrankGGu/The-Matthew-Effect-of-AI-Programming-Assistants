@@ -1,0 +1,6 @@
+(define (kth-largest-integer nums k)
+  (define (cmp a b)
+    (if (= (string-length a) (string-length b))
+        (string>? a b)
+        (> (string-length a) (string-length b))))
+  (list-ref (sort nums cmp) (- k 1)))

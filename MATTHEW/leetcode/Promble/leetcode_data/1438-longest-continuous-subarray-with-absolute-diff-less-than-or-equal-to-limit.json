@@ -1,0 +1,43 @@
+{
+  "id": "1438",
+  "title": "Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit",
+  "titleSlug": "longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Queue",
+    "Array",
+    "Ordered Set",
+    "Sliding Window",
+    "Monotonic Queue",
+    "Heap (Priority Queue)"
+  ],
+  "content": "<p>Given an array of integers <code>nums</code> and an integer <code>limit</code>, return the size of the longest <strong>non-empty</strong> subarray such that the absolute difference between any two elements of this subarray is less than or equal to <code>limit</code><em>.</em></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [8,2,4,7], limit = 4\n<strong>Output:</strong> 2 \n<strong>Explanation:</strong> All subarrays are: \n[8] with maximum absolute diff |8-8| = 0 &lt;= 4.\n[8,2] with maximum absolute diff |8-2| = 6 &gt; 4. \n[8,2,4] with maximum absolute diff |8-2| = 6 &gt; 4.\n[8,2,4,7] with maximum absolute diff |8-2| = 6 &gt; 4.\n[2] with maximum absolute diff |2-2| = 0 &lt;= 4.\n[2,4] with maximum absolute diff |2-4| = 2 &lt;= 4.\n[2,4,7] with maximum absolute diff |2-7| = 5 &gt; 4.\n[4] with maximum absolute diff |4-4| = 0 &lt;= 4.\n[4,7] with maximum absolute diff |4-7| = 3 &lt;= 4.\n[7] with maximum absolute diff |7-7| = 0 &lt;= 4. \nTherefore, the size of the longest subarray is 2.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [10,1,2,4,7,2], limit = 5\n<strong>Output:</strong> 4 \n<strong>Explanation:</strong> The subarray [2,4,7,2] is the longest since the maximum absolute diff is |2-7| = 5 &lt;= 5.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [4,2,2,2,4,4,2,2], limit = 0\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n\t<li><code>0 &lt;= limit &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int longestSubarray(vector<int>& nums, int limit) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int longestSubarray(int[] nums, int limit) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def longestSubarray(self, nums, limit):\n        \"\"\"\n        :type nums: List[int]\n        :type limit: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def longestSubarray(self, nums: List[int], limit: int) -> int:\n        ",
+    "c": "int longestSubarray(int* nums, int numsSize, int limit) {\n    \n}",
+    "csharp": "public class Solution {\n    public int LongestSubarray(int[] nums, int limit) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @param {number} limit\n * @return {number}\n */\nvar longestSubarray = function(nums, limit) {\n    \n};",
+    "typescript": "function longestSubarray(nums: number[], limit: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @param Integer $limit\n     * @return Integer\n     */\n    function longestSubarray($nums, $limit) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func longestSubarray(_ nums: [Int], _ limit: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun longestSubarray(nums: IntArray, limit: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int longestSubarray(List<int> nums, int limit) {\n    \n  }\n}",
+    "golang": "func longestSubarray(nums []int, limit int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @param {Integer} limit\n# @return {Integer}\ndef longest_subarray(nums, limit)\n    \nend",
+    "scala": "object Solution {\n    def longestSubarray(nums: Array[Int], limit: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn longest_subarray(nums: Vec<i32>, limit: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (longest-subarray nums limit)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec longest_subarray(Nums :: [integer()], Limit :: integer()) -> integer().\nlongest_subarray(Nums, Limit) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec longest_subarray(nums :: [integer], limit :: integer) :: integer\n  def longest_subarray(nums, limit) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func longestSubarray(nums: Array<Int64>, limit: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[8,2,4,7]\n4\n[10,1,2,4,7,2]\n5\n[4,2,2,2,4,4,2,2]\n0",
+  "hints": [
+    "Use a sliding window approach keeping the maximum and minimum value using a data structure like a multiset from STL in C++.",
+    "More specifically, use the two pointer technique, moving the right pointer as far as possible to the right until the subarray is not valid (maxValue - minValue > limit), then moving the left pointer until the subarray is valid again (maxValue - minValue <= limit). Keep repeating this process."
+  ]
+}

@@ -1,0 +1,26 @@
+#lang racket
+
+(define (max-edge-sum n edges)
+  (define edge-values (make-hash))
+  (for-each (lambda (e)
+              (let ([u (car e)]
+                    [v (cadr e)]
+                    [w (caddr e)])
+                (hash-set! edge-values (cons u v) w)
+                (hash-set! edge-values (cons v u) w)))
+            edges)
+  (define visited (make-hash))
+  (define max-sum 0)
+  (define (dfs node parent)
+    (let ([current-sum 0])
+      (for-each (lambda (neighbor)
+                  (when (not (= neighbor parent))
+                    (let ([val (hash-ref edge-values (cons node neighbor))])
+                      (set! current-sum (+ current-sum val))
+                      (let ([sum (dfs neighbor node)])
+                        (set! current-sum (+ current-sum sum))))))
+                (filter (lambda (n) (not (= n parent))) (hash-keys edge-values)))
+      (set! max-sum (max max-sum current-sum))
+      current-sum))
+  (dfs 0 -1)
+  max-sum)

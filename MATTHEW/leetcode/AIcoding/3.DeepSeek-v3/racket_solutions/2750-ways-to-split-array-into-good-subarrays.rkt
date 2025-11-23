@@ -1,0 +1,17 @@
+#lang racket
+
+(define (number-of-good-splits nums)
+  (define freq (make-hash))
+  (for ([num nums])
+    (hash-update! freq num add1 0))
+  (define left (make-hash))
+  (define right (hash-copy freq))
+  (define res 0)
+  (for ([num nums] [i (in-range (length nums))])
+    (hash-update! left num add1 0)
+    (hash-update! right num sub1)
+    (when (zero? (hash-ref right num))
+      (hash-remove! right num))
+    (when (= (hash-count left) (hash-count right))
+      (set! res (add1 res))))
+  res)

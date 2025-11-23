@@ -1,0 +1,10 @@
+(define (binary-tree-paths root)
+  (define (helper node path result)
+    (if (not node)
+        result
+        (let ((new-path (string-append path (number->string (node-val node)))))
+          (if (and (not (node-left node)) (not (node-right node)))
+              (cons new-path result)
+              (append (helper (node-left node) (string-append new-path "->") '())
+                      (helper (node-right node) (string-append new-path "->") '()))))))
+  (reverse (helper root "" '())))

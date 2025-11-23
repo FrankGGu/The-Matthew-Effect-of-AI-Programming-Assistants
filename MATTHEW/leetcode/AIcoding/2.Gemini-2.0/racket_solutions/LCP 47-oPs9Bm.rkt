@@ -1,0 +1,8 @@
+(define (security-check people)
+  (let loop ([q people] [result '()])
+    (if (null? q)
+        (reverse result)
+        (let ([person (car q)])
+          (if (even? person)
+              (loop (cdr q) (cons person result))
+              (loop (cdr q) result))))))

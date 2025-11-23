@@ -1,0 +1,6 @@
+(define (find-the-difference s t)
+  (let* ((s-chars (string->list s))
+         (t-chars (string->list t))
+         (s-sum (apply + (map char->integer s-chars)))
+         (t-sum (apply + (map char->integer t-chars))))
+    (integer->char (- t-sum s-sum))))

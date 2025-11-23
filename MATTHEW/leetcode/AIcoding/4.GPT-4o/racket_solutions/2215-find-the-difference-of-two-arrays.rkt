@@ -1,0 +1,13 @@
+(define (find-difference nums1 nums2)
+  (define (to-set lst)
+    (foldl (lambda (x acc)
+             (if (member x acc) 
+                 acc 
+                 (cons x acc))) 
+           '() 
+           lst))
+  (define set1 (to-set nums1))
+  (define set2 (to-set nums2))
+  (define diff1 (filter (lambda (x) (not (member x set2))) set1))
+  (define diff2 (filter (lambda (x) (not (member x set1))) set2))
+  (list diff1 diff2))

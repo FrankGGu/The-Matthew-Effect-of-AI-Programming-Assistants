@@ -1,0 +1,15 @@
+(define (min-operations s)
+  (let ((n (string-length s)))
+    (let ((cost1
+           (for/sum ([i (in-range n)])
+             (let ((char (string-ref s i)))
+               (if (even? i)
+                   (if (char=? char #\1) 1 0)
+                   (if (char=? char #\0) 1 0)))))
+          (cost2
+           (for/sum ([i (in-range n)])
+             (let ((char (string-ref s i)))
+               (if (even? i)
+                   (if (char=? char #\0) 1 0)
+                   (if (char=? char #\1) 1 0))))))
+      (min cost1 cost2))))

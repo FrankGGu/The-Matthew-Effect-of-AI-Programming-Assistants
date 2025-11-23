@@ -1,0 +1,5 @@
+(define (unique-occurrences arr)
+  (let* ((counts (make-hash))
+         (count-list (for/list ((x arr))
+                       (hash-update! counts x add1 0))))
+    (equal? (length count-list) (length (remove-duplicates count-list)))))

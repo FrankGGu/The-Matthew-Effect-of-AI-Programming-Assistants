@@ -1,0 +1,10 @@
+(define/contract (max-interval-score intervals)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let ([sorted-intervals (sort intervals (lambda (a b) (< (second a) (second b))))])
+    (let loop ([prev-end -inf.0] [score 0] [remaining sorted-intervals])
+      (if (null? remaining)
+          score
+          (let ([current (car remaining)])
+            (if (>= (first current) prev-end)
+                (loop (second current) (+ score (third current)) (cdr remaining))
+                (loop prev-end score (cdr remaining)))))))

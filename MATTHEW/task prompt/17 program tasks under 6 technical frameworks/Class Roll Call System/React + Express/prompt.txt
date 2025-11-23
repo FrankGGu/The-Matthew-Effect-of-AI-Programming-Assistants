@@ -1,0 +1,42 @@
+Develop a Class Roll Call System using React frontend and Express.js backend with Prisma ORM. The application should manage student lists, track attendance, and provide reporting features.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Frontend Requirements (React 18):**
+- Create components for student management
+- Build attendance recording interface with date selection
+- Implement attendance reports and statistics
+- Use React Router for navigation
+- Use state management (Context API or Redux)
+- Modern UI with Material-UI or similar
+
+**Backend Requirements (Express.js):**
+- REST API with proper middleware
+- Prisma for database operations
+- Input validation and error handling
+- JWT authentication (optional but recommended)
+- CORS configuration
+
+**Key Features:**
+- Mark attendance with present/absent status
+- View attendance by date or by student
+- Prevent duplicate entries for same student/date
+- Export attendance data (optional)
+
+**Database Connection:**
+Use Prisma with PostgreSQL: postgresql://localhost:5432/rollcall_db
+
+**Code Structure:**
+- Separate frontend and backend folders
+- Modern React with hooks and functional components
+- Proper error handling in both frontend and backend
+- Environment configuration
+
+**Deliverables:**
+- Complete source code with package.json files
+- Prisma schema and migration files
+- Setup instructions in README
+- API endpoint documentation

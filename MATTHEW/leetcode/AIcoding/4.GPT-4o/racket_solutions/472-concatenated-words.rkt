@@ -1,0 +1,11 @@
+(define (findAllConcatenatedWordsInADict words)
+  (define dict (set words))
+  (define (can-form word)
+    (define n (string-length word))
+    (define (dp i)
+      (if (= i n) #t
+          (for/or ([j (in-range (+ i 1) n)])
+            (and (set-member? dict (substring word i j))
+                 (dp j)))))
+    (dp 0))
+  (filter can-form words))

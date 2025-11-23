@@ -1,0 +1,10 @@
+(define (check-array-rotated-sorted arr)
+  (define n (length arr))
+  (define count 0)
+  (for ([i (in-range n)])
+    (when (> (list-ref arr i) (list-ref arr (modulo (+ i 1) n)))
+      (set! count (+ count 1))))
+  (<= count 1))
+
+(check-array-rotated-sorted '(3 4 5 1 2))
+(check-array-rotated-sorted '(2 1 3 4))

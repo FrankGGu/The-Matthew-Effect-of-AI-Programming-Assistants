@@ -1,0 +1,31 @@
+(define (subarray-gcd A K)
+  (define (count-subarrays arr)
+    (define n (length arr))
+    (define count 0)
+    (for* ((i (in-range n))
+           (j (in-range i n)))
+      (when (= (gcd (apply gcd (sublist arr i (add1 j))) K) K)
+        (set! count (+ count 1))))
+    count)
+
+  (define (gcd x y)
+    (if (= y 0)
+        x
+        (gcd y (modulo x y))))
+
+  (define n (length A))
+  (define result 0)
+  (for ((i (in-range n)))
+    (if (= (gcd (list-ref A i) K) K)
+        (let loop ((j i) (current-gcd (list-ref A i)) (count 0))
+          (if (>= j n)
+              (set! result (+ result count))
+              (begin
+                (if (= (gcd current-gcd (list-ref A j)) K)
+                    (loop (add1 j) (gcd current-gcd (list-ref A j)) (+ count 1))
+                    (set! result (+ result count))
+                    (set! count 0)
+                    (loop (add1 j) (list-ref A j) count)))))))
+  result)
+
+(subarray-gcd '(9 3 1 2 6 3) 3)

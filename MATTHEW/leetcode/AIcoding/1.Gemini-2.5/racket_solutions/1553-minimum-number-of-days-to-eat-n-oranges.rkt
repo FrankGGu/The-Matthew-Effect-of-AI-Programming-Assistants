@@ -1,0 +1,20 @@
+(define (min-days n)
+  (define memo (make-hash))
+
+  (define (dp current-n)
+    (cond
+      ((= current-n 0) 0)
+      ((= current-n 1) 1)
+      ((hash-has-key? memo current-n) (hash-ref memo current-n))
+      (else
+       (let* ((res-minus-1 (+ 1 (dp (- current-n 1))))
+              (res-div-2 (if (zero? (remainder current-n 2))
+                             (+ 1 (dp (/ current-n 2)))
+                             +inf.0))
+              (res-div-3 (if (zero? (remainder current-n 3))
+                             (+ 1 (dp (/ current-n 3)))
+                             +inf.0))
+              (min-res (min res-minus-1 res-div-2 res-div-3)))
+         (hash-set! memo current-n min-res)
+         min-res))))
+  (dp n))

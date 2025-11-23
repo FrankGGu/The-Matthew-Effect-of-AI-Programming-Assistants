@@ -1,0 +1,20 @@
+(define (can-reorder-doubled arr)
+  (let* ((counts (make-hash))
+         (n (length arr)))
+    (for-each (lambda (x) (hash-update! counts x (lambda (v) (if v (+ v 1) 1)) 0)) arr)
+    (let loop ((sorted-arr (sort arr <)))
+      (cond
+        ((null? sorted-arr) #t)
+        (else
+         (let* ((x (car sorted-arr))
+                (count-x (hash-ref counts x 0)))
+           (if (> count-x 0)
+               (let ((double-x (* x 2)))
+                 (let ((count-double-x (hash-ref counts double-x 0)))
+                   (cond
+                     ((> count-double-x 0)
+                      (hash-update! counts x (lambda (v) (- v 1)) 0)
+                      (hash-update! counts double-x (lambda (v) (- v 1)) 0)
+                      (loop (cdr sorted-arr)))
+                     (else #f))))
+               (loop (cdr sorted-arr)))))))))

@@ -1,0 +1,18 @@
+(define (check-record s)
+  (let ((len (string-length s)))
+    (define-values (absent-count max-consecutive-late-count current-consecutive-late-count)
+      (for/fold ((abs-acc 0)
+                 (max-late-acc 0)
+                 (cur-late-acc 0))
+                ((i (in-range len)))
+        (let ((char (string-ref s i)))
+          (cond
+            ((char=? char #\A)
+             (values (+ abs-acc 1) max-late-acc 0))
+            ((char=? char #\L)
+             (let ((new-cur-late-acc (+ cur-late-acc 1)))
+               (values abs-acc (max max-late-acc new-cur-late-acc) new-cur-late-acc)))
+            (else
+             (values abs-acc max-late-acc 0)))))))
+    (and (< absent-count 2)
+         (< max-consecutive-late-count 3))))

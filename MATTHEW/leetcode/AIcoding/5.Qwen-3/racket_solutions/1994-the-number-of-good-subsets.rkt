@@ -1,0 +1,18 @@
+#lang racket
+
+(define (num-goods-subsets nums)
+  (define mod 1000000007)
+  (define cnt (make-hash))
+  (for ([n nums])
+    (hash-set! cnt n (+ (hash-ref cnt n 0) 1)))
+  (define primes '(2 3 5 7 11 13 15 17 19 23 29 31))
+  (define dp (make-vector 32 0))
+  (vector-set! dp 0 1)
+  (for ([p primes])
+    (when (hash-has-key? cnt p)
+      (let ([c (hash-ref cnt p)])
+        (for ([i (in-range 31 -1 -1)])
+          (when (> (vector-ref dp i) 0)
+            (let ([new-mask (bitwise-ior i p)])
+              (vector-set! dp new-mask (modulo (+ (vector-ref dp new-mask) (* (vector-ref dp i) c)) mod))))))))
+  (- (vector-ref dp 31) 1))

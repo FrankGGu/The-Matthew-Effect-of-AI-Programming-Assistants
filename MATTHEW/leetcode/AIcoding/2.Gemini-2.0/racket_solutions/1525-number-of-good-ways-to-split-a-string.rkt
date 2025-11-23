@@ -1,0 +1,22 @@
+(define (num-good-ways s)
+  (define n (string-length s))
+  (define left (make-vector n 0))
+  (define right (make-vector n 0))
+  (define seen-left (make-hash))
+  (define seen-right (make-hash))
+
+  (for ([i (in-range n)])
+    (let ([c (string-ref s i)])
+      (hash-set! seen-left c #t)
+      (vector-set! left i (hash-count seen-left))))
+
+  (for ([i (in-range (- n 1) -1 -1)])
+    (let ([c (string-ref s i)])
+      (hash-set! seen-right c #t)
+      (vector-set! right i (hash-count seen-right))))
+
+  (define count 0)
+  (for ([i (in-range (- n 1))])
+    (if (= (vector-ref left i) (vector-ref right (+ i 1)))
+        (set! count (+ count 1))))
+  count)

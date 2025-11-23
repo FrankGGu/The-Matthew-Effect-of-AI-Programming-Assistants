@@ -1,0 +1,13 @@
+(define (maximum-total-importance n roads)
+  (define degree (make-vector n 0))
+  (for-each (lambda (road)
+              (vector-set! degree (car road) (+ (vector-ref degree (car road)) 1))
+              (vector-set! degree (cadr road) (+ (vector-ref degree (cadr road)) 1)))
+            roads)
+  (apply + (map (lambda (d) (* d (+ 1 (index-of (sort (vector->list degree) >) d)))) (sort (vector->list degree) >))))
+
+(define (index-of lst x)
+  (let loop ((i 0) (lst lst))
+    (cond ((null? lst) -1)
+          ((equal? (car lst) x) i)
+          (else (loop (+ i 1) (cdr lst))))))

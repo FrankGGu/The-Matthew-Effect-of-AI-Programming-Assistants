@@ -1,0 +1,36 @@
+{
+  "id": "LCP 51",
+  "title": "烹饪料理",
+  "titleSlug": "UEcfPD",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Bit Manipulation",
+    "Array",
+    "Backtracking",
+    "Enumeration"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int perfectMenu(vector<int>& materials, vector<vector<int>>& cookbooks, vector<vector<int>>& attribute, int limit) {\n\n    }\n};",
+    "java": "class Solution {\n    public int perfectMenu(int[] materials, int[][] cookbooks, int[][] attribute, int limit) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def perfectMenu(self, materials, cookbooks, attribute, limit):\n        \"\"\"\n        :type materials: List[int]\n        :type cookbooks: List[List[int]]\n        :type attribute: List[List[int]]\n        :type limit: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def perfectMenu(self, materials: List[int], cookbooks: List[List[int]], attribute: List[List[int]], limit: int) -> int:",
+    "c": "\n\nint perfectMenu(int* materials, int materialsSize, int** cookbooks, int cookbooksSize, int* cookbooksColSize, int** attribute, int attributeSize, int* attributeColSize, int limit){\n\n}",
+    "csharp": "public class Solution {\n    public int PerfectMenu(int[] materials, int[][] cookbooks, int[][] attribute, int limit) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number[]} materials\n * @param {number[][]} cookbooks\n * @param {number[][]} attribute\n * @param {number} limit\n * @return {number}\n */\nvar perfectMenu = function(materials, cookbooks, attribute, limit) {\n\n};",
+    "typescript": "function perfectMenu(materials: number[], cookbooks: number[][], attribute: number[][], limit: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $materials\n     * @param Integer[][] $cookbooks\n     * @param Integer[][] $attribute\n     * @param Integer $limit\n     * @return Integer\n     */\n    function perfectMenu($materials, $cookbooks, $attribute, $limit) {\n\n    }\n}",
+    "swift": "class Solution {\n    func perfectMenu(_ materials: [Int], _ cookbooks: [[Int]], _ attribute: [[Int]], _ limit: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun perfectMenu(materials: IntArray, cookbooks: Array<IntArray>, attribute: Array<IntArray>, limit: Int): Int {\n\n    }\n}",
+    "golang": "func perfectMenu(materials []int, cookbooks [][]int, attribute [][]int, limit int) int {\n\n}",
+    "ruby": "# @param {Integer[]} materials\n# @param {Integer[][]} cookbooks\n# @param {Integer[][]} attribute\n# @param {Integer} limit\n# @return {Integer}\ndef perfect_menu(materials, cookbooks, attribute, limit)\n\nend",
+    "scala": "object Solution {\n    def perfectMenu(materials: Array[Int], cookbooks: Array[Array[Int]], attribute: Array[Array[Int]], limit: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn perfect_menu(materials: Vec<i32>, cookbooks: Vec<Vec<i32>>, attribute: Vec<Vec<i32>>, limit: i32) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (perfect-menu materials cookbooks attribute limit)\n  (-> (listof exact-integer?) (listof (listof exact-integer?)) (listof (listof exact-integer?)) exact-integer? exact-integer?)\n\n  )",
+    "erlang": "-spec perfect_menu(Materials :: [integer()], Cookbooks :: [[integer()]], Attribute :: [[integer()]], Limit :: integer()) -> integer().\nperfect_menu(Materials, Cookbooks, Attribute, Limit) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec perfect_menu(materials :: [integer], cookbooks :: [[integer]], attribute :: [[integer]], limit :: integer) :: integer\n  def perfect_menu(materials, cookbooks, attribute, limit) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[3,2,4,1,2]\n[[1,1,0,1,2],[2,1,4,0,0],[3,2,4,1,0]]\n[[3,2],[2,4],[7,6]]\n5\n[10,10,10,10,10]\n[[1,1,1,1,1],[3,3,3,3,3],[10,10,10,10,10]]\n[[5,5],[6,6],[10,10]]\n1",
+  "hints": []
+}

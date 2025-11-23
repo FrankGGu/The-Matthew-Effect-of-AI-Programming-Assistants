@@ -1,0 +1,40 @@
+(define (is-valid-sudoku board)
+  (define (valid-row? row)
+    (let ((seen (make-hash)))
+      (for ([num (in-list row)])
+        (when (and (not (equal? num '.')) (not (hash-has-key? seen num)))
+          (hash-set! seen num)))
+      (hash-count seen) (<= (hash-count seen) 9)))
+
+  (define (valid-column? col)
+    (let ((seen (make-hash)))
+      (for ([i (in-range 9)])
+        (let ((num (list-ref (list-ref board i) col)))
+          (when (and (not (equal? num '.')) (not (hash-has-key? seen num)))
+            (hash-set! seen num))))
+      (hash-count seen) (<= (hash-count seen) 9)))
+
+  (define (valid-box? start-row start-col)
+    (let ((seen (make-hash)))
+      (for ([i (in-range start-row (+ start-row 3))])
+        (for ([j (in-range start-col (+ start-col 3))])
+          (let ((num (list-ref (list-ref board i) j)))
+            (when (and (not (equal? num '.')) (not (hash-has-key? seen num)))
+              (hash-set! seen num)))))
+      (hash-count seen) (<= (hash-count seen) 9)))
+
+  (for ([i (in-range 9)])
+    (when (not (valid-row? (list-ref board i)))
+      (return #f))
+    (when (not (valid-column? i))
+      (return #f)))
+
+  (for ([i (in-range 0 9 3)]
+        [j (in-range 0 9 3)])
+    (when (not (valid-box? i j))
+      (return #f)))
+
+  #t)
+
+(define (isValidSudoku board)
+  (is-valid-sudoku board))

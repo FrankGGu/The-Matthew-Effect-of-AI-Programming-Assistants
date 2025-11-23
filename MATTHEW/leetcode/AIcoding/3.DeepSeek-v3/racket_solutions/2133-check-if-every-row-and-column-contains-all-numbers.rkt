@@ -1,0 +1,7 @@
+(define/contract (check-valid matrix)
+  (-> (listof (listof exact-integer?)) boolean?)
+  (let ([n (length matrix)])
+    (for/and ([row matrix])
+      (equal? (sort row <) (range 1 (+ n 1))))
+    (for/and ([col (apply map list matrix)])
+      (equal? (sort col <) (range 1 (+ n 1)))))

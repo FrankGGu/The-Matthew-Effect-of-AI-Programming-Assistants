@@ -1,0 +1,12 @@
+(define (can-partition nums)
+  (define sum (apply + nums))
+  (if (odd? sum)
+      #f
+      (let ((target (/ sum 2)))
+        (define dp (make-vector (+ target 1) #f))
+        (vector-set! dp 0 #t)
+        (for ([num nums])
+          (for ([i (in-range target -1 -1)])
+            (if (and (vector-ref dp i) (<= (+ num i) target))
+                (vector-set! dp (+ num i) #t))))
+        (vector-ref dp target))))

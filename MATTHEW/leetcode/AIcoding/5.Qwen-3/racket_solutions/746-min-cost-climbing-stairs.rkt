@@ -1,0 +1,5 @@
+(define (min-cost-climbing-stairs cost)
+  (let loop ([i 2] [prev-prev (car cost)] [prev (cadr cost)])
+    (if (>= i (length cost))
+        (min prev-prev prev)
+        (loop (+ i 1) prev (+ prev (* (list-ref cost i) 1))))))

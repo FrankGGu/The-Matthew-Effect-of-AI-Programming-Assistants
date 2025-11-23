@@ -1,0 +1,17 @@
+(define (minimum-xor-sum nums1 nums2)
+  (let* ((n (length nums1))
+         (memo (make-hash)))
+    (define (solve idx mask)
+      (if (= idx n)
+          0
+          (let ((key (cons idx mask)))
+            (if (hash-has-key? memo key)
+                (hash-ref memo key)
+                (let ((min-sum (foldl min +inf.0 (for/list ((i (in-range n)))
+                                                    (if (bitwise-bit-set? mask i)
+                                                        +inf.0
+                                                        (+ (bitwise-xor (list-ref nums1 idx) (list-ref nums2 i))
+                                                           (solve (+ idx 1) (bitwise-ior mask (bitwise-left-shift 1 i)))))))))
+                  (hash-set! memo key min-sum)
+                  min-sum))))))
+    (solve 0 0)))

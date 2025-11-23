@@ -1,0 +1,13 @@
+(define/contract (find-pairs nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([num-count (make-hash)]
+        [result 0])
+    (for ([num nums])
+      (hash-update! num-count num add1 (lambda () 0)))
+    (for ([(num count) num-count])
+      (if (positive? k)
+          (when (hash-has-key? num-count (+ num k))
+            (set! result (add1 result)))
+          (when (> count 1)
+            (set! result (add1 result)))))
+    result))

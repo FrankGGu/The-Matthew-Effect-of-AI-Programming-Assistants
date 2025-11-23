@@ -1,0 +1,18 @@
+(define (min-falling-path-sum matrix)
+  (define n (length matrix))
+  (define dp (make-vector n (lambda () 0)))
+  (for ([i (in-range n)])
+    (vector-set! dp i (vector-ref (list-ref matrix i) 0)))
+  (for ([j (in-range 1 (length (first matrix)))])
+    (define next-dp (make-vector n (lambda () 0)))
+    (for ([i (in-range n)])
+      (define min-path (+ (vector-ref (list-ref matrix i) j)
+                          (apply min (filter (lambda (x) (not (= x i))) (range n)))))
+      (vector-set! next-dp i min-path))
+    (set! dp next-dp))
+  (apply min (vector->list dp)))
+
+(define (min-falling-path-sum-ii matrix)
+  (if (null? matrix)
+      0
+      (min-falling-path-sum matrix)))

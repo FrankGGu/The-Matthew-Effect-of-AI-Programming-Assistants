@@ -1,0 +1,21 @@
+#include <vector>
+#include <numeric>
+
+class Solution {
+public:
+    bool isCovered(std::vector<std::vector<int>>& ranges, int left, int right) {
+        for (int i = left; i <= right; ++i) {
+            bool covered = false;
+            for (const auto& range : ranges) {
+                if (i >= range[0] && i <= range[1]) {
+                    covered = true;
+                    break;
+                }
+            }
+            if (!covered) {
+                return false;
+            }
+        }
+        return true;
+    }
+};

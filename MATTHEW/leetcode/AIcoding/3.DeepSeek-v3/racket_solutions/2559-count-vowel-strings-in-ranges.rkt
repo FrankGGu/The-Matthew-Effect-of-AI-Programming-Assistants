@@ -1,0 +1,16 @@
+#lang racket
+
+(define/contract (vowel-strings words queries)
+  (-> (listof string?) (listof (listof exact-integer?)) (listof exact-integer?))
+  (define vowels (set #\a #\e #\i #\o #\u))
+  (define prefix (make-vector (add1 (length words)) 0))
+  (for ([i (in-range 1 (add1 (length words))])
+    (define word (list-ref words (sub1 i)))
+    (define first-char (string-ref word 0))
+    (define last-char (string-ref word (sub1 (string-length word))))
+    (define is-vowel-string (and (set-member? vowels first-char) (set-member? vowels last-char)))
+    (vector-set! prefix i (+ (vector-ref prefix (sub1 i)) (if is-vowel-string 1 0))))
+  (for/list ([q queries])
+    (define l (list-ref q 0))
+    (define r (list-ref q 1))
+    (- (vector-ref prefix (add1 r)) (vector-ref prefix l))))

@@ -1,0 +1,8 @@
+(define (count-pairs-with-abs-diff-k nums k)
+  (let* ((n (length nums))
+         (count 0))
+    (for ([i (in-range n)])
+      (for ([j (in-range (+ i 1) n)])
+        (when (= (abs (- (list-ref nums i) (list-ref nums j))) k)
+          (set! count (+ count 1)))))
+    count))

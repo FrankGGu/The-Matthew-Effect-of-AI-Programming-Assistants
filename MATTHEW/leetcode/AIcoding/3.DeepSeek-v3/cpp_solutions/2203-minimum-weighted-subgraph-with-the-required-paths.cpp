@@ -1,0 +1,51 @@
+#include <vector>
+#include <queue>
+#include <climits>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    long long minimumWeight(int n, vector<vector<int>>& edges, int src1, int src2, int dest) {
+        vector<vector<pair<int, int>>> graph(n), reverse_graph(n);
+        for (auto& edge : edges) {
+            int u = edge[0], v = edge[1], w = edge[2];
+            graph[u].emplace_back(v, w);
+            reverse_graph[v].emplace_back(u, w);
+        }
+
+        auto dijkstra = [](int start, const vector<vector<pair<int, int>>>& g, int n) {
+            vector<long long> dist(n, LLONG_MAX);
+            dist[start] = 0;
+            priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> pq;
+            pq.emplace(0, start);
+
+            while (!pq.empty()) {
+                auto [d, u] = pq.top();
+                pq.pop();
+                if (d > dist[u]) continue;
+                for (auto [v, w] : g[u]) {
+                    if (dist[v] > dist[u] + w) {
+                        dist[v] = dist[u] + w;
+                        pq.emplace(dist[v], v);
+                    }
+                }
+            }
+            return dist;
+        };
+
+        vector<long long> dist_src1 = dijkstra(src1, graph, n);
+        vector<long long> dist_src2 = dijkstra(src2, graph, n);
+        vector<long long> dist_dest = dijkstra(dest, reverse_graph, n);
+
+        long long res = LLONG_MAX;
+        for (int i = 0; i < n; ++i) {
+            if (dist_src1[i] != LLONG_MAX && dist_src2[i] != LLONG_MAX && dist_dest[i] != LLONG_MAX) {
+                res = min(res, dist_src1[i] + dist_src2[i] + dist_dest[i]);
+            }
+        }
+
+        return res == LLONG_MAX ? -1 : res;
+    }
+};

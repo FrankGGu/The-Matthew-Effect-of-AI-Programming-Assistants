@@ -1,0 +1,10 @@
+(define (next-greater-element nums1 nums2)
+  (define stack '())
+  (define map (make-hash))
+  (for ([n nums2])
+    (begin
+      (while (and (not (null? stack)) (> n (car stack)))
+        (hash-set! map (car stack) n)
+        (set! stack (cdr stack)))
+      (set! stack (cons n stack))))
+  (map (λ (n) (if (hash-has? map n) (hash-ref map n) -1)) nums1))

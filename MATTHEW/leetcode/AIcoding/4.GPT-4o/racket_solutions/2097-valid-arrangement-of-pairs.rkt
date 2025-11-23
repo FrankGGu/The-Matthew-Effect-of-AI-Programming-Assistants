@@ -1,0 +1,20 @@
+#lang racket
+
+(define (find-itinerary tickets)
+  (define adj (make-hash))
+  (for-each (lambda (ticket)
+              (define from (first ticket))
+              (define to (second ticket))
+              (hash-set! adj from (cons to (hash-ref adj from '()))))
+            tickets)
+  (define result '())
+  (define (dfs city)
+    (for ([next (hash-ref adj city '())])
+      (hash-set! adj city (cdr (hash-ref adj city)))
+      (dfs next)
+      (set! result (cons next result))))
+  (dfs "JFK")
+  (cons "JFK" (reverse result)))
+
+(define (valid-arrangement pairs)
+  (find-itinerary pairs))

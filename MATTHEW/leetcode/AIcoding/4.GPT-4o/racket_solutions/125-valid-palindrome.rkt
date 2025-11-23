@@ -1,0 +1,10 @@
+(define (isPalindrome s)
+  (define (clean s)
+    (filter (lambda (c) (or (char-numeric? c) (char-alphabetic? c))) (string->list (string-downcase s))))
+  (define cleaned (clean s))
+  (define (helper lst)
+    (if (or (null? lst) (null? (cdr lst)))
+        #t
+        (and (equal? (car lst) (car (reverse lst)))
+             (helper (cdr (reverse (cdr lst)))))))
+  (helper cleaned))

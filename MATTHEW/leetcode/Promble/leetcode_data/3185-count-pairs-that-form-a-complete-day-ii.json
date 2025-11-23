@@ -1,0 +1,40 @@
+{
+  "id": "3185",
+  "title": "Count Pairs That Form a Complete Day II",
+  "titleSlug": "count-pairs-that-form-a-complete-day-ii",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Counting"
+  ],
+  "content": "<p>Given an integer array <code>hours</code> representing times in <strong>hours</strong>, return an integer denoting the number of pairs <code>i</code>, <code>j</code> where <code>i &lt; j</code> and <code>hours[i] + hours[j]</code> forms a <strong>complete day</strong>.</p>\n\n<p>A <strong>complete day</strong> is defined as a time duration that is an <strong>exact</strong> <strong>multiple</strong> of 24 hours.</p>\n\n<p>For example, 1 day is 24 hours, 2 days is 48 hours, 3 days is 72 hours, and so on.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">hours = [12,12,30,24,24]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">2</span></p>\n\n<p><strong>Explanation:</strong> The pairs of indices that form a complete day are <code>(0, 1)</code> and <code>(3, 4)</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">hours = [72,48,24,3]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">3</span></p>\n\n<p><strong>Explanation:</strong> The pairs of indices that form a complete day are <code>(0, 1)</code>, <code>(0, 2)</code>, and <code>(1, 2)</code>.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= hours.length &lt;= 5 * 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= hours[i] &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    long long countCompleteDayPairs(vector<int>& hours) {\n        \n    }\n};",
+    "java": "class Solution {\n    public long countCompleteDayPairs(int[] hours) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def countCompleteDayPairs(self, hours):\n        \"\"\"\n        :type hours: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def countCompleteDayPairs(self, hours: List[int]) -> int:\n        ",
+    "c": "long long countCompleteDayPairs(int* hours, int hoursSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public long CountCompleteDayPairs(int[] hours) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} hours\n * @return {number}\n */\nvar countCompleteDayPairs = function(hours) {\n    \n};",
+    "typescript": "function countCompleteDayPairs(hours: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $hours\n     * @return Integer\n     */\n    function countCompleteDayPairs($hours) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func countCompleteDayPairs(_ hours: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun countCompleteDayPairs(hours: IntArray): Long {\n        \n    }\n}",
+    "dart": "class Solution {\n  int countCompleteDayPairs(List<int> hours) {\n    \n  }\n}",
+    "golang": "func countCompleteDayPairs(hours []int) int64 {\n    \n}",
+    "ruby": "# @param {Integer[]} hours\n# @return {Integer}\ndef count_complete_day_pairs(hours)\n    \nend",
+    "scala": "object Solution {\n    def countCompleteDayPairs(hours: Array[Int]): Long = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn count_complete_day_pairs(hours: Vec<i32>) -> i64 {\n        \n    }\n}",
+    "racket": "(define/contract (count-complete-day-pairs hours)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec count_complete_day_pairs(Hours :: [integer()]) -> integer().\ncount_complete_day_pairs(Hours) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec count_complete_day_pairs(hours :: [integer]) :: integer\n  def count_complete_day_pairs(hours) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func countCompleteDayPairs(hours: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[12,12,30,24,24]\n[72,48,24,3]",
+  "hints": [
+    "A pair <code>(i, j)</code> forms a valid complete day if <code>(hours[i] + hours[j]) % 24 == 0</code>.",
+    "Using an array or a map, for each index <code>j</code> moving from left to right, increase the answer by the count of <code>(24 - hours[j]) % 24</code>, and then increase the count of <code>hours[j]</code>."
+  ]
+}

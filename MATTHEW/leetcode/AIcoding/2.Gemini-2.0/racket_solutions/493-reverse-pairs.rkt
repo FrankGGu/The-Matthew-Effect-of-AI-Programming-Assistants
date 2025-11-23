@@ -1,0 +1,32 @@
+(define (reverse-pairs nums)
+  (let ((n (length nums)))
+    (if (zero? n)
+        0
+        (let ((count (box 0)))
+          (define (merge-sort arr l r)
+            (if (>= l r)
+                arr
+                (let* ((m (floor (+ l r) 2))
+                       (left (merge-sort arr l m))
+                       (right (merge-sort arr (+ m 1) r)))
+                  (define (merge left right)
+                    (let loop ((i 0) (j 0) (res '()))
+                      (cond
+                        ((= i (length left)) (append res (drop left i) right))
+                        ((= j (length right)) (append res (drop right j) left))
+                        ((<= (list-ref left i) (list-ref right j)) (loop (+ i 1) j (append res (list (list-ref left i)))))
+                        (else (loop i (+ j 1) (append res (list (list-ref right j))))))))
+                  (define (count-reverse left right)
+                    (let loop ((i 0) (j 0))
+                      (cond
+                        ((= i (length left)) #void)
+                        ((= j (length right)) #void)
+                        ((> (list-ref left i) (* 2 (list-ref right j)))
+                         (begin
+                           (box-set! count (+ (unbox count) (- (length right) j)))
+                           (loop (+ i 1) j)))
+                        (else (loop i (+ j 1))))))
+                  (count-reverse left right)
+                  (merge left right)))))
+          (merge-sort nums 0 (- n 1))
+          (unbox count)))))

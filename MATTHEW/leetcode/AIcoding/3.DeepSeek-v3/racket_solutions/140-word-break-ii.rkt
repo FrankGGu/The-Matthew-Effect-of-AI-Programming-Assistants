@@ -1,0 +1,13 @@
+(define (word-break s wordDict)
+  (let ([word-set (list->set wordDict)]
+        [n (string-length s)])
+    (define (helper start)
+      (if (= start n)
+          (list (list))
+          (for/fold ([res null])
+                    ([end (in-range (add1 start) (add1 n))])
+            (let ([sub (substring s start end)])
+              (if (set-member? word-set sub)
+                  (append res (map (lambda (lst) (cons sub lst)) (helper end)))
+                  res)))))
+    (map (lambda (lst) (string-join lst " ")) (helper 0))))

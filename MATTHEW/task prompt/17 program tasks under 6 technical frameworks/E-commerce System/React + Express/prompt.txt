@@ -1,0 +1,37 @@
+Develop an e-commerce system using React 18 for frontend and Express.js with Prisma for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, phone, address, created_at
+- products: id, name, description, price, category, stock_quantity, image_url, is_active, created_at
+- orders: id, user_id, total_amount, status, shipping_address, payment_status, created_at, updated_at
+- order_items: id, order_id, product_id, quantity, unit_price
+- reviews: id, product_id, user_id, rating, comment, created_at
+
+Requirements:
+1. User Management:
+   - User authentication with JWT
+   - Profile and address management
+   - Order history
+
+2. Product Management:
+   - Full CRUD operations for products
+   - Real-time stock updates
+   - Advanced filtering and search
+
+3. Order Management:
+   - Create, view, edit orders
+   - Shopping cart persistence
+   - Order status workflow management
+
+Technical Specifications:
+- Frontend: React 18 with functional components and hooks, React Router for navigation
+- Backend: Express.js with JWT authentication, Prisma as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:ecopass@localhost:5432/ecommerce
+- API: RESTful endpoints with proper error handling
+
+Generate complete, runnable code including:
+- Express.js server with routes, middleware, and controllers
+- React components with modern hooks
+- Prisma schema and migrations
+- Authentication system
+- Setup and deployment instructions

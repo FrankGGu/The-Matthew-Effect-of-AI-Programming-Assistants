@@ -1,0 +1,17 @@
+(define (min-score-triangulation values)
+  (define n (length values))
+  (define dp (make-vector (add1 n) (make-vector (add1 n) 0)))
+
+  (for ([len (in-range 3 (add1 n))])
+    (for ([i (in-range 0 (- n len -1))])
+      (define j (+ i len))
+      (vector-set! (vector-ref dp i) j +inf.0)
+      (for ([k (in-range (add1 i) j)])
+        (define score (+ (vector-ref (vector-ref dp i) k)
+                          (vector-ref (vector-ref dp k) j)
+                          (* (list-ref values i)
+                             (list-ref values k)
+                             (list-ref values j))))
+        (vector-set! (vector-ref dp i) j (min (vector-ref (vector-ref dp i) j) score)))))
+
+  (vector-ref (vector-ref dp 0) n))

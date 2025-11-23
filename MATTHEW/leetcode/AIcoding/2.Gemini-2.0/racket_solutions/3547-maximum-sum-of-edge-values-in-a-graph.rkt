@@ -1,0 +1,33 @@
+(define (max-sum-edges n edges)
+  (let* ((adj (make-vector (add1 n) '()))
+         (degrees (make-vector (add1 n) 0)))
+    (for-each (lambda (edge)
+                (let ((u (car edge))
+                      (v (cadr edge))
+                      (w (caddr edge)))
+                  (vector-set! adj u (cons (cons v w) (vector-ref adj u)))
+                  (vector-set! adj v (cons (cons u w) (vector-ref adj v)))
+                  (vector-set! degrees u (add1 (vector-ref degrees u)))
+                  (vector-set! degrees v (add1 (vector-ref degrees v)))))
+              edges)
+
+    (define (dfs u visited parent)
+      (let loop ((neighbors (vector-ref adj u))
+                 (max-edge 0))
+        (cond
+          ((null? neighbors) max-edge)
+          (else
+           (let* ((neighbor (car neighbors))
+                  (v (car neighbor))
+                  (w (cdr neighbor)))
+             (if (and (not (vector-ref visited v))
+                      (not (= v parent)))
+                 (begin
+                   (vector-set! visited v #t)
+                   (let ((child-max (dfs v visited u)))
+                     (loop (cdr neighbors) (max max-edge (+ w child-max)))))
+                 (loop (cdr neighbors) max-edge)))))))
+
+    (let ((visited (make-vector (add1 n) #f)))
+      (vector-set! visited 1 #t)
+      (dfs 1 visited 0))))

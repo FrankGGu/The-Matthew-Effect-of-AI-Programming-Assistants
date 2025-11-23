@@ -1,0 +1,15 @@
+(define (merge-strings-alternately word1 word2)
+  (let* ((len1 (string-length word1))
+         (len2 (string-length word2)))
+    (let loop ((i 0) (j 0) (acc '()))
+      (cond
+        ((and (>= i len1) (>= j len2))
+         (list->string (reverse acc)))
+        ((>= i len1)
+         (list->string (append (reverse acc) (string->list (substring word2 j len2)))))
+        ((>= j len2)
+         (list->string (append (reverse acc) (string->list (substring word1 i len1)))))
+        (else
+         (loop (+ i 1) (+ j 1)
+               (cons (string-ref word1 i)
+                     (cons (string-ref word2 j) acc))))))))

@@ -1,0 +1,12 @@
+(define (give-gemstones gemstones k)
+  (define n (length gemstones))
+  (define (helper gemstones k)
+    (if (zero? k)
+        gemstones
+        (let* ((max-index (argmax gemstones))
+               (max-val (list-ref gemstones max-index))
+               (half (floor (/ max-val 2))))
+          (helper (list-set gemstones max-index (- max-val half))
+                  (list-set gemstones (modulo (+ max-index 1) n) (+ (list-ref gemstones (modulo (+ max-index 1) n)) half))
+                  (- k 1)))))
+  (apply minmax (helper gemstones k)))

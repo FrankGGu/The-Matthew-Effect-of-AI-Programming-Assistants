@@ -1,0 +1,8 @@
+(define (find-duplicates nums)
+  (define seen (make-hash))
+  (define duplicates '())
+  (for ([num nums])
+    (if (hash-ref seen num #f)
+        (set! duplicates (cons num duplicates))
+        (hash-set! seen num #t)))
+  (reverse duplicates))

@@ -1,0 +1,6 @@
+(define (elimination-game n)
+  (define (helper x step)
+    (if (> x 1)
+        (- x (* 2 (helper (/ x 2) (+ step 1))))
+        1))
+  (helper n 1))

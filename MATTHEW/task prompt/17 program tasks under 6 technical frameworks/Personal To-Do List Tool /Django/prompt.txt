@@ -1,0 +1,49 @@
+Create a full-stack Personal To-Do List application with the following technology stack:
+- Frontend: Django Templates with modern JavaScript
+- Backend: Django REST Framework for API
+- Database: PostgreSQL (already set up in Docker)
+- ORM: Django ORM
+
+Database connection details:
+- ENGINE: django.db.backends.postgresql
+- NAME: todo_db
+- USER: postgres
+- PASSWORD: todosecret
+- HOST: localhost
+- PORT: 5432
+
+Application requirements:
+1. Frontend components (Django templates with HTMX or vanilla JS):
+   - Todo list view with filtering options
+   - Form for adding/editing todos
+   - Status toggle buttons
+   - Date filter controls
+
+2. Backend API/views:
+   - REST API endpoints using DRF
+   - OR Class-based views for traditional Django approach
+   - Support CRUD operations with filtering
+
+3. Data model (Django models):
+   - Match the existing PostgreSQL todos table structure
+   - Include appropriate field types and constraints
+
+4. Functionality:
+   - Add todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter by date using Django ORM
+   - Traditional server-rendered approach or SPA with DRF
+
+5. Implementation requirements:
+   - Use Django ORM for all database operations
+   - Implement proper form validation
+   - Include class-based views or API views
+   - Use Django's built-in authentication or keep it simple
+   - Clean, responsive UI with CSS
+
+Generate the complete source code with:
+- Django project structure
+- Models, views, URLs configuration
+- Templates with JavaScript functionality
+- Settings configuration for database
+- Requirements.txt with all dependencies

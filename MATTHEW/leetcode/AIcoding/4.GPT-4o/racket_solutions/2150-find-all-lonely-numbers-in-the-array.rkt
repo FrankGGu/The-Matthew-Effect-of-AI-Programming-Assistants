@@ -1,0 +1,10 @@
+(define (find-lonely-numbers nums)
+  (define freq (make-hash))
+  (for-each (lambda (x) (hash-set! freq x (+ (hash-ref freq x 0) 1))) nums)
+  (filter (lambda (x) (and (= (hash-ref freq x) 1)
+                            (not (hash-ref freq (+ x 1)))
+                            (not (hash-ref freq (- x 1))))) 
+          (hash-keys freq)))
+
+(define (findAllLonely nums)
+  (find-lonely-numbers nums))

@@ -1,0 +1,2 @@
+(define (greet)
+  "Hello LeetCode!")

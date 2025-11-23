@@ -1,0 +1,12 @@
+(define (min-cost-for-tickets tickets cost)
+  (define days (car tickets))
+  (define costs (cadr tickets))
+  (define dp (make-vector (add1 (last days)) 0))
+  (for ([i (in-range 1 (vector-length dp))])
+    (if (not (member i days))
+        (vector-set! dp i (vector-ref dp (sub1 i)))
+        (vector-set! dp i
+                     (min (+ (vector-ref dp (max 0 (- i 1))) (vector-ref costs 0))
+                          (+ (vector-ref dp (max 0 (- i 7))) (vector-ref costs 1))
+                          (+ (vector-ref dp (max 0 (- i 30))) (vector-ref costs 2))))))
+  (vector-ref dp (sub1 (vector-length dp))))

@@ -1,0 +1,11 @@
+(define (minimum-size-helper nums ops limit)
+  (let loop ((l 1) (r (apply max nums)))
+    (if (<= l r)
+        (let ((mid (quotient (+ l r) 2)))
+          (if (>= ops (foldl + 0 (map (lambda (x) (max 0 (- (quotient x mid) (if (= (remainder x mid) 0) 1 0)))) nums)))
+              (loop l (- mid 1))
+              (loop (+ mid 1) r)))
+        l)))
+
+(define (minimum-size nums max-operations)
+  (minimum-size-helper nums max-operations (apply max nums)))

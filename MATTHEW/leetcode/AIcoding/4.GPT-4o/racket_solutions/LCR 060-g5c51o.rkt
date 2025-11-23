@@ -1,0 +1,7 @@
+(define (topKFrequent nums k)
+  (define freq (make-hash))
+  (for-each (lambda (n)
+              (hash-set! freq n (+ (hash-ref freq n 0) 1)))
+            nums)
+  (define sorted (sort (hash-map->list freq) (lambda (a b) (> (cdr a) (cdr b)))))
+  (map car (take sorted k)))

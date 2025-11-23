@@ -1,0 +1,37 @@
+{
+  "id": "LCP 46",
+  "title": "志愿者调配",
+  "titleSlug": "05ZEDJ",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Graph",
+    "Array",
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> volunteerDeployment(vector<int>& finalCnt, long long totalNum, vector<vector<int>>& edges, vector<vector<int>>& plans) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] volunteerDeployment(int[] finalCnt, long totalNum, int[][] edges, int[][] plans) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def volunteerDeployment(self, finalCnt, totalNum, edges, plans):\n        \"\"\"\n        :type finalCnt: List[int]\n        :type totalNum: int\n        :type edges: List[List[int]]\n        :type plans: List[List[int]]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def volunteerDeployment(self, finalCnt: List[int], totalNum: int, edges: List[List[int]], plans: List[List[int]]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* volunteerDeployment(int* finalCnt, int finalCntSize, long long totalNum, int** edges, int edgesSize, int* edgesColSize, int** plans, int plansSize, int* plansColSize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] VolunteerDeployment(int[] finalCnt, long totalNum, int[][] edges, int[][] plans) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} finalCnt\n * @param {number} totalNum\n * @param {number[][]} edges\n * @param {number[][]} plans\n * @return {number[]}\n */\nvar volunteerDeployment = function(finalCnt, totalNum, edges, plans) {\n    \n};",
+    "typescript": "function volunteerDeployment(finalCnt: number[], totalNum: number, edges: number[][], plans: number[][]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $finalCnt\n     * @param Integer $totalNum\n     * @param Integer[][] $edges\n     * @param Integer[][] $plans\n     * @return Integer[]\n     */\n    function volunteerDeployment($finalCnt, $totalNum, $edges, $plans) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func volunteerDeployment(_ finalCnt: [Int], _ totalNum: Int, _ edges: [[Int]], _ plans: [[Int]]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun volunteerDeployment(finalCnt: IntArray, totalNum: Long, edges: Array<IntArray>, plans: Array<IntArray>): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> volunteerDeployment(List<int> finalCnt, int totalNum, List<List<int>> edges, List<List<int>> plans) {\n    \n  }\n}",
+    "golang": "func volunteerDeployment(finalCnt []int, totalNum int64, edges [][]int, plans [][]int) []int {\n    \n}",
+    "ruby": "# @param {Integer[]} final_cnt\n# @param {Integer} total_num\n# @param {Integer[][]} edges\n# @param {Integer[][]} plans\n# @return {Integer[]}\ndef volunteer_deployment(final_cnt, total_num, edges, plans)\n    \nend",
+    "scala": "object Solution {\n    def volunteerDeployment(finalCnt: Array[Int], totalNum: Long, edges: Array[Array[Int]], plans: Array[Array[Int]]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn volunteer_deployment(final_cnt: Vec<i32>, total_num: i64, edges: Vec<Vec<i32>>, plans: Vec<Vec<i32>>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (volunteer-deployment finalCnt totalNum edges plans)\n  (-> (listof exact-integer?) exact-integer? (listof (listof exact-integer?)) (listof (listof exact-integer?)) (listof exact-integer?))\n  )",
+    "erlang": "-spec volunteer_deployment(FinalCnt :: [integer()], TotalNum :: integer(), Edges :: [[integer()]], Plans :: [[integer()]]) -> [integer()].\nvolunteer_deployment(FinalCnt, TotalNum, Edges, Plans) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec volunteer_deployment(final_cnt :: [integer], total_num :: integer, edges :: [[integer]], plans :: [[integer]]) :: [integer]\n  def volunteer_deployment(final_cnt, total_num, edges, plans) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func volunteerDeployment(finalCnt: Array<Int64>, totalNum: Int64, edges: Array<Array<Int64>>, plans: Array<Array<Int64>>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,16]\n21\n[[0,1],[1,2]]\n[[2,1],[1,0],[3,0]]",
+  "hints": []
+}

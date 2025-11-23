@@ -1,0 +1,12 @@
+(define (eraseOverlapIntervals intervals)
+  (define sorted-intervals (sort intervals (lambda (a b) (< (second a) (second b)))))
+  (define (count-non-overlapping intervals)
+    (define (helper prev count lst)
+      (if (null? lst)
+          count
+          (let ((current (car lst)))
+            (if (or (null? prev) (>= (first current) (second prev)))
+                (helper current (+ count 1) (cdr lst))
+                (helper prev count (cdr lst))))))
+    (helper null 0 sorted-intervals))
+  (- (length intervals) (count-non-overlapping sorted-intervals)))

@@ -1,0 +1,13 @@
+(define (delete-and-earn nums)
+  (define (max a b) (if (> a b) a b))
+  (define n (length nums))
+  (define freq (make-vector (+ 10001) 0))
+  (for-each (lambda (x) (vector-set! freq x (+ (vector-ref freq x) x))) nums)
+  (define dp (make-vector (+ 10001) 0))
+  (vector-set! dp 0 0)
+  (vector-set! dp 1 (vector-ref freq 1))
+  (for ([i (in-range 2 (+ 10001))])
+    (vector-set! dp i (max (vector-ref dp (- i 1)) (+ (vector-ref dp (- i 2)) (vector-ref freq i)))))
+  (vector-ref dp 10000))
+
+(delete-and-earn [3 4 2])

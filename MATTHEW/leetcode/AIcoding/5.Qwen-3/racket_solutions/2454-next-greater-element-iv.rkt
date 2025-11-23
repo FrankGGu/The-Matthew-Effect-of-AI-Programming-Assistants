@@ -1,0 +1,16 @@
+#lang racket
+
+(define (next-greater-element nums)
+  (define n (length nums))
+  (define res (make-vector n -1))
+  (define stack '())
+  (for ([i (in-range n)])
+    (let loop ()
+      (when (and (not (null? stack)) (< (vector-ref nums (car stack)) (vector-ref nums i)))
+        (vector-set! res (car stack) (vector-ref nums i))
+        (set! stack (cdr stack))
+        (loop))))
+  (for ([i (in-range n)])
+    (when (= (vector-ref res i) -1)
+      (vector-set! res i 0)))
+  (vector->list res))

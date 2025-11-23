@@ -1,0 +1,11 @@
+(define (maximumDifference num)
+  (define digits (map (lambda (c) (- (char->integer c) (char->integer #\0))) (string->list (number->string num))))
+  (define min-digit (apply min digits))
+  (define max-digit (apply max digits))
+  (define max-remap (map (lambda (d) (if (= d min-digit) max-digit d)) digits))
+  (define min-remap (map (lambda (d) (if (= d max-digit) min-digit d)) digits))
+  (define max-number (foldl (lambda (acc d) (+ (* acc 10) d)) 0 max-remap))
+  (define min-number (foldl (lambda (acc d) (+ (* acc 10) d)) 0 min-remap))
+  (- max-number min-number))
+
+(maximumDifference 123456)

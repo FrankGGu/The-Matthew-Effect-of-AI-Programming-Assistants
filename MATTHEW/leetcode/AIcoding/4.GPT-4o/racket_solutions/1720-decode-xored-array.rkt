@@ -1,0 +1,7 @@
+(define (decode xor arr)
+  (define n (length arr))
+  (define result (make-vector n 0))
+  (vector-set! result 0 (car arr))
+  (for ([i (in-range 1 n)])
+    (vector-set! result i (bit-xor (vector-ref result (- i 1)) (vector-ref arr i))))
+  (vector->list result))

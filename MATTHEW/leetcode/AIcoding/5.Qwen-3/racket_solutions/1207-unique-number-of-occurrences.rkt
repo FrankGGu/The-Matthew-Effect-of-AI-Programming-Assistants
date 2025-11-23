@@ -1,0 +1,5 @@
+(define (unique-occurrences arr)
+  (define freq (make-hash))
+  (for-each (lambda (x) (hash-set! freq x (+ 1 (hash-ref freq x 0)))) arr)
+  (define values (hash-values freq))
+  (= (length values) (length (remove-duplicates values))))

@@ -1,0 +1,25 @@
+(define (get-ancestors n edges)
+  (define graph (make-vector n '()))
+  (for ([edge edges])
+    (let ([u (first edge)]
+          [v (second edge)])
+      (vector-set! graph v (cons u (vector-ref graph v)))))
+
+  (define ancestors (make-vector n '()))
+
+  (define (dfs node)
+    (if (null? (vector-ref ancestors node))
+        (let ([parent-list (vector-ref graph node)])
+          (define visited (mutable-set))
+          (for ([parent parent-list])
+            (set-add! visited parent)
+            (for ([anc (dfs parent)])
+              (set-add! visited anc)))
+          (vector-set! ancestors node (sort (set->list visited) <))
+          (vector-ref ancestors node))
+        (vector-ref ancestors node)))
+
+  (for ([i (in-range n)])
+  (for ([i (in-range n)])
+    (dfs i))
+  (vector->list ancestors))

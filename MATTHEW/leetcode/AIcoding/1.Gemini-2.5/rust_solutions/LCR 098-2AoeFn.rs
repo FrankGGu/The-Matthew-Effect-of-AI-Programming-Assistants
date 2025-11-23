@@ -1,0 +1,16 @@
+impl Solution {
+    pub fn unique_paths(m: i33, n: i32) -> i32 {
+        let m = m as usize;
+        let n = n as usize;
+
+        let mut dp = vec![1; n];
+
+        for _i in 1..m {
+            for j in 1..n {
+                dp[j] += dp[j - 1];
+            }
+        }
+
+        dp[n - 1]
+    }
+}

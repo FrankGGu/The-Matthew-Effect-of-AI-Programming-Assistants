@@ -1,0 +1,17 @@
+#lang racket
+
+(define (min-operations nums k)
+  (define n (length nums))
+  (define res 0)
+  (define cnt (make-hash))
+  (define (update x delta)
+    (hash-set! cnt x (+ (hash-ref cnt x 0) delta)))
+  (for ([i (in-range n)])
+    (when (and (>= i k) (<= i (- n k)))
+      (update (list-ref nums (- i k)) -1))
+    (when (<= i (- n k))
+      (update (list-ref nums i) 1))
+    (when (>= i (- k 1))
+      (define max-freq (apply max (hash-values cnt)))
+      (set! res (+ res (- k max-freq)))))
+  res)

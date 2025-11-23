@@ -1,0 +1,15 @@
+#lang racket
+
+(define (min-deletions s)
+  (define freq (make-hash))
+  (for ([c s])
+    (hash-set! freq c (+ 1 (hash-ref freq c 0))))
+  (define freqs (sort (hash-values freq) >))
+  (define result 0)
+  (for ([i (in-range (sub1 (length freqs)))])
+    (define current (list-ref freqs i))
+    (define next (list-ref freqs (add1 i)))
+    (when (> current next)
+      (set! result (+ result (- current next)))
+      (set! freqs (append (take freqs i) (list next) (drop freqs (add1 i)))))))
+  result)

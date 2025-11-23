@@ -1,0 +1,32 @@
+{
+  "id": "LCP 25",
+  "title": "古董键盘",
+  "titleSlug": "Uh984O",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int keyboard(int k, int n) {\n\n    }\n};",
+    "java": "class Solution {\n    public int keyboard(int k, int n) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def keyboard(self, k, n):\n        \"\"\"\n        :type k: int\n        :type n: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def keyboard(self, k: int, n: int) -> int:",
+    "c": "\n\nint keyboard(int k, int n){\n\n}",
+    "csharp": "public class Solution {\n    public int Keyboard(int k, int n) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} k\n * @param {number} n\n * @return {number}\n */\nvar keyboard = function(k, n) {\n\n};",
+    "typescript": "function keyboard(k: number, n: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $k\n     * @param Integer $n\n     * @return Integer\n     */\n    function keyboard($k, $n) {\n\n    }\n}",
+    "swift": "class Solution {\n    func keyboard(_ k: Int, _ n: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun keyboard(k: Int, n: Int): Int {\n\n    }\n}",
+    "golang": "func keyboard(k int, n int) int {\n\n}",
+    "ruby": "# @param {Integer} k\n# @param {Integer} n\n# @return {Integer}\ndef keyboard(k, n)\n\nend",
+    "scala": "object Solution {\n    def keyboard(k: Int, n: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn keyboard(k: i32, n: i32) -> i32 {\n\n    }\n}"
+  },
+  "exampleTestcases": "1\n1\n1\n2",
+  "hints": []
+}

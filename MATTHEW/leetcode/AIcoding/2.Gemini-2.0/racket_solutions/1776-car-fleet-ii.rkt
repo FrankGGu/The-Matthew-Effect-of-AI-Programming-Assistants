@@ -1,0 +1,31 @@
+(define (car-fleet-ii positions speeds)
+  (let* ((n (length positions))
+         (ans (make-vector n -1))
+         (stack '()))
+    (for/fold (void) ((i (in-range (sub1 n) -1 -1)))
+      (begin
+        (let ((p (list-ref positions i))
+              (s (list-ref speeds i)))
+          (begin
+            (while (and (not (null? stack))
+                        (let* ((j (car stack))
+                               (pj (list-ref positions j))
+                               (sj (list-ref speeds j)))
+                           (if (>= s sj)
+                               #t
+                               (let ((time-to-catch (/ (- pj p) (- s sj))))
+                                 (and (>= time-to-catch 0)
+                                      (if (= (vector-ref ans j) -1)
+                                          #t
+                                          (let ((k (vector-ref ans j))
+                                                (pk (list-ref positions k))
+                                                (sk (list-ref speeds k)))
+                                            (if (>= sk sj)
+                                                #t
+                                                (let ((time-to-reach (/ (- pk pj) (- sj sk))))
+                                                  (>= time-to-catch time-to-reach))))))))))))
+              (set! stack (cdr stack)))
+            (if (not (null? stack))
+                (vector-set! ans i (car stack)))
+            (set! stack (cons i stack)))))))
+    (vector->list ans)))

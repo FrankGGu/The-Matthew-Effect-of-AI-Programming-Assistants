@@ -1,0 +1,31 @@
+Create a lightweight but powerful university course selection system using:
+- Frontend: Preact with TypeScript
+- Backend: Gin framework in Go
+- ORM: GORM for database operations
+- Database: PostgreSQL (already established)
+
+Database connection:
+- dsn: "host=localhost user=postgres password=university123 dbname=university port=5432 sslmode=disable"
+
+Essential functionalities:
+1. Student registration and login
+2. Course browsing and search
+3. Enrollment management with capacity constraints
+4. Student academic dashboard
+5. Basic admin interface
+
+Technical specifications:
+- Use Gin for high-performance routing
+- Implement JWT authentication
+- Use GORM with structs matching database tables
+- Create a minimal Preact frontend with responsive design
+- Include server-side validation
+
+Please generate:
+- Complete Go module structure
+- Gin routes and controllers
+- GORM models for all database entities
+- Preact components for all pages
+- Build configuration for both frontend and backend
+
+Emphasize performance and minimal resource usage while maintaining functionality.

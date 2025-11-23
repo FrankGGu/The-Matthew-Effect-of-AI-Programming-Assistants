@@ -1,0 +1,28 @@
+impl Solution {
+    pub fn is_alien_sorted(words: Vec<String>, order: String) -> bool {
+        let mut order_map = [0; 26];
+        for (i, c) in order.chars().enumerate() {
+            order_map[(c as u8 - b'a') as usize] = i;
+        }
+
+        for i in 0..words.len() - 1 {
+            let word1 = words[i].as_bytes();
+            let word2 = words[i + 1].as_bytes();
+            let mut j = 0;
+            while j < word1.len() && j < word2.len() {
+                let c1 = word1[j];
+                let c2 = word2[j];
+                if order_map[(c1 - b'a') as usize] < order_map[(c2 - b'a') as usize] {
+                    break;
+                } else if order_map[(c1 - b'a') as usize] > order_map[(c2 - b'a') as usize] {
+                    return false;
+                }
+                j += 1;
+            }
+            if j == word2.len() && j < word1.len() {
+                return false;
+            }
+        }
+        true
+    }
+}

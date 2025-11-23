@@ -1,0 +1,11 @@
+(define (common-words words1 words2)
+  (define (count-words ws)
+    (for/fold ([counts (hash)])
+              ([w ws])
+      (hash-update counts w add1 0)))
+  (define counts1 (count-words words1))
+  (define counts2 (count-words words2))
+  (for/sum ([w (in-hash-keys counts1)]
+            #:when (= 1 (hash-ref counts1 w))
+            #:when (and (hash-has-key? counts2 w) (= 1 (hash-ref counts2 w))))
+    1))

@@ -1,0 +1,11 @@
+(define/contract (maximum-energy energy k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let ([n (length energy)])
+    (if (<= n k)
+        (apply max energy)
+        (let loop ([i (- n k 1)] [max-energy -inf.0] [dp (make-vector n 0)])
+          (if (< i 0)
+              max-energy
+              (let ([current (+ (list-ref energy i) (if (< (+ i k) n) (vector-ref dp (+ i k)) 0))])
+                (vector-set! dp i current)
+                (loop (- i 1) (max max-energy current) dp))))))

@@ -1,0 +1,27 @@
+(define (maximum-tastiness-of-candy-basket price k)
+  (define sorted-price (sort price <))
+  (define n (length sorted-price))
+
+  (define (check t)
+    (let loop ((count 1)
+               (last-picked-price (car sorted-price))
+               (remaining-prices (cdr sorted-price)))
+      (if (null? remaining-prices)
+          (>= count k)
+          (let ((current-price (car remaining-prices)))
+            (if (>= (- current-price last-picked-price) t)
+                (loop (+ count 1) current-price (cdr remaining-prices))
+                (loop count last-picked-price (cdr remaining-prices)))))))
+
+  (define (list-last lst)
+    (list-ref lst (- (length lst) 1)))
+
+  (let loop-binary-search ((low 0)
+                           (high (- (list-last sorted-price) (car sorted-price)))
+                           (ans 0))
+    (if (> low high)
+        ans
+        (let* ((mid (quotient (+ low high) 2)))
+          (if (check mid)
+              (loop-binary-search (+ mid 1) high mid)
+              (loop-binary-search low (- mid 1) ans))))))

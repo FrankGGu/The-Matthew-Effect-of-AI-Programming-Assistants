@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+    public boolean isPossible(int[] nums) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> appendFreq = new HashMap<>();
+
+        for (int num : nums) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : nums) {
+            if (freq.get(num) == 0) continue;
+            freq.put(num, freq.get(num) - 1);
+
+            if (appendFreq.getOrDefault(num - 1, 0) > 0) {
+                appendFreq.put(num - 1, appendFreq.get(num - 1) - 1);
+                appendFreq.put(num, appendFreq.getOrDefault(num, 0) + 1);
+            } else if (freq.getOrDefault(num + 1, 0) > 0 && freq.getOrDefault(num + 2, 0) > 0) {
+                freq.put(num + 1, freq.get(num + 1) - 1);
+                freq.put(num + 2, freq.get(num + 2) - 1);
+                appendFreq.put(num + 2, appendFreq.getOrDefault(num + 2, 0) + 1);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}

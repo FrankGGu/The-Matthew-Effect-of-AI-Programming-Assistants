@@ -1,0 +1,7 @@
+(define (leastInterval tasks n)
+  (define task-count (make-hash))
+  (for-each (lambda (task) (hash-set! task-count task (add1 (hash-ref task-count task 0))))
+            tasks)
+  (define max-frequency (apply max (hash-values task-count)))
+  (define max-frequency-count (length (filter (lambda (x) (= x max-frequency)) (hash-values task-count))))
+  (max (length tasks) (+ (- (* max-frequency (1- n)) (1- max-frequency-count)) (length tasks))))

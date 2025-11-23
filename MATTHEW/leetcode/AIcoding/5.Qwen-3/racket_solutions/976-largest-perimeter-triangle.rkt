@@ -1,0 +1,8 @@
+(define (largest-perimeter-triangle nums)
+  (define (sort-desc lst)
+    (sort lst >))
+  (define sorted (sort-desc nums))
+  (let loop ((i 0))
+    (if (>= (+ (list-ref sorted i) (list-ref sorted (+ i 1))) (list-ref sorted (+ i 2)))
+        (+ (list-ref sorted i) (list-ref sorted (+ i 1)) (list-ref sorted (+ i 2)))
+        (loop (+ i 1)))))

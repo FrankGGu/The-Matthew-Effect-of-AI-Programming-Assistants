@@ -1,0 +1,13 @@
+(define (judge-circle moves)
+  (let-values (((final-x final-y)
+                (foldl (lambda (char acc)
+                         (let-values (((x y) acc))
+                           (case char
+                             ((#\U) (values x (+ y 1)))
+                             ((#\D) (values x (- y 1)))
+                             ((#\L) (values (- x 1) y))
+                             ((#\R) (values (+ x 1) y))
+                             (else (values x y)))))
+                       (values 0 0)
+                       (string->list moves))))
+    (and (= final-x 0) (= final-y 0))))

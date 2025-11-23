@@ -1,0 +1,21 @@
+#lang racket
+
+(require racket/string)
+
+(define (print-words-vertically s)
+  (let* ((words (string-split s " "))
+         (num-words (length words))
+         (max-len (apply max (map string-length words))))
+    (for/list ([col (in-range max-len)])
+      (let loop ((word-idx 0)
+                 (current-col-chars '()))
+        (if (= word-idx num-words)
+            (let ((col-str (string-join (map string current-col-chars) "")))
+              (string-trim-right col-str #\space))
+            (let* ((word (list-ref words word-idx))
+                   (word-len (string-length word))
+                   (char-to-add (if (< col word-len)
+                                    (string-ref word col)
+                                    #\space)))
+              (loop (+ word-idx 1)
+                    (append current-col-chars (list char-to-add)))))))))

@@ -1,0 +1,26 @@
+#lang racket
+
+(define (maximum-sum-queries nums1 nums2 queries)
+  (define n (length nums1))
+  (define m (length queries))
+  (define sorted-nums (sort (map list nums1 nums2) > #:key first))
+  (define sorted-queries (for/list ([i (in-range m)] [q queries]) (list q i)))
+  (define sorted-queries (sort sorted-queries > #:key first))
+  (define res (make-vector m 0))
+  (define pq (list))
+  (define (add-pq x y)
+    (set! pq (cons (list x y) pq))
+    (set! pq (sort pq > #:key first)))
+  (define (query-pq x)
+    (let loop ([pq pq] [sum 0])
+      (cond [(null? pq) sum]
+            [(<= (caar pq) x) (loop (cdr pq) (+ sum (cadar pq)))]
+            [else sum])))
+  (define idx 0)
+  (for ([q (in-list sorted-queries)])
+    (let ([x (car q)] [i (cadr q)])
+      (while (and (< idx n) (<= (caar sorted-nums) x))
+        (add-pq (caar sorted-nums) (cadar sorted-nums))
+        (set! idx (+ idx 1)))
+      (vector-set! res i (query-pq x))))
+  (vector->list res))

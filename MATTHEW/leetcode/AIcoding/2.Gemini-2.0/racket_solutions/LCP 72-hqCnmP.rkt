@@ -1,0 +1,13 @@
+(define (supplyWagon boxesPerWagon additionalBoxes)
+  (define n (length boxesPerWagon))
+  (define total-boxes (+ (apply + boxesPerWagon) additionalBoxes))
+  (define wagon-size (quotient total-boxes n))
+  (define remainder (remainder total-boxes n))
+  (define result (list))
+  (for ([i n])
+    (define wagon-fill (min wagon-size (apply + boxesPerWagon)))
+    (set! result (append result (list wagon-fill)))
+    (set! boxesPerWagon (drop boxesPerWagon 1))
+    (set! additionalBoxes (- additionalBoxes (- wagon-fill (if (null? boxesPerWagon) 0 (car boxesPerWagon))))))
+
+  result)

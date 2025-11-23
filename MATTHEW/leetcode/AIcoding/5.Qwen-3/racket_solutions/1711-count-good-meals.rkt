@@ -1,0 +1,15 @@
+#lang racket
+
+(define (count-good-meals food)
+  (define target 2048)
+  (define counts (make-hash))
+  (for-each (lambda (f) (hash-update! counts f add1)) food)
+  (define result 0)
+  (for-each (lambda (f)
+              (let ((complement (- target f)))
+                (when (hash-has-key? counts complement)
+                  (if (= f complement)
+                      (set! result (+ result (* (hash-ref counts f) (- (hash-ref counts f) 1))))
+                      (set! result (+ result (* (hash-ref counts f) (hash-ref counts complement)))))))
+            (remove-duplicates food))
+  result)

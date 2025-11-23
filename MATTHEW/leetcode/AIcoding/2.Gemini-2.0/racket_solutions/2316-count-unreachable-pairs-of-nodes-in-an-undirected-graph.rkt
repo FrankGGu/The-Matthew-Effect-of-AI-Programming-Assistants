@@ -1,0 +1,36 @@
+(define (count-unreachable-pairs n edges)
+  (define adj (make-vector n '()))
+  (for ([edge (in-list edges)])
+    (let ([u (first edge)] [v (second edge)])
+      (vector-set! adj u (cons v (vector-ref adj u)))
+      (vector-set! adj v (cons u (vector-ref adj v)))))
+
+  (define (dfs node visited)
+    (if (set-member? visited node)
+        (values 0 visited)
+        (let loop ([nodes (list node)] [visited visited] [count 0])
+          (if (null? nodes)
+              (values count visited)
+              (let ([curr (first nodes)])
+                (loop (append (vector-ref adj curr) (cdr nodes))
+                      (set-add visited curr)
+                      (+ count 1))))))
+    )
+
+  (define visited (set))
+  (define components '())
+  (for ([i (in-range n)])
+    (unless (set-member? visited i)
+      (let-values ([(count new-visited) (dfs i visited)])
+        (set! visited new-visited)
+        (set! components (cons count components)))))
+
+  (define (calculate-unreachable components)
+    (define (helper components sum)
+      (cond
+        [(null? components) 0]
+        [else (+ (* (first components) sum)
+                 (helper (cdr components) (- sum (first components))))]))
+    (helper components n))
+
+  (calculate-unreachable components))

@@ -1,0 +1,30 @@
+#lang racket
+
+(define (count-subtrees n edges)
+  (define graph (make-hash))
+  (for ([u (in-range n)])
+    (hash-set! graph u '()))
+  (for ([edge (in-list edges)])
+    (define u (car edge))
+    (define v (cadr edge))
+    (hash-set! graph u (cons v (hash-ref graph u)))
+    (hash-set! graph v (cons u (hash-ref graph v))))
+
+  (define res 0)
+  (define (dfs node parent)
+    (define max-depth 0)
+    (define min-depth 0)
+    (for ([child (hash-ref graph node)])
+      (when (not (= child parent))
+        (define depth (dfs child node))
+        (set! max-depth (max max-depth (+ depth 1)))
+        (set! min-depth (min min-depth (- depth 1)))))
+    (if (= max-depth 0)
+        0
+        (- max-depth min-depth)))
+
+  (for ([i (in-range n)])
+    (define max-dist (dfs i -1))
+    (when (= max-dist 0)
+      (set! res (+ res 1))))
+  res)

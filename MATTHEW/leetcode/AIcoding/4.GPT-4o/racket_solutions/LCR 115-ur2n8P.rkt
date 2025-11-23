@@ -1,0 +1,50 @@
+(define (sequence-reconstruction org seqs)
+  (define n (length org))
+  (define indegree (make-vector n 0))
+  (define graph (make-vector n '()))
+
+  (for-each (lambda (seq)
+              (for-each (lambda (i)
+                          (when (< i (length seq))
+                            (define idx (vector-ref seq i))
+                            (when (> i 0)
+                              (define prev-idx (vector-ref seq (- i 1)))
+                              (vector-set! graph (sub1 prev-idx) (cons idx (vector-ref graph (sub1 prev-idx))))
+                              (vector-set! indegree (sub1 idx) (+ 1 (vector-ref indegree (sub1 idx))))))
+                          ))
+                        (range (length seq)))
+            seqs)
+
+  (define queue (make-queue))
+  (for-each (lambda (i)
+              (when (= (vector-ref indegree i) 0)
+                (enqueue queue (add1 i))))
+            (range n))
+
+  (define result '())
+
+  (while (not (empty? queue))
+    (define curr (dequeue queue))
+    (set! result (append result (list curr)))
+    (for-each (lambda (neighbor)
+                (define neighbor-idx (sub1 neighbor))
+                (vector-set! indegree neighbor-idx (- (vector-ref indegree neighbor-idx) 1))
+                (when (= (vector-ref indegree neighbor-idx) 0)
+                  (enqueue queue (add1 neighbor))))
+              (vector-ref graph (sub1 curr))))
+
+  (and (= (length result) n) (equal? result org)))
+
+(define (make-queue)
+  (list))
+
+(define (enqueue queue elem)
+  (append queue (list elem)))
+
+(define (dequeue queue)
+  (if (null? queue)
+      (error "Queue is empty")
+      (values (car queue) (cdr queue))))
+
+(define (empty? queue)
+  (null? queue))

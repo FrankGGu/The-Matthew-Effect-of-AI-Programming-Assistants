@@ -1,0 +1,53 @@
+(define (alien-order words)
+  (define (build-graph words)
+    (define adj (make-hash))
+    (define indegrees (make-hash))
+    (for* ([word words] [char (string->list word)])
+      (unless (hash-has-key? adj (string char))
+        (hash-set! adj (string char) '()))
+      (unless (hash-has-key? indegrees (string char))
+        (hash-set! indegrees (string char) 0)))
+
+    (for/list ([i (in-range (- (length words) 1))])
+      (define word1 (list->string (string->list (list-ref words i))))
+      (define word2 (list->string (string->list (string->list (list-ref words (+ i 1))))))
+      (define min-len (min (string-length word1) (string-length word2)))
+      (for ([j (in-range min-len)])
+        (define char1 (string (string-ref word1 j)))
+        (define char2 (string (string-ref word2 j)))
+        (unless (string=? char1 char2)
+          (unless (member char2 (hash-ref adj char1 #f))
+            (hash-set! adj char1 (cons char2 (hash-ref adj char1 #f)))
+            (hash-update! indegrees char2 add1 0))
+          (break))))
+    (values adj indegrees))
+
+  (define (topological-sort adj indegrees)
+    (define q (list))
+    (for ([k (in-hash-keys indegrees)])
+      (when (= (hash-ref indegrees k) 0)
+        (set! q (append q (list k)))))
+
+    (define result "")
+    (define count 0)
+    (define (helper q)
+      (cond
+        [(empty? q)
+         (if (= count (hash-count indegrees))
+             result
+             "")]
+        [else
+         (let* ([curr (car q)]
+                [neighbors (hash-ref adj curr '())])
+           (set! q (cdr q))
+           (set! result (string-append result curr))
+           (set! count (+ count 1))
+           (for ([neighbor neighbors])
+             (hash-update! indegrees neighbor sub1 0)
+             (when (= (hash-ref indegrees neighbor) 0)
+               (set! q (append q (list neighbor)))))
+           (helper q))]))
+    (helper q))
+
+  (define-values (adj indegrees) (build-graph words))
+  (topological-sort adj indegrees))

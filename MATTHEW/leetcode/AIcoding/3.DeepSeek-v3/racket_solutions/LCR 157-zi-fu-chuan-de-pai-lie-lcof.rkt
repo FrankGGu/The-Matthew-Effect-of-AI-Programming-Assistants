@@ -1,0 +1,18 @@
+(define/contract (permute-unique nums)
+  (-> (listof exact-integer?) (listof (listof exact-integer?)))
+  (define (helper nums visited path res)
+    (if (= (length path) (length nums))
+        (cons path res)
+        (let loop ([i 0] [res res])
+          (if (>= i (length nums))
+              res
+              (if (or (list-ref visited i)
+                      (and (> i 0)
+                           (not (list-ref visited (- i 1)))
+                           (= (list-ref nums i) (list-ref nums (- i 1)))))
+                  (loop (+ i 1) res)
+                  (let* ([new-visited (list-set visited i #t)]
+                         [new-path (append path (list (list-ref nums i))])
+                    (loop (+ i 1) (helper nums new-visited new-path res))))))))
+  (let ([sorted-nums (sort nums <)])
+    (helper sorted-nums (make-list (length nums) #f) '() '())))

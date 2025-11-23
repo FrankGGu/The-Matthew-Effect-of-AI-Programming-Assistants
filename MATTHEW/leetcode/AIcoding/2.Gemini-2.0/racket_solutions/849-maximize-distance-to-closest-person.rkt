@@ -1,0 +1,45 @@
+(define (max-dist-to-closest-person seats)
+  (let* ((n (length seats))
+         (left (make-vector n #f))
+         (right (make-vector n #f)))
+    (let loop-left ((i 0) (last-occupied -1))
+      (cond
+        ((= i n) #t)
+        ((= (vector-ref seats i) 1)
+         (vector-set! left i 0)
+         (loop-left (+ i 1) i))
+        ((= last-occupied -1)
+         (vector-set! left i #f)
+         (loop-left (+ i 1) last-occupied))
+        (else
+         (vector-set! left i (- i last-occupied))
+         (loop-left (+ i 1) last-occupied))))
+    (let loop-right ((i (- n 1)) (last-occupied -1))
+      (cond
+        ((< i 0) #t)
+        ((= (vector-ref seats i) 1)
+         (vector-set! right i 0)
+         (loop-right (- i 1) i))
+        ((= last-occupied -1)
+         (vector-set! right i #f)
+         (loop-right (- i 1) last-occupied))
+        (else
+         (vector-set! right i (- last-occupied i))
+         (loop-right (- i 1) last-occupied))))
+    (let loop ((i 0) (max-dist 0))
+      (cond
+        ((= i n) max-dist)
+        ((= (vector-ref seats i) 1)
+         (loop (+ i 1) max-dist))
+        (else
+         (let ((left-dist (if (equal? (vector-ref left i) #f) #f (vector-ref left i)))
+               (right-dist (if (equal? (vector-ref right i) #f) #f (vector-ref right i))))
+           (cond
+             ((and (equal? left-dist #f) (equal? right-dist #f))
+              (loop (+ i 1) max-dist))
+             ((equal? left-dist #f)
+              (loop (+ i 1) (max max-dist right-dist)))
+             ((equal? right-dist #f)
+              (loop (+ i 1) (max max-dist left-dist)))
+             (else
+              (loop (+ i 1) (max max-dist (min left-dist right-dist)))))))))))

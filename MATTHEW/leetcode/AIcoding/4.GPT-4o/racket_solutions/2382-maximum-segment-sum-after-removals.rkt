@@ -1,0 +1,11 @@
+(define (maximum-segment-sum nums remove)
+  (define n (length nums))
+  (define dp (make-vector (+ n 1) 0))
+  (for* ([i (in-range n)])
+    (vector-set! dp (+ i 1) (max 0 (+ (vector-ref dp i) (list-ref nums i)))))
+  (for* ([r remove])
+    (vector-set! dp (+ r 1) 0))
+  (apply max (vector->list dp)))
+
+(define (maximum-segment-sum-after-removals nums remove)
+  (maximum-segment-sum nums remove))

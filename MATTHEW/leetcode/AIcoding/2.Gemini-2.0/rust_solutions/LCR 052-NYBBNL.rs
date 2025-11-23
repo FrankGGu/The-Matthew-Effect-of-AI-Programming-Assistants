@@ -1,0 +1,43 @@
+#[derive(Debug, PartialEq, Eq)]
+pub struct TreeNode {
+  pub val: i32,
+  pub left: Option<Rc<RefCell<TreeNode>>>,
+  pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+  #[inline]
+  pub fn new(val: i32) -> Self {
+    TreeNode {
+      val,
+      left: None,
+      right: None
+    }
+  }
+}
+use std::rc::Rc;
+use std::cell::RefCell;
+impl Solution {
+    pub fn increasing_bst(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+        let mut nodes: Vec<i32> = Vec::new();
+        fn inorder(root: &Option<Rc<RefCell<TreeNode>>>, nodes: &mut Vec<i32>) {
+            if let Some(node) = root {
+                inorder(&node.borrow().left, nodes);
+                nodes.push(node.borrow().val);
+                inorder(&node.borrow().right, nodes);
+            }
+        }
+
+        inorder(&root, &mut nodes);
+
+        let mut dummy = TreeNode::new(0);
+        let mut current = &mut dummy;
+
+        for val in nodes {
+            current.right = Some(Rc::new(RefCell::new(TreeNode::new(val))));
+            current = current.right.as_mut().unwrap().borrow_mut();
+        }
+
+        dummy.right
+    }
+}

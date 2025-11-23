@@ -1,0 +1,10 @@
+(define/contract (divide-array nums k)
+  (-> (listof exact-integer?) exact-integer? (listof (listof exact-integer?)))
+  (let loop ([nums (sort nums <)]
+             [res '()])
+    (if (null? nums)
+        (reverse res)
+        (let ([group (take nums 3)])
+          (if (<= (- (last group) (first group)) k)
+              (loop (drop nums 3) (cons group res))
+              '())))))

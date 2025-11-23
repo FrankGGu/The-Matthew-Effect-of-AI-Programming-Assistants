@@ -1,0 +1,11 @@
+(define (maximum-binary-string s)
+  (define n (string-length s))
+  (define zeros (for/sum ([i (in-range n)])
+                  (if (char=? (string-ref s i) #\0) 1 0)))
+  (define first-one (for/first ([i (in-range n)])
+                       (and (char=? (string-ref s i) #\1) i)))
+  (if (or (zero? zeros) (= zeros n))
+      s
+      (let ([res (make-string n #\1)])
+        (string-set! res (+ first-one zeros -1) #\0)
+        res)))

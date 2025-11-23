@@ -1,0 +1,16 @@
+(define (num-sub-strings n)
+  (define mod 1000000007)
+  (define (expt base exp mod)
+    (cond ((= exp 0) 1)
+          ((even? exp) (let ((half (expt base (/ exp 2) mod)))
+                         (modulo (* half half) mod)))
+          (else (modulo (* base (expt base (- exp 1) mod)) mod))))
+
+  (define total (expt 26 n mod))
+  (define no-love (expt 25 n mod))
+  (define no-love-or-peace (expt 24 n mod))
+  (define no-love-or-peace-or-coded (expt 23 n mod))
+
+  (modulo (+ (- total (* 3 no-love))
+             (* 3 no-love-or-peace)
+             (- no-love-or-peace-or-coded)) mod))

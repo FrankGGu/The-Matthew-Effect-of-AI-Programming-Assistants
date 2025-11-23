@@ -1,0 +1,8 @@
+(define (max-depth-after-split seq)
+  (let loop ([i 0] [depth 0] [res '()])
+    (if (= i (string-length seq))
+        (list->vector (reverse res))
+        (let ([c (string-ref seq i)])
+          (if (char=? c #\()
+              (loop (+ i 1) (+ depth 1) (cons (modulo depth 2) res))
+              (loop (+ i 1) (- depth 1) (cons (modulo (- depth 1) 2) res))))))

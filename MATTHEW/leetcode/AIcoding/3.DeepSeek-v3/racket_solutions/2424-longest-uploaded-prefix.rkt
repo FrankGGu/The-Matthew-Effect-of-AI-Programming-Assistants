@@ -1,0 +1,10 @@
+(define (longest-uploaded-prefix n uploads)
+  (let ([bits (make-vector (+ n 1) #f)]
+        [prefix 0])
+    (for ([upload uploads])
+      (vector-set! bits upload #t)
+      (let loop ()
+        (when (and (< prefix n) (vector-ref bits (+ prefix 1)))
+          (set! prefix (+ prefix 1))
+          (loop))))
+    prefix)))

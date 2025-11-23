@@ -1,0 +1,11 @@
+(define/contract (find-min-difference timePoints)
+  (-> (listof string?) exact-integer?)
+  (define (time->minutes time)
+    (let ([hours (string->number (substring time 0 2))]
+          [minutes (string->number (substring time 3 5))])
+      (+ (* hours 60) minutes)))
+  (define minutes-list (sort (map time->minutes timePoints) <))
+  (define min-diff 1440)
+  (for ([i (in-range 1 (length minutes-list))])
+    (set! min-diff (min min-diff (- (list-ref minutes-list i) (list-ref minutes-list (- i 1))))))
+  (min min-diff (- (+ (first minutes-list) 1440) (last minutes-list))))

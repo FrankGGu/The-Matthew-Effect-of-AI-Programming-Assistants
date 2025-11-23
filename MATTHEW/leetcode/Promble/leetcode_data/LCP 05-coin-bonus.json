@@ -1,0 +1,25 @@
+{
+  "id": "LCP 05",
+  "title": "Coin Bonus",
+  "titleSlug": "coin-bonus",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Array"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\r\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> bonus(int n, vector<vector<int>>& leadership, vector<vector<int>>& operations) {\n\n    }\n};",
+    "java": "class Solution {\n    public int[] bonus(int n, int[][] leadership, int[][] operations) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def bonus(self, n, leadership, operations):\n        \"\"\"\n        :type n: int\n        :type leadership: List[List[int]]\n        :type operations: List[List[int]]\n        :rtype: List[int]\n        \"\"\"",
+    "python3": "class Solution:\n    def bonus(self, n: int, leadership: List[List[int]], operations: List[List[int]]) -> List[int]:",
+    "c": "\n\n/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* bonus(int n, int** leadership, int leadershipSize, int* leadershipColSize, int** operations, int operationsSize, int* operationsColSize, int* returnSize){\n\n}\n",
+    "javascript": "/**\n * @param {number} n\n * @param {number[][]} leadership\n * @param {number[][]} operations\n * @return {number[]}\n */\nvar bonus = function(n, leadership, operations) {\n\n};",
+    "typescript": "function bonus(n: number, leadership: number[][], operations: number[][]): number[] {\n\n};",
+    "golang": "func bonus(n int, leadership [][]int, operations [][]int) []int {\n\n}"
+  },
+  "exampleTestcases": "6\n[[1, 2], [1, 6], [2, 3], [2, 5], [1, 4]]\n[[1, 1, 500], [2, 2, 50], [3, 1], [2, 6, 15], [3, 1]]",
+  "hints": []
+}

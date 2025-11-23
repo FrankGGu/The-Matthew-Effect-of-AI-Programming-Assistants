@@ -1,0 +1,12 @@
+(define (min-cost-to-paint-houses costs)
+  (define (min3 a b c) (min (min a b) c))
+  (define (paint n)
+    (if (= n 0)
+        (list 0 0 0)
+        (let* ([prev (paint (- n 1))]
+               [c (list-ref costs (- n 1))])
+          (list (+ (car prev) (cadr c))
+                (+ (cadr prev) (caddr c))
+                (+ (caddr prev) (car c))))))
+  (let ([res (paint (length costs))])
+    (min3 (car res) (cadr res) (caddr res))))

@@ -1,0 +1,13 @@
+(define (reshape-melt data)
+  (define rows (length data))
+  (define cols (length (car data)))
+  (define result '())
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (set! result (cons (list (list-ref (list-ref data i) j) 
+                                (string-append "var" (number->string j)) 
+                                i) 
+                        result))))
+  (reverse result))
+
+(reshape-melt '((1 2 3) (4 5 6) (7 8 9)))

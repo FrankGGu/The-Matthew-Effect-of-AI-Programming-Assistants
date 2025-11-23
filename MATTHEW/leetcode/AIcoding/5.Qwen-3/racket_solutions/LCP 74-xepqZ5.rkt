@@ -1,0 +1,12 @@
+(define (strongest-fort a k)
+  (define (count-ones n)
+    (let loop ([n n] [count 0])
+      (if (= n 0)
+          count
+          (loop (quotient n 2) (+ count (modulo n 2))))))
+  (define (sort-by-ones x y)
+    (let ([cx (count-ones x)] [cy (count-ones y)])
+      (if (= cx cy)
+          (> x y)
+          (< cx cy))))
+  (list-sort sort-by-ones a))

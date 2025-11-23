@@ -1,0 +1,16 @@
+(define (countOrders n)
+  (define mod (expt 10 9))
+  (define (factorial x)
+    (if (= x 0)
+        1
+        (* x (factorial (- x 1)))))
+  (define dp (make-vector (+ n 1) 0))
+  (vector-set! dp 0 1)
+  (for ([i (in-range 1 (+ n 1))])
+    (vector-set! dp i (modulo (* (vector-ref dp (- i 1)) 
+                                  (* (factorial i) 
+                                     (expt i 2))) 
+                                mod)))
+  (vector-ref dp n))
+
+(countOrders n)

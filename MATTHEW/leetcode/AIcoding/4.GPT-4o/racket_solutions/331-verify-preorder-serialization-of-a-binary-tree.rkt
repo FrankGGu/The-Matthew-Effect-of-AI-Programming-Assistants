@@ -1,0 +1,16 @@
+(define (is-valid-preorder-serialization preorder)
+  (define (helper nodes)
+    (if (null? nodes)
+        (= 1 (car count))
+        (let ((node (car nodes)))
+          (set! count (if (equal? node "#") (1- count) (+ count 1)))
+          (if (and (not (equal? node "#"))
+                   (> count 0))
+              (begin
+                (set! count (add1 count))
+                (helper (cdr nodes)))
+              #f))))
+  (define count 1)
+  (helper (string-split preorder ",")))
+
+(is-valid-preorder-serialization "9,3,4,#,#,1,#,#,2,#,6,#,#")

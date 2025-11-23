@@ -1,0 +1,5 @@
+(define/contract (check-record s)
+  (-> string? boolean?)
+  (let ((absent-count (count (lambda (c) (char=? c #\A)) (string->list s)))
+    (and (<= absent-count 1)
+         (not (string-contains? s "LLL")))))

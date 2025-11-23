@@ -1,0 +1,112 @@
+-module(min_coins).
+-export([solve/1]).
+
+solve(Fruits) ->
+    solve(Fruits, 0, 0).
+
+solve([], _, Total) ->
+    Total;
+solve([H | T], Index, Total) ->
+    Price = get_price(Index),
+    solve(T, Index + 1, Total + H * Price).
+
+get_price(0) -> 1;
+get_price(1) -> 2;
+get_price(2) -> 3;
+get_price(3) -> 4;
+get_price(4) -> 5;
+get_price(5) -> 6;
+get_price(6) -> 7;
+get_price(7) -> 8;
+get_price(8) -> 9;
+get_price(9) -> 10;
+get_price(10) -> 11;
+get_price(11) -> 12;
+get_price(12) -> 13;
+get_price(13) -> 14;
+get_price(14) -> 15;
+get_price(15) -> 16;
+get_price(16) -> 17;
+get_price(17) -> 18;
+get_price(18) -> 19;
+get_price(19) -> 20;
+get_price(20) -> 21;
+get_price(21) -> 22;
+get_price(22) -> 23;
+get_price(23) -> 24;
+get_price(24) -> 25;
+get_price(25) -> 26;
+get_price(26) -> 27;
+get_price(27) -> 28;
+get_price(28) -> 29;
+get_price(29) -> 30;
+get_price(30) -> 31;
+get_price(31) -> 32;
+get_price(32) -> 33;
+get_price(33) -> 34;
+get_price(34) -> 35;
+get_price(35) -> 36;
+get_price(36) -> 37;
+get_price(37) -> 38;
+get_price(38) -> 39;
+get_price(39) -> 40;
+get_price(40) -> 41;
+get_price(41) -> 42;
+get_price(42) -> 43;
+get_price(43) -> 44;
+get_price(44) -> 45;
+get_price(45) -> 46;
+get_price(46) -> 47;
+get_price(47) -> 48;
+get_price(48) -> 49;
+get_price(49) -> 50;
+get_price(50) -> 51;
+get_price(51) -> 52;
+get_price(52) -> 53;
+get_price(53) -> 54;
+get_price(54) -> 55;
+get_price(55) -> 56;
+get_price(56) -> 57;
+get_price(57) -> 58;
+get_price(58) -> 59;
+get_price(59) -> 60;
+get_price(60) -> 61;
+get_price(61) -> 62;
+get_price(62) -> 63;
+get_price(63) -> 64;
+get_price(64) -> 65;
+get_price(65) -> 66;
+get_price(66) -> 67;
+get_price(67) -> 68;
+get_price(68) -> 69;
+get_price(69) -> 70;
+get_price(70) -> 71;
+get_price(71) -> 72;
+get_price(72) -> 73;
+get_price(73) -> 74;
+get_price(74) -> 75;
+get_price(75) -> 76;
+get_price(76) -> 77;
+get_price(77) -> 78;
+get_price(78) -> 79;
+get_price(79) -> 80;
+get_price(80) -> 81;
+get_price(81) -> 82;
+get_price(82) -> 83;
+get_price(83) -> 84;
+get_price(84) -> 85;
+get_price(85) -> 86;
+get_price(86) -> 87;
+get_price(87) -> 88;
+get_price(88) -> 89;
+get_price(89) -> 90;
+get_price(90) -> 91;
+get_price(91) -> 92;
+get_price(92) -> 93;
+get_price(93) -> 94;
+get_price(94) -> 95;
+get_price(95) -> 96;
+get_price(96) -> 97;
+get_price(97) -> 98;
+get_price(98) -> 99;
+get_price(99) -> 100.

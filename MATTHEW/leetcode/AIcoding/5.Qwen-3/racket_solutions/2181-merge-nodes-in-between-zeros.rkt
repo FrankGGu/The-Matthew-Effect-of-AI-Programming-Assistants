@@ -1,0 +1,7 @@
+(define (merge-nodes head)
+  (let loop ([current head] [sum 0] [result (list)])
+    (if (null? current)
+        (reverse (cdr result))
+        (if (= (car current) 0)
+            (loop (cdr current) 0 (cons sum result))
+            (loop (cdr current) (+ sum (car current)) result)))))

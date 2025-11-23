@@ -1,0 +1,11 @@
+(define (find-total-duration timeSeries duration)
+  (if (empty? timeSeries)
+      0
+      (let loop ((ts timeSeries)
+                 (total-poisoned-time 0))
+        (if (empty? (rest ts))
+            (+ total-poisoned-time duration)
+            (let* ((current-attack-time (first ts))
+                   (next-attack-time (first (rest ts)))
+                   (effective-duration (min duration (- next-attack-time current-attack-time))))
+              (loop (rest ts) (+ total-poisoned-time effective-duration)))))))

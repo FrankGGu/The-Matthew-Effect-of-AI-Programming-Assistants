@@ -1,0 +1,5 @@
+(define (create-new-column df col1 col2)
+  (map (lambda (row)
+         (let ((sum (+ (list-ref row col1) (list-ref row col2))))
+           (append row (list sum))))
+       df))

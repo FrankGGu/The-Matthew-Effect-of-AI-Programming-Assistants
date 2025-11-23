@@ -1,0 +1,35 @@
+#lang racket
+
+(define (replace-words words)
+  (define trie (make-hash))
+  (define (insert word)
+    (define node trie)
+    (for ([c (in-string word)])
+      (when (not (hash-has-key? node c))
+        (hash-set! node c (make-hash)))
+      (set! node (hash-ref node c)))
+    (hash-set! node 'end #t))
+
+  (define (search word)
+    (define node trie)
+    (define result "")
+    (for ([c (in-string word)])
+      (when (hash-has-key? node c)
+        (set! result (string-append result (string c)))
+        (set! node (hash-ref node c))
+        (when (hash-has-key? node 'end)
+          (return result)))
+      (unless (hash-has-key? node c)
+        (return word)))
+    result)
+
+  (for-each insert words)
+  (map search words))
+
+(define (main)
+  (define input (read-line))
+  (define words (string-split input " "))
+  (define result (replace-words words))
+  (display (string-join result " ")))
+
+(main)

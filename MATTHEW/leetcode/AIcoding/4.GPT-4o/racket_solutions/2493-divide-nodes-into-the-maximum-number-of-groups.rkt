@@ -1,0 +1,11 @@
+(define (maxGroups gs)
+  (define (triangular n)
+    (/ (* n (+ n 1)) 2))
+  (define (binary-search low high)
+    (if (= low high)
+        low
+        (let ((mid (quotient (+ low high) 2)))
+          (if (>= (triangular mid) gs)
+              (binary-search low mid)
+              (binary-search (+ mid 1) high)))))
+  (binary-search 1 gs))

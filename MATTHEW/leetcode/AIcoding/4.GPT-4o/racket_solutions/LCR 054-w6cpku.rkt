@@ -1,0 +1,10 @@
+(define (convert-bst root)
+  (define (helper node acc)
+    (if (null? node)
+        acc
+        (let* ((new-acc (helper (cdr node) acc))
+               (new-val (+ (car node) new-acc)))
+          (set-car! node new-val)
+          (helper (car node) new-val))))
+  (helper root 0)
+  root)

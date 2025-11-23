@@ -1,0 +1,21 @@
+(define (num-factored-binary-trees arr)
+  (define MOD 1000000007)
+  (define sorted-arr (sort arr <))
+  (define n (length sorted-arr))
+  (define dp (make-vector n 1))
+  (define num-map (make-hash))
+
+  (for/list ([i (in-range n)])
+    (hash-set! num-map (list-ref sorted-arr i) i))
+
+  (for ([i (in-range 1 n)])
+    (for ([j (in-range i)])
+      (define left (list-ref sorted-arr j))
+      (define right (/ (list-ref sorted-arr i) left))
+      (when (and (integer? right) (hash-has-key? num-map right))
+        (define right-index (hash-ref num-map right))
+        (define count (* (vector-ref dp j) (vector-ref dp right-index)))
+        (set! (vector-ref dp i) (modulo (+ (vector-ref dp i) (if (= left right) count (modulo (* 2 count) MOD))) MOD)))))
+
+  (define total (for/sum ([i (in-range n)]) (vector-ref dp i)))
+  (modulo total MOD))

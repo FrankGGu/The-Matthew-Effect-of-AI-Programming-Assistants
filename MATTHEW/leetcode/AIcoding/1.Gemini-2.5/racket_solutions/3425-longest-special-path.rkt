@@ -1,0 +1,35 @@
+(define (range n)
+  (let loop ((i 0) (acc '()))
+    (if (< i n)
+        (loop (+ i 1) (cons i acc))
+        (reverse acc))))
+
+(define (longest-special-path n edges values)
+  (define adj (make-vector n '()))
+  (for-each (lambda (edge)
+              (let ((u (car edge))
+                    (v (cadr edge)))
+                (vector-set! adj u (cons v (vector-ref adj u)))))
+            edges)
+
+  (define memo (make-vector n #f))
+
+  (define (dfs u)
+    (cond
+      ((vector-ref memo u)
+       (vector-ref memo u))
+      (else
+       (let* ((current-node-value (list-ref values u))
+              (max-path-from-neighbors 0))
+         (for-each (lambda (v)
+                     (set! max-path-from-neighbors (max max-path-from-neighbors (dfs v))))
+                   (vector-ref adj u))
+         (let ((result (+ current-node-value max-path-from-neighbors)))
+           (vector-set! memo u result)
+           result))))))
+
+  (define max-overall-path-len 0)
+  (for-each (lambda (u)
+              (set! max-overall-path-len (max max-overall-path-len (dfs u))))
+            (range n))
+  max-overall-path-len)

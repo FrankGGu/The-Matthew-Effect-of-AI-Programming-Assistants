@@ -1,0 +1,28 @@
+package main
+
+func restoreMatrix(rowSum []int, colSum []int) [][]int {
+    m := len(rowSum)
+    n := len(colSum)
+    result := make([][]int, m)
+    for i := range result {
+        result[i] = make([]int, n)
+    }
+
+    for i := 0; i < m; i++ {
+        for j := 0; j < n; j++ {
+            minVal := min(rowSum[i], colSum[j])
+            result[i][j] = minVal
+            rowSum[i] -= minVal
+            colSum[j] -= minVal
+        }
+    }
+
+    return result
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}

@@ -1,0 +1,8 @@
+(define (max-distance colors)
+  (define n (length colors))
+  (define max-dist 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (when (not (equal? (list-ref colors i) (list-ref colors j)))
+        (set! max-dist (max max-dist (- j i))))))
+  max-dist)

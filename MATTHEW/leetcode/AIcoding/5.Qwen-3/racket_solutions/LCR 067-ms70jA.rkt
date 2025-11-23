@@ -1,0 +1,7 @@
+(define (findMaximumXOR nums)
+  (define max-xor 0)
+  (define n (length nums))
+  (for ([i (in-range n)])
+    (for ([j (in-range i n)])
+      (set! max-xor (max max-xor (bitwise-xor (list-ref nums i) (list-ref nums j)))))
+  max-xor)

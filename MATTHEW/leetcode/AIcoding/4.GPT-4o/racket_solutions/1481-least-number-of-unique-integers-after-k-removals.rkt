@@ -1,0 +1,13 @@
+(define (findLeastNumOfUniqueInts A K)
+  (define freq (hash))
+  (for-each (lambda (x) (hash-set! freq x (+ 1 (hash-ref freq x 0)))) A)
+  (define sorted-freq (sort (hash->list freq) (lambda (x y) (< (cdr x) (cdr y)))))
+  (define unique-count (length sorted-freq))
+  (for ([i (in-range unique-count)])
+    (define count (cdr (list-ref sorted-freq i)))
+    (if (<= K count)
+        (begin
+          (set! unique-count (- unique-count i))
+          (break)))
+    (set! K (- K count)))
+  unique-count)

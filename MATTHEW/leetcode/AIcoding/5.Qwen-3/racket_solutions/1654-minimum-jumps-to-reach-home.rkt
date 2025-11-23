@@ -1,0 +1,16 @@
+#lang racket
+
+(define (minimum-jumps constraints)
+  (define n (vector-length constraints))
+  (define dp (make-vector n #f))
+  (vector-set! dp 0 #t)
+  (for ([i (in-range n)])
+    (when (vector-ref dp i)
+      (when (< i (- n 1))
+        (vector-set! dp (+ i 1) #t))
+      (when (> i 0)
+        (vector-set! dp (- i 1) #t))
+      (when (and (<= (+ i (vector-ref constraints i)) (- n 1))
+                 (not (vector-ref dp (+ i (vector-ref constraints i)))))
+        (vector-set! dp (+ i (vector-ref constraints i)) #t))))
+  (if (vector-ref dp (- n 1)) 1 0))

@@ -1,0 +1,11 @@
+(define (minimum-operations-to-make-k-periodic word k)
+  (let* ((n (string-length word))
+         (num-blocks (/ n k))
+         (freq-map (make-hash)))
+    (for ((i (in-range 0 n k)))
+      (let ((block (substring word i (+ i k))))
+        (hash-set! freq-map block (+ 1 (hash-ref freq-map block 0)))))
+    (let ((max-freq (if (hash-empty? freq-map)
+                        0
+                        (apply max (hash-values freq-map)))))
+      (- num-blocks max-freq))))

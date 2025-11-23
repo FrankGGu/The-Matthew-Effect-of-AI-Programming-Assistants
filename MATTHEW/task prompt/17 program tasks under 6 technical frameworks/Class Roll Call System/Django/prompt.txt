@@ -1,0 +1,41 @@
+Build a Class Roll Call System using Django REST Framework backend and a modern JavaScript frontend. The system should manage students, record attendance, and generate reports.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Backend Requirements (Django):**
+- Django REST Framework for API endpoints
+- Django ORM for database operations
+- Serializers for data validation
+- Authentication system (Session or JWT)
+- Admin interface for data management
+
+**Frontend Requirements (Modern JS):**
+- Single page application framework of your choice
+- Student management interface
+- Attendance recording with date picker
+- Reporting dashboard
+- Responsive design
+
+**Key Features:**
+- CRUD operations for students
+- Record and view attendance by date
+- Student attendance history
+- Prevent duplicate attendance records
+
+**Database Connection:**
+Use PostgreSQL with Django DATABASES configuration
+
+**Code Structure:**
+- Django project with appropriate app structure
+- RESTful API design
+- Frontend built with modern framework
+- Separate requirements.txt for Python dependencies
+
+**Deliverables:**
+- Complete Django project with frontend
+- Database migration files
+- Requirements.txt
+- Setup and deployment instructions

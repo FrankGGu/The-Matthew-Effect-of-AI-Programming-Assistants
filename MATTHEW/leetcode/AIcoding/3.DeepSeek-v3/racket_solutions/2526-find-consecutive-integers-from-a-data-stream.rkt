@@ -1,0 +1,12 @@
+(define consecutive
+  (let ()
+    (define value 0)
+    (define k 0)
+    (define count 0)
+    (lambda (new-value new-k)
+      (set! value new-value)
+      (set! k new-k)
+      (if (equal? new-value value)
+          (set! count (add1 count))
+          (set! count 1))
+      (>= count k))))

@@ -1,0 +1,6 @@
+(define (decode encoded first)
+  (let loop ([i 0] [result (list first)] [current first])
+    (if (= i (length encoded))
+        (reverse result)
+        (let ([next-val (bitwise-xor current (list-ref encoded i))])
+          (loop (+ i 1) (cons next-val result) next-val)))))

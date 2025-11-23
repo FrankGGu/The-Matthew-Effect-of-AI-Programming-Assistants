@@ -1,0 +1,35 @@
+Develop a book management system using React 18 for frontend and Express.js with Prisma for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, role, membership_type, created_at
+- books: id, title, author, isbn, publisher, publication_date, genre, total_copies, available_copies, location, is_available, created_at
+- borrow_records: id, book_id, user_id, borrow_date, due_date, return_date, status, fine_amount, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - User authentication with JWT
+   - Role-based permissions
+   - Profile management
+
+2. Book Management:
+   - Full CRUD operations for books
+   - Real-time availability checking
+   - Advanced search and filtering
+
+3. Borrowing Management:
+   - Create, view, edit, delete borrow records
+   - Automatic fine calculation
+   - Status management with workflow
+
+Technical Specifications:
+- Frontend: React 18 with functional components and hooks, React Router for navigation
+- Backend: Express.js with JWT authentication, Prisma as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:bookpass@localhost:5432/book_management
+- API: RESTful endpoints with proper error handling
+
+Generate complete, runnable code including:
+- Express.js server with routes, middleware, and controllers
+- React components with modern hooks
+- Prisma schema and migrations
+- Authentication system
+- Setup and deployment instructions

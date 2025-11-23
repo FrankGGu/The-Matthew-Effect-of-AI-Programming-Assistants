@@ -1,0 +1,7 @@
+(define (most-visited n rounds)
+  (let* ((start (car rounds))
+         (end (car (reverse rounds)))
+         (res (if (<= start end)
+                  (range start (+ end 1))
+                  (append (range 1 (+ end 1)) (range start (+ n 1))))))
+    (sort res <)))

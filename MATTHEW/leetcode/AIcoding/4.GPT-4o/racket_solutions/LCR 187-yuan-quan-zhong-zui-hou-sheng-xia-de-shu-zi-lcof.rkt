@@ -1,0 +1,7 @@
+(define (findCenter edges)
+  (let ((first (car edges))
+        (second (cadr edges)))
+    (if (or (equal? (car first) (car second))
+            (equal? (cdr first) (car second)))
+        (car first)
+        (cdr first))))

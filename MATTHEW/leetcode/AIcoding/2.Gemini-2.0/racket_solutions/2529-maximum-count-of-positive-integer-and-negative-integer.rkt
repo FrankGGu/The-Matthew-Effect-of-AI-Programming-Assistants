@@ -1,0 +1,6 @@
+(define (maximum-count nums)
+  (define (count-positive nums)
+    (length (filter (lambda (x) (> x 0)) nums)))
+  (define (count-negative nums)
+    (length (filter (lambda (x) (< x 0)) nums)))
+  (max (count-positive nums) (count-negative nums)))

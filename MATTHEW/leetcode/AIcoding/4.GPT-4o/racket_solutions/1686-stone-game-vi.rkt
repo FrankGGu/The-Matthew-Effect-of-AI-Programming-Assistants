@@ -1,0 +1,8 @@
+(define (stoneGameVI aliceValues bobValues)
+  (define pairs (map list aliceValues bobValues))
+  (define sorted-pairs (sort pairs (lambda (a b) (> (+ (car a) (cadr a)) (+ (car b) (cadr b))))))
+  (define alice-score (foldl (lambda (pair acc) (+ acc (if (even? acc) (car pair) 0))) 0 sorted-pairs))
+  (define bob-score (foldl (lambda (pair acc) (+ acc (if (odd? acc) (cadr pair) 0))) 0 sorted-pairs))
+  (cond ((> alice-score bob-score) 1)
+        ((< alice-score bob-score) -1)
+        (else 0)))

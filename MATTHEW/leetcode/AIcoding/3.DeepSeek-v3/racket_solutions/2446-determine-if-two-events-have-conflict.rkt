@@ -1,0 +1,7 @@
+(define/contract (have-conflict event1 event2)
+  (-> (listof string?) (listof string?) boolean?)
+  (let ((s1 (car event1))
+        (e1 (cadr event1))
+        (s2 (car event2))
+        (e2 (cadr event2)))
+    (not (or (string<? e1 s2) (string<? e2 s1))))

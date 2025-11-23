@@ -1,0 +1,12 @@
+(define (appendCharacters s t)
+  (let loop ((s-len (string-length s))
+             (t-len (string-length t))
+             (i 0))
+    (if (and (< i s-len) (< i t-len))
+        (if (equal? (string-ref s i) (string-ref t i))
+            (loop s-len t-len (+ i 1))
+            (loop s-len t-len i))
+        (- t-len i))))
+
+(define (minCharsToMakeSubsequence s t)
+  (appendCharacters s t))

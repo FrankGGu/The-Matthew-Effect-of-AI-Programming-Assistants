@@ -1,0 +1,1 @@
+SELECT DISTINCT * FROM table_name;

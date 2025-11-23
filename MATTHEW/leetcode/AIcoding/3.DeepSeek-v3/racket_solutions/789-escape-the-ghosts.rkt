@@ -1,0 +1,6 @@
+(define/contract (escape-ghosts ghosts target)
+  (-> (listof (listof exact-integer?)) (listof exact-integer?) boolean?)
+  (let ([distance (lambda (a b) (+ (abs (- (car a) (car b))) (abs (- (cadr a) (cadr b))))])
+    (let ([player-dist (distance '(0 0) target)])
+      (for/and ([ghost ghosts])
+        (>= (distance ghost target) player-dist))))

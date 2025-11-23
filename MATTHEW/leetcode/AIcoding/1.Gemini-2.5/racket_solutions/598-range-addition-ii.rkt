@@ -1,0 +1,11 @@
+(define (max-count m n ops)
+  (let ((final-min-dims
+         (foldl (lambda (op acc-dims)
+                  (let ((op-r (car op))
+                        (op-c (cadr op))
+                        (acc-r (car acc-dims))
+                        (acc-c (cadr acc-dims)))
+                    (list (min acc-r op-r) (min acc-c op-c))))
+                (list m n)
+                ops)))
+    (* (car final-min-dims) (cadr final-min-dims))))

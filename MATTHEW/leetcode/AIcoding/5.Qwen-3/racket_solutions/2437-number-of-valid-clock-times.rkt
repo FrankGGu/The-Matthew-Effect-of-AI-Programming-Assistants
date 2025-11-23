@@ -1,0 +1,18 @@
+#lang racket
+
+(define (num-valid-times time)
+  (define h (substring time 0 2))
+  (define m (substring time 3 5))
+  (define count 0)
+  (for ([h1 (in-range 0 24)])
+    (for ([m1 (in-range 0 60)])
+      (define h-str (string-pad-left (number->string h1) 2 #\0))
+      (define m-str (string-pad-left (number->string m1) 2 #\0))
+      (when (and (equal? (substring h-str 0 1) (substring h 0 1))
+                 (or (equal? (substring h 1 2) "*")
+                     (equal? (substring h-str 1 2) (substring h 1 2)))
+                 (equal? (substring m-str 0 1) (substring m 0 1))
+                 (or (equal? (substring m 1 2) "*")
+                     (equal? (substring m-str 1 2) (substring m 1 2))))
+        (set! count (+ count 1)))))
+  count)

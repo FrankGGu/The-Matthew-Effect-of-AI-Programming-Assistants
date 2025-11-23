@@ -1,0 +1,21 @@
+#lang racket
+
+(define (maximumBalancedSubsequenceSum nums)
+  (define n (length nums))
+  (define dp (make-vector n 0))
+  (define (cmp a b) (> (vector-ref a 0) (vector-ref b 0)))
+  (define sorted (sort (for/list ([i (in-range n)]) (list (abs (vector-ref nums i)) i)) cmp))
+  (define (find k)
+    (let loop ([l 0] [r (- n 1)])
+      (if (> l r) -1
+          (let ([m (quotient (+ l r) 2)])
+            (if (<= (vector-ref nums (vector-ref (vector-ref sorted m) 1)) k)
+                (loop (+ m 1) r)
+                (loop l (- m 1)))))))
+  (for ([i (in-range n)])
+    (vector-set! dp i (vector-ref nums i))
+    (let ([k (vector-ref nums i)])
+      (let ([pos (find (- k))])
+        (when (>= pos 0)
+          (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp pos)))))))
+  (apply max (vector->list dp)))

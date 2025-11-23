@@ -1,0 +1,7 @@
+(define (find-k-distant-indices arr k)
+  (let ((n (length arr))
+        (result '()))
+    (for ([i (in-range n)])
+      (when (and (>= i k) (<= (- i k) (- n 1)))
+        (set! result (append result (list i)))))
+    result))

@@ -1,0 +1,37 @@
+{
+  "id": "LCR 146",
+  "title": "螺旋遍历二维数组",
+  "titleSlug": "shun-shi-zhen-da-yin-ju-zhen-lcof",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    vector<int> spiralArray(vector<vector<int>>& array) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int[] spiralArray(int[][] array) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def spiralArray(self, array):\n        \"\"\"\n        :type array: List[List[int]]\n        :rtype: List[int]\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def spiralArray(self, array: List[List[int]]) -> List[int]:\n        ",
+    "c": "/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint* spiralArray(int** array, int arraySize, int* arrayColSize, int* returnSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int[] SpiralArray(int[][] array) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[][]} array\n * @return {number[]}\n */\nvar spiralArray = function(array) {\n    \n};",
+    "typescript": "function spiralArray(array: number[][]): number[] {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[][] $array\n     * @return Integer[]\n     */\n    function spiralArray($array) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func spiralArray(_ array: [[Int]]) -> [Int] {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun spiralArray(array: Array<IntArray>): IntArray {\n        \n    }\n}",
+    "dart": "class Solution {\n  List<int> spiralArray(List<List<int>> array) {\n    \n  }\n}",
+    "golang": "func spiralArray(array [][]int) []int {\n    \n}",
+    "ruby": "# @param {Integer[][]} array\n# @return {Integer[]}\ndef spiral_array(array)\n    \nend",
+    "scala": "object Solution {\n    def spiralArray(array: Array[Array[Int]]): Array[Int] = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn spiral_array(array: Vec<Vec<i32>>) -> Vec<i32> {\n        \n    }\n}",
+    "racket": "(define/contract (spiral-array array)\n  (-> (listof (listof exact-integer?)) (listof exact-integer?))\n  )",
+    "erlang": "-spec spiral_array(Array :: [[integer()]]) -> [integer()].\nspiral_array(Array) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec spiral_array(array :: [[integer]]) :: [integer]\n  def spiral_array(array) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func spiralArray(array: Array<Array<Int64>>): Array<Int64> {\n\n    }\n}"
+  },
+  "exampleTestcases": "[[1,2,3],[4,5,6],[7,8,9]]\n[[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]",
+  "hints": []
+}

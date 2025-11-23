@@ -1,0 +1,31 @@
+#lang racket
+
+(define (minimize-xor nums target)
+  (define (bit-count n)
+    (if (= n 0)
+        0
+        (+ 1 (bit-count (arithmetic-shift n -1)))))
+  (define (get-bit n i)
+    (bitwise-and (arithmetic-shift n (- i)) 1))
+  (define (set-bit n i)
+    (bitwise-ior n (arithmetic-shift 1 i)))
+  (define (clear-bit n i)
+    (bitwise-and n (bitwise-not (arithmetic-shift 1 i))))
+  (define (toggle-bit n i)
+    (bitwise-xor n (arithmetic-shift 1 i)))
+  (define (find-min-xor nums target)
+    (define len (length nums))
+    (define max-bit (bit-count target))
+    (define result (make-vector len 0))
+    (define (dfs idx curr)
+      (when (< idx len)
+        (if (= idx len)
+            (begin
+              (vector-set! result 0 (bitwise-xor (vector-ref result 0) curr))
+              (vector-set! result 1 (bitwise-xor (vector-ref result 1) curr)))
+            (begin
+              (dfs (+ idx 1) (bitwise-xor curr (vector-ref nums idx)))
+              (dfs (+ idx 1) curr))))
+    (dfs 0 0)
+    (vector-ref result 0))
+  (find-min-xor nums target))

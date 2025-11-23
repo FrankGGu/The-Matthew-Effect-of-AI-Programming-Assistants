@@ -1,0 +1,13 @@
+(define (grid-game grid)
+  (let* ((n (length (car grid)))
+         (prefix-sum-row1 (make-vector (+ n 1) 0))
+         (prefix-sum-row2 (make-vector (+ n 1) 0)))
+    (for ((i (in-range 0 n)))
+      (vector-set! prefix-sum-row1 (+ i 1) (+ (vector-ref prefix-sum-row1 i) (list-ref (car grid) i)))
+      (vector-set! prefix-sum-row2 (+ i 1) (+ (vector-ref prefix-sum-row2 i) (list-ref (cadr grid) i))))
+    (let loop ((i 0) (min-score +inf.0))
+      (if (= i n)
+          min-score
+          (let ((score (max (- (vector-ref prefix-sum-row1 n) (vector-ref prefix-sum-row1 (+ i 1)))
+                            (- (vector-ref prefix-sum-row2 i) (vector-ref prefix-sum-row2 0)))))
+            (loop (+ i 1) (min min-score score)))))))

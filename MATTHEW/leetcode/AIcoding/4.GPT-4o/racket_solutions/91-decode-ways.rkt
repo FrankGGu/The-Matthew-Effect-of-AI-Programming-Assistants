@@ -1,0 +1,15 @@
+(define (numDecodings s)
+  (define (helper index)
+    (if (>= index (string-length s)) 
+        1
+        (if (char=? (string-ref s index) #\0) 
+            0
+            (+ (if (<= (string->number (substring s index (+ index 1))) 26) 
+                   (helper (+ index 1)) 
+                   0)
+               (if (and (< index (- (string-length s) 1)) 
+                        (<= (string->number (substring s index (+ index 2))) 26) 
+                        (not (char=? (string-ref s index) #\0))) 
+                   (helper (+ index 2)) 
+                   0)))))
+  (helper 0))

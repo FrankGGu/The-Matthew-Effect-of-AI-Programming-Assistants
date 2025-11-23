@@ -1,0 +1,17 @@
+(define (is-palindrome? s)
+  (equal? s (string-reverse s)))
+
+(define (palindrome-pairs words)
+  (define word-index (for/fold ([table (hash)]) ([i (in-range (length words))])
+                        (hash-set! table (list-ref words i) i)
+                        table))
+  (define result '())
+  (for ([i (in-range (length words))])
+    (for ([j (in-range (length words))])
+      (when (and (not (= i j))
+                 (is-palindrome? (string-append (list-ref words i) (list-ref words j))))
+        (set! result (cons (list i j) result)))))
+  result)
+
+(define (palindromePairs words)
+  (palindrome-pairs words))

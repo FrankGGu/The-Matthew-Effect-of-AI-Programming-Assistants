@@ -1,0 +1,13 @@
+(define (group-the-people groupSizes)
+  (define groups (make-hash))
+  (for ([i (in-range (length groupSizes))]
+        [size (in-list groupSizes)])
+    (hash-update! groups size (lambda (lst) (cons i lst)) '()))
+  (define result '())
+  (for ([size (in-hash-keys groups)])
+    (define lst (hash-ref groups size))
+    (let loop ([lst lst])
+      (when (not (null? lst))
+        (set! result (cons (take lst size) result))
+        (loop (drop lst size)))))
+  result)

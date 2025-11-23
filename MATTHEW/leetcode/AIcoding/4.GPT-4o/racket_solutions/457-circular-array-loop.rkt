@@ -1,0 +1,40 @@
+(define (circularArrayLoop nums)
+  (define (next idx)
+    (modulo (+ idx (list-ref nums idx)) (length nums)))
+
+  (define (has-loop start)
+    (let loop ((slow start) (fast start))
+      (define slow-next (next slow))
+      (define fast-next (next (next fast)))
+      (cond
+        ((= slow slow-next) #f)
+        ((= slow slow-next) #f)
+        ((= slow fast) #t)
+        (else (loop slow-next fast-next)))))
+
+  (define n (length nums))
+  (for ([i (in-range n)])
+    (let* ([direction (if (positive? (list-ref nums i)) 1 -1)]
+           [slow i]
+           [fast i])
+      (when (and (not (zero? (list-ref nums slow)))
+                 (not (zero? (list-ref nums fast))))
+        (define (move)
+          (let loop ((idx slow) (count 0))
+            (if (zero? (list-ref nums idx))
+                (void)
+                (begin
+                  (set! slow (next idx))
+                  (set! count (add1 count))
+                  (if (and (= (if (positive? (list-ref nums idx)) 1 -1)
+                                direction)
+                           (= count n))
+                      (set! slow idx)
+                      (loop (next idx) count)))))
+        (move)
+        (when (and (not (zero? (list-ref nums slow)))
+                   (= (list-ref nums slow) direction))
+          (return #t)))))
+  #f)
+
+(circularArrayLoop '(2,-1,1,2,2))

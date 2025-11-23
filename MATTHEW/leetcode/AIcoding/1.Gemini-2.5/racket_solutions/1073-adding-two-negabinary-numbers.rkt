@@ -1,0 +1,31 @@
+(define (add-negabinary arr1 arr2)
+  (let loop ((l1 (reverse arr1))
+             (l2 (reverse arr2))
+             (carry 0)
+             (result '()))
+    (cond
+      ((and (empty? l1) (empty? l2) (= carry 0))
+       (let ((final-result (reverse result)))
+         (if (empty? final-result)
+             '(0)
+             (let remove-leading-zeros ((lst final-result))
+               (cond
+                 ((and (not (empty? lst)) (= (car lst) 0) (not (empty? (cdr lst))))
+                  (remove-leading-zeros (cdr lst)))
+                 (else lst))))))
+      (else
+       (let* ((d1 (if (empty? l1) 0 (car l1)))
+              (d2 (if (empty? l2) 0 (car l2)))
+              (current-sum (+ d1 d2 carry)))
+         (let-values (((current-digit new-carry)
+                       (cond
+                         ((= current-sum 0) (values 0 0))
+                         ((= current-sum 1) (values 1 0))
+                         ((= current-sum 2) (values 0 -1))
+                         ((= current-sum 3) (values 1 -1))
+                         ((= current-sum -1) (values 1 1))
+                         (else (error "Invalid sum in negabinary addition: " current-sum)))))
+           (loop (if (empty? l1) '() (cdr l1))
+                 (if (empty? l2) '() (cdr l2))
+                 new-carry
+                 (cons current-digit result)))))))

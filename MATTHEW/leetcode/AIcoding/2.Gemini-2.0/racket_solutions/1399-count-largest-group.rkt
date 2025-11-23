@@ -1,0 +1,17 @@
+(define (count-largest-group n)
+  (let* ((group-sizes (make-hash))
+         (max-size 0))
+    (for ([i (in-range 1 (+ n 1))])
+      (let* ((sum (let loop ([num i] [acc 0])
+                     (if (= num 0)
+                         acc
+                         (loop (quotient num 10) (+ acc (remainder num 10)))))))
+        (hash-update! group-sizes sum (λ (v) (+ v 1)) 1)
+        (set! max-size (max max-size (hash-ref group-sizes sum)))))
+    (let loop ([keys (hash-keys group-sizes)] [count 0])
+      (if (null? keys)
+          count
+          (let ([key (car keys)])
+            (if (= (hash-ref group-sizes key) max-size)
+                (loop (cdr keys) (+ count 1))
+                (loop (cdr keys) count)))))))

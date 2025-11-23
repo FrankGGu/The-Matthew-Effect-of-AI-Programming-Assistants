@@ -1,0 +1,21 @@
+(define blacklist-pick
+  (let ()
+    (struct solution (n blacklist m mapping))
+    (define (make-solution n blacklist)
+      (let* ([m (- n (length blacklist))]
+             [blacklist (list->set blacklist)]
+             [mapping (make-hash)])
+        (let loop ([i m])
+          (when (< i n)
+            (unless (set-member? blacklist i)
+              (let ([j (sub1 m)])
+                (hash-set! mapping i j)
+                (set! m (sub1 m))))
+            (loop (add1 i))))
+        (solution n blacklist m mapping)))
+    (define (pick s)
+      (let ([r (random (solution-m s))])
+        (if (hash-ref (solution-mapping s) r #f)
+            (hash-ref (solution-mapping s) r)
+            r)))
+    (values make-solution pick)))

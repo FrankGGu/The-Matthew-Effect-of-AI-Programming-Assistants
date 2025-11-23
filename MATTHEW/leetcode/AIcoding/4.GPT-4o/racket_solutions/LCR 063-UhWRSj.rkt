@@ -1,0 +1,13 @@
+(define (replace-words dict sentence)
+  (define (find-root word)
+    (for/fold ([min-root #f]) ([root dict])
+      (if (string-prefix? root word)
+          (if (or (not min-root) (< (string-length root) (string-length min-root)))
+              root
+              min-root)
+          min-root)))
+  (define words (string-split sentence))
+  (define replaced-words (map (lambda (word)
+                                (or (find-root word) word))
+                              words))
+  (string-join replaced-words " "))

@@ -1,0 +1,32 @@
+{
+  "id": "LCP 20",
+  "title": "快速公交",
+  "titleSlug": "meChtZ",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Memoization",
+    "Array",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int busRapidTransit(int target, int inc, int dec, vector<int>& jump, vector<int>& cost) {\n\n    }\n};",
+    "java": "class Solution {\n    public int busRapidTransit(int target, int inc, int dec, int[] jump, int[] cost) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def busRapidTransit(self, target, inc, dec, jump, cost):\n        \"\"\"\n        :type target: int\n        :type inc: int\n        :type dec: int\n        :type jump: List[int]\n        :type cost: List[int]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def busRapidTransit(self, target: int, inc: int, dec: int, jump: List[int], cost: List[int]) -> int:",
+    "c": "\n\nint busRapidTransit(int target, int inc, int dec, int* jump, int jumpSize, int* cost, int costSize){\n\n}",
+    "csharp": "public class Solution {\n    public int BusRapidTransit(int target, int inc, int dec, int[] jump, int[] cost) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} target\n * @param {number} inc\n * @param {number} dec\n * @param {number[]} jump\n * @param {number[]} cost\n * @return {number}\n */\nvar busRapidTransit = function(target, inc, dec, jump, cost) {\n\n};",
+    "typescript": "function busRapidTransit(target: number, inc: number, dec: number, jump: number[], cost: number[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $target\n     * @param Integer $inc\n     * @param Integer $dec\n     * @param Integer[] $jump\n     * @param Integer[] $cost\n     * @return Integer\n     */\n    function busRapidTransit($target, $inc, $dec, $jump, $cost) {\n\n    }\n}",
+    "swift": "class Solution {\n    func busRapidTransit(_ target: Int, _ inc: Int, _ dec: Int, _ jump: [Int], _ cost: [Int]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun busRapidTransit(target: Int, inc: Int, dec: Int, jump: IntArray, cost: IntArray): Int {\n\n    }\n}",
+    "golang": "func busRapidTransit(target int, inc int, dec int, jump []int, cost []int) int {\n\n}",
+    "ruby": "# @param {Integer} target\n# @param {Integer} inc\n# @param {Integer} dec\n# @param {Integer[]} jump\n# @param {Integer[]} cost\n# @return {Integer}\ndef bus_rapid_transit(target, inc, dec, jump, cost)\n\nend",
+    "scala": "object Solution {\n    def busRapidTransit(target: Int, inc: Int, dec: Int, jump: Array[Int], cost: Array[Int]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn bus_rapid_transit(target: i32, inc: i32, dec: i32, jump: Vec<i32>, cost: Vec<i32>) -> i32 {\n\n    }\n}"
+  },
+  "exampleTestcases": "31\n5\n3\n[6]\n[10]\n612\n4\n5\n[3,6,8,11,5,10,4]\n[4,7,6,3,7,6,4]",
+  "hints": []
+}

@@ -1,0 +1,10 @@
+(define (count-k-difference nums k)
+  (let loop ([i 0] [count 0])
+    (if (= i (length nums))
+        count
+        (let loop2 ([j (+ i 1)])
+          (if (= j (length nums))
+              (loop (+ i 1) count)
+              (if (= (abs (- (list-ref nums i) (list-ref nums j))) k)
+                  (loop2 (+ j 1) (+ count 1))
+                  (loop2 (+ j 1) count)))))))

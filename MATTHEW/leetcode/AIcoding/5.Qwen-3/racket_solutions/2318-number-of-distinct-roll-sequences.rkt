@@ -1,0 +1,15 @@
+(define (distinct-sequences a b c)
+  (define memo (make-hash))
+  (define (dp i j k count)
+    (cond [(= i 3) count]
+          [else
+           (let ([key (list i j k)])
+             (if (hash-has-key? memo key)
+                 (hash-ref memo key)
+                 (let ([res 0])
+                   (when (not (= j a)) (set! res (+ res (dp 0 a k (+ count 1)))))
+                   (when (not (= k b)) (set! res (+ res (dp 1 b k (+ count 1)))))
+                   (when (not (= j c)) (set! res (+ res (dp 2 c k (+ count 1)))))
+                   (hash-set! memo key res)
+                   res)))]))
+  (dp 0 a b 0))

@@ -1,0 +1,16 @@
+(define (sampleStatistics count)
+  (define total (apply + count))
+  (define n (length count))
+  (define mean (/ total n))
+  (define min (apply min count))
+  (define max (apply max count))
+  (define mode (let loop ([counts (make-vector 101 0)] [modes '()] [max-count 0])
+                 (for ([i (in-range (length count))])
+                   (vector-set! counts (vector-ref count i) (+ 1 (vector-ref counts (vector-ref count i)))))
+                 (for ([i (in-range (vector-length counts))])
+                   (let ([c (vector-ref counts i)])
+                     (cond
+                       [(> c max-count) (set! max-count c) (set! modes (list i))]
+                       [(= c max-count) (set! modes (cons i modes))])))
+                 (car (reverse modes))))
+  (list mean min max mode))

@@ -1,0 +1,13 @@
+(define (min-eating-speed piles h)
+  (define (possible? k)
+    (let loop ((piles piles) (time 0))
+      (cond ((null? piles) (<= time h))
+            (else (loop (cdr piles) (+ time (quotient (car piles) k)))))))
+  (define (binary-search left right)
+    (if (>= left right)
+        left
+        (let ((mid (quotient (+ left right) 2)))
+          (if (possible? mid)
+              (binary-search left mid)
+              (binary-search (+ mid 1) right)))))
+  (binary-search 1 (apply max piles)))

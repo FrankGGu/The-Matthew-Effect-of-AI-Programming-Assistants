@@ -1,0 +1,15 @@
+(define (min-falling-path-sum matrix)
+  (let* ([n (vector-length matrix)]
+         [dp (make-vector n (vector-ref matrix 0))])
+    (for ([i (in-range 1 n)])
+      (let ([temp (make-vector n 0)])
+        (for ([j (in-range n)])
+          (let ([current-val (vector-ref matrix i j)]
+                [min-neighbor (if (= j 0)
+                                   (min (vector-ref dp j) (vector-ref dp (+ j 1)))
+                                   (if (= j (- n 1))
+                                       (min (vector-ref dp j) (vector-ref dp (- j 1)))
+                                       (min (vector-ref dp j) (vector-ref dp (- j 1)) (vector-ref dp (+ j 1)))))]))
+            (vector-set! temp j (+ current-val min-neighbor)))))
+        (set! dp temp)))
+    (apply min (vector->list dp))))

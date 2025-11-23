@@ -1,0 +1,5 @@
+(define (topKStudents score k)
+  (define sorted-scores (sort score >))
+  (define unique-scores (remove-duplicates sorted-scores))
+  (define top-k (take unique-scores k))
+  (map (lambda (x) (index-of sorted-scores x)) top-k))

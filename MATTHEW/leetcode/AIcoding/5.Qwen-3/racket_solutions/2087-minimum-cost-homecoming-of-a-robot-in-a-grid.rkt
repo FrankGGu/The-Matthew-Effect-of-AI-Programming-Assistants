@@ -1,0 +1,12 @@
+(define (minimum-cost-homecoming grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define (cost r c)
+    (+ (abs (- r (sub1 rows))) (abs (- c (sub1 cols)))))
+  (define (dfs r c)
+    (if (or (= r rows) (= c cols))
+        0
+        (+ (grid r c)
+           (min (dfs (add1 r) c)
+                (dfs r (add1 c))))))
+  (dfs 0 0))

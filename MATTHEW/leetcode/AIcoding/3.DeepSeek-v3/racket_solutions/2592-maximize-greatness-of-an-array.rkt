@@ -1,0 +1,10 @@
+(define (maximize-greatness nums)
+  (let loop ((nums (sort nums <))
+             (res 0))
+    (if (null? nums)
+        res
+        (let ((x (car nums)))
+          (let-values (((greater rest) (partition (lambda (y) (> y x)) (cdr nums))))
+            (if (null? greater)
+                (loop (cdr nums) res)
+                (loop (append rest greater) (+ res 1))))))))

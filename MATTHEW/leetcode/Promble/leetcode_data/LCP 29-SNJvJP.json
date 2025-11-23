@@ -1,0 +1,31 @@
+{
+  "id": "LCP 29",
+  "title": "乐团站位",
+  "titleSlug": "SNJvJP",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Math"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int orchestraLayout(int num, int xPos, int yPos) {\n\n    }\n};",
+    "java": "class Solution {\n    public int orchestraLayout(int num, int xPos, int yPos) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def orchestraLayout(self, num, xPos, yPos):\n        \"\"\"\n        :type num: int\n        :type xPos: int\n        :type yPos: int\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def orchestraLayout(self, num: int, xPos: int, yPos: int) -> int:",
+    "c": "\n\nint orchestraLayout(int num, int xPos, int yPos){\n\n}",
+    "csharp": "public class Solution {\n    public int OrchestraLayout(int num, int xPos, int yPos) {\n\n    }\n}",
+    "javascript": "/**\n * @param {number} num\n * @param {number} xPos\n * @param {number} yPos\n * @return {number}\n */\nvar orchestraLayout = function(num, xPos, yPos) {\n\n};",
+    "typescript": "function orchestraLayout(num: number, xPos: number, yPos: number): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $num\n     * @param Integer $xPos\n     * @param Integer $yPos\n     * @return Integer\n     */\n    function orchestraLayout($num, $xPos, $yPos) {\n\n    }\n}",
+    "swift": "class Solution {\n    func orchestraLayout(_ num: Int, _ xPos: Int, _ yPos: Int) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun orchestraLayout(num: Int, xPos: Int, yPos: Int): Int {\n\n    }\n}",
+    "golang": "func orchestraLayout(num int, xPos int, yPos int) int {\n\n}",
+    "ruby": "# @param {Integer} num\n# @param {Integer} x_pos\n# @param {Integer} y_pos\n# @return {Integer}\ndef orchestra_layout(num, x_pos, y_pos)\n\nend",
+    "scala": "object Solution {\n    def orchestraLayout(num: Int, xPos: Int, yPos: Int): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn orchestra_layout(num: i32, x_pos: i32, y_pos: i32) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (orchestra-layout num xPos yPos)\n  (-> exact-integer? exact-integer? exact-integer? exact-integer?)\n\n  )"
+  },
+  "exampleTestcases": "3\n0\n2\n4\n1\n2",
+  "hints": []
+}

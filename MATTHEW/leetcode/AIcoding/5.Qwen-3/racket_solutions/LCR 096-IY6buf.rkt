@@ -1,0 +1,16 @@
+(define (is-interleave s1 s2 s3)
+  (define len1 (string-length s1))
+  (define len2 (string-length s2))
+  (define len3 (string-length s3))
+  (cond [(not (= (+ len1 len2) len3)) #f]
+        [else
+         (define dp (make-vector (+ len1 1) #f))
+         (vector-set! dp 0 #t)
+         (for ([j (in-range 1 (+ len2 1))])
+           (vector-set! dp j (and (<= j len3) (equal? (substring s2 (- j 1) j) (substring s3 (- j 1) j)) (vector-ref dp (- j 1)))))
+         (for ([i (in-range 1 (+ len1 1))])
+           (vector-set! dp 0 (and (<= i len3) (equal? (substring s1 (- i 1) i) (substring s3 (- i 1) i)) (vector-ref dp 0)))
+           (for ([j (in-range 1 (+ len2 1))])
+             (vector-set! dp j (and (equal? (substring s1 (- i 1) i) (substring s3 (+ (- i 1) (- j 1)) (+ (- i 1) (- j 1) 1)))
+                                    (or (vector-ref dp (- j 1)) (vector-ref dp j)))))
+         (vector-ref dp len2)]))

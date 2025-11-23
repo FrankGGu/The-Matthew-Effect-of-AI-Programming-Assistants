@@ -1,0 +1,25 @@
+(define (maxDistance position m)
+  (define (canPlaceBalls(d))
+    (define count 1)
+    (define lastPos (car position))
+    (for ([i (in-list (cdr position))])
+      (when (>= i (+ lastPos d))
+        (set! count (+ count 1))
+        (set! lastPos i)))
+    (>= count m))
+
+  (define low 1)
+  (define high (- (last position) (first position)))
+
+  (define result 0)
+  (while (<= low high)
+    (define mid (quotient (+ low high) 2))
+    (if (canPlaceBalls mid)
+        (begin
+          (set! result mid)
+          (set! low (+ mid 1)))
+        (set! high (- mid 1))))
+  result)
+
+(define (maxDistance position m)
+  (maxDistance (sort position <) m))

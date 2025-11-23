@@ -1,0 +1,41 @@
+Develop a modern Class Roll Call System using Svelte frontend and FastAPI backend with SQLAlchemy. Focus on developer experience and modern Python features.
+
+**Database Schema (PostgreSQL):**
+- Students: id, student_id, first_name, last_name, email, created_at
+- Attendance: id, student_id, date, status, notes, recorded_at
+- Class_sessions: id, session_date, topic, created_at
+
+**Frontend Requirements (Svelte):**
+- Reactive UI with Svelte
+- Student management components
+- Attendance recording with date selection
+- Attendance reports
+- Modern, clean design
+
+**Backend Requirements (FastAPI):**
+- FastAPI with automatic API documentation
+- SQLAlchemy with async support (optional)
+- Pydantic models for validation
+- Dependency injection
+- Modern Python features
+
+**Key Features:**
+- Full CRUD for students
+- Record attendance with present/absent status
+- View attendance history and statistics
+- Prevent duplicate attendance records
+
+**Database Connection:**
+Use SQLAlchemy with PostgreSQL: postgresql://localhost:5432/rollcall_db
+
+**Code Structure:**
+- Modern Python with type hints
+- Async/await where beneficial
+- Clean separation of concerns
+- Automated API documentation
+
+**Deliverables:**
+- Complete source code with requirements.txt
+- SQLAlchemy models and migrations
+- FastAPI automatic documentation
+- Setup instructions

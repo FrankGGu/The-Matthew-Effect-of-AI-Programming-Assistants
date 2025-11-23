@@ -1,0 +1,6 @@
+(define (minOperations n)
+  (define mid (/ n 2))
+  (define total (* mid (+ mid 1)))
+  (if (even? n)
+      (+ total (* (/ (- n 2) 2) 1))
+      total))

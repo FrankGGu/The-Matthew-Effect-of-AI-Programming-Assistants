@@ -1,0 +1,13 @@
+(define (find-error-numbers nums)
+  (define n (length nums))
+  (define expected-sum (/ (* n (+ 1 n)) 2))
+  (define actual-sum (apply + nums))
+  (define actual-sum-squares (apply + (map (lambda (x) (* x x)) nums)))
+  (define expected-sum-squares (/ (* n (+ 1 n) (* (+ 1 n) 2)) 6))
+  (define sum-diff (- expected-sum actual-sum))
+  (define square-sum-diff (- expected-sum-squares actual-sum-squares))
+  (define x (/ (+ sum-diff (/ square-sum-diff sum-diff)) 2))
+  (define y (- x sum-diff))
+  (list x y))
+
+(find-error-numbers '(1 2 2 4))

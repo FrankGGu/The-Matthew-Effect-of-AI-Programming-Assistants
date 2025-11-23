@@ -1,0 +1,46 @@
+#lang racket
+
+(define (count-vowel-substrings word)
+  (let* ((n (string-length word))
+         (total-ans 0)
+         (current-segment-start 0))
+
+    (define (is-vowel? char)
+      (or (char=? char #\a)
+          (char=? char #\e)
+          (char=? char #\i)
+          (char=? char #\o)
+          (char=? char #\u)))
+
+    (define (count-vowel-substrings-in-segment s)
+      (let* ((len (string-length s))
+             (segment-total-count 0)
+             (left 0)
+             (freq (make-hash)))
+
+        (define (all-five-vowels? freq-map)
+          (and (> (hash-ref freq-map #\a 0) 0)
+               (> (hash-ref freq-map #\e 0) 0)
+               (> (hash-ref freq-map #\i 0) 0)
+               (> (hash-ref freq-map #\o 0) 0)
+               (> (hash-ref freq-map #\u 0) 0)))
+
+        (for ([right (in-range len)])
+          (hash-update! freq (string-ref s right) add1 0)
+          (let loop-inner ()
+            (when (all-five-vowels? freq)
+              (set! segment-total-count (+ segment-total-count (- len right)))
+              (hash-update! freq (string-ref s left) sub1)
+              (set! left (+ left 1))
+              (loop-inner))))
+        segment-total-count))
+
+    (for ([i (in-range (add1 n))])
+      (if (or (= i n) (not (is-vowel? (string-ref word i))))
+          (begin
+            (when (> i current-segment-start)
+              (let ((segment (substring word current-segment-start i)))
+                (set! total-ans (+ total-ans (count-vowel-substrings-in-segment segment)))))
+            (set! current-segment-start (add1 i)))
+          (void)))
+    total-ans))

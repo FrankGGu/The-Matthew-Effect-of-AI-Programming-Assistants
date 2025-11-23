@@ -1,0 +1,44 @@
+Create a lightweight Pet Information Registration System using Preact frontend with Gin backend and GORM.
+
+**Database Schema (PostgreSQL):**
+- Database name: pet_registry
+- Tables: pets (id, name, breed, birth_date, owner_name, owner_phone, owner_email, created_at, updated_at)
+- Tables: vaccinations (id, pet_id, vaccine_name, administration_date, next_due_date, veterinarian, notes, created_at)
+
+**Backend Requirements (Gin):**
+1. Implement REST API using Gin framework
+2. Use GORM as ORM with proper model definitions
+3. Create handlers for all CRUD operations
+4. Add input validation using binding
+5. Implement proper error handling
+6. Add CORS middleware
+7. Include request logging
+
+**Frontend Requirements (Preact):**
+1. Create lightweight UI using Preact (React alternative)
+2. Implement components for:
+   - Pet list with search
+   - Pet form (add/edit)
+   - Vaccination records
+   - Vaccination form
+3. Use Preact Router for navigation
+4. Use state management with signals or context
+5. Implement form validation
+6. Keep bundle size minimal
+
+**API Endpoints:**
+- GET /api/pets - List pets
+- POST /api/pets - Create pet
+- GET /api/pets/:id - Get pet details
+- PUT /api/pets/:id - Update pet
+- PATCH /api/pets/:id - Partially update pet
+- DELETE /api/pets/:id - Delete pet
+- GET /api/pets/:id/vaccinations - Get pet's vaccinations
+- POST /api/vaccinations - Add vaccination
+- PUT /api/vaccinations/:id - Update vaccination
+- DELETE /api/vaccinations/:id - Delete vaccination
+
+**Database Connection:**
+- dsn: "host=localhost user=postgres password=petpassword dbname=pet_registry port=5432 sslmode=disable"
+
+Generate complete code with proper project structure, Go modules, and all necessary configurations for a minimal, performant application.

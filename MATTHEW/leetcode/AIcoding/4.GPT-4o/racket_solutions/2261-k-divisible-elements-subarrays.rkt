@@ -1,0 +1,13 @@
+(define (count-k-divisible-subarrays nums k)
+  (define n (length nums))
+  (define count 0)
+  (for ([i (in-range n)])
+    (define sum 0)
+    (for ([j (in-range i n)])
+      (set! sum (+ sum (list-ref nums j)))
+      (when (= (modulo sum k) 0)
+        (set! count (+ count 1)))))
+  count)
+
+(define (kDivisibleElementsSubarrays nums k)
+  (count-k-divisible-subarrays nums k))

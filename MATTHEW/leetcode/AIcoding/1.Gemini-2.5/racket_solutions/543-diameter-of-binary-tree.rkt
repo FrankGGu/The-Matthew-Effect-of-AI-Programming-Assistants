@@ -1,0 +1,18 @@
+(define-struct TreeNode (val left right))
+
+(define (diameterOfBinaryTree root)
+  (define (dfs node)
+    (if (not node)
+        (list 0 0) ; (max-depth, max-diameter)
+        (let* ((left-result (dfs (TreeNode-left node)))
+               (right-result (dfs (TreeNode-right node)))
+               (left-depth (car left-result))
+               (left-diameter (cadr left-result))
+               (right-depth (car right-result))
+               (right-diameter (cadr right-result))
+
+               (current-depth (+ 1 (max left-depth right-depth)))
+               (diameter-passing-through-node (+ left-depth right-depth))
+               (max-diameter-in-subtree (max left-diameter right-diameter diameter-passing-through-node)))
+          (list current-depth max-diameter-in-subtree))))
+  (cadr (dfs root)))

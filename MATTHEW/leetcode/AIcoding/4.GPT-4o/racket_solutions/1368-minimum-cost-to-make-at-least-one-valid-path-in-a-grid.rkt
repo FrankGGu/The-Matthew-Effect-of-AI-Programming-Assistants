@@ -1,0 +1,37 @@
+(define (min-cost grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define directions '((0 1) (1 0) (0 -1) (-1 0)))
+
+  (define (valid? x y)
+    (and (>= x 0) (< x rows) (>= y 0) (< y cols)))
+
+  (define (dijkstra)
+    (define costs (make-vector (* rows cols) +inf.0))
+    (vector-set! costs 0 0)
+    (define pq (make-queue))
+    (enqueue pq (list 0 0 0)) ; (cost x y)
+
+    (let loop ()
+      (if (empty? pq)
+          (vector-ref costs ((- 1) (* rows cols))) ; return cost to bottom-right
+          (let* ((current (dequeue pq))
+                 (cost (car current))
+                 (x (cadr current))
+                 (y (caddr current)))
+            (for-each (lambda (direction)
+                          (let* ((new-x (+ x (car direction)))
+                                 (new-y (+ y (cadr direction)))
+                                 (new-cost (if (equal? (+ x 1) new-y) ; right
+                                                (+ cost 0)
+                                                (+ cost 1))))
+                            (when (valid? new-x new-y)
+                              (let* ((index (+ (* new-x cols) new-y)))
+                                (when (< new-cost (vector-ref costs index))
+                                  (vector-set! costs index new-cost)
+                                  (enqueue pq (list new-cost new-x new-y)))))))
+                        directions)
+            (loop)))))
+
+  (dijkstra)
+  (vector-ref costs ((- 1) (* rows cols))))

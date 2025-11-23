@@ -1,0 +1,11 @@
+function finalValueAfterOperations(operations) {
+    let x = 0;
+    for (const op of operations) {
+        if (op === '++X' || op === 'X++') {
+            x++;
+        } else {
+            x--;
+        }
+    }
+    return x;
+}

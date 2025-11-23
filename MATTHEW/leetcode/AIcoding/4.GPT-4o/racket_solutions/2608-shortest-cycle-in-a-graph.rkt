@@ -1,0 +1,35 @@
+(define (findShortestCycle graph)
+  (define (bfs start)
+    (define queue (list (list start 0)))
+    (define visited (make-vector (length graph) #f))
+    (define parent (make-vector (length graph) -1))
+    (vector-set! visited start #t)
+    (define min-cycle-length +inf.0)
+
+    (let loop ()
+      (if (null? queue)
+          min-cycle-length
+          (let* ((current (car (car queue)))
+                 (dist (cadr (car queue)))
+                 (neighbors (vector-ref graph current)))
+            (set! queue (cdr queue))
+            (for-each (lambda (neighbor)
+                        (if (and (not (vector-ref visited neighbor))
+                                 (not (= neighbor (vector-ref parent current))))
+                            (begin
+                              (vector-set! visited neighbor #t)
+                              (vector-set! parent neighbor current)
+                              (set! queue (append queue (list (list neighbor (+ dist 1))))))
+                            (when (and (vector-ref visited neighbor)
+                                       (not (= neighbor (vector-ref parent current))))
+                              (set! min-cycle-length (min min-cycle-length (+ dist (+ 1 (index-of (vector-ref graph neighbor) current))))))))
+                      neighbors))
+            (loop)))))
+
+  (define n (length graph))
+  (define min-cycle-length +inf.0)
+
+  (for ([i (in-range n)])
+    (set! min-cycle-length (min min-cycle-length (bfs i))))
+
+  (if (= min-cycle-length +inf.0) -1 min-cycle-length))

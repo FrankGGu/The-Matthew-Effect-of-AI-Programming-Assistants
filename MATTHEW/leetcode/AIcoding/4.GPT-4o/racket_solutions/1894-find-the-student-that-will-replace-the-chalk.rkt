@@ -1,0 +1,10 @@
+(define (chalkReplacer chalk k)
+  (define total-chalk (apply + chalk))
+  (define remaining-chalk (modulo k total-chalk))
+  (define (find-student index)
+    (if (>= remaining-chalk (list-ref chalk index))
+        (find-student (modulo (+ index 1) (length chalk)))
+        index))
+  (find-student 0))
+
+(chalkReplacer '(5 1 5) 22)

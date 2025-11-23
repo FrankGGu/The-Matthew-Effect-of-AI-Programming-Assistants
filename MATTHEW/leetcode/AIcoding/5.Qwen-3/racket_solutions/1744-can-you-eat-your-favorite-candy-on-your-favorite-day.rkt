@@ -1,0 +1,6 @@
+(define/contract (candies-on-day favorite-candy-cupcakes day)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (define n (length favorite-candy-cupcakes))
+  (define total (apply + favorite-candy-cupcakes))
+  (define per-day (quotient total n))
+  (if (>= day per-day) (quotient (* (quotient day per-day) n) 2) (quotient day 2)))

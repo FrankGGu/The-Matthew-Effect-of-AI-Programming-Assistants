@@ -1,0 +1,12 @@
+(define (longest-square-streak nums)
+  (define sorted-nums (sort nums <))
+  (define num-set (set sorted-nums))
+  (define (find-streak n)
+    (let loop ([current n] [length 1])
+      (let ([next-square (* current current)])
+        (if (set-member? num-set next-square)
+            (loop next-square (+ length 1))
+            length))))
+  (if (null? sorted-nums)
+      0
+      (apply max (map find-streak sorted-nums))))

@@ -1,0 +1,10 @@
+(define (is-valid-bst root)
+  (define (validate node low high)
+    (if (null? node) 
+        #t
+        (let ((val (node-value node)))
+          (and (> val low)
+               (< val high)
+               (validate (node-left node) low val)
+               (validate (node-right node) val high)))))
+  (validate root -inf +inf))

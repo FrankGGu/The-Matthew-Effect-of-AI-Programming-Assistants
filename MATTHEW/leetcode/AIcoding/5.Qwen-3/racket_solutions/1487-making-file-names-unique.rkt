@@ -1,0 +1,11 @@
+(define (get-unique-file-name names)
+  (define name-count (make-hash))
+  (define (increment-name name)
+    (let ((count (hash-ref name-count name 0)))
+      (hash-set! name-count name (+ count 1))
+      (if (= count 0)
+          name
+          (string-append name "." (number->string count)))))
+  (for/fold ([result '()])
+            ([name names])
+    (cons (increment-name name) result)))

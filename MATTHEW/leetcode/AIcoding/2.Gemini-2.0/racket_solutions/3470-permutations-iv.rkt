@@ -1,0 +1,17 @@
+(define (permuteUnique nums)
+  (define (count-freq nums)
+    (foldl (lambda (n acc)
+             (hash-update acc n (lambda (v) (+ v 1)) 1))
+           (hash) nums))
+
+  (define (helper freq acc)
+    (if (hash-empty? freq)
+        (list acc)
+        (apply append (map (lambda (k)
+                              (let ((new-freq (hash-update freq k (lambda (v) (- v 1)) 0)))
+                                (if (= (hash-ref new-freq k) 0)
+                                    (helper (hash-remove new-freq k) (append acc (list k)))
+                                    (helper new-freq (append acc (list k))))))
+                            (hash-keys freq)))))
+
+  (helper (count-freq nums) '()))

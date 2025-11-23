@@ -1,0 +1,10 @@
+(define (num-bad-pairs nums)
+  (let ([n (length nums)])
+    (let ([count (make-hash)])
+      (let loop ([i 0] [res 0])
+        (if (= i n)
+            res
+            (let ([x (list-ref nums i)])
+              (let ([c (hash-ref count x 0)])
+                (hash-set! count x (+ c 1))
+                (loop (+ i 1) (+ res (- i c))))))))))

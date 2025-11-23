@@ -1,0 +1,6 @@
+(define (two-sum numbers target)
+  (let loop ((left 0) (right (- (length numbers) 1)))
+    (let ((sum (+ (list-ref numbers left) (list-ref numbers right))))
+      (cond ((= sum target) (list (+ left 1) (+ right 1)))
+            ((< sum target) (loop (+ left 1) right))
+            (else (loop left (- right 1)))))))

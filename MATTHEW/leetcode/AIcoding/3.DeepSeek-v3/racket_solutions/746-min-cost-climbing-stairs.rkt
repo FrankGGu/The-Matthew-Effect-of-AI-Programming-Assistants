@@ -1,0 +1,6 @@
+(define/contract (min-cost-climbing-stairs cost)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([i (length cost)] [a 0] [b 0])
+    (if (< i 0)
+        (min a b)
+        (loop (- i 1) (list-ref cost i (+ a (min a b))) (min a b))))

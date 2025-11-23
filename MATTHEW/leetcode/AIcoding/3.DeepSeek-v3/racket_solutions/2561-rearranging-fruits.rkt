@@ -1,0 +1,26 @@
+(define/contract (min-cost basket1 basket2)
+  (-> (listof exact-integer?) (listof exact-integer?) exact-integer?)
+  (let* ([count (make-hash)]
+         [total 0]
+         [min-val +inf.0]
+         [diff (make-hash)])
+    (for ([fruit basket1])
+      (hash-update! count fruit add1 0)
+      (set! min-val (min min-val fruit)))
+    (for ([fruit basket2])
+      (hash-update! count fruit add1 0)
+      (set! min-val (min min-val fruit)))
+    (for ([(fruit cnt) count])
+      (when (odd? cnt)
+        (return -1))
+      (hash-set! diff fruit (- (quotient cnt 2) (count (lambda (x) (equal? x fruit)) basket1))))
+    (let* ([swap-list '()]
+           [cost 0])
+      (for ([(fruit cnt) diff])
+        (when (positive? cnt)
+          (set! swap-list (append swap-list (make-list cnt fruit)))))
+      (set! swap-list (sort swap-list <))
+      (let ([m (length swap-list)])
+        (for ([i (quotient m 2)])
+          (set! cost (+ cost (min (* 2 min-val) (list-ref swap-list i))))))
+    cost))

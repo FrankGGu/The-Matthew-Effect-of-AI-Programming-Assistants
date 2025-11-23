@@ -1,0 +1,11 @@
+(define/contract (can-construct s k)
+  (-> string? exact-integer? boolean?)
+  (let* ([len (string-length s)]
+         [freq (make-hash)])
+    (when (or (< len k) (> k len)) (return #f))
+    (for ([i (in-range len)])
+      (let ([c (string-ref s i)])
+        (hash-update! freq c add1 (lambda () 0))))
+    (let ([odd-count 0])
+      (hash-for-each freq (lambda (k v) (when (odd? v) (set! odd-count (add1 odd-count)))))
+    (<= odd-count k)))

@@ -1,0 +1,16 @@
+(define (base-n-2 n)
+  (if (zero? n)
+      '()
+      (let ((rem (remainder n -2)))
+        (cons rem (base-n-2 (quotient n -2))))))
+
+(define (convert-to-base-minus-2 n)
+  (define (helper n)
+    (if (zero? n)
+        '()
+        (let ((rem (remainder n -2)))
+          (cons rem (helper (quotient n -2))))))
+  (define result (helper n))
+  (if (null? result)
+      "0"
+      (string-join (map number->string result) "")))

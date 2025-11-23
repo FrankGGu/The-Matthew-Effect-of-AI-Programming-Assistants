@@ -1,0 +1,15 @@
+(define (minOperations (A) (K))
+  (define (helper L R K)
+    (if (= L R) 
+        0
+        (let ((mid (quotient (+ L R) 2)))
+          (if (< (list-ref A mid) K)
+              (+ (- K (list-ref A mid)) (helper (+ mid 1) R K))
+              (helper L mid K)))))
+  (define (count-ops K)
+    (let* ((sorted-A (sort A <))
+           (n (length sorted-A)))
+      (if (= n 0)
+          0
+          (helper 0 (sub1 n) K))))
+  (count-ops K))

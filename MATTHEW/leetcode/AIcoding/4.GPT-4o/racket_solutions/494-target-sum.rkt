@@ -1,0 +1,10 @@
+(define (find-target-sum-ways nums target)
+  (define (dp i sum)
+    (if (= i (length nums))
+        (if (= sum target) 1 0)
+        (+ (dp (+ i 1) (+ sum (list-ref nums i)))
+           (dp (+ i 1) (- sum (list-ref nums i))))))
+  (dp 0 0))
+
+(define (findTargetSumWays nums target)
+  (find-target-sum-ways nums target))

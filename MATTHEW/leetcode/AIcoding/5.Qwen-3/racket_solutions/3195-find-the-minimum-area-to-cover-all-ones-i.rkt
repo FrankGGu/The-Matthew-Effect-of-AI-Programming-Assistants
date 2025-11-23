@@ -1,0 +1,17 @@
+#lang racket
+
+(define (minimum-area-rectangle grid)
+  (define rows (length grid))
+  (define cols (if (> rows 0) (length (car grid)) 0))
+  (define ones '())
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (when (= (list-ref (list-ref grid i) j) 1)
+        (set! ones (cons (cons i j) ones)))))
+  (define x-coords (map car ones))
+  (define y-coords (map cdr ones))
+  (define min-x (apply min x-coords))
+  (define max-x (apply max x-coords))
+  (define min-y (apply min y-coords))
+  (define max-y (apply max y-coords))
+  (* (- max-x min-x) (- max-y min-y)))

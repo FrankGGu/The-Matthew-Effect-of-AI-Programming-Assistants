@@ -1,0 +1,42 @@
+(define (updateBoard board click)
+  (define (in-bounds? r c)
+    (and (>= r 0) (< r (length board)) (>= c 0) (< c (length (car board)))))
+
+  (define (count-mines r c)
+    (define (is-mine? r c)
+      (and (in-bounds? r c) (equal? (list-ref (list-ref board r) c) "M")))
+    (foldl (lambda (dr acc)
+              (foldl (lambda (dc acc)
+                        (if (is-mine? (+ r dr) (+ c dc)) (+ acc 1) acc))
+                      acc (list -1 0 1)))
+            0 (list -1 0 1)))
+
+  (define (reveal r c)
+    (if (not (in-bounds? r c))
+        '()
+        (let ((current (list-ref (list-ref board r) c)))
+          (cond
+            ((equal? current "E")
+             (let ((mines (count-mines r c)))
+               (if (= mines 0)
+                   (begin
+                     (set! (list-ref (list-ref board r) c) "B")
+                     (for-each (lambda (dr dc)
+                                 (reveal (+ r dr) (+ c dc)))
+                               (list -1 0 1))
+                     (list-ref board r))
+                   (set! (list-ref (list-ref board r) c) (number->string mines))
+                   (list-ref board r))))
+            ((equal? current "M")
+             (set! (list-ref (list-ref board r) c) "X"))
+            (else board)))))
+
+  (define (click-cell r c)
+    (let ((current (list-ref (list-ref board r) c)))
+      (cond
+        ((equal? current "M") (set! (list-ref (list-ref board r) c) "X"))
+        ((equal? current "E") (reveal r c))
+        (else board))))
+
+  (click-cell (car click) (cadr click))
+  board)

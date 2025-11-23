@@ -1,0 +1,12 @@
+(define (min-hours skill training)
+  (define (helper skill training hours)
+    (if (null? training)
+        hours
+        (let* ((current (car training))
+               (required-skill (car current))
+               (training-hours (cadr current))
+               (needed-hours (max 0 (- required-skill skill))))
+          (if (zero? needed-hours)
+              (helper skill (cdr training) hours)
+              (helper (+ skill training-hours) (cdr training) (+ hours (ceiling (/ needed-hours training-hours))))))))
+  (helper skill training 0))

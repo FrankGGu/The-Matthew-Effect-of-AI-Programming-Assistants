@@ -1,0 +1,18 @@
+#lang racket
+
+(define (kth-largest-xor-coordinate-value matrix k)
+  (define rows (length matrix))
+  (define cols (length (car matrix)))
+  (define result (make-vector (* rows cols) 0))
+  (define idx 0)
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (when (> i 0)
+        (vector-set! result idx (bitwise-xor (vector-ref result (- idx cols)) (list-ref matrix i j))))
+      (when (> j 0)
+        (vector-set! result idx (bitwise-xor (vector-ref result (- idx 1)) (list-ref matrix i j))))
+      (when (and (> i 0) (> j 0))
+        (vector-set! result idx (bitwise-xor (vector-ref result (- idx 1)) (vector-ref result (- idx cols)) (list-ref matrix i j))))
+      (set! idx (+ idx 1))))
+  (define sorted (sort (vector->list result) >))
+  (list-ref sorted (- k 1)))

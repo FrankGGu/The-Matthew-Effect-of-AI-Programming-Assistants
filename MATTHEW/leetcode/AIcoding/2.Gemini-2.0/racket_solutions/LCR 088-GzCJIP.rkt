@@ -1,0 +1,7 @@
+(define (min-cost-climbing-stairs cost)
+  (let ((n (length cost)))
+    (let loop ((i 2)
+               (dp (vector (vector-ref cost 0) (vector-ref cost 1))))
+      (if (= i n)
+          (min (vector-ref dp 0) (vector-ref dp 1))
+          (loop (+ i 1) (vector (vector-ref dp 1) (+ (vector-ref cost i) (min (vector-ref dp 0) (vector-ref dp 1)))))))))

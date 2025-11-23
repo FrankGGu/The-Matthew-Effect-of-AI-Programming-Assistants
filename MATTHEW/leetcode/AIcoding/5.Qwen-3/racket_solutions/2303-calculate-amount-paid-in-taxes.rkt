@@ -1,0 +1,10 @@
+(define (tax-payers income-bracket)
+  (let loop ((bracket income-bracket) (total 0))
+    (if (null? bracket)
+        total
+        (let* ((rate (caar bracket))
+               (limit (cadar bracket))
+               (prev (caddr (car bracket)))
+               (current (if (null? (cdr bracket)) 0 (caadr (cdr bracket))))
+               (diff (- current prev)))
+          (loop (cdr bracket) (+ total (* rate diff)))))))

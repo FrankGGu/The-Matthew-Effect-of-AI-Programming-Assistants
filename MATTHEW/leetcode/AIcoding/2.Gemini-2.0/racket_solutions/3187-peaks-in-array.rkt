@@ -1,0 +1,8 @@
+(define (find-peaks arr)
+  (let* ((n (length arr))
+         (peaks (list))
+         (valid-index? (lambda (i) (and (>= i 0) (< i n)))))
+    (for/list ((i (in-range n)))
+      (when (and (or (not (valid-index? (- i 1))) (> (list-ref arr i) (list-ref arr (- i 1) 0)))
+                 (or (not (valid-index? (+ i 1))) (> (list-ref arr i) (list-ref arr (+ i 1) 0))))
+        i))))

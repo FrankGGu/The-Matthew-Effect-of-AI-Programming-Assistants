@@ -1,0 +1,16 @@
+(define (min-cost-to-make-beautiful-bouquet flowers hand) 
+  (define (can-make? k)
+    (let loop ((i 0) (count 0))
+      (cond ((>= i (length flowers)) #t)
+            ((<= (list-ref flowers i) k) (loop (+ i 1) count))
+            (else
+             (if (>= count hand)
+                 #f
+                 (loop (+ i 1) (+ count 1)))))))
+  (let loop ((low 0) (high (apply max flowers)))
+    (if (<= low high)
+        (let ((mid (quotient (+ low high) 2)))
+          (if (can-make? mid)
+              (loop low (- mid 1))
+              (loop (+ mid 1) high)))
+        low)))

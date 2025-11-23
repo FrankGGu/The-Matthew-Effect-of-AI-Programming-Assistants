@@ -1,0 +1,6 @@
+(define (separateDigits nums)
+  (define (digitize n)
+    (if (= n 0)
+        '()
+        (append (digitize (quotient n 10)) (list (remainder n 10)))))
+  (apply append (map digitize nums)))

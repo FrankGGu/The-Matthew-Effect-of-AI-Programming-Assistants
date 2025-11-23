@@ -1,0 +1,7 @@
+(define (inventory-manage stock)
+  (define (helper lst)
+    (if (null? lst)
+        '()
+        (let ((min-val (apply min lst)))
+          (cons min-val (helper (remove min-val lst))))))
+  (helper stock))

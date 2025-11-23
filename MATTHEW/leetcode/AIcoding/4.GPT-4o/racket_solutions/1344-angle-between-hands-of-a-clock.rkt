@@ -1,0 +1,5 @@
+(define (angleBetweenHands hour minute)
+  (define hour-angle (* 30 (+ hour (/ minute 60.0)))
+  (define minute-angle (* 6 minute))
+  (define angle (abs (- hour-angle minute-angle)))
+  (if (> angle 180) (- 360 angle) angle))

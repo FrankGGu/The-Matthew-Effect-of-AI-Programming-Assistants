@@ -1,0 +1,25 @@
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    int minimumRounds(vector<int>& tasks) {
+        unordered_map<int, int> freq;
+        for (int task : tasks) {
+            freq[task]++;
+        }
+
+        int rounds = 0;
+        for (auto& [task, count] : freq) {
+            if (count == 1) {
+                return -1;
+            }
+            rounds += (count + 2) / 3;
+        }
+
+        return rounds;
+    }
+};

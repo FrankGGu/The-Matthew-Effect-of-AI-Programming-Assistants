@@ -1,0 +1,81 @@
+type MyLinkedList struct {
+    head *Node
+    size int
+}
+
+type Node struct {
+    val  int
+    next *Node
+}
+
+func Constructor() MyLinkedList {
+    return MyLinkedList{}
+}
+
+func (this *MyLinkedList) Get(index int) int {
+    if index < 0 || index >= this.size {
+        return -1
+    }
+    curr := this.head
+    for i := 0; i < index; i++ {
+        curr = curr.next
+    }
+    return curr.val
+}
+
+func (this *MyLinkedList) AddAtHead(val int) {
+    newNode := &Node{val: val, next: this.head}
+    this.head = newNode
+    this.size++
+}
+
+func (this *MyLinkedList) AddAtTail(val int) {
+    newNode := &Node{val: val}
+    if this.head == nil {
+        this.head = newNode
+    } else {
+        curr := this.head
+        for curr.next != nil {
+            curr = curr.next
+        }
+        curr.next = newNode
+    }
+    this.size++
+}
+
+func (this *MyLinkedList) AddAtIndex(index int, val int) {
+    if index < 0 || index > this.size {
+        return
+    }
+    if index == 0 {
+        this.AddAtHead(val)
+        return
+    }
+    if index == this.size {
+        this.AddAtTail(val)
+        return
+    }
+    curr := this.head
+    for i := 0; i < index-1; i++ {
+        curr = curr.next
+    }
+    newNode := &Node{val: val, next: curr.next}
+    curr.next = newNode
+    this.size++
+}
+
+func (this *MyLinkedList) DeleteAtIndex(index int) {
+    if index < 0 || index >= this.size {
+        return
+    }
+    if index == 0 {
+        this.head = this.head.next
+    } else {
+        curr := this.head
+        for i := 0; i < index-1; i++ {
+            curr = curr.next
+        }
+        curr.next = curr.next.next
+    }
+    this.size--
+}

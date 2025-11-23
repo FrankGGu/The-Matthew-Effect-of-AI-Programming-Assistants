@@ -1,0 +1,12 @@
+(define (decode-xor-permutation encoded n)
+  (define total-xor (for/fold ([acc 0]) ([i (in-range 1 (+ n 1))]) (xor acc i)))
+  (define encoded-odd-xor (for/fold ([acc 0]) ([i (in-range 1 n 2)]) (xor acc (list-ref encoded i))))
+  (define first-element (xor total-xor encoded-odd-xor))
+  (define perm (list first-element))
+  (for ([i (in-range 0 (- n 1))])
+    (define next-element (xor (list-ref perm i) (list-ref encoded i)))
+    (set! perm (append perm (list next-element))))
+  perm)
+
+(define (decode encoded n)
+  (decode-xor-permutation encoded n))

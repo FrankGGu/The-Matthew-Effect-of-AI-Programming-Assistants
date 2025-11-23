@@ -1,0 +1,6 @@
+(define (target-indices nums target)
+  (let* ((sorted-nums (sort nums <))
+         (indices (for/list ((i (in-range (length sorted-nums)))
+                              #:when (= (list-ref sorted-nums i) target))
+                    i)))
+    indices))

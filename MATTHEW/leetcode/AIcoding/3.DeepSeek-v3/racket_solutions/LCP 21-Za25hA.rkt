@@ -1,0 +1,48 @@
+#lang racket
+
+(define (chase-game edges a b)
+  (define n (add1 (length edges)))
+  (define adj (make-vector n '()))
+  (for ([edge edges])
+    (let ([u (car edge)]
+          [v (cadr edge)])
+      (vector-set! adj u (cons v (vector-ref adj u)))
+      (vector-set! adj v (cons u (vector-ref adj v)))))
+
+  (define (bfs start)
+    (define dist (make-vector n -1))
+    (define q (make-queue))
+    (enqueue! q start)
+    (vector-set! dist start 0)
+    (let loop ()
+      (unless (queue-empty? q)
+        (let ([u (dequeue! q)])
+          (for ([v (vector-ref adj u)])
+            (when (= (vector-ref dist v) -1)
+              (vector-set! dist v (+ (vector-ref dist u) 1))
+              (enqueue! q v)))
+          (loop))))
+    dist)
+
+  (define dist-a (bfs a))
+  (define dist-b (bfs b))
+
+  (define max-dist 0)
+  (for ([u (in-range n)])
+    (when (> (vector-ref dist-a u) (+ (vector-ref dist-b u) 1))
+      (set! max-dist (max max-dist (vector-ref dist-a u)))))
+
+  (if (> max-dist 0) max-dist -1))
+
+(define (make-queue) (mcons empty empty))
+(define (queue-empty? q) (and (null? (mcar q)) (null? (mcdr q))))
+(define (enqueue! q x)
+  (set-mcdr! q (cons x (mcdr q)))
+  (when (null? (mcar q))
+    (set-mcar! q (reverse (mcdr q)))
+    (set-mcdr! q empty)))
+(define (dequeue! q)
+  (when (null? (mcar q))
+  (let ([x (car (mcar q))])
+    (set-mcar! q (cdr (mcar q)))
+    x))

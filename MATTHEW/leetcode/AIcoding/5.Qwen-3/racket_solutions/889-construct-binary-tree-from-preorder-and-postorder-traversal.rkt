@@ -1,0 +1,20 @@
+(define (construct-quad-tree preorder postorder)
+  (define (build pre post)
+    (if (null? pre)
+        #f
+        (let ((root-val (car pre)))
+          (if (= (length pre) 1)
+              (make-node root-val #f #f #f #f)
+              (let* ((left-val (cadr pre))
+                     (left-index (index-of post left-val)))
+                (let ((left-size (+ left-index 1)))
+                  (let ((left-pre (take pre 2))
+                        (right-pre (take-right pre (- (length pre) 2))))
+                    (let ((left-post (take post left-index))
+                          (right-post (take-right post (- (length post) left-index 1))))
+                      (make-node root-val
+                                 (build left-pre left-post)
+                                 (build right-pre right-post)
+                                 #f
+                                 #f))))))))
+  (build preorder postorder))

@@ -1,0 +1,6 @@
+(define/contract (rotate-string s goal)
+  (-> string? string? boolean?)
+  (if (= (string-length s) (string-length goal))
+      (let ((doubled (string-append s s)))
+        (string-contains? doubled goal))
+      #f))

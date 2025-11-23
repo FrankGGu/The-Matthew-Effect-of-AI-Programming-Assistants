@@ -1,0 +1,7 @@
+(define (countKDifference nums k)
+  (define count 0)
+  (for ([i (in-range (length nums))])
+    (for ([j (in-range (add1 i) (length nums))])
+      (when (= (abs (- (list-ref nums i) (list-ref nums j))) k)
+        (set! count (add1 count)))))
+  count)

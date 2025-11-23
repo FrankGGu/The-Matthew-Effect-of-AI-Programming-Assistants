@@ -1,0 +1,25 @@
+(define (countNumbersWithNonDecreasingDigits n)
+  (define (nCk n k)
+    (if (= k 0)
+        1
+        (if (< n k)
+            0
+            (+ (nCk (- n 1) k) (nCk (- n 1) (- k 1))))))
+  (define len (string-length (number->string n)))
+  (define count 0)
+  (for ([i (in-range 1 len)])
+    (set! count (+ count (nCk (+ 9 (- i 1)) (- i 1)))))
+  (set! count (+ count 1))
+  (define last-digit 0)
+  (define valid #t)
+  (for ([i (in-range len)])
+    (define current-digit (modulo (quotient n (expt 10 (- len i))) 10))
+    (if (>= current-digit last-digit)
+        (set! last-digit current-digit)
+        (set! valid #f)))
+  (if valid
+      (+ count 1)
+      count))
+
+(define (countNumbersWithNonDecreasingDigits-main n)
+  (countNumbersWithNonDecreasingDigits n))

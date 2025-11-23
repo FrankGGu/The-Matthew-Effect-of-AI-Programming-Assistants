@@ -1,0 +1,13 @@
+(define (longest-even-odd-subarray nums threshold)
+  (define (is-even? x) (= (modulo x 2) 0))
+  (define (is-odd? x) (not (is-even? x)))
+  (let loop ([i 0] [count 0] [prev-type #f] [max-len 0])
+    (if (>= i (length nums))
+        max-len
+        (let ([num (list-ref nums i)])
+          (if (> num threshold)
+              (loop (+ i 1) 0 #f 0)
+              (let ([current-type (if (is-even? num) 'even 'odd)])
+                (if (or (not prev-type) (not (equal? prev-type current-type)))
+                    (loop (+ i 1) (+ count 1) current-type (max max-len (+ count 1)))
+                    (loop (+ i 1) 1 current-type max-len))))))))

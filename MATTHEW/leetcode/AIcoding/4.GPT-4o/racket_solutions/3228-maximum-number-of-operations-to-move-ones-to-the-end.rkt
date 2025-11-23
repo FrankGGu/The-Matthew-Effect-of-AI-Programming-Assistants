@@ -1,0 +1,8 @@
+(define (maxOperations nums)
+  (define (count-ones lst)
+    (length (filter (lambda (x) (= x 1)) lst)))
+  (define (move-ones lst)
+    (define ones (count-ones lst))
+    (define zeros (length lst))
+    (- zeros ones))
+  (move-ones nums))

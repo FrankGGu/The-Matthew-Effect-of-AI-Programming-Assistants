@@ -1,0 +1,11 @@
+(define (min-increment-to-make-array-unique nums)
+  (define (helper nums seen)
+    (if (null? nums)
+        0
+        (let ((num (car nums)))
+          (if (set-member? seen num)
+              (+ (helper (cdr nums) seen)
+                 (- (* 2 (length seen)) num))
+              (+ (helper (cdr nums) (set-add seen num))
+                 0)))))
+  (helper nums (set)))

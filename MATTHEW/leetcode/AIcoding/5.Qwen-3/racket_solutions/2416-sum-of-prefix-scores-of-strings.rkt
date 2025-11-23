@@ -1,0 +1,22 @@
+#lang racket
+
+(define (sum-prefix-scores words)
+  (define trie (make-hash))
+  (define (insert word)
+    (let loop ([node trie] [i 0])
+      (when (< i (string-length word))
+        (define c (string-ref word i))
+        (define next-node (hash-ref node c (make-hash)))
+        (hash-set! next-node 'count (+ 1 (hash-ref next-node 'count 0)))
+        (hash-set! node c next-node)
+        (loop next-node (+ i 1)))))
+  (define (query word)
+    (let loop ([node trie] [i 0] [score 0])
+      (if (> i (string-length word))
+          score
+          (let ([c (string-ref word i)])
+            (if (hash-has-key? node c)
+                (loop (hash-ref node c) (+ i 1) (+ score (hash-ref (hash-ref node c) 'count 0)))
+                score)))))
+  (for-each insert words)
+  (map query words))

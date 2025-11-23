@@ -1,0 +1,26 @@
+(define (isInterleave s1 s2 s3)
+  (define n (string-length s1))
+  (define m (string-length s2))
+  (define p (string-length s3))
+  (if (not (= (+ n m) p)) #f
+      (define dp (make-vector (+ 1 m) #f))
+      (vector-set! dp 0 #t)
+      (for ([j (in-range 1 (+ 1 m))])
+        (vector-set! dp j
+                      (and (equal? (string-ref s2 (- j 1)) (string-ref s3 (- j 1))) 
+                           (vector-ref dp (- j 1)))))
+      (for ([i (in-range 1 (+ 1 n))])
+        (vector-set! dp 0 
+                      (and (equal? (string-ref s1 (- i 1)) (string-ref s3 (- i 1))) 
+                           (vector-ref dp 0)))
+        (for ([j (in-range 1 (+ 1 m))])
+          (vector-set! dp j
+                        (or (and (equal? (string-ref s1 (- i 1)) (string-ref s3 (- (+ i j 1) 1)))
+                                 (vector-ref dp j))
+                            (and (equal? (string-ref s2 (- j 1)) (string-ref s3 (- (+ i j 1) 1)))
+                                 (vector-ref dp (- j 1))))))
+          )
+        )
+      (vector-ref dp m)
+      )
+  )

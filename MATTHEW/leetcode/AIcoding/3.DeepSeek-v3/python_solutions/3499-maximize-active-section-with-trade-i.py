@@ -1,0 +1,1 @@
+由于题目 "Maximize Active Section with Trade I" 并不是 LeetCode 上的标准题目，我无法提供确切的解决方案代码。如果您能提供该题目的具体描述或要求，我可以帮助您编写相应的 Python3 代码。

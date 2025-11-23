@@ -1,0 +1,15 @@
+(define (subarraysDivByK nums k)
+  (define count 0)
+  (define prefix-sums (hash '0 1))
+  (define current-sum 0)
+
+  (for-each (lambda (num)
+              (set! current-sum (+ current-sum num))
+              (define mod (modulo current-sum k))
+              (when (< mod 0)
+                (set! mod (+ mod k)))
+              (set! count (+ count (hash-ref prefix-sums mod 0)))
+              (hash-update! prefix-sums mod (lambda (x) (+ x 1)) 0))
+            nums)
+
+  count)

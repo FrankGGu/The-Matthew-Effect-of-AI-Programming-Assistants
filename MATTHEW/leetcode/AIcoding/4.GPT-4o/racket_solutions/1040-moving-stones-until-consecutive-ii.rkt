@@ -1,0 +1,11 @@
+(define (numMovesStonesII stones)
+  (let* ((sorted (sort stones <))
+         (n (length stones))
+         (max-gap (- (car (reverse sorted)) (cadr (reverse sorted)) 1))
+         (min-moves (if (= (car sorted) 1) 
+                        (if (= (car (reverse sorted)) n) 0 1)
+                        (if (= (car (reverse sorted)) n) 1 2)))
+         (max-moves (max 0 (- (- (car (reverse sorted)) (car sorted)) (- n 1)))))
+    (list min-moves max-moves)))
+
+(numMovesStonesII '(7 4 9))

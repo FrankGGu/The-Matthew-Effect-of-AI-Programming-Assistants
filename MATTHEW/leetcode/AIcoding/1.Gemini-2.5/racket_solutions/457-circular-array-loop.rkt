@@ -1,0 +1,50 @@
+(define (circular-array-loop nums)
+  (let ((n (vector-length nums)))
+    (define (next-idx current-idx)
+      (let ((val (vector-ref nums current-idx)))
+        (let ((raw-next (+ current-idx val)))
+          (let ((mod-next (remainder raw-next n)))
+            (if (< mod-next 0)
+                (+ mod-next n)
+                mod-next)))))
+
+    (define (same-sign? n1 n2)
+      (or (and (> n1 0) (> n2 0))
+          (and (< n1 0) (< n2 0))))
+
+    (define (clean-path start-idx current-direction)
+      (let ((curr start-idx))
+        (let clean-loop ()
+          (let ((next-val (vector-ref nums curr)))
+            (when (and (not (= next-val 0)) (same-sign? current-direction next-val))
+              (let ((next-i (next-idx curr)))
+                (vector-set! nums curr 0)
+                (set! curr next-i)
+                (clean-loop)))))))
+
+    (let outer-loop ((i 0))
+      (cond
+        ((= i n) #f)
+        ((not (= (vector-ref nums i) 0))
+         (let ((slow i) (fast i))
+           (let ((current-direction (vector-ref nums i)))
+             (let inner-loop ()
+               (set! slow (next-idx slow))
+               (set! fast (next-idx fast))
+               (set! fast (next-idx fast))
+
+               (cond
+                 ((or (not (same-sign? current-direction (vector-ref nums slow)))
+                      (not (same-sign? current-direction (vector-ref nums fast))))
+                  (clean-path i current-direction)
+                  (outer-loop (+ i 1)))
+                 ((= slow fast)
+                  (if (= slow (next-idx slow))
+                      (begin
+                        (clean-path i current-direction)
+                        (outer-loop (+ i 1)))
+                      #t))
+                 (else
+                  (inner-loop)))))))
+        (else
+         (outer-loop (+ i 1)))))))

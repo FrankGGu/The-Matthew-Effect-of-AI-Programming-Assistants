@@ -1,0 +1,8 @@
+(define/contract (sum-odd-length-subarrays arr)
+  (-> (listof exact-integer?) exact-integer?)
+  (define n (length arr))
+  (define sum 0)
+  (for ([i (in-range n)])
+    (for ([j (in-range i n 2)])
+      (set! sum (+ sum (apply + (take (drop arr i) (+ (- j i) 1)))))))
+  sum)

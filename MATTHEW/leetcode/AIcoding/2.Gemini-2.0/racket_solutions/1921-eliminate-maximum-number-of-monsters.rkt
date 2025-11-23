@@ -1,0 +1,13 @@
+(define (eliminateMaximumNumberofMonsters dist speed)
+  (let* ((n (length dist))
+         (arrival-times (map (lambda (d s) (/ d s)) dist speed))
+         (sorted-arrival-times (sort arrival-times <))
+         (eliminated 0)
+         (time 0))
+    (for ([arrival-time sorted-arrival-times])
+      (if (<= arrival-time time)
+          (void)
+          (begin
+            (set! eliminated (+ eliminated 1))
+            (set! time (+ time 1)))))
+    eliminated))

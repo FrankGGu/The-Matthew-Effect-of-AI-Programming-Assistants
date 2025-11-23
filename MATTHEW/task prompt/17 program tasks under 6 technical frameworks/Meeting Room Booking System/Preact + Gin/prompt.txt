@@ -1,0 +1,35 @@
+Build a lightweight meeting room booking system using Preact for frontend and Gin with GORM for backend. Use PostgreSQL database with the following schema:
+
+Database schema:
+- users: id, username, email, full_name, department, created_at
+- meeting_rooms: id, name, location, capacity, amenities, is_active, created_at
+- bookings: id, room_id, user_id, title, description, start_time, end_time, status, created_at, updated_at
+
+Requirements:
+1. User Management:
+   - JWT-based authentication
+   - User profile management
+   - Department-based organization
+
+2. Meeting Room Management:
+   - CRUD operations for meeting rooms
+   - Availability checking
+   - Filtering by various criteria
+
+3. Booking Management:
+   - Create, view, update, delete bookings
+   - Time conflict detection
+   - Status management
+
+Technical Specifications:
+- Frontend: Preact with lightweight state management
+- Backend: Gin framework with JWT authentication, GORM as ORM
+- Database: PostgreSQL with connection string: postgresql://postgres:meetingpass@localhost:5432/meeting_booking
+- API: RESTful design with minimal overhead
+
+Generate complete, runnable code including:
+- Gin server with routes, middleware, and handlers
+- Preact components with minimal dependencies
+- GORM models and database operations
+- Authentication system
+- Build and run instructions

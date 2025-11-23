@@ -1,0 +1,41 @@
+{
+  "id": "2592",
+  "title": "Maximize Greatness of an Array",
+  "titleSlug": "maximize-greatness-of-an-array",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Greedy",
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "content": "<p>You are given a 0-indexed integer array <code>nums</code>. You are allowed to permute <code>nums</code> into a new array <code>perm</code> of your choosing.</p>\n\n<p>We define the <strong>greatness</strong> of <code>nums</code> be the number of indices <code>0 &lt;= i &lt; nums.length</code> for which <code>perm[i] &gt; nums[i]</code>.</p>\n\n<p>Return <em>the <strong>maximum</strong> possible greatness you can achieve after permuting</em> <code>nums</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,3,5,2,1,3,1]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> One of the optimal rearrangements is perm = [2,5,1,3,3,1,1].\nAt indices = 0, 1, 3, and 4, perm[i] &gt; nums[i]. Hence, we return 4.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> We can prove the optimal perm is [2,3,4,1].\nAt indices = 0, 1, and 2, perm[i] &gt; nums[i]. Hence, we return 3.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int maximizeGreatness(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int maximizeGreatness(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def maximizeGreatness(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def maximizeGreatness(self, nums: List[int]) -> int:\n        ",
+    "c": "int maximizeGreatness(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int MaximizeGreatness(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar maximizeGreatness = function(nums) {\n    \n};",
+    "typescript": "function maximizeGreatness(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function maximizeGreatness($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func maximizeGreatness(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun maximizeGreatness(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int maximizeGreatness(List<int> nums) {\n    \n  }\n}",
+    "golang": "func maximizeGreatness(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef maximize_greatness(nums)\n    \nend",
+    "scala": "object Solution {\n    def maximizeGreatness(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn maximize_greatness(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (maximize-greatness nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec maximize_greatness(Nums :: [integer()]) -> integer().\nmaximize_greatness(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec maximize_greatness(nums :: [integer]) :: integer\n  def maximize_greatness(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func maximizeGreatness(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,3,5,2,1,3,1]\n[1,2,3,4]",
+  "hints": [
+    "Can we use sorting and two pointers here?",
+    "Assign every element the next bigger unused element as many times as possible."
+  ]
+}

@@ -1,0 +1,32 @@
+#lang racket
+
+(define (max-events events)
+  (define (cmp a b)
+    (< (car a) (car b)))
+  (define sorted (sort events cmp))
+  (define n (length sorted))
+  (define dp (make-vector n 0))
+  (define (find-last i)
+    (define (loop j res)
+      (if (>= j i) res
+          (if (<= (list-ref (list-ref sorted j) 1) (list-ref (list-ref sorted i) 0))
+              (loop (+ j 1) j)
+              (loop (+ j 1) res))))
+    (loop 0 -1))
+  (for ([i (in-range n)])
+    (define start (list-ref (list-ref sorted i) 0))
+    (define end (list-ref (list-ref sorted i) 1))
+    (vector-set! dp i 1)
+    (define last (find-last i))
+    (when (>= last 0)
+      (vector-set! dp i (+ (vector-ref dp last) 1)))
+    (for ([j (in-range i)])
+      (when (<= (list-ref (list-ref sorted j) 1) start)
+        (vector-set! dp i (max (vector-ref dp i) (+ (vector-ref dp j) 1))))))
+  (apply max (vector->list dp)))
+
+(define (main)
+  (define input (read))
+  (displayln (max-events input)))
+
+(main)

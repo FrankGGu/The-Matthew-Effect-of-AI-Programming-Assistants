@@ -1,0 +1,12 @@
+(define (getMaximumGenerated n)
+  (if (= n 0)
+      0
+      (let loop ((i 1) (arr (vector 0 1)) (max 1))
+        (if (< i n)
+            (let* ((val (if (even? i)
+                            (vector-ref arr (/ i 2))
+                            (+ (vector-ref arr (/ i 2)) (vector-ref arr (/ i 2 1)))))
+                   (new-max (max max val)))
+              (vector-set! arr i val)
+              (loop (+ i 1) arr new-max))
+            max))))

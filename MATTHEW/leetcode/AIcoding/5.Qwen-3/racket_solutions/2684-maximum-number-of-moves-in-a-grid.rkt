@@ -1,0 +1,35 @@
+(define/contract (max-moves grid)
+  (-> (listof (listof exact-integer?)) exact-integer?)
+  (let* ([m (length grid)]
+         [n (length (car grid))]
+         [dp (make-vector m (make-vector n -1))])
+    (define (dfs i j)
+      (if (>= i m) 0
+          (if (>= j n) 0
+              (if (not (= (vector-ref (vector-ref dp i) j) -1))
+                  (vector-ref (vector-ref dp i) j)
+                  (let ([res 0])
+                    (when (and (< j (- n 1)) (> (vector-ref (vector-ref grid i) (+ j 1)) (vector-ref (vector-ref grid i) j)))
+                      (set! res (max res (+ 1 (dfs i (+ j 1)))))
+                    )
+                    (when (and (< i (- m 1)) (> (vector-ref (vector-ref grid (+ i 1) j) (vector-ref (vector-ref grid i) j)))
+                      (set! res (max res (+ 1 (dfs (+ i 1) j))))
+                    )
+                    (vector-set! (vector-ref dp i) j res)
+                    res
+                  )
+              )
+          )
+      )
+    )
+    (let loop ([i 0] [j 0] [max-res 0])
+      (if (>= i m)
+          max-res
+          (loop (if (= j (- n 1)) (+ i 1) i)
+                (if (= j (- n 1)) 0 (+ j 1))
+                (max max-res (dfs i j))
+          )
+      )
+    )
+  )
+)

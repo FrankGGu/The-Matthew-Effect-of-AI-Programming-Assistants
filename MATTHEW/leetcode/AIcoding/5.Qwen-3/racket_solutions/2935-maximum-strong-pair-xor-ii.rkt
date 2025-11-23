@@ -1,0 +1,18 @@
+(define (maximum-strong-pair-xor nums)
+  (define (f a b)
+    (if (<= (abs (- a b)) (bitwise-xor a b))
+        #t
+        #f))
+  (define (helper i j)
+    (if (>= i (length nums))
+        0
+        (let ((a (list-ref nums i)))
+          (let ((max-val 0))
+            (let loop ((j j))
+              (when (< j (length nums))
+                (let ((b (list-ref nums j)))
+                  (when (f a b)
+                    (set! max-val (max max-val (bitwise-xor a b))))
+                (loop (+ j 1))))
+            (max max-val (helper (+ i 1) 0)))))
+  (helper 0 0))

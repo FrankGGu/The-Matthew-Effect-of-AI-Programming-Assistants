@@ -1,0 +1,6 @@
+(define (preorder-traversal root)
+  (if (not root)
+      '()
+      (append (list (node-val root))
+              (preorder-traversal (node-left root))
+              (preorder-traversal (node-right root)))))

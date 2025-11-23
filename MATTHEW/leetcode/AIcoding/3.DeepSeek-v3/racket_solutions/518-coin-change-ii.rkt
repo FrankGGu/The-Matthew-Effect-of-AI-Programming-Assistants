@@ -1,0 +1,8 @@
+(define/contract (change amount coins)
+  (-> exact-integer? (listof exact-integer?) exact-integer?)
+  (define dp (make-vector (+ amount 1) 0))
+  (vector-set! dp 0 1)
+  (for ([coin (in-list coins)])
+    (for ([i (in-range coin (+ amount 1))])
+      (vector-set! dp i (+ (vector-ref dp i) (vector-ref dp (- i coin))))))
+  (vector-ref dp amount))

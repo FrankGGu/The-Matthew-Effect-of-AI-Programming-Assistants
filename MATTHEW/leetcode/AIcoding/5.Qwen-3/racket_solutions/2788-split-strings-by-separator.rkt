@@ -1,0 +1,5 @@
+(define (split-strings-by-separator words separator)
+  (map (lambda (word)
+         (filter (lambda (s) (not (equal? s "")))
+                 (string-split word separator)))
+       words))

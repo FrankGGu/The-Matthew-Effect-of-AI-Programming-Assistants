@@ -1,0 +1,7 @@
+(define (min-stone-sum piles k)
+  (define h (make-heap >))
+  (for-each (lambda (x) (heap-add! h x)) piles)
+  (for ([i (in-range k)])
+    (define top (heap-remove-min! h))
+    (heap-add! h (floor (/ top 2))))
+  (apply + (heap->list h)))

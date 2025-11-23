@@ -1,0 +1,20 @@
+(define/contract (good-indices nums k)
+  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
+  (let* ([n (length nums)]
+         [prefix (make-vector n 1)]
+         [suffix (make-vector n 1)]
+         [res '()])
+    (for ([i (in-range 1 n)])
+      (if (<= (list-ref nums i) (list-ref nums (sub1 i)))
+          (vector-set! prefix i (add1 (vector-ref prefix (sub1 i))))
+          (vector-set! prefix i 1)))
+    (for ([i (in-range (- n 2) -1 -1)])
+      (if (<= (list-ref nums i) (list-ref nums (add1 i)))
+          (vector-set! suffix i (add1 (vector-ref suffix (add1 i))))
+          (vector-set! suffix i 1)))
+    (for ([i (in-range k (- n k))])
+      (if (and (>= (vector-ref prefix (sub1 i)) k)
+          (if (>= (vector-ref suffix (add1 i)) k)
+              (set! res (cons i res))
+          #f))
+    (reverse res)))

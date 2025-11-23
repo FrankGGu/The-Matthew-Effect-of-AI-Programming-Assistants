@@ -1,0 +1,16 @@
+(define (longest-subsequence queries nums)
+  (define sorted-nums (sort nums <))
+  (define prefix-sums (make-vector (add1 (length sorted-nums)) 0))
+  (for/fold ((acc 0)) ((i (in-range 0 (length sorted-nums))))
+    (vector-set! prefix-sums (add1 i) (+ (vector-ref prefix-sums i) (list-ref sorted-nums i)))
+    acc)
+  (define (search target)
+    (let loop ((low 0) (high (length sorted-nums)))
+      (cond
+        ((> low high) low)
+        (else
+         (let ((mid (floor (/ (+ low high) 2))))
+           (if (<= (vector-ref prefix-sums mid) target)
+               (loop (add1 mid) high)
+               (loop low (sub1 mid))))))))
+  (map search queries))

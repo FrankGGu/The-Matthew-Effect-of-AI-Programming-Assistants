@@ -1,0 +1,8 @@
+(define (findMaxAchievableX num1 num2 target)
+  (let* ((max-x (min target num1))
+         (max-y (min target num2)))
+    (for/fold ([result -1]) ([x (in-range (add1 max-x))])
+      (for/fold ([y (in-range (add1 max-y))]) ([result result])
+        (if (<= (+ x y) target)
+            (max result (+ x y))
+            result)))))

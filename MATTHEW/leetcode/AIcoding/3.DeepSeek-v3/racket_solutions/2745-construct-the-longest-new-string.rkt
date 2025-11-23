@@ -1,0 +1,6 @@
+(define/contract (longest-string x y z)
+  (-> exact-integer? exact-integer? exact-integer? exact-integer?)
+  (let ([min-xy (min x y)])
+    (if (> (abs (- x y)) 1)
+        (* 2 (+ (min x y) 1 z))
+        (* 2 (+ x y z)))))

@@ -1,0 +1,8 @@
+(define (create-target-array nums index)
+  (define target '())
+  (for-each (lambda (i)
+              (set! target (append (take target (list-ref index i)) 
+                                   (list (list-ref nums i)) 
+                                   (drop target (list-ref index i)))))
+            (range (length nums)))
+  target)

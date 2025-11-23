@@ -1,0 +1,37 @@
+#lang racket
+
+(define (count-paths root)
+  (define (dfs node parent)
+    (let ((path (make-hash)))
+      (define (update-path val)
+        (hash-set! path val (+ (hash-ref path val 0) 1)))
+      (define (remove-path val)
+        (hash-set! path val (- (hash-ref path val 0) 1))
+        (when (= (hash-ref path val 0) 0)
+          (hash-remove! path val)))
+      (define (is-palindrome?)
+        (let ((odd-count 0))
+          (for ([v (in-hash-values path)])
+            (when (odd? v)
+              (set! odd-count (+ odd-count 1))))
+          (<= odd-count 1)))
+      (define (helper node parent)
+        (if (not node)
+            0
+            (begin
+              (update-path (node-val node))
+              (let ((res (if (is-palindrome?) 1 0)))
+                (set! res (+ res (helper (node-left node) node)))
+                (set! res (+ res (helper (node-right node) node)))
+                (remove-path (node-val node))
+                res))))
+      (helper root #f)))
+
+  (define (node-val node)
+    (if (pair? node) (car node) node))
+  (define (node-left node)
+    (if (pair? node) (cadr node) #f))
+  (define (node-right node)
+    (if (pair? node) (caddr node) #f))
+
+  (dfs root #f))

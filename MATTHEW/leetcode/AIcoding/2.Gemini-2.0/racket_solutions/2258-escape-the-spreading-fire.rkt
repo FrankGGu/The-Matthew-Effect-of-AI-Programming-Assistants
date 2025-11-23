@@ -1,0 +1,77 @@
+(define (maximum-minutes grid)
+  (define (rows) (length grid))
+  (define (cols) (length (first grid)))
+
+  (define (is-valid? r c)
+    (and (>= r 0) (< r (rows)) (>= c 0) (< c (cols))))
+
+  (define (bfs start-time)
+    (define fire-visited (make-vector (rows) (make-vector (cols) #f)))
+    (define person-visited (make-vector (rows) (make-vector (cols) #f)))
+
+    (define fire-q (list (list 0 0 0)))
+    (define person-q (list (list 0 0 start-time)))
+
+    (vector-set! fire-visited 0 (make-vector (cols) #f))
+    (vector-set! person-visited 0 (make-vector (cols) #f))
+    (vector-set! (vector-ref fire-visited 0) 0 #t)
+    (vector-set! (vector-ref person-visited 0) 0 #t)
+
+    (define (fire-bfs)
+      (let loop ((q fire-q))
+        (if (null? q)
+            fire-visited
+            (let* ((curr (car q))
+                   (r (car curr))
+                   (c (cadr curr))
+                   (t (caddr curr)))
+              (let ((neighbors (filter (lambda (n) (and (is-valid? (car n) (cadr n))
+                                                        (not (vector-ref (vector-ref fire-visited (car n)) (cadr n)))
+                                                        (equal? (vector-ref (vector-ref grid (car n)) (cadr n)) 0)))
+                                      (list (list (+ r 1) c) (list (- r 1) c) (list r (+ c 1)) (list r (- c 1))))))
+                (for-each (lambda (n)
+                            (let ((nr (car n))
+                                  (nc (cadr n)))
+                              (vector-set! (vector-ref fire-visited nr) nc #t)))
+                          neighbors)
+                (loop (append (cdr q) (map (lambda (n) (list (car n) (cadr n) (+ t 1))) neighbors))))))))
+
+    (define (person-bfs fire-times)
+      (let loop ((q person-q))
+        (if (null? q)
+            #f
+            (let* ((curr (car q))
+                   (r (car curr))
+                   (c (cadr curr))
+                   (t (caddr curr)))
+              (if (and (= r (- (rows) 1)) (= c (- (cols) 1)))
+                  #t
+                  (let ((neighbors (filter (lambda (n) (and (is-valid? (car n) (cadr n))
+                                                        (not (vector-ref (vector-ref person-visited (car n)) (cadr n)))
+                                                        (equal? (vector-ref (vector-ref grid (car n)) (cadr n)) 0)
+                                                        (or (not (vector-ref (vector-ref fire-times (car n)) (cadr n)))
+                                                            (> (vector-ref (vector-ref fire-times (car n)) (cadr n)) (+ t 1))))
+                                      (list (list (+ r 1) c) (list (- r 1) c) (list r (+ c 1)) (list r (- c 1))))))
+                (for-each (lambda (n)
+                            (let ((nr (car n))
+                                  (nc (cadr n)))
+                              (vector-set! (vector-ref person-visited nr) nc #t)))
+                          neighbors)
+                (loop (append (cdr q) (map (lambda (n) (list (car n) (cadr n) (+ t 1))) neighbors)))))))))
+
+    (let ((fire-times (fire-bfs)))
+      (if (person-bfs fire-times)
+          #t
+          #f))))
+
+  (let loop ((low 0) (high 1000000000))
+    (if (>= low high)
+        (if (bfs low)
+            low
+            (if (and (= low 0) (not (bfs 0)))
+                -1
+                -1))
+        (let ((mid (floor (+ low high 1) 2)))
+          (if (bfs mid)
+              (loop mid high)
+              (loop low (- mid 1)))))))

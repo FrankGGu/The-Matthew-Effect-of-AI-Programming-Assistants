@@ -1,0 +1,7 @@
+(define (distance-between-bus-stops distance start stop)
+  (define total-distance (apply + distance))
+  (define direct-distance (foldl + 0 (if (< start stop)
+                                         (sublist distance start stop)
+                                         (append (sublist distance start (length distance))
+                                                 (sublist distance 0 stop)))))
+  (min direct-distance (- total-distance direct-distance)))

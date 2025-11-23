@@ -1,0 +1,10 @@
+(define (find-subarray-with-bitwise-or-closest-to-k nums k)
+  (define n (length nums))
+  (define closest (lambda (x y) (if (< (abs (- x k)) (abs (- y k))) x y)))
+  (define best (list 0 (list 0 0)))
+  (for* ([i (in-range n)]
+         [j (in-range i n)])
+    (define or-val (apply logior (sublist nums i (+ j 1))))
+    (set! best (closest or-val (first best)))
+    )
+  (second best))

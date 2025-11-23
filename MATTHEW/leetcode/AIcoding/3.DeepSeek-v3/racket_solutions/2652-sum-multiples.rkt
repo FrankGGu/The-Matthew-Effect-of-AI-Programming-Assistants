@@ -1,0 +1,7 @@
+(define/contract (sum-of-multiples n)
+  (-> exact-integer? exact-integer?)
+  (define (divisible? x)
+    (or (zero? (modulo x 3))
+        (zero? (modulo x 5))
+        (zero? (modulo x 7))))
+  (for/sum ([i (in-range 1 (+ n 1))] #:when (divisible? i)) i)

@@ -1,0 +1,13 @@
+(define (min-deletions s k)
+  (define (helper s k)
+    (if (null? s)
+        0
+        (let* ((counts (make-hash))
+               (_ (for ([c s])
+                   (hash-update! counts c add1 0)))
+               (sorted-counts (sort (hash-values counts) >))
+               (num-to-keep (min k (length sorted-counts)))
+               (sum-to-keep (apply + (take sorted-counts num-to-keep)))
+               (total-length (length s)))
+          (- total-length sum-to-keep))))
+  (helper (string->list s) k))

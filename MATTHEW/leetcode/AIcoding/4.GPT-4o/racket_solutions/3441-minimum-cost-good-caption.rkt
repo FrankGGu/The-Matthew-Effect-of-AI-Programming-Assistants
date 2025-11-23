@@ -1,0 +1,12 @@
+(define (min-cost captions cost)
+  (define n (length captions))
+  (define dp (make-vector (+ n 1) 0))
+  (for ([i (in-range 1 (+ n 1))])
+    (define min-cost (vector-ref dp (- i 1)))
+    (for ([j (in-range i)])
+      (set! min-cost (min min-cost (+ (vector-ref dp j) (vector-ref cost (- i 1 j))))))
+    (vector-set! dp i min-cost))
+  (vector-ref dp n))
+
+(define (minCost captions cost)
+  (min-cost captions cost))

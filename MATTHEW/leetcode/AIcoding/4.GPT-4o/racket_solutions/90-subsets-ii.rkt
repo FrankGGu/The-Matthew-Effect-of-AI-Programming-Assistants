@@ -1,0 +1,15 @@
+(define (subsets-with-dup nums)
+  (define (backtrack start path)
+    (set! result (cons (list->vector path) result))
+    (for ([i (in-range start (vector-length nums))])
+      (when (and (or (= i start) (not (= (vector-ref nums i) (vector-ref nums (- i 1)))))
+                 (not (member (vector-ref nums i) path)))
+        (backtrack (+ i 1) (cons (vector-ref nums i) path)))))
+
+  (define result '())
+  (set! nums (vector->list (sort (vector->list (vector nums)) <)))
+  (backtrack 0 '())
+  (define unique-results (remove-duplicates result))
+  (map vector->list unique-results))
+
+(subsets-with-dup (vector 1 2 2))

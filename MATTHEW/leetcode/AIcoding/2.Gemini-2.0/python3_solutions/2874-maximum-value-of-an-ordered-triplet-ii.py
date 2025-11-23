@@ -1,0 +1,19 @@
+class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        n = len(nums)
+        max_prefix = [0] * n
+        max_suffix = [0] * n
+
+        max_prefix[0] = nums[0]
+        for i in range(1, n):
+            max_prefix[i] = max(max_prefix[i-1], nums[i])
+
+        max_suffix[n-1] = nums[n-1]
+        for i in range(n-2, -1, -1):
+            max_suffix[i] = max(max_suffix[i+1], nums[i])
+
+        ans = 0
+        for j in range(1, n-1):
+            ans = max(ans, (max_prefix[j-1] - nums[j]) * max_suffix[j+1])
+
+        return ans

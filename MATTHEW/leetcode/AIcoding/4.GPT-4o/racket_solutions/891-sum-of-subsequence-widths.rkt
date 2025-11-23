@@ -1,0 +1,11 @@
+(define (sum-of-subsequence-widths nums)
+  (define (modulo n) (mod n 1000000007))
+  (define n (length nums))
+  (define sorted-nums (sort nums <))
+  (define total 0)
+  (for ((i (in-range n)))
+    (set! total (+ (modulo total) (modulo (* (list-ref sorted-nums i) 
+                                               (- (expt 2 i) (expt 2 (- n 1 i))))))))
+  (modulo total))
+
+(sum-of-subsequence-widths '(2 1 3))

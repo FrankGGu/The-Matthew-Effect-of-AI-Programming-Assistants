@@ -1,0 +1,21 @@
+#lang racket
+
+(define (min-subarray-length nums p)
+  (define n (length nums))
+  (define prefix (make-vector n 0))
+  (vector-set! prefix 0 (modulo (car nums) p))
+  (for ([i (in-range 1 n)])
+    (vector-set! prefix i (modulo (+ (vector-ref prefix (- i 1)) (list-ref nums i)) p)))
+  (define map (make-hash))
+  (hash-set! map 0 -1)
+  (define min-len +inf.0)
+  (for ([i (in-range n)])
+    (define rem (vector-ref prefix i))
+    (when (hash-has-key? map (modulo (- rem) p))
+      (define j (hash-ref map (modulo (- rem) p)))
+      (set! min-len (min min-len (- i j))))
+    (when (not (hash-has-key? map rem))
+      (hash-set! map rem i)))
+  (if (and (not (equal? min-len +inf.0)) (not (= min-len n)))
+      min-len
+      -1))

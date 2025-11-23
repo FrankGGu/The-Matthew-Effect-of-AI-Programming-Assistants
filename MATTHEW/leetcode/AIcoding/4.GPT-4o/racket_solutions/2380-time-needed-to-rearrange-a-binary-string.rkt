@@ -1,0 +1,7 @@
+(define (minTimeToRearrange s)
+  (define n (string-length s))
+  (define count-a (length (filter (lambda (c) (char=? c #\a)) (string->list s))))
+  (define count-b (- n count-a))
+  (if (<= (max count-a count-b) (+ (min count-a count-b) 1))
+      (max count-a count-b)
+      (+ (* 2 (min count-a count-b)) 1)))

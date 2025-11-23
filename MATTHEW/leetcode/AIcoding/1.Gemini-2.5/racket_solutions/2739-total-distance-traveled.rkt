@@ -1,0 +1,7 @@
+(define (total-distance-traveled mainTank additionalTank)
+  (let loop ((mt mainTank) (at additionalTank) (distance 0))
+    (if (< mt 10)
+        (+ distance mt)
+        (loop (+ (- mt 10) (if (> at 0) 1 0))
+              (if (> at 0) (- at 1) at)
+              (+ distance 10)))))

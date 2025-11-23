@@ -1,0 +1,7 @@
+(define (find-the-original-array pref)
+  (define n (length pref))
+  (define result (make-vector n 0))
+  (vector-set! result 0 (vector-ref pref 0))
+  (for ((i (in-range 1 n)))
+    (vector-set! result i (bitwise-xor (vector-ref pref i) (vector-ref pref (- i 1)))))
+  result)

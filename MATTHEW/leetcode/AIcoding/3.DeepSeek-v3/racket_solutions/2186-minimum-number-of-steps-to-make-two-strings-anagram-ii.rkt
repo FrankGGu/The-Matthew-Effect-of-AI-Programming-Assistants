@@ -1,0 +1,10 @@
+(define/contract (min-steps s t)
+  (-> string? string? exact-integer?)
+  (let* ([count (make-vector 26 0)]
+         [update-count (lambda (str delta)
+                         (for ([c (in-string str)])
+                           (let ([idx (- (char->integer c) (char->integer #\a))])
+                             (vector-set! count idx (+ (vector-ref count idx) delta))))])
+    (update-count s 1)
+    (update-count t -1)
+    (for/sum ([val (in-vector count)]) (abs val))))

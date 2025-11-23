@@ -1,0 +1,16 @@
+(define (licenseKeyFormatting s k)
+  (define cleaned (string->list (string-replace s "-" "")))
+  (define len (length cleaned))
+  (define first-group (if (= (modulo len k) 0) k (modulo len k)))
+  (define result (list->string (map (lambda (c) (string-upcase (string c))) (take cleaned first-group))))
+  (define group (lambda (lst)
+                  (if (null? lst)
+                      '()
+                      (cons (list->string (map (lambda (c) (string-upcase (string c))) (take lst k)))
+                            (group (drop lst k))))))
+  (define groups (group (drop cleaned first-group)))
+  (if (null? groups)
+      result
+      (string-append result "-" (string-join groups "-"))))
+
+(licenseKeyFormatting "5F3Z-2e-9-w" 4)

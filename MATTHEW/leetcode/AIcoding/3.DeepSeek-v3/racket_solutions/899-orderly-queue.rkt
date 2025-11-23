@@ -1,0 +1,12 @@
+(define (orderly-queue s k)
+  (if (> k 1)
+      (list->string (sort (string->list s) char<?))
+      (let loop ((min-s s)
+                 (current s)
+                 (n (string-length s)))
+        (if (zero? n)
+            min-s
+            (let ((new-s (string-append (substring current 1) (substring current 0 1))))
+              (if (string<? new-s min-s)
+                  (loop new-s new-s (sub1 n))
+                  (loop min-s new-s (sub1 n))))))))

@@ -1,0 +1,13 @@
+(define/contract (satisfies-conditions grid)
+  (-> (listof (listof exact-integer?)) boolean?)
+  (let ([rows (length grid)]
+        [cols (if (null? grid) 0 (length (car grid)))])
+    (andmap (lambda (i)
+              (andmap (lambda (j)
+                        (let ([val (list-ref (list-ref grid i) j)])
+                          (and (or (= i (- rows 1))
+                                   (= val (list-ref (list-ref grid (+ i 1)) j)))
+                               (or (= j (- cols 1))
+                                   (= val (list-ref (list-ref grid i) (+ j 1)))))))
+                      (range cols)))
+              (range rows))))

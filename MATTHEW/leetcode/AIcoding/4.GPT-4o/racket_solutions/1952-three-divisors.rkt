@@ -1,0 +1,10 @@
+(define (isThree n)
+  (define (count-divisors x)
+    (define (count-helper d count)
+      (if (> d (sqrt x))
+          count
+          (if (= (modulo x d) 0)
+              (count-helper (+ d 1) (+ count (if (= d (/ x d)) 1 2)))
+              (count-helper (+ d 1) count))))
+    (count-helper 1 0))
+  (= (count-divisors n) 3))

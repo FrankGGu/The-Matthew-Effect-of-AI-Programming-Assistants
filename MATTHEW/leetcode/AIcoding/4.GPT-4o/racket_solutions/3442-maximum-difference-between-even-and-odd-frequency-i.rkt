@@ -1,0 +1,13 @@
+(define (maximumDifference nums)
+  (let ([freq (make-hash)])
+    (for-each (lambda (x)
+                (hash-set! freq x (+ 1 (hash-ref freq x 0))))
+              nums)
+    (let ([even-count 0]
+          [odd-count 0])
+      (for-each (lambda (v)
+                  (if (even? v)
+                      (set! even-count (+ even-count (hash-ref freq v)))
+                      (set! odd-count (+ odd-count (hash-ref freq v)))))
+                (hash-keys freq))
+      (abs (- even-count odd-count)))))

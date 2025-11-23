@@ -1,0 +1,13 @@
+(define/contract (top-k-frequent words k)
+  (-> (listof string?) exact-integer? (listof string?))
+  (define freq (make-hash))
+  (for ([word words])
+    (hash-update! freq word add1 (lambda () 0)))
+  (define sorted (sort (hash-keys freq)
+                       (lambda (a b)
+                         (let ([cnt-a (hash-ref freq a)]
+                               [cnt-b (hash-ref freq b)])
+                           (if (= cnt-a cnt-b)
+                               (string<? a b)
+                               (> cnt-a cnt-b))))))
+  (take sorted k))

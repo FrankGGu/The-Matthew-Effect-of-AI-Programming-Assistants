@@ -1,0 +1,10 @@
+(define (maximum-sum-queries nums queries)
+  (define sorted-nums (sort nums >))
+  (define (query-max-sum query)
+    (define (find-max-sum limit)
+      (define filtered (filter (lambda (x) (<= x limit)) sorted-nums))
+      (if (null? filtered) 0 (apply + filtered)))
+    (find-max-sum (second query)))
+  (map query-max-sum queries))
+
+(maximum-sum-queries '(1 3 5 7) '((2 4) (3 8) (6 10)))

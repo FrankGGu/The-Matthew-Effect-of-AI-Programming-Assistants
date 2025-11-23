@@ -1,0 +1,35 @@
+#lang racket
+
+(define (count-pyramids grid)
+  (define rows (length grid))
+  (define cols (if (null? grid) 0 (length (car grid))))
+  (define dp (make-vector rows (make-vector cols 0)))
+  (define res 0)
+
+  (for ([i (in-range (- rows 1) -1 -1)])
+    (for ([j (in-range cols)])
+      (if (zero? (list-ref (list-ref grid i) j))
+          (vector-set! (vector-ref dp i) j 0)
+          (if (= i (- rows 1))
+              (vector-set! (vector-ref dp i) j 1)
+              (let ([min-val (if (= j 0) 0 (vector-ref (vector-ref dp (+ i 1)) (- j 1)))])
+                (set! min-val (min min-val (vector-ref (vector-ref dp (+ i 1)) j))
+                (set! min-val (min min-val (if (= j (- cols 1)) 0 (vector-ref (vector-ref dp (+ i 1)) (+ j 1)))))
+                (vector-set! (vector-ref dp i) j (+ 1 min-val))
+                (set! res (+ res (- min-val))))))))
+
+  (set! dp (make-vector rows (make-vector cols 0)))
+
+  (for ([i (in-range rows)])
+    (for ([j (in-range cols)])
+      (if (zero? (list-ref (list-ref grid i) j))
+          (vector-set! (vector-ref dp i) j 0)
+          (if (= i 0)
+              (vector-set! (vector-ref dp i) j 1)
+              (let ([min-val (if (= j 0) 0 (vector-ref (vector-ref dp (- i 1)) (- j 1)))])
+                (set! min-val (min min-val (vector-ref (vector-ref dp (- i 1)) j)))
+                (set! min-val (min min-val (if (= j (- cols 1)) 0 (vector-ref (vector-ref dp (- i 1)) (+ j 1)))))
+                (vector-set! (vector-ref dp i) j (+ 1 min-val))
+                (set! res (+ res (- min-val))))))))
+
+  res)

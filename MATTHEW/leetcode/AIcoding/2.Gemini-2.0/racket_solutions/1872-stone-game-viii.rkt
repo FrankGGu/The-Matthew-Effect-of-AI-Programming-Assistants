@@ -1,0 +1,21 @@
+(define (stone-game-viii stones)
+  (define n (length stones))
+  (define prefix-sum (make-vector (+ n 1) 0))
+  (for ((i (in-range 1 (+ n 1))))
+    (vector-set! prefix-sum i (+ (vector-ref prefix-sum (- i 1)) (list-ref stones (- i 1)))))
+
+  (define (solve i)
+    (if (= i n)
+        (vector-ref prefix-sum n)
+        (let ((take-all (vector-ref prefix-sum n)))
+          (max (- take-all (solve (+ i 1))) (vector-ref prefix-sum i)))))
+
+  (let loop ((i (- n 1))
+             (memo (make-vector n 0)))
+    (if (< i 0)
+        (vector-ref memo 1)
+        (let ((take-all (vector-ref prefix-sum n)))
+          (vector-set! memo i (max (- take-all (vector-ref memo (+ i 1))) (vector-ref prefix-sum i)))
+          (loop (- i 1) memo))))
+
+  (vector-ref (make-vector n (vector-ref prefix-sum n)) 1))

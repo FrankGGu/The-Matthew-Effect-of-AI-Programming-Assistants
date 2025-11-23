@@ -1,0 +1,11 @@
+(define (replaceElements arr)
+  (define (helper lst max-so-far)
+    (if (null? lst)
+        '()
+        (let* ((current (car lst))
+               (new-max (max current max-so-far))
+               (rest-result (helper (cdr lst) (max max-so-far current))))
+          (cons max-so-far rest-result))))
+  (reverse (helper (reverse arr) -1)))
+
+(replaceElements '(17 18 5 4 6 1))

@@ -1,0 +1,12 @@
+(define (sum-of-squares-distinct-elements-i nums)
+  (let loop ([i 0] [total 0])
+    (if (= i (length nums))
+        total
+        (let loop2 ([j i] [distinct-nums '()])
+          (if (= j (length nums))
+              (loop (+ i 1) total)
+              (let ([num (list-ref nums j)])
+                (if (member num distinct-nums)
+                    (loop2 (+ j 1) distinct-nums)
+                    (loop2 (+ j 1) (cons num distinct-nums)))))
+          (loop (+ i 1) (+ total (expt (length (remove-duplicates (list-tail nums i (- (length nums) (- (length nums) j))))) 2)))))))

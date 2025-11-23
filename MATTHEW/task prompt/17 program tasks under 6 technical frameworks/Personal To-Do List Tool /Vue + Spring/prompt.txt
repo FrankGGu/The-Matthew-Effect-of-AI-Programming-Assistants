@@ -1,0 +1,51 @@
+Create a full-stack Personal To-Do List application with the following technology stack:
+- Frontend: Vue 3 with Composition API
+- Backend: Spring Boot 3 with Java 17
+- Database: PostgreSQL (already set up in Docker)
+- ORM: Hibernate with JPA
+
+Database connection details:
+- URL: jdbc:postgresql://localhost:5432/todo_db
+- Username: postgres
+- Password: todosecret
+
+Application requirements:
+1. Frontend components:
+   - TodoList: Display list of todos with filters
+   - TodoForm: Form to add/edit todos with title, description, and deadline
+   - Status indicators for pending/completed/deleted
+   - Date filter controls
+
+2. Backend API endpoints:
+   - GET /api/todos - Retrieve todos (with optional date filter)
+   - POST /api/todos - Create new todo
+   - PUT /api/todos/{id} - Update todo (including status changes)
+   - DELETE /api/todos/{id} - Mark todo as deleted (soft delete)
+
+3. Data model (already exists in PostgreSQL):
+   - id (auto-increment)
+   - title (required)
+   - description (optional)
+   - deadline (timestamp with timezone)
+   - status (pending/completed/deleted)
+   - created_at, updated_at
+
+4. Functionality:
+   - Add new todos with title, description, and deadline
+   - Mark todos as completed or deleted
+   - Filter todos by date (today, specific date, date range)
+   - Responsive UI with clean design
+
+5. Implementation requirements:
+   - Use Spring Data JPA for database operations
+   - Implement proper error handling and validation
+   - Use Vue Router for navigation (if needed)
+   - Include basic styling with CSS or Tailwind
+   - Create separate components for maintainability
+
+Generate the complete source code with:
+- Spring Boot application structure
+- Vue 3 components
+- Proper package structure
+- Configuration files
+- Build instructions

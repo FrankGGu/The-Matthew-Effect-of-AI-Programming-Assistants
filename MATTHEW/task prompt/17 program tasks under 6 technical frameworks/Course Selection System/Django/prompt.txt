@@ -1,0 +1,36 @@
+Develop a comprehensive university course selection system using Django:
+- Backend: Django 4.2 with Django REST Framework
+- Frontend: Django templates with minimal JavaScript
+- ORM: Django ORM
+- Database: PostgreSQL (pre-configured)
+
+Database settings:
+- Name: university
+- User: postgres
+- Password: university123
+- Host: localhost
+- Port: 5432
+
+Required features:
+1. User authentication (students, professors, admin)
+2. Course catalog with department filtering
+3. Enrollment system with prerequisite validation
+4. Student schedule view
+5. Administrative dashboard
+
+Implementation guidelines:
+- Use Django's built-in authentication system
+- Create REST API endpoints with DRF
+- Implement class-based views where appropriate
+- Use Django templates with Bootstrap for styling
+- Follow Django best practices for model design
+
+Generate complete application including:
+- Django project structure with appropriate apps
+- Models matching the existing database schema
+- Serializers for all models
+- Views and URL configurations
+- Templates for all pages
+- Management commands for sample data
+
+Focus on Django conventions and security best practices.

@@ -1,0 +1,6 @@
+(define (find-the-winner n k)
+  (let loop ((players (range 1 (+ n 1))) (start 0))
+    (if (= (length players) 1)
+        (car players)
+        (let* ((next-start (modulo (+ start (- k 1)) (length players))))
+          (loop (append (take players next-start) (drop players (+ next-start 1))) next-start)))))

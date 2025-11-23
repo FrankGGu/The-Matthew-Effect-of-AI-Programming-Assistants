@@ -1,0 +1,5 @@
+(define/contract (transpose matrix)
+  (-> (listof (listof exact-integer?)) (listof (listof exact-integer?)))
+  (if (null? matrix)
+      '()
+      (apply map list matrix)))

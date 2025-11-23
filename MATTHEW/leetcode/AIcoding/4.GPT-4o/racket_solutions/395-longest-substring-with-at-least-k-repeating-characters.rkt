@@ -1,0 +1,15 @@
+(define (longestSubstring s k)
+  (define (helper s k start end)
+    (if (> end start)
+        (let ([char-count (make-hash)])
+          (for ([i (in-range start end)])
+            (hash-set! char-count (string-ref s i) (+ 1 (hash-ref char-count (string-ref s i) 0))))
+          (let ([split (for/fold ([max-len 0]) ([i (in-range start end)])
+                        (if (>= (hash-ref char-count (string-ref s i)) k)
+                            max-len
+                            (begin
+                              (set! max-len (max max-len (helper s k start i)))
+                              (set! start (add1 i))))))
+            (max split (helper s k start end)))
+        0))
+  (helper s k 0 (string-length s)))

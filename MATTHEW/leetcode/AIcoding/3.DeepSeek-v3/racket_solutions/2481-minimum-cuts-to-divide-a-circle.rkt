@@ -1,0 +1,5 @@
+(define/contract (number-of-cuts n)
+  (-> exact-integer? exact-integer?)
+  (if (or (= n 1) (zero? (modulo n 2)))
+      (quotient n 2)
+      n))

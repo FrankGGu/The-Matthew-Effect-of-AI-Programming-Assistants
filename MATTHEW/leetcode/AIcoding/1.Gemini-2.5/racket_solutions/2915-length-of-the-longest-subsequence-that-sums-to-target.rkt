@@ -1,0 +1,10 @@
+(define (longest-subsequence-sum-target nums target)
+  (let* ([dp (make-vector (+ target 1) -1)])
+    (vector-set! dp 0 0)
+
+    (for ([num (in-list nums)])
+      (for ([j (in-range target (- num 1) -1)])
+        (when (not (= (vector-ref dp (- j num)) -1))
+          (vector-set! dp j (max (vector-ref dp j)
+                                 (+ (vector-ref dp (- j num)) 1))))))
+    (vector-ref dp target)))

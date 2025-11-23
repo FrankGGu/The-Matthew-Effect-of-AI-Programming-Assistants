@@ -1,0 +1,12 @@
+(define (construct2D original m n)
+  (if (not (= (length original) (* m n)))
+      '()
+      (let loop ((remaining original)
+                 (rows-to-make m)
+                 (acc '()))
+        (if (zero? rows-to-make)
+            (reverse acc)
+            (let-values (((row rest) (split-at remaining n)))
+              (loop rest
+                    (sub1 rows-to-make)
+                    (cons row acc)))))))

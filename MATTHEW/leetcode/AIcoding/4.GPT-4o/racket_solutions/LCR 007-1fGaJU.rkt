@@ -1,0 +1,22 @@
+(define (three-sum nums)
+  (define (two-sum nums target)
+    (define seen (make-hash))
+    (define result '())
+    (for/list ([num nums])
+      (let ([complement (- target num)])
+        (when (hash-has? seen complement)
+          (set! result (cons (list complement num) result)))
+        (hash-set! seen num #t)))
+    result)
+
+  (define sorted-nums (sort nums <))
+  (define results '())
+
+  (for ([i (in-range (length sorted-nums))])
+    (when (and (> (list-ref sorted-nums i) (if (> i 0) (list-ref sorted-nums (- i 1)) #f)))
+               (not (= (list-ref sorted-nums i) 0)))
+      (define target (- 0 (list-ref sorted-nums i)))
+      (for ([pair (two-sum (append (take sorted-nums i) (drop sorted-nums (+ i 1))) target)])
+        (set! results (cons (cons (list-ref sorted-nums i) pair) results)))))
+
+  (map (lambda (triplet) (sort triplet <)) results))

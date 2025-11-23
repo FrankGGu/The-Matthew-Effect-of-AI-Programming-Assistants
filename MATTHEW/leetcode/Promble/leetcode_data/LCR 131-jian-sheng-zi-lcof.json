@@ -1,0 +1,36 @@
+{
+  "id": "LCR 131",
+  "title": "砍竹子 I",
+  "titleSlug": "jian-sheng-zi-lcof",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int cuttingBamboo(int bamboo_len) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int cuttingBamboo(int bamboo_len) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def cuttingBamboo(self, bamboo_len):\n        \"\"\"\n        :type bamboo_len: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def cuttingBamboo(self, bamboo_len: int) -> int:\n        ",
+    "c": "int cuttingBamboo(int bamboo_len) {\n    \n}",
+    "csharp": "public class Solution {\n    public int CuttingBamboo(int bamboo_len) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number} bamboo_len\n * @return {number}\n */\nvar cuttingBamboo = function(bamboo_len) {\n    \n};",
+    "typescript": "function cuttingBamboo(bamboo_len: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer $bamboo_len\n     * @return Integer\n     */\n    function cuttingBamboo($bamboo_len) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func cuttingBamboo(_ bamboo_len: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun cuttingBamboo(bamboo_len: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int cuttingBamboo(int bamboo_len) {\n    \n  }\n}",
+    "golang": "func cuttingBamboo(bamboo_len int) int {\n    \n}",
+    "ruby": "# @param {Integer} bamboo_len\n# @return {Integer}\ndef cutting_bamboo(bamboo_len)\n    \nend",
+    "scala": "object Solution {\n    def cuttingBamboo(bamboo_len: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn cutting_bamboo(bamboo_len: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (cutting-bamboo bamboo_len)\n  (-> exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec cutting_bamboo(Bamboo_len :: integer()) -> integer().\ncutting_bamboo(Bamboo_len) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec cutting_bamboo(bamboo_len :: integer) :: integer\n  def cutting_bamboo(bamboo_len) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func cuttingBamboo(bamboo_len: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "12",
+  "hints": []
+}

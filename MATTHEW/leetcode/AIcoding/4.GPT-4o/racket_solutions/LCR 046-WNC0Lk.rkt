@@ -1,0 +1,10 @@
+(define (rightSideView root)
+  (define (helper node level views)
+    (if (null? node)
+        views
+        (let* ((current-level (length views))
+               (updated-views (if (= current-level level)
+                                  (cons (car node) views)
+                                  views)))
+          (helper (cdr node) (+ level 1) (helper (car node) level updated-views)))))
+  (reverse (helper root 0 '())))

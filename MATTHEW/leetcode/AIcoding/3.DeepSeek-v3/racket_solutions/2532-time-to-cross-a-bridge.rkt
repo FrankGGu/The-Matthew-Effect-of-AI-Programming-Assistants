@@ -1,0 +1,42 @@
+(define (find-crossing-time n k time)
+  (define left-wait (make-heap (lambda (a b) (if (not (= (car a) (car b)))
+                                               (> (car a) (car b))
+                                               (> (cadr a) (cadr b))))))
+  (define right-wait (make-heap (lambda (a b) (if (not (= (car a) (car b)))
+                                               (> (car a) (car b))
+                                               (> (cadr a) (cadr b))))))
+  (define left-work (make-heap (lambda (a b) (< (car a) (car b)))))
+  (define right-work (make-heap (lambda (a b) (< (car a) (car b)))))
+
+  (for ([i k])
+    (heap-add! left-wait (list (list-ref (list-ref time i) 0) (list-ref (list-ref time i) 2) i)))
+
+  (define current-time 0)
+  (define remaining n)
+  (define res 0)
+
+  (while (or (> remaining 0) (not (heap-empty? right-work)) (not (heap-empty? right-wait)))
+    (while (and (not (heap-empty? left-work)) (<= (car (heap-min left-work)) current-time))
+      (define worker (heap-remove-min! left-work))
+      (heap-add! left-wait (list (list-ref (list-ref time (caddr worker)) 0) (list-ref (list-ref time (caddr worker)) 2) (caddr worker))))
+
+    (while (and (not (heap-empty? right-work)) (<= (car (heap-min right-work)) current-time))
+      (define worker (heap-remove-min! right-work))
+      (heap-add! right-wait (list (list-ref (list-ref time (caddr worker)) 0) (list-ref (list-ref time (caddr worker)) 2) (caddr worker))))
+
+    (if (not (heap-empty? right-wait))
+        (begin
+          (define worker (heap-remove-min! right-wait))
+          (set! current-time (+ current-time (list-ref (list-ref time (caddr worker)) 1)))
+          (set! res current-time)
+          (heap-add! left-work (list (+ current-time (list-ref (list-ref time (caddr worker)) 3)) (caddr worker))))
+        (if (and (not (heap-empty? left-wait)) (> remaining 0))
+            (begin
+              (define worker (heap-remove-min! left-wait))
+              (set! current-time (+ current-time (list-ref (list-ref time (caddr worker)) 1)))
+              (set! remaining (- remaining 1))
+              (heap-add! right-work (list (+ current-time (list-ref (list-ref time (caddr worker)) 3)) (caddr worker))))
+            (if (and (heap-empty? left-wait) (heap-empty? right-wait))
+                (set! current-time (min (if (heap-empty? left-work)) +inf.0 (car (heap-min left-work)))
+                                   (if (heap-empty? right-work)) +inf.0 (car (heap-min right-work)))))))
+  res)

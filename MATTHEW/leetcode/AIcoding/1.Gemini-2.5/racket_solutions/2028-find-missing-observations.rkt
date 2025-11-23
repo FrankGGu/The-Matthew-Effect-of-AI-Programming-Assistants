@@ -1,0 +1,13 @@
+(define (missing-observations rolls n mean)
+  (define m (length rolls))
+  (define rolls-sum (foldl + 0 rolls))
+  (define total-rolls (+ m n))
+  (define target-total-sum (* mean total-rolls))
+  (define missing-sum (- target-total-sum rolls-sum))
+
+  (if (or (< missing-sum n) (> missing-sum (* n 6)))
+      '()
+      (let* ((avg (floor (/ missing-sum n)))
+             (rem (remainder missing-sum n)))
+        (append (make-list rem (+ avg 1))
+                (make-list (- n rem) avg)))))

@@ -1,0 +1,32 @@
+(define (min-cost-houses costs)
+  (if (null? costs) 0)
+  (define n (length costs))
+  (for/sum ([i (in-range n)])
+    (for/sum ([j (in-range 3)])
+      (if (zero? j)
+          (if (= i 0)
+              (list-ref (list-ref costs i) j)
+              (+ (list-ref (list-ref costs i) j)
+                 (min (list-ref (list-ref costs (- i 1)) 1)
+                      (list-ref (list-ref costs (- i 1)) 2))))
+          (if (= i 0)
+              (list-ref (list-ref costs i) j)
+              (+ (list-ref (list-ref costs i) j)
+                 (if (= j 1)
+                     (min (list-ref (list-ref costs (- i 1)) 0)
+                          (list-ref (list-ref costs (- i 1)) 2))
+                     (min (list-ref (list-ref costs (- i 1)) 0)
+                          (list-ref (list-ref costs (- i 1)) 1)))))))))
+
+(define (min-cost-houses costs)
+  (if (null? costs)
+      0
+      (let loop ([i 0]
+                 [prev1 0]
+                 [prev2 0])
+        (if (= i (length costs))
+            prev1
+            (let ([cost (list-ref (list-ref costs i) 0)])
+              (loop (add1 i)
+                    (+ cost (min prev2 (list-ref (list-ref costs i) 1)))
+                    (+ cost (min (list-ref (list-ref costs i) 0) prev1)))))))))

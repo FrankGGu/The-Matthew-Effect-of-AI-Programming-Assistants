@@ -1,0 +1,8 @@
+(define (split-to-k-groups s k)
+  (define n (string-length s))
+  (if (not (= (modulo n k) 0))
+      '()
+      (let loop ((i 0) (result '()))
+        (if (>= i n)
+            (reverse result)
+            (loop (+ i k) (cons (substring s i (+ i k)) result))))))

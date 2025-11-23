@@ -1,0 +1,8 @@
+(define (checkIfExist arr)
+  (define seen (make-hash))
+  (for-each (lambda (x)
+              (hash-set! seen x #t)
+              (when (hash-ref seen (* 2 x) #f)
+                (set! result #t)))
+            arr)
+  result)

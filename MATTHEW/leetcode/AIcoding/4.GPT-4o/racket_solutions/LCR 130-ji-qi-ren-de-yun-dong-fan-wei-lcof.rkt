@@ -1,0 +1,25 @@
+(define (reorganize-string s)
+  (define freq (make-hash))
+  (for-each (lambda (char) (hash-set! freq char (+ 1 (hash-ref freq char 0)))) s)
+  (define max-char (apply max (hash-keys freq)))
+  (define max-freq (hash-ref freq max-char))
+
+  (if (> max-freq (+ (string-length s) 1 (/ (string-length s) 2)))
+      "")
+      (let loop ((result "") (remaining (map (lambda (k) (list k (hash-ref freq k))) (hash-keys freq))) (last-char #f))
+        (if (null? remaining)
+            result
+            (let* ((sorted-remaining (sort remaining (lambda (a b) (> (second a) (second b)))))
+                   (next-char (car sorted-remaining)))
+              (if (or (equal? last-char (car next-char)) (null? (cdr sorted-remaining)))
+                  (if (null? (cdr sorted-remaining))
+                      ""
+                      (let ((next-next-char (cadr sorted-remaining)))
+                        (if (equal? last-char (car next-next-char))
+                            ""
+                            (loop (string-append result (string (car next-char) (string (car next-next-char))))
+                                  (map (lambda (x) (if (equal? (car x) (car next-char)) (list (car x) (- (second x) 1)) x)) sorted-remaining)
+                                  (car next-char))))))
+                  (loop (string-append result (string (car next-char)))
+                        (map (lambda (x) (if (equal? (car x) (car next-char)) (list (car x) (- (second x) 1)) x)) sorted-remaining)
+                        (car next-char))))))))

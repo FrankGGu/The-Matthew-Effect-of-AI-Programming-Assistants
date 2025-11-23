@@ -1,0 +1,17 @@
+#lang racket
+
+(define (min-operations nums)
+  (define sum (apply + nums))
+  (define target (/ sum 2))
+  (define pq (list->heap nums >))
+  (define count 0)
+  (define current-sum sum)
+  (let loop ()
+    (when (> current-sum target)
+      (define max-val (heap-pop pq))
+      (set! current-sum (- current-sum max-val))
+      (set! current-sum (+ current-sum (/ max-val 2)))
+      (heap-add! pq (/ max-val 2))
+      (set! count (+ count 1))
+      (loop)))
+  count)

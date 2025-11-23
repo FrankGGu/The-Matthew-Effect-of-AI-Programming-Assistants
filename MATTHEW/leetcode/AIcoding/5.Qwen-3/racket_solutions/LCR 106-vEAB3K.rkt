@@ -1,0 +1,12 @@
+(define (is-bipartite graph)
+  (define color (make-hash))
+  (define (dfs u c)
+    (if (hash-has-key? color u)
+        (= (hash-ref color u) c)
+        (begin
+          (hash-set! color u c)
+          (for/and ([v (in-list (vector-ref graph u))])
+            (dfs v (- c 1))))))
+  (for/and ([i (in-range (vector-length graph))])
+    (or (hash-has-key? color i)
+        (dfs i 0))))

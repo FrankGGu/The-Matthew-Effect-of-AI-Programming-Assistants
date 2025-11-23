@@ -1,0 +1,16 @@
+#lang racket
+
+(define (sum-of-subsequence-widths nums)
+  (define (mod x) (modulo x 1000000007))
+  (define n (length nums))
+  (define sorted-nums (sort nums <))
+  (define pow2 (make-vector (+ n 1) 1))
+  (for ([i (in-range 1 n)])
+    (vector-set! pow2 i (mod (* 2 (vector-ref pow2 (- i 1))))))
+  (define result 0)
+  (for ([i (in-range n)])
+    (define left (vector-ref pow2 (- i 1)))
+    (define right (vector-ref pow2 (- n i 1)))
+    (define contribution (mod (* (- (vector-ref pow2 (- n 1)) 1) (list-ref sorted-nums i))))
+    (set! result (mod (+ result contribution))))
+  (mod result))

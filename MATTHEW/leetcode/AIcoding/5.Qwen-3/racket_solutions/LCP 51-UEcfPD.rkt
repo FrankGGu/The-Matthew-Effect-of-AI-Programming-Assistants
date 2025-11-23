@@ -1,0 +1,10 @@
+(define (num-cook-recipes ingredients)
+  (define (dfs recipe)
+    (cond ((null? recipe) 0)
+          ((not (pair? (car recipe))) 1)
+          (else
+           (let ((ing (caar recipe))
+                 (sub (cdar recipe)))
+             (+ (if (member ing ingredients) 1 0)
+                (apply + (map dfs sub)))))))
+  (apply + (map dfs ingredients)))

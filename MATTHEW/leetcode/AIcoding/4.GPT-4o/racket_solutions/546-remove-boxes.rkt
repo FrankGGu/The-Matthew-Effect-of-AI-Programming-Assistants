@@ -1,0 +1,17 @@
+(define (removeBoxes boxes)
+  (define n (length boxes))
+  (define dp (make-vector (+ n 1) (lambda () (make-vector (+ n 1) (lambda () (make-vector (+ n 1) 0))))))
+
+  (define (dfs l r k)
+    (if (>= l r) 0)
+    (if (> k 0) (vector-ref (vector-ref (vector-ref dp l) r) k))
+    (let* ((original-l l)
+           (original-k k))
+      (while (and (< l r) (= (vector-ref boxes r) (vector-ref boxes (- r 1))))
+        (set! r (- r 1))
+        (set! k (+ k 1)))
+      (define result (+ (* (+ k k) (dfs l r (- k 1))) (dfs (+ original-l 1) r 0)))
+      (vector-set! (vector-ref dp original-l) original-r result)
+      result)))
+
+  (dfs 0 n 0))

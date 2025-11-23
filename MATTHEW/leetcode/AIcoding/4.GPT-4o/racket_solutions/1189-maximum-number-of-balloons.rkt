@@ -1,0 +1,13 @@
+(define (maxNumberOfBalloons text)
+  (define counts (make-hash))
+  (for-each (lambda (char)
+              (hash-set! counts char (+ 1 (hash-ref counts char 0))))
+            (string->list text))
+  (define b (hash-ref counts #\b 0))
+  (define a (hash-ref counts #\a 0))
+  (define l (hash-ref counts #\l 0))
+  (define o (hash-ref counts #\o 0))
+  (define n (hash-ref counts #\n 0))
+  (min b a (quotient l 2) (quotient o 2) n))
+
+(maxNumberOfBalloons)

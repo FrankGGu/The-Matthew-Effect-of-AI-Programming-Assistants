@@ -1,0 +1,15 @@
+#lang racket
+
+(define (max-score grid)
+  (define rows (length grid))
+  (define cols (length (car grid)))
+  (define dp (make-vector rows (make-vector cols 0)))
+  (vector-set! dp 0 (vector-copy (vector-ref grid 0)))
+  (for ([i (in-range 1 rows)])
+    (vector-set! dp i (vector-copy (vector-ref grid i)))
+    (for ([j (in-range cols)])
+      (when (> j 0)
+        (vector-set! (vector-ref dp i) j (+ (vector-ref (vector-ref dp i) j) (vector-ref (vector-ref dp (sub1 i)) j))))
+      (when (< j (sub1 cols))
+        (vector-set! (vector-ref dp i) j (+ (vector-ref (vector-ref dp i) j) (vector-ref (vector-ref dp (sub1 i)) (add1 j)))))))
+  (apply max (vector->list (vector-ref dp (sub1 rows)))))

@@ -1,0 +1,38 @@
+{
+  "id": "697",
+  "title": "Degree of an Array",
+  "titleSlug": "degree-of-an-array",
+  "difficulty": "Easy",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "content": "<p>Given a non-empty array of non-negative integers <code>nums</code>, the <b>degree</b> of this array is defined as the maximum frequency of any one of its elements.</p>\n\n<p>Your task is to find the smallest possible length of a (contiguous) subarray of <code>nums</code>, that has the same degree as <code>nums</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,2,3,1]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> \nThe input array has a degree of 2 because both elements 1 and 2 appear twice.\nOf the subarrays that have the same degree:\n[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]\nThe shortest length is 2. So return 2.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,2,3,1,4,2]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> \nThe degree is 3 because the element 2 is repeated 3 times.\nSo [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>nums.length</code> will be between 1 and 50,000.</li>\n\t<li><code>nums[i]</code> will be an integer between 0 and 49,999.</li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int findShortestSubArray(vector<int>& nums) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int findShortestSubArray(int[] nums) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def findShortestSubArray(self, nums):\n        \"\"\"\n        :type nums: List[int]\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def findShortestSubArray(self, nums: List[int]) -> int:\n        ",
+    "c": "int findShortestSubArray(int* nums, int numsSize) {\n    \n}",
+    "csharp": "public class Solution {\n    public int FindShortestSubArray(int[] nums) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} nums\n * @return {number}\n */\nvar findShortestSubArray = function(nums) {\n    \n};",
+    "typescript": "function findShortestSubArray(nums: number[]): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return Integer\n     */\n    function findShortestSubArray($nums) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func findShortestSubArray(_ nums: [Int]) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun findShortestSubArray(nums: IntArray): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int findShortestSubArray(List<int> nums) {\n    \n  }\n}",
+    "golang": "func findShortestSubArray(nums []int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} nums\n# @return {Integer}\ndef find_shortest_sub_array(nums)\n    \nend",
+    "scala": "object Solution {\n    def findShortestSubArray(nums: Array[Int]): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn find_shortest_sub_array(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (find-shortest-sub-array nums)\n  (-> (listof exact-integer?) exact-integer?)\n  )",
+    "erlang": "-spec find_shortest_sub_array(Nums :: [integer()]) -> integer().\nfind_shortest_sub_array(Nums) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec find_shortest_sub_array(nums :: [integer]) :: integer\n  def find_shortest_sub_array(nums) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func findShortestSubArray(nums: Array<Int64>): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,2,3,1]\n[1,2,2,3,1,4,2]",
+  "hints": [
+    "Say 5 is the only element that occurs the most number of times - for example, nums = [1, 5, 2, 3, 5, 4, 5, 6].  What is the answer?"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "LCR 063",
+  "title": "单词替换",
+  "titleSlug": "UhWRSj",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Trie",
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "content": "<p>English description is not available for the problem. Please switch to Chinese.</p>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    string replaceWords(vector<string>& dictionary, string sentence) {\n\n    }\n};",
+    "java": "class Solution {\n    public String replaceWords(List<String> dictionary, String sentence) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def replaceWords(self, dictionary, sentence):\n        \"\"\"\n        :type dictionary: List[str]\n        :type sentence: str\n        :rtype: str\n        \"\"\"",
+    "python3": "class Solution:\n    def replaceWords(self, dictionary: List[str], sentence: str) -> str:",
+    "c": "\n\nchar * replaceWords(char ** dictionary, int dictionarySize, char * sentence){\n\n}",
+    "csharp": "public class Solution {\n    public string ReplaceWords(IList<string> dictionary, string sentence) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} dictionary\n * @param {string} sentence\n * @return {string}\n */\nvar replaceWords = function(dictionary, sentence) {\n\n};",
+    "typescript": "function replaceWords(dictionary: string[], sentence: string): string {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $dictionary\n     * @param String $sentence\n     * @return String\n     */\n    function replaceWords($dictionary, $sentence) {\n\n    }\n}",
+    "swift": "class Solution {\n    func replaceWords(_ dictionary: [String], _ sentence: String) -> String {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun replaceWords(dictionary: List<String>, sentence: String): String {\n\n    }\n}",
+    "golang": "func replaceWords(dictionary []string, sentence string) string {\n\n}",
+    "ruby": "# @param {String[]} dictionary\n# @param {String} sentence\n# @return {String}\ndef replace_words(dictionary, sentence)\n\nend",
+    "scala": "object Solution {\n    def replaceWords(dictionary: List[String], sentence: String): String = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn replace_words(dictionary: Vec<String>, sentence: String) -> String {\n\n    }\n}",
+    "racket": "(define/contract (replace-words dictionary sentence)\n  (-> (listof string?) string? string?)\n\n  )",
+    "erlang": "-spec replace_words(Dictionary :: [unicode:unicode_binary()], Sentence :: unicode:unicode_binary()) -> unicode:unicode_binary().\nreplace_words(Dictionary, Sentence) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec replace_words(dictionary :: [String.t], sentence :: String.t) :: String.t\n  def replace_words(dictionary, sentence) do\n\n  end\nend"
+  },
+  "exampleTestcases": "[\"cat\",\"bat\",\"rat\"]\n\"the cattle was rattled by the battery\"\n[\"a\",\"b\",\"c\"]\n\"aadsfasf absbs bbab cadsfafs\"\n[\"a\", \"aa\", \"aaa\", \"aaaa\"]\n\"a aa a aaaa aaa aaa aaa aaaaaa bbb baba ababa\"\n[\"catt\",\"cat\",\"bat\",\"rat\"]\n\"the cattle was rattled by the battery\"\n[\"ac\",\"ab\"]\n\"it is abnormal that this solution is accepted\"",
+  "hints": []
+}

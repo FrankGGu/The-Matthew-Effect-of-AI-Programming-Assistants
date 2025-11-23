@@ -1,0 +1,5 @@
+(define (count-max-frequency nums)
+  (define freq (make-hash))
+  (for-each (lambda (n) (hash-set! freq n (+ 1 (hash-ref freq n 0)))) nums)
+  (define max-freq (apply max (hash-values freq)))
+  (length (filter (lambda (v) (= v max-freq)) (hash-values freq))))

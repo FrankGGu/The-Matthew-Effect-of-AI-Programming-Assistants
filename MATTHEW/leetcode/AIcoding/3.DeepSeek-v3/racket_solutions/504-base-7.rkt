@@ -1,0 +1,12 @@
+(define/contract (convert-to-base7 num)
+  (-> exact-integer? string?)
+  (if (zero? num)
+      "0"
+      (let loop ([n (abs num)] [res '()])
+        (if (zero? n)
+            (let ([s (list->string res)])
+            (if (negative? num)
+                (string-append "-" s)
+                s)
+            (let-values ([(q r) (quotient/remainder n 7)])
+              (loop q (cons (integer->char (+ r (char->integer #\0))) res)))))))

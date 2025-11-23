@@ -1,0 +1,15 @@
+(define/contract (corp-flight-bookings bookings n)
+  (-> (listof (listof exact-integer?)) exact-integer? (listof exact-integer?))
+  (define diff (make-vector n 0))
+  (for ([booking (in-list bookings)])
+    (let ([first (sub1 (first booking))]
+          [last (sub1 (second booking))]
+          [seats (third booking)])
+      (vector-set! diff first (+ (vector-ref diff first) seats))
+      (when (< last (sub1 n))
+        (vector-set! diff (add1 last) (- (vector-ref diff (add1 last)) seats)))))
+  (define res (make-vector n 0))
+  (vector-set! res 0 (vector-ref diff 0))
+  (for ([i (in-range 1 n)])
+    (vector-set! res i (+ (vector-ref res (sub1 i)) (vector-ref diff i))))
+  (vector->list res))

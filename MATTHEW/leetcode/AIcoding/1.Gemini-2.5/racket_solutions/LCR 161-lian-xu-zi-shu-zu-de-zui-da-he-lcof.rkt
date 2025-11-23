@@ -1,0 +1,8 @@
+(define (max-subarray-sum nums)
+  (car (foldl (lambda (num acc)
+                (let ((prev-max-so-far (car acc))
+                      (prev-current-max (cdr acc)))
+                  (let ((new-current-max (max num (+ prev-current-max num))))
+                    (cons (max prev-max-so-far new-current-max) new-current-max))))
+              (cons (car nums) (car nums))
+              (cdr nums))))

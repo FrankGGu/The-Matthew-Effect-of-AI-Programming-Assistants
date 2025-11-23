@@ -1,0 +1,41 @@
+{
+  "id": "1218",
+  "title": "Longest Arithmetic Subsequence of Given Difference",
+  "titleSlug": "longest-arithmetic-subsequence-of-given-difference",
+  "difficulty": "Medium",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming"
+  ],
+  "content": "<p>Given an integer array <code>arr</code> and an integer <code>difference</code>, return the length of the longest subsequence in <code>arr</code> which is an arithmetic sequence such that the difference between adjacent elements in the subsequence equals <code>difference</code>.</p>\n\n<p>A <strong>subsequence</strong> is a sequence that can be derived from <code>arr</code> by deleting some or no elements without changing the order of the remaining elements.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [1,2,3,4], difference = 1\n<strong>Output:</strong> 4\n<strong>Explanation: </strong>The longest arithmetic subsequence is [1,2,3,4].</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [1,3,5,7], difference = 1\n<strong>Output:</strong> 1\n<strong>Explanation: </strong>The longest arithmetic subsequence is any single element.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [1,5,7,8,5,3,4,2,1], difference = -2\n<strong>Output:</strong> 4\n<strong>Explanation: </strong>The longest arithmetic subsequence is [7,5,3,1].\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= arr.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>4</sup> &lt;= arr[i], difference &lt;= 10<sup>4</sup></code></li>\n</ul>\n",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int longestSubsequence(vector<int>& arr, int difference) {\n        \n    }\n};",
+    "java": "class Solution {\n    public int longestSubsequence(int[] arr, int difference) {\n        \n    }\n}",
+    "python": "class Solution(object):\n    def longestSubsequence(self, arr, difference):\n        \"\"\"\n        :type arr: List[int]\n        :type difference: int\n        :rtype: int\n        \"\"\"\n        ",
+    "python3": "class Solution:\n    def longestSubsequence(self, arr: List[int], difference: int) -> int:\n        ",
+    "c": "int longestSubsequence(int* arr, int arrSize, int difference) {\n    \n}",
+    "csharp": "public class Solution {\n    public int LongestSubsequence(int[] arr, int difference) {\n        \n    }\n}",
+    "javascript": "/**\n * @param {number[]} arr\n * @param {number} difference\n * @return {number}\n */\nvar longestSubsequence = function(arr, difference) {\n    \n};",
+    "typescript": "function longestSubsequence(arr: number[], difference: number): number {\n    \n};",
+    "php": "class Solution {\n\n    /**\n     * @param Integer[] $arr\n     * @param Integer $difference\n     * @return Integer\n     */\n    function longestSubsequence($arr, $difference) {\n        \n    }\n}",
+    "swift": "class Solution {\n    func longestSubsequence(_ arr: [Int], _ difference: Int) -> Int {\n        \n    }\n}",
+    "kotlin": "class Solution {\n    fun longestSubsequence(arr: IntArray, difference: Int): Int {\n        \n    }\n}",
+    "dart": "class Solution {\n  int longestSubsequence(List<int> arr, int difference) {\n    \n  }\n}",
+    "golang": "func longestSubsequence(arr []int, difference int) int {\n    \n}",
+    "ruby": "# @param {Integer[]} arr\n# @param {Integer} difference\n# @return {Integer}\ndef longest_subsequence(arr, difference)\n    \nend",
+    "scala": "object Solution {\n    def longestSubsequence(arr: Array[Int], difference: Int): Int = {\n        \n    }\n}",
+    "rust": "impl Solution {\n    pub fn longest_subsequence(arr: Vec<i32>, difference: i32) -> i32 {\n        \n    }\n}",
+    "racket": "(define/contract (longest-subsequence arr difference)\n  (-> (listof exact-integer?) exact-integer? exact-integer?)\n  )",
+    "erlang": "-spec longest_subsequence(Arr :: [integer()], Difference :: integer()) -> integer().\nlongest_subsequence(Arr, Difference) ->\n  .",
+    "elixir": "defmodule Solution do\n  @spec longest_subsequence(arr :: [integer], difference :: integer) :: integer\n  def longest_subsequence(arr, difference) do\n    \n  end\nend",
+    "cangjie": "class Solution {\n    func longestSubsequence(arr: Array<Int64>, difference: Int64): Int64 {\n\n    }\n}"
+  },
+  "exampleTestcases": "[1,2,3,4]\n1\n[1,3,5,7]\n1\n[1,5,7,8,5,3,4,2,1]\n-2",
+  "hints": [
+    "Use dynamic programming.",
+    "Let dp[i] be the maximum length of a subsequence of the given difference whose last element is i.",
+    "dp[i] = 1 + dp[i-k]"
+  ]
+}

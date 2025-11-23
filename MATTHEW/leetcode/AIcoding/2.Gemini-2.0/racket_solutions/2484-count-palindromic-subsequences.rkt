@@ -1,0 +1,31 @@
+(define (count-palindromic-subsequences s)
+  (define n (string-length s))
+  (define dp (make-vector n (make-vector n 0)))
+  (define mod 1000000007)
+
+  (for ([i (in-range n)])
+    (vector-set! (vector-ref dp i) i 1))
+
+  (for ([len (in-range 2 (+ n 1))])
+    (for ([i (in-range (- n len) 0 -1)])
+      (define j (+ i len -1))
+      (if (= (string-ref s i) (string-ref s j))
+          (let ([temp (+ (vector-ref (vector-ref dp (+ i 1)) (- j 1)) 2)])
+            (let loop ([l (+ i 1)] [r (- j 1)])
+              (cond
+                ((> l r) (vector-set! (vector-ref dp i) j (modulo temp mod)))
+                ((char=? (string-ref s l) (string-ref s i))
+                 (let loop2 ([l2 (+ l 1)] [r2 (- j 1)])
+                   (cond
+                     ((> l2 r2) (vector-set! (vector-ref dp i) j (modulo (- temp 1) mod)))
+                     ((char=? (string-ref s l2) (string-ref s i))
+                      (vector-set! (vector-ref dp i) j (modulo (- temp (vector-ref (vector-ref dp (+ l2 1)) (- r2 1)) ) mod)))
+                     (else (set! l2 (+ l2 1))
+                           (loop2 l2 r2)))))
+                (else (set! l (+ l 1))
+                      (loop l r)))))
+          (vector-set! (vector-ref dp i) j (modulo (- (+ (vector-ref (vector-ref dp (+ i 1)) j)
+                                                          (vector-ref (vector-ref dp i) (- j 1)))
+                                                      (vector-ref (vector-ref dp (+ i 1)) (- j 1))) mod)))))
+
+  (vector-ref (vector-ref dp 0) (- n 1)))

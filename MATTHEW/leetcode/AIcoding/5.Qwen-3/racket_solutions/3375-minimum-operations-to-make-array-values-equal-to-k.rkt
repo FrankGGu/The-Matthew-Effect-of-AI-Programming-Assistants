@@ -1,0 +1,10 @@
+(define (min-operations nums k)
+  (define (abs x) (if (< x 0) (- x) x))
+  (define (sum lst)
+    (if (null? lst)
+        0
+        (+ (car lst) (sum (cdr lst)))))
+  (let ((diffs (map (lambda (x) (- x k)) nums)))
+    (if (even? (sum (map abs diffs)))
+        (quotient (sum (map abs diffs)) 2)
+        (quotient (sum (map abs diffs)) 2))))

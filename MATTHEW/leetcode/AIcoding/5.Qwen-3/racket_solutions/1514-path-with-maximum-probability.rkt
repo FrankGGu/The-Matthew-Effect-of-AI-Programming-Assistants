@@ -1,0 +1,35 @@
+#lang racket
+
+(define (max-probability n edges prob)
+  (define graph (make-hash))
+  (for ([i (in-range n)]) (hash-set! graph i '()))
+  (for ([e (in-list edges)] [p (in-list prob)])
+    (define u (car e))
+    (define v (cadr e))
+    (hash-set! graph u (cons (cons v p) (hash-ref graph u)))
+    (hash-set! graph v (cons (cons u p) (hash-ref graph v))))
+
+  (define dist (make-vector n 0.0))
+  (vector-set! dist 0 1.0)
+  (define visited (make-vector n #f))
+
+  (define (relax u)
+    (for ([v-p (hash-ref graph u)])
+      (define v (car v-p))
+      (define p (cdr v-p))
+      (when (< (vector-ref dist v) (* (vector-ref dist u) p))
+        (vector-set! dist v (* (vector-ref dist u) p)))))
+
+  (for ([_ (in-range n)])
+    (define max-idx -1)
+    (define max-val 0.0)
+    (for ([i (in-range n)])
+      (when (not (vector-ref visited i))
+        (when (> (vector-ref dist i) max-val)
+          (set! max-val (vector-ref dist i))
+          (set! max-idx i))))
+    (when (= max-idx -1) (break))
+    (vector-set! visited max-idx #t)
+    (relax max-idx))
+
+  (vector-ref dist (sub1 n)))

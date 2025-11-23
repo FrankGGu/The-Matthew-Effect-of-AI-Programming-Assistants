@@ -1,0 +1,10 @@
+(define (replaceElements arr)
+  (define n (length arr))
+  (define result (make-vector n))
+  (define max-so-far -1)
+  (for ((i (- n 1) -1 -1))
+    (vector-set! result i max-so-far)
+    (set! max-so-far (max max-so-far (vector-ref arr i))))
+  (vector->list result))
+
+(replaceElements '(17 18 5 4 6 1))

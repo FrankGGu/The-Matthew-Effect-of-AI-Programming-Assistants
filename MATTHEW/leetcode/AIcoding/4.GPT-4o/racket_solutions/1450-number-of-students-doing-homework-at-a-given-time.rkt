@@ -1,0 +1,10 @@
+(define (busyStudents startTime endTime queryTime)
+  (define (count-busy students)
+    (foldl (lambda (student acc)
+              (if (and (<= (car student) queryTime)
+                       (<= queryTime (cadr student)))
+                  (+ acc 1)
+                  acc))
+            0
+            students))
+  (count-busy (map list startTime endTime)))

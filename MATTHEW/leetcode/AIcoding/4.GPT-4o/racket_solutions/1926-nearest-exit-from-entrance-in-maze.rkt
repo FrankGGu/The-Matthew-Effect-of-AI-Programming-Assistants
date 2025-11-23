@@ -1,0 +1,38 @@
+(define (nearest-exit maze entrance)
+  (define (valid? pos)
+    (and (>= (car pos) 0)
+         (< (car pos) (length maze))
+         (>= (cadr pos) 0)
+         (< (cadr pos) (length (list-ref maze 0)))
+         (not (equal? (list-ref (list-ref maze (car pos)) (cadr pos)) "+"))))
+
+  (define (bfs entrance)
+    (define queue (list entrance))
+    (define distances (make-vector (length maze) (lambda () (make-vector (length (list-ref maze 0)) #f))))
+    (vector-set! distances (car entrance) (make-vector (length (list-ref maze 0)) 0))
+
+    (define directions '((1 0) (-1 0) (0 1) (0 -1)))
+
+    (define (explore)
+      (if (null? queue)
+          #f
+          (let ((current (car queue)))
+            (set! queue (cdr queue))
+            (let ((dist (vector-ref (vector-ref distances (car current)) (cadr current))))
+              (for-each (lambda (d)
+                          (let ((next (list (+ (car current) (car d)) 
+                                            (+ (cadr current) (cadr d)))))
+                            (when (and (valid? next)
+                                       (not (vector-ref (vector-ref distances (car next)) (cadr next))))
+                              (vector-set! (vector-ref distances (car next)) (cadr next) (+ dist 1))
+                              (set! queue (append queue (list next)))
+                              (when (not (or (equal? next entrance) (equal? (list-ref (list-ref maze (car next)) (cadr next)) "+")))
+                                (return (+ dist 1)))))))
+                        directions)
+              (explore)))))
+
+  (define result (explore))
+  (if result result -1))
+
+(define (nearest-exit-in-maze maze entrance)
+  (nearest-exit maze entrance))

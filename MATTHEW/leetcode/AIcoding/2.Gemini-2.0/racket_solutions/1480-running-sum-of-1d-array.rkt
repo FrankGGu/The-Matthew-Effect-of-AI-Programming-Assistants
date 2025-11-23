@@ -1,0 +1,6 @@
+(define (running-sum nums)
+  (let loop ([nums nums] [acc '()] [sum 0])
+    (if (null? nums)
+        (reverse acc)
+        (let ([new-sum (+ sum (car nums))])
+          (loop (cdr nums) (cons new-sum acc) new-sum)))))

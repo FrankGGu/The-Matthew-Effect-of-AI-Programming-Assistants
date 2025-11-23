@@ -1,0 +1,11 @@
+(define (get-row rowIndex)
+  (if (= rowIndex 0)
+      '(1)
+      (let loop ((i 1) (current-row '(1)))
+        (if (> i rowIndex)
+            current-row
+            (let* ((len (length current-row))
+                   (middle-elements (for/list ((j (in-range 0 (- len 1))))
+                                      (+ (list-ref current-row j) (list-ref current-row (+ j 1)))))
+                   (next-row (cons 1 (append middle-elements (list 1)))))
+              (loop (+ i 1) next-row))))))

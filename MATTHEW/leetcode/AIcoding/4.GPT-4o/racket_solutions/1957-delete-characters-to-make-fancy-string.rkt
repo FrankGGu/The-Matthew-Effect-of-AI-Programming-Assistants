@@ -1,0 +1,12 @@
+(define (makeFancyString s)
+  (let loop ((s s) (count 1) (result '()))
+    (if (null? s)
+        (apply string-append (reverse result))
+        (let* ((current (car s))
+               (next (if (null? (cdr s)) #f (cadr s))))
+          (if (and (equal? current next) (>= count 2))
+              (loop (cdr s) count result)
+              (loop (cdr s) (if (equal? current next) (+ count 1) 1) (cons current result)))))))
+
+(define (fancyString s)
+  (makeFancyString (string->list s)))

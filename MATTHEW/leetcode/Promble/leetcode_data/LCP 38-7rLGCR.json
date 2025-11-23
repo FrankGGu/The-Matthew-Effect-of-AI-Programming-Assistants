@@ -1,0 +1,33 @@
+{
+  "id": "LCP 38",
+  "title": "守卫城堡",
+  "titleSlug": "7rLGCR",
+  "difficulty": "Hard",
+  "category": "Algorithms",
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "content": "English description is not available for the problem. Please switch to Chinese.",
+  "codeSnippets": {
+    "cpp": "class Solution {\npublic:\n    int guardCastle(vector<string>& grid) {\n\n    }\n};",
+    "java": "class Solution {\n    public int guardCastle(String[] grid) {\n\n    }\n}",
+    "python": "class Solution(object):\n    def guardCastle(self, grid):\n        \"\"\"\n        :type grid: List[str]\n        :rtype: int\n        \"\"\"",
+    "python3": "class Solution:\n    def guardCastle(self, grid: List[str]) -> int:",
+    "c": "\n\nint guardCastle(char** grid, int gridSize){\n\n}",
+    "csharp": "public class Solution {\n    public int GuardCastle(string[] grid) {\n\n    }\n}",
+    "javascript": "/**\n * @param {string[]} grid\n * @return {number}\n */\nvar guardCastle = function(grid) {\n\n};",
+    "typescript": "function guardCastle(grid: string[]): number {\n\n};",
+    "php": "class Solution {\n\n    /**\n     * @param String[] $grid\n     * @return Integer\n     */\n    function guardCastle($grid) {\n\n    }\n}",
+    "swift": "class Solution {\n    func guardCastle(_ grid: [String]) -> Int {\n\n    }\n}",
+    "kotlin": "class Solution {\n    fun guardCastle(grid: Array<String>): Int {\n\n    }\n}",
+    "golang": "func guardCastle(grid []string) int {\n\n}",
+    "ruby": "# @param {String[]} grid\n# @return {Integer}\ndef guard_castle(grid)\n\nend",
+    "scala": "object Solution {\n    def guardCastle(grid: Array[String]): Int = {\n\n    }\n}",
+    "rust": "impl Solution {\n    pub fn guard_castle(grid: Vec<String>) -> i32 {\n\n    }\n}",
+    "racket": "(define/contract (guard-castle grid)\n  (-> (listof string?) exact-integer?)\n\n  )"
+  },
+  "exampleTestcases": "[\"S.C.P#P.\", \".....#.S\"]\n[\"SP#P..P#PC#.S\", \"..#P..P####.#\"]\n[\"SP#.C.#PS\", \"P.#...#.P\"]",
+  "hints": []
+}

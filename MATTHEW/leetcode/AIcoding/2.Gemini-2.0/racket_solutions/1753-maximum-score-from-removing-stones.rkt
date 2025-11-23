@@ -1,0 +1,8 @@
+(define (maximum-score a b c)
+  (let* ((stones (sort (list a b c) >))
+         (a (list-ref stones 0))
+         (b (list-ref stones 1))
+         (c (list-ref stones 2)))
+    (if (>= a (+ b c))
+        (+ b c)
+        (quotient (+ a b c) 2))))

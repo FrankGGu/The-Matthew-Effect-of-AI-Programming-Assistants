@@ -1,0 +1,11 @@
+(define (countMaxFrequency nums)
+  (let* ((freq (make-hash))
+         (max-freq 0))
+    (for-each (lambda (num)
+                (hash-set! freq num (+ 1 (hash-ref freq num 0)))
+                (set! max-freq (max max-freq (hash-ref freq num))))
+              nums)
+    (hash-count (lambda (v) (= v max-freq)) freq)))
+
+(define (countElementsWithMaxFrequency nums)
+  (countMaxFrequency nums))

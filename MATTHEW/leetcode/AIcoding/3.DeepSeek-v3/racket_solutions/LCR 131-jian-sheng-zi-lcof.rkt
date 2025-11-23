@@ -1,0 +1,8 @@
+(define/contract (cutting-bamboo n)
+  (-> exact-integer? exact-integer?)
+  (if (<= n 3)
+      (max 0 (- n 1))
+      (let loop ([n n] [product 1])
+        (if (> n 4)
+            (loop (- n 3) (* product 3))
+            (* product n)))))

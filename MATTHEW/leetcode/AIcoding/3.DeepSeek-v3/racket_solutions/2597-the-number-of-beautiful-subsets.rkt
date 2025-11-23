@@ -1,0 +1,12 @@
+(define/contract (beautiful-subsets nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let loop ([i 0] [current '()] [count 0])
+    (if (>= i (length nums))
+        (if (and (not (null? current)) (beautiful? current k)) 1 0)
+        (+ (loop (+ i 1) current count)
+           (loop (+ i 1) (cons (list-ref nums i) current) count)))))
+
+(define (beautiful? subset k)
+  (for/and ([a (in-list subset)])
+    (for/and ([b (in-list subset)])
+      (or (= a b) (not (= (abs (- a b)) k)))))))

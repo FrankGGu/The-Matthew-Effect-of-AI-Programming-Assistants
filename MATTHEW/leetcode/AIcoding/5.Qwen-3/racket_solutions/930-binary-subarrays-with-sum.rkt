@@ -1,0 +1,16 @@
+(define (num-subarrays-with-sum-iterative nums k)
+  (let ((count 0)
+        (sum 0)
+        (prefix-sums (make-hash)))
+    (hash-set! prefix-sums 0 1)
+    (for-each
+     (lambda (num)
+       (set! sum (+ sum num))
+       (when (hash-has-key? prefix-sums (- sum k))
+         (set! count (+ count (hash-ref prefix-sums (- sum k)))))
+       (hash-update! prefix-sums sum add1 0))
+     nums)
+    count))
+
+(define (num-subarrays-with-sum nums k)
+  (num-subarrays-with-sum-iterative nums k))

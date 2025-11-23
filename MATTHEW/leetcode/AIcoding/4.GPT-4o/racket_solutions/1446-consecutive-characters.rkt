@@ -1,0 +1,10 @@
+(define (maxPower s)
+  (define (helper chars count max-count)
+    (if (null? chars)
+        max-count
+        (let ((current-char (car chars))
+              (next-char (if (null? (cdr chars)) #\0 (cadr chars))))
+          (if (char=? current-char next-char)
+              (helper (cdr chars) (+ count 1) (max max-count (+ count 1)))
+              (helper (cdr chars) 1 (max max-count count))))))
+  (helper (string->list s) 1 1))

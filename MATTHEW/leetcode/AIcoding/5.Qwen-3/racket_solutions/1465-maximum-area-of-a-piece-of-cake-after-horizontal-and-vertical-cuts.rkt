@@ -1,0 +1,13 @@
+(define (max-area hcuts vcuts)
+  (define (sort-cuts cuts)
+    (sort cuts <))
+  (define sorted-h (sort-cuts hcuts))
+  (define sorted-v (sort-cuts vcuts))
+  (define (max-gap lst)
+    (let loop ((prev 0) (lst lst) (max-gap 0))
+      (if (null? lst)
+          max-gap
+          (loop (car lst) (cdr lst) (max (- (car lst) prev) max-gap)))))
+  (define max-h (max-gap sorted-h))
+  (define max-v (max-gap sorted-v))
+  (* max-h max-v))

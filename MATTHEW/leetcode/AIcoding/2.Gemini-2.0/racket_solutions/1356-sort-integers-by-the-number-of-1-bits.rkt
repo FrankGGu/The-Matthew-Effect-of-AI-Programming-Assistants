@@ -1,0 +1,7 @@
+(define (sort-by-bits arr)
+  (sort arr (lambda (a b)
+              (let ((count-a (count (lambda (x) (equal? x #\1)) (number->string a 2)))
+                    (count-b (count (lambda (x) (equal? x #\1)) (number->string b 2))))
+                (if (= count-a count-b)
+                    (< a b)
+                    (< count-a count-b))))))

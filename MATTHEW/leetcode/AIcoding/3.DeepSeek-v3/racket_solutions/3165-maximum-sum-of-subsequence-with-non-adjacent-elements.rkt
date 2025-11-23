@@ -1,0 +1,7 @@
+(define/contract (max-subsequence-sum nums)
+  (-> (listof exact-integer?) exact-integer?)
+  (let loop ([prev1 0] [prev2 0] [rest nums])
+    (if (null? rest)
+        (max prev1 prev2)
+        (let ([current (car rest)])
+          (loop (max prev1 (+ prev2 current)) prev1 (cdr rest))))))

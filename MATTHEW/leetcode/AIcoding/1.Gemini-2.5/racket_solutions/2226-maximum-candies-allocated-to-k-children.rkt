@@ -1,0 +1,21 @@
+(define (maximum-candies candies k)
+  (define (check x)
+    (if (= x 0)
+        #t
+        (let loop ((total-children 0)
+                   (piles candies))
+          (if (null? piles)
+              (>= total-children k)
+              (loop (+ total-children (floor (/ (car piles) x)))
+                    (cdr piles))))))
+
+  (let* ((low 0)
+         (high (apply max candies))
+         (ans 0))
+    (let loop ((current-low low) (current-high high) (current-ans ans))
+      (if (> current-low current-high)
+          current-ans
+          (let* ((mid (+ current-low (quotient (- current-high current-low) 2))))
+            (if (check mid)
+                (loop (+ mid 1) current-high mid)
+                (loop current-low (- mid 1) current-ans)))))))

@@ -1,0 +1,8 @@
+(define (angle-between-hands hour minute)
+  (define h (* 30 hour))
+  (define m (* 6 minute))
+  (define h-adj (+ h (* 0.5 minute)))
+  (define diff (abs (- h-adj m)))
+  (if (> diff 180)
+      (- 360 diff)
+      diff))

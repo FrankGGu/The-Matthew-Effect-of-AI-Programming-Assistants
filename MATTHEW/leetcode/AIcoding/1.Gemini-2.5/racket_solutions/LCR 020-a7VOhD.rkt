@@ -1,0 +1,16 @@
+(define (count-palindromic-substrings s)
+  (let* ((n (string-length s))
+         (count 0))
+
+    (define (expand-around-center left right)
+      (let loop ((l left) (r right) (sub-count 0))
+        (if (and (>= l 0)
+                 (< r n)
+                 (char=? (string-ref s l) (string-ref s r)))
+            (loop (- l 1) (+ r 1) (+ sub-count 1))
+            sub-count)))
+
+    (for ([i (in-range n)])
+      (set! count (+ count (expand-around-center i i)))
+      (set! count (+ count (expand-around-center i (+ i 1)))))
+    count))

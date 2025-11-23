@@ -1,0 +1,17 @@
+(define (min-cost-paint-houses costs)
+  (if (empty? costs)
+      0
+      (let ((final-costs
+             (foldl (lambda (house-cost acc)
+                      (let ((prev-red (list-ref acc 0))
+                            (prev-blue (list-ref acc 1))
+                            (prev-green (list-ref acc 2)))
+                        (let ((current-red-cost (list-ref house-cost 0))
+                              (current-blue-cost (list-ref house-cost 1))
+                              (current-green-cost (list-ref house-cost 2)))
+                          (list (+ current-red-cost (min prev-blue prev-green))
+                                (+ current-blue-cost (min prev-red prev-green))
+                                (+ current-green-cost (min prev-red prev-blue))))))
+                    '(0 0 0)
+                    costs)))
+        (apply min final-costs))))

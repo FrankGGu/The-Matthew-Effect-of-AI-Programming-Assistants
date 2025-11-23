@@ -1,0 +1,18 @@
+(define (count-substrings s t)
+  (define (count-diff s1 s2)
+    (length (filter (lambda (x) (not (= (car x) (cadr x))))
+                    (map list s1 s2)))
+  (define (count-pairs l1 l2)
+    (if (or (null? l1) (null? l2)) 0
+        (+ (if (= (count-diff (car l1) (car l2)) 1) 1 0)
+           (count-pairs (cdr l1) l2)
+           (count-pairs l1 (cdr l2)))))
+  (define len-s (string-length s))
+  (define len-t (string-length t))
+  (define (count-all l1 l2)
+    (if (or (>= (length l1) len-s) (>= (length l2) len-t)) 0
+        (+ (count-pairs (substring s (car l1) (+ (car l1) (car l2)))
+                         (substring t (car l1) (+ (car l1) (car l2))))
+           (count-all (cdr l1) (cdr l2)))))
+  (count-all (build-list len-s (lambda (i) i))
+             (build-list len-t (lambda (i) i))))

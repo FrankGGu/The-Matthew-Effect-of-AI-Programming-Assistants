@@ -1,0 +1,12 @@
+(define (maxCount m n ops)
+  (define grid (make-vector m (make-vector n 0)))
+  (for-each (lambda (op)
+              (let* ((a (vector-ref op 0))
+                     (b (vector-ref op 1)))
+                (for ([i (in-range a)])
+                  (for ([j (in-range b)])
+                    (vector-set! (vector-ref grid i) j (+ 1 (vector-ref (vector-ref grid i) j))))))))
+  (define max-val (apply max (map (lambda (row) (apply max row)) grid)))
+  max-val)
+
+(maxCount 3 3 '((2 2) (3 3)))

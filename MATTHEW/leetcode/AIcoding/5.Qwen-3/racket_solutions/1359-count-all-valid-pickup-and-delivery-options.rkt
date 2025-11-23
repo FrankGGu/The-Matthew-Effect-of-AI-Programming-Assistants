@@ -1,0 +1,12 @@
+(define (count-all-valid-pickup-and-delivery n)
+  (define mod 1000000007)
+  (define (fact x)
+    (if (= x 0)
+        1
+        (* x (fact (- x 1)))))
+  (define (pow x y)
+    (cond ((= y 0) 1)
+          ((even? y) (let ((temp (pow x (/ y 2)))) (* temp temp)))
+          (else (* x (pow x (- y 1))))))
+  (define total (* (fact (* 2 n)) (pow (expt 2 n) (- mod 2))))
+  (modulo total mod))

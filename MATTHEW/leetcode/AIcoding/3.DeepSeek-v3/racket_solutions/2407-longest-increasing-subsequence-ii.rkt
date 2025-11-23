@@ -1,0 +1,10 @@
+(define/contract (length-of-lis nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (let* ([n (length nums)]
+         [dp (make-vector n 1)])
+    (for ([i (in-range 1 n)])
+      (for ([j (in-range i)])
+        (when (and (< (list-ref nums j) (list-ref nums i))
+                   (<= (- (list-ref nums i) (list-ref nums j)) k))
+          (vector-set! dp i (max (vector-ref dp i) (+ 1 (vector-ref dp j)))))))
+    (if (zero? n) 0 (apply max (vector->list dp)))))

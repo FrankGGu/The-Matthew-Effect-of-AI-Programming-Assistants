@@ -1,0 +1,16 @@
+struct TreeNode* sufficientSubset(struct TreeNode* root, int limit) {
+    if (!root) return NULL;
+
+    if (!root->left && !root->right) {
+        return root->val < limit ? NULL : root;
+    }
+
+    root->left = sufficientSubset(root->left, limit - root->val);
+    root->right = sufficientSubset(root->right, limit - root->val);
+
+    if (!root->left && !root->right) {
+        return NULL;
+    }
+
+    return root;
+}

@@ -1,0 +1,7 @@
+(define (minNumberGame nums)
+  (define (play lst)
+    (if (= (length lst) 1)
+        (car lst)
+        (play (map (lambda (i) (if (even? i) (min (list-ref lst i) (list-ref lst (+ i 1))) (list-ref lst i)))
+                     (range (sub1 (length lst)))))))
+  (play nums))

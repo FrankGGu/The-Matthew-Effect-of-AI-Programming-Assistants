@@ -1,0 +1,10 @@
+(define (largestCombination arr)
+  (define (count-bits n)
+    (if (= n 0)
+        0
+        (+ 1 (count-bits (bitwise-arithmetic-shift-right n 1)))))
+  (define (max-count count1 count2)
+    (if (> count1 count2) count1 count2))
+  (define (max-bits arr)
+    (foldl (lambda (x y) (max-count (count-bits x) (count-bits y))) 0 arr))
+  (max-bits arr))

@@ -1,0 +1,12 @@
+(define (maximum-energy dungeon)
+  (define m (vector-length dungeon))
+  (define n (vector-length (vector-ref dungeon 0)))
+  (define dp (make-vector (add1 m) (make-vector (add1 n) -inf.0)))
+  (vector-set! (vector-ref dp m) n 0.0)
+  (for* ([i (in-range (sub1 m) -1 -1)]
+         [j (in-range (sub1 n) -1 -1)])
+    (define cell (vector-ref (vector-ref dungeon i) j))
+    (define down (+ cell (vector-ref (vector-ref dp (add1 i)) j)))
+    (define right (+ cell (vector-ref (vector-ref dp i) (add1 j))))
+    (vector-set! (vector-ref dp i) j (max down right)))
+  (real->integer (vector-ref (vector-ref dp 0) 0)))

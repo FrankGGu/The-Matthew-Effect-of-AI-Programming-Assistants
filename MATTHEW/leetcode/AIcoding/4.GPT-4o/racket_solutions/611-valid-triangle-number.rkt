@@ -1,0 +1,22 @@
+(define (triangle-number nums)
+  (define (count-valid-triangles sorted)
+    (define (binary-search right target)
+      (let loop ((left 0))
+        (if (>= left right)
+            right
+            (let ((mid (quotient (+ left right) 2)))
+              (if (> (list-ref sorted mid) target)
+                  (loop left mid)
+                  (loop (+ mid 1) right))))))
+    (define n (length sorted))
+    (define count 0)
+    (for ([i (in-range n)])
+      (for ([j (in-range (+ i 1) n)])
+        (let ((target (- (list-ref sorted i) (list-ref sorted j))))
+          (if (>= target 0)
+              (set! count (+ count (- (binary-search n target) j -1)))))))
+    count))
+
+  (count-valid-triangles (sort nums <)))
+
+(triangle-number '(2 2 3 4))

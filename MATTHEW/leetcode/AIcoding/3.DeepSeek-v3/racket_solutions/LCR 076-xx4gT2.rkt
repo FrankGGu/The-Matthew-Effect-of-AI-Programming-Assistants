@@ -1,0 +1,23 @@
+(define/contract (find-kth-largest nums k)
+  (-> (listof exact-integer?) exact-integer? exact-integer?)
+  (define nums-vec (list->vector nums))
+  (define (quickselect left right k)
+    (define pivot-index (partition left right))
+    (cond
+      [(= pivot-index k) (vector-ref nums-vec pivot-index)]
+      [(< pivot-index k) (quickselect (add1 pivot-index) right k)]
+      [else (quickselect left (sub1 pivot-index) k)]))
+  (define (partition left right)
+    (define pivot (vector-ref nums-vec right))
+    (define i (sub1 left))
+    (for ([j (in-range left right)])
+      (when (>= (vector-ref nums-vec j) pivot)
+        (set! i (add1 i))
+        (swap i j)))
+    (swap (add1 i) right)
+    (add1 i))
+  (define (swap i j)
+    (define temp (vector-ref nums-vec i))
+    (vector-set! nums-vec i (vector-ref nums-vec j))
+    (vector-set! nums-vec j temp))
+  (quickselect 0 (sub1 (vector-length nums-vec)) (sub1 k)))

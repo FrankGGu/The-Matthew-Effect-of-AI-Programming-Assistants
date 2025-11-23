@@ -1,0 +1,10 @@
+(define (path-sum root target)
+  (define (helper node target path)
+    (if (not node)
+        #f
+        (let ((new-target (- target (node-val node))))
+          (if (and (not (node-left node)) (not (node-right node)))
+              (= new-target 0)
+              (or (helper (node-left node) new-target (append path (list (node-val node))))
+                  (helper (node-right node) new-target (append path (list (node-val node)))))))))
+  (helper root target '()))

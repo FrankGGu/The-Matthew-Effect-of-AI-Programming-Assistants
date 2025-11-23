@@ -1,0 +1,12 @@
+(define (maxSumDivThree nums)
+  (define dp (vector 0 0 0))
+  (for-each (lambda (num)
+              (let ((mod (modulo num 3)))
+                (for ((i (in-range 3)))
+                  (let ((new-sum (+ (vector-ref dp i) num)))
+                    (vector-set! dp (modulo new-sum 3) 
+                                 (max (vector-ref dp (modulo new-sum 3)) new-sum))))))
+            nums)
+  (vector-ref dp 0))
+
+(maxSumDivThree '(3 6 5 1 8))

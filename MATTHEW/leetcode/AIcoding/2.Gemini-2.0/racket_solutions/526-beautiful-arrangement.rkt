@@ -1,0 +1,13 @@
+(define (count-arrangement n)
+  (define (count-permutations current used count)
+    (if (= current (+ 1 n))
+        (+ count 1)
+        (let loop ((i 1) (new-count count))
+          (cond
+            ((> i n) new-count)
+            ((not (set-member? used i))
+             (if (or (= (modulo current i) 0) (= (modulo i current) 0))
+                 (loop (+ i 1) (count-permutations (+ current 1) (set-add used i) new-count))
+                 (loop (+ i 1) new-count)))
+            (else (loop (+ i 1) new-count))))))
+  (count-permutations 1 (set) 0))

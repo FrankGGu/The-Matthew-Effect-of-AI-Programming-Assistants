@@ -1,0 +1,22 @@
+(define (can-make-palindrome-queries s queries)
+  (define n (string-length s))
+  (define prefix-sums (make-vector (+ n 1) 0))
+  (define (char->int c) (- (char->integer c) (char->integer #\a)))
+
+  (for/fold ((prev-mask 0)) ((i (in-range n)))
+    (let* ((char-int (char->int (string-ref s i)))
+           (current-mask (bitwise-xor prev-mask (arithmetic-shift 1 char-int))))
+      (vector-set! prefix-sums (+ i 1) current-mask)
+      current-mask))
+
+  (map (lambda (query)
+         (let* ((left (vector-ref query 0))
+                (right (vector-ref query 1))
+                (k (vector-ref query 2))
+                (sub-mask (bitwise-xor (vector-ref prefix-sums left) (vector-ref prefix-sums (+ right 1))))
+                (num-odd-counts (for/sum ((i (in-range 26)))
+                                  (if (bitwise-and sub-mask (arithmetic-shift 1 i))
+                                      1
+                                      0))))
+           (>= k (quotient num-odd-counts 2))))
+       queries))
