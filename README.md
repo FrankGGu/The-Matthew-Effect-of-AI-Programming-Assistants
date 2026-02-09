@@ -99,7 +99,6 @@ We only feed back raw error messages (no human rewriting), measuring the model�
 - This can form a self-reinforcing loop:  
   **more adoption → more training data → better AI support → even more adoption**
 
----
 <img width="302" height="287" alt="image" src="https://github.com/user-attachments/assets/c8118d29-9ae9-43ad-a42d-27e36b699461" />
 
 ---
