@@ -1,6 +1,4 @@
-<div align="center">
-# The Matthew Effect of AI Programming Assistants  
-### A Hidden Bias in Software Evolution (ICLR 2026)
+# The Matthew Effect of AI Programming Assistants: A Hidden Bias in Software Evolution (ICLR 2026)
 
 [![Conference](https://img.shields.io/badge/ICLR-2026-brightgreen)](#)
 [![Paper](https://img.shields.io/badge/OpenReview-Paper-blue)](https://openreview.net/forum?id=QjkJdcbSDe)
@@ -28,7 +26,7 @@ If you find this repository useful, please cite:
   year         = {2026},
   url          = {https://openreview.net/forum?id=QjkJdcbSDe}
 }
-
+```
 
 ---
 
