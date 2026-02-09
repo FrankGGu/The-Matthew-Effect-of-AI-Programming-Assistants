@@ -7,6 +7,13 @@
 > **AI 编程助手正在加剧软件生态的“马太效应”**：热门语言/框架获得更强的 AI 支持，冷门生态则承受显著的“AI 生产力税（AI productivity tax）”。
 
 本仓库为 ICLR 2026 接收论文 **“The Matthew Effect of AI Programming Assistants: A Hidden Bias in Software Evolution”** 的配套代码与数据（benchmark、prompt 模板、评测脚本、结果分析等），用于复现实验并便于后续研究扩展。
+@inproceedings{ICLR-Gu-Liang-Ma-Li2026,
+  title={The Matthew Effect of {AI} Programming Assistants: A Hidden Bias in Software Evolution},
+  author={Fei Gu and Zi Liang and Jiahao MA and Hongzong LI},
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026},
+  url={https://openreview.net/forum?id=QjkJdcbSDe}
+}
 
 ---
 
