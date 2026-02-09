@@ -1,72 +1,107 @@
-# The Matthew Effect of AI Programming Assistants: A Hidden Bias in Software Evolution (ICLR 2026)
+<div align="center">
+# The Matthew Effect of AI Programming Assistants  
+### A Hidden Bias in Software Evolution (ICLR 2026)
 
 [![Conference](https://img.shields.io/badge/ICLR-2026-brightgreen)](#)
 [![Paper](https://img.shields.io/badge/OpenReview-Paper-blue)](https://openreview.net/forum?id=QjkJdcbSDe)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **AI 编程助手正在加剧软件生态的“马太效应”**：热门语言/框架获得更强的 AI 支持，冷门生态则承受显著的“AI 生产力税（AI productivity tax）”。
+</div>
 
-本仓库为 ICLR 2026 接收论文 **“The Matthew Effect of AI Programming Assistants: A Hidden Bias in Software Evolution”** 的配套代码与数据（benchmark、prompt 模板、评测脚本、结果分析等），用于复现实验并便于后续研究扩展。
+> **AI programming assistants can amplify a “Matthew effect” in software ecosystems:** mainstream languages/frameworks get disproportionately better AI support, while niche ecosystems pay a sizable **AI productivity tax**.
+
+This repository contains the code and released artifacts for the ICLR 2026 paper  
+**“The Matthew Effect of AI Programming Assistants: A Hidden Bias in Software Evolution.”**  
+It includes benchmark/task definitions, prompt templates, evaluation scripts, and analysis utilities for reproducing and extending our experiments.
+
+---
+
+## Citation
+
+If you find this repository useful, please cite:
+
+```bibtex
 @inproceedings{ICLR-Gu-Liang-Ma-Li2026,
-  title={The Matthew Effect of {AI} Programming Assistants: A Hidden Bias in Software Evolution},
-  author={Fei Gu and Zi Liang and Jiahao MA and Hongzong LI},
-  booktitle={The Fourteenth International Conference on Learning Representations},
-  year={2026},
-  url={https://openreview.net/forum?id=QjkJdcbSDe}
+  title        = {The Matthew Effect of {AI} Programming Assistants: A Hidden Bias in Software Evolution},
+  author       = {Fei Gu and Zi Liang and Jiahao Ma and Hongzong Li},
+  booktitle    = {The Fourteenth International Conference on Learning Representations},
+  year         = {2026},
+  url          = {https://openreview.net/forum?id=QjkJdcbSDe}
 }
+
 
 ---
 
 ## 🔥 TL;DR
 
-- 在同一套评测协议下，**语言与框架的“流行度”是 AI 编程成功率的强预测因子**，甚至往往比“模型更强/更会推理”更关键。
-- 代表性结果：在最佳模型上，**Python Pass@1 = 79.81%**，而 **Erlang Pass@1 = 24.31%**，相差 **3 倍+**。
-- 冷门语言/框架的失败类型更“底层”：热门语言多为 **Wrong Answer / Runtime Error**（能跑但不对），冷门语言往往大量 **Compile Error**（语法/工程化都不稳）。
-- 在真实全栈场景的“Vibe Coding”迭代协议中，主流栈通常 **1–3 轮**收敛，冷门/新兴栈经常需要 **5–10 轮**甚至无法完成。
+- Under a controlled protocol, **popularity of a language/framework is a strong predictor** of LLM code-generation success—often more decisive than model “reasoning strength.”
+- Representative result (best model): **Python Pass@1 = 79.81%** vs **Erlang Pass@1 = 24.31%** (3×+ gap).
+- Failure modes differ: mainstream ecosystems more often fail as **Wrong Answer / Runtime Error** (runs but incorrect), while niche ecosystems frequently fail as **Compile Error** (toolchain/syntax instability).
+- In realistic full-stack development under an iterative **Vibe Coding** protocol, mainstream stacks often converge in **1–3 rounds**, while niche/new stacks may require **5–10 rounds** or fail.
 
 ---
 
-## 📌 研究内容概述
+## 📌 Overview
 
-LLM 驱动的 AI 编程工具正在改变软件开发范式（vibe coding、agentic coding）。已有研究多聚焦 prompt 工程或单点准确率，但**生态层面的长期影响**仍缺乏系统测量。
+LLM-powered programming tools (e.g., vibe coding, agentic coding) are reshaping how software is built.  
+While prior work largely focuses on prompt engineering and short-horizon accuracy, we study **ecosystem-level consequences**:
 
-本研究通过大规模实验回答：**AI 编程助手是否会在语言/框架层面强化“强者恒强”的生态演化？**
+> Do AI programming assistants reinforce existing popularity hierarchies, making dominant languages/frameworks even more dominant, and thereby reducing ecosystem diversity?
+
+We answer this question with large-scale experiments across languages and full-stack frameworks.
 
 ---
 
 ## 🧪 Benchmark & Experiments
 
-### 1) Algorithmic Tasks（语言层面）
-- 数据来源：LeetCode 公共题目
-- 规模：**3,011 道题**（Easy/Medium/Hard）
-- 语言：**9 种**（Python, C++, C, Java, JavaScript, Go, Rust, Erlang, Racket）
-- 模型：**5 个商用闭源模型**
-- 总调用：**3,011 × 9 × 5 = 135,495** 次代码生成请求
-- 指标：LeetCode 在线评测，**Pass@1**（首提交通过率），并统计错误类型（Compile Error / Wrong Answer / Runtime Error 等）
+
+### 1) Algorithmic Tasks (Language Level)
+
+- Source: public LeetCode problems
+- Scale: **3,011** problems (Easy/Medium/Hard)
+- Languages (**9**): Python, C++, C, Java, JavaScript, Go, Rust, Erlang, Racket
+- Models: **5** commercial proprietary LLMs
+- Total requests: **3,011 × 9 × 5 = 135,495** code generations
+- Metric: LeetCode online judging, **Pass@1** (first submission success), plus error-type breakdown
+  (Compile Error / Wrong Answer / Runtime Error / etc.)
+
 <img width="513" height="288" alt="image" src="https://github.com/user-attachments/assets/680ebb0a-d9e0-45d1-944e-68e191e782a7" />
 
-### 2) Framework Tasks（框架/技术栈层面）
-- 两层任务：
-  1. **17 个通用 CRUD 全栈任务**（在 6 套主流/新兴技术栈上对比）
-  2. **8 个“技术路线分歧”任务**（如 API Gateway、分布式 KV、Chat Server 等，比较 mainstream/mid/niche 栈的迭代成本）
-- 评测协议：**VibeCoding** —— 仅反馈原始报错信息，不做人类“帮写/帮改”，测量 AI 工具独立修复与收敛能力（以迭代轮数/是否完成为主）
+### 2) Framework Tasks (Stack Level)
+
+We evaluate LLM performance in full-stack development via two layers of tasks:
+
+1. **17** general CRUD-style tasks across **6** mainstream/emerging tech stacks  
+2. **8** “divergent technology pathway” tasks (e.g., API Gateway, distributed KV, chat server),
+   comparing **mainstream / mid / niche** stacks under the same requirements
+
+**Protocol: VibeCoding**  
+We only feed back raw error messages (no human rewriting), measuring the model’s ability to independently debug and converge, using:
+- convergence rounds / completion rate
+- failure categories (build/runtime/logic)
+
 <img width="517" height="287" alt="image" src="https://github.com/user-attachments/assets/b21a2b0d-e9bd-46d5-984b-4a35e46794f7" />
 
 ---
 
-## 📊 Key Findings（核心发现）
+## 📊 Key Findings
 
-### 语言层面：生产力鸿沟
-- 最佳模型示例：**Python 79.81% vs Erlang 24.31%（Pass@1）**
-- 难度越高差距越大：从 Easy 到 Hard，热门与冷门语言差距显著扩大
-- 失败机制不同：冷门语言中 **Compile Error 占比极高**，体现训练数据/工具链知识覆盖不足
+### Language Level: Productivity Gap
 
-### 框架层面：AI 生产力税
-- 17 个 CRUD 任务中，主流栈（如 Vue+Spring、React+Express、Django）更容易在少量尝试内完成
-- 在技术路线分歧任务中：
-  - 主流栈常 **1–2 轮**收敛
-  - 冷门/新兴栈常需 **5–10 轮**甚至失败
-- 这形成潜在自我强化循环：**数据更多 → AI 支持更强 → 更多人选用 → 数据更更多**
+- Best-model example: **Python 79.81% vs Erlang 24.31% (Pass@1)**
+- The harder the tasks, the larger the gap (from Easy → Hard)
+- Niche languages show disproportionately high **Compile Error** rates, suggesting limited toolchain/syntax coverage
+
+### Stack Level: “AI Productivity Tax”
+
+- For the 17 CRUD tasks, mainstream stacks (e.g., Vue+Spring, React+Express, Django) typically succeed in fewer rounds
+- For divergent-pathway tasks:
+  - mainstream stacks often converge in **1–2 rounds**
+  - niche/emerging stacks may need **5–10 rounds** or fail
+- This can form a self-reinforcing loop:  
+  **more adoption → more training data → better AI support → even more adoption**
+
+---
 <img width="302" height="287" alt="image" src="https://github.com/user-attachments/assets/c8118d29-9ae9-43ad-a42d-27e36b699461" />
 
 ---
